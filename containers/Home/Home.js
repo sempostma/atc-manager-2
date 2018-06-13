@@ -1,0 +1,73 @@
+import { Component } from 'preact';
+import './Home.css';
+import SavedGamesOpen from '../../components/SavedGamesOpen/SavedGamesOpen';
+import { loadState } from '../../lib/persistance';
+import { mapn, mapNames } from '../../lib/map';
+import { Link, route } from 'preact-router';
+import GameStore from '../../stores/GameStore';
+import Settings from '../../components/Settings/Settings';
+
+class Home extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      mapname: mapNames[0],
+    };
+
+    this.handleMapSelectionChange = this.handleMapSelectionChange.bind(this);
+    this.handleStartClick = this.handleStartClick.bind(this);
+  }
+
+  componentWillMount() {
+  }
+
+  componentWillUnmount() {
+  }
+
+  handleMapSelectionChange(e) {
+    this.setState({ mapname: e.target.value });
+  }
+
+  handleReturnToGame() {
+    route('/game');
+  }
+
+  handleStartClick() {
+    if (GameStore.started) GameStore.stop();
+    GameStore.startMap(this.state.mapname);
+    route('/game');
+  }
+
+  render() {
+    return (
+      <div className="home" style="background-image: url('assets/bg.jpg')">
+        <div className="abs-container">
+          { GameStore.started ? <button onClick={this.handleReturnToGame}>Return to Game</button> : null }
+        </div>
+        <div className="panel" >
+          <h1>ATC Manager 2</h1>
+        </div>
+        <div className="panel">
+          <SavedGamesOpen />
+        </div>
+        <div className="panel">
+          <h2 className="mb">Start</h2>
+          <span className="mb">Area:</span>
+          <select onInput={this.handleMapSelectionChange}>
+            { mapNames.map(name =>
+              <option value={name}>{upcase(name)}</option>
+            )}
+          </select>
+          <Settings />
+          <button onClick={this.handleStartClick}>Start</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Home;
+
+const upcase = str => {
+  return str[0].toUpperCase() + str.slice(1);
+}

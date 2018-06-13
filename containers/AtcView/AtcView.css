@@ -1,0 +1,80 @@
+.traffic-stack-wrapper {
+    width: 250px;
+    background: #333;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 3px;
+    overflow-y: auto;
+}
+
+.traffic-stack-wrapper input,
+ {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.traffic-stack-wrapper select {
+  height: 1.8em;
+  padding: 0 2px;
+  color: #000;
+  background: #fff;
+}
+
+.atc-view-svg {
+    float: left;
+    display: block;
+}
+
+.atc-view-svg span {
+    color: #ccc;
+}
+
+.traffic-stack-entry.inbound {
+    background: #99f;
+    margin-bottom: 3px;
+}
+
+.traffic-stack-entry.outbound {
+  background: #696;
+  margin-bottom: 3px;
+}
+
+.traffic-stack {
+    padding: 3px;
+    background: #ddd;
+    max-height: 300px;
+    overflow: auto;
+}
+
+span.down {
+    color: #f00;
+}
+
+span.up {
+    color: #0f0;
+}
+
+svg.atc-view-svg {
+  padding: 10px;
+  padding-right: 45px;
+}
+
+.traffic-control input,
+.traffic-control select {
+  padding: 2px;
+  height: 1.8em;
+}
+
+.atc-view .scores {
+  padding: 4px 0 0 4px;
+  color: #fff;
+  pointer-events: none;
+  user-select: none;
+  font-size: .8em;
+  opacity: .6;
+}
+
+
+

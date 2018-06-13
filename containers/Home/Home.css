@@ -1,0 +1,88 @@
+
+.home {
+    overflow: hidden;
+
+    background: #030303 no-repeat center center;
+    background-size: cover;
+    padding-bottom: 100px;
+}
+
+.home h1 {
+  margin: 0;
+}
+
+.home .save-img {
+  height: 2.5em;
+  float: right;
+  display: block;
+  fill: rgba(44, 62, 80, 1);
+  transition: all 500ms ease;
+  transition-property: fill;
+  cursor: pointer;
+}
+
+.home .trash {
+  height: 2.5em;
+  display: block;
+  float: right;
+  fill: rgba(44, 62, 80, 1);
+  transition: all 500ms ease;
+  transition-property: fill;
+  cursor: pointer;
+}
+
+.home .panel  {
+  width: 600px;
+  max-width: 100%;
+  margin: auto;
+  margin-top: 50px;
+  box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.2);
+  padding: 5px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.home .savedgamesopen .savedgamesopen-list {
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+.home .savedgamesopen .save {
+  border-top: 1px solid #ccc;
+  padding: 5px;
+  display: block;
+  background-color: rgba(44, 62, 80, 0);
+  transition: all 500ms ease;
+  transition-property: opacity, background-color;
+}
+
+.home .savedgamesopen .save:hover {
+  background-color: rgba(44, 62, 80, 1);
+  color: #fff;
+}
+
+.home .savedgamesopen .save:hover .save-img  {
+  fill: #ffffff;
+}
+
+.home .savedgamesopen .save:hover .trash  {
+  fill: #ffffff;
+}
+
+.home .savedgamesopen .save::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.home .savedgamesopen .save .save-name {
+  margin: 0;
+  float: left;
+  display: block;
+}
+
+.home .range-slider .range-slider__range {
+  max-width: calc(100% - (73px));
+  width: 200px;
+}
+
+
