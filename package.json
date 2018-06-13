@@ -6,10 +6,11 @@
   "license": "MIT",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "preact build",
+    "build": "set NODE_ENV=production && preact build -p --json --prerender --clean",
     "serve": "preact build && preact serve",
     "dev": "preact watch",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "deploy": "git subtree push --prefix build origin gh-pages"
   },
   "eslintConfig": {
     "extends": "eslint-config-synacor"
