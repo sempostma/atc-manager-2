@@ -1,7 +1,7 @@
 {
-  "name": "simple-preact-pwa",
-  "short_name": "simple-pwa",
-  
+  "name": "Air Traffic Control Manager 2",
+  "description": "Web based aire traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.",
+  "short_name": "ATC Manager 2",
   "start_url": "/",
   "display": "fullscreen",
   "orientation": "landscape",
