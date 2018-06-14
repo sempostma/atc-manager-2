@@ -129,25 +129,17 @@ class AtcView extends Component {
   }
 
   handleSVGClick(e) {
-    for (let i = 0; i < e.path.length; i++) {
-      if (e.path[i].tagName === 'SVG') break;
-      if (e.path[i].classList && e.path[i].classList.contains('airplane')) {
-        const index = e.path[i].getAttribute('data-index');
-        this.handleAirplaneClick(index);
-        break;
-      }
-    }
+    const airplane = getParent(e, element => (element.getAttribute('class') || '').indexOf('airplane') !== -1);
+    if (!airplane) return;
+    const index = airplane.getAttribute('data-index');
+    this.handleAirplaneClick(index);
   }
 
   handleTrafficStackClick(e) {
-    for (let i = 0; i < e.path.length; i++) {
-      if (e.path[i].classList.contains('traffic-stack')) break;
-      if (e.path[i].classList && e.path[i].classList.contains('traffic-stack-entry')) {
-        const index = e.path[i].getAttribute('data-index');
-        this.handleAirplaneClick(index);
-        break;
-      }
-    }
+    const airplane = getParent(e, element => (element.getAttribute('class') || '').indexOf('traffic-stack-entry') !== -1);
+    if (!airplane) return;
+    const index = airplane.getAttribute('data-index');
+    this.handleAirplaneClick(index);
   }
 
   handleAirplaneClick(index) {
@@ -391,6 +383,15 @@ const getAltJsx = (airplane, TagName) => {
   } else {
     return getAltFmtJSx(airplane.altitude, TagName);
   }
+}
+
+const getParent = (e, matcher) => {
+  let el = e.target;
+  while(el) {
+    if (matcher(el)) return el;
+    el = el.parentElement;
+  }
+  return null;
 }
 
 export default AtcView;

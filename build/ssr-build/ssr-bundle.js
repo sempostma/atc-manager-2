@@ -58,7 +58,7 @@ module.exports =
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "./";
+/******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = "JkW7");
@@ -3783,25 +3783,21 @@ var AtcView_AtcView_AtcView = function (_Component) {
   };
 
   AtcView.prototype.handleSVGClick = function handleSVGClick(e) {
-    for (var i = 0; i < e.path.length; i++) {
-      if (e.path[i].tagName === 'SVG') break;
-      if (e.path[i].classList && e.path[i].classList.contains('airplane')) {
-        var index = e.path[i].getAttribute('data-index');
-        this.handleAirplaneClick(index);
-        break;
-      }
-    }
+    var airplane = getParent(e, function (element) {
+      return (element.getAttribute('class') || '').indexOf('airplane') !== -1;
+    });
+    if (!airplane) return;
+    var index = airplane.getAttribute('data-index');
+    this.handleAirplaneClick(index);
   };
 
   AtcView.prototype.handleTrafficStackClick = function handleTrafficStackClick(e) {
-    for (var i = 0; i < e.path.length; i++) {
-      if (e.path[i].classList.contains('traffic-stack')) break;
-      if (e.path[i].classList && e.path[i].classList.contains('traffic-stack-entry')) {
-        var index = e.path[i].getAttribute('data-index');
-        this.handleAirplaneClick(index);
-        break;
-      }
-    }
+    var airplane = getParent(e, function (element) {
+      return (element.getAttribute('class') || '').indexOf('traffic-stack-entry') !== -1;
+    });
+    if (!airplane) return;
+    var index = airplane.getAttribute('data-index');
+    this.handleAirplaneClick(index);
   };
 
   AtcView.prototype.handleAirplaneClick = function handleAirplaneClick(index) {
@@ -4128,6 +4124,15 @@ var AtcView_getAltJsx = function getAltJsx(airplane, TagName) {
   } else {
     return AtcView_getAltFmtJSx(airplane.altitude, TagName);
   }
+};
+
+var getParent = function getParent(e, matcher) {
+  var el = e.target;
+  while (el) {
+    if (matcher(el)) return el;
+    el = el.parentElement;
+  }
+  return null;
 };
 
 /* harmony default export */ var containers_AtcView_AtcView = (AtcView_AtcView_AtcView);

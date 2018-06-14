@@ -1,7 +1,6 @@
 {
   "private": true,
   "name": "atc-manager",
-  "homepage": "./",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -12,6 +11,11 @@
     "lint": "eslint src",
     "deploy": "git subtree push --prefix build origin gh-pages"
   },
+  "browserslist": [
+    "> 1%",
+    "IE >= 9",
+    "last 2 versions"
+  ],
   "eslintConfig": {
     "extends": "eslint-config-synacor"
   },
