@@ -19,8 +19,8 @@ class Donate extends Component {
     return (
       <div className="Donate">
         If you like the game and you want the game to stay (advertisement) free, please check out the <a href="https://www.gofundme.com/manage/atc-manager-2" target="_blank">GoFundMe Page</a> or:
-        <br />
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <br /><br />
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin-bottom: 0;">
           <input type="hidden" name="business"
             value="polyismstudio@gmail.com" />
 
@@ -48,7 +48,7 @@ class Donate extends Component {
           </div>
           <input type="submit" value="Donate" />
         </form>
-
+        <br />
         BTC Address: 36Za9aYukYfNZW2KLv1ST6Xy15cUSP7A6t<br />
         BCH Address: qpyy02yht9s2zaupjxucptvq9nehqncd3y2xa4kq0y<br />
         ETH Address: 0x6E8473ed45eab930D8Bd82CB9cE6353BCD0d2520<br />

@@ -869,6 +869,13 @@ var index = {
 
 /***/ }),
 
+/***/ "DpDT":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "EBst":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3920,9 +3927,10 @@ var Donate__ref = Object(preact_min["h"])(
   ),
   ' or:',
   Object(preact_min["h"])('br', null),
+  Object(preact_min["h"])('br', null),
   Object(preact_min["h"])(
     'form',
-    { action: 'https://www.paypal.com/cgi-bin/webscr', method: 'post' },
+    { action: 'https://www.paypal.com/cgi-bin/webscr', method: 'post', style: 'margin-bottom: 0;' },
     Object(preact_min["h"])('input', { type: 'hidden', name: 'business',
       value: 'polyismstudio@gmail.com' }),
     Object(preact_min["h"])('input', { type: 'hidden', name: 'cmd', value: '_donations' }),
@@ -4005,6 +4013,7 @@ var Donate__ref = Object(preact_min["h"])(
     ),
     Object(preact_min["h"])('input', { type: 'submit', value: 'Donate' })
   ),
+  Object(preact_min["h"])('br', null),
   'BTC Address: 36Za9aYukYfNZW2KLv1ST6Xy15cUSP7A6t',
   Object(preact_min["h"])('br', null),
   'BCH Address: qpyy02yht9s2zaupjxucptvq9nehqncd3y2xa4kq0y',
@@ -4296,72 +4305,68 @@ var AtcView__ref13 = Object(preact_min["h"])(fa["FaCog"], null);
 
 var AtcView__ref14 = Object(preact_min["h"])(components_GameMetaControls_GameMetaControls, null);
 
-var AtcView__ref15 = Object(preact_min["h"])(
-  'p',
-  null,
-  'Atc Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.'
-);
+var AtcView__ref15 = Object(preact_min["h"])('br', null);
 
 var _ref16 = Object(preact_min["h"])(
-  'p',
-  null,
-  Object(preact_min["h"])(containers_Donate_Donate, null)
+  'a',
+  { href: 'https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US', target: '_blank' },
+  'ATC Manager 1 App'
 );
 
-var _ref17 = Object(preact_min["h"])(
+var _ref17 = Object(preact_min["h"])(containers_Donate_Donate, null);
+
+var _ref18 = Object(preact_min["h"])('br', null);
+
+var _ref19 = Object(preact_min["h"])(
   'a',
   { href: 'https://esstudio.site/contact/' },
   'Contact Me'
 );
 
-var _ref18 = Object(preact_min["h"])(
-  'p',
-  null,
-  Object(preact_min["h"])(
-    'div',
-    null,
-    'Icons made by ',
-    Object(preact_min["h"])(
-      'a',
-      { href: 'https://www.flaticon.com/authors/pause08', title: 'Pause08' },
-      'Pause08'
-    ),
-    ' from ',
-    Object(preact_min["h"])(
-      'a',
-      { href: 'https://www.flaticon.com/', title: 'Flaticon' },
-      'www.flaticon.com'
-    ),
-    ' is licensed by ',
-    Object(preact_min["h"])(
-      'a',
-      { href: 'http://creativecommons.org/licenses/by/3.0/', title: 'Creative Commons BY 3.0', target: '_blank' },
-      'CC 3.0 BY'
-    )
-  )
-);
-
-var _ref19 = Object(preact_min["h"])(fa["FaCompress"], null);
-
 var _ref20 = Object(preact_min["h"])(
-  'button',
+  'div',
   null,
-  'Copy logs'
+  'Icons made by ',
+  Object(preact_min["h"])(
+    'a',
+    { href: 'https://www.flaticon.com/authors/pause08', title: 'Pause08' },
+    'Pause08'
+  ),
+  ' from ',
+  Object(preact_min["h"])(
+    'a',
+    { href: 'https://www.flaticon.com/', title: 'Flaticon' },
+    'www.flaticon.com'
+  ),
+  ' is licensed by ',
+  Object(preact_min["h"])(
+    'a',
+    { href: 'http://creativecommons.org/licenses/by/3.0/', title: 'Creative Commons BY 3.0', target: '_blank' },
+    'CC 3.0 BY'
+  )
 );
 
 var _ref21 = Object(preact_min["h"])(fa["FaCompress"], null);
 
 var _ref22 = Object(preact_min["h"])(
+  'button',
+  null,
+  'Copy logs'
+);
+
+var _ref23 = Object(preact_min["h"])(fa["FaCompress"], null);
+
+var _ref24 = Object(preact_min["h"])(
   'h5',
   null,
   'Settings'
 );
 
-var _ref23 = Object(preact_min["h"])('hr', null);
+var _ref25 = Object(preact_min["h"])('hr', null);
 
-var _ref24 = Object(preact_min["h"])(components_Settings_Settings, null);
+var _ref26 = Object(preact_min["h"])(components_Settings_Settings, null);
 
-var _ref25 = Object(preact_min["h"])(fa["FaCompress"], null);
+var _ref27 = Object(preact_min["h"])(fa["FaCompress"], null);
 
 var AtcView_AtcView_AtcView = function (_Component) {
   AtcView__inherits(AtcView, _Component);
@@ -4776,50 +4781,49 @@ var AtcView_AtcView_AtcView = function (_Component) {
         'div',
         { className: [this.state.aboutExpanded ? null : 'hidden', 'about-panel'].join(' ') },
         Object(preact_min["h"])(
-          'p',
+          'div',
           null,
           Object(preact_min["h"])(
-            'div',
+            'span',
             null,
-            Object(preact_min["h"])(
-              'span',
-              null,
-              'Wind: ',
-              stores_GameStore.winddir,
-              '\xB0 / ',
-              stores_GameStore.windspd,
-              ' kts'
-            )
-          ),
+            'Wind: ',
+            stores_GameStore.winddir,
+            '\xB0 / ',
+            stores_GameStore.windspd,
+            ' kts'
+          )
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
           Object(preact_min["h"])(
-            'div',
+            'span',
             null,
-            Object(preact_min["h"])(
-              'span',
-              null,
-              'ATIS: ',
-              stores_GameStore.getAtis()
-            )
-          ),
+            'ATIS: ',
+            stores_GameStore.getAtis()
+          )
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
           Object(preact_min["h"])(
-            'div',
+            'span',
             null,
-            Object(preact_min["h"])(
-              'span',
-              null,
-              'Altimeter: ',
-              stores_GameStore.altimeter
-            )
+            'Altimeter: ',
+            stores_GameStore.altimeter
           )
         ),
         AtcView__ref15,
+        'Atc Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator. Check out the ',
         _ref16,
         _ref17,
         _ref18,
+        _ref19,
+        _ref20,
         Object(preact_min["h"])(
           'button',
           { onClick: this.handleAboutExpanded },
-          _ref19,
+          _ref21,
           ' Hide Panel'
         )
       ),
@@ -4868,7 +4872,7 @@ var AtcView_AtcView_AtcView = function (_Component) {
           lib["CopyToClipboard"],
           { text: logs.join('\r\n'),
             onCopy: this.handleLogsCopied },
-          _ref20
+          _ref22
         ),
         Object(preact_min["h"])(
           'button',
@@ -4878,20 +4882,20 @@ var AtcView_AtcView_AtcView = function (_Component) {
         Object(preact_min["h"])(
           'button',
           { onClick: this.handleLogsExpanded },
-          _ref21,
+          _ref23,
           ' Hide Panel'
         )
       ),
       Object(preact_min["h"])(
         'div',
         { className: [this.state.settingsExpanded ? null : 'hidden', 'settings-panel'].join(' ') },
-        _ref22,
-        _ref23,
         _ref24,
+        _ref25,
+        _ref26,
         Object(preact_min["h"])(
           'button',
           { onClick: this.handleExpandSettingsButtonClick },
-          _ref25,
+          _ref27,
           ' Hide Options'
         )
       )
@@ -5194,6 +5198,11 @@ var Home__ref = Object(preact_min["h"])(
     'h1',
     null,
     'ATC Manager 2'
+  ),
+  Object(preact_min["h"])(
+    'div',
+    { style: 'padding: 30px 20px;' },
+    'ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.'
   )
 );
 
@@ -5316,8 +5325,87 @@ var Home_Home_Home = function (_Component) {
 var upcase = function upcase(str) {
   return str[0].toUpperCase() + str.slice(1);
 };
+// EXTERNAL MODULE: ./containers/NotFound/NotFound.css
+var NotFound_NotFound = __webpack_require__("DpDT");
+var NotFound_default = /*#__PURE__*/__webpack_require__.n(NotFound_NotFound);
+
+// CONCATENATED MODULE: ./containers/NotFound/NotFound.js
+
+
+function NotFound__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function NotFound__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function NotFound__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+var NotFound__ref = Object(preact_min["h"])(
+  'h1',
+  null,
+  '404'
+);
+
+var NotFound__ref2 = Object(preact_min["h"])('br', null);
+
+var NotFound__ref3 = Object(preact_min["h"])('br', null);
+
+var NotFound_NotFound_NotFound = function (_Component) {
+  NotFound__inherits(NotFound, _Component);
+
+  function NotFound(props) {
+    NotFound__classCallCheck(this, NotFound);
+
+    var _this = NotFound__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.state = {};
+
+    return _this;
+  }
+
+  NotFound.prototype.componentWillMount = function componentWillMount() {};
+
+  NotFound.prototype.componentWillUnmount = function componentWillUnmount() {};
+
+  NotFound.prototype.render = function render() {
+    return Object(preact_min["h"])(
+      'div',
+      { className: 'NotFound' },
+      Object(preact_min["h"])(
+        'div',
+        { className: 'panel' },
+        NotFound__ref,
+        'Page not found',
+        NotFound__ref2,
+        NotFound__ref3,
+        Object(preact_min["h"])(
+          'button',
+          { onclick: function onclick() {
+              return route('/');
+            } },
+          'Home'
+        ),
+        Object(preact_min["h"])(
+          'button',
+          { onclick: function onclick() {
+              return index_history.goBack();
+            } },
+          'Back'
+        )
+      )
+    );
+  };
+
+  return NotFound;
+}(preact_min["Component"]);
+
+/* harmony default export */ var containers_NotFound_NotFound = (NotFound_NotFound_NotFound);
 // CONCATENATED MODULE: ./index.js
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "router", function() { return router; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "history", function() { return index_history; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return index_App; });
 
 
@@ -5337,6 +5425,7 @@ function index__inherits(subClass, superClass) { if (typeof superClass !== "func
 
 
 
+
 if (typeof window !== 'undefined') {
   window.onbeforeunload = function () {
     return 'You have unsaved progress. Are you sure you want to exit without saving?';
@@ -5344,10 +5433,13 @@ if (typeof window !== 'undefined') {
 }
 
 var router = new external__events_["EventEmitter"]();
+var index_history = typeof window !== "undefined" ? createHashHistory_default()() : undefined; // enable pre rendering
 
 var index__ref = Object(preact_min["h"])(containers_Home_Home, { path: '/' });
 
 var index__ref2 = Object(preact_min["h"])(containers_Game_Game, { path: '/game' });
+
+var index__ref3 = Object(preact_min["h"])(containers_NotFound_NotFound, { 'default': true });
 
 var index_App = function (_Component) {
   index__inherits(App, _Component);
@@ -5362,15 +5454,15 @@ var index_App = function (_Component) {
   }
 
   App.prototype.render = function render() {
-    var history = typeof window !== "undefined" ? createHashHistory_default()() : undefined; // enable pre rendering
     return Object(preact_min["h"])(
       'main',
       null,
       Object(preact_min["h"])(
         preact_router_es,
-        { history: history, onChange: router.emit('change') },
+        { history: index_history, onChange: router.emit('change') },
         index__ref,
-        index__ref2
+        index__ref2,
+        index__ref3
       )
     );
   };

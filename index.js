@@ -7,6 +7,7 @@ import Game from './containers/Game/Game';
 import Home from './containers/Home/Home';
 import GameStore from './stores/GameStore';
 import { EventEmitter } from 'events';
+import NotFound from './containers/NotFound/NotFound';
 
 if (typeof window !== 'undefined') {
   window.onbeforeunload = function () {
@@ -15,6 +16,7 @@ if (typeof window !== 'undefined') {
 }
 
 export const router = new EventEmitter();
+export const history = typeof window !== "undefined" ? createHashHistory() : undefined; // enable pre rendering
 
 export default class App extends Component {
   constructor(props) {
@@ -25,12 +27,12 @@ export default class App extends Component {
   }
 
   render() {
-    let history = typeof window !== "undefined" ? createHashHistory() : undefined; // enable pre rendering
     return (
       <main>
         <Router history={history} onChange={router.emit('change')}>
           <Home path="/" />
           <Game path="/game" />
+          <NotFound default />
         </Router>
       </main>
     );

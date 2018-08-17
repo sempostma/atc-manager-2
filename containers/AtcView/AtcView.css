@@ -118,7 +118,7 @@ svg.atc-view-svg {
   background: rgb(25, 72, 80);
   border: 5px solid #1e606b;
   padding: 10px;
-  max-height: 100vh;
+  max-height: 90vh;
   overflow-y: auto;
 }
 
@@ -131,7 +131,7 @@ svg.atc-view-svg {
   background: rgb(25, 72, 80);
   border: 5px solid #1e606b;
   padding: 10px;
-  max-height: 100vh;
+  max-height: 90vh;
   overflow-y: auto;
 }
 
