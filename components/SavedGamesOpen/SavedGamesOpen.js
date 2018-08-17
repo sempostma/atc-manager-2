@@ -45,6 +45,8 @@ class SavedGamesOpen extends Component {
   handleSavedGameOpenListItemTrash(e) {
     const name = e.currentTarget.getAttribute('data-name');
     const state = loadState();
+    const sure = confirm('Are you sure?');
+    if (!sure) return;
     delete state.games[name];
     saveState(state);
     const games = [];

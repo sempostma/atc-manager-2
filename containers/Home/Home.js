@@ -6,6 +6,7 @@ import { mapn, mapNames } from '../../lib/map';
 import { Link, route } from 'preact-router';
 import GameStore from '../../stores/GameStore';
 import Settings from '../../components/Settings/Settings';
+import { router } from '../../index';
 
 class Home extends Component {
   constructor(props) {
@@ -19,9 +20,11 @@ class Home extends Component {
   }
 
   componentWillMount() {
+    router.on('change', () => this.setState({}));
   }
 
   componentWillUnmount() {
+    
   }
 
   handleMapSelectionChange(e) {
@@ -33,16 +36,23 @@ class Home extends Component {
   }
 
   handleStartClick() {
-    if (GameStore.started) GameStore.stop();
+    if (GameStore.started) {
+      const force = confirm('Another game is already playing. Make sure you have saved your progress. Do you want to continue?');
+      if (force) {
+        GameStore.stop();
+      } else {
+        return;
+      }
+    }
     GameStore.startMap(this.state.mapname);
     route('/game');
   }
 
   render() {
     return (
-      <div className="home" style="background-image: url('assets/bg.jpg')">
+      <div className="home" style="background-color: #194850">
         <div className="abs-container">
-          { GameStore.started ? <button onClick={this.handleReturnToGame}>Return to Game</button> : null }
+          {GameStore.started ? <button onClick={this.handleReturnToGame}>Return to Game</button> : null}
         </div>
         <div className="panel" >
           <h1>ATC Manager 2</h1>
@@ -53,9 +63,9 @@ class Home extends Component {
         <div className="panel">
           <h2 className="mb">Start</h2>
           <span className="mb">Area:</span>
-          <select onInput={this.handleMapSelectionChange}>
-            { mapNames.map(name =>
-              <option value={name}>{upcase(name)}</option>
+          <select className="mb" onInput={this.handleMapSelectionChange}>
+            {mapNames.map(name =>
+              <option selected={name === this.state.mapname} value={name}>{upcase(name)}</option>
             )}
           </select>
           <Settings />

@@ -16,9 +16,9 @@ class SettingsStore extends EventEmitter {
     this.distanceCircles = true;
     this.distanceCirclesDistance = 200;
     this.distanceCirclesAmount = 5;
-    this.distanceCircleColor = '#009000';
+    this.distanceCircleColor = '#8aa8ad';
     this.ilsPathLength = 250;
-    this.ilsPathColor = '#ffffbb';
+    this.ilsPathColor = '#8aa8ad';
     this.ilsDashInterval = [20, 30];
     this.sepVialationCircleColor = '#ff0000';
     this.newPlaneInterval = 100;

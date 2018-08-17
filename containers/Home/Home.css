@@ -36,14 +36,17 @@
   max-width: 100%;
   margin: auto;
   margin-top: 50px;
-  box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.2);
+  /* box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.2); */
   padding: 5px;
-  background: #fff;
+  border: 6px solid #1e606b;
+  /* background: #666; */
   border-radius: 4px;
 }
 
 .home .savedgamesopen .savedgamesopen-list {
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2) inset;
+  border: 2px solid #1e606b;
+  border-radius: 3px;
+  padding: 3px;
 }
 
 .home .savedgamesopen .save {

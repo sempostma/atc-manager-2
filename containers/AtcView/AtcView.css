@@ -31,6 +31,14 @@
     color: #ccc;
 }
 
+.traffic-stack-entry {
+  transition: all 0.2s ease;
+}
+
+.traffic-stack-entry:hover {
+  transform: translateX(5px);
+}
+
 .traffic-stack-entry.inbound {
     background: #99f;
     margin-bottom: 3px;
@@ -43,9 +51,10 @@
 
 .traffic-stack {
     padding: 3px;
-    background: #ddd;
-    max-height: 300px;
+    background: #1e606b;
+    height: calc(100% - 340px);
     overflow: auto;
+    overflow-x: hidden;
 }
 
 span.down {
@@ -76,5 +85,93 @@ svg.atc-view-svg {
   opacity: .6;
 }
 
+.atc-view .settings-panel {
+  position: absolute;
+  top: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 100%;
+  background: rgb(25, 72, 80);
+  border: 5px solid #1e606b;
+  padding: 10px;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.atc-view .settings-panel h5 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.atc-view .settings-panel hr {
+  margin: 7px 0;
+}
+
+.atc-view .logs-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 600px;
+  max-width: 100%;
+  background: rgb(25, 72, 80);
+  border: 5px solid #1e606b;
+  padding: 10px;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.atc-view .about-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 600px;
+  max-width: 80%;
+  background: rgb(25, 72, 80);
+  border: 5px solid #1e606b;
+  padding: 10px;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.atc-view .logs-container {
+  height: 300px;
+  border: 2px solid #1e606b;
+  overflow: hidden;
+  position: relative;
+}
+
+.atc-view .logs-inner {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 3px;
+  min-height: 100%;
+}
+
+.atc-view .atc-view-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 130px;
+}
+
+.traffic-control {
+  height: 210px;
+}
+
+.atc-view .w-100 { 
+  margin: 0;
+  width: 100%; 
+  text-align: left;
+}
+.atc-view .w-50 { 
+  text-align: left;
+  margin: 0;
+  display: block;
+  float: left;
+  width: 49.9%; 
+}
 
 

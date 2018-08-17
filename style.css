@@ -1,7 +1,14 @@
+@import url('//fonts.googleapis.com/css?family=Roboto+Mono');
+
 html, body {
-	font: 16px/1.3 'Helvetica Neue', arial, sans-serif;
+  font: 14px 'Helvetica Neue', arial, sans-serif;
+  font-family: 'Roboto Mono', monospace;
   font-weight: 400;
   margin: 0;
+}
+
+body {
+  color: #efefef;
 }
 
 h1 {
@@ -26,18 +33,18 @@ small, p, span {
 ::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
+	background-color: #19242e;
 }
 
 ::-webkit-scrollbar
 {
   width: 6px;
   height: 6px;
-	background-color: #F5F5F5;
+	background-color: #19242e;
 }
 ::-webkit-scrollbar-thumb
 {
-	background-color: #000000;
+  background-color: #1e606b;
 }
 
 .abs-container {
@@ -45,12 +52,19 @@ small, p, span {
 }
 
 button, .button {
-  background-color: #2c3e50;
-  border-color: #2c3e50;
+  background-color: #19242e;
+  border-color: #19242e;
+}
+
+input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='url'], textarea, select {
+  border-color: #1e606b;
+  height: 2.2rem;
+  color: #efefef;
+  padding: 0 1.0rem;
 }
 
 input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus {
-  border-color: #2c3e50;
+  border-color: #19242e;
 }
 
 .mb {
@@ -79,33 +93,33 @@ input[type='email']:focus, input[type='number']:focus, input[type='password']:fo
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #2c3e50;
+  background: #19242e;
   cursor: pointer;
   transition: background .15s ease-in-out;
 }
 .range-slider__range::-webkit-slider-thumb:hover {
-  background: #1abc9c;
+  background: #1e606b;
 }
 .range-slider__range:active::-webkit-slider-thumb {
-  background: #1abc9c;
+  background: #1e606b;
 }
 .range-slider__range::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border: 0;
   border-radius: 50%;
-  background: #2c3e50;
+  background: #19242e;
   cursor: pointer;
   transition: background .15s ease-in-out;
 }
 .range-slider__range::-moz-range-thumb:hover {
-  background: #1abc9c;
+  background: #1e606b;
 }
 .range-slider__range:active::-moz-range-thumb {
-  background: #1abc9c;
+  background: #1e606b;
 }
 .range-slider__range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1abc9c;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1e606b;
 }
 
 .range-slider__value {
@@ -116,7 +130,7 @@ input[type='email']:focus, input[type='number']:focus, input[type='password']:fo
   line-height: 20px;
   text-align: center;
   border-radius: 3px;
-  background: #2c3e50;
+  background: #19242e;
   padding: 5px 10px;
   margin-left: 8px;
 }
@@ -127,7 +141,7 @@ input[type='email']:focus, input[type='number']:focus, input[type='password']:fo
   width: 0;
   height: 0;
   border-top: 7px solid transparent;
-  border-right: 7px solid #2c3e50;
+  border-right: 7px solid #19242e;
   border-bottom: 7px solid transparent;
   content: '';
 }
@@ -164,3 +178,70 @@ input[type="color"]::-webkit-color-swatch {
 fieldset, input, select, textarea {
   margin-bottom: 0;
 }
+
+button, .button {
+  border-radius: 0;
+  font-family: 'Roboto Mono', monospace;
+}
+
+select {
+  font-family: 'Roboto Mono', monospace;
+}
+
+select option {
+  color: #19242e;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+
+input:checked + .slider {
+  background-color: #19242e;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #19242e;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+

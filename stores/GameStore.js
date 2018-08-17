@@ -3,8 +3,37 @@ import Airplane from '../lib/airplane';
 import config from '../lib/config';
 import { loadMap, angleDistance, headingTo, rwyPos, idType, activeRwys } from '../lib/map';
 import SettingsStore from './SettingsStore';
-import { routeTypes, airplanesById } from '../lib/airplane-library';
+import { routeTypes, airplanesById, operatorsById } from '../lib/airplane-library';
 import { loadState } from '../lib/persistance';
+
+const natoAlphabet = {
+  "A": "Alfa",
+  "B": "Bravo",
+  "C": "Charlie",
+  "D": "Delta",
+  "E": "Echo",
+  "F": "Foxtrot",
+  "G": "Golf",
+  "H": "Hotel",
+  "I": "India",
+  "J": "Juliett",
+  "K": "Kilo",
+  "L": "Lima",
+  "M": "Mike",
+  "N": "November",
+  "O": "Oscar",
+  "P": "Papa",
+  "Q": "Quebec",
+  "R": "Romeo",
+  "S": "Sierra",
+  "T": "Tango",
+  "U": "Uniform",
+  "V": "Victor",
+  "W": "Whiskey",
+  "X": "X-ray",
+  "Y": "Yankee",
+  "Z": "Zulu"
+}
 
 class GameStore extends EventEmitter {
   constructor() {
@@ -29,6 +58,10 @@ class GameStore extends EventEmitter {
     this._newPlane = this._newPlane.bind(this); // called within a setInterval so bind to this object and not the window object.
   }
 
+  getAtis() {
+    return natoAlphabet[String.fromCharCode(this.atis % 26 + 97).toUpperCase()];
+  }
+
   startMap(mapName) {
     this.arrivals = 0;
     this.departures = 0;
@@ -37,6 +70,9 @@ class GameStore extends EventEmitter {
     this.distanceVialations = 0;
     const map = this.map = loadMap(mapName);
     this.winddir = Math.floor(Math.random() * 360);
+    this.altimeter = (29 + Math.random() * 2).toFixed(2);
+    this.atis = Math.floor(Math.random() * 26);
+
     this.windspd = Math.floor(Math.random() * 12);
     this._setup(map);
     // create planes
@@ -67,8 +103,6 @@ class GameStore extends EventEmitter {
     this.mapName = map.name;
 
     this._setupWaypoints(map);
-
-    window.rwyRelPos = (name, mult) => rwyPos(map.airport, this.callsigns[name], this.width, this.height, mult, true);
 
     // set callsigns
     Object.assign(this.callsigns, this.waypoints, { [map.airport.callsign]: map.airport },
@@ -126,8 +160,27 @@ class GameStore extends EventEmitter {
     const pos = this.callsignsPos[inboundWaypoint];
     let mx = this.width / 2;
     let my = this.height / 2;
-    let heading = Math.floor(headingTo(pos.x, pos.y, mx, my)) % 360
-    this.traffic.push(Airplane.create(pos.x, pos.y, heading, routeTypes.INBOUND));
+    let heading = Math.floor(headingTo(pos.x, pos.y, mx, my)) % 360;
+    const airplane = Airplane.create(pos.x, pos.y, heading, routeTypes.INBOUND);
+    this.traffic.push(airplane);
+
+    const callsign = operatorsById[airplane.operatorId].shortName + ' ' + airplane.flight;
+    if (Math.random() > .5) {
+      // has atis
+      const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + ' with ' + this.getAtis() + '.';
+      this.addLog(msg, callsign);
+
+      const atcMsg = callsign + ', ' + this.airport.callsign + ' approach, maintain current heading.';
+      this.addLog(atcMsg, 'ATC');
+    } else {
+      // does not have atis
+      const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + '.';
+      this.addLog(msg, callsign);
+
+      const atcMsg = callsign + ', information ' + this.getAtis() + ' is current, altimeter ' + this.altimeter + ', maintain current heading.';
+      this.addLog(atcMsg, 'ATC');
+    }
+
   }
 
   // deprecated
@@ -148,7 +201,19 @@ class GameStore extends EventEmitter {
     const rwy = this.callsignsPos[item];
     const hdg = rwy.ref.name1 === item ? rwy.ref.hdg1 : rwy.ref.hdg2;
     const outboundWaypoint = this.map.outboundWaypoints[Math.floor(Math.random() * this.map.outboundWaypoints.length)];
-    this.traffic.push(Airplane.createOutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint));
+    const airplane = Airplane.createOutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint)
+    this.traffic.push(airplane);
+
+    const callsign = operatorsById[airplane.operatorId].shortName + ' ' + airplane.flight;
+    // has atis
+    const msg = this.airport.callsign + ' approach, with you for ' + item + '.';
+    this.addLog(msg, callsign);
+
+    const atcMsg = callsign + ', ' + this.airport.callsign + ' approach, hold short ' + item + '.';
+    this.addLog(atcMsg, 'ATC');
+
+    const readBackMsg = 'Roger hold short of ' + item + ', ' + callsign + '.';
+    this.addLog(readBackMsg, callsign);
   }
 
   update() {
@@ -241,7 +306,7 @@ class GameStore extends EventEmitter {
             // do actual calculation
             for (const key in sameIdentity) {
               const oa = sameIdentity[key];
-              if (Math.abs(oa.altitude - airplane.altitude) > 1001) continue;
+              if (Math.abs(oa.altitude - airplane.altitude) > 995) continue;
               const xd = Math.abs(airplane.x - oa.x) / t;
               const yd = Math.abs(airplane.y - oa.y) / t;
               if (xd * xd + yd * yd < 1) {
@@ -289,8 +354,8 @@ class GameStore extends EventEmitter {
   }
 
   addLog(msg, self) {
-    this.log.push(msg);
-    if (self) this.selfLog.push(msg);
+    this.log.push(self + ': ' + msg);
+    if (self === 'ATC') this.selfLog.push(self + ': ' + msg);
     this.emit('change');
   }
 

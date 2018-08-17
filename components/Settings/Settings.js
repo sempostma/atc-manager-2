@@ -119,11 +119,14 @@ class Settings extends Component {
       <div className="settings">
         <div className="speechsynthesis-setting mb">
           <span>Speech Synthesis</span>
-          <input type="checkbox" onInput={this.handleSpeechSynthesisSettingChange} checked={SettingsStore.speechsynthesis} />
+          <label class="switch">
+            <input type="checkbox" onInput={this.handleSpeechSynthesisSettingChange} checked={SettingsStore.speechsynthesis} />
+            <span class="slider"></span>
+          </label>
         </div>
         <div className="speechsynthesis-voices-setting mb">
           <span>Speech Synthesis Voices</span>
-          <select style="color: #333; background: #fff" onInput={this.handleSpeechVoiceChange}>
+          <select onInput={this.handleSpeechVoiceChange}>
             {SettingsStore.voices.map((voice, i) => {
               return <option key={i} value={i}>{voice.name} - {voice.lang}</option>
             })}
@@ -139,10 +142,13 @@ class Settings extends Component {
           <input className="range-slider__range" type="range" min="0.1" max="2" step="0.1" value={SettingsStore.rate} onInput={this.handleRateChange} />
           <span class="range-slider__value">{SettingsStore.rate}</span>
         </div>
-        <div className="mb">
+        {/* <div className="mb">
           <span>Speech Recognition</span>
-          <input type="checkbox" onInput={this.handleSpeechRecognitionSettingChange} checked={SettingsStore.speechrecognition} />
-        </div>
+          <label class="switch">
+            <input type="checkbox" onInput={this.handleSpeechRecognitionSettingChange} checked={SettingsStore.speechrecognition} />
+            <span class="slider"></span>
+          </label>
+        </div> */}
         <span>Game Speed</span>
         <div className="range-slider mb">
           <input className="range-slider__range" type="range" min="0.1" max="10" step="0.1" value={SettingsStore.speed} onInput={this.handleSpeedChange} />
@@ -158,7 +164,10 @@ class Settings extends Component {
         </div>
         <div className="mb">
           <span>Distance Circle</span>
-          <input type="checkbox" onInput={this.handleDistanceCircleChange} checked={SettingsStore.distanceCircles} />
+          <label class="switch">
+            <input type="checkbox" onInput={this.handleDistanceCircleChange} checked={SettingsStore.distanceCircles} />
+            <span class="slider"></span>
+          </label>
         </div>
         <div className="mb">
           <span>Distance Circle Color:</span>

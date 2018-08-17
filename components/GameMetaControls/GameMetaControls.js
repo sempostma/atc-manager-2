@@ -2,6 +2,8 @@ import { Component } from 'preact';
 import './GameMetaControls.css';
 import GameStore from '../../stores/GameStore';
 import { saveState, loadState } from '../../lib/persistance';
+import { FaPause, FaPlay, FaDesktop, FaSave, FaPlane } from 'react-icons/fa';
+
 
 class GameMetaControls extends Component {
   constructor(props) {
@@ -52,6 +54,7 @@ class GameMetaControls extends Component {
     const game = GameStore.toJson();
     const state = loadState();
     let name = prompt('Name of your save?', `${GameStore.mapName} - ${new Date().toLocaleDateString()}`);
+    if (name === null) return;
     if (state.games[name]) return alert('Sorry this name already exists...');
     state.games[name] = game;
     saveState(state);
@@ -61,9 +64,9 @@ class GameMetaControls extends Component {
     const paused = this.state.paused;
     return (
       <div className="gamemetacontrols">
-        <a href="#" className="button" onClick={this.handleScreenShotButtonClick}>Screenshot</a>
-        <button onClick={this.handlePauseResumeButtonClick}>{paused ? 'Resume' : 'Pause'}</button>
-        <button onClick={this.handleSaveButtonClick}>Save</button>
+        <a href="#" className="button w-100" onClick={this.handleScreenShotButtonClick}><FaDesktop /> Screenshot</a>
+        <button className="w-50" onClick={this.handlePauseResumeButtonClick}>{paused ? <span><FaPlay /> Resume</span> : <span><FaPause/> Pause</span>}</button>
+        <button className="w-50" onClick={this.handleSaveButtonClick}><FaSave /> Save</button>
       </div>
     );
   }

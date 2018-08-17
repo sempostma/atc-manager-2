@@ -8,10 +8,12 @@ import Communications from '../../lib/communications';
 import SettingsStore from '../../stores/SettingsStore';
 import WayPoints from '../../components/WayPoints/WayPoints';
 import Airport from '../../components/Airport/Airport';
+import Donate from '../Donate/Donate';
 import { landableRwys } from '../../lib/map';
 import BackgroundSvg from '../../components/BackgroundSvg/BackgroundSvg';
 import GameMetaControls from '../../components/GameMetaControls/GameMetaControls';
-
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FaInfo, FaCommentDots, FaCog, FaCompress, FaPlane } from 'react-icons/fa';
 class AtcView extends Component {
   constructor(props) {
     super();
@@ -20,6 +22,10 @@ class AtcView extends Component {
       gameWidth: GameStore.width,
       gameHeight: GameStore.height,
       settingsExpanded: false,
+      logsExpanded: false,
+      aboutExpanded: false,
+      logsOnlySelf: false,
+
       cmd: {
         tgt: null,
         heading: null,
@@ -41,6 +47,11 @@ class AtcView extends Component {
     this.handleTakeoffClick = this.handleTakeoffClick.bind(this);
     this.handleExpandSettingsButtonClick = this.handleExpandSettingsButtonClick.bind(this);
     this.handleSettingsStoreChange = this.handleSettingsStoreChange.bind(this);
+
+    this.handleAboutExpanded = this.handleAboutExpanded.bind(this);
+    this.handleLogsExpanded = this.handleLogsExpanded.bind(this);
+    this.handleOnlySelfButton = this.handleOnlySelfButton.bind(this);
+    this.handleLogsCopied = this.handleLogsCopied.bind(this);
 
     this.dtcToDataListId = `dct-tgt-${Math.random().toString().replace('.', '')}`;
   }
@@ -81,8 +92,13 @@ class AtcView extends Component {
     if (cmd.takeoff && cmd.tgt.outboundRwy) delta.outboundRwy = undefined;
     if (Object.keys(delta).length > 0) {
       var cmdTxt = Communications.getCommandText(cmd, GameStore.winddir, GameStore.windspd);
-      GameStore.addLog(cmdTxt, true);
-      if (SettingsStore.speechsynthesis) Communications.speak(cmdTxt);
+      const atcMsg = Communications.getCallsign(cmd.tgt) + ', ' + cmdTxt;
+      GameStore.addLog(atcMsg, 'ATC');
+      // pilot:
+      const pilotMsg = cmdTxt + ', ' + Communications.getCallsign(cmd.tgt);
+      GameStore.addLog(pilotMsg, Communications.getCallsign(cmd.tgt, true));
+
+      if (SettingsStore.speechsynthesis) Communications.speak(atcMsg);
       Object.assign(cmd.tgt, delta);
       this.setState({ cmd });
     } else {
@@ -168,6 +184,23 @@ class AtcView extends Component {
     this.setState({ settingsExpanded: !this.state.settingsExpanded });
   }
 
+  handleAboutExpanded() {
+    this.setState({ aboutExpanded: !this.state.aboutExpanded });
+  }
+
+  handleLogsExpanded() {
+    this.setState({ copied: false, logsExpanded: !this.state.logsExpanded });
+  }
+
+  handleOnlySelfButton() {
+    this.setState({ logsOnlySelf: !this.state.logsOnlySelf });
+  }
+
+  handleLogsCopied() {
+    this.setState({ logsCopied: true });
+  }
+
+
   renderTraffic() {
     return this.state.traffic.map((airplane, i) => {
       if (airplane.outboundRwy) return;
@@ -218,6 +251,9 @@ class AtcView extends Component {
       ? landableRwys(GameStore.airport, this.state.cmd.tgt, this.state.gameWidth, this.state.gameHeight)
         .map(lr => lr.rev ? lr.rwy.name2 : lr.rwy.name1).map(name => <option value={name} />)
       : null;
+
+    if (cmd.tgt.routeType === routeTypes.INBOUND && landableRwysArr && landableRwysArr.length > 0) { console.log(landableRwysArr) }
+
     return <div>
       <div>
         <span>Heading (°)</span>
@@ -225,7 +261,7 @@ class AtcView extends Component {
       </div>
       <div>
         <span>Direct to </span>
-        <input style="color: #333" value={cmd.direction} list={this.dtcToDataListId} onInput={this.handleDirectToTgtChange} />
+        <input type="text" value={cmd.direction} list={this.dtcToDataListId} onInput={this.handleDirectToTgtChange} />
         <datalist id={this.dtcToDataListId}>
           {cmd.tgt.routeType === routeTypes.INBOUND ? landableRwysArr : null}
           {Object.keys(GameStore.waypoints).map(w => <option value={w} />)}
@@ -240,8 +276,13 @@ class AtcView extends Component {
         <input onInput={this.handleAltitudeTgtChange} value={cmd.altitude} type="number" max={model.ceiling * 1000} step="1000" />
       </div>
       <div>
-        <button onClick={this.handleTakeoffClick} className={cmd.tgt.outboundRwy ? '' : 'hidden'}>Takeoff</button>
+        <button onClick={this.handleTakeoffClick} className={cmd.tgt.outboundRwy ? '' : 'hidden'}><FaPlane /> Takeoff</button>
       </div>
+      <div>{
+        cmd.tgt.routeType === routeTypes.INBOUND && landableRwysArr && landableRwysArr.length > 0
+          ? 'Land using "Direct to"'
+          : null
+      }</div>
     </div>
   }
 
@@ -249,10 +290,14 @@ class AtcView extends Component {
     const airplanes = this.renderTraffic();
     const trafficstack = this.renderTrafficStack();
     const trafficcontrol = this.renderTrafficControl();
+    const logs = (this.state.logsOnlySelf ? GameStore.selfLog : GameStore.log)
+
+    const innerWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
+    const innerHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
 
     return (
       <div className="atc-view">
-        <svg xmlns="http://www.w3.org/2000/svg" className="atc-view-svg" width={window.innerWidth - 250} height={window.innerHeight}
+        <svg xmlns="http://www.w3.org/2000/svg" className="atc-view-svg" width={innerWidth - 250} height={innerHeight}
           onClick={this.handleSVGClick} viewBox="0 0 1280 720" style="background: #194850">
           <style>{`
             text {
@@ -318,26 +363,74 @@ class AtcView extends Component {
           <rect width="100%" height="100%" fill="none" stroke="#fff" stroke-dasharray="20, 20" />
         </svg>
         <div className="abs-container scores">
-          <div>Departures: {GameStore.departures}</div>
-          <div>Arrivals: {GameStore.arrivals}</div>
-          <div>Seperation violations: {GameStore.distanceVialations}</div>
+
         </div>
-        <div className="traffic-stack-wrapper" style={{ height: window.innerHeight }}>
-          <div><span>Wind: {GameStore.winddir}° / {GameStore.windspd} kts</span></div>
-          <div><span>Traffic:</span></div>
+
+        <div className="traffic-stack-wrapper" style={{ height: innerHeight }}>
           <div className="traffic-stack" onClick={this.handleTrafficStackClick}>
             {trafficstack}
           </div>
-          <div className={this.state.settingsExpanded ? null : 'hidden'}>
-            <Settings />
-          </div>
-          <button onClick={this.handleExpandSettingsButtonClick}>
-            {this.state.settingsExpanded ? 'Hide Options' : 'Expand Options'}
-          </button>
           <div className="traffic-control">
             {trafficcontrol}
           </div>
-          <GameMetaControls />
+          <div className="atc-view-buttons">
+            <button className="w-100" onClick={this.handleAboutExpanded}><FaInfo />&nbsp;
+              {this.state.aboutExpanded ? 'Hide Info' : 'Expand Info'}
+            </button>
+            <button className="w-100" onClick={this.handleLogsExpanded}><FaCommentDots />&nbsp;
+              {this.state.logsExpanded ? 'Hide Logs' : 'Expand Logs'}
+            </button>
+            <button className="w-100" onClick={this.handleExpandSettingsButtonClick}><FaCog />&nbsp;
+              {this.state.settingsExpanded ? 'Hide Options' : 'Expand Options'}
+            </button>
+            <GameMetaControls />
+          </div>
+        </div>
+
+        <div className={[this.state.aboutExpanded ? null : 'hidden', 'about-panel'].join(' ')}>
+          <p>
+            <div><span>Wind: {GameStore.winddir}° / {GameStore.windspd} kts</span></div>
+            <div><span>ATIS: {GameStore.getAtis()}</span></div>
+            <div><span>Altimeter: {GameStore.altimeter}</span></div>
+          </p>
+          <p>
+            Atc Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.
+          </p>
+          <p>
+            <Donate />
+          </p>
+          <a href="https://esstudio.site/contact/">Contact Me</a>
+          <p>
+            <div>Icons made by <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+          </p>
+          <button onClick={this.handleAboutExpanded}><FaCompress /> Hide Panel</button>
+        </div>
+
+        <div className={[this.state.logsExpanded ? null : 'hidden', 'logs-panel'].join(' ')}>
+          <div>Departures: {GameStore.departures}</div>
+          <div>Arrivals: {GameStore.arrivals}</div>
+          <div>Seperation violations: {GameStore.distanceVialations}</div>
+          <div class="logs-container">
+            <div class="logs-inner">
+              {logs.slice(logs.length - 10, logs.length).map((x, i) => <div key={i}>{x}</div>)}
+            </div>
+          </div>
+          <div style={{ color: '#19242e' }}>{this.state.logsCopied ? 'Copied.' : '\u00a0'}</div>
+          <CopyToClipboard text={logs.join('\r\n')}
+            onCopy={this.handleLogsCopied}>
+            <button>Copy logs</button>
+          </CopyToClipboard>
+          <button onClick={this.handleOnlySelfButton}>{this.state.logsOnlySelf
+            ? 'Show all'
+            : 'Only me'}</button>
+          <button onClick={this.handleLogsExpanded}><FaCompress /> Hide Panel</button>
+        </div>
+
+        <div className={[this.state.settingsExpanded ? null : 'hidden', 'settings-panel'].join(' ')}>
+          <h5>Settings</h5>
+          <hr />
+          <Settings />
+          <button onClick={this.handleExpandSettingsButtonClick}><FaCompress /> Hide Options</button>
         </div>
       </div>
     );
@@ -387,7 +480,7 @@ const getAltJsx = (airplane, TagName) => {
 
 const getParent = (e, matcher) => {
   let el = e.target;
-  while(el) {
+  while (el) {
     if (matcher(el)) return el;
     el = el.parentElement;
   }
