@@ -44,7 +44,7 @@ class Donate extends Component {
           </div><div>
             <small>If you're preferred currency is not listed, please use "Give a custom amount"</small>
           </div><div>
-            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=polyismstudio@gmail.com&item_name=ATC+Manager+2&item_number=ATC+Manager+2+Campain" target="_blank">Give a custom amount</a>
+            <a title="Donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=polyismstudio@gmail.com&item_name=ATC+Manager+2&item_number=ATC+Manager+2+Campain" target="_blank">Give a custom amount</a>
           </div>
           <input type="submit" value="Donate" />
         </form>

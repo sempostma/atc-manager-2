@@ -396,7 +396,7 @@ class AtcView extends Component {
           Check out the <a href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US" target="_blank">ATC Manager 1 App</a>
           <Donate />
           <br />
-          <a href="https://esstudio.site/contact/">Contact Me</a>
+          <a title="Contact" href="https://esstudio.site/contact/">Contact Me</a>
           <div>Icons made by <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
           <button onClick={this.handleAboutExpanded}><FaCompress /> Hide Panel</button>
         </div>

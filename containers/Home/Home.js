@@ -24,7 +24,7 @@ class Home extends Component {
   }
 
   componentWillUnmount() {
-    
+
   }
 
   handleMapSelectionChange(e) {
@@ -56,7 +56,10 @@ class Home extends Component {
         </div>
         <div className="panel" >
           <h1>ATC Manager 2</h1>
-          <div style="padding: 30px 20px;">ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.</div>
+          <div style="padding: 30px 20px;">
+            ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.
+            <br /><br />Check out the <a title="Android App" href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US">App</a> for mobile.
+          </div>
         </div>
         <div className="panel">
           <SavedGamesOpen />

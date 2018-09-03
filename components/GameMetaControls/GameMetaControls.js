@@ -64,7 +64,7 @@ class GameMetaControls extends Component {
     const paused = this.state.paused;
     return (
       <div className="gamemetacontrols">
-        <a href="#" className="button w-100" onClick={this.handleScreenShotButtonClick}><FaDesktop /> Screenshot</a>
+        <a title="Save Screenshot" href="#" className="button w-100" onClick={this.handleScreenShotButtonClick}><FaDesktop /> Screenshot</a>
         <button className="w-50" onClick={this.handlePauseResumeButtonClick}>{paused ? <span><FaPlay /> Resume</span> : <span><FaPause/> Pause</span>}</button>
         <button className="w-50" onClick={this.handleSaveButtonClick}><FaSave /> Save</button>
       </div>
