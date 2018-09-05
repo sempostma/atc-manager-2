@@ -23,7 +23,17 @@
 					<link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath + file %>">
 				<% } %>
 			<% } %>
-		<% } %>
+    <% } %>
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90014538-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-90014538-13');
+  </script>
+
 	</head>
 	<body>
 		<%= htmlWebpackPlugin.options.ssr({

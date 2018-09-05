@@ -233,9 +233,12 @@ class GameStore extends EventEmitter {
       let dy = Math.cos(airplane.heading * Math.PI / 180);
       airplane.x += dx * s * airplane.speed * config.baseAirplaneSpeed;
       airplane.y += dy * s * airplane.speed * config.baseAirplaneSpeed;
-      let altChange = Math.min(40 * s, Math.max(-40 * s, airplane.tgtAltitude - airplane.altitude));
+      const model = airplanesById[airplane.typeId];
+      let altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.decendSpeed * model.decendSpeed * s, airplane.tgtAltitude - airplane.altitude));
       let tgtSpeed = (airplane.altitude < 10000 && airplane.tgtSpeed > 250) ? Math.min(250, airplane.tgtSpeed) : airplane.tgtSpeed;
-      airplane.speed += Math.min(1 * s, Math.max(-1 * s, tgtSpeed - airplane.speed));
+      tgtSpeed = tgtSpeed || airplane.speed; // bug: tgtSpeed rarely becomes nan for undefined reasons
+      airplane.speed += Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
+      
 
       let tgtHeading;
       if (typeof airplane.tgtDirection === 'number') {

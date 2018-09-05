@@ -1655,6 +1655,10 @@ var airplane_library_airplanes = [{
   shortName: 'B737',
   topSpeed: 320,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 160,
   turningRate: [2, 3, 5],
   operators: [0, 1, 2, 3, 4, 7, 10, 11, 12, 13, 14, 22, 23]
@@ -1664,6 +1668,10 @@ var airplane_library_airplanes = [{
   shortName: 'B747',
   topSpeed: 330,
   landingSpeed: 145,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 180,
   turningRate: [2, 3, 4],
   ceiling: 41,
@@ -1674,6 +1682,10 @@ var airplane_library_airplanes = [{
   shortName: 'B757',
   topSpeed: 330,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   turningRate: [3, 4, 5],
   ceiling: 42,
   operators: [0, 1, 2, 3, 5, 7, 16, 17]
@@ -1683,6 +1695,10 @@ var airplane_library_airplanes = [{
   shortName: 'B767',
   topSpeed: 330,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   turningRate: [2, 3, 4],
   ceiling: 43,
   operators: [1, 3, 5, 6, 7, 12, 16]
@@ -1692,6 +1708,10 @@ var airplane_library_airplanes = [{
   shortName: 'B777',
   topSpeed: 330,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   turningRate: [3, 3, 4],
   ceiling: 43,
   operators: [0, 1, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 19, 20, 23]
@@ -1701,6 +1721,10 @@ var airplane_library_airplanes = [{
   shortName: 'A380',
   topSpeed: 330,
   landingSpeed: 150,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   turningRate: [2, 3, 3],
   ceiling: 43,
   operators: [6, 9, 10, 15, 20]
@@ -1711,6 +1735,10 @@ var airplane_library_airplanes = [{
   ceiling: 39,
   topSpeed: 320,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 160,
   turningRate: [2, 3, 5],
   operators: [0, 1, 3, 5, 8, 9, 11, 14, 18, 19, 20, 22, 23]
@@ -1721,6 +1749,10 @@ var airplane_library_airplanes = [{
   shortName: 'B787',
   topSpeed: 320,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 160,
   turningRate: [2, 3, 5],
   operators: [0, 3, 5, 6, 10, 11, 12, 19, 22, 23]
@@ -1731,6 +1763,10 @@ var airplane_library_airplanes = [{
   shortName: 'A319',
   topSpeed: 320,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 160,
   turningRate: [2, 3, 5],
   operators: [1, 5, 6, 8, 10, 11, 14, 19, 22]
@@ -1741,6 +1777,10 @@ var airplane_library_airplanes = [{
   shortName: 'A320',
   topSpeed: 320,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 160,
   turningRate: [2, 3, 5],
   operators: [1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 14, 19, 20, 22, 23]
@@ -1751,6 +1791,10 @@ var airplane_library_airplanes = [{
   shortName: 'A321',
   topSpeed: 320,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 160,
   turningRate: [2, 3, 5],
   operators: [1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 14, 19, 20, 23]
@@ -1761,6 +1805,10 @@ var airplane_library_airplanes = [{
   shortName: 'A350',
   topSpeed: 320,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 160,
   turningRate: [2, 3, 5],
   operators: [1, 8, 10, 14, 18, 19, 22]
@@ -1771,6 +1819,10 @@ var airplane_library_airplanes = [{
   shortName: 'B717',
   topSpeed: 300,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 150,
   turningRate: [2, 3, 5],
   operators: [1]
@@ -1781,6 +1833,10 @@ var airplane_library_airplanes = [{
   shortName: 'MD-88',
   topSpeed: 300,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 150,
   turningRate: [2, 3, 5],
   operators: [1]
@@ -1791,6 +1847,10 @@ var airplane_library_airplanes = [{
   shortName: 'MD-90',
   topSpeed: 300,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 150,
   turningRate: [2, 3, 5],
   operators: [1]
@@ -1801,6 +1861,10 @@ var airplane_library_airplanes = [{
   shortName: 'E190',
   topSpeed: 310,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 150,
   turningRate: [2, 3, 5],
   operators: [2, 5, 10]
@@ -1811,6 +1875,10 @@ var airplane_library_airplanes = [{
   shortName: 'MD-82',
   topSpeed: 300,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 150,
   turningRate: [2, 3, 5],
   operators: [5]
@@ -1821,6 +1889,10 @@ var airplane_library_airplanes = [{
   shortName: 'MD-83',
   topSpeed: 300,
   landingSpeed: 140,
+  climbSpeed: 1,
+  decendSpeed: 1,
+  accelerationSpeed: 1,
+  deAccelerationSpeed: 1,
   minSpeed: 150,
   turningRate: [2, 3, 5],
   operators: [5]
@@ -2044,14 +2116,18 @@ var airplane_Airplane = function () {
 /* harmony default export */ var config = ({
   headingInitVariation: 10,
   globalSpeed: 1,
-  baseAirplaneSpeed: 0.001,
+  baseAirplaneSpeed: 0.0015,
   updateInterval: 300,
   headingIndicatorLineLen: 20,
   pathCounterUpdateEvery: 20,
   maxPathLen: 10,
-  rwyLenScale: 0.0015,
+  rwyLenScale: 0.0014,
   ilsSlopeSteepness: 37.5,
-  threeMileRuleDistance: 15
+  threeMileRuleDistance: 15,
+  climbSpeed: 18,
+  decendSpeed: 22,
+  accelerationSpeed: 1.6,
+  deAccelerationSpeed: 1.2
 });
 // CONCATENATED MODULE: ./lib/map.js
 
@@ -3218,9 +3294,11 @@ var GameStore_GameStore = function (_EventEmitter) {
       var dy = Math.cos(airplane.heading * Math.PI / 180);
       airplane.x += dx * s * airplane.speed * config.baseAirplaneSpeed;
       airplane.y += dy * s * airplane.speed * config.baseAirplaneSpeed;
-      var altChange = Math.min(40 * s, Math.max(-40 * s, airplane.tgtAltitude - airplane.altitude));
+      var model = airplanesById[airplane.typeId];
+      var altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.decendSpeed * model.decendSpeed * s, airplane.tgtAltitude - airplane.altitude));
       var tgtSpeed = airplane.altitude < 10000 && airplane.tgtSpeed > 250 ? Math.min(250, airplane.tgtSpeed) : airplane.tgtSpeed;
-      airplane.speed += Math.min(1 * s, Math.max(-1 * s, tgtSpeed - airplane.speed));
+      tgtSpeed = tgtSpeed || airplane.speed; // bug: tgtSpeed rarely becomes nan for undefined reasons
+      airplane.speed += Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
 
       var tgtHeading = void 0;
       if (typeof airplane.tgtDirection === 'number') {
@@ -4007,7 +4085,7 @@ var Donate__ref = Object(preact_min["h"])(
       null,
       Object(preact_min["h"])(
         'a',
-        { href: 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=polyismstudio@gmail.com&item_name=ATC+Manager+2&item_number=ATC+Manager+2+Campain', target: '_blank' },
+        { title: 'Donate', href: 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=polyismstudio@gmail.com&item_name=ATC+Manager+2&item_number=ATC+Manager+2+Campain', target: '_blank' },
         'Give a custom amount'
       )
     ),
@@ -4207,7 +4285,7 @@ var GameMetaControls_GameMetaControls_GameMetaControls = function (_Component) {
       { className: 'gamemetacontrols' },
       Object(preact_min["h"])(
         'a',
-        { href: '#', className: 'button w-100', onClick: this.handleScreenShotButtonClick },
+        { title: 'Save Screenshot', href: '#', className: 'button w-100', onClick: this.handleScreenShotButtonClick },
         GameMetaControls__ref,
         ' Screenshot'
       ),
@@ -4319,7 +4397,7 @@ var _ref18 = Object(preact_min["h"])('br', null);
 
 var _ref19 = Object(preact_min["h"])(
   'a',
-  { href: 'https://esstudio.site/contact/' },
+  { title: 'Contact', href: 'https://esstudio.site/contact/' },
   'Contact Me'
 );
 
@@ -5202,7 +5280,16 @@ var Home__ref = Object(preact_min["h"])(
   Object(preact_min["h"])(
     'div',
     { style: 'padding: 30px 20px;' },
-    'ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.'
+    'ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.',
+    Object(preact_min["h"])('br', null),
+    Object(preact_min["h"])('br', null),
+    'Check out the ',
+    Object(preact_min["h"])(
+      'a',
+      { title: 'Android App', href: 'https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US' },
+      'App'
+    ),
+    ' for mobile.'
   )
 );
 
