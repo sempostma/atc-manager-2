@@ -147,6 +147,7 @@ class GameStore extends EventEmitter {
   }
 
   _newPlane() {
+    if (this.paused) return;
     if (Math.random() > .5) this._newPlaneInboundOnRoute();
     else this._newPlaneOutbound();
   }

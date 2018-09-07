@@ -1,0 +1,62 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "id",
+    "name",
+    "callsign",
+    "shortName",
+    "color"
+  ],
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "integer",
+      "title": "The Id Schema",
+      "default": 0,
+      "examples": [
+        18
+      ]
+    },
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": [
+        "Cathay Pacific"
+      ],
+      "pattern": "^([\\w ]+)$"
+    },
+    "callsign": {
+      "$id": "#/properties/callsign",
+      "type": "string",
+      "title": "The Callsign Schema",
+      "examples": [
+        "CPA"
+      ],
+      "pattern": "^([A-Z]{3})$"
+    },
+    "shortName": {
+      "$id": "#/properties/shortName",
+      "type": "string",
+      "title": "The Shortname Schema",
+      "examples": [
+        "Cathay"
+      ],
+      "pattern": "^([\\w ]+)$"
+    },
+    "color": {
+      "$id": "#/properties/color",
+      "type": "string",
+      "title": "The Color Schema",
+      "examples": [
+        "#006b6e"
+      ],
+      "pattern": "^(#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)$"
+    }
+  }
+}
