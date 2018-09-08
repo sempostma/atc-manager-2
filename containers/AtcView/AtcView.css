@@ -35,7 +35,7 @@
   transition: all 0.2s ease;
 }
 
-.traffic-stack-entry:hover {
+.traffic-stack-entry:hover, .traffic-stack-entry.traffic-active {
   transform: translateX(5px);
 }
 
@@ -52,7 +52,7 @@
 .traffic-stack {
     padding: 3px;
     background: #1e606b;
-    height: calc(100% - 340px);
+    height: calc(100% - 360px);
     overflow: auto;
     overflow-x: hidden;
 }
@@ -63,6 +63,10 @@ span.down {
 
 span.up {
     color: #0f0;
+}
+
+svg g.airplane.airplane-active tspan {
+  font-weight: 900;
 }
 
 svg.atc-view-svg {

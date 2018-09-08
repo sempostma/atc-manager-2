@@ -75,6 +75,15 @@ class Home extends Component {
           <Settings />
           <button onClick={this.handleStartClick}>Start</button>
         </div>
+        {/* <div className="panel">
+          <Link href="/saves-editor">
+            <div class="block-outer">
+              <div class="block-inner">
+                Saves Editor
+              </div>
+            </div>
+          </Link>
+        </div> */}
       </div>
     );
   }

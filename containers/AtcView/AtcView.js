@@ -13,7 +13,7 @@ import { landableRwys } from '../../lib/map';
 import BackgroundSvg from '../../components/BackgroundSvg/BackgroundSvg';
 import GameMetaControls from '../../components/GameMetaControls/GameMetaControls';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { FaInfo, FaCommentDots, FaCog, FaCompress, FaPlane } from 'react-icons/fa';
+import { FaInfo, FaCommentDots, FaCog, FaCompress, FaPlane, FaPaperPlane } from 'react-icons/fa';
 class AtcView extends Component {
   constructor(props) {
     super();
@@ -34,39 +34,31 @@ class AtcView extends Component {
       }
     };
 
-    this.handleGameStoreChange = this.handleGameStoreChange.bind(this);
-    this.handleAltitudeTgtChange = this.handleAltitudeTgtChange.bind(this);
-    this.handleHeadingTgtChange = this.handleHeadingTgtChange.bind(this);
-    this.handleSpeedTgtChange = this.handleSpeedTgtChange.bind(this);
-    this.handleCmdExecution = this.handleCmdExecution.bind(this);
-    this.handleCmdExecutionDebounced = debounce(this.handleCmdExecution, 1500);
-    this.handleSVGClick = this.handleSVGClick.bind(this);
-    this.handleTrafficStackClick = this.handleTrafficStackClick.bind(this);
-    this.handleAirplaneClick = this.handleAirplaneClick.bind(this);
-    this.handleDirectToTgtChange = this.handleDirectToTgtChange.bind(this);
-    this.handleTakeoffClick = this.handleTakeoffClick.bind(this);
-    this.handleExpandSettingsButtonClick = this.handleExpandSettingsButtonClick.bind(this);
-    this.handleSettingsStoreChange = this.handleSettingsStoreChange.bind(this);
-
-    this.handleAboutExpanded = this.handleAboutExpanded.bind(this);
-    this.handleLogsExpanded = this.handleLogsExpanded.bind(this);
-    this.handleOnlySelfButton = this.handleOnlySelfButton.bind(this);
-    this.handleLogsCopied = this.handleLogsCopied.bind(this);
-
     this.dtcToDataListId = `dct-tgt-${Math.random().toString().replace('.', '')}`;
   }
 
   componentWillMount() {
     GameStore.on('change', this.handleGameStoreChange);
     SettingsStore.on('change', this.handleSettingsStoreChange);
+
+    window.addEventListener('keypress', this.keyPress);
   }
 
   componentWillUnmount() {
     GameStore.removeListener('change', this.handleGameStoreChange);
     SettingsStore.removeListener('change', this.handleSettingsStoreChange);
+
+    window.removeEventListener('keypress', this.keyPress);
   }
 
-  handleGameStoreChange() {
+  handleKeyPress = e => {
+    if (e.keyCode == 13 && this.state.cmd.tgt) {
+      this.handleCmdExecution();
+      return false;
+    }
+  }
+
+  handleGameStoreChange = () => {
     this.setState({
       traffic: GameStore.traffic,
       gameWidth: GameStore.width,
@@ -74,11 +66,11 @@ class AtcView extends Component {
     });
   }
 
-  handleSettingsStoreChange() {
+  handleSettingsStoreChange = () => {
     this.setState({});
   }
 
-  handleCmdExecution() {
+  handleCmdExecution = () => {
     const cmd = this.state.cmd;
     if (!cmd.tgt) return;
     const delta = {};
@@ -108,59 +100,53 @@ class AtcView extends Component {
     console.log('UPDATE', delta);
   }
 
-  handleHeadingTgtChange(e) {
+  handleHeadingTgtChange = (e) => {
     this.setState(prevstate => {
-      prevstate.cmd.heading = (+e.target.value + 360) % 360;
-      prevstate.cmd.direction = null;
-      return prevstate;
+      prevstate.cmd.heading = (+e.target.value + 359) % 360 + 1; 
     });
-    this.handleCmdExecutionDebounced();
   }
 
-  handleAltitudeTgtChange(e) {
+  handleAltitudeTgtChange = e => {
     this.setState(prevstate => {
       prevstate.cmd.altitude = Math.min(+e.target.max, e.target.value);
       return prevstate;
     });
-    this.handleCmdExecutionDebounced();
   }
 
-  handleSpeedTgtChange(e) {
+  handleSpeedTgtChange = e => {
     this.setState(prevstate => {
       prevstate.cmd.speed = Math.min(+e.target.max, e.target.value);
       return prevstate;
     });
-    this.handleCmdExecutionDebounced();
   }
 
-  handleDirectToTgtChange(e) {
+  handleDirectToTgtChange = e => {
     const id = e.target.value;
     if (!this.state.cmd.tgt) return;
     this.setState(prevstate => {
       prevstate.cmd.direction = e.target.value;
       return prevstate;
     });
-    if (GameStore.callsigns[id])
-      this.handleCmdExecutionDebounced();
   }
 
-  handleSVGClick(e) {
+  handleSVGClick = e => {
     const airplane = getParent(e, element => (element.getAttribute('class') || '').indexOf('airplane') !== -1);
     if (!airplane) return;
     const index = airplane.getAttribute('data-index');
     this.handleAirplaneClick(index);
   }
 
-  handleTrafficStackClick(e) {
+  handleTrafficStackClick = e => {
     const airplane = getParent(e, element => (element.getAttribute('class') || '').indexOf('traffic-stack-entry') !== -1);
     if (!airplane) return;
     const index = airplane.getAttribute('data-index');
     this.handleAirplaneClick(index);
   }
 
-  handleAirplaneClick(index) {
+  handleAirplaneClick = index => {
     const airplane = this.state.traffic[index];
-    if (this.state.cmd.tgt) this.handleCmdExecution(); // flush possible previous changes that werent yet debounced.
+    if (airplane === this.state.cmd.tgt) return;
+    // if (this.state.cmd.tgt) this.handleCmdExecution(); // flush possible previous changes that werent yet debounced.
     this.setState({
       cmd: {
         tgt: airplane,
@@ -172,48 +158,47 @@ class AtcView extends Component {
     });
   }
 
-  handleTakeoffClick() {
+  handleTakeoffClick = () => {
     this.setState(prevstate => {
       prevstate.cmd.takeoff = true;
       return prevstate;
     });
-    this.handleCmdExecutionDebounced();
+    this.handleCmdExecution();
   }
 
-  handleExpandSettingsButtonClick() {
+  handleExpandSettingsButtonClick = () => {
     this.setState({ settingsExpanded: !this.state.settingsExpanded });
   }
 
-  handleAboutExpanded() {
+  handleAboutExpanded = () => {
     this.setState({ aboutExpanded: !this.state.aboutExpanded });
   }
 
-  handleLogsExpanded() {
+  handleLogsExpanded = () => {
     this.setState({ copied: false, logsExpanded: !this.state.logsExpanded });
   }
 
-  handleOnlySelfButton() {
+  handleOnlySelfButton = () => {
     this.setState({ logsOnlySelf: !this.state.logsOnlySelf });
   }
 
-  handleLogsCopied() {
+  handleLogsCopied = () => {
     this.setState({ logsCopied: true });
   }
 
-
-  renderTraffic() {
+  renderTraffic = () => {
     return this.state.traffic.map((airplane, i) => {
       if (airplane.outboundRwy) return;
       const y = this.state.gameHeight - airplane.y;
       const x = airplane.x;
       const spd = getSpdJsx(airplane, 'tspan');
       const alt = getAltJsx(airplane, 'tspan');
-      const outboundWaypoint = airplane.outboundWaypoint;
       const ltx = Math.sin(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
       const lty = Math.cos(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
       const path = 'M0,0 ' + airplane.path.map(p => `L${p[0] - airplane.x}, ${-(p[1] - airplane.y)}`);
       const violatingSep = GameStore.sepDistanceVialotions[airplane.flight];
-      return <g className={`airplane ${routeTypes[airplane.routeType]}`} data-index={i} key={i} transform={`translate(${x}, ${y})`} data-heading={airplane.heading}>
+      return <g className={`airplane ${routeTypes[airplane.routeType]} ${this.state.cmd.tgt === airplane ? 'airplane-active' : 'airplane-inactive'}`}
+        data-index={i} key={i} transform={`translate(${x}, ${y})`} data-heading={airplane.heading}>
         {violatingSep ? <circle r={config.threeMileRuleDistance} className="sep" /> : null}
         <circle cx="0" cy="0" r="2" stroke-width="0" />
         <line x1="0" y1="0" x2={ltx} y2={-lty} />
@@ -222,27 +207,27 @@ class AtcView extends Component {
           <tspan dy="1em">{operatorsById[airplane.operatorId].callsign}{airplane.flight}</tspan>
           <tspan dy="1em" x="0">{spd}</tspan>
           <tspan dy="1em" x="0">{alt}</tspan>
-          {outboundWaypoint ? <tspan dy="1em" x="0">⇨{outboundWaypoint}</tspan> : null}
+          { airplane.outboundWaypoint ? <tspan dy="1em" x="0">⇨{airplane.outboundWaypoint}</tspan> : null }
         </text>
       </g>;
     });
   }
 
-  renderTrafficStack() {
+  renderTrafficStack = () => {
     return this.state.traffic.map((airplane, i) => {
       const spd = getSpdJsx(airplane, 'span');
       const alt = getAltJsx(airplane, 'span');
       const heading = `000${Math.floor(airplane.heading)}`.substr(-3);
       const model = airplanesById[airplane.typeId];
-      const outboundWaypoint = airplane.outboundWaypoint;
-      return <div className={`traffic-stack-entry ${routeTypes[airplane.routeType]}`} data-index={i} key={i}>
+      return <div className={`traffic-stack-entry ${routeTypes[airplane.routeType]} ${this.state.cmd.tgt === airplane ? 'traffic-active' : 'traffic-not-active'}`} data-index={i} key={i}>
         {operatorsById[airplane.operatorId].callsign}{airplane.flight} {spd} {alt} {model.shortName} {heading}°
-        {outboundWaypoint ? `⇨${outboundWaypoint}` : null}
+        {airplane.outboundWaypoint ? `⇨${airplane.outboundWaypoint}` : null}
+        {airplane.outboundRwy ? <span> RWY {airplane.outboundRwy}</span> : null}
       </div>
     });
   }
 
-  renderTrafficControl() {
+  renderTrafficControl = () => {
     const cmd = this.state.cmd;
     if (!cmd.tgt) return;
     const model = airplanesById[cmd.tgt.typeId];
@@ -251,8 +236,6 @@ class AtcView extends Component {
       ? landableRwys(GameStore.airport, this.state.cmd.tgt, this.state.gameWidth, this.state.gameHeight)
         .map(lr => lr.rev ? lr.rwy.name2 : lr.rwy.name1).map(name => <option value={name} />)
       : null;
-
-    if (cmd.tgt.routeType === routeTypes.INBOUND && landableRwysArr && landableRwysArr.length > 0) { console.log(landableRwysArr) }
 
     return <div>
       <div>
@@ -274,6 +257,9 @@ class AtcView extends Component {
       <div>
         <span>Altitude (FT)</span>
         <input onInput={this.handleAltitudeTgtChange} value={cmd.altitude} type="number" max={model.ceiling * 1000} step="1000" />
+      </div>
+      <div>
+        <button onClick={this.handleCmdExecution}><FaPaperPlane /> Give Command</button>
       </div>
       <div>
         <button onClick={this.handleTakeoffClick} className={cmd.tgt.outboundRwy ? '' : 'hidden'}><FaPlane /> Takeoff</button>
@@ -298,7 +284,7 @@ class AtcView extends Component {
     return (
       <div className="atc-view">
         <svg xmlns="http://www.w3.org/2000/svg" className="atc-view-svg" width={innerWidth - 250} height={innerHeight}
-          onClick={this.handleSVGClick} viewBox="0 0 1280 720" style="background: #194850">
+          onClick={this.handleSVGClick} viewBox="0 0 1280 720" style="background: #194850; overflow: visible">
           <style>{`
             text {
               font: 14px 'Helvetica';
@@ -374,14 +360,14 @@ class AtcView extends Component {
             {trafficcontrol}
           </div>
           <div className="atc-view-buttons">
-            <button className="w-100" onClick={this.handleAboutExpanded}><FaInfo />&nbsp;
-              {this.state.aboutExpanded ? 'Hide Info' : 'Expand Info'}
+            <button className="w-100" onClick={this.handleExpandSettingsButtonClick}><FaCog />&nbsp;
+              {this.state.settingsExpanded ? 'Hide Options' : 'Expand Options'}
             </button>
             <button className="w-100" onClick={this.handleLogsExpanded}><FaCommentDots />&nbsp;
               {this.state.logsExpanded ? 'Hide Logs' : 'Expand Logs'}
             </button>
-            <button className="w-100" onClick={this.handleExpandSettingsButtonClick}><FaCog />&nbsp;
-              {this.state.settingsExpanded ? 'Hide Options' : 'Expand Options'}
+            <button className="w-100" onClick={this.handleAboutExpanded}><FaInfo />&nbsp;
+              {this.state.aboutExpanded ? 'Hide Info' : 'Expand Info'}
             </button>
             <GameMetaControls />
           </div>
@@ -432,23 +418,14 @@ class AtcView extends Component {
   }
 }
 
-const debounce = (func, delay) => {
-  let inDebounce
-  return function () {
-    const context = this
-    const args = arguments
-    clearTimeout(inDebounce)
-    inDebounce = setTimeout(() => func.apply(context, args), delay)
-  }
-}
-
 const getSpdJsx = (airplane, TagName) => {
-  if (Math.abs(airplane.speed - airplane.tgtSpeed) > 5) {
+  const tgtSpeed = airplane.altitude < 10000 ? Math.min(airplane.tgtSpeed, 250) : airplane.tgtSpeed;
+  if (Math.abs(airplane.speed - tgtSpeed) > 5) {
     return <TagName>
       {Math.round(airplane.speed)}KTS
-      {airplane.tgtSpeed > airplane.speed ? <TagName className="up">
-        ⇧{Math.round(airplane.tgtSpeed)}KTS</TagName> : <TagName className="down">
-          ⇩{Math.round(airplane.tgtSpeed)}KTS</TagName>}
+      {tgtSpeed > airplane.speed ? <TagName className="up">
+        ⇧{Math.round(tgtSpeed)}KTS</TagName> : <TagName className="down">
+          ⇩{Math.round(tgtSpeed)}KTS</TagName>}
     </TagName>
   } else {
     return <TagName>{Math.round(airplane.speed)}KTS</TagName>

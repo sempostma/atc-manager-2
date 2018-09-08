@@ -19,7 +19,6 @@ class Game extends Component {
   }
 
   render() {
-    
     return (
       <div ref={this.setRoot} className="Game">
         <div id="atc-game">
