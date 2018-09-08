@@ -8,6 +8,7 @@ import Home from './containers/Home/Home';
 import GameStore from './stores/GameStore';
 import { EventEmitter } from 'events';
 import NotFound from './containers/NotFound/NotFound';
+import SavesEditor from './containers/SavesEditor/SavesEditor';
 
 if (typeof window !== 'undefined') {
   window.onbeforeunload = function () {
@@ -21,9 +22,9 @@ export const history = typeof window !== "undefined" ? createHashHistory() : und
 export default class App extends Component {
   constructor(props) {
     super();
-    this.setState({
+    // this.setState({
 
-    });
+    // });
   }
 
   render() {
@@ -32,6 +33,7 @@ export default class App extends Component {
         <Router history={history} onChange={router.emit('change')}>
           <Home path="/" />
           <Game path="/game" />
+          <SavesEditor path="/saves-editor" />
           <NotFound default />
         </Router>
       </main>

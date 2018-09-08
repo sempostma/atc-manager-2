@@ -75,21 +75,21 @@ class Settings extends Component {
 
   handleDifficultyChange(e) {
     switch (e.target.value) {
-      case 'easy':
-        SettingsStore.startingInboundPlanes = 1;
-        SettingsStore.startingOutboundPlanes = 1;
-        SettingsStore.newPlaneInterval = 180;
-        break;
-      case 'normal':
-        SettingsStore.startingInboundPlanes = 3;
-        SettingsStore.startingOutboundPlanes = 2;
-        SettingsStore.newPlaneInterval = 100;
-        break;
-      case 'hard':
-        SettingsStore.startingInboundPlanes = 4;
-        SettingsStore.startingOutboundPlanes = 3;
-        SettingsStore.newPlaneInterval = 70;
-        break;
+    case 'easy':
+      SettingsStore.startingInboundPlanes = 1;
+      SettingsStore.startingOutboundPlanes = 1;
+      SettingsStore.newPlaneInterval = 180;
+      break;
+    case 'normal':
+      SettingsStore.startingInboundPlanes = 3;
+      SettingsStore.startingOutboundPlanes = 2;
+      SettingsStore.newPlaneInterval = 100;
+      break;
+    case 'hard':
+      SettingsStore.startingInboundPlanes = 4;
+      SettingsStore.startingOutboundPlanes = 3;
+      SettingsStore.newPlaneInterval = 70;
+      break;
     }
   }
 

@@ -12,7 +12,7 @@
     "topSpeed",
     "landingSpeed",
     "climbSpeed",
-    "decendSpeed",
+    "descendSpeed",
     "accelerationSpeed",
     "deAccelerationSpeed",
     "minSpeed",
@@ -85,10 +85,10 @@
         1
       ]
     },
-    "decendSpeed": {
-      "$id": "#/properties/decendSpeed",
+    "descendSpeed": {
+      "$id": "#/properties/descendSpeed",
       "type": "integer",
-      "title": "The Decendspeed Schema",
+      "title": "The descendSpeed Schema",
       "default": 0,
       "examples": [
         1

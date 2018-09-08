@@ -16,7 +16,7 @@ h1 {
 }
 
 small, p, span {
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
@@ -64,7 +64,7 @@ input[type='email'], input[type='number'], input[type='password'], input[type='s
 }
 
 input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus {
-  border-color: #19242e;
+  border-color: #1e606b;
 }
 
 .mb {
@@ -243,5 +243,40 @@ input:checked + .slider:before {
   -webkit-transform: translateX(24px);
   -ms-transform: translateX(24px);
   transform: translateX(24px);
+}
+
+.panel  {
+  width: 600px;
+  max-width: 100%;
+  margin: auto;
+  margin-top: 50px;
+  /* box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.2); */
+  padding: 5px;
+  border: 6px solid #1e606b;
+  /* background: #666; */
+  border-radius: 4px;
+}
+
+.panel::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.block-outer {
+  width: 24.99%;
+  float: left;
+  position: relative;
+  padding-top: 25%;
+  background: #19242e;
+  cursor: pointer;
+}
+
+.block-inner {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  color: #efefef;
+  text-align: center;
 }
 

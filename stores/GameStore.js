@@ -235,7 +235,7 @@ class GameStore extends EventEmitter {
       airplane.x += dx * s * airplane.speed * config.baseAirplaneSpeed;
       airplane.y += dy * s * airplane.speed * config.baseAirplaneSpeed;
       const model = airplanesById[airplane.typeId];
-      let altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.decendSpeed * model.decendSpeed * s, airplane.tgtAltitude - airplane.altitude));
+      let altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.descendSpeed * model.descendSpeed * s, airplane.tgtAltitude - airplane.altitude));
       let tgtSpeed = (airplane.altitude < 10000 && airplane.tgtSpeed > 250) ? Math.min(250, airplane.tgtSpeed) : airplane.tgtSpeed;
       tgtSpeed = tgtSpeed || airplane.speed; // bug: tgtSpeed rarely becomes nan for undefined reasons
       airplane.speed += Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
@@ -289,11 +289,18 @@ class GameStore extends EventEmitter {
         this._remove.push(airplane);
         continue;
       }
-      if (airplane.speed >= (airplanesById[airplane.typeId].landingSpeed - 0.01)) {
-        airplane.heading += Math.min(1 * s, Math.max(-1 * s, angleDistance(airplane.heading, tgtHeading)));
-        airplane.heading = (airplane.heading + 360) % 360;
+      const isAtManeuveringSpeed = airplane.speed >= (airplanesById[airplane.typeId].landingSpeed - 0.01);
+      const canChangeHeading = airplane.routeType !== routeTypes.OUTBOUND || airplane.altitude >= config.flyStraightAfterTakeoffUntilHeight - 10; /* manouvering height */
+
+      if (isAtManeuveringSpeed) {
         airplane.altitude += altChange;
       }
+
+      if (isAtManeuveringSpeed && canChangeHeading) {
+        airplane.heading += Math.min(1 * s, Math.max(-1 * s, angleDistance(airplane.heading, tgtHeading)));
+        airplane.heading = (airplane.heading + 360) % 360;
+      }
+
       if (addPathEntry) {
         airplane.path.unshift([airplane.x, airplane.y]);
         if (airplane.path.length >= config.maxPathLen) airplane.path.pop();
@@ -386,3 +393,4 @@ const persistanceProps = ['traffic', 'started', 'width', 'height', 'log', 'selfL
   'enroutes', 'distanceVialations', 'mapName', 'winddir', 'windspd', 'unpermittedDepartures'];
 
 export default new GameStore();
+

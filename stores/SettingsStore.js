@@ -1,6 +1,4 @@
 import { EventEmitter } from 'events';
-import Airplane from '../lib/airplane';
-import config from '../lib/config';
 import Communications from '../lib/communications';
 
 class SettingsStore extends EventEmitter {
@@ -63,7 +61,15 @@ class SettingsStore extends EventEmitter {
     this.speed = speed;
     this.emit('change');
   }
+
+  toJson = () => {
+    return JSON.stringify(this,
+      ['speechsynthesis', 'speechrecognition', 'rate', 'voice', 'pitch', 'speed', 'distanceCircles', 'distanceCirclesDistance',
+        'distanceCirclesAmount', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 'sepVialationCircleColor',
+        'newPlaneInterval', 'startingInboundPlanes', 'startingOutboundPlanes', 'changePitch', 'changeRate', 'changeVoice',
+        'handleVoicesChange'], 4);
+  }
 }
 
-
 export default new SettingsStore();
+

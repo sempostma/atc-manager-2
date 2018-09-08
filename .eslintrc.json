@@ -3,10 +3,14 @@
         "browser": true,
         "es6": true
     },
+    "parser": "babel-eslint",
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "modules":true,
+            "arrowFunctions":true,
+            "classes":true
         },
         "sourceType": "module"
     },
