@@ -16,6 +16,7 @@
     },
     "rules": {
         "indent": ["error", 2],
+        "no-console": 0,
         "jsx-quotes": [
             "error",
             "prefer-double"

@@ -9,7 +9,7 @@ import SettingsStore from '../../stores/SettingsStore';
 import WayPoints from '../../components/WayPoints/WayPoints';
 import Airport from '../../components/Airport/Airport';
 import Donate from '../Donate/Donate';
-import { landableRwys } from '../../lib/map';
+import { landableRwys, idType } from '../../lib/map';
 import BackgroundSvg from '../../components/BackgroundSvg/BackgroundSvg';
 import GameMetaControls from '../../components/GameMetaControls/GameMetaControls';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -41,14 +41,14 @@ class AtcView extends Component {
     GameStore.on('change', this.handleGameStoreChange);
     SettingsStore.on('change', this.handleSettingsStoreChange);
 
-    window.addEventListener('keypress', this.keyPress);
+    if (typeof window !== 'undefined') window.addEventListener('keypress', this.handleKeyPress);
   }
 
   componentWillUnmount() {
     GameStore.removeListener('change', this.handleGameStoreChange);
     SettingsStore.removeListener('change', this.handleSettingsStoreChange);
 
-    window.removeEventListener('keypress', this.keyPress);
+    if (typeof window !== 'undefined') window.removeEventListener('keypress', this.handleKeyPress);
   }
 
   handleKeyPress = e => {
@@ -75,8 +75,14 @@ class AtcView extends Component {
     if (!cmd.tgt) return;
     const delta = {};
     const model = airplanesById[cmd.tgt.typeId];
-    if (cmd.direction && GameStore.callsigns[cmd.direction]) {
+    if (typeof cmd.heading === 'number') cmd.heading = (cmd.heading + 359) % 360 + 1;
+
+    const landableRwysArr = landableRwys(GameStore.airport, this.state.cmd.tgt, this.state.gameWidth, this.state.gameHeight)
+      .map(lr => lr.rev ? lr.rwy.name2 : lr.rwy.name1)
+    if (cmd.direction && GameStore.callsigns[cmd.direction] 
+      && (GameStore.callsignsPos[cmd.direction].ref.type !== idType.RWY || landableRwysArr.includes(cmd.direction))) {
       if (cmd.direction !== cmd.tgt.tgtDirection) delta.tgtDirection = cmd.direction;
+      cmd.directionOld = true;
     }
     else if (typeof cmd.heading === 'number' && cmd.heading !== cmd.tgt.tgtDirection) delta.tgtDirection = cmd.heading;
     if (typeof cmd.altitude === 'number' && cmd.altitude !== cmd.tgt.tgtAltitude) delta.tgtAltitude = cmd.altitude = Math.min(model.ceiling * 1000, Math.max(2000, cmd.altitude));
@@ -102,7 +108,7 @@ class AtcView extends Component {
 
   handleHeadingTgtChange = (e) => {
     this.setState(prevstate => {
-      prevstate.cmd.heading = (+e.target.value + 359) % 360 + 1; 
+      prevstate.cmd.heading = +e.target.value;
     });
   }
 
@@ -121,10 +127,10 @@ class AtcView extends Component {
   }
 
   handleDirectToTgtChange = e => {
-    const id = e.target.value;
     if (!this.state.cmd.tgt) return;
     this.setState(prevstate => {
-      prevstate.cmd.direction = e.target.value;
+      prevstate.cmd.direction = e.target.value.toUpperCase().trim();
+      prevstate.cmd.directionOld = false;
       return prevstate;
     });
   }
@@ -145,7 +151,12 @@ class AtcView extends Component {
 
   handleAirplaneClick = index => {
     const airplane = this.state.traffic[index];
-    if (airplane === this.state.cmd.tgt) return;
+    if (airplane === this.state.cmd.tgt) {
+      airplane.textRotation = (airplane.textRotation || 0) + 1;
+      airplane.textRotation %= 4;
+      this.setState({});
+      return;
+    }
     // if (this.state.cmd.tgt) this.handleCmdExecution(); // flush possible previous changes that werent yet debounced.
     this.setState({
       cmd: {
@@ -197,17 +208,22 @@ class AtcView extends Component {
       const lty = Math.cos(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
       const path = 'M0,0 ' + airplane.path.map(p => `L${p[0] - airplane.x}, ${-(p[1] - airplane.y)}`);
       const violatingSep = GameStore.sepDistanceVialotions[airplane.flight];
+      const textHeight = (airplane.outboundWaypoint ? 4 : 3) * 14;
+
+      const textAnchor = airplane.textRotation === 1 || airplane.textRotation === 2 ? 'end' : 'start';
+      const textTranslate = `translate(0, ${airplane.textRotation > 1 ? -textHeight : 0})`;
+
       return <g className={`airplane ${routeTypes[airplane.routeType]} ${this.state.cmd.tgt === airplane ? 'airplane-active' : 'airplane-inactive'}`}
         data-index={i} key={i} transform={`translate(${x}, ${y})`} data-heading={airplane.heading}>
         {violatingSep ? <circle r={config.threeMileRuleDistance} className="sep" /> : null}
         <circle cx="0" cy="0" r="2" stroke-width="0" />
         <line x1="0" y1="0" x2={ltx} y2={-lty} />
         <path stroke-dasharray="4, 5" d={path} />
-        <text>
+        <text transform={textTranslate} text-anchor={textAnchor}>
           <tspan dy="1em">{operatorsById[airplane.operatorId].callsign}{airplane.flight}</tspan>
           <tspan dy="1em" x="0">{spd}</tspan>
           <tspan dy="1em" x="0">{alt}</tspan>
-          { airplane.outboundWaypoint ? <tspan dy="1em" x="0">⇨{airplane.outboundWaypoint}</tspan> : null }
+          {airplane.outboundWaypoint ? <tspan dy="1em" x="0">⇨{airplane.outboundWaypoint}</tspan> : null}
         </text>
       </g>;
     });
@@ -237,6 +253,9 @@ class AtcView extends Component {
         .map(lr => lr.rev ? lr.rwy.name2 : lr.rwy.name1).map(name => <option value={name} />)
       : null;
 
+    const directToValue = cmd.directionOld ? '' : cmd.direction;
+    const directToPlaceholder = cmd.directionOld ? cmd.direction : '';
+
     return <div>
       <div>
         <span>Heading (°)</span>
@@ -244,7 +263,8 @@ class AtcView extends Component {
       </div>
       <div>
         <span>Direct to </span>
-        <input type="text" value={cmd.direction} list={this.dtcToDataListId} onInput={this.handleDirectToTgtChange} />
+        <input className="direct-to-input" type="text" value={directToValue} placeholder={directToPlaceholder} 
+          list={this.dtcToDataListId} onInput={this.handleDirectToTgtChange} />
         <datalist id={this.dtcToDataListId}>
           {cmd.tgt.routeType === routeTypes.INBOUND ? landableRwysArr : null}
           {Object.keys(GameStore.waypoints).map(w => <option value={w} />)}
@@ -439,7 +459,9 @@ const getAltFmtJSx = (alt, TagName) =>
 
 
 const getAltJsx = (airplane, TagName) => {
-  if (Math.abs(airplane.tgtAltitude - airplane.altitude) > 100) {
+  const cs = GameStore.callsignsPos[airplane.tgtDirection]
+  const isLanding = cs && cs.ref.type === idType.RWY && airplane.routeType === routeTypes.INBOUND;
+  if (Math.abs(airplane.tgtAltitude - airplane.altitude) > 100 && airplane.altitude && !isLanding) {
     return <TagName>{getAltFmtJSx(airplane.altitude, TagName)}
       {airplane.tgtAltitude > airplane.altitude ? <TagName className="up">
         ⇧{getAltFmtJSx(airplane.tgtAltitude, TagName)}</TagName> : <TagName className="down">

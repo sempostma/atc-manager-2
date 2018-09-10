@@ -280,3 +280,52 @@ input:checked + .slider:before {
   text-align: center;
 }
 
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: #19242e;
+  display: inline-block;
+  border-radius: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .1rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: 'Roboto Mono', monospace;
+  line-height: 1.5rem;
+  height: 1.8rem;
+  padding: 0.13rem 1rem;
+  margin: 0 2px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: #606c76;
+}
+
+.inputfile:disabled + label {
+  cursor: default;
+  opacity: .5;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+

@@ -74,6 +74,10 @@ svg.atc-view-svg {
   padding-right: 45px;
 }
 
+input.direct-to-input::placeholder {
+  color: #1e606b;
+}
+
 .traffic-control input,
 .traffic-control select {
   padding: 2px;

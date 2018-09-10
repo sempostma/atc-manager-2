@@ -22,9 +22,6 @@ export const history = typeof window !== "undefined" ? createHashHistory() : und
 export default class App extends Component {
   constructor(props) {
     super();
-    // this.setState({
-
-    // });
   }
 
   render() {

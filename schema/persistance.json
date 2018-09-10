@@ -1,0 +1,337 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "games"
+  ],
+  "properties": {
+    "games": {
+      "$id": "#/properties/games",
+      "type": "object",
+      "title": "The Games Schema",
+      "required": [],
+      "additionalProperties": {"$ref": "#/definitions/mapSave"}
+    }
+  },
+  "definitions": {
+    "mapSave": {
+      "type": "object",
+      "title": "The Default - 9-9-2018 Schema",
+      "required": [
+        "traffic",
+        "started",
+        "width",
+        "height",
+        "log",
+        "selfLog",
+        "pathCounter",
+        "mapName",
+        "arrivals",
+        "departures",
+        "enroutes",
+        "distanceVialations",
+        "winddir",
+        "windspd",
+        "unpermittedDepartures"
+      ],
+      "properties": {
+        "traffic": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic",
+          "type": "array",
+          "title": "The Traffic Schema",
+          "items": {
+            "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "tgtAltitude",
+              "tgtDirection",
+              "tgtSpeed",
+              "operatorId",
+              "speed",
+              "altitude",
+              "heading",
+              "x",
+              "y",
+              "flight",
+              "path",
+              "typeId",
+              "routeType"
+            ],
+            "properties": {
+              "tgtAltitude": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/tgtAltitude",
+                "type": "integer",
+                "title": "The Tgtaltitude Schema",
+                "default": 0,
+                "examples": [
+                  17000
+                ]
+              },
+              "tgtDirection": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/tgtDirection",
+                "type": "integer",
+                "title": "The Tgtdirection Schema",
+                "default": 0,
+                "examples": [
+                  47
+                ]
+              },
+              "tgtSpeed": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/tgtSpeed",
+                "type": "integer",
+                "title": "The Tgtspeed Schema",
+                "default": 0,
+                "examples": [
+                  300
+                ]
+              },
+              "operatorId": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/operatorId",
+                "type": "integer",
+                "title": "The Operatorid Schema",
+                "default": 0,
+                "examples": [
+                  5
+                ]
+              },
+              "speed": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/speed",
+                "type": "integer",
+                "title": "The Speed Schema",
+                "default": 0,
+                "examples": [
+                  300
+                ]
+              },
+              "altitude": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/altitude",
+                "type": "integer",
+                "title": "The Altitude Schema",
+                "default": 0,
+                "examples": [
+                  17000
+                ]
+              },
+              "heading": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/heading",
+                "type": "integer",
+                "title": "The Heading Schema",
+                "default": 0,
+                "examples": [
+                  47
+                ]
+              },
+              "x": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/x",
+                "type": "number",
+                "title": "The X Schema",
+                "default": 0.0,
+                "examples": [
+                  252.304
+                ]
+              },
+              "y": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/y",
+                "type": "number",
+                "title": "The Y Schema",
+                "default": 0.0,
+                "examples": [
+                  2.148
+                ]
+              },
+              "flight": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/flight",
+                "type": "integer",
+                "title": "The Flight Schema",
+                "default": 0,
+                "examples": [
+                  665
+                ]
+              },
+              "path": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/path",
+                "type": "array",
+                "title": "The Path Schema"
+              },
+              "typeId": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/typeId",
+                "type": "integer",
+                "title": "The Typeid Schema",
+                "default": 0,
+                "examples": [
+                  16
+                ]
+              },
+              "routeType": {
+                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/routeType",
+                "type": "integer",
+                "title": "The Routetype Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              }
+            }
+          }
+        },
+        "started": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/started",
+          "type": "boolean",
+          "title": "The Started Schema",
+          "default": false,
+          "examples": [
+            true
+          ]
+        },
+        "width": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/width",
+          "type": "integer",
+          "title": "The Width Schema",
+          "default": 0,
+          "examples": [
+            1280
+          ]
+        },
+        "height": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/height",
+          "type": "integer",
+          "title": "The Height Schema",
+          "default": 0,
+          "examples": [
+            720
+          ]
+        },
+        "log": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/log",
+          "type": "array",
+          "title": "The Log Schema",
+          "items": {
+            "$id": "#/properties/games/properties/default - 9-9-2018/properties/log/items",
+            "type": "string",
+            "title": "The Items Schema",
+            "default": "",
+            "examples": [
+              "American 665: EHZM approach, American 665 at 170.",
+              "ATC: American 665, information Oscar is current, altimeter 30.96, maintain current heading.",
+              "Delta 888: EHZM approach, Delta 888 at 140.",
+              "ATC: Delta 888, information Oscar is current, altimeter 30.96, maintain current heading.",
+              "Qatari 1325: EHZM approach, Qatari 1325 at 150.",
+              "ATC: Qatari 1325, information Oscar is current, altimeter 30.96, maintain current heading.",
+              "Turkish 1391: EHZM approach, with you for 36.",
+              "ATC: Turkish 1391, EHZM approach, hold short 36.",
+              "Turkish 1391: Roger hold short of 36, Turkish 1391.",
+              "KLM 242: EHZM approach, with you for 36.",
+              "ATC: KLM 242, EHZM approach, hold short 36.",
+              "KLM 242: Roger hold short of 36, KLM 242."
+            ],
+            "pattern": "^(.*)$"
+          }
+        },
+        "selfLog": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/selfLog",
+          "type": "array",
+          "title": "The Selflog Schema",
+          "items": {
+            "$id": "#/properties/games/properties/default - 9-9-2018/properties/selfLog/items",
+            "type": "string",
+            "title": "The Items Schema",
+            "default": "",
+            "examples": [
+              "ATC: American 665, information Oscar is current, altimeter 30.96, maintain current heading.",
+              "ATC: Delta 888, information Oscar is current, altimeter 30.96, maintain current heading.",
+              "ATC: Qatari 1325, information Oscar is current, altimeter 30.96, maintain current heading.",
+              "ATC: Turkish 1391, EHZM approach, hold short 36.",
+              "ATC: KLM 242, EHZM approach, hold short 36."
+            ],
+            "pattern": "^(.*)$"
+          }
+        },
+        "pathCounter": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/pathCounter",
+          "type": "integer",
+          "title": "The Pathcounter Schema",
+          "default": 0,
+          "examples": [
+            7
+          ]
+        },
+        "mapName": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/mapName",
+          "type": "string",
+          "title": "The Mapname Schema",
+          "default": "",
+          "examples": [
+            "default"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "arrivals": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/arrivals",
+          "type": "integer",
+          "title": "The Arrivals Schema",
+          "default": 0,
+          "examples": [
+            0
+          ]
+        },
+        "departures": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/departures",
+          "type": "integer",
+          "title": "The Departures Schema",
+          "default": 0,
+          "examples": [
+            0
+          ]
+        },
+        "enroutes": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/enroutes",
+          "type": "integer",
+          "title": "The Enroutes Schema",
+          "default": 0,
+          "examples": [
+            0
+          ]
+        },
+        "distanceVialations": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/distanceVialations",
+          "type": "integer",
+          "title": "The Distancevialations Schema",
+          "default": 0,
+          "examples": [
+            0
+          ]
+        },
+        "winddir": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/winddir",
+          "type": "integer",
+          "title": "The Winddir Schema",
+          "default": 0,
+          "examples": [
+            340
+          ]
+        },
+        "windspd": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/windspd",
+          "type": "integer",
+          "title": "The Windspd Schema",
+          "default": 0,
+          "examples": [
+            0
+          ]
+        },
+        "unpermittedDepartures": {
+          "$id": "#/properties/games/properties/default - 9-9-2018/properties/unpermittedDepartures",
+          "type": "integer",
+          "title": "The Unpermitteddepartures Schema",
+          "default": 0,
+          "examples": [
+            0
+          ]
+        }
+      }
+    }
+  }
+}

@@ -75,7 +75,7 @@ class Home extends Component {
           <Settings />
           <button onClick={this.handleStartClick}>Start</button>
         </div>
-        {/* <div className="panel">
+        <div className="panel">
           <Link href="/saves-editor">
             <div class="block-outer">
               <div class="block-inner">
@@ -83,7 +83,7 @@ class Home extends Component {
               </div>
             </div>
           </Link>
-        </div> */}
+        </div>
       </div>
     );
   }

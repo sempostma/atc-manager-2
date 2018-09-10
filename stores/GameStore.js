@@ -5,35 +5,7 @@ import { loadMap, angleDistance, headingTo, rwyPos, idType, activeRwys } from '.
 import SettingsStore from './SettingsStore';
 import { routeTypes, airplanesById, operatorsById } from '../lib/airplane-library';
 import { loadState } from '../lib/persistance';
-
-const natoAlphabet = {
-  "A": "Alfa",
-  "B": "Bravo",
-  "C": "Charlie",
-  "D": "Delta",
-  "E": "Echo",
-  "F": "Foxtrot",
-  "G": "Golf",
-  "H": "Hotel",
-  "I": "India",
-  "J": "Juliett",
-  "K": "Kilo",
-  "L": "Lima",
-  "M": "Mike",
-  "N": "November",
-  "O": "Oscar",
-  "P": "Papa",
-  "Q": "Quebec",
-  "R": "Romeo",
-  "S": "Sierra",
-  "T": "Tango",
-  "U": "Uniform",
-  "V": "Victor",
-  "W": "Whiskey",
-  "X": "X-ray",
-  "Y": "Yankee",
-  "Z": "Zulu"
-}
+import { natoAlphabet } from '../lib/communications';
 
 class GameStore extends EventEmitter {
   constructor() {
@@ -52,6 +24,7 @@ class GameStore extends EventEmitter {
     this.callsigns = {};
     this.callsignsPos = {};
     this._remove = [];
+    this._spawnPlaneCounter = 0;
     this.mapName = null;
 
     this.update = this.update.bind(this); // called within a setInterval so bind to this object and not the window object.
@@ -115,15 +88,13 @@ class GameStore extends EventEmitter {
       const ref = this.waypoints[k];
       return { [k]: { ref, x: ref.x, y: ref.y } };
     }), { [map.airport.callsign]: { ref: map.airport, x: airportX, y: airportY } },
-      ...map.airport.runways.map(ref => {
-        const pos = rwyPos(map.airport, ref, this.width, this.height);
-        return { [ref.name1]: { ref, x: pos.x1, y: pos.y1 }, [ref.name2]: { ref, x: pos.x2, y: pos.y2 } }
-      }));
+    ...map.airport.runways.map(ref => {
+      const pos = rwyPos(map.airport, ref, this.width, this.height);
+      return { [ref.name1]: { ref, x: pos.x1, y: pos.y1 }, [ref.name2]: { ref, x: pos.x2, y: pos.y2 } }
+    }));
 
     if (this.interval) throw 'Already set interval';
     this.interval = setInterval(this.update, config.updateInterval)
-    if (this.newTrafficInterval) throw 'Already set new traffic interval';
-    this.newTrafficInterval = setInterval(this._newPlane, SettingsStore.newPlaneInterval * 1000);
     this.emit('change');
     this.emit('start');
   }
@@ -219,6 +190,13 @@ class GameStore extends EventEmitter {
 
   update() {
     if (this.paused) return;
+
+    this._spawnPlaneCounter += config.updateInterval * SettingsStore.speed;
+    if (this._spawnPlaneCounter > SettingsStore.newPlaneInterval * 1000) {
+      this._spawnPlaneCounter %= SettingsStore.newPlaneInterval;
+      this._newPlane();
+    }
+
     let sepDistViolation = false;
     const s = config.globalSpeed * SettingsStore.speed;
     this.pathCounter = ++this.pathCounter % Math.floor(config.pathCounterUpdateEvery / s);
@@ -236,10 +214,16 @@ class GameStore extends EventEmitter {
       airplane.y += dy * s * airplane.speed * config.baseAirplaneSpeed;
       const model = airplanesById[airplane.typeId];
       let altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.descendSpeed * model.descendSpeed * s, airplane.tgtAltitude - airplane.altitude));
+
+      const exceeds250Multiplier = (airplane.speed - 250) * 0.1 + 5;
+      if (airplane.altitude >= 10000 && airplane.tgtSpeed > 250 && airplane.tgtAltitude < 10000
+        && (altChange * exceeds250Multiplier / model.deAccelerationSpeed / config.deAccelerationSpeed + airplane.altitude) < 10000) {
+        airplane.tgtSpeed = 250;
+      }
+
       let tgtSpeed = (airplane.altitude < 10000 && airplane.tgtSpeed > 250) ? Math.min(250, airplane.tgtSpeed) : airplane.tgtSpeed;
       tgtSpeed = tgtSpeed || airplane.speed; // bug: tgtSpeed rarely becomes nan for undefined reasons
       airplane.speed += Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
-      
 
       let tgtHeading;
       if (typeof airplane.tgtDirection === 'number') {
@@ -293,6 +277,9 @@ class GameStore extends EventEmitter {
       const canChangeHeading = airplane.routeType !== routeTypes.OUTBOUND || airplane.altitude >= config.flyStraightAfterTakeoffUntilHeight - 10; /* manouvering height */
 
       if (isAtManeuveringSpeed) {
+        if (airplane.altitude >= 10000 && airplane.speed > 250 && airplane.altitude + altChange < 10000) {
+          altChange = 10000 - airplane.altitude; 
+        }
         airplane.altitude += altChange;
       }
 
@@ -347,8 +334,6 @@ class GameStore extends EventEmitter {
   stop() {
     clearInterval(this.interval);
     this.interval = null;
-    clearInterval(this.newTrafficInterval)
-    this.newTrafficInterval = null;
     this.traffic = [];
     this.started = false;
     this.emit('change');
