@@ -1,0 +1,82 @@
+
+.OperatorEditor {
+    
+  background-color: rgb(25, 72, 80); 
+  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.OperatorEditor {
+  background-color: rgb(25, 72, 80); 
+  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.OperatorEditor .warning-message {
+    color: red;
+}
+
+.OperatorEditor textarea.line-nums  {
+ background: url(http://i.imgur.com/2cOaJ.png);
+ background-attachment: local;
+ background-repeat: no-repeat;
+ padding-left: 35px;
+ padding-top: 10px;
+ border-color:#ccc;
+ line-height:16px;
+ white-space: nowrap;
+  overflow: auto;
+  overflow: auto;
+}
+
+.OperatorEditor .spinner {
+  animation:spin 4s linear infinite;
+}
+
+.OperatorEditor .edit-save-box {
+  height: 600px!important;
+  overflow-y: auto;
+}
+
+.OperatorEditor form.edit-save-box {
+  padding: 5px 10px 5px 5px;
+  border: 1px solid #1e606b;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.OperatorEditor form.edit-save-box p {
+  margin-bottom: 0;
+}
+
+.OperatorEditor form.edit-save-box .form-group {
+  padding-left: 15px;
+}
+
+.OperatorEditor form.edit-save-box > .form-group,
+.OperatorEditor form.edit-save-box > .form-group > fieldset > .form-group {
+  padding-left: 0;
+}
+
+.OperatorEditor #root__title {
+  display: none;
+}
+
+.OperatorEditor form.edit-save-box button[type=submit] {
+  display: none;
+}
+
+.OperatorEditor i.glyphicon { display: none; }
+.OperatorEditor .btn-add::after { content: 'Add'; }
+.OperatorEditor .array-item-move-up::after { content: 'Move Up'; }
+.OperatorEditor .array-item-move-down::after { content: 'Move Down'; }
+.OperatorEditor .array-item-remove::after { content: 'Remove'; }
+
+.OperatorEditor form.edit-save-box label, legend {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

@@ -1,24 +1,24 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://example.com/root.json",
   "type": "object",
-  "title": "The Root Schema",
+  "title": "Persistance",
   "required": [
     "games"
   ],
   "properties": {
     "games": {
-      "$id": "#/properties/games",
       "type": "object",
-      "title": "The Games Schema",
+      "title": "Games",
       "required": [],
-      "additionalProperties": {"$ref": "#/definitions/mapSave"}
+      "additionalProperties": {
+        "$ref": "#/definitions/mapSave"
+      }
     }
   },
   "definitions": {
     "mapSave": {
       "type": "object",
-      "title": "The Default - 9-9-2018 Schema",
+      "title": "Map",
       "required": [
         "traffic",
         "started",
@@ -38,13 +38,11 @@
       ],
       "properties": {
         "traffic": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic",
           "type": "array",
-          "title": "The Traffic Schema",
+          "title": "Traffic",
           "items": {
-            "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items",
             "type": "object",
-            "title": "The Items Schema",
+            "title": "Items",
             "required": [
               "tgtAltitude",
               "tgtDirection",
@@ -62,113 +60,105 @@
             ],
             "properties": {
               "tgtAltitude": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/tgtAltitude",
                 "type": "integer",
-                "title": "The Tgtaltitude Schema",
+                "title": "Tgtaltitude",
                 "default": 0,
                 "examples": [
                   17000
                 ]
               },
               "tgtDirection": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/tgtDirection",
                 "type": "integer",
-                "title": "The Tgtdirection Schema",
+                "title": "Tgtdirection",
                 "default": 0,
                 "examples": [
                   47
                 ]
               },
               "tgtSpeed": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/tgtSpeed",
                 "type": "integer",
-                "title": "The Tgtspeed Schema",
+                "title": "Tgtspeed",
                 "default": 0,
                 "examples": [
                   300
                 ]
               },
               "operatorId": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/operatorId",
                 "type": "integer",
-                "title": "The Operatorid Schema",
+                "title": "Operatorid",
                 "default": 0,
                 "examples": [
                   5
                 ]
               },
               "speed": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/speed",
                 "type": "integer",
-                "title": "The Speed Schema",
+                "title": "Speed",
                 "default": 0,
                 "examples": [
                   300
                 ]
               },
               "altitude": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/altitude",
                 "type": "integer",
-                "title": "The Altitude Schema",
+                "title": "Altitude",
                 "default": 0,
                 "examples": [
                   17000
                 ]
               },
               "heading": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/heading",
                 "type": "integer",
-                "title": "The Heading Schema",
+                "title": "Heading",
                 "default": 0,
                 "examples": [
                   47
                 ]
               },
               "x": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/x",
                 "type": "number",
-                "title": "The X Schema",
+                "title": "X",
                 "default": 0.0,
                 "examples": [
                   252.304
                 ]
               },
               "y": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/y",
                 "type": "number",
-                "title": "The Y Schema",
+                "title": "Y",
                 "default": 0.0,
                 "examples": [
                   2.148
                 ]
               },
               "flight": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/flight",
                 "type": "integer",
-                "title": "The Flight Schema",
+                "title": "Flight",
                 "default": 0,
                 "examples": [
                   665
                 ]
               },
               "path": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/path",
                 "type": "array",
-                "title": "The Path Schema"
+                "title": "Path",
+                "items": {
+                  "type": "string",
+                  "title": "Items",
+                  "default": ""
+                }
               },
               "typeId": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/typeId",
                 "type": "integer",
-                "title": "The Typeid Schema",
+                "title": "Typeid",
                 "default": 0,
                 "examples": [
                   16
                 ]
               },
               "routeType": {
-                "$id": "#/properties/games/properties/default - 9-9-2018/properties/traffic/items/properties/routeType",
                 "type": "integer",
-                "title": "The Routetype Schema",
+                "title": "Routetype",
                 "default": 0,
                 "examples": [
                   0
@@ -178,40 +168,35 @@
           }
         },
         "started": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/started",
           "type": "boolean",
-          "title": "The Started Schema",
+          "title": "Started",
           "default": false,
           "examples": [
             true
           ]
         },
         "width": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/width",
           "type": "integer",
-          "title": "The Width Schema",
+          "title": "Width",
           "default": 0,
           "examples": [
             1280
           ]
         },
         "height": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/height",
           "type": "integer",
-          "title": "The Height Schema",
+          "title": "Height",
           "default": 0,
           "examples": [
             720
           ]
         },
         "log": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/log",
           "type": "array",
-          "title": "The Log Schema",
+          "title": "Log",
           "items": {
-            "$id": "#/properties/games/properties/default - 9-9-2018/properties/log/items",
             "type": "string",
-            "title": "The Items Schema",
+            "title": "Items",
             "default": "",
             "examples": [
               "American 665: EHZM approach, American 665 at 170.",
@@ -231,13 +216,11 @@
           }
         },
         "selfLog": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/selfLog",
           "type": "array",
-          "title": "The Selflog Schema",
+          "title": "Selflog",
           "items": {
-            "$id": "#/properties/games/properties/default - 9-9-2018/properties/selfLog/items",
             "type": "string",
-            "title": "The Items Schema",
+            "title": "Items",
             "default": "",
             "examples": [
               "ATC: American 665, information Oscar is current, altimeter 30.96, maintain current heading.",
@@ -250,18 +233,16 @@
           }
         },
         "pathCounter": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/pathCounter",
           "type": "integer",
-          "title": "The Pathcounter Schema",
+          "title": "Pathcounter",
           "default": 0,
           "examples": [
             7
           ]
         },
         "mapName": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/mapName",
           "type": "string",
-          "title": "The Mapname Schema",
+          "title": "Mapname",
           "default": "",
           "examples": [
             "default"
@@ -269,63 +250,56 @@
           "pattern": "^(.*)$"
         },
         "arrivals": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/arrivals",
           "type": "integer",
-          "title": "The Arrivals Schema",
+          "title": "Arrivals",
           "default": 0,
           "examples": [
             0
           ]
         },
         "departures": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/departures",
           "type": "integer",
-          "title": "The Departures Schema",
+          "title": "Departures",
           "default": 0,
           "examples": [
             0
           ]
         },
         "enroutes": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/enroutes",
           "type": "integer",
-          "title": "The Enroutes Schema",
+          "title": "Enroutes",
           "default": 0,
           "examples": [
             0
           ]
         },
         "distanceVialations": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/distanceVialations",
           "type": "integer",
-          "title": "The Distancevialations Schema",
+          "title": "Distancevialations",
           "default": 0,
           "examples": [
             0
           ]
         },
         "winddir": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/winddir",
           "type": "integer",
-          "title": "The Winddir Schema",
+          "title": "Winddir",
           "default": 0,
           "examples": [
             340
           ]
         },
         "windspd": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/windspd",
           "type": "integer",
-          "title": "The Windspd Schema",
+          "title": "Windspd",
           "default": 0,
           "examples": [
             0
           ]
         },
         "unpermittedDepartures": {
-          "$id": "#/properties/games/properties/default - 9-9-2018/properties/unpermittedDepartures",
           "type": "integer",
-          "title": "The Unpermitteddepartures Schema",
+          "title": "Unpermitteddepartures",
           "default": 0,
           "examples": [
             0

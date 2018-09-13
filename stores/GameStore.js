@@ -5,7 +5,8 @@ import { loadMap, angleDistance, headingTo, rwyPos, idType, activeRwys } from '.
 import SettingsStore from './SettingsStore';
 import { routeTypes, airplanesById, operatorsById } from '../lib/airplane-library';
 import { loadState } from '../lib/persistance';
-import { natoAlphabet } from '../lib/communications';
+import communications, { natoAlphabet } from '../lib/communications';
+import { sendMessageWarning, sendMessageError } from '../components/GameMessages/GameMessages';
 
 class GameStore extends EventEmitter {
   constructor() {
@@ -26,6 +27,7 @@ class GameStore extends EventEmitter {
     this._remove = [];
     this._spawnPlaneCounter = 0;
     this.mapName = null;
+    this.disableTakoffsOnRwysSet = {};
 
     this.update = this.update.bind(this); // called within a setInterval so bind to this object and not the window object.
     this._newPlane = this._newPlane.bind(this); // called within a setInterval so bind to this object and not the window object.
@@ -42,6 +44,7 @@ class GameStore extends EventEmitter {
     this.unpermittedDepartures = 0;
     this.distanceVialations = 0;
     const map = this.map = loadMap(mapName);
+    this.id = mapName;
     this.winddir = Math.floor(Math.random() * 360);
     this.altimeter = (29 + Math.random() * 2).toFixed(2);
     this.atis = Math.floor(Math.random() * 26);
@@ -61,7 +64,7 @@ class GameStore extends EventEmitter {
     const state = loadState();
     const game = state.games[saveName];
     this.loadJson(game);
-    const map = this.map = loadMap(this.mapName);
+    const map = this.map = loadMap(game.id);
     this._setup(map);
   }
 
@@ -73,7 +76,7 @@ class GameStore extends EventEmitter {
     this.started = true;
     this.callsigns = {};
     this.callsignsPos = {};
-    this.mapName = map.name;
+    this.mapName = map.id;
 
     this._setupWaypoints(map);
 
@@ -90,11 +93,11 @@ class GameStore extends EventEmitter {
     }), { [map.airport.callsign]: { ref: map.airport, x: airportX, y: airportY } },
     ...map.airport.runways.map(ref => {
       const pos = rwyPos(map.airport, ref, this.width, this.height);
-      return { [ref.name1]: { ref, x: pos.x1, y: pos.y1 }, [ref.name2]: { ref, x: pos.x2, y: pos.y2 } }
+      return { [ref.name1]: { ref, x: pos.x1, y: pos.y1 }, [ref.name2]: { ref, x: pos.x2, y: pos.y2 } };
     }));
 
     if (this.interval) throw 'Already set interval';
-    this.interval = setInterval(this.update, config.updateInterval)
+    this.interval = setInterval(this.update, config.updateInterval);
     this.emit('change');
     this.emit('start');
   }
@@ -163,20 +166,28 @@ class GameStore extends EventEmitter {
     let y = side === 0 ? this.height : side === 2 ? 0 : Math.random() * this.height;
     let mx = this.width / 2;
     let my = this.height / 2;
-    let heading = Math.floor(headingTo(x, y, mx, my) - hdgVar * .5 + Math.random() * hdgVar) % 360
+    let heading = Math.floor(headingTo(x, y, mx, my) - hdgVar * .5 + Math.random() * hdgVar) % 360;
     this.traffic.push(Airplane.create(x, y, heading, routeTypes.INBOUND));
   }
 
   _newPlaneOutbound() {
-    const activeRunways = activeRwys(this.airport, this.winddir);
+    let activeRunways = activeRwys(this.airport, this.winddir);
+    let activeRunwaysAssigned = activeRunways.filter(rwy => !this.disableTakoffsOnRwysSet[rwy]);
+    // if the user has a prefered runway. Use that runway. If the user has al of the runways disabled choose one at random.
+    let couldNotFindAssignedRwy = activeRunwaysAssigned.length === 0;
+    if (activeRunwaysAssigned.length > 0) activeRunways = activeRunwaysAssigned;
+
     const item = activeRunways[Math.floor(Math.random() * activeRunways.length)];
     const rwy = this.callsignsPos[item];
     const hdg = rwy.ref.name1 === item ? rwy.ref.hdg1 : rwy.ref.hdg2;
     const outboundWaypoint = this.map.outboundWaypoints[Math.floor(Math.random() * this.map.outboundWaypoints.length)];
-    const airplane = Airplane.createOutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint)
+    const airplane = Airplane.createOutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint);
     this.traffic.push(airplane);
-
+    
     const callsign = operatorsById[airplane.operatorId].shortName + ' ' + airplane.flight;
+
+    if (couldNotFindAssignedRwy) sendMessageWarning(`No assigned takeoff runway, ${communications.getCallsign(airplane, true)} was ordered to taxi to RWY ${item}.`);
+
     // has atis
     const msg = this.airport.callsign + ' approach, with you for ' + item + '.';
     this.addLog(msg, callsign);
@@ -215,15 +226,19 @@ class GameStore extends EventEmitter {
       const model = airplanesById[airplane.typeId];
       let altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.descendSpeed * model.descendSpeed * s, airplane.tgtAltitude - airplane.altitude));
 
-      const exceeds250Multiplier = (airplane.speed - 250) * 0.1 + 5;
+      const exceeds250Multiplier = (airplane.speed - 250) * 0.01 + 5;
       if (airplane.altitude >= 10000 && airplane.tgtSpeed > 250 && airplane.tgtAltitude < 10000
-        && (altChange * exceeds250Multiplier / model.deAccelerationSpeed / config.deAccelerationSpeed + airplane.altitude) < 10000) {
+        && (altChange * exceeds250Multiplier + airplane.altitude) < 10000) {
         airplane.tgtSpeed = 250;
       }
 
       let tgtSpeed = (airplane.altitude < 10000 && airplane.tgtSpeed > 250) ? Math.min(250, airplane.tgtSpeed) : airplane.tgtSpeed;
       tgtSpeed = tgtSpeed || airplane.speed; // bug: tgtSpeed rarely becomes nan for undefined reasons
-      airplane.speed += Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
+      let spdChange = Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
+      
+      if (spdChange < 0 && altChange < 0) /* descelerating and descending */ altChange *= model.descendRatioWhileDecelerating;
+      
+      airplane.speed += spdChange;
 
       let tgtHeading;
       if (typeof airplane.tgtDirection === 'number') {
@@ -246,7 +261,6 @@ class GameStore extends EventEmitter {
               tgtHeading = rwyHdg + Math.min(45, Math.max(-45, Math.max(Math.abs(deg), 10/* weight */) * deg));
             } else if (airplane.altitude < 500 && Math.abs(rwyAirplaneHdgDiff) < 20) {
               //landed
-              console.log(airplane, 'succesfully landed');
               this.arrivals++;
               this._remove.push(airplane);
               continue;
@@ -270,6 +284,7 @@ class GameStore extends EventEmitter {
       }
       if (airplane.x < -3 || airplane.y < -3 || airplane.x > this.width + 3 || airplane.y > this.height + 3) {
         this.unpermittedDepartures++;
+        sendMessageError(`${communications.getCallsign(airplane, true)} wrongfully exited the map. It should have exited the map at ${airplane.outboundWaypoint || 'the airport'}.`);
         this._remove.push(airplane);
         continue;
       }
@@ -374,7 +389,7 @@ class GameStore extends EventEmitter {
   }
 }
 
-const persistanceProps = ['traffic', 'started', 'width', 'height', 'log', 'selfLog', 'pathCounter', 'mapName', 'arrivals', 'departures',
+const persistanceProps = ['traffic', 'started', 'width', 'height', 'log', 'selfLog', 'pathCounter', 'mapName', 'id', 'arrivals', 'departures',
   'enroutes', 'distanceVialations', 'mapName', 'winddir', 'windspd', 'unpermittedDepartures'];
 
 export default new GameStore();

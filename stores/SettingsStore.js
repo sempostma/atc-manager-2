@@ -1,5 +1,6 @@
 import { EventEmitter } from 'events';
 import Communications from '../lib/communications';
+import { loadState, saveState } from '../lib/persistance';
 
 class SettingsStore extends EventEmitter {
   constructor() {
@@ -22,7 +23,21 @@ class SettingsStore extends EventEmitter {
     this.newPlaneInterval = 100;
     this.startingInboundPlanes = 3;
     this.startingOutboundPlanes = 2;
+    this.radarFontsize = 14;
 
+    this.defaultSettings = JSON.parse(this.toJson());
+
+    const persistedSettings = loadState().settings;
+    if (persistedSettings) {
+      Object.keys(persistedSettings).forEach(key => {
+        if (!isNullOrUndefined(persistedSettings[key])) 
+          this[key] = persistedSettings[key];
+      });
+    }
+
+    this.addListener('change', () => {
+      this.persist();
+    })
 
     this.changePitch = this.changePitch.bind(this);
     this.changeRate = this.changeRate.bind(this);
@@ -31,11 +46,21 @@ class SettingsStore extends EventEmitter {
     Communications.synth.addEventListener('voiceschanged', this.handleVoicesChange);
   }
 
+  persist = () => {
+    const state = loadState();
+    const settings = JSON.parse(this.toJson());
+    Object.keys(settings).forEach(key => {
+      if (JSON.stringify(settings[key]) === JSON.stringify(this.defaultSettings[key])) delete settings[key];
+    });
+
+    state.settings = settings;
+    saveState(state);
+  }
+
   handleVoicesChange() {
     this.voices = Communications.synth.getVoices();
     if (Communications.voice === undefined) {
-      this.voice = this.voices[0];
-      Communications.voice = this.voice;
+      this.voice = Communications.voice = this.voices[0];
     }
   }
 
@@ -64,12 +89,13 @@ class SettingsStore extends EventEmitter {
 
   toJson = () => {
     return JSON.stringify(this,
-      ['speechsynthesis', 'speechrecognition', 'rate', 'voice', 'pitch', 'speed', 'distanceCircles', 'distanceCirclesDistance',
-        'distanceCirclesAmount', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 'sepVialationCircleColor',
-        'newPlaneInterval', 'startingInboundPlanes', 'startingOutboundPlanes', 'changePitch', 'changeRate', 'changeVoice',
-        'handleVoicesChange'], 4);
+      ['distanceCircles', 'distanceCirclesDistance',
+        'distanceCirclesAmount', 'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 'sepVialationCircleColor'], 4);
   }
 }
 
+const isNullOrUndefined = val => val === undefined && val === null;
+
 export default new SettingsStore();
+
 

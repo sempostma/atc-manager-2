@@ -2,3 +2,22 @@
 .Settings {
     
 }
+
+.ColorInput input[type="color"] {
+  float: right;
+  margin-bottom: 5px;
+}
+
+.ColorInput {
+  clear: both;
+}
+
+.SwitchInput label {
+  float: right;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.SwitchInput {
+  clear: both;
+}

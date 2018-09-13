@@ -1,12 +1,12 @@
 import { Component } from 'preact';
 import './Home.css';
 import SavedGamesOpen from '../../components/SavedGamesOpen/SavedGamesOpen';
-import { loadState } from '../../lib/persistance';
-import { mapn, mapNames } from '../../lib/map';
+import { mapNames } from '../../lib/map';
 import { Link, route } from 'preact-router';
 import GameStore from '../../stores/GameStore';
 import Settings from '../../components/Settings/Settings';
 import { router } from '../../index';
+import { upcase } from '../../lib/util';
 
 class Home extends Component {
   constructor(props) {
@@ -75,14 +75,36 @@ class Home extends Component {
           <Settings />
           <button onClick={this.handleStartClick}>Start</button>
         </div>
-        <div className="panel">
-          <Link href="/saves-editor">
+        <div className="panel" style={{padding: 3}}>
+          <Link href="/editor/save-editor">
             <div class="block-outer">
               <div class="block-inner">
                 Saves Editor
               </div>
             </div>
           </Link>
+          <Link href="/editor/airplane-editor">
+            <div class="block-outer">
+              <div class="block-inner">
+                Airplanes Editor
+              </div>
+            </div>
+          </Link>
+          <Link href="/editor/operator-editor">
+            <div class="block-outer">
+              <div class="block-inner">
+                Operator Editor
+              </div>
+            </div>
+          </Link>
+          <a target="_blank" href="https://www.reddit.com/r/ATCManager2">
+            <div class="block-outer">
+              <div class="block-inner">
+                Subreddit<br />
+                (external)
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     );
@@ -90,7 +112,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-const upcase = str => {
-  return str[0].toUpperCase() + str.slice(1);
-}

@@ -71,9 +71,7 @@
   display: block;
 }
 
-.home .range-slider .range-slider__range {
-  max-width: calc(100% - (73px));
-  width: 200px;
+.panel .block-outer {
+  border: 2px solid rgb(25, 72, 80);
 }
-
 

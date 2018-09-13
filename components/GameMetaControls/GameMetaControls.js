@@ -2,7 +2,8 @@ import { Component } from 'preact';
 import './GameMetaControls.css';
 import GameStore from '../../stores/GameStore';
 import { saveState, loadState } from '../../lib/persistance';
-import { FaPause, FaPlay, FaDesktop, FaSave, FaPlane } from 'react-icons/fa';
+import { FaPause, FaPlay, FaDesktop, FaSave, FaPlane } from 'react-icons/fa/index.mjs';
+import { sendMessageError } from '../GameMessages/GameMessages';
 
 
 class GameMetaControls extends Component {
@@ -55,7 +56,7 @@ class GameMetaControls extends Component {
     const state = loadState();
     let name = prompt('Name of your save?', `${GameStore.mapName} - ${new Date().toLocaleDateString()}`);
     if (name === null) return;
-    if (state.games[name]) return alert('Sorry this name already exists...');
+    if (state.games[name]) return sendMessageError('Sorry this name already exists...');
     state.games[name] = game;
     saveState(state);
   }

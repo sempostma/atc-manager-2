@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import './Airport.css';
 import GameStore from '../../stores/GameStore';
 import config from '../../lib/config';
 import SettingsStore from '../../stores/SettingsStore';
@@ -43,8 +42,8 @@ class Airport extends Component {
       <line className="ils-line ils-line-1" stroke-dasharray={SettingsStore.ilsDashInterval.join()} x1={x1} y1={-y1} x2={ilsx1} y2={-ilsy1} />
       <line className="ils-line ils-line-2" stroke-dasharray={SettingsStore.ilsDashInterval.join()} x1={x2} y1={-y2} x2={ilsx2} y2={-ilsy2} />
       <line className="rwy-line" x1={x1} y1={-y1} x2={x2} y2={-y2} />
-      <text x={x1} y={-y1}>{rwy.name1}</text>
-      <text x={x2} y={-y2}>{rwy.name2}</text>
+      <text className="rwy-name" x={x1 * rwy.labelSpread1} y={-y1 * rwy.labelSpread1 + 4}>{rwy.name1}</text>
+      <text className="rwy-name" x={x2 * rwy.labelSpread2} y={-y2 * rwy.labelSpread2 + 4}>{rwy.name2}</text>
     </g>
   }
 
@@ -66,7 +65,7 @@ class Airport extends Component {
     }
     
     return (
-      <g className="airport" transform={`translate(${x} ${y})`}>
+      <g className="Airport" transform={`translate(${x} ${y})`}>
         {distanceCirlces}
         <circle r="2" fill="#fff" />
         <g className="runways">

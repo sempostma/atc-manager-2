@@ -35,6 +35,12 @@
   transition: all 0.2s ease;
 }
 
+.traffic-stack-entry::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .traffic-stack-entry:hover, .traffic-stack-entry.traffic-active {
   transform: translateX(5px);
 }
@@ -55,6 +61,11 @@
     height: calc(100% - 360px);
     overflow: auto;
     overflow-x: hidden;
+}
+
+.traffic-stack::-webkit-scrollbar-thumb
+{
+  background-color: rgb(25, 72, 80);
 }
 
 span.down {
@@ -104,7 +115,7 @@ input.direct-to-input::placeholder {
   background: rgb(25, 72, 80);
   border: 5px solid #1e606b;
   padding: 10px;
-  max-height: 100vh;
+  max-height: 95vh;
   overflow-y: auto;
 }
 
@@ -142,6 +153,7 @@ input.direct-to-input::placeholder {
   max-height: 90vh;
   overflow-y: auto;
 }
+
 
 .atc-view .logs-container {
   height: 300px;
@@ -182,4 +194,38 @@ input.direct-to-input::placeholder {
   width: 49.9%; 
 }
 
+.airplane-traffic-stack-info-btn {
+  display: block;
+  float: right;
+  height: 20px;
+  width: 20px;
+  line-height: 2px;
+  text-align: center;
+  padding: 8px 12px 8px 5px;
+  margin: 2px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  border-radius: 100%;
+}
+
+.atc-view .airplane-info-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 600px;
+  max-width: 80%;
+  background: rgb(25, 72, 80);
+  border: 5px solid #1e606b;
+  padding: 10px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.atc-view .airplane-info-panel h5 {
+  margin-bottom: 0;
+}
+
+.atc-view .airplane-info-panel hr {
+  margin: 7px 0;
+}
 

@@ -1,11 +1,12 @@
 import { Component } from 'preact';
-import { history } from '../../index';
-import { route } from 'preact-router';
 import './SavesEditor.css';
-import { FaPaperPlane, FaSpinner } from 'react-icons/fa';
+import { FaPaperPlane, FaSpinner } from 'react-icons/fa/index.mjs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { saveAs } from 'file-saver';
 import { saveState, loadState } from '../../lib/persistance';
+import SchemaForm from 'react-jsonschema-form';
+import { sendMessageError, sendMessageInfo } from '../../components/GameMessages/GameMessages';
+const mapSaveSchema = require('../../schema/persistance.json').definitions.mapSave;
 
 class SavesEditor extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class SavesEditor extends Component {
       saves: loadState().games,
       editingObj: null,
       debouncing: false,
+      rawJSON: false,
     };
   }
 
@@ -51,7 +53,7 @@ class SavesEditor extends Component {
       this.setState(prevstate => {
         prevstate.warningMessage = null;
         prevstate.infoMessage = null,
-          prevstate.editingObj = obj;
+        prevstate.editingObj = obj;
         return prevstate;
       });
     }
@@ -65,7 +67,7 @@ class SavesEditor extends Component {
   }, 500);
 
   handleSaveClick = e => {
-    if (this.state.editingObj === null) return alert('Please submit valid a valid save file');
+    if (this.state.editingObj === null) return sendMessageError('Please submit valid a valid save file');
     const saves = this.state.saves;
     saves[this.state.saveName] = this.state.editingObj;
     this.setState({
@@ -74,7 +76,7 @@ class SavesEditor extends Component {
     let gamePersistance = loadState();
     gamePersistance.games = saves;
     saveState(gamePersistance);
-    alert('Saved file to local storage');
+    sendMessageInfo('Saved file to local storage');
   }
 
   handleCopy = () => {
@@ -86,44 +88,66 @@ class SavesEditor extends Component {
   handleSaveFileClick = () => {
     saveAs(new Blob([this.state.json], {
       type: 'application/json'
-    }), `savefile ${this.state.saveName.trim()}.json`)
+    }), `savefile ${this.state.saveName.trim()}.json`);
   }
 
   readFromFile = e => {
     var reader = new FileReader();
     const _this = this;
     reader.onload = function () {
-      
       _this.setState({
         json: reader.result
-      })
+      });
     };
     reader.readAsText(e.target.files[0]);
   }
 
+  handleRawJSONSwitchInput = e => {
+    this.setState({
+      rawJSON: e.target.checked,
+    });
+  }
+
+  handleEditingObjectChange = e => {
+    this.setState(prevstate => {
+      prevstate.editingObj = e.formData;
+      prevstate.saves[prevstate.saveName] = e.formData;
+      return prevstate;
+    });
+  }
+
   render() {
+    const save = this.state.saveName && this.state.saves[this.state.saveName] || null;
     return (
       <div className="SavesEditor">
         <div className="panel">
-          <h1>SavesEditor</h1>
+          <h1>Saves Editor</h1>
           <select onInput={this.handleInputChanged}>
             <option value="">Choose Save:</option>
             {Object.keys(this.state.saves).map((key, i) =>
               <option key={i} value={key} selected={this.state.saves[key] === this.state.save}>{key}</option>
             )}
           </select><br /><br />
-          <textarea onInput={this.handleJsonTextareaInput} className="line-nums" style="height: 300px!important;" value={this.state.json} />
+          <textarea onInput={this.handleJsonTextareaInput} className={`edit-save-box line-nums ${this.state.rawJSON || 'hidden'}`} value={this.state.json} />
+          <SchemaForm 
+            formData={save}
+            onChange={this.handleEditingObjectChange}
+            schema={mapSaveSchema} 
+            className={`edit-save-box ${this.state.rawJSON && 'hidden'}`} />
+          <span>Raw JSON</span>
+          <label class="switch">
+            <input type="checkbox" onInput={this.handleRawJSONSwitchInput} checked={this.state.rawJSON} />
+            <span class="slider"></span>
+          </label>
           <div className="warning-message">{this.state.warningMessage}&nbsp;</div>
           <div className="info-message">{this.state.infoMessage}&nbsp;</div>
-          <p>
-            <button onClick={this.handleSaveFileClick} disabled={this.state.debouncing || this.state.json === ''}>Save to File</button>
-            <input onChange={this.readFromFile} id="saveseditor" className="inputfile" type="file" accept=".json" disabled={this.state.saveName === ''} />
-            <label for="saveseditor">Open File</label>
-            <CopyToClipboard text={this.state.json}
-              onCopy={this.handleCopy}>
-              <button disabled={this.state.debouncing || this.state.json === ''}>Copy to Clipboard</button>
-            </CopyToClipboard>
-          </p>
+          <button onClick={this.handleSaveFileClick} disabled={this.state.debouncing || this.state.json === ''}>Save to File</button>
+          <input onChange={this.readFromFile} id="saveseditor" className="inputfile" type="file" accept=".json" disabled={this.state.saveName === ''} />
+          <label for="saveseditor">Open File</label>
+          <CopyToClipboard text={this.state.json}
+            onCopy={this.handleCopy}>
+            <button disabled={this.state.debouncing || this.state.json === ''}>Copy to Clipboard</button>
+          </CopyToClipboard>
           <button disabled={this.state.debouncing || this.state.editingObj === null} onClick={this.handleSaveClick}>{this.state.debouncing ? <FaSpinner className="spinner" /> : <FaPaperPlane />} Save</button>
         </div>
       </div >
@@ -146,4 +170,4 @@ function debounce(func, wait, immediate) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
-};
+}

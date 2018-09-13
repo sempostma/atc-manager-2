@@ -9,11 +9,13 @@ import SettingsStore from '../../stores/SettingsStore';
 import WayPoints from '../../components/WayPoints/WayPoints';
 import Airport from '../../components/Airport/Airport';
 import Donate from '../Donate/Donate';
-import { landableRwys, idType } from '../../lib/map';
+import { landableRwys, idType, activeRwys } from '../../lib/map';
 import BackgroundSvg from '../../components/BackgroundSvg/BackgroundSvg';
 import GameMetaControls from '../../components/GameMetaControls/GameMetaControls';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { FaInfo, FaCommentDots, FaCog, FaCompress, FaPlane, FaPaperPlane } from 'react-icons/fa';
+import { FaInfo, FaCommentDots, FaCog, FaCompress, FaPlane, FaPaperPlane } from 'react-icons/fa/index.mjs';
+import GitHubButton from 'react-github-button';
+
 class AtcView extends Component {
   constructor(props) {
     super();
@@ -25,6 +27,7 @@ class AtcView extends Component {
       logsExpanded: false,
       aboutExpanded: false,
       logsOnlySelf: false,
+      infoPanelTgt: null,
 
       cmd: {
         tgt: null,
@@ -75,16 +78,18 @@ class AtcView extends Component {
     if (!cmd.tgt) return;
     const delta = {};
     const model = airplanesById[cmd.tgt.typeId];
-    if (typeof cmd.heading === 'number') cmd.heading = (cmd.heading + 359) % 360 + 1;
-
-    const landableRwysArr = landableRwys(GameStore.airport, this.state.cmd.tgt, this.state.gameWidth, this.state.gameHeight)
-      .map(lr => lr.rev ? lr.rwy.name2 : lr.rwy.name1)
-    if (cmd.direction && GameStore.callsigns[cmd.direction] 
-      && (GameStore.callsignsPos[cmd.direction].ref.type !== idType.RWY || landableRwysArr.includes(cmd.direction))) {
+    if (typeof cmd.heading === 'number') {
+      cmd.heading = (cmd.heading + 359) % 360 + 1;
+    }
+    if (cmd.direction && GameStore.callsigns[cmd.direction] && cmd.directionOld === false) {
       if (cmd.direction !== cmd.tgt.tgtDirection) delta.tgtDirection = cmd.direction;
       cmd.directionOld = true;
+      cmd.heading = '';
     }
-    else if (typeof cmd.heading === 'number' && cmd.heading !== cmd.tgt.tgtDirection) delta.tgtDirection = cmd.heading;
+    else if (typeof cmd.heading === 'number' && cmd.heading !== cmd.tgt.tgtDirection) {
+      delta.tgtDirection = cmd.heading;
+      cmd.direction = '';
+    }
     if (typeof cmd.altitude === 'number' && cmd.altitude !== cmd.tgt.tgtAltitude) delta.tgtAltitude = cmd.altitude = Math.min(model.ceiling * 1000, Math.max(2000, cmd.altitude));
     if (cmd.speed && cmd.speed !== cmd.tgt.tgtSpeed) delta.tgtSpeed = cmd.speed = Math.min(model.topSpeed, Math.max(model.minSpeed, cmd.speed));
     if (cmd.takeoff && cmd.tgt.outboundRwy) delta.outboundRwy = undefined;
@@ -197,6 +202,18 @@ class AtcView extends Component {
     this.setState({ logsCopied: true });
   }
 
+  handleCloseAirplaneInfoPanel = e => {
+    this.setState({ infoPanelTgt: null });
+  }
+
+  handleTrafficStackInfoButtonClick = e => {
+    const index = e.srcElement.parentElement.getAttribute('data-index');
+    const airplane = this.state.traffic[index];
+    const model = airplanesById[airplane.typeId];
+
+    this.setState({ infoPanelTgt: { airplane, model } });
+  }
+
   renderTraffic = () => {
     return this.state.traffic.map((airplane, i) => {
       if (airplane.outboundRwy) return;
@@ -239,6 +256,7 @@ class AtcView extends Component {
         {operatorsById[airplane.operatorId].callsign}{airplane.flight} {spd} {alt} {model.shortName} {heading}°
         {airplane.outboundWaypoint ? `⇨${airplane.outboundWaypoint}` : null}
         {airplane.outboundRwy ? <span> RWY {airplane.outboundRwy}</span> : null}
+        <button onClick={this.handleTrafficStackInfoButtonClick} class="airplane-traffic-stack-info-btn">?</button>
       </div>
     });
   }
@@ -263,7 +281,7 @@ class AtcView extends Component {
       </div>
       <div>
         <span>Direct to </span>
-        <input className="direct-to-input" type="text" value={directToValue} placeholder={directToPlaceholder} 
+        <input className="direct-to-input" type="text" value={directToValue} placeholder={directToPlaceholder}
           list={this.dtcToDataListId} onInput={this.handleDirectToTgtChange} />
         <datalist id={this.dtcToDataListId}>
           {cmd.tgt.routeType === routeTypes.INBOUND ? landableRwysArr : null}
@@ -292,6 +310,11 @@ class AtcView extends Component {
     </div>
   }
 
+  handleTakeoffRunwayAssignInput = e => {
+    const rwyName = e.srcElement.getAttribute('data-rwy-name');
+    GameStore.disableTakoffsOnRwysSet[rwyName] = !GameStore.disableTakoffsOnRwysSet[rwyName];
+  }
+
   render() {
     const airplanes = this.renderTraffic();
     const trafficstack = this.renderTrafficStack();
@@ -301,13 +324,32 @@ class AtcView extends Component {
     const innerWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
     const innerHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
 
+    const activeRunways = GameStore.airport.rwyusage ? activeRwys(GameStore.airport, GameStore.winddir) : [];
+
+    const runwayUsage = rwy => {
+      return <div>
+        <div>{rwy.name1} {lpad('' + rwy.hdg1, '0', 3)}° {rwy.elevation1}FT {capitalize(rwy.surface)}/{rwy.length1}
+          FT {activeRunways.includes(rwy.name1) ? <span>- Departure runway <label class="switch">
+            <input type="checkbox" onInput={this.handleTakeoffRunwayAssignInput} data-rwy-name={rwy.name1}
+              checked={!GameStore.disableTakoffsOnRwysSet[rwy.name1]} />
+            <span class="slider"></span>
+          </label></span> : ''}</div>
+        <div>{rwy.name2} {lpad('' + rwy.hdg2, '0', 3)}° {rwy.elevation2}FT {capitalize(rwy.surface)}/{rwy.length2}
+          FT {activeRunways.includes(rwy.name2) ? <span>- Departure runway <label class="switch">
+            <input type="checkbox" onInput={this.handleTakeoffRunwayAssignInput} data-rwy-name={rwy.name2}
+              checked={!GameStore.disableTakoffsOnRwysSet[rwy.name2]} />
+            <span class="slider"></span>
+          </label></span> : ''}</div>
+      </div>
+    }
+
     return (
       <div className="atc-view">
         <svg xmlns="http://www.w3.org/2000/svg" className="atc-view-svg" width={innerWidth - 250} height={innerHeight}
-          onClick={this.handleSVGClick} viewBox="0 0 1280 720" style="background: #194850; overflow: visible">
+          onClick={this.handleSVGClick} viewBox="0 0 1280 720" style={`background: #194850; overflow: visible; font-size: ${SettingsStore.radarFontsize}px;`}>
           <style>{`
             text {
-              font: 14px 'Helvetica';
+              font: 1em 'Helvetica';
               fill: #fff;
             }
             .airplane circle {
@@ -348,6 +390,7 @@ class AtcView extends Component {
             .rwy-line {
               stroke: #fff;
               stroke-width: 3;
+              opacity: 0.7;
             }
             .ils-line {
               stroke: ${SettingsStore.ilsPathColor};
@@ -361,8 +404,11 @@ class AtcView extends Component {
               fill-opacity: 0.2;
               stroke: #f00;
             }
+            .rwy-name {
+              text-anchor: middle;
+            }
           `}</style>
-          <BackgroundSvg name={GameStore.mapName} />
+          <BackgroundSvg name={GameStore.id} />
           <WayPoints />
           <Airport />
           {airplanes}
@@ -394,10 +440,19 @@ class AtcView extends Component {
         </div>
 
         <div className={[this.state.aboutExpanded ? null : 'hidden', 'about-panel'].join(' ')}>
-          <div><span>Wind: {GameStore.winddir}° / {GameStore.windspd} kts</span></div>
+          <div>Airport: {GameStore.mapName} - {GameStore.airport.callsign}</div>
+          <div><span>Wind: {lpad('' + GameStore.winddir, '0', 3)}° / {GameStore.windspd} kts</span></div>
           <div><span>ATIS: {GameStore.getAtis()}</span></div>
           <div><span>Altimeter: {GameStore.altimeter}</span></div>
+          <div><span>Elevation: {GameStore.airport.elevation}</span></div>
           <br />
+          <div>Runways: </div>
+          {GameStore.airport.runways && GameStore.airport.runways.map(rwy => runwayUsage(rwy))}
+          <br />
+          <GitHubButton type="stargazers" namespace="LesterGallagher" repo="atc-manager-2" />&nbsp;
+          <GitHubButton type="watchers" namespace="LesterGallagher" repo="atc-manager-2" />&nbsp;
+          <a class="header-btn" href="https://www.paypal.me/esstudio" target="_blank"><span class="legend">support</span><span class="paypal">paypal</span></a>
+          <br /><br />
           Atc Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.
           Check out the <a href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US" target="_blank">ATC Manager 1 App</a>
           <Donate />
@@ -411,6 +466,8 @@ class AtcView extends Component {
           <div>Departures: {GameStore.departures}</div>
           <div>Arrivals: {GameStore.arrivals}</div>
           <div>Seperation violations: {GameStore.distanceVialations}</div>
+          <div>Unpermitted departures: {GameStore.unpermittedDepartures}</div>
+
           <div class="logs-container">
             <div class="logs-inner">
               {logs.slice(logs.length - 10, logs.length).map((x, i) => <div key={i}>{x}</div>)}
@@ -431,8 +488,34 @@ class AtcView extends Component {
           <h5>Settings</h5>
           <hr />
           <Settings />
+          <br />
           <button onClick={this.handleExpandSettingsButtonClick}><FaCompress /> Hide Options</button>
         </div>
+        {
+          this.state.infoPanelTgt !== null
+            ? <div className={'airplane-info-panel'}>
+              <h5>{Communications.getCallsign(this.state.infoPanelTgt.airplane)}</h5>
+              <hr />
+              <div>Airplane: {this.state.infoPanelTgt.model.name}</div>
+              <div>Traffic Type: {capitalize(routeTypes[this.state.infoPanelTgt.airplane.routeType])}</div>
+              <div>{this.state.infoPanelTgt.airplane.routeType === routeTypes.OUTBOUND && ('Departure runway: ' + this.state.infoPanelTgt.airplane.outboundRwy) || null}</div>
+              <div>Operators: {this.state.infoPanelTgt.model.operators.map(o => operatorsById[o].name).join(', ')}</div>
+              <br />
+              <div>Speed: {this.state.infoPanelTgt.airplane.speed}KTS</div>
+              <div>Altitude: {getAltFmtJSx(this.state.infoPanelTgt.airplane.altitude, 'span')}</div>
+              <div>heading: {lpad('' + this.state.infoPanelTgt.airplane.heading, '0', 3)}°</div>
+              <br />
+              <div>Ceiling: {getAltFmtJSx(this.state.infoPanelTgt.model.ceiling * 1000, 'span')}</div>
+              <div>Top speed: {this.state.infoPanelTgt.model.topSpeed}KTS</div>
+              <div>Landing speed: {this.state.infoPanelTgt.model.landingSpeed}KTS</div>
+              <div>Min speed: {this.state.infoPanelTgt.model.minSpeed}KTS</div>
+              <div>Min landing runway length: {this.state.infoPanelTgt.model.landingMinRunwayLength}FT</div>
+              <div>Min takeoff runway length: {this.state.infoPanelTgt.model.takeoffMinRunwayLength}FT</div>
+              <br />
+              <button onClick={this.handleCloseAirplaneInfoPanel}><FaCompress /> Hide Panel</button>
+            </div>
+            : null
+        }
       </div>
     );
   }
@@ -479,6 +562,14 @@ const getParent = (e, matcher) => {
     el = el.parentElement;
   }
   return null;
+}
+
+const capitalize = str => str.charAt(0).toUpperCase() + str.substr(1);
+
+const lpad = (str, padChar, length) => {
+  while (str.length < length)
+    str = padChar + str;
+  return str;
 }
 
 export default AtcView;

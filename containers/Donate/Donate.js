@@ -22,7 +22,7 @@ class Donate extends Component {
         <br /><br />
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin-bottom: 0;">
           <input type="hidden" name="business"
-            value="polyismstudio@gmail.com" />
+            value="thankyousomuchyouareamazing@esstudio.site" />
 
           <input type="hidden" name="cmd" value="_donations" />
           <input type="hidden" name="item_name" value="ATC Manager 2" />
@@ -38,8 +38,6 @@ class Donate extends Component {
             <select style="width: 300px;" name="amount">
               <option value="1.00">1.00 - Bugfixing</option>
               <option selected value="2.00">2.00 - Buy us a coffee</option>
-              <option value="50.00">50.00 - New airport</option>
-              <option value="250.00">250.00 - Custom Feature</option>
             </select>
           </div><div>
             <small>If you're preferred currency is not listed, please use "Give a custom amount"</small>

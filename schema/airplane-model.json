@@ -3,7 +3,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://example.com/root.json",
   "type": "object",
-  "title": "The Root Schema",
+  "title": "Root",
   "required": [
     "id",
     "ceiling",
@@ -23,7 +23,7 @@
     "id": {
       "$id": "#/properties/id",
       "type": "integer",
-      "title": "The Id Schema",
+      "title": "Id",
       "default": 0,
       "examples": [
         0
@@ -32,7 +32,7 @@
     "ceiling": {
       "$id": "#/properties/ceiling",
       "type": "integer",
-      "title": "The Ceiling Schema",
+      "title": "Ceiling",
       "default": 0,
       "examples": [
         37
@@ -41,7 +41,7 @@
     "name": {
       "$id": "#/properties/name",
       "type": "string",
-      "title": "The Name Schema",
+      "title": "Name",
       "default": "",
       "examples": [
         "Boeing 737"
@@ -51,7 +51,7 @@
     "shortName": {
       "$id": "#/properties/shortName",
       "type": "string",
-      "title": "The Shortname Schema",
+      "title": "Shortname",
       "default": "",
       "examples": [
         "B737"
@@ -61,7 +61,7 @@
     "topSpeed": {
       "$id": "#/properties/topSpeed",
       "type": "integer",
-      "title": "The Topspeed Schema",
+      "title": "Topspeed",
       "default": 0,
       "examples": [
         320
@@ -70,7 +70,7 @@
     "landingSpeed": {
       "$id": "#/properties/landingSpeed",
       "type": "integer",
-      "title": "The Landingspeed Schema",
+      "title": "Landingspeed",
       "default": 0,
       "examples": [
         140
@@ -79,7 +79,7 @@
     "climbSpeed": {
       "$id": "#/properties/climbSpeed",
       "type": "integer",
-      "title": "The Climbspeed Schema",
+      "title": "Climbspeed",
       "default": 0,
       "examples": [
         1
@@ -88,7 +88,7 @@
     "descendSpeed": {
       "$id": "#/properties/descendSpeed",
       "type": "integer",
-      "title": "The descendSpeed Schema",
+      "title": "descendSpeed",
       "default": 0,
       "examples": [
         1
@@ -97,7 +97,7 @@
     "accelerationSpeed": {
       "$id": "#/properties/accelerationSpeed",
       "type": "integer",
-      "title": "The Accelerationspeed Schema",
+      "title": "Accelerationspeed",
       "default": 0,
       "examples": [
         1
@@ -106,7 +106,7 @@
     "deAccelerationSpeed": {
       "$id": "#/properties/deAccelerationSpeed",
       "type": "integer",
-      "title": "The Deaccelerationspeed Schema",
+      "title": "Deaccelerationspeed",
       "default": 0,
       "examples": [
         1
@@ -115,7 +115,7 @@
     "minSpeed": {
       "$id": "#/properties/minSpeed",
       "type": "integer",
-      "title": "The Minspeed Schema",
+      "title": "Minspeed",
       "default": 0,
       "examples": [
         160
@@ -124,11 +124,11 @@
     "turningRate": {
       "$id": "#/properties/turningRate",
       "type": "array",
-      "title": "The Turningrate Schema",
+      "title": "Turningrate",
       "items": {
         "$id": "#/properties/turningRate/items",
         "type": "integer",
-        "title": "The Items Schema",
+        "title": "Items",
         "default": 0,
         "examples": [
           2,
@@ -140,11 +140,11 @@
     "operators": {
       "$id": "#/properties/operators",
       "type": "array",
-      "title": "The Operators Schema",
+      "title": "Operators",
       "items": {
         "$id": "#/properties/operators/items",
         "type": "integer",
-        "title": "The Items Schema",
+        "title": "Items",
         "default": 0,
         "examples": [
           0,

@@ -2,6 +2,7 @@ import { Component } from 'preact';
 import './Game.css';
 import AtcView from '../AtcView/AtcView';
 import GameStore from '../../stores/GameStore';
+import { GameMessages } from '../../components/GameMessages/GameMessages';
 
 class Game extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Game extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (GameStore.started) return;
     else GameStore.startMap(this.name);
   }

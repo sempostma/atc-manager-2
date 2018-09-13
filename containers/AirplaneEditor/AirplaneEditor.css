@@ -1,0 +1,82 @@
+
+.AirplaneEditor {
+    
+  background-color: rgb(25, 72, 80); 
+  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.AirplaneEditor {
+  background-color: rgb(25, 72, 80); 
+  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.AirplaneEditor .warning-message {
+    color: red;
+}
+
+.AirplaneEditor textarea.line-nums  {
+ background: url(http://i.imgur.com/2cOaJ.png);
+ background-attachment: local;
+ background-repeat: no-repeat;
+ padding-left: 35px;
+ padding-top: 10px;
+ border-color:#ccc;
+ line-height:16px;
+ white-space: nowrap;
+  overflow: auto;
+  overflow: auto;
+}
+
+.AirplaneEditor .spinner {
+  animation:spin 4s linear infinite;
+}
+
+.AirplaneEditor .edit-save-box {
+  height: 600px!important;
+  overflow-y: auto;
+}
+
+.AirplaneEditor form.edit-save-box {
+  padding: 5px 10px 5px 5px;
+  border: 1px solid #1e606b;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.AirplaneEditor form.edit-save-box p {
+  margin-bottom: 0;
+}
+
+.AirplaneEditor form.edit-save-box .form-group {
+  padding-left: 15px;
+}
+
+.AirplaneEditor form.edit-save-box > .form-group,
+.AirplaneEditor form.edit-save-box > .form-group > fieldset > .form-group {
+  padding-left: 0;
+}
+
+.AirplaneEditor #root__title {
+  display: none;
+}
+
+.AirplaneEditor form.edit-save-box button[type=submit] {
+  display: none;
+}
+
+.AirplaneEditor i.glyphicon { display: none; }
+.AirplaneEditor .btn-add::after { content: 'Add'; }
+.AirplaneEditor .array-item-move-up::after { content: 'Move Up'; }
+.AirplaneEditor .array-item-move-down::after { content: 'Move Down'; }
+.AirplaneEditor .array-item-remove::after { content: 'Remove'; }
+
+.AirplaneEditor form.edit-save-box label, legend {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
