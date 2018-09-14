@@ -73,6 +73,7 @@ class Home extends Component {
             )}
           </select>
           <Settings />
+          <br />
           <button onClick={this.handleStartClick}>Start</button>
         </div>
         <div className="panel" style={{padding: 3}}>

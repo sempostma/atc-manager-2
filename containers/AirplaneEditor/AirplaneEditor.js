@@ -94,7 +94,7 @@ class AirplaneEditor extends Component {
   handleSaveFileClick = () => {
     saveAs(new Blob([this.state.json], {
       type: 'application/json'
-    }), `savefile ${this.state.plane.name.trim()}.json`);
+    }), `Savefile ${this.state.plane.name.trim()}.json`);
   }
 
   readFromFile = e => {

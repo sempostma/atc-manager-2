@@ -154,6 +154,10 @@ input.direct-to-input::placeholder {
   overflow-y: auto;
 }
 
+.atc-view .about-panel li {
+  margin-bottom: 0;
+}
+
 
 .atc-view .logs-container {
   height: 300px;

@@ -95,7 +95,7 @@ class OperatorEditor extends Component {
   handleSaveFileClick = () => {
     saveAs(new Blob([this.state.json], {
       type: 'application/json'
-    }), `savefile ${this.state.operator.name.trim()}.json`);
+    }), `Savefile ${this.state.operator.name.trim()}.json`);
   }
 
   readFromFile = e => {

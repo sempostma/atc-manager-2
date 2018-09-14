@@ -12894,23 +12894,21 @@ function GameMetaControls__inherits(subClass, superClass) { if (typeof superClas
 
 
 
-var GameMetaControls__ref = Object(preact_min["h"])(FaDesktop, null);
-
-var GameMetaControls__ref2 = Object(preact_min["h"])(
+var GameMetaControls__ref = Object(preact_min["h"])(
   'span',
   null,
   Object(preact_min["h"])(FaPlay, null),
   ' Resume'
 );
 
-var GameMetaControls__ref3 = Object(preact_min["h"])(
+var GameMetaControls__ref2 = Object(preact_min["h"])(
   'span',
   null,
   Object(preact_min["h"])(FaPause, null),
   ' Pause'
 );
 
-var GameMetaControls__ref4 = Object(preact_min["h"])(FaSave, null);
+var GameMetaControls__ref3 = Object(preact_min["h"])(FaSave, null);
 
 var GameMetaControls_GameMetaControls_GameMetaControls = function (_Component) {
   GameMetaControls__inherits(GameMetaControls, _Component);
@@ -12920,15 +12918,31 @@ var GameMetaControls_GameMetaControls_GameMetaControls = function (_Component) {
 
     var _this = GameMetaControls__possibleConstructorReturn(this, _Component.call(this));
 
+    _this.handleGameStoreChange = function () {
+      _this.setState({
+        paused: stores_GameStore.paused,
+        started: stores_GameStore.started
+      });
+    };
+
+    _this.handlePauseResumeButtonClick = function () {
+      stores_GameStore[stores_GameStore.paused ? 'resume' : 'pause']();
+    };
+
+    _this.handleSaveButtonClick = function () {
+      var game = stores_GameStore.toJson();
+      var state = loadState();
+      var name = prompt('Name of your save?', stores_GameStore.mapName + ' - ' + new Date().toLocaleDateString());
+      if (name === null) return;
+      if (state.games[name]) return sendMessageError('Sorry this name already exists...');
+      state.games[name] = game;
+      saveState(state);
+    };
+
     _this.state = {
       paused: stores_GameStore.paused,
       started: stores_GameStore.started
     };
-
-    _this.handleGameStoreChange = _this.handleGameStoreChange.bind(_this);
-    _this.handlePauseResumeButtonClick = _this.handlePauseResumeButtonClick.bind(_this);
-    _this.handleScreenShotButtonClick = _this.handleScreenShotButtonClick.bind(_this);
-    _this.handleSaveButtonClick = _this.handleSaveButtonClick.bind(_this);
     return _this;
   }
 
@@ -12940,58 +12954,20 @@ var GameMetaControls_GameMetaControls_GameMetaControls = function (_Component) {
     stores_GameStore.removeListener('change', this.handleGameStoreChange);
   };
 
-  GameMetaControls.prototype.handleGameStoreChange = function handleGameStoreChange() {
-    this.setState({
-      paused: stores_GameStore.paused,
-      started: stores_GameStore.started
-    });
-  };
-
-  GameMetaControls.prototype.handlePauseResumeButtonClick = function handlePauseResumeButtonClick() {
-    stores_GameStore[stores_GameStore.paused ? 'resume' : 'pause']();
-  };
-
-  GameMetaControls.prototype.handleScreenShotButtonClick = function handleScreenShotButtonClick(e) {
-    if (!stores_GameStore.svgEl) return;
-    var el = stores_GameStore.svgEl.getElementsByTagName('svg')[0];
-    var source = '<?xml version="1.0" standalone="no"?>\n' + el.outerHTML;
-
-    // convert svg source to URI data scheme.
-    var url = "data:image/svg+xml;base64," + btoa(source);
-    e.target.setAttribute('href', url);
-    e.target.setAttribute('download', 'screenshot');
-  };
-
-  GameMetaControls.prototype.handleSaveButtonClick = function handleSaveButtonClick() {
-    var game = stores_GameStore.toJson();
-    var state = loadState();
-    var name = prompt('Name of your save?', stores_GameStore.mapName + ' - ' + new Date().toLocaleDateString());
-    if (name === null) return;
-    if (state.games[name]) return sendMessageError('Sorry this name already exists...');
-    state.games[name] = game;
-    saveState(state);
-  };
-
   GameMetaControls.prototype.render = function render() {
     var paused = this.state.paused;
     return Object(preact_min["h"])(
       'div',
       { className: 'gamemetacontrols' },
       Object(preact_min["h"])(
-        'a',
-        { title: 'Save Screenshot', href: '#', className: 'button w-100', onClick: this.handleScreenShotButtonClick },
-        GameMetaControls__ref,
-        ' Screenshot'
-      ),
-      Object(preact_min["h"])(
         'button',
         { className: 'w-50', onClick: this.handlePauseResumeButtonClick },
-        paused ? GameMetaControls__ref2 : GameMetaControls__ref3
+        paused ? GameMetaControls__ref : GameMetaControls__ref2
       ),
       Object(preact_min["h"])(
         'button',
         { className: 'w-50', onClick: this.handleSaveButtonClick },
-        GameMetaControls__ref4,
+        GameMetaControls__ref3,
         ' Save'
       )
     );
@@ -13009,6 +12985,10 @@ var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 var react_github_button_lib = __webpack_require__("WUqk");
 var react_github_button_lib_default = /*#__PURE__*/__webpack_require__.n(react_github_button_lib);
 
+// EXTERNAL MODULE: ./node_modules/file-saver/FileSaver.js
+var FileSaver = __webpack_require__("lDdF");
+var FileSaver_default = /*#__PURE__*/__webpack_require__.n(FileSaver);
+
 // CONCATENATED MODULE: ./containers/AtcView/AtcView.js
 var AtcView__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -13019,6 +12999,7 @@ function AtcView__classCallCheck(instance, Constructor) { if (!(instance instanc
 function AtcView__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function AtcView__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -13084,25 +13065,63 @@ var AtcView__ref14 = Object(preact_min["h"])(FaCog, null);
 
 var AtcView__ref15 = Object(preact_min["h"])(FaCommentDots, null);
 
-var AtcView__ref16 = Object(preact_min["h"])(FaInfo, null);
+var AtcView__ref16 = Object(preact_min["h"])(FaQuestion, null);
 
-var AtcView__ref17 = Object(preact_min["h"])(components_GameMetaControls_GameMetaControls, null);
+var AtcView__ref17 = Object(preact_min["h"])(FaInfo, null);
 
-var AtcView__ref18 = Object(preact_min["h"])('br', null);
+var AtcView__ref18 = Object(preact_min["h"])(components_GameMetaControls_GameMetaControls, null);
 
 var AtcView__ref19 = Object(preact_min["h"])(
+  'h5',
+  null,
+  'Settings'
+);
+
+var _ref20 = Object(preact_min["h"])('hr', null);
+
+var _ref21 = Object(preact_min["h"])(components_Settings_Settings, null);
+
+var _ref22 = Object(preact_min["h"])('br', null);
+
+var _ref23 = Object(preact_min["h"])(FaCompress, null);
+
+var _ref24 = Object(preact_min["h"])('hr', null);
+
+var _ref25 = Object(preact_min["h"])('br', null);
+
+var _ref26 = Object(preact_min["h"])('br', null);
+
+var _ref27 = Object(preact_min["h"])('br', null);
+
+var _ref28 = Object(preact_min["h"])(FaCompress, null);
+
+var _ref29 = Object(preact_min["h"])(
+  'button',
+  null,
+  'Copy logs'
+);
+
+var _ref30 = Object(preact_min["h"])(FaCompress, null);
+
+var _ref31 = Object(preact_min["h"])('br', null);
+
+var _ref32 = Object(preact_min["h"])(
   'div',
   null,
   'Runways: '
 );
 
-var _ref20 = Object(preact_min["h"])('br', null);
+var _ref33 = Object(preact_min["h"])('br', null);
 
-var _ref21 = Object(preact_min["h"])(react_github_button_lib_default.a, { type: 'stargazers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
+var _ref34 = Object(preact_min["h"])(FaDesktop, null);
 
-var _ref22 = Object(preact_min["h"])(react_github_button_lib_default.a, { type: 'watchers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
+var _ref35 = Object(preact_min["h"])(FaCompress, null);
 
-var _ref23 = Object(preact_min["h"])(
+var _ref36 = Object(preact_min["h"])(react_github_button_lib_default.a, { type: 'stargazers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
+
+var _ref37 = Object(preact_min["h"])(react_github_button_lib_default.a, { type: 'watchers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
+
+var _ref38 = Object(preact_min["h"])(
   'a',
   { 'class': 'header-btn', href: 'https://www.paypal.me/esstudio', target: '_blank' },
   Object(preact_min["h"])(
@@ -13117,27 +13136,293 @@ var _ref23 = Object(preact_min["h"])(
   )
 );
 
-var _ref24 = Object(preact_min["h"])('br', null);
+var _ref39 = Object(preact_min["h"])('br', null);
 
-var _ref25 = Object(preact_min["h"])('br', null);
+var _ref40 = Object(preact_min["h"])('br', null);
 
-var _ref26 = Object(preact_min["h"])(
+var _ref41 = Object(preact_min["h"])(
   'a',
   { href: 'https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US', target: '_blank' },
   'ATC Manager 1 App'
 );
 
-var _ref27 = Object(preact_min["h"])(containers_Donate_Donate, null);
+var _ref42 = Object(preact_min["h"])(containers_Donate_Donate, null);
 
-var _ref28 = Object(preact_min["h"])('br', null);
+var _ref43 = Object(preact_min["h"])('br', null);
 
-var _ref29 = Object(preact_min["h"])(
+var _ref44 = Object(preact_min["h"])(
+  'h5',
+  null,
+  'A Special thanks to...'
+);
+
+var _ref45 = Object(preact_min["h"])(
+  'b',
+  null,
+  'Donator(s) to the project: '
+);
+
+var _ref46 = Object(preact_min["h"])(
+  'ul',
+  null,
+  Object(preact_min["h"])(
+    'li',
+    null,
+    'Joshua Jeffery [',
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/KableKiB', target: '_blank' },
+      'KableKiB'
+    ),
+    ']'
+  )
+);
+
+var _ref47 = Object(preact_min["h"])(
+  'b',
+  null,
+  'Top Contributors:'
+);
+
+var _ref48 = Object(preact_min["h"])(
+  'ul',
+  null,
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/KableKiB', target: '_blank' },
+      'KableKiB'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/AWT-Colin', target: '_blank' },
+      'AWT-Colin'
+    )
+  )
+);
+
+var _ref49 = Object(preact_min["h"])(
+  'b',
+  null,
+  'Others that have contributed to the project, gave feedback or helped in any other way:'
+);
+
+var _ref50 = Object(preact_min["h"])(
+  'ul',
+  null,
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/KableKiB', target: '_blank' },
+      'KableKiB'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/chrstphd', target: '_blank' },
+      'chrstphd'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/wonderfulllama', target: '_blank' },
+      'wonderfulllama'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/jet86', target: '_blank' },
+      'jet86'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/Afirus', target: '_blank' },
+      'Afirus'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/xtesseract', target: '_blank' },
+      'xtesseract'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/FlightGearLego', target: '_blank' },
+      'FlightGearLego'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/PURRING_SILENCER', target: '_blank' },
+      'PURRING_SILENCER'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/wonderfulllama', target: '_blank' },
+      'wonderfulllama'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/ShadingVaz', target: '_blank' },
+      'ShadingVaz"'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/FlightGearLego', target: '_blank' },
+      'FlightGearLego'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/wonderfulllama', target: '_blank' },
+      'wonderfulllama'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/wichtel-goes-kerbal', target: '_blank' },
+      'wichtel-goes-kerbal'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/megaphoneCA', target: '_blank' },
+      'megaphoneCA'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/catullus48108', target: '_blank' },
+      'catullus48108'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/phil_57', target: '_blank' },
+      'phil_57'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/Syleril', target: '_blank' },
+      'Syleril'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/tbonge', target: '_blank' },
+      'tbonge'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/toasted-donut', target: '_blank' },
+      'toasted-donut'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/RoboRager', target: '_blank' },
+      'RoboRager'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/cplane97', target: '_blank' },
+      'cplane97'
+    )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { href: 'https://www.reddit.com/user/seungseung22', target: '_blank' },
+      'seungseung22'
+    )
+  )
+);
+
+var _ref51 = Object(preact_min["h"])(
   'a',
   { title: 'Contact', href: 'https://esstudio.site/contact/' },
   'Contact Me'
 );
 
-var _ref30 = Object(preact_min["h"])(
+var _ref52 = Object(preact_min["h"])(
   'div',
   null,
   'Icons made by ',
@@ -13160,39 +13445,7 @@ var _ref30 = Object(preact_min["h"])(
   )
 );
 
-var _ref31 = Object(preact_min["h"])(FaCompress, null);
-
-var _ref32 = Object(preact_min["h"])(
-  'button',
-  null,
-  'Copy logs'
-);
-
-var _ref33 = Object(preact_min["h"])(FaCompress, null);
-
-var _ref34 = Object(preact_min["h"])(
-  'h5',
-  null,
-  'Settings'
-);
-
-var _ref35 = Object(preact_min["h"])('hr', null);
-
-var _ref36 = Object(preact_min["h"])(components_Settings_Settings, null);
-
-var _ref37 = Object(preact_min["h"])('br', null);
-
-var _ref38 = Object(preact_min["h"])(FaCompress, null);
-
-var _ref39 = Object(preact_min["h"])('hr', null);
-
-var _ref40 = Object(preact_min["h"])('br', null);
-
-var _ref41 = Object(preact_min["h"])('br', null);
-
-var _ref42 = Object(preact_min["h"])('br', null);
-
-var _ref43 = Object(preact_min["h"])(FaCompress, null);
+var _ref53 = Object(preact_min["h"])(FaCompress, null);
 
 var AtcView_AtcView_AtcView = function (_Component) {
   AtcView__inherits(AtcView, _Component);
@@ -13363,6 +13616,16 @@ var AtcView_AtcView_AtcView = function (_Component) {
       var model = airplanesById[airplane.typeId];
 
       _this.setState({ infoPanelTgt: { airplane: airplane, model: model } });
+    };
+
+    _this.handleScreenShotButtonClick = function (e) {
+      if (!stores_GameStore.svgEl) return;
+      var el = stores_GameStore.svgEl.getElementsByTagName('svg')[0];
+      var source = '<?xml version="1.0" standalone="no"?>\n' + el.outerHTML;
+
+      Object(FileSaver["saveAs"])(new Blob([source], {
+        type: 'image/svg+xml'
+      }), 'Screenshot ' + stores_GameStore.map.name + '.svg');
     };
 
     _this.renderTraffic = function () {
@@ -13540,6 +13803,10 @@ var AtcView_AtcView_AtcView = function (_Component) {
       stores_GameStore.disableTakoffsOnRwysSet[rwyName] = !stores_GameStore.disableTakoffsOnRwysSet[rwyName];
     };
 
+    _this.handleInfoExpanded = function (e) {
+      _this.setState({ infoExpanded: !_this.state.infoExpanded });
+    };
+
     _this.state = {
       traffic: stores_GameStore.traffic,
       gameWidth: stores_GameStore.width,
@@ -13547,6 +13814,7 @@ var AtcView_AtcView_AtcView = function (_Component) {
       settingsExpanded: false,
       logsExpanded: false,
       aboutExpanded: false,
+      infoExpanded: false,
       logsOnlySelf: false,
       infoPanelTgt: null,
 
@@ -13688,105 +13956,151 @@ var AtcView_AtcView_AtcView = function (_Component) {
             { className: 'w-100', onClick: this.handleExpandSettingsButtonClick },
             AtcView__ref14,
             '\xA0',
-            this.state.settingsExpanded ? 'Hide Options' : 'Expand Options'
+            this.state.settingsExpanded ? 'Hide options' : 'Expand options'
           ),
           Object(preact_min["h"])(
             'button',
             { className: 'w-100', onClick: this.handleLogsExpanded },
             AtcView__ref15,
             '\xA0',
-            this.state.logsExpanded ? 'Hide Logs' : 'Expand Logs'
+            this.state.logsExpanded ? 'Hide logs' : 'Expand logs'
           ),
           Object(preact_min["h"])(
             'button',
             { className: 'w-100', onClick: this.handleAboutExpanded },
             AtcView__ref16,
             '\xA0',
-            this.state.aboutExpanded ? 'Hide Info' : 'Expand Info'
+            this.state.aboutExpanded ? 'Hide about' : 'Expand about'
           ),
-          AtcView__ref17
+          Object(preact_min["h"])(
+            'button',
+            { className: 'w-100', onClick: this.handleInfoExpanded },
+            AtcView__ref17,
+            '\xA0',
+            this.state.infoExpanded ? 'Hide info' : 'Expand info'
+          ),
+          AtcView__ref18
         )
       ),
       Object(preact_min["h"])(
         'div',
-        { className: [this.state.aboutExpanded ? null : 'hidden', 'about-panel'].join(' ') },
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Airport: ',
-          stores_GameStore.mapName,
-          ' - ',
-          stores_GameStore.airport.callsign
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          Object(preact_min["h"])(
-            'span',
-            null,
-            'Wind: ',
-            lpad('' + stores_GameStore.winddir, '0', 3),
-            '\xB0 / ',
-            stores_GameStore.windspd,
-            ' kts'
-          )
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          Object(preact_min["h"])(
-            'span',
-            null,
-            'ATIS: ',
-            stores_GameStore.getAtis()
-          )
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          Object(preact_min["h"])(
-            'span',
-            null,
-            'Altimeter: ',
-            stores_GameStore.altimeter
-          )
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          Object(preact_min["h"])(
-            'span',
-            null,
-            'Elevation: ',
-            stores_GameStore.airport.elevation
-          )
-        ),
-        AtcView__ref18,
+        { className: [this.state.settingsExpanded ? null : 'hidden', 'settings-panel'].join(' ') },
         AtcView__ref19,
-        stores_GameStore.airport.runways && stores_GameStore.airport.runways.map(function (rwy) {
-          return runwayUsage(rwy);
-        }),
         _ref20,
         _ref21,
-        '\xA0',
         _ref22,
-        '\xA0',
-        _ref23,
-        _ref24,
-        _ref25,
-        'Atc Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator. Check out the ',
-        _ref26,
-        _ref27,
-        _ref28,
-        _ref29,
-        _ref30,
         Object(preact_min["h"])(
           'button',
-          { onClick: this.handleAboutExpanded },
-          _ref31,
-          ' Hide Panel'
+          { onClick: this.handleExpandSettingsButtonClick },
+          _ref23,
+          ' Hide Options'
         )
       ),
+      this.state.infoPanelTgt !== null ? Object(preact_min["h"])(
+        'div',
+        { className: 'airplane-info-panel' },
+        Object(preact_min["h"])(
+          'h5',
+          null,
+          communications.getCallsign(this.state.infoPanelTgt.airplane)
+        ),
+        _ref24,
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Airplane: ',
+          this.state.infoPanelTgt.model.name
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Traffic Type: ',
+          capitalize(routeTypes[this.state.infoPanelTgt.airplane.routeType])
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          this.state.infoPanelTgt.airplane.routeType === routeTypes.OUTBOUND && 'Departure runway: ' + this.state.infoPanelTgt.airplane.outboundRwy || null
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Operators: ',
+          this.state.infoPanelTgt.model.operators.map(function (o) {
+            return operatorsById[o].name;
+          }).join(', ')
+        ),
+        _ref25,
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Speed: ',
+          this.state.infoPanelTgt.airplane.speed,
+          'KTS'
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Altitude: ',
+          AtcView_getAltFmtJSx(this.state.infoPanelTgt.airplane.altitude, 'span')
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'heading: ',
+          lpad('' + this.state.infoPanelTgt.airplane.heading, '0', 3),
+          '\xB0'
+        ),
+        _ref26,
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Ceiling: ',
+          AtcView_getAltFmtJSx(this.state.infoPanelTgt.model.ceiling * 1000, 'span')
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Top speed: ',
+          this.state.infoPanelTgt.model.topSpeed,
+          'KTS'
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Landing speed: ',
+          this.state.infoPanelTgt.model.landingSpeed,
+          'KTS'
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Min speed: ',
+          this.state.infoPanelTgt.model.minSpeed,
+          'KTS'
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Min landing runway length: ',
+          this.state.infoPanelTgt.model.landingMinRunwayLength,
+          'FT'
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Min takeoff runway length: ',
+          this.state.infoPanelTgt.model.takeoffMinRunwayLength,
+          'FT'
+        ),
+        _ref27,
+        Object(preact_min["h"])(
+          'button',
+          { onClick: this.handleCloseAirplaneInfoPanel },
+          _ref28,
+          ' Hide Panel'
+        )
+      ) : null,
       Object(preact_min["h"])(
         'div',
         { className: [this.state.logsExpanded ? null : 'hidden', 'logs-panel'].join(' ') },
@@ -13838,7 +14152,7 @@ var AtcView_AtcView_AtcView = function (_Component) {
           lib["CopyToClipboard"],
           { text: logs.join('\r\n'),
             onCopy: this.handleLogsCopied },
-          _ref32
+          _ref29
         ),
         Object(preact_min["h"])(
           'button',
@@ -13848,129 +14162,113 @@ var AtcView_AtcView_AtcView = function (_Component) {
         Object(preact_min["h"])(
           'button',
           { onClick: this.handleLogsExpanded },
-          _ref33,
+          _ref30,
           ' Hide Panel'
         )
       ),
       Object(preact_min["h"])(
         'div',
-        { className: [this.state.settingsExpanded ? null : 'hidden', 'settings-panel'].join(' ') },
-        _ref34,
-        _ref35,
-        _ref36,
-        _ref37,
+        { className: [this.state.infoExpanded ? null : 'hidden', 'about-panel'].join(' ') },
+        Object(preact_min["h"])(
+          'div',
+          null,
+          'Airport: ',
+          stores_GameStore.mapName,
+          ' - ',
+          stores_GameStore.airport.callsign
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          Object(preact_min["h"])(
+            'span',
+            null,
+            'Wind: ',
+            lpad('' + stores_GameStore.winddir, '0', 3),
+            '\xB0 / ',
+            stores_GameStore.windspd,
+            ' kts'
+          )
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          Object(preact_min["h"])(
+            'span',
+            null,
+            'ATIS: ',
+            stores_GameStore.getAtis()
+          )
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          Object(preact_min["h"])(
+            'span',
+            null,
+            'Altimeter: ',
+            stores_GameStore.altimeter
+          )
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          Object(preact_min["h"])(
+            'span',
+            null,
+            'Elevation: ',
+            stores_GameStore.airport.elevation
+          )
+        ),
+        _ref31,
+        _ref32,
+        stores_GameStore.airport.runways && stores_GameStore.airport.runways.map(function (rwy) {
+          return runwayUsage(rwy);
+        }),
+        _ref33,
         Object(preact_min["h"])(
           'button',
-          { onClick: this.handleExpandSettingsButtonClick },
-          _ref38,
-          ' Hide Options'
-        )
-      ),
-      this.state.infoPanelTgt !== null ? Object(preact_min["h"])(
-        'div',
-        { className: 'airplane-info-panel' },
-        Object(preact_min["h"])(
-          'h5',
-          null,
-          communications.getCallsign(this.state.infoPanelTgt.airplane)
+          { className: 'button', onClick: this.handleScreenShotButtonClick },
+          _ref34,
+          ' Save Radar as SVG'
         ),
-        _ref39,
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Airplane: ',
-          this.state.infoPanelTgt.model.name
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Traffic Type: ',
-          capitalize(routeTypes[this.state.infoPanelTgt.airplane.routeType])
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          this.state.infoPanelTgt.airplane.routeType === routeTypes.OUTBOUND && 'Departure runway: ' + this.state.infoPanelTgt.airplane.outboundRwy || null
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Operators: ',
-          this.state.infoPanelTgt.model.operators.map(function (o) {
-            return operatorsById[o].name;
-          }).join(', ')
-        ),
-        _ref40,
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Speed: ',
-          this.state.infoPanelTgt.airplane.speed,
-          'KTS'
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Altitude: ',
-          AtcView_getAltFmtJSx(this.state.infoPanelTgt.airplane.altitude, 'span')
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'heading: ',
-          lpad('' + this.state.infoPanelTgt.airplane.heading, '0', 3),
-          '\xB0'
-        ),
-        _ref41,
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Ceiling: ',
-          AtcView_getAltFmtJSx(this.state.infoPanelTgt.model.ceiling * 1000, 'span')
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Top speed: ',
-          this.state.infoPanelTgt.model.topSpeed,
-          'KTS'
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Landing speed: ',
-          this.state.infoPanelTgt.model.landingSpeed,
-          'KTS'
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Min speed: ',
-          this.state.infoPanelTgt.model.minSpeed,
-          'KTS'
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Min landing runway length: ',
-          this.state.infoPanelTgt.model.landingMinRunwayLength,
-          'FT'
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Min takeoff runway length: ',
-          this.state.infoPanelTgt.model.takeoffMinRunwayLength,
-          'FT'
-        ),
-        _ref42,
         Object(preact_min["h"])(
           'button',
-          { onClick: this.handleCloseAirplaneInfoPanel },
-          _ref43,
+          { onClick: this.handleInfoExpanded },
+          _ref35,
           ' Hide Panel'
         )
-      ) : null
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { className: [this.state.aboutExpanded ? null : 'hidden', 'about-panel'].join(' ') },
+        _ref36,
+        '\xA0',
+        _ref37,
+        '\xA0',
+        _ref38,
+        _ref39,
+        _ref40,
+        'ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator. Check out the ',
+        _ref41,
+        _ref42,
+        _ref43,
+        _ref44,
+        _ref45,
+        _ref46,
+        _ref47,
+        _ref48,
+        _ref49,
+        _ref50,
+        _ref51,
+        _ref52,
+        Object(preact_min["h"])(
+          'button',
+          { onClick: this.handleAboutExpanded },
+          _ref53,
+          ' Hide Panel'
+        )
+      )
     );
   };
 
@@ -14331,7 +14629,9 @@ var Home__ref4 = Object(preact_min["h"])(
 
 var Home__ref5 = Object(preact_min["h"])(components_Settings_Settings, null);
 
-var Home__ref6 = Object(preact_min["h"])(
+var Home__ref6 = Object(preact_min["h"])('br', null);
+
+var Home__ref7 = Object(preact_min["h"])(
   preact_router_es_Link,
   { href: '/editor/save-editor' },
   Object(preact_min["h"])(
@@ -14345,7 +14645,7 @@ var Home__ref6 = Object(preact_min["h"])(
   )
 );
 
-var Home__ref7 = Object(preact_min["h"])(
+var Home__ref8 = Object(preact_min["h"])(
   preact_router_es_Link,
   { href: '/editor/airplane-editor' },
   Object(preact_min["h"])(
@@ -14359,7 +14659,7 @@ var Home__ref7 = Object(preact_min["h"])(
   )
 );
 
-var Home__ref8 = Object(preact_min["h"])(
+var Home__ref9 = Object(preact_min["h"])(
   preact_router_es_Link,
   { href: '/editor/operator-editor' },
   Object(preact_min["h"])(
@@ -14373,7 +14673,7 @@ var Home__ref8 = Object(preact_min["h"])(
   )
 );
 
-var Home__ref9 = Object(preact_min["h"])(
+var Home__ref10 = Object(preact_min["h"])(
   'a',
   { target: '_blank', href: 'https://www.reddit.com/r/ATCManager2' },
   Object(preact_min["h"])(
@@ -14471,6 +14771,7 @@ var Home_Home_Home = function (_Component) {
           })
         ),
         Home__ref5,
+        Home__ref6,
         Object(preact_min["h"])(
           'button',
           { onClick: this.handleStartClick },
@@ -14480,10 +14781,10 @@ var Home_Home_Home = function (_Component) {
       Object(preact_min["h"])(
         'div',
         { className: 'panel', style: { padding: 3 } },
-        Home__ref6,
         Home__ref7,
         Home__ref8,
-        Home__ref9
+        Home__ref9,
+        Home__ref10
       )
     );
   };
@@ -14651,10 +14952,6 @@ var containers_NotFound_NotFound_NotFound = function (_Component) {
 // EXTERNAL MODULE: ./containers/AirplaneEditor/AirplaneEditor.css
 var AirplaneEditor_AirplaneEditor = __webpack_require__("MSAe");
 var AirplaneEditor_default = /*#__PURE__*/__webpack_require__.n(AirplaneEditor_AirplaneEditor);
-
-// EXTERNAL MODULE: ./node_modules/file-saver/FileSaver.js
-var FileSaver = __webpack_require__("lDdF");
-var FileSaver_default = /*#__PURE__*/__webpack_require__.n(FileSaver);
 
 // EXTERNAL MODULE: ./node_modules/react-jsonschema-form/lib/index.js
 var react_jsonschema_form_lib = __webpack_require__("Nrtq");
@@ -14835,7 +15132,7 @@ var AirplaneEditor_AirplaneEditor_AirplaneEditor = function (_Component) {
     _this2.handleSaveFileClick = function () {
       Object(FileSaver["saveAs"])(new Blob([_this2.state.json], {
         type: 'application/json'
-      }), 'savefile ' + _this2.state.plane.name.trim() + '.json');
+      }), 'Savefile ' + _this2.state.plane.name.trim() + '.json');
     };
 
     _this2.readFromFile = function (e) {
@@ -15182,7 +15479,7 @@ var SavesEditor_SavesEditor_SavesEditor = function (_Component) {
     _this2.handleSaveFileClick = function () {
       Object(FileSaver["saveAs"])(new Blob([_this2.state.json], {
         type: 'application/json'
-      }), 'savefile ' + _this2.state.saveName.trim() + '.json');
+      }), 'Savefile ' + _this2.state.saveName.trim() + '.json');
     };
 
     _this2.readFromFile = function (e) {
@@ -15501,7 +15798,7 @@ var OperatorEditor_OperatorEditor_OperatorEditor = function (_Component) {
     _this2.handleSaveFileClick = function () {
       Object(FileSaver["saveAs"])(new Blob([_this2.state.json], {
         type: 'application/json'
-      }), 'savefile ' + _this2.state.operator.name.trim() + '.json');
+      }), 'Savefile ' + _this2.state.operator.name.trim() + '.json');
     };
 
     _this2.readFromFile = function (e) {

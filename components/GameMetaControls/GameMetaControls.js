@@ -14,11 +14,6 @@ class GameMetaControls extends Component {
       paused: GameStore.paused,
       started: GameStore.started,
     };
-
-    this.handleGameStoreChange = this.handleGameStoreChange.bind(this);
-    this.handlePauseResumeButtonClick = this.handlePauseResumeButtonClick.bind(this);
-    this.handleScreenShotButtonClick = this.handleScreenShotButtonClick.bind(this);
-    this.handleSaveButtonClick = this.handleSaveButtonClick.bind(this);
   }
 
   componentWillMount() {
@@ -29,29 +24,18 @@ class GameMetaControls extends Component {
     GameStore.removeListener('change', this.handleGameStoreChange);
   }
 
-  handleGameStoreChange() {
+  handleGameStoreChange = () => {
     this.setState({
       paused: GameStore.paused,
       started: GameStore.started,
-    })
+    });
   }
 
-  handlePauseResumeButtonClick() {
+  handlePauseResumeButtonClick = () => {
     GameStore[GameStore.paused ? 'resume' : 'pause']();
   }
 
-  handleScreenShotButtonClick(e) {
-    if (!GameStore.svgEl) return;
-    let el = GameStore.svgEl.getElementsByTagName('svg')[0];
-    let source = '<?xml version="1.0" standalone="no"?>\n' + el.outerHTML;
-
-    // convert svg source to URI data scheme.
-    let url = "data:image/svg+xml;base64," + btoa(source);
-    e.target.setAttribute('href', url);
-    e.target.setAttribute('download', 'screenshot');
-  }
-
-  handleSaveButtonClick() {
+  handleSaveButtonClick = () => {
     const game = GameStore.toJson();
     const state = loadState();
     let name = prompt('Name of your save?', `${GameStore.mapName} - ${new Date().toLocaleDateString()}`);
@@ -65,7 +49,6 @@ class GameMetaControls extends Component {
     const paused = this.state.paused;
     return (
       <div className="gamemetacontrols">
-        <a title="Save Screenshot" href="#" className="button w-100" onClick={this.handleScreenShotButtonClick}><FaDesktop /> Screenshot</a>
         <button className="w-50" onClick={this.handlePauseResumeButtonClick}>{paused ? <span><FaPlay /> Resume</span> : <span><FaPause/> Pause</span>}</button>
         <button className="w-50" onClick={this.handleSaveButtonClick}><FaSave /> Save</button>
       </div>

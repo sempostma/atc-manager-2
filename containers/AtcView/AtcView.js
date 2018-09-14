@@ -13,8 +13,9 @@ import { landableRwys, idType, activeRwys } from '../../lib/map';
 import BackgroundSvg from '../../components/BackgroundSvg/BackgroundSvg';
 import GameMetaControls from '../../components/GameMetaControls/GameMetaControls';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { FaInfo, FaCommentDots, FaCog, FaCompress, FaPlane, FaPaperPlane } from 'react-icons/fa/index.mjs';
+import { FaInfo, FaCommentDots, FaCog, FaCompress, FaPlane, FaPaperPlane, FaDesktop, FaQuestion } from 'react-icons/fa/index.mjs';
 import GitHubButton from 'react-github-button';
+import { saveAs } from 'file-saver';
 
 class AtcView extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class AtcView extends Component {
       settingsExpanded: false,
       logsExpanded: false,
       aboutExpanded: false,
+      infoExpanded: false,
       logsOnlySelf: false,
       infoPanelTgt: null,
 
@@ -214,6 +216,16 @@ class AtcView extends Component {
     this.setState({ infoPanelTgt: { airplane, model } });
   }
 
+  handleScreenShotButtonClick = e => {
+    if (!GameStore.svgEl) return;
+    let el = GameStore.svgEl.getElementsByTagName('svg')[0];
+    let source = '<?xml version="1.0" standalone="no"?>\n' + el.outerHTML;
+
+    saveAs(new Blob([source], {
+      type: 'image/svg+xml'
+    }), `Screenshot ${GameStore.map.name}.svg`);
+  }
+
   renderTraffic = () => {
     return this.state.traffic.map((airplane, i) => {
       if (airplane.outboundRwy) return;
@@ -313,6 +325,10 @@ class AtcView extends Component {
   handleTakeoffRunwayAssignInput = e => {
     const rwyName = e.srcElement.getAttribute('data-rwy-name');
     GameStore.disableTakoffsOnRwysSet[rwyName] = !GameStore.disableTakoffsOnRwysSet[rwyName];
+  }
+
+  handleInfoExpanded = e => {
+    this.setState({ infoExpanded: !this.state.infoExpanded });
   }
 
   render() {
@@ -427,61 +443,19 @@ class AtcView extends Component {
           </div>
           <div className="atc-view-buttons">
             <button className="w-100" onClick={this.handleExpandSettingsButtonClick}><FaCog />&nbsp;
-              {this.state.settingsExpanded ? 'Hide Options' : 'Expand Options'}
+              {this.state.settingsExpanded ? 'Hide options' : 'Expand options'}
             </button>
             <button className="w-100" onClick={this.handleLogsExpanded}><FaCommentDots />&nbsp;
-              {this.state.logsExpanded ? 'Hide Logs' : 'Expand Logs'}
+              {this.state.logsExpanded ? 'Hide logs' : 'Expand logs'}
             </button>
-            <button className="w-100" onClick={this.handleAboutExpanded}><FaInfo />&nbsp;
-              {this.state.aboutExpanded ? 'Hide Info' : 'Expand Info'}
+            <button className="w-100" onClick={this.handleAboutExpanded}><FaQuestion />&nbsp;
+              {this.state.aboutExpanded ? 'Hide about' : 'Expand about'}
+            </button>
+            <button className="w-100" onClick={this.handleInfoExpanded}><FaInfo />&nbsp;
+              {this.state.infoExpanded ? 'Hide info' : 'Expand info'}
             </button>
             <GameMetaControls />
           </div>
-        </div>
-
-        <div className={[this.state.aboutExpanded ? null : 'hidden', 'about-panel'].join(' ')}>
-          <div>Airport: {GameStore.mapName} - {GameStore.airport.callsign}</div>
-          <div><span>Wind: {lpad('' + GameStore.winddir, '0', 3)}° / {GameStore.windspd} kts</span></div>
-          <div><span>ATIS: {GameStore.getAtis()}</span></div>
-          <div><span>Altimeter: {GameStore.altimeter}</span></div>
-          <div><span>Elevation: {GameStore.airport.elevation}</span></div>
-          <br />
-          <div>Runways: </div>
-          {GameStore.airport.runways && GameStore.airport.runways.map(rwy => runwayUsage(rwy))}
-          <br />
-          <GitHubButton type="stargazers" namespace="LesterGallagher" repo="atc-manager-2" />&nbsp;
-          <GitHubButton type="watchers" namespace="LesterGallagher" repo="atc-manager-2" />&nbsp;
-          <a class="header-btn" href="https://www.paypal.me/esstudio" target="_blank"><span class="legend">support</span><span class="paypal">paypal</span></a>
-          <br /><br />
-          Atc Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.
-          Check out the <a href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US" target="_blank">ATC Manager 1 App</a>
-          <Donate />
-          <br />
-          <a title="Contact" href="https://esstudio.site/contact/">Contact Me</a>
-          <div>Icons made by <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-          <button onClick={this.handleAboutExpanded}><FaCompress /> Hide Panel</button>
-        </div>
-
-        <div className={[this.state.logsExpanded ? null : 'hidden', 'logs-panel'].join(' ')}>
-          <div>Departures: {GameStore.departures}</div>
-          <div>Arrivals: {GameStore.arrivals}</div>
-          <div>Seperation violations: {GameStore.distanceVialations}</div>
-          <div>Unpermitted departures: {GameStore.unpermittedDepartures}</div>
-
-          <div class="logs-container">
-            <div class="logs-inner">
-              {logs.slice(logs.length - 10, logs.length).map((x, i) => <div key={i}>{x}</div>)}
-            </div>
-          </div>
-          <div style={{ color: '#19242e' }}>{this.state.logsCopied ? 'Copied.' : '\u00a0'}</div>
-          <CopyToClipboard text={logs.join('\r\n')}
-            onCopy={this.handleLogsCopied}>
-            <button>Copy logs</button>
-          </CopyToClipboard>
-          <button onClick={this.handleOnlySelfButton}>{this.state.logsOnlySelf
-            ? 'Show all'
-            : 'Only me'}</button>
-          <button onClick={this.handleLogsExpanded}><FaCompress /> Hide Panel</button>
         </div>
 
         <div className={[this.state.settingsExpanded ? null : 'hidden', 'settings-panel'].join(' ')}>
@@ -491,6 +465,7 @@ class AtcView extends Component {
           <br />
           <button onClick={this.handleExpandSettingsButtonClick}><FaCompress /> Hide Options</button>
         </div>
+
         {
           this.state.infoPanelTgt !== null
             ? <div className={'airplane-info-panel'}>
@@ -516,7 +491,94 @@ class AtcView extends Component {
             </div>
             : null
         }
-      </div>
+
+        <div className={[this.state.logsExpanded ? null : 'hidden', 'logs-panel'].join(' ')}>
+          <div>Departures: {GameStore.departures}</div>
+          <div>Arrivals: {GameStore.arrivals}</div>
+          <div>Seperation violations: {GameStore.distanceVialations}</div>
+          <div>Unpermitted departures: {GameStore.unpermittedDepartures}</div>
+
+          <div class="logs-container">
+            <div class="logs-inner">
+              {logs.slice(logs.length - 10, logs.length).map((x, i) => <div key={i}>{x}</div>)}
+            </div>
+          </div>
+          <div style={{ color: '#19242e' }}>{this.state.logsCopied ? 'Copied.' : '\u00a0'}</div>
+          <CopyToClipboard text={logs.join('\r\n')}
+            onCopy={this.handleLogsCopied}>
+            <button>Copy logs</button>
+          </CopyToClipboard>
+          <button onClick={this.handleOnlySelfButton}>{this.state.logsOnlySelf
+            ? 'Show all'
+            : 'Only me'}</button>
+          <button onClick={this.handleLogsExpanded}><FaCompress /> Hide Panel</button>
+        </div>
+
+        <div className={[this.state.infoExpanded ? null : 'hidden', 'about-panel'].join(' ')}>
+          <div>Airport: {GameStore.mapName} - {GameStore.airport.callsign}</div>
+          <div><span>Wind: {lpad('' + GameStore.winddir, '0', 3)}° / {GameStore.windspd} kts</span></div>
+          <div><span>ATIS: {GameStore.getAtis()}</span></div>
+          <div><span>Altimeter: {GameStore.altimeter}</span></div>
+          <div><span>Elevation: {GameStore.airport.elevation}</span></div>
+          <br />
+          <div>Runways: </div>
+          {GameStore.airport.runways && GameStore.airport.runways.map(rwy => runwayUsage(rwy))}
+          <br />
+          <button className="button" onClick={this.handleScreenShotButtonClick}><FaDesktop /> Save Radar as SVG</button>
+          <button onClick={this.handleInfoExpanded}><FaCompress /> Hide Panel</button>
+        </div>
+
+        <div className={[this.state.aboutExpanded ? null : 'hidden', 'about-panel'].join(' ')}>
+          <GitHubButton type="stargazers" namespace="LesterGallagher" repo="atc-manager-2" />&nbsp;
+          <GitHubButton type="watchers" namespace="LesterGallagher" repo="atc-manager-2" />&nbsp;
+          <a class="header-btn" href="https://www.paypal.me/esstudio" target="_blank"><span class="legend">support</span><span class="paypal">paypal</span></a>
+          <br /><br />
+          ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.
+          Check out the <a href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US" target="_blank">ATC Manager 1 App</a>
+          <Donate />
+          <br />
+          <h5>A Special thanks to...</h5>
+          <b>Donator(s) to the project: </b>
+          <ul>
+            <li>Joshua Jeffery [<a href="https://www.reddit.com/user/KableKiB" target="_blank">KableKiB</a>]</li>
+          </ul>
+          <b>Top Contributors:</b>
+          <ul>
+            <li><a href="https://www.reddit.com/user/KableKiB" target="_blank">KableKiB</a></li>
+            <li><a href="https://www.reddit.com/user/AWT-Colin" target="_blank">AWT-Colin</a></li>
+          </ul>
+          <b>Others that have contributed to the project, gave feedback or helped in any other way:</b>
+          <ul>
+            <li><a href="https://www.reddit.com/user/KableKiB" target="_blank">KableKiB</a></li>
+            <li><a href="https://www.reddit.com/user/chrstphd" target="_blank">chrstphd</a></li>
+            <li><a href="https://www.reddit.com/user/wonderfulllama" target="_blank">wonderfulllama</a></li>
+            <li><a href="https://www.reddit.com/user/jet86" target="_blank">jet86</a></li>
+            <li><a href="https://www.reddit.com/user/Afirus" target="_blank">Afirus</a></li>
+            <li><a href="https://www.reddit.com/user/xtesseract" target="_blank">xtesseract</a></li>
+            <li><a href="https://www.reddit.com/user/FlightGearLego" target="_blank">FlightGearLego</a></li>
+            <li><a href="https://www.reddit.com/user/PURRING_SILENCER" target="_blank">PURRING_SILENCER</a></li>
+            <li><a href="https://www.reddit.com/user/wonderfulllama" target="_blank">wonderfulllama</a></li>
+            <li><a href="https://www.reddit.com/user/ShadingVaz" target="_blank">ShadingVaz"</a></li>
+            <li><a href="https://www.reddit.com/user/FlightGearLego" target="_blank">FlightGearLego</a></li>
+            <li><a href="https://www.reddit.com/user/wonderfulllama" target="_blank">wonderfulllama</a></li>
+            <li><a href="https://www.reddit.com/user/wichtel-goes-kerbal" target="_blank">wichtel-goes-kerbal</a></li>
+            <li><a href="https://www.reddit.com/user/megaphoneCA" target="_blank">megaphoneCA</a></li>
+            <li><a href="https://www.reddit.com/user/catullus48108" target="_blank">catullus48108</a></li>
+            <li><a href="https://www.reddit.com/user/phil_57" target="_blank">phil_57</a></li>
+            <li><a href="https://www.reddit.com/user/Syleril" target="_blank">Syleril</a></li>
+            <li><a href="https://www.reddit.com/user/tbonge" target="_blank">tbonge</a></li>
+            <li><a href="https://www.reddit.com/user/toasted-donut" target="_blank">toasted-donut</a></li>
+            <li><a href="https://www.reddit.com/user/RoboRager" target="_blank">RoboRager</a></li>
+            <li><a href="https://www.reddit.com/user/cplane97" target="_blank">cplane97</a></li>
+            <li><a href="https://www.reddit.com/user/seungseung22" target="_blank">seungseung22</a></li>
+          </ul>
+
+          <a title="Contact" href="https://esstudio.site/contact/">Contact Me</a>
+          <div>Icons made by <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+          <button onClick={this.handleAboutExpanded}><FaCompress /> Hide Panel</button>
+        </div>
+
+      </div >
     );
   }
 }

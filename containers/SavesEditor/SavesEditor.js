@@ -88,7 +88,7 @@ class SavesEditor extends Component {
   handleSaveFileClick = () => {
     saveAs(new Blob([this.state.json], {
       type: 'application/json'
-    }), `savefile ${this.state.saveName.trim()}.json`);
+    }), `Savefile ${this.state.saveName.trim()}.json`);
   }
 
   readFromFile = e => {
