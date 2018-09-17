@@ -33,7 +33,7 @@ class WayPoints extends Component {
       return <g className="waypoint" transform={`translate(${waypoint.x} ${GameStore.height - waypoint.y})`}>
         <circle r="2" />
         <text x="4">{w}</text>
-      </g>
+      </g>;
     });
 
     return (

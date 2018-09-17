@@ -44,7 +44,7 @@ class Airport extends Component {
       <line className="rwy-line" x1={x1} y1={-y1} x2={x2} y2={-y2} />
       <text className="rwy-name" x={x1 * rwy.labelSpread1} y={-y1 * rwy.labelSpread1 + 4}>{rwy.name1}</text>
       <text className="rwy-name" x={x2 * rwy.labelSpread2} y={-y2 * rwy.labelSpread2 + 4}>{rwy.name2}</text>
-    </g>
+    </g>;
   }
 
   render() {
@@ -60,7 +60,7 @@ class Airport extends Component {
       distanceCirlces = new Array(SettingsStore.distanceCirclesAmount);
       for(let i = 0; i < distanceCirlces.length; i++) {
         distanceCirlces[i] = <circle key={i} r={(i+1) * SettingsStore.distanceCirclesDistance} 
-          fill="none" stroke={SettingsStore.distanceCircleColor} />
+          fill="none" stroke={SettingsStore.distanceCircleColor} />;
       }
     }
     

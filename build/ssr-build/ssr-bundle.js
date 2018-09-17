@@ -7842,6 +7842,12 @@ var defaultOperators = [{
   callsign: 'MSR',
   shortName: 'Egyptair',
   color: '#00265d'
+}, {
+  id: 24,
+  name: 'Cathay Dragon',
+  callsign: 'HDA',
+  shortName: 'Dragon',
+  color: '#950714'
 }];
 
 var airplanesArr = [];
@@ -13168,13 +13174,11 @@ var _ref46 = Object(preact_min["h"])(
   Object(preact_min["h"])(
     'li',
     null,
-    'Joshua Jeffery [',
     Object(preact_min["h"])(
       'a',
       { href: 'https://www.reddit.com/user/KableKiB', target: '_blank' },
       'KableKiB'
-    ),
-    ']'
+    )
   )
 );
 

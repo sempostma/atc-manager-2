@@ -540,7 +540,7 @@ class AtcView extends Component {
           <h5>A Special thanks to...</h5>
           <b>Donator(s) to the project: </b>
           <ul>
-            <li>Joshua Jeffery [<a href="https://www.reddit.com/user/KableKiB" target="_blank">KableKiB</a>]</li>
+            <li><a href="https://www.reddit.com/user/KableKiB" target="_blank">KableKiB</a></li>
           </ul>
           <b>Top Contributors:</b>
           <ul>
