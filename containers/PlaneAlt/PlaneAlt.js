@@ -11,11 +11,11 @@ const PlaneAlt = ({ airplane, tagName }) => {
   const showTgt = Math.abs(airplane.tgtAltitude - airplane.altitude) > 100 && airplane.altitude && !isLanding;
   const tgt = showTgt
     && <TagName className={airplane.tgtAltitude > airplane.altitude ? 'up' : 'down'}>
-      ⇧<AltFmt tgtAltitude={airplane.tgtAltitude} tagName={TagName} />
+      {airplane.tgtAltitude > airplane.altitude ? '⇧' : '⇩'}<AltFmt altitude={airplane.tgtAltitude} tagName={tagName} />
     </TagName>
     || null;
 
-  return <TagName><AltFmt altitude={airplane.altitude} tagName={TagName} />{ tgt }</TagName>;
+  return <TagName><AltFmt altitude={airplane.altitude} tagName={tagName} />{ tgt }</TagName>;
 };
 
 export default PlaneAlt;

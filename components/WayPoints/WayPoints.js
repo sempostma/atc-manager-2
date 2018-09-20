@@ -1,6 +1,7 @@
 import { Component } from 'preact';
 import './WayPoints.css';
 import GameStore from '../../stores/GameStore';
+import config from '../../lib/config';
 
 class WayPoints extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class WayPoints extends Component {
   render() {
     const waypointsJsx = Object.keys(this.state.waypoints).map(w => {
       const waypoint = this.state.waypoints[w];
-      return <g className="waypoint" transform={`translate(${waypoint.x} ${GameStore.height - waypoint.y})`}>
+      return <g className="waypoint" transform={`translate(${waypoint.x} ${config.height - waypoint.y})`}>
         <circle r="2" />
         <text x="4">{w}</text>
       </g>;

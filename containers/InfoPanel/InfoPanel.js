@@ -1,8 +1,7 @@
 import { Component } from 'preact';
 import GameStore from '../../stores/GameStore';
 import { FaCompress, FaDesktop } from 'react-icons/fa/index.mjs';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { landableRwys, idType, activeRwys } from '../../lib/map';
+import { activeRwys } from '../../lib/map';
 import { upcase, lpad } from '../../lib/util';
 import './InfoPanel.css';
 import { saveAs } from 'file-saver';
@@ -12,22 +11,17 @@ class InfoPanel extends Component {
   constructor(props) {
     super();
 
-    this.state = {
-    };
-
   }
 
   componentWillMount() {
-    GameStore.on('change', this.handleGameStoreChange);
+    GameStore.on('change', this.reRender);
   }
 
   componentWillUnmount() {
-    GameStore.removeListener('change', this.handleGameStoreChange);
+    GameStore.removeListener('change', this.reRender);
   }
 
-  handleGameStoreChange = () => {
-    this.setState({});
-  }
+  reRender = () => this.setState({})
 
   handleTakeoffRunwayAssignInput = e => {
     const rwyName = e.srcElement.getAttribute('data-rwy-name');

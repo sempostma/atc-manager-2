@@ -9,6 +9,7 @@ import { EventEmitter } from 'events';
 import NotFound from 'async!./containers/NotFound/NotFound';
 import EditorsRoot from 'async!./containers/EditorsRoot/EditorsRoot';
 import { GameMessages } from './components/GameMessages/GameMessages';
+import AptDat from 'async!./containers/AptDat/AptDat';
 
 if (typeof window !== 'undefined') {
   window.onbeforeunload = function () {
@@ -31,6 +32,7 @@ export default class App extends Component {
           <Home path="/" />
           <Game path="/game" />
           <EditorsRoot path="/editor/:editorroute" />
+          <AptDat path="/apt-dat" />
           <NotFound default />
         </Router>
         <GameMessages />

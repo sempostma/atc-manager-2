@@ -20,12 +20,14 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    router.on('change', () => this.setState({}));
+    router.on('change', this.reRender);
   }
 
   componentWillUnmount() {
-
+    router.removeListener('change', this.reRender);
   }
+
+  reRender = () => this.setState({});
 
   handleMapSelectionChange(e) {
     this.setState({ mapname: e.target.value });

@@ -44,7 +44,7 @@ class RadarTraffic extends Component {
     const textTranslate = `translate(${textLineX}, ${textTransformY + textLineY})`;
 
     return <g className={`airplane ${routeTypes[airplane.routeType]} ${this.props.cmd.tgt === airplane ? 'airplane-active' : 'airplane-inactive'}`}
-      data-index={this.props.key} transform={`translate(${x}, ${y})`} data-heading={airplane.heading}>
+      data-index={this.props.index} transform={`translate(${x}, ${y})`} data-heading={airplane.heading}>
       {violatingSep ? <circle r={config.threeMileRuleDistance} className="sep" /> : null}
       <circle cx="0" cy="0" r="2" stroke-width="0" />
       <line x1="0" y1="0" x2={ltx} y2={-lty} />

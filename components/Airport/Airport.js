@@ -51,8 +51,8 @@ class Airport extends Component {
     const airport = this.state.airport;
     if (!airport || !airport.runways) return null; 
 
-    const x = GameStore.width / 2 + airport.x;
-    const y = GameStore.height / 2 + airport.y;
+    const x = config.width / 2 + airport.x;
+    const y = config.height / 2 + airport.y;
 
     const airportJsx = airport.runways.map(rwy => this.renderRwy(rwy));
     let distanceCirlces = null;

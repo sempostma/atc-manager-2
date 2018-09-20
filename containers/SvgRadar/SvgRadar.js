@@ -30,14 +30,14 @@ class SvgRadar extends Component {
 
   render() {
     const airplanes = GameStore.traffic.map((airplane, i) => 
-      <RadarTraffic key={i} airplane={airplane} cmd={this.props.cmd} />);
+      <RadarTraffic key={i} index={i} airplane={airplane} cmd={this.props.cmd} />);
 
     const innerWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
     const innerHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
 
     return (
       <svg xmlns="http://www.w3.org/2000/svg" className="atc-view-svg" width={innerWidth - 250} height={innerHeight}
-        onClick={this.handleSVGClick} viewBox="0 0 1280 720" style={`background: #194850; overflow: visible; font-size: ${SettingsStore.radarFontsize}px;`}>
+        onClick={this.props.onClick} viewBox="0 0 1280 720" style={`background: #194850; overflow: visible; font-size: ${SettingsStore.radarFontsize}px;`}>
         <style>{getStyle()}</style>
         <BackgroundSvg name={GameStore.id} />
         <WayPoints />

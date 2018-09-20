@@ -1,9 +1,9 @@
 import { EventEmitter } from 'events';
 import Airplane from '../lib/airplane';
 import config from '../lib/config';
-import { loadMap, angleDistance, headingTo, rwyPos, idType, activeRwys } from '../lib/map';
+import { loadMap, angleDelta, headingTo, rwyPos, idType, activeRwys, callsignPositions, setCallsigns } from '../lib/map';
 import SettingsStore from './SettingsStore';
-import { routeTypes, airplanesById, operatorsById } from '../lib/airplane-library';
+import { routeTypes, airplanesById, operatorsById } from '../lib/airplane-library/airplane-library';
 import { loadState } from '../lib/persistance';
 import communications, { natoAlphabet } from '../lib/communications';
 import { sendMessageWarning, sendMessageError } from '../components/GameMessages/GameMessages';
@@ -15,8 +15,6 @@ class GameStore extends EventEmitter {
     this.paused = false;
     this.started = false;
     this.interval = null;
-    this.width = 1280;
-    this.height = 720;
     this.log = [];
     this.selfLog = [];
     this.pathCounter = 0;
@@ -31,6 +29,8 @@ class GameStore extends EventEmitter {
 
     this.update = this.update.bind(this); // called within a setInterval so bind to this object and not the window object.
     this._newPlane = this._newPlane.bind(this); // called within a setInterval so bind to this object and not the window object.
+
+    this.setMaxListeners(20);
   }
 
   getAtis() {
@@ -48,15 +48,13 @@ class GameStore extends EventEmitter {
     this.winddir = Math.floor(Math.random() * 360);
     this.altimeter = (29 + Math.random() * 2).toFixed(2);
     this.atis = Math.floor(Math.random() * 26);
-
     this.windspd = Math.floor(Math.random() * 12);
     this._setup(map);
     // create planes
-    for (let i = 0; i < SettingsStore.startingInboundPlanes; i++) {
-      this._newPlaneInboundOnRoute();
-    }
-    for (let i = 0; i < SettingsStore.startingOutboundPlanes; i++) {
-      this._newPlaneOutbound();
+    for (let i = 0; i < SettingsStore.startingInboundPlanes; i++) this._newPlaneInbound();
+    for (let i = 0; i < SettingsStore.startingOutboundPlanes; i++) this.newPlaneOutbound();
+    if (SettingsStore.enroute) {
+      for (let i = 0; i < SettingsStore.startingEnroutePlanes; i++) this._newPlaneEnroute();
     }
   }
 
@@ -74,67 +72,81 @@ class GameStore extends EventEmitter {
     this._edgeDetection = {};
     this.sepDistanceVialotions = {};
     this.started = true;
-    this.callsigns = {};
-    this.callsignsPos = {};
+    this.callsigns = setCallsigns(map, this.waypoints);
+    this.callsignsPos = callsignPositions(map, this.waypoints, config.width, config.height);
     this.mapName = map.id;
+    this.setupWaypoints(map);
 
-    this._setupWaypoints(map);
-
-    // set callsigns
-    Object.assign(this.callsigns, this.waypoints, { [map.airport.callsign]: map.airport },
-      ...map.airport.runways.map(rwy => ({ [rwy.name1]: rwy, [rwy.name2]: rwy })));
-
-    // set callsign positions
-    const airportX = this.width / 2 + map.airport.x;
-    const airportY = this.height / 2 + map.airport.y;
-    Object.assign(this.callsignsPos, ...Object.keys(this.waypoints).map(k => {
-      const ref = this.waypoints[k];
-      return { [k]: { ref, x: ref.x, y: ref.y } };
-    }), { [map.airport.callsign]: { ref: map.airport, x: airportX, y: airportY } },
-    ...map.airport.runways.map(ref => {
-      const pos = rwyPos(map.airport, ref, this.width, this.height);
-      return { [ref.name1]: { ref, x: pos.x1, y: pos.y1 }, [ref.name2]: { ref, x: pos.x2, y: pos.y2 } };
-    }));
-
-    if (this.interval) throw 'Already set interval';
-    this.interval = setInterval(this.update, config.updateInterval);
+    if (!this.interval) this.interval = setInterval(this.update, config.updateInterval);
     this.emit('change');
     this.emit('start');
   }
 
-  _setupWaypoints() {
-    const map = this.map;
-    this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(() => Math.random() - .5);
-    this.outboundWpOrdered = map.outboundWaypoints.slice(0).sort(() => Math.random() - .5);
-    this.enrouteRoutesOrdered = [];
-    for (let i = 0; i < map.inboundWaypoints.length; i++) {
-      for (let j = 0; j < map.outboundWaypoints.length; j++) {
-        const inboundWp = map.inboundWaypoints[i];
-        const outboundWp = map.outboundWaypoints[i];
-        const route = map.routes[`${inboundWp}->${outboundWp}`];
-        if (route) {
-          this.enrouteRoutesOrdered.push(route);
-        }
-      }
-    }
-    this.enrouteRoutesOrdered.sort(() => Math.random() - .5);
+  setupWaypoints() {
+    this.inboundWpOrdered = this.map.inboundWaypoints.slice(0).sort(() => Math.random() - .5);
+    this.outboundWpOrdered = this.map.outboundWaypoints.slice(0).sort(() => Math.random() - .5);
   }
 
   _newPlane() {
     if (this.paused) return;
-    if (Math.random() > .5) this._newPlaneInboundOnRoute();
-    else this._newPlaneOutbound();
+    const rnd = Math.random();
+
+    if (SettingsStore.enroute) {
+      if (rnd < .33) this._newPlaneInbound();
+      else if (rnd < .66) this.newPlaneOutbound();
+      else this._newPlaneEnroute();
+    } else {
+      if (rnd < .5) this._newPlaneInbound();
+      else this.newPlaneOutbound();
+    }
   }
 
-  _newPlaneInboundOnRoute() {
+  _newPlaneEnroute() {
+    const map = this.map;
+    if (this.inboundWpOrdered.length === 0) {
+      this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(() => Math.random() - .5);
+    }
+    if (this.outboundWpOrdered.length === 0) {
+      this.outboundWpOrdered = map.outboundWaypoints.slice(0).sort(() => Math.random() - .5);
+    }
+    const inboundWaypoint = this.inboundWpOrdered.pop();
+    const pos = this.callsignsPos[inboundWaypoint];
+
+    const outBoundWaypoint = this.outboundWpOrdered.pop();
+    const tgt = this.callsignsPos[outBoundWaypoint];
+
+    let heading = Math.floor(headingTo(pos.x, pos.y, tgt.x, tgt.y)) % 360;
+    const airplane = Airplane.createEnroute(pos.x, pos.y, heading, outBoundWaypoint);
+    this.traffic.push(airplane);
+
+    // TODO: Speech for outbound
+    // const callsign = operatorsById[airplane.operatorId].shortName + ' ' + airplane.flight;
+    // if (Math.random() > .5) {
+    //   // has atis
+    //   const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + ' with ' + this.getAtis() + '.';
+    //   this.addLog(msg, callsign);
+
+    //   const atcMsg = callsign + ', ' + this.airport.callsign + ' approach, maintain current heading.';
+    //   this.addLog(atcMsg, 'ATC');
+    // } else {
+    //   // does not have atis
+    //   const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + '.';
+    //   this.addLog(msg, callsign);
+
+    //   const atcMsg = callsign + ', information ' + this.getAtis() + ' is current, altimeter ' + this.altimeter + ', maintain current heading.';
+    //   this.addLog(atcMsg, 'ATC');
+    // }
+  }
+
+  _newPlaneInbound() {
     const map = this.map;
     if (this.inboundWpOrdered.length === 0) {
       this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(() => Math.random() - .5);
     }
     const inboundWaypoint = this.inboundWpOrdered.pop();
     const pos = this.callsignsPos[inboundWaypoint];
-    let mx = this.width / 2;
-    let my = this.height / 2;
+    let mx = config.width / 2;
+    let my = config.height / 2;
     let heading = Math.floor(headingTo(pos.x, pos.y, mx, my)) % 360;
     const airplane = Airplane.create(pos.x, pos.y, heading, routeTypes.INBOUND);
     this.traffic.push(airplane);
@@ -162,15 +174,15 @@ class GameStore extends EventEmitter {
   _newPlaneInboundOnEdge() {
     const hdgVar = config.headingInitVariation;
     let side = Math.floor(Math.random() * 4);
-    let x = side === 1 ? this.width : side === 3 ? 0 : Math.random() * this.width;
-    let y = side === 0 ? this.height : side === 2 ? 0 : Math.random() * this.height;
-    let mx = this.width / 2;
-    let my = this.height / 2;
+    let x = side === 1 ? config.width : side === 3 ? 0 : Math.random() * config.width;
+    let y = side === 0 ? config.height : side === 2 ? 0 : Math.random() * config.height;
+    let mx = config.width / 2;
+    let my = config.height / 2;
     let heading = Math.floor(headingTo(x, y, mx, my) - hdgVar * .5 + Math.random() * hdgVar) % 360;
     this.traffic.push(Airplane.create(x, y, heading, routeTypes.INBOUND));
   }
 
-  _newPlaneOutbound() {
+  newPlaneOutbound() {
     let activeRunways = activeRwys(this.airport, this.winddir);
     let activeRunwaysAssigned = activeRunways.filter(rwy => !this.disableTakoffsOnRwysSet[rwy]);
     // if the user has a prefered runway. Use that runway. If the user has al of the runways disabled choose one at random.
@@ -183,7 +195,7 @@ class GameStore extends EventEmitter {
     const outboundWaypoint = this.map.outboundWaypoints[Math.floor(Math.random() * this.map.outboundWaypoints.length)];
     const airplane = Airplane.createOutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint);
     this.traffic.push(airplane);
-    
+
     const callsign = operatorsById[airplane.operatorId].shortName + ' ' + airplane.flight;
 
     if (couldNotFindAssignedRwy) sendMessageWarning(`No assigned takeoff runway, ${communications.getCallsign(airplane, true)} was ordered to taxi to RWY ${item}.`);
@@ -197,153 +209,6 @@ class GameStore extends EventEmitter {
 
     const readBackMsg = 'Roger hold short of ' + item + ', ' + callsign + '.';
     this.addLog(readBackMsg, callsign);
-  }
-
-  update() {
-    if (this.paused) return;
-
-    this._spawnPlaneCounter += config.updateInterval * SettingsStore.speed;
-    if (this._spawnPlaneCounter > SettingsStore.newPlaneInterval * 1000) {
-      this._spawnPlaneCounter %= SettingsStore.newPlaneInterval;
-      this._newPlane();
-    }
-
-    let sepDistViolation = false;
-    const s = config.globalSpeed * SettingsStore.speed;
-    this.pathCounter = ++this.pathCounter % Math.floor(config.pathCounterUpdateEvery / s);
-    let addPathEntry = this.pathCounter === 0;
-    for (const key in this.sepDistanceVialotions) {
-      delete this.sepDistanceVialotions[key];
-    }
-    // move planes
-    for (let i = 0; i < this.traffic.length; i++) {
-      const airplane = this.traffic[i];
-      if (airplane.outboundRwy) continue;
-      let dx = Math.sin(airplane.heading * Math.PI / 180);
-      let dy = Math.cos(airplane.heading * Math.PI / 180);
-      airplane.x += dx * s * airplane.speed * config.baseAirplaneSpeed;
-      airplane.y += dy * s * airplane.speed * config.baseAirplaneSpeed;
-      const model = airplanesById[airplane.typeId];
-      let altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.descendSpeed * model.descendSpeed * s, airplane.tgtAltitude - airplane.altitude));
-
-      const exceeds250Multiplier = (airplane.speed - 250) * 0.01 + 5;
-      if (airplane.altitude >= 10000 && airplane.tgtSpeed > 250 && airplane.tgtAltitude < 10000
-        && (altChange * exceeds250Multiplier + airplane.altitude) < 10000) {
-        airplane.tgtSpeed = 250;
-      }
-
-      let tgtSpeed = (airplane.altitude < 10000 && airplane.tgtSpeed > 250) ? Math.min(250, airplane.tgtSpeed) : airplane.tgtSpeed;
-      tgtSpeed = tgtSpeed || airplane.speed; // bug: tgtSpeed rarely becomes nan for undefined reasons
-      let spdChange = Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
-      
-      if (spdChange < 0 && altChange < 0) /* descelerating and descending */ altChange *= model.descendRatioWhileDecelerating;
-      
-      airplane.speed += spdChange;
-
-      let tgtHeading;
-      if (typeof airplane.tgtDirection === 'number') {
-        tgtHeading = airplane.tgtDirection;
-      } else if (typeof airplane.tgtDirection === 'string') {
-        const cs = this.callsignsPos[airplane.tgtDirection];
-        if (cs) {
-          if (airplane.routeType === routeTypes.INBOUND && cs.ref.type === idType.RWY) {
-            const rwyHdg = cs.ref.name1 === airplane.tgtDirection ? cs.ref.hdg1 : cs.ref.hdg2;
-            const hdgToRwy = Math.atan2(cs.x - airplane.x, cs.y - airplane.y) * 180 / Math.PI;
-            const deg = angleDistance(rwyHdg, hdgToRwy);
-            let distance = (cs.x - airplane.x) / Math.sin(hdgToRwy * Math.PI / 180);
-            let rwyAirplaneHdgDiff = angleDistance(airplane.heading, rwyHdg);
-            const tooHigh = airplane.altitude > (distance * config.ilsSlopeSteepness * 2 + 500/* safety */);
-            distance = isFinite(distance) ? distance : .1;
-            if (airplane.altitude < 3200 && Math.abs(deg) < 20 && Math.abs(rwyAirplaneHdgDiff) < 20 && !tooHigh) {
-              altChange = Math.min(100 * s, Math.max(-100 * s, Math.min(airplane.altitude, distance * config.ilsSlopeSteepness) - airplane.altitude));
-            }
-            if (airplane.altitude < 3200 && Math.abs(deg) < 20) {
-              tgtHeading = rwyHdg + Math.min(45, Math.max(-45, Math.max(Math.abs(deg), 10/* weight */) * deg));
-            } else if (airplane.altitude < 500 && Math.abs(rwyAirplaneHdgDiff) < 20) {
-              //landed
-              this.arrivals++;
-              this._remove.push(airplane);
-              continue;
-            } else {
-              tgtHeading = airplane.heading;
-            }
-          } else
-            tgtHeading = headingTo(airplane.x, airplane.y, this.callsignsPos[airplane.tgtDirection].x, this.callsignsPos[airplane.tgtDirection].y);
-        } else {
-          tgtHeading = airplane.heading;
-        }
-      }
-      if (airplane.routeType !== routeTypes.INBOUND) {
-        const wp = this.callsignsPos[airplane.outboundWaypoint];
-        if ((Math.abs(airplane.x - wp.x) + Math.abs(airplane.y - wp.y)) < 15) {
-          // enroute
-          this.departures++;
-          this._remove.push(airplane);
-          continue;
-        }
-      }
-      if (airplane.x < -3 || airplane.y < -3 || airplane.x > this.width + 3 || airplane.y > this.height + 3) {
-        this.unpermittedDepartures++;
-        sendMessageError(`${communications.getCallsign(airplane, true)} wrongfully exited the map. It should have exited the map at ${airplane.outboundWaypoint || 'the airport'}.`);
-        this._remove.push(airplane);
-        continue;
-      }
-      const isAtManeuveringSpeed = airplane.speed >= (airplanesById[airplane.typeId].landingSpeed - 0.01);
-      const canChangeHeading = airplane.routeType !== routeTypes.OUTBOUND || airplane.altitude >= config.flyStraightAfterTakeoffUntilHeight - 10; /* manouvering height */
-
-      if (isAtManeuveringSpeed) {
-        if (airplane.altitude >= 10000 && airplane.speed > 250 && airplane.altitude + altChange < 10000) {
-          altChange = 10000 - airplane.altitude; 
-        }
-        airplane.altitude += altChange;
-      }
-
-      if (isAtManeuveringSpeed && canChangeHeading) {
-        airplane.heading += Math.min(1 * s, Math.max(-1 * s, angleDistance(airplane.heading, tgtHeading)));
-        airplane.heading = (airplane.heading + 360) % 360;
-      }
-
-      if (addPathEntry) {
-        airplane.path.unshift([airplane.x, airplane.y]);
-        if (airplane.path.length >= config.maxPathLen) airplane.path.pop();
-      }
-      // edge detection
-      const t = config.threeMileRuleDistance,
-        x = Math.round(airplane.x / t),
-        y = Math.round(airplane.y / t);
-      for (let a = 0; a < 2; a++) {
-        for (let i = 0; i < 9; i++) {
-          const identity = `${Math.round(x + i % 3 - 1)}x${Math.round(y + i / 3 - 1)}/${Math.floor(airplane.altitude * .0005) + a}`,
-            sameIdentity = this._edgeDetection[identity];
-          if (sameIdentity && !sameIdentity[airplane.flight]) {
-            // do actual calculation
-            for (const key in sameIdentity) {
-              const oa = sameIdentity[key];
-              if (Math.abs(oa.altitude - airplane.altitude) > 995) continue;
-              const xd = Math.abs(airplane.x - oa.x) / t;
-              const yd = Math.abs(airplane.y - oa.y) / t;
-              if (xd * xd + yd * yd < 1) {
-                this.sepDistanceVialotions[oa.flight] = airplane;
-                this.sepDistanceVialotions[airplane.flight] = oa;
-                sepDistViolation = true;
-              }
-            }
-          }
-          this._edgeDetection[identity] = (sameIdentity || {});
-          this._edgeDetection[identity][airplane.flight] = airplane;
-        }
-      }
-    }
-    for (const key in this._edgeDetection) {
-      delete this._edgeDetection[key];
-    }
-    if (this._remove.length > 0) {
-      for (let i = 0; i < this._remove.length; i++)
-        this.traffic.splice(this.traffic.indexOf(this._remove[i]), 1);
-      this._remove.length = 0;
-    }
-    if (sepDistViolation) this.distanceVialations++;
-    this.emit('change');
   }
 
   stop() {
@@ -386,6 +251,151 @@ class GameStore extends EventEmitter {
 
   setSvgEl(el) {
     this.svgEl = el;
+  }
+
+  trySpawn() {
+    this._spawnPlaneCounter += config.updateInterval * SettingsStore.speed;
+    if (this._spawnPlaneCounter > SettingsStore.newPlaneInterval * 1000) {
+      this._spawnPlaneCounter %= SettingsStore.newPlaneInterval;
+      this._newPlane();
+    }
+  }
+
+  update = () => {
+    if (this.paused) return;
+    const s = config.globalSpeed * SettingsStore.speed;
+    this.trySpawn();
+    this.pathCounter = ++this.pathCounter % Math.floor(config.pathCounterUpdateEvery / s);
+    for (const key in this.sepDistanceVialotions) delete this.sepDistanceVialotions[key];
+    this.traffic.forEach(this.planeUpdate);
+    for (const key in this._edgeDetection) delete this._edgeDetection[key];
+    for (let i = 0; i < this._remove.length; i++) this.traffic.splice(this.traffic.indexOf(this._remove[i]), 1);
+    this._remove.length = 0;
+    this.emit('change');
+  }
+
+  planeUpdate = (airplane, i) => {
+    if (airplane.outboundRwy) return;
+
+    const model = airplanesById[airplane.typeId];
+    const s = config.globalSpeed * SettingsStore.speed;
+    const dx = Math.sin(airplane.heading * Math.PI / 180);
+    const dy = Math.cos(airplane.heading * Math.PI / 180);
+    let tgtHeading = airplane.heading;
+    let spdChange = 0;
+    let altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.descendSpeed * model.descendSpeed * s, airplane.tgtAltitude - airplane.altitude));
+    let tgtSpeed = (airplane.altitude < 10000 && airplane.tgtSpeed > 250) ? Math.min(250, airplane.tgtSpeed) : airplane.tgtSpeed;
+
+    airplane.x += dx * s * airplane.speed * config.baseAirplaneSpeed;
+    airplane.y += dy * s * airplane.speed * config.baseAirplaneSpeed;
+
+    const isAtManeuveringSpeed = airplane.speed >= (airplanesById[airplane.typeId].landingSpeed - 0.01);
+    const exceeds250Multiplier = (airplane.speed - 250) * 0.01 + 5;
+    const canChangeHeading = airplane.routeType !== routeTypes.OUTBOUND || airplane.altitude >= config.flyStraightAfterTakeoffUntilHeight - 10; /* manouvering height */
+    if (airplane.altitude >= 10000 && airplane.tgtSpeed > 250.001 && airplane.tgtAltitude < 10000) { // 250kts speed rule check
+      if ((altChange * exceeds250Multiplier + airplane.altitude) < 10000) airplane.tgtSpeed = 250; // slow down to 250kts
+      if (airplane.altitude + altChange < 10000) altChange = 10000 - airplane.altitude; // don't descend < fl100 < 250kts
+    }
+    spdChange = Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
+    if (spdChange < 0 && altChange < 0) /* descelerating and descending */ altChange *= model.descendRatioWhileDecelerating;
+
+    if (typeof airplane.tgtDirection === 'number') tgtHeading = airplane.tgtDirection; // heading
+    else if (typeof airplane.tgtDirection === 'string') { // waypoint
+      const waypointPosition = this.callsignsPos[airplane.tgtDirection];
+      if (waypointPosition) {
+        if (airplane.routeType === routeTypes.INBOUND && waypointPosition.ref.type === idType.RWY) tryLand.call(this, waypointPosition);
+        else tgtHeading = headingTo(airplane.x, airplane.y, waypointPosition.x, waypointPosition.y);
+      }
+      else tgtHeading = airplane.heading;
+    }
+
+    if (isAtManeuveringSpeed) airplane.altitude += altChange;
+    airplane.speed += spdChange;
+
+    if (airplane.routeType === routeTypes.OUTBOUND || airplane.routeType === routeTypes.ENROUTE) {
+      const wp = this.callsignsPos[airplane.outboundWaypoint];
+      if ((Math.abs(airplane.x - wp.x) + Math.abs(airplane.y - wp.y)) < 15) {
+        this.departures++;
+        this._remove.push(airplane);
+        return;
+      }
+    }
+
+    if (isAtManeuveringSpeed && canChangeHeading) {
+      const maxTurnDeg = Airplane.getTurningRate(airplane) * s * config.turnRate;
+      airplane.heading += Math.min(maxTurnDeg, Math.max(-maxTurnDeg, angleDelta(airplane.heading, tgtHeading)));
+      airplane.heading = (airplane.heading + 360) % 360;
+    }
+
+    if (this.pathCounter === 0) {
+      airplane.path.unshift([airplane.x, airplane.y]);
+      if (airplane.path.length >= config.maxPathLen) airplane.path.pop();
+    }
+
+    if (airplane.x < -3 || airplane.y < -3 || airplane.x > config.width + 3 || airplane.y > config.height + 3) {
+      this.unpermittedDepartures++;
+      sendMessageError(`${communications.getCallsign(airplane, true)} wrongfully exited the map. It should have exited the map at ${airplane.outboundWaypoint || 'the airport'}.`);
+      this._remove.push(airplane);
+      return;
+    }
+
+    if (edgeDetectionViolation.call(this)) this.distanceVialations++;
+
+    // END
+
+    function edgeDetectionViolation() {
+      let airplaneSepDistViolation = false;
+      const t = config.threeMileRuleDistance,
+        x = Math.round(airplane.x / t),
+        y = Math.round(airplane.y / t);
+      for (let a = 0; a < 2; a++) {
+        for (let i = 0; i < 9; i++) {
+          const identity = `${Math.round(x + i % 3 - 1)}x${Math.round(y + i / 3 - 1)}/${Math.floor(airplane.altitude * .0005) + a}`,
+            sameIdentity = this._edgeDetection[identity];
+          if (sameIdentity && !sameIdentity[airplane.flight]) {
+            // do actual calculation
+            for (const key in sameIdentity) {
+              const oa = sameIdentity[key];
+              if (Math.abs(oa.altitude - airplane.altitude) > 995) continue;
+              const xd = Math.abs(airplane.x - oa.x) / t;
+              const yd = Math.abs(airplane.y - oa.y) / t;
+              if (xd * xd + yd * yd < 1) {
+                this.sepDistanceVialotions[oa.flight] = airplane;
+                this.sepDistanceVialotions[airplane.flight] = oa;
+                airplaneSepDistViolation = true;
+              }
+            }
+          }
+          this._edgeDetection[identity] = (sameIdentity || {});
+          this._edgeDetection[identity][airplane.flight] = airplane;
+        }
+      }
+      return airplaneSepDistViolation;
+    }
+
+    function tryLand(rwyPos) {
+      const rwyHdg = rwyPos.ref.name1 === airplane.tgtDirection ? rwyPos.ref.hdg1 : rwyPos.ref.hdg2;
+      const hdgToRwy = Math.atan2(rwyPos.x - airplane.x, rwyPos.y - airplane.y) * 180 / Math.PI;
+      const deg = angleDelta(rwyHdg, hdgToRwy);
+      let distance = (rwyPos.x - airplane.x) / Math.sin(hdgToRwy * Math.PI / 180);
+      let rwyAirplaneHdgDiff = angleDelta(airplane.heading, rwyHdg);
+      const tooHigh = airplane.altitude > (distance * config.ilsSlopeSteepness * 2 + 500/* safety */);
+      distance = isFinite(distance) ? distance : .1;
+      if (airplane.altitude < 3200 && Math.abs(deg) < 20 && Math.abs(rwyAirplaneHdgDiff) < 20 && !tooHigh) {
+        altChange = Math.min(100 * s, Math.max(-100 * s, Math.min(airplane.altitude, distance * config.ilsSlopeSteepness) - airplane.altitude));
+      }
+      if (airplane.altitude < 3200 && Math.abs(deg) < 20) {
+        tgtHeading = rwyHdg + Math.min(45, Math.max(-45, Math.max(Math.abs(deg), 10/* weight */) * deg));
+      } else if (airplane.altitude < 500 && Math.abs(rwyAirplaneHdgDiff) < 20) {
+        //landed
+        this.arrivals++;
+        this._remove.push(airplane);
+        return;
+      } else {
+        // unable to land, not in range, or any other reason not to land
+        tgtHeading = airplane.heading;
+      }
+    }
   }
 }
 

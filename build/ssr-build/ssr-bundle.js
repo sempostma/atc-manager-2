@@ -285,6 +285,13 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 /***/ }),
 
+/***/ "/+Qt":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "//Fk":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -296,6 +303,13 @@ module.exports = { "default": __webpack_require__("U5ju"), __esModule: true };
 /***/ (function(module, exports) {
 
 module.exports = {};
+
+/***/ }),
+
+/***/ "/d4d":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -887,6 +901,13 @@ module.exports = function generate_allOf(it, $keyword, $ruleType) {
 
 /***/ }),
 
+/***/ "46EZ":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "4WTo":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1263,6 +1284,13 @@ module.exports = function generate_format(it, $keyword, $ruleType) {
 __webpack_require__("zQR9");
 __webpack_require__("qyJz");
 module.exports = __webpack_require__("FeBl").Array.from;
+
+/***/ }),
+
+/***/ "6a/W":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -6025,6 +6053,20 @@ exports.default = function (arr) {
 
 /***/ }),
 
+/***/ "HH5f":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "HYSH":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "HpRW":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6174,6 +6216,13 @@ module.exports = {
   uniqueItems: __webpack_require__("mV6t"),
   validate: __webpack_require__("TQBj")
 };
+
+/***/ }),
+
+/***/ "Izif":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -7376,8 +7425,18 @@ var saveState = function saveState(state) {
   });
   localStorage.setItem('atc-manager-2-game-persistance-v2', str);
 };
-// CONCATENATED MODULE: ./lib/airplane-library.js
+// EXTERNAL MODULE: ./lib/airplane-library/default-airplanes.json
+var default_airplanes = __webpack_require__("uW+5");
+var default_airplanes_default = /*#__PURE__*/__webpack_require__.n(default_airplanes);
+
+// EXTERNAL MODULE: ./lib/airplane-library/default-operators.json
+var default_operators = __webpack_require__("smk6");
+var default_operators_default = /*#__PURE__*/__webpack_require__.n(default_operators);
+
+// CONCATENATED MODULE: ./lib/airplane-library/airplane-library.js
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
 
 
 
@@ -7385,470 +7444,18 @@ var routeTypes = {
   INBOUND: 0,
   OUTBOUND: 1,
   ENROUTE: 2,
+  VFR_CLOSED_PATTERN: 3,
+  VFR_CLOSED_PATTERN_TG: 4,
+  VFR_OUTBOUND: 5,
+  VFR_INBOUND: 6,
+  VFR_INBOUND_TG: 7,
   0: 'inbound',
   1: 'outbound',
   2: 'enroute'
 };
 
-var defaultAirplanes = [{
-  id: 0,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 37,
-  name: 'Boeing 737',
-  shortName: 'B737',
-  topSpeed: 320,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 160,
-  turningRate: [5, 3, 2],
-  operators: [0, 1, 5, 3, 2, 7, 10, 11, 12, 13, 14, 22, 23],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 1,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  name: 'Boeing 747',
-  shortName: 'B747',
-  topSpeed: 330,
-  landingSpeed: 145,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 180,
-  turningRate: [5, 3, 2],
-  ceiling: 41,
-  operators: [0, 1, 2, 3, 6, 8, 14, 17, 18, 19, 20, 21, 22],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 2,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  name: 'Boeing 757',
-  shortName: 'B757',
-  topSpeed: 330,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  minSpeed: 160,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  turningRate: [5, 3, 2],
-  ceiling: 42,
-  operators: [0, 1, 5, 3, 2, 7, 16, 17],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 3,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  name: 'Boeing 767',
-  shortName: 'B767',
-  topSpeed: 330,
-  landingSpeed: 140,
-  minSpeed: 160,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  turningRate: [5, 3, 2],
-  ceiling: 43,
-  operators: [1, 3, 5, 6, 7, 12, 16],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 4,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  name: 'Boeing 777',
-  shortName: 'B777',
-  topSpeed: 330,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 160,
-  turningRate: [5, 3, 2],
-  ceiling: 43,
-  operators: [0, 1, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 19, 20, 23],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 5,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  name: 'Airbus A380',
-  shortName: 'A380',
-  topSpeed: 330,
-  landingSpeed: 150,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 160,
-  turningRate: [5, 3, 2],
-  ceiling: 43,
-  operators: [6, 9, 10, 15, 20],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 6,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  name: 'Airbus A330',
-  shortName: 'A330',
-  ceiling: 39,
-  topSpeed: 320,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 160,
-  turningRate: [5, 3, 2],
-  operators: [0, 1, 3, 5, 8, 9, 11, 14, 18, 19, 20, 22, 23],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 7,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 39,
-  name: 'Boeing 787 Dreamliner',
-  shortName: 'B787',
-  topSpeed: 320,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 160,
-  turningRate: [5, 3, 2],
-  operators: [0, 3, 5, 6, 10, 11, 12, 19, 22, 23],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 8,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 37,
-  name: 'Airbus A319',
-  shortName: 'A319',
-  topSpeed: 320,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 160,
-  turningRate: [5, 3, 2],
-  operators: [1, 5, 6, 8, 10, 11, 14, 19, 22],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 9,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 37,
-  name: 'Airbus A320',
-  shortName: 'A320',
-  topSpeed: 320,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 160,
-  turningRate: [5, 3, 2],
-  operators: [1, 5, 3, 2, 6, 8, 9, 10, 11, 12, 14, 19, 20, 22, 23],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 10,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 37,
-  name: 'Airbus A321',
-  shortName: 'A321',
-  topSpeed: 320,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 160,
-  turningRate: [5, 3, 2],
-  operators: [1, 5, 3, 2, 6, 8, 9, 10, 11, 12, 14, 19, 20, 23],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 11,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 41,
-  name: 'Airbus A350',
-  shortName: 'A350',
-  topSpeed: 320,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 160,
-  turningRate: [5, 3, 2],
-  operators: [1, 8, 10, 14, 18, 19, 22],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 12,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 35,
-  name: 'Boeing 717',
-  shortName: 'B717',
-  topSpeed: 300,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 150,
-  turningRate: [5, 3, 2],
-  operators: [1],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 13,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 35,
-  name: 'McDonell Douglas MD-88',
-  shortName: 'MD-88',
-  topSpeed: 300,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 150,
-  turningRate: [5, 3, 2],
-  operators: [1],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 14,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 35,
-  name: 'McDonell Douglas MD-90',
-  shortName: 'MD-90',
-  topSpeed: 300,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 150,
-  turningRate: [5, 3, 2],
-  operators: [1],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 15,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 38,
-  name: 'Embraer 190',
-  shortName: 'E190',
-  topSpeed: 310,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 150,
-  turningRate: [5, 3, 2],
-  operators: [2, 5, 10],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 16,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 35,
-  name: 'McDonell Douglas MD-82',
-  shortName: 'MD-82',
-  topSpeed: 300,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 150,
-  turningRate: [5, 3, 2],
-  operators: [5],
-  descendRatioWhileDecelerating: .5
-}, {
-  id: 17,
-  takeoffMinRunwayLength: 6000,
-  landingMinRunwayLength: 5000,
-  ceiling: 35,
-  name: 'McDonell Douglas MD-83',
-  shortName: 'MD-83',
-  topSpeed: 300,
-  landingSpeed: 140,
-  climbSpeed: 1,
-  descendSpeed: 1,
-  accelerationSpeed: 1,
-  deAccelerationSpeed: 1,
-  minSpeed: 150,
-  turningRate: [5, 3, 2],
-  operators: [5],
-  descendRatioWhileDecelerating: .5
-}];
-
-var defaultOperators = [{
-  id: 0,
-  name: 'KLM',
-  shortName: 'KLM',
-  callsign: 'KLM',
-  color: '#00a1e4'
-}, {
-  id: 1,
-  name: 'Delta Airlines',
-  callsign: 'DLT',
-  shortName: 'Delta',
-  color: '#003a70'
-}, {
-  id: 2,
-  name: 'JetBlue',
-  callsign: 'JBU',
-  shortName: 'JetBlue',
-  color: '#003876'
-}, {
-  id: 3,
-  name: 'United Airlines',
-  callsign: 'UAL',
-  shortName: 'United',
-  color: '#005DAA'
-}, {
-  id: 4,
-  name: 'Southwest Airlines',
-  callsign: 'SWA',
-  shortName: 'Southwest',
-  color: '#304cb2'
-}, {
-  id: 5,
-  name: 'American Airlines',
-  callsign: 'AAL',
-  shortName: 'American',
-  color: '#d41525'
-}, {
-  id: 6,
-  name: 'British Airways',
-  callsign: 'BAW',
-  shortName: 'Speedbird',
-  color: '#2a5c9a'
-}, {
-  id: 7,
-  name: 'Continental Airlines',
-  callsign: 'COA',
-  shortName: 'Continental',
-  color: '#0060aa'
-}, {
-  id: 8,
-  name: 'Lufthansa',
-  callsign: 'DLH',
-  shortName: 'Lufthansa',
-  color: '#00225e'
-}, {
-  id: 9,
-  name: 'Air France',
-  callsign: 'AFR',
-  shortName: 'Air France',
-  color: '#002157'
-}, {
-  id: 10,
-  name: 'China Southern Airlines',
-  callsign: 'CSN',
-  shortName: 'China Southern',
-  color: '#008dd2'
-}, {
-  id: 11,
-  name: 'China Eastern Airlines',
-  callsign: 'CES',
-  shortName: 'China Eastern',
-  color: '#e31614'
-}, {
-  id: 12,
-  name: 'All Nippon Airways',
-  callsign: 'ANA',
-  shortName: 'All Nippon',
-  color: '#083191'
-}, {
-  id: 13,
-  name: 'Ryanair',
-  callsign: 'RYR',
-  shortName: 'Ryanair',
-  color: '#0027b5'
-}, {
-  id: 14,
-  name: 'Turkish Airlines',
-  callsign: 'THY',
-  shortName: 'Turkish',
-  color: '#ee2e24'
-}, {
-  id: 15,
-  name: 'Emirates',
-  callsign: 'UAE',
-  shortName: 'Emirates',
-  color: '#d8131b'
-}, {
-  id: 16,
-  name: 'FedEx Express',
-  callsign: 'FDX',
-  shortName: 'Fedex',
-  color: '#2a007c'
-}, {
-  id: 17,
-  name: 'UPS Airlines',
-  callsign: 'UPS',
-  shortName: 'UPS',
-  color: '#fab903'
-}, {
-  id: 18,
-  name: 'Cathay Pacific',
-  callsign: 'CPA',
-  shortName: 'Cathay',
-  color: '#006b6e'
-}, {
-  id: 19,
-  name: 'Qatar Airways',
-  callsign: 'QTR',
-  shortName: 'Qatari',
-  color: '#5c0632'
-}, {
-  id: 20,
-  name: 'Korean Air',
-  callsign: 'KAL',
-  shortName: 'Korean Air',
-  color: '#154d9e'
-}, {
-  id: 21,
-  name: 'Cargolux',
-  callsign: 'CLX',
-  shortName: 'Cargolux',
-  color: '#d40000'
-}, {
-  id: 22,
-  name: 'Air China',
-  callsign: 'CCA',
-  shortName: 'Air China',
-  color: '#ee151f'
-}, {
-  id: 23,
-  name: 'Egyptair',
-  callsign: 'MSR',
-  shortName: 'Egyptair',
-  color: '#00265d'
-}, {
-  id: 24,
-  name: 'Cathay Dragon',
-  callsign: 'HDA',
-  shortName: 'Dragon',
-  color: '#950714'
-}];
+var defaultAirplanes = default_airplanes_default.a;
+var defaultOperators = default_operators_default.a;
 
 var airplanesArr = [];
 var operatorsArr = [];
@@ -7886,6 +7493,8 @@ var airplane_library_refresh = function refresh() {
 
 airplane_library_refresh();
 // CONCATENATED MODULE: ./lib/airplane.js
+var _class, _temp;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
@@ -7898,18 +7507,9 @@ for (var airplane_i = 0; airplane_i < 1900; airplane_i++) {
   return Math.random() - .5;
 });
 
-var airplane_Airplane = function () {
+var airplane_Airplane = (_temp = _class = function () {
   function Airplane(speed, altitude, heading, x, y, operatorId, flight, typeId, routeType) {
-    var _this = this;
-
     _classCallCheck(this, Airplane);
-
-    this.getTurningRate = function () {
-      var model = airplanesById[_this.typeId];
-      var turningRate = model.turningRate;
-
-      if (_this.speed <= model.minSpeed) return turningRate[0];else if (_this.speed <= 250) return turningRate[0] + (_this.speed - model.minSpeed) / (250 - model.minSpeed) * (turningRate[1] - turningRate[0]);else return turningRate[1] + (_this.speed - 250) / (model.topSpeed - 250) * (turningRate[2] - turningRate[1]);
-    };
 
     this.tgtAltitude = altitude;
     this.tgtDirection = heading;
@@ -7929,7 +7529,7 @@ var airplane_Airplane = function () {
 
   Airplane.create = function create(x, y, heading, routeType) {
     var airplane = airplane_library_airplanes[Math.floor(Math.random() * airplane_library_airplanes.length)];
-    var operatorId = airplane.operators[Math.floor(Math.random() * airplane.operators.length)];
+    var operatorId = airplane.operators.length > 0 ? airplane.operators[Math.floor(Math.random() * airplane.operators.length)] : null;
     var speed = airplane.topSpeed;
     var altitudeThousands = Math.floor(airplane.ceiling * .5 - Math.random() * airplane.ceiling * .2);
     var altitude = (altitudeThousands % 2 === 0 === heading < 180 ? altitudeThousands - 1 : altitudeThousands) * 1000;
@@ -7949,9 +7549,19 @@ var airplane_Airplane = function () {
     return airplane;
   };
 
-  return Airplane;
-}();
+  Airplane.createEnroute = function createEnroute(x, y, heading, outboundWaypoint) {
+    var airplane = Airplane.create(x, y, heading, routeTypes.ENROUTE);
+    airplane.outboundWaypoint = outboundWaypoint;
+    return airplane;
+  };
 
+  return Airplane;
+}(), _class.getTurningRate = function (airplane) {
+  var model = airplanesById[airplane.typeId];
+  var turningRate = model.turningRate;
+
+  if (airplane.speed <= model.minSpeed) return turningRate[0];else if (airplane.speed <= 250) return turningRate[0] + (airplane.speed - model.minSpeed) / (250 - model.minSpeed) * (turningRate[1] - turningRate[0]);else return turningRate[1] + (airplane.speed - 250) / (model.topSpeed - 250) * (turningRate[2] - turningRate[1]);
+}, _temp);
 
 // CONCATENATED MODULE: ./lib/config.js
 /* harmony default export */ var config = ({
@@ -7969,9 +7579,15 @@ var airplane_Airplane = function () {
   descendSpeed: 22,
   accelerationSpeed: 1.6,
   deAccelerationSpeed: 1.2,
-  flyStraightAfterTakeoffUntilHeight: 2000
+  turnRate: 0.3,
+  flyStraightAfterTakeoffUntilHeight: 2000,
+  airplaneTextDistance: 7,
+  width: 1280,
+  height: 720
 });
 // CONCATENATED MODULE: ./lib/map.js
+var map__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 
 
 var idType = {
@@ -7997,7 +7613,7 @@ var headingTo = function headingTo(x1, y1, x2, y2) {
   return (Math.atan2(x2 - x1, y2 - y1) * 180 / Math.PI + 360) % 360;
 };
 
-var angleDistance = function angleDistance(a0, a1) {
+var angleDelta = function angleDelta(a0, a1) {
   var max = 360;
   var da = (a1 - a0) % max;
   return 2 * da % max - da;
@@ -8049,13 +7665,17 @@ var map_landableRwys = function landableRwys(airport, airplane, width, height) {
     var deg1 = (Math.atan2(x1 - airplane.x, y1 - airplane.y) * 180 / Math.PI + 360) % 360;
     var deg2 = (Math.atan2(x2 - airplane.x, y2 - airplane.y) * 180 / Math.PI + 360) % 360;
 
-    if (Math.abs(angleDistance(rwy.hdg1, deg1)) < 20) {
+    if (Math.abs(angleDelta(rwy.hdg1, deg1)) < 20) {
       rwys.push({ rwy: rwy, rev: false });
-    } else if (Math.abs(angleDistance(rwy.hdg2, deg2)) < 20) {
+    } else if (Math.abs(angleDelta(rwy.hdg2, deg2)) < 20) {
       rwys.push({ rwy: rwy, rev: true });
     }
   }
   return rwys;
+};
+
+var rwyHeading = function rwyHeading(rwy, name) {
+  return rwy.name1 === name ? rwy.ref.hdg1 : rwy.ref.hdg2;
 };
 
 var maps = {
@@ -8064,6 +7684,8 @@ var maps = {
     name: 'Default',
     outboundWaypoints: ['LAIKA', 'PLM', 'DAVOT', 'EZOS', 'EDOS'],
     inboundWaypoints: ['EVKOS', 'ELROS', 'KTDOS', 'QEDOS'],
+    gaEnroute: false,
+    gaTakeoffAndLanding: false,
     waypoints: {
       EVKOS: { x: 0, y: 360 },
       QEDOS: { x: 1280, y: 400 },
@@ -8139,6 +7761,8 @@ var maps = {
   heathrow: {
     id: 'heathrow',
     name: 'Heathrow',
+    gaEnroute: false,
+    gaTakeoffAndLanding: false,
     outboundWaypoints: ['FOS', 'BIG', 'LAM'],
     inboundWaypoints: ['BLC', 'BENSU', 'EPM', 'LCY'],
     waypoints: {
@@ -8212,6 +7836,8 @@ var maps = {
   schiphol: {
     id: 'schiphol',
     name: 'Schiphol',
+    gaEnroute: false,
+    gaTakeoffAndLanding: false,
     outboundWaypoints: ['EH610', 'SPY', 'OMORU', 'TULIP'],
     inboundWaypoints: ['EH040', 'LILSI', 'IVLET', 'SUSET'],
     waypoints: {
@@ -8238,7 +7864,6 @@ var maps = {
       EH626: { x: 634.6540677480242, y: 639.6162697312807 },
       EH616: { x: 404.5465330762007, y: 201.62260601470263 },
       EH654: { x: 879.4534669237993, y: 498.37739398529743 }
-
     },
     routes: {},
     airport: {
@@ -8354,6 +7979,32 @@ for (var map_key in maps) {
     mapNames.push(map_key);
   }
 }
+
+var callsignPositions = function callsignPositions(map, waypoints, width, height) {
+  var _ref2;
+
+  return map__extends.apply(undefined, [{}].concat(Object.keys(waypoints).map(function (k) {
+    var _ref;
+
+    var ref = waypoints[k];
+    return _ref = {}, _ref[k] = { ref: ref, x: ref.x, y: ref.y }, _ref;
+  }), [(_ref2 = {}, _ref2[map.airport.callsign] = { ref: map.airport, x: width / 2 + map.airport.x, y: height / 2 + map.airport.y }, _ref2)], map.airport.runways.map(function (ref) {
+    var _ref3;
+
+    var pos = map_rwyPos(map.airport, ref, width, height);
+    return _ref3 = {}, _ref3[ref.name1] = { ref: ref, x: pos.x1, y: pos.y1 }, _ref3[ref.name2] = { ref: ref, x: pos.x2, y: pos.y2 }, _ref3;
+  })));
+};
+
+var setCallsigns = function setCallsigns(map, waypoints) {
+  var _ref4;
+
+  return map__extends.apply(undefined, [{}, waypoints, (_ref4 = {}, _ref4[map.airport.callsign] = map.airport, _ref4)].concat(map.airport.runways.map(function (rwy) {
+    var _ref5;
+
+    return _ref5 = {}, _ref5[rwy.name1] = rwy, _ref5[rwy.name2] = rwy, _ref5;
+  })));
+};
 // CONCATENATED MODULE: ./lib/communications.js
 function communications__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -8485,7 +8136,7 @@ var SettingsStore_SettingsStore = function (_EventEmitter) {
     };
 
     _this.toJson = function () {
-      return JSON.stringify(_this, ['distanceCircles', 'distanceCirclesDistance', 'distanceCirclesAmount', 'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 'sepVialationCircleColor'], 4);
+      return JSON.stringify(_this, ['distanceCircles', 'distanceCirclesDistance', 'distanceCirclesAmount', 'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 'startingEnroutePlanes', 'sepVialationCircleColor', 'ga', 'enroute'], 4);
     };
 
     _this.speechsynthesis = false;
@@ -8506,9 +8157,10 @@ var SettingsStore_SettingsStore = function (_EventEmitter) {
     _this.newPlaneInterval = 100;
     _this.startingInboundPlanes = 3;
     _this.startingOutboundPlanes = 2;
+    _this.startingEnroutePlanes = 1;
     _this.radarFontsize = 14;
-
-    _this.defaultSettings = JSON.parse(_this.toJson());
+    _this.ga = false;
+    _this.enroute = false, _this.defaultSettings = JSON.parse(_this.toJson());
 
     var persistedSettings = loadState().settings;
     if (persistedSettings) {
@@ -11653,8 +11305,6 @@ var GameMessages_GameMessages_GameMessages = function (_Component) {
   return GameMessages;
 }(preact_min["Component"]);
 // CONCATENATED MODULE: ./stores/GameStore.js
-var GameStore__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 function GameStore__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function GameStore__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -11679,12 +11329,150 @@ var GameStore_GameStore = function (_EventEmitter) {
 
     var _this = GameStore__possibleConstructorReturn(this, _EventEmitter.call(this));
 
+    _this.update = function () {
+      if (_this.paused) return;
+      var s = config.globalSpeed * stores_SettingsStore.speed;
+      _this.trySpawn();
+      _this.pathCounter = ++_this.pathCounter % Math.floor(config.pathCounterUpdateEvery / s);
+      for (var key in _this.sepDistanceVialotions) {
+        delete _this.sepDistanceVialotions[key];
+      }_this.traffic.forEach(_this.planeUpdate);
+      for (var _key in _this._edgeDetection) {
+        delete _this._edgeDetection[_key];
+      }for (var i = 0; i < _this._remove.length; i++) {
+        _this.traffic.splice(_this.traffic.indexOf(_this._remove[i]), 1);
+      }_this._remove.length = 0;
+      _this.emit('change');
+    };
+
+    _this.planeUpdate = function (airplane, i) {
+      if (airplane.outboundRwy) return;
+
+      var model = airplanesById[airplane.typeId];
+      var s = config.globalSpeed * stores_SettingsStore.speed;
+      var dx = Math.sin(airplane.heading * Math.PI / 180);
+      var dy = Math.cos(airplane.heading * Math.PI / 180);
+      var tgtHeading = airplane.heading;
+      var spdChange = 0;
+      var altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.descendSpeed * model.descendSpeed * s, airplane.tgtAltitude - airplane.altitude));
+      var tgtSpeed = airplane.altitude < 10000 && airplane.tgtSpeed > 250 ? Math.min(250, airplane.tgtSpeed) : airplane.tgtSpeed;
+
+      airplane.x += dx * s * airplane.speed * config.baseAirplaneSpeed;
+      airplane.y += dy * s * airplane.speed * config.baseAirplaneSpeed;
+
+      var isAtManeuveringSpeed = airplane.speed >= airplanesById[airplane.typeId].landingSpeed - 0.01;
+      var exceeds250Multiplier = (airplane.speed - 250) * 0.01 + 5;
+      var canChangeHeading = airplane.routeType !== routeTypes.OUTBOUND || airplane.altitude >= config.flyStraightAfterTakeoffUntilHeight - 10; /* manouvering height */
+      if (airplane.altitude >= 10000 && airplane.tgtSpeed > 250.001 && airplane.tgtAltitude < 10000) {
+        // 250kts speed rule check
+        if (altChange * exceeds250Multiplier + airplane.altitude < 10000) airplane.tgtSpeed = 250; // slow down to 250kts
+        if (airplane.altitude + altChange < 10000) altChange = 10000 - airplane.altitude; // don't descend < fl100 < 250kts
+      }
+      spdChange = Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
+      if (spdChange < 0 && altChange < 0) /* descelerating and descending */altChange *= model.descendRatioWhileDecelerating;
+
+      if (typeof airplane.tgtDirection === 'number') tgtHeading = airplane.tgtDirection; // heading
+      else if (typeof airplane.tgtDirection === 'string') {
+          // waypoint
+          var waypointPosition = _this.callsignsPos[airplane.tgtDirection];
+          if (waypointPosition) {
+            if (airplane.routeType === routeTypes.INBOUND && waypointPosition.ref.type === idType.RWY) tryLand.call(_this, waypointPosition);else tgtHeading = headingTo(airplane.x, airplane.y, waypointPosition.x, waypointPosition.y);
+          } else tgtHeading = airplane.heading;
+        }
+
+      if (isAtManeuveringSpeed) airplane.altitude += altChange;
+      airplane.speed += spdChange;
+
+      if (airplane.routeType === routeTypes.OUTBOUND || airplane.routeType === routeTypes.ENROUTE) {
+        var wp = _this.callsignsPos[airplane.outboundWaypoint];
+        if (Math.abs(airplane.x - wp.x) + Math.abs(airplane.y - wp.y) < 15) {
+          _this.departures++;
+          _this._remove.push(airplane);
+          return;
+        }
+      }
+
+      if (isAtManeuveringSpeed && canChangeHeading) {
+        var maxTurnDeg = airplane_Airplane.getTurningRate(airplane) * s * config.turnRate;
+        airplane.heading += Math.min(maxTurnDeg, Math.max(-maxTurnDeg, angleDelta(airplane.heading, tgtHeading)));
+        airplane.heading = (airplane.heading + 360) % 360;
+      }
+
+      if (_this.pathCounter === 0) {
+        airplane.path.unshift([airplane.x, airplane.y]);
+        if (airplane.path.length >= config.maxPathLen) airplane.path.pop();
+      }
+
+      if (airplane.x < -3 || airplane.y < -3 || airplane.x > config.width + 3 || airplane.y > config.height + 3) {
+        _this.unpermittedDepartures++;
+        sendMessageError(communications.getCallsign(airplane, true) + ' wrongfully exited the map. It should have exited the map at ' + (airplane.outboundWaypoint || 'the airport') + '.');
+        _this._remove.push(airplane);
+        return;
+      }
+
+      if (edgeDetectionViolation.call(_this)) _this.distanceVialations++;
+
+      // END
+
+      function edgeDetectionViolation() {
+        var airplaneSepDistViolation = false;
+        var t = config.threeMileRuleDistance,
+            x = Math.round(airplane.x / t),
+            y = Math.round(airplane.y / t);
+        for (var a = 0; a < 2; a++) {
+          for (var _i = 0; _i < 9; _i++) {
+            var identity = Math.round(x + _i % 3 - 1) + 'x' + Math.round(y + _i / 3 - 1) + '/' + (Math.floor(airplane.altitude * .0005) + a),
+                sameIdentity = this._edgeDetection[identity];
+            if (sameIdentity && !sameIdentity[airplane.flight]) {
+              // do actual calculation
+              for (var key in sameIdentity) {
+                var oa = sameIdentity[key];
+                if (Math.abs(oa.altitude - airplane.altitude) > 995) continue;
+                var xd = Math.abs(airplane.x - oa.x) / t;
+                var yd = Math.abs(airplane.y - oa.y) / t;
+                if (xd * xd + yd * yd < 1) {
+                  this.sepDistanceVialotions[oa.flight] = airplane;
+                  this.sepDistanceVialotions[airplane.flight] = oa;
+                  airplaneSepDistViolation = true;
+                }
+              }
+            }
+            this._edgeDetection[identity] = sameIdentity || {};
+            this._edgeDetection[identity][airplane.flight] = airplane;
+          }
+        }
+        return airplaneSepDistViolation;
+      }
+
+      function tryLand(rwyPos) {
+        var rwyHdg = rwyPos.ref.name1 === airplane.tgtDirection ? rwyPos.ref.hdg1 : rwyPos.ref.hdg2;
+        var hdgToRwy = Math.atan2(rwyPos.x - airplane.x, rwyPos.y - airplane.y) * 180 / Math.PI;
+        var deg = angleDelta(rwyHdg, hdgToRwy);
+        var distance = (rwyPos.x - airplane.x) / Math.sin(hdgToRwy * Math.PI / 180);
+        var rwyAirplaneHdgDiff = angleDelta(airplane.heading, rwyHdg);
+        var tooHigh = airplane.altitude > distance * config.ilsSlopeSteepness * 2 + 500 /* safety */;
+        distance = isFinite(distance) ? distance : .1;
+        if (airplane.altitude < 3200 && Math.abs(deg) < 20 && Math.abs(rwyAirplaneHdgDiff) < 20 && !tooHigh) {
+          altChange = Math.min(100 * s, Math.max(-100 * s, Math.min(airplane.altitude, distance * config.ilsSlopeSteepness) - airplane.altitude));
+        }
+        if (airplane.altitude < 3200 && Math.abs(deg) < 20) {
+          tgtHeading = rwyHdg + Math.min(45, Math.max(-45, Math.max(Math.abs(deg), 10 /* weight */) * deg));
+        } else if (airplane.altitude < 500 && Math.abs(rwyAirplaneHdgDiff) < 20) {
+          //landed
+          this.arrivals++;
+          this._remove.push(airplane);
+          return;
+        } else {
+          // unable to land, not in range, or any other reason not to land
+          tgtHeading = airplane.heading;
+        }
+      }
+    };
+
     _this.traffic = [];
     _this.paused = false;
     _this.started = false;
     _this.interval = null;
-    _this.width = 1280;
-    _this.height = 720;
     _this.log = [];
     _this.selfLog = [];
     _this.pathCounter = 0;
@@ -11699,6 +11487,8 @@ var GameStore_GameStore = function (_EventEmitter) {
 
     _this.update = _this.update.bind(_this); // called within a setInterval so bind to this object and not the window object.
     _this._newPlane = _this._newPlane.bind(_this); // called within a setInterval so bind to this object and not the window object.
+
+    _this.setMaxListeners(20);
     return _this;
   }
 
@@ -11717,15 +11507,17 @@ var GameStore_GameStore = function (_EventEmitter) {
     this.winddir = Math.floor(Math.random() * 360);
     this.altimeter = (29 + Math.random() * 2).toFixed(2);
     this.atis = Math.floor(Math.random() * 26);
-
     this.windspd = Math.floor(Math.random() * 12);
     this._setup(map);
     // create planes
     for (var i = 0; i < stores_SettingsStore.startingInboundPlanes; i++) {
-      this._newPlaneInboundOnRoute();
-    }
-    for (var _i = 0; _i < stores_SettingsStore.startingOutboundPlanes; _i++) {
-      this._newPlaneOutbound();
+      this._newPlaneInbound();
+    }for (var _i2 = 0; _i2 < stores_SettingsStore.startingOutboundPlanes; _i2++) {
+      this.newPlaneOutbound();
+    }if (stores_SettingsStore.enroute) {
+      for (var _i3 = 0; _i3 < stores_SettingsStore.startingEnroutePlanes; _i3++) {
+        this._newPlaneEnroute();
+      }
     }
   };
 
@@ -11738,79 +11530,83 @@ var GameStore_GameStore = function (_EventEmitter) {
   };
 
   GameStore.prototype._setup = function _setup(map) {
-    var _ref,
-        _this2 = this,
-        _ref4;
-
     this.waypoints = map.waypoints;
     this.airport = map.airport;
     this._edgeDetection = {};
     this.sepDistanceVialotions = {};
     this.started = true;
-    this.callsigns = {};
-    this.callsignsPos = {};
+    this.callsigns = setCallsigns(map, this.waypoints);
+    this.callsignsPos = callsignPositions(map, this.waypoints, config.width, config.height);
     this.mapName = map.id;
+    this.setupWaypoints(map);
 
-    this._setupWaypoints(map);
-
-    // set callsigns
-    GameStore__extends.apply(undefined, [this.callsigns, this.waypoints, (_ref = {}, _ref[map.airport.callsign] = map.airport, _ref)].concat(map.airport.runways.map(function (rwy) {
-      var _ref2;
-
-      return _ref2 = {}, _ref2[rwy.name1] = rwy, _ref2[rwy.name2] = rwy, _ref2;
-    })));
-
-    // set callsign positions
-    var airportX = this.width / 2 + map.airport.x;
-    var airportY = this.height / 2 + map.airport.y;
-    GameStore__extends.apply(undefined, [this.callsignsPos].concat(Object.keys(this.waypoints).map(function (k) {
-      var _ref3;
-
-      var ref = _this2.waypoints[k];
-      return _ref3 = {}, _ref3[k] = { ref: ref, x: ref.x, y: ref.y }, _ref3;
-    }), [(_ref4 = {}, _ref4[map.airport.callsign] = { ref: map.airport, x: airportX, y: airportY }, _ref4)], map.airport.runways.map(function (ref) {
-      var _ref5;
-
-      var pos = map_rwyPos(map.airport, ref, _this2.width, _this2.height);
-      return _ref5 = {}, _ref5[ref.name1] = { ref: ref, x: pos.x1, y: pos.y1 }, _ref5[ref.name2] = { ref: ref, x: pos.x2, y: pos.y2 }, _ref5;
-    })));
-
-    if (this.interval) throw 'Already set interval';
-    this.interval = setInterval(this.update, config.updateInterval);
+    if (!this.interval) this.interval = setInterval(this.update, config.updateInterval);
     this.emit('change');
     this.emit('start');
   };
 
-  GameStore.prototype._setupWaypoints = function _setupWaypoints() {
-    var map = this.map;
-    this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(function () {
+  GameStore.prototype.setupWaypoints = function setupWaypoints() {
+    this.inboundWpOrdered = this.map.inboundWaypoints.slice(0).sort(function () {
       return Math.random() - .5;
     });
-    this.outboundWpOrdered = map.outboundWaypoints.slice(0).sort(function () {
-      return Math.random() - .5;
-    });
-    this.enrouteRoutesOrdered = [];
-    for (var i = 0; i < map.inboundWaypoints.length; i++) {
-      for (var j = 0; j < map.outboundWaypoints.length; j++) {
-        var inboundWp = map.inboundWaypoints[i];
-        var outboundWp = map.outboundWaypoints[i];
-        var route = map.routes[inboundWp + '->' + outboundWp];
-        if (route) {
-          this.enrouteRoutesOrdered.push(route);
-        }
-      }
-    }
-    this.enrouteRoutesOrdered.sort(function () {
+    this.outboundWpOrdered = this.map.outboundWaypoints.slice(0).sort(function () {
       return Math.random() - .5;
     });
   };
 
   GameStore.prototype._newPlane = function _newPlane() {
     if (this.paused) return;
-    if (Math.random() > .5) this._newPlaneInboundOnRoute();else this._newPlaneOutbound();
+    var rnd = Math.random();
+
+    if (stores_SettingsStore.enroute) {
+      if (rnd < .33) this._newPlaneInbound();else if (rnd < .66) this.newPlaneOutbound();else this._newPlaneEnroute();
+    } else {
+      if (rnd < .5) this._newPlaneInbound();else this.newPlaneOutbound();
+    }
   };
 
-  GameStore.prototype._newPlaneInboundOnRoute = function _newPlaneInboundOnRoute() {
+  GameStore.prototype._newPlaneEnroute = function _newPlaneEnroute() {
+    var map = this.map;
+    if (this.inboundWpOrdered.length === 0) {
+      this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(function () {
+        return Math.random() - .5;
+      });
+    }
+    if (this.outboundWpOrdered.length === 0) {
+      this.outboundWpOrdered = map.outboundWaypoints.slice(0).sort(function () {
+        return Math.random() - .5;
+      });
+    }
+    var inboundWaypoint = this.inboundWpOrdered.pop();
+    var pos = this.callsignsPos[inboundWaypoint];
+
+    var outBoundWaypoint = this.outboundWpOrdered.pop();
+    var tgt = this.callsignsPos[outBoundWaypoint];
+
+    var heading = Math.floor(headingTo(pos.x, pos.y, tgt.x, tgt.y)) % 360;
+    var airplane = airplane_Airplane.createEnroute(pos.x, pos.y, heading, outBoundWaypoint);
+    this.traffic.push(airplane);
+
+    // TODO: Speech for outbound
+    // const callsign = operatorsById[airplane.operatorId].shortName + ' ' + airplane.flight;
+    // if (Math.random() > .5) {
+    //   // has atis
+    //   const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + ' with ' + this.getAtis() + '.';
+    //   this.addLog(msg, callsign);
+
+    //   const atcMsg = callsign + ', ' + this.airport.callsign + ' approach, maintain current heading.';
+    //   this.addLog(atcMsg, 'ATC');
+    // } else {
+    //   // does not have atis
+    //   const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + '.';
+    //   this.addLog(msg, callsign);
+
+    //   const atcMsg = callsign + ', information ' + this.getAtis() + ' is current, altimeter ' + this.altimeter + ', maintain current heading.';
+    //   this.addLog(atcMsg, 'ATC');
+    // }
+  };
+
+  GameStore.prototype._newPlaneInbound = function _newPlaneInbound() {
     var map = this.map;
     if (this.inboundWpOrdered.length === 0) {
       this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(function () {
@@ -11819,8 +11615,8 @@ var GameStore_GameStore = function (_EventEmitter) {
     }
     var inboundWaypoint = this.inboundWpOrdered.pop();
     var pos = this.callsignsPos[inboundWaypoint];
-    var mx = this.width / 2;
-    var my = this.height / 2;
+    var mx = config.width / 2;
+    var my = config.height / 2;
     var heading = Math.floor(headingTo(pos.x, pos.y, mx, my)) % 360;
     var airplane = airplane_Airplane.create(pos.x, pos.y, heading, routeTypes.INBOUND);
     this.traffic.push(airplane);
@@ -11849,20 +11645,20 @@ var GameStore_GameStore = function (_EventEmitter) {
   GameStore.prototype._newPlaneInboundOnEdge = function _newPlaneInboundOnEdge() {
     var hdgVar = config.headingInitVariation;
     var side = Math.floor(Math.random() * 4);
-    var x = side === 1 ? this.width : side === 3 ? 0 : Math.random() * this.width;
-    var y = side === 0 ? this.height : side === 2 ? 0 : Math.random() * this.height;
-    var mx = this.width / 2;
-    var my = this.height / 2;
+    var x = side === 1 ? config.width : side === 3 ? 0 : Math.random() * config.width;
+    var y = side === 0 ? config.height : side === 2 ? 0 : Math.random() * config.height;
+    var mx = config.width / 2;
+    var my = config.height / 2;
     var heading = Math.floor(headingTo(x, y, mx, my) - hdgVar * .5 + Math.random() * hdgVar) % 360;
     this.traffic.push(airplane_Airplane.create(x, y, heading, routeTypes.INBOUND));
   };
 
-  GameStore.prototype._newPlaneOutbound = function _newPlaneOutbound() {
-    var _this3 = this;
+  GameStore.prototype.newPlaneOutbound = function newPlaneOutbound() {
+    var _this2 = this;
 
     var activeRunways = activeRwys(this.airport, this.winddir);
     var activeRunwaysAssigned = activeRunways.filter(function (rwy) {
-      return !_this3.disableTakoffsOnRwysSet[rwy];
+      return !_this2.disableTakoffsOnRwysSet[rwy];
     });
     // if the user has a prefered runway. Use that runway. If the user has al of the runways disabled choose one at random.
     var couldNotFindAssignedRwy = activeRunwaysAssigned.length === 0;
@@ -11888,151 +11684,6 @@ var GameStore_GameStore = function (_EventEmitter) {
 
     var readBackMsg = 'Roger hold short of ' + item + ', ' + callsign + '.';
     this.addLog(readBackMsg, callsign);
-  };
-
-  GameStore.prototype.update = function update() {
-    if (this.paused) return;
-
-    this._spawnPlaneCounter += config.updateInterval * stores_SettingsStore.speed;
-    if (this._spawnPlaneCounter > stores_SettingsStore.newPlaneInterval * 1000) {
-      this._spawnPlaneCounter %= stores_SettingsStore.newPlaneInterval;
-      this._newPlane();
-    }
-
-    var sepDistViolation = false;
-    var s = config.globalSpeed * stores_SettingsStore.speed;
-    this.pathCounter = ++this.pathCounter % Math.floor(config.pathCounterUpdateEvery / s);
-    var addPathEntry = this.pathCounter === 0;
-    for (var key in this.sepDistanceVialotions) {
-      delete this.sepDistanceVialotions[key];
-    }
-    // move planes
-    for (var i = 0; i < this.traffic.length; i++) {
-      var airplane = this.traffic[i];
-      if (airplane.outboundRwy) continue;
-      var dx = Math.sin(airplane.heading * Math.PI / 180);
-      var dy = Math.cos(airplane.heading * Math.PI / 180);
-      airplane.x += dx * s * airplane.speed * config.baseAirplaneSpeed;
-      airplane.y += dy * s * airplane.speed * config.baseAirplaneSpeed;
-      var model = airplanesById[airplane.typeId];
-      var altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.descendSpeed * model.descendSpeed * s, airplane.tgtAltitude - airplane.altitude));
-
-      var exceeds250Multiplier = (airplane.speed - 250) * 0.01 + 5;
-      if (airplane.altitude >= 10000 && airplane.tgtSpeed > 250 && airplane.tgtAltitude < 10000 && altChange * exceeds250Multiplier + airplane.altitude < 10000) {
-        airplane.tgtSpeed = 250;
-      }
-
-      var tgtSpeed = airplane.altitude < 10000 && airplane.tgtSpeed > 250 ? Math.min(250, airplane.tgtSpeed) : airplane.tgtSpeed;
-      tgtSpeed = tgtSpeed || airplane.speed; // bug: tgtSpeed rarely becomes nan for undefined reasons
-      var spdChange = Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
-
-      if (spdChange < 0 && altChange < 0) /* descelerating and descending */altChange *= model.descendRatioWhileDecelerating;
-
-      airplane.speed += spdChange;
-
-      var tgtHeading = void 0;
-      if (typeof airplane.tgtDirection === 'number') {
-        tgtHeading = airplane.tgtDirection;
-      } else if (typeof airplane.tgtDirection === 'string') {
-        var cs = this.callsignsPos[airplane.tgtDirection];
-        if (cs) {
-          if (airplane.routeType === routeTypes.INBOUND && cs.ref.type === idType.RWY) {
-            var rwyHdg = cs.ref.name1 === airplane.tgtDirection ? cs.ref.hdg1 : cs.ref.hdg2;
-            var hdgToRwy = Math.atan2(cs.x - airplane.x, cs.y - airplane.y) * 180 / Math.PI;
-            var deg = angleDistance(rwyHdg, hdgToRwy);
-            var distance = (cs.x - airplane.x) / Math.sin(hdgToRwy * Math.PI / 180);
-            var rwyAirplaneHdgDiff = angleDistance(airplane.heading, rwyHdg);
-            var tooHigh = airplane.altitude > distance * config.ilsSlopeSteepness * 2 + 500 /* safety */;
-            distance = isFinite(distance) ? distance : .1;
-            if (airplane.altitude < 3200 && Math.abs(deg) < 20 && Math.abs(rwyAirplaneHdgDiff) < 20 && !tooHigh) {
-              altChange = Math.min(100 * s, Math.max(-100 * s, Math.min(airplane.altitude, distance * config.ilsSlopeSteepness) - airplane.altitude));
-            }
-            if (airplane.altitude < 3200 && Math.abs(deg) < 20) {
-              tgtHeading = rwyHdg + Math.min(45, Math.max(-45, Math.max(Math.abs(deg), 10 /* weight */) * deg));
-            } else if (airplane.altitude < 500 && Math.abs(rwyAirplaneHdgDiff) < 20) {
-              //landed
-              this.arrivals++;
-              this._remove.push(airplane);
-              continue;
-            } else {
-              tgtHeading = airplane.heading;
-            }
-          } else tgtHeading = headingTo(airplane.x, airplane.y, this.callsignsPos[airplane.tgtDirection].x, this.callsignsPos[airplane.tgtDirection].y);
-        } else {
-          tgtHeading = airplane.heading;
-        }
-      }
-      if (airplane.routeType !== routeTypes.INBOUND) {
-        var wp = this.callsignsPos[airplane.outboundWaypoint];
-        if (Math.abs(airplane.x - wp.x) + Math.abs(airplane.y - wp.y) < 15) {
-          // enroute
-          this.departures++;
-          this._remove.push(airplane);
-          continue;
-        }
-      }
-      if (airplane.x < -3 || airplane.y < -3 || airplane.x > this.width + 3 || airplane.y > this.height + 3) {
-        this.unpermittedDepartures++;
-        sendMessageError(communications.getCallsign(airplane, true) + ' wrongfully exited the map. It should have exited the map at ' + (airplane.outboundWaypoint || 'the airport') + '.');
-        this._remove.push(airplane);
-        continue;
-      }
-      var isAtManeuveringSpeed = airplane.speed >= airplanesById[airplane.typeId].landingSpeed - 0.01;
-      var canChangeHeading = airplane.routeType !== routeTypes.OUTBOUND || airplane.altitude >= config.flyStraightAfterTakeoffUntilHeight - 10; /* manouvering height */
-
-      if (isAtManeuveringSpeed) {
-        if (airplane.altitude >= 10000 && airplane.speed > 250 && airplane.altitude + altChange < 10000) {
-          altChange = 10000 - airplane.altitude;
-        }
-        airplane.altitude += altChange;
-      }
-
-      if (isAtManeuveringSpeed && canChangeHeading) {
-        airplane.heading += Math.min(1 * s, Math.max(-1 * s, angleDistance(airplane.heading, tgtHeading)));
-        airplane.heading = (airplane.heading + 360) % 360;
-      }
-
-      if (addPathEntry) {
-        airplane.path.unshift([airplane.x, airplane.y]);
-        if (airplane.path.length >= config.maxPathLen) airplane.path.pop();
-      }
-      // edge detection
-      var t = config.threeMileRuleDistance,
-          x = Math.round(airplane.x / t),
-          y = Math.round(airplane.y / t);
-      for (var a = 0; a < 2; a++) {
-        for (var _i2 = 0; _i2 < 9; _i2++) {
-          var identity = Math.round(x + _i2 % 3 - 1) + 'x' + Math.round(y + _i2 / 3 - 1) + '/' + (Math.floor(airplane.altitude * .0005) + a),
-              sameIdentity = this._edgeDetection[identity];
-          if (sameIdentity && !sameIdentity[airplane.flight]) {
-            // do actual calculation
-            for (var _key in sameIdentity) {
-              var oa = sameIdentity[_key];
-              if (Math.abs(oa.altitude - airplane.altitude) > 995) continue;
-              var xd = Math.abs(airplane.x - oa.x) / t;
-              var yd = Math.abs(airplane.y - oa.y) / t;
-              if (xd * xd + yd * yd < 1) {
-                this.sepDistanceVialotions[oa.flight] = airplane;
-                this.sepDistanceVialotions[airplane.flight] = oa;
-                sepDistViolation = true;
-              }
-            }
-          }
-          this._edgeDetection[identity] = sameIdentity || {};
-          this._edgeDetection[identity][airplane.flight] = airplane;
-        }
-      }
-    }
-    for (var _key2 in this._edgeDetection) {
-      delete this._edgeDetection[_key2];
-    }
-    if (this._remove.length > 0) {
-      for (var _i3 = 0; _i3 < this._remove.length; _i3++) {
-        this.traffic.splice(this.traffic.indexOf(this._remove[_i3]), 1);
-      }this._remove.length = 0;
-    }
-    if (sepDistViolation) this.distanceVialations++;
-    this.emit('change');
   };
 
   GameStore.prototype.stop = function stop() {
@@ -12077,12 +11728,176 @@ var GameStore_GameStore = function (_EventEmitter) {
     this.svgEl = el;
   };
 
+  GameStore.prototype.trySpawn = function trySpawn() {
+    this._spawnPlaneCounter += config.updateInterval * stores_SettingsStore.speed;
+    if (this._spawnPlaneCounter > stores_SettingsStore.newPlaneInterval * 1000) {
+      this._spawnPlaneCounter %= stores_SettingsStore.newPlaneInterval;
+      this._newPlane();
+    }
+  };
+
   return GameStore;
 }(external__events_["EventEmitter"]);
 
 var persistanceProps = ['traffic', 'started', 'width', 'height', 'log', 'selfLog', 'pathCounter', 'mapName', 'id', 'arrivals', 'departures', 'enroutes', 'distanceVialations', 'mapName', 'winddir', 'windspd', 'unpermittedDepartures'];
 
 /* harmony default export */ var stores_GameStore = (new GameStore_GameStore());
+// EXTERNAL MODULE: ./containers/TrafficStack/TrafficStack.css
+var TrafficStack_TrafficStack = __webpack_require__("6a/W");
+var TrafficStack_default = /*#__PURE__*/__webpack_require__.n(TrafficStack_TrafficStack);
+
+// EXTERNAL MODULE: ./components/GameMetaControls/GameMetaControls.css
+var GameMetaControls_GameMetaControls = __webpack_require__("rcWw");
+var GameMetaControls_default = /*#__PURE__*/__webpack_require__.n(GameMetaControls_GameMetaControls);
+
+// CONCATENATED MODULE: ./components/GameMetaControls/GameMetaControls.js
+
+
+function GameMetaControls__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function GameMetaControls__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function GameMetaControls__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+var GameMetaControls__ref = Object(preact_min["h"])(
+  'span',
+  null,
+  Object(preact_min["h"])(FaPlay, null),
+  ' Resume'
+);
+
+var GameMetaControls__ref2 = Object(preact_min["h"])(
+  'span',
+  null,
+  Object(preact_min["h"])(FaPause, null),
+  ' Pause'
+);
+
+var GameMetaControls__ref3 = Object(preact_min["h"])(FaSave, null);
+
+var GameMetaControls_GameMetaControls_GameMetaControls = function (_Component) {
+  GameMetaControls__inherits(GameMetaControls, _Component);
+
+  function GameMetaControls(props) {
+    GameMetaControls__classCallCheck(this, GameMetaControls);
+
+    var _this = GameMetaControls__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.handleGameStoreChange = function () {
+      _this.setState({
+        paused: stores_GameStore.paused,
+        started: stores_GameStore.started
+      });
+    };
+
+    _this.handlePauseResumeButtonClick = function () {
+      stores_GameStore[stores_GameStore.paused ? 'resume' : 'pause']();
+    };
+
+    _this.handleSaveButtonClick = function () {
+      var game = stores_GameStore.toJson();
+      var state = loadState();
+      var name = prompt('Name of your save?', stores_GameStore.mapName + ' - ' + new Date().toLocaleDateString());
+      if (name === null) return;
+      if (state.games[name]) return sendMessageError('Sorry this name already exists...');
+      state.games[name] = game;
+      saveState(state);
+    };
+
+    _this.state = {
+      paused: stores_GameStore.paused,
+      started: stores_GameStore.started
+    };
+    return _this;
+  }
+
+  GameMetaControls.prototype.componentWillMount = function componentWillMount() {
+    stores_GameStore.on('change', this.handleGameStoreChange);
+  };
+
+  GameMetaControls.prototype.componentWillUnmount = function componentWillUnmount() {
+    stores_GameStore.removeListener('change', this.handleGameStoreChange);
+  };
+
+  GameMetaControls.prototype.render = function render() {
+    var paused = this.state.paused;
+    return Object(preact_min["h"])(
+      'div',
+      { className: 'gamemetacontrols' },
+      Object(preact_min["h"])(
+        'button',
+        { className: 'w-50', onClick: this.handlePauseResumeButtonClick },
+        paused ? GameMetaControls__ref : GameMetaControls__ref2
+      ),
+      Object(preact_min["h"])(
+        'button',
+        { className: 'w-50', onClick: this.handleSaveButtonClick },
+        GameMetaControls__ref3,
+        ' Save'
+      )
+    );
+  };
+
+  return GameMetaControls;
+}(preact_min["Component"]);
+
+/* harmony default export */ var components_GameMetaControls_GameMetaControls = (GameMetaControls_GameMetaControls_GameMetaControls);
+// EXTERNAL MODULE: ./containers/PlaneSpd/PlaneSpd.css
+var PlaneSpd = __webpack_require__("HYSH");
+var PlaneSpd_default = /*#__PURE__*/__webpack_require__.n(PlaneSpd);
+
+// CONCATENATED MODULE: ./containers/PlaneSpd/PlaneSpd.js
+
+
+
+var PlaneSpd_getSpdJsx = function getSpdJsx(_ref) {
+  var airplane = _ref.airplane,
+      tagName = _ref.tagName;
+
+  var tgtSpeed = airplane.altitude < 10000 ? Math.min(airplane.tgtSpeed, 250) : airplane.tgtSpeed;
+  var TagName = tagName;
+  if (Math.abs(airplane.speed - tgtSpeed) > 5) {
+    return Object(preact_min["h"])(
+      TagName,
+      null,
+      Math.round(airplane.speed),
+      "KTS",
+      tgtSpeed > airplane.speed ? Object(preact_min["h"])(
+        TagName,
+        { className: "up" },
+        "\u21E7",
+        Math.round(tgtSpeed),
+        "KTS"
+      ) : Object(preact_min["h"])(
+        TagName,
+        { className: "down" },
+        "\u21E9",
+        Math.round(tgtSpeed),
+        "KTS"
+      )
+    );
+  } else {
+    return Object(preact_min["h"])(
+      TagName,
+      null,
+      Math.round(airplane.speed),
+      "KTS"
+    );
+  }
+};
+
+/* harmony default export */ var PlaneSpd_PlaneSpd = (PlaneSpd_getSpdJsx);
+// EXTERNAL MODULE: ./containers/SettingsPanel/SettingsPanel.css
+var SettingsPanel_SettingsPanel = __webpack_require__("yDY4");
+var SettingsPanel_default = /*#__PURE__*/__webpack_require__.n(SettingsPanel_SettingsPanel);
+
 // EXTERNAL MODULE: ./components/Settings/Settings.css
 var Settings_Settings = __webpack_require__("ybWk");
 var Settings_default = /*#__PURE__*/__webpack_require__.n(Settings_Settings);
@@ -12095,6 +11910,7 @@ function Settings__classCallCheck(instance, Constructor) { if (!(instance instan
 function Settings__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function Settings__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -12121,13 +11937,13 @@ var Settings__ref3 = Object(preact_min["h"])(
   'Easy'
 );
 
-var Settings__ref4 = Object(preact_min["h"])(
+var _ref4 = Object(preact_min["h"])(
   'option',
   { value: 'normal' },
   'Normal'
 );
 
-var Settings__ref5 = Object(preact_min["h"])(
+var _ref5 = Object(preact_min["h"])(
   'option',
   { value: 'hard' },
   'Hard'
@@ -12144,68 +11960,84 @@ var _ref7 = Object(preact_min["h"])('span', { 'class': 'slider' });
 var _ref8 = Object(preact_min["h"])(
   'span',
   null,
+  'General Aviation'
+);
+
+var _ref9 = Object(preact_min["h"])('span', { 'class': 'slider' });
+
+var _ref10 = Object(preact_min["h"])(
+  'span',
+  null,
+  'Enroute Traffic'
+);
+
+var _ref11 = Object(preact_min["h"])('span', { 'class': 'slider' });
+
+var _ref12 = Object(preact_min["h"])(
+  'span',
+  null,
   'Distance circle color:'
 );
 
-var _ref9 = Object(preact_min["h"])(
+var _ref13 = Object(preact_min["h"])(
   'span',
   null,
   'ILS indicator color:'
 );
 
-var _ref10 = Object(preact_min["h"])(
+var _ref14 = Object(preact_min["h"])(
   'span',
   null,
   'Seperatorion circle color:'
 );
 
-var _ref11 = Object(preact_min["h"])(
+var _ref15 = Object(preact_min["h"])(
   'span',
   null,
   'Radar font size:'
 );
 
-var _ref12 = Object(preact_min["h"])(
+var _ref16 = Object(preact_min["h"])(
   'span',
   null,
   Object(preact_min["h"])(FaCompress, null),
   ' Hide advanced settings'
 );
 
-var _ref13 = Object(preact_min["h"])(
+var _ref17 = Object(preact_min["h"])(
   'span',
   null,
   Object(preact_min["h"])(FaExpand, null),
   ' Show advanced settings '
 );
 
-var _ref14 = Object(preact_min["h"])(
+var _ref18 = Object(preact_min["h"])(
   'span',
   null,
   'Speech synthesis'
 );
 
-var _ref15 = Object(preact_min["h"])('span', { 'class': 'slider' });
+var _ref19 = Object(preact_min["h"])('span', { 'class': 'slider' });
 
-var _ref16 = Object(preact_min["h"])(
+var _ref20 = Object(preact_min["h"])(
   'span',
   null,
   'Speech synthesis voices'
 );
 
-var _ref17 = Object(preact_min["h"])(
+var _ref21 = Object(preact_min["h"])(
   'span',
   null,
   'Pitch:'
 );
 
-var _ref18 = Object(preact_min["h"])(
+var _ref22 = Object(preact_min["h"])(
   'span',
   null,
   'Rate:'
 );
 
-var _ref19 = Object(preact_min["h"])(
+var _ref23 = Object(preact_min["h"])(
   'span',
   null,
   'Spawn plane interval:'
@@ -12219,6 +12051,10 @@ var Settings_Settings_Settings = function (_Component) {
 
     var _this = Settings__possibleConstructorReturn(this, _Component.call(this));
 
+    _this.handleSettingsStoreChange = function () {
+      _this.setState({});
+    };
+
     _this.handleNewPlaneIntervalChange = function (e) {
       stores_SettingsStore.newPlaneInterval = +e.target.value;
       stores_SettingsStore.emit('change');
@@ -12229,26 +12065,84 @@ var Settings_Settings_Settings = function (_Component) {
       stores_SettingsStore.emit('change');
     };
 
+    _this.handleSpeechVoiceChange = function (e) {
+      stores_SettingsStore.changeVoice(stores_SettingsStore.voices[+e.target.value]);
+      stores_SettingsStore.emit('change');
+    };
+
+    _this.handleSpeechSynthesisSettingChange = function (e) {
+      stores_SettingsStore.speechsynthesis = e.target.checked;
+      stores_SettingsStore.emit('change');
+    };
+
+    _this.handleSpeechRecognitionSettingChange = function (e) {
+      stores_SettingsStore.speechrecognition = e.target.checked;
+      stores_SettingsStore.emit('change');
+    };
+
+    _this.handleVoicesChange = function (e) {
+      stores_SettingsStore.emit('change');
+    };
+
+    _this.handlePitchChange = function (e) {
+      stores_SettingsStore.changePitch(+e.target.value);
+      stores_SettingsStore.emit('change');
+    };
+
+    _this.handleRateChange = function (e) {
+      stores_SettingsStore.changeRate(+e.target.value);
+      stores_SettingsStore.emit('change');
+    };
+
+    _this.handleSpeedChange = function (e) {
+      stores_SettingsStore.setSpeed(+e.target.value);
+      stores_SettingsStore.emit('change');
+    };
+
+    _this.handleDifficultyChange = function (e) {
+      switch (e.target.value) {
+        case 'easy':
+          stores_SettingsStore.startingInboundPlanes = 1;
+          stores_SettingsStore.startingOutboundPlanes = 1;
+          stores_SettingsStore.startingEnroutePlanes = 0;
+          stores_SettingsStore.newPlaneInterval = 180;
+          break;
+        case 'normal':
+          stores_SettingsStore.startingInboundPlanes = 3;
+          stores_SettingsStore.startingOutboundPlanes = 2;
+          stores_SettingsStore.startingEnroutePlanes = 1;
+          stores_SettingsStore.newPlaneInterval = 100;
+          break;
+        case 'hard':
+          stores_SettingsStore.startingInboundPlanes = 4;
+          stores_SettingsStore.startingOutboundPlanes = 3;
+          stores_SettingsStore.startingEnroutePlanes = 0;
+          stores_SettingsStore.newPlaneInterval = 70;
+          break;
+      }
+      _this.setState({
+        difficulty: e.target.value
+      });
+    };
+
     _this.handleToggleExpandClick = function (e) {
       _this.setState({ expanded: !_this.state.expanded });
+    };
+
+    _this.handleGA = function (e) {
+      stores_SettingsStore.ga = e.target.checked;
+      stores_SettingsStore.emit('change');
+    };
+
+    _this.handleEnroute = function (e) {
+      stores_SettingsStore.enroute = e.target.checked;
+      stores_SettingsStore.emit('change');
     };
 
     _this.state = {
       difficulty: 'normal',
       expanded: false
     };
-
-    _this.handleSpeechRecognitionSettingChange = _this.handleSpeechRecognitionSettingChange.bind(_this);
-    _this.handleSpeechSynthesisSettingChange = _this.handleSpeechSynthesisSettingChange.bind(_this);
-    _this.handleVoicesChange = _this.handleVoicesChange.bind(_this);
-    _this.handlePitchChange = _this.handlePitchChange.bind(_this);
-    _this.handleRateChange = _this.handleRateChange.bind(_this);
-    _this.handleSpeechVoiceChange = _this.handleSpeechVoiceChange.bind(_this);
-    _this.handleSettingsStoreChange = _this.handleSettingsStoreChange.bind(_this);
-    _this.handleSpeedChange = _this.handleSpeedChange.bind(_this);
-    _this.handleDifficultyChange = _this.handleDifficultyChange.bind(_this);
-    _this.handleIlsPathColorChange = _this.handleIlsPathColorChange.bind(_this);
-    _this.handleDistanceCircleColor = _this.handleDistanceCircleColor.bind(_this);
     return _this;
   }
 
@@ -12260,67 +12154,6 @@ var Settings_Settings_Settings = function (_Component) {
   Settings.prototype.componentWillUnmount = function componentWillUnmount() {
     stores_SettingsStore.removeListener('change', this.handleSettingsStoreChange);
     communications.synth.removeEventListener('voiceschanged', this.handleVoicesChange);
-  };
-
-  Settings.prototype.handleSettingsStoreChange = function handleSettingsStoreChange() {
-    this.setState({});
-  };
-
-  Settings.prototype.handleSpeechVoiceChange = function handleSpeechVoiceChange(e) {
-    stores_SettingsStore.changeVoice(stores_SettingsStore.voices[+e.target.value]);
-    stores_SettingsStore.emit('change');
-  };
-
-  Settings.prototype.handleSpeechSynthesisSettingChange = function handleSpeechSynthesisSettingChange(e) {
-    stores_SettingsStore.speechsynthesis = e.target.checked;
-    stores_SettingsStore.emit('change');
-  };
-
-  Settings.prototype.handleSpeechRecognitionSettingChange = function handleSpeechRecognitionSettingChange(e) {
-    stores_SettingsStore.speechrecognition = e.target.checked;
-    stores_SettingsStore.emit('change');
-  };
-
-  Settings.prototype.handleVoicesChange = function handleVoicesChange(e) {
-    stores_SettingsStore.emit('change');
-  };
-
-  Settings.prototype.handlePitchChange = function handlePitchChange(e) {
-    stores_SettingsStore.changePitch(+e.target.value);
-    stores_SettingsStore.emit('change');
-  };
-
-  Settings.prototype.handleRateChange = function handleRateChange(e) {
-    stores_SettingsStore.changeRate(+e.target.value);
-    stores_SettingsStore.emit('change');
-  };
-
-  Settings.prototype.handleSpeedChange = function handleSpeedChange(e) {
-    stores_SettingsStore.setSpeed(+e.target.value);
-    stores_SettingsStore.emit('change');
-  };
-
-  Settings.prototype.handleDifficultyChange = function handleDifficultyChange(e) {
-    switch (e.target.value) {
-      case 'easy':
-        stores_SettingsStore.startingInboundPlanes = 1;
-        stores_SettingsStore.startingOutboundPlanes = 1;
-        stores_SettingsStore.newPlaneInterval = 180;
-        break;
-      case 'normal':
-        stores_SettingsStore.startingInboundPlanes = 3;
-        stores_SettingsStore.startingOutboundPlanes = 2;
-        stores_SettingsStore.newPlaneInterval = 100;
-        break;
-      case 'hard':
-        stores_SettingsStore.startingInboundPlanes = 4;
-        stores_SettingsStore.startingOutboundPlanes = 3;
-        stores_SettingsStore.newPlaneInterval = 70;
-        break;
-    }
-    this.setState({
-      difficulty: e.target.value
-    });
   };
 
   Settings.prototype.handleIlsPathColorChange = function handleIlsPathColorChange(e) {
@@ -12367,8 +12200,8 @@ var Settings_Settings_Settings = function (_Component) {
           'select',
           { value: this.state.difficulty, onInput: this.handleDifficultyChange },
           Settings__ref3,
-          Settings__ref4,
-          Settings__ref5
+          _ref4,
+          _ref5
         )
       ),
       Object(preact_min["h"])(
@@ -12384,23 +12217,45 @@ var Settings_Settings_Settings = function (_Component) {
       ),
       Object(preact_min["h"])(
         'div',
-        { className: 'mb ' + Settings_default.a.ColorInput },
+        { className: 'mb ' + Settings_default.a.SwitchInput },
         _ref8,
+        Object(preact_min["h"])(
+          'label',
+          { 'class': 'switch' },
+          Object(preact_min["h"])('input', { type: 'checkbox', onInput: this.handleGA, checked: stores_SettingsStore.ga }),
+          _ref9
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { className: 'mb ' + Settings_default.a.SwitchInput },
+        _ref10,
+        Object(preact_min["h"])(
+          'label',
+          { 'class': 'switch' },
+          Object(preact_min["h"])('input', { type: 'checkbox', onInput: this.handleEnroute, checked: stores_SettingsStore.enroute }),
+          _ref11
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { className: 'mb ' + Settings_default.a.ColorInput },
+        _ref12,
         Object(preact_min["h"])('input', { type: 'color', value: stores_SettingsStore.distanceCircleColor, onInput: this.handleDistanceCircleColor })
       ),
       Object(preact_min["h"])(
         'div',
         { className: 'mb ' + Settings_default.a.ColorInput },
-        _ref9,
+        _ref13,
         Object(preact_min["h"])('input', { type: 'color', value: stores_SettingsStore.ilsPathColor, onInput: this.handleIlsPathColorChange })
       ),
       Object(preact_min["h"])(
         'div',
         { className: 'mb ' + Settings_default.a.ColorInput },
-        _ref10,
+        _ref14,
         Object(preact_min["h"])('input', { type: 'color', value: stores_SettingsStore.sepVialationCircleColor, onInput: this.handleSepVialotionCircleColor })
       ),
-      _ref11,
+      _ref15,
       Object(preact_min["h"])(
         'div',
         { className: 'fontsize-setting range-slider mb' },
@@ -12415,7 +12270,7 @@ var Settings_Settings_Settings = function (_Component) {
       Object(preact_min["h"])(
         'button',
         { onClick: this.handleToggleExpandClick },
-        this.state.expanded ? _ref12 : _ref13
+        this.state.expanded ? _ref16 : _ref17
       ),
       Object(preact_min["h"])(
         'div',
@@ -12423,18 +12278,18 @@ var Settings_Settings_Settings = function (_Component) {
         Object(preact_min["h"])(
           'div',
           { className: 'speechsynthesis-setting mb ' + Settings_default.a.SwitchInput },
-          _ref14,
+          _ref18,
           Object(preact_min["h"])(
             'label',
             { 'class': 'switch' },
             Object(preact_min["h"])('input', { type: 'checkbox', onInput: this.handleSpeechSynthesisSettingChange, checked: stores_SettingsStore.speechsynthesis }),
-            _ref15
+            _ref19
           )
         ),
         Object(preact_min["h"])(
           'div',
           { className: 'speechsynthesis-voices-setting mb' },
-          _ref16,
+          _ref20,
           Object(preact_min["h"])(
             'select',
             { onInput: this.handleSpeechVoiceChange },
@@ -12449,7 +12304,7 @@ var Settings_Settings_Settings = function (_Component) {
             })
           )
         ),
-        _ref17,
+        _ref21,
         Object(preact_min["h"])(
           'div',
           { className: 'speechsynthesis-pitch-setting range-slider mb' },
@@ -12461,7 +12316,7 @@ var Settings_Settings_Settings = function (_Component) {
             'x'
           )
         ),
-        _ref18,
+        _ref22,
         Object(preact_min["h"])(
           'div',
           { className: 'speechsynthesis-rate-setting range-slider mb' },
@@ -12473,7 +12328,7 @@ var Settings_Settings_Settings = function (_Component) {
             'x'
           )
         ),
-        _ref19,
+        _ref23,
         Object(preact_min["h"])(
           'div',
           { className: 'fontsize-setting range-slider mb' },
@@ -12493,205 +12348,300 @@ var Settings_Settings_Settings = function (_Component) {
 }(preact_min["Component"]);
 
 /* harmony default export */ var components_Settings_Settings = (Settings_Settings_Settings);
-// EXTERNAL MODULE: ./components/WayPoints/WayPoints.css
-var WayPoints_WayPoints = __webpack_require__("1t2z");
-var WayPoints_default = /*#__PURE__*/__webpack_require__.n(WayPoints_WayPoints);
-
-// CONCATENATED MODULE: ./components/WayPoints/WayPoints.js
+// CONCATENATED MODULE: ./containers/SettingsPanel/SettingsPanel.js
 
 
-function WayPoints__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function SettingsPanel__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function WayPoints__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function SettingsPanel__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function WayPoints__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function SettingsPanel__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
 
-var WayPoints__ref = Object(preact_min["h"])('circle', { r: '2' });
 
-var WayPoints_WayPoints_WayPoints = function (_Component) {
-  WayPoints__inherits(WayPoints, _Component);
 
-  function WayPoints(props) {
-    WayPoints__classCallCheck(this, WayPoints);
+var SettingsPanel__ref = Object(preact_min["h"])(
+  'h5',
+  null,
+  'Settings'
+);
 
-    var _this = WayPoints__possibleConstructorReturn(this, _Component.call(this));
+var SettingsPanel__ref2 = Object(preact_min["h"])('hr', null);
 
-    _this.state = {
-      waypoints: stores_GameStore.waypoints
-    };
+var SettingsPanel__ref3 = Object(preact_min["h"])(components_Settings_Settings, null);
 
-    _this.handleGameStoreStart = _this.handleGameStoreStart.bind(_this);
+var SettingsPanel__ref4 = Object(preact_min["h"])('br', null);
+
+var SettingsPanel__ref5 = Object(preact_min["h"])(FaCompress, null);
+
+var SettingsPanel_SettingsPanel_SettingsPanel = function (_Component) {
+  SettingsPanel__inherits(SettingsPanel, _Component);
+
+  function SettingsPanel(props) {
+    SettingsPanel__classCallCheck(this, SettingsPanel);
+
+    var _this = SettingsPanel__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.state = {};
+
     return _this;
   }
 
-  WayPoints.prototype.componentWillMount = function componentWillMount() {
-    stores_GameStore.on('start', this.handleGameStoreStart);
-  };
-
-  WayPoints.prototype.componentWillUnmount = function componentWillUnmount() {
-    stores_GameStore.removeListener('start', this.handleGameStoreStart);
-  };
-
-  WayPoints.prototype.handleGameStoreStart = function handleGameStoreStart() {
-    this.setState({
-      waypoints: stores_GameStore.waypoints
-    });
-  };
-
-  WayPoints.prototype.render = function render() {
-    var _this2 = this;
-
-    var waypointsJsx = Object.keys(this.state.waypoints).map(function (w) {
-      var waypoint = _this2.state.waypoints[w];
-      return Object(preact_min["h"])(
-        'g',
-        { className: 'waypoint', transform: 'translate(' + waypoint.x + ' ' + (stores_GameStore.height - waypoint.y) + ')' },
-        WayPoints__ref,
-        Object(preact_min["h"])(
-          'text',
-          { x: '4' },
-          w
-        )
-      );
-    });
-
+  SettingsPanel.prototype.render = function render() {
     return Object(preact_min["h"])(
-      'g',
-      { className: 'waypoints' },
-      waypointsJsx
+      'div',
+      { className: [this.props.expanded ? null : 'hidden', 'settings-panel'].join(' ') },
+      SettingsPanel__ref,
+      SettingsPanel__ref2,
+      SettingsPanel__ref3,
+      SettingsPanel__ref4,
+      Object(preact_min["h"])(
+        'button',
+        { onClick: this.props.onToggle },
+        SettingsPanel__ref5,
+        ' Hide Options'
+      )
     );
   };
 
-  return WayPoints;
+  return SettingsPanel;
 }(preact_min["Component"]);
 
-/* harmony default export */ var components_WayPoints_WayPoints = (WayPoints_WayPoints_WayPoints);
-// EXTERNAL MODULE: ./node_modules/preact-compat/dist/preact-compat.es.js
-var preact_compat_es = __webpack_require__("AX2D");
+/* harmony default export */ var containers_SettingsPanel_SettingsPanel = (SettingsPanel_SettingsPanel_SettingsPanel);
+// CONCATENATED MODULE: ./lib/util.js
+var util__this = this,
+    _arguments = arguments;
 
-// CONCATENATED MODULE: ./components/Airport/Airport.js
+var upcase = function upcase(str) {
+  return str[0].toUpperCase() + str.slice(1);
+};
+
+var debounce = function debounce(func, wait, immediate) {
+  var timeout;
+  return function () {
+    var context = util__this,
+        args = _arguments;
+    var later = function later() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+
+var lpad = function lpad(str, padChar, length) {
+  while (str.length < length) {
+    str = padChar + str;
+  }return str;
+};
+// EXTERNAL MODULE: ./containers/InfoPanel/InfoPanel.css
+var InfoPanel_InfoPanel = __webpack_require__("Izif");
+var InfoPanel_default = /*#__PURE__*/__webpack_require__.n(InfoPanel_InfoPanel);
+
+// EXTERNAL MODULE: ./node_modules/file-saver/FileSaver.js
+var FileSaver = __webpack_require__("lDdF");
+var FileSaver_default = /*#__PURE__*/__webpack_require__.n(FileSaver);
+
+// CONCATENATED MODULE: ./containers/InfoPanel/InfoPanel.js
 
 
-function Airport__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function InfoPanel__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function Airport__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function InfoPanel__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function Airport__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
+function InfoPanel__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
-var Airport__ref = Object(preact_min["h"])('circle', { r: '2', fill: '#fff' });
 
-var Airport_Airport = function (_Component) {
-  Airport__inherits(Airport, _Component);
 
-  function Airport(props) {
-    Airport__classCallCheck(this, Airport);
 
-    var _this = Airport__possibleConstructorReturn(this, _Component.call(this));
 
-    _this.state = {
-      airport: stores_GameStore.airport
+
+var InfoPanel__ref = Object(preact_min["h"])('span', { 'class': 'slider' });
+
+var InfoPanel__ref2 = Object(preact_min["h"])('br', null);
+
+var InfoPanel__ref3 = Object(preact_min["h"])(
+  'div',
+  null,
+  'Runways: '
+);
+
+var InfoPanel__ref4 = Object(preact_min["h"])('br', null);
+
+var InfoPanel__ref5 = Object(preact_min["h"])(FaDesktop, null);
+
+var InfoPanel__ref6 = Object(preact_min["h"])(FaCompress, null);
+
+var InfoPanel_InfoPanel_InfoPanel = function (_Component) {
+  InfoPanel__inherits(InfoPanel, _Component);
+
+  function InfoPanel(props) {
+    InfoPanel__classCallCheck(this, InfoPanel);
+
+    var _this = InfoPanel__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.reRender = function () {
+      return _this.setState({});
     };
 
-    _this.handleGameStoreStart = _this.handleGameStoreStart.bind(_this);
+    _this.handleTakeoffRunwayAssignInput = function (e) {
+      var rwyName = e.srcElement.getAttribute('data-rwy-name');
+      stores_GameStore.disableTakoffsOnRwysSet[rwyName] = !stores_GameStore.disableTakoffsOnRwysSet[rwyName];
+    };
+
+    _this.handleScreenShotButtonClick = function (e) {
+      if (!stores_GameStore.svgEl) return;
+      var el = stores_GameStore.svgEl.getElementsByTagName('svg')[0];
+      var source = '<?xml version="1.0" standalone="no"?>\n' + el.outerHTML;
+
+      Object(FileSaver["saveAs"])(new Blob([source], {
+        type: 'image/svg+xml'
+      }), 'Screenshot ' + stores_GameStore.map.name + '.svg');
+    };
+
     return _this;
   }
 
-  Airport.prototype.componentWillMount = function componentWillMount() {
-    stores_GameStore.on('start', this.handleGameStoreStart);
+  InfoPanel.prototype.componentWillMount = function componentWillMount() {
+    stores_GameStore.on('change', this.reRender);
   };
 
-  Airport.prototype.componentWillUnmount = function componentWillUnmount() {
-    stores_GameStore.removeListener('start', this.handleGameStoreStart);
+  InfoPanel.prototype.componentWillUnmount = function componentWillUnmount() {
+    stores_GameStore.removeListener('change', this.reRender);
   };
 
-  Airport.prototype.handleGameStoreStart = function handleGameStoreStart() {
-    this.setState({
-      airport: stores_GameStore.airport
-    });
-  };
-
-  Airport.prototype.renderRwy = function renderRwy(rwy) {
-    var len = rwy.length * config.rwyLenScale;
-    var x1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -len;
-    var y1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -len;
-    var x2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -len;
-    var y2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -len;
-
-    var ilsx1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
-    var ilsy1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
-    var ilsx2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
-    var ilsy2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
-    return Object(preact_min["h"])(
-      'g',
-      { className: 'rwy', transform: 'translate(' + rwy.x + ' ' + -rwy.y + ')' },
-      Object(preact_min["h"])('line', { className: 'ils-line ils-line-1', 'stroke-dasharray': stores_SettingsStore.ilsDashInterval.join(), x1: x1, y1: -y1, x2: ilsx1, y2: -ilsy1 }),
-      Object(preact_min["h"])('line', { className: 'ils-line ils-line-2', 'stroke-dasharray': stores_SettingsStore.ilsDashInterval.join(), x1: x2, y1: -y2, x2: ilsx2, y2: -ilsy2 }),
-      Object(preact_min["h"])('line', { className: 'rwy-line', x1: x1, y1: -y1, x2: x2, y2: -y2 }),
-      Object(preact_min["h"])(
-        'text',
-        { className: 'rwy-name', x: x1 * rwy.labelSpread1, y: -y1 * rwy.labelSpread1 + 4 },
-        rwy.name1
-      ),
-      Object(preact_min["h"])(
-        'text',
-        { className: 'rwy-name', x: x2 * rwy.labelSpread2, y: -y2 * rwy.labelSpread2 + 4 },
-        rwy.name2
-      )
-    );
-  };
-
-  Airport.prototype.render = function render() {
+  InfoPanel.prototype.render = function render() {
     var _this2 = this;
 
-    var airport = this.state.airport;
-    if (!airport || !airport.runways) return null;
+    var activeRunways = stores_GameStore.airport.rwyusage ? activeRwys(stores_GameStore.airport, stores_GameStore.winddir) : [];
 
-    var x = stores_GameStore.width / 2 + airport.x;
-    var y = stores_GameStore.height / 2 + airport.y;
-
-    var airportJsx = airport.runways.map(function (rwy) {
-      return _this2.renderRwy(rwy);
-    });
-    var distanceCirlces = null;
-    if (stores_SettingsStore.distanceCircles) {
-      distanceCirlces = new Array(stores_SettingsStore.distanceCirclesAmount);
-      for (var i = 0; i < distanceCirlces.length; i++) {
-        distanceCirlces[i] = Object(preact_min["h"])('circle', { key: i, r: (i + 1) * stores_SettingsStore.distanceCirclesDistance,
-          fill: 'none', stroke: stores_SettingsStore.distanceCircleColor });
-      }
-    }
+    var runwayUsage = function runwayUsage(rwy) {
+      return ['1', '2'].map(function (t) {
+        return Object(preact_min["h"])(
+          'div',
+          null,
+          rwy.name1,
+          ' ',
+          lpad('' + rwy['hdg' + t], '0', 3),
+          '\xB0 ',
+          rwy['elevation' + t],
+          'FT ',
+          upcase(rwy.surface),
+          '/',
+          rwy['length' + t],
+          'FT ',
+          activeRunways.includes(rwy['name' + t]) ? Object(preact_min["h"])(
+            'span',
+            null,
+            '- Departure runway ',
+            Object(preact_min["h"])(
+              'label',
+              { 'class': 'switch' },
+              Object(preact_min["h"])('input', { type: 'checkbox', onInput: _this2.handleTakeoffRunwayAssignInput, 'data-rwy-name': rwy['name' + t],
+                checked: !stores_GameStore.disableTakoffsOnRwysSet[rwy['name' + t]] }),
+              InfoPanel__ref
+            )
+          ) : ''
+        );
+      });
+    };
 
     return Object(preact_min["h"])(
-      'g',
-      { className: 'Airport', transform: 'translate(' + x + ' ' + y + ')' },
-      distanceCirlces,
-      Airport__ref,
+      'div',
+      { className: [this.props.expanded ? null : 'hidden', 'about-panel'].join(' ') },
       Object(preact_min["h"])(
-        'g',
-        { className: 'runways' },
-        airportJsx
+        'div',
+        null,
+        'Airport: ',
+        stores_GameStore.mapName,
+        ' - ',
+        stores_GameStore.airport.callsign
       ),
       Object(preact_min["h"])(
-        'text',
-        { x: '4' },
-        this.state.airport.callsign
+        'div',
+        null,
+        Object(preact_min["h"])(
+          'span',
+          null,
+          'Wind: ',
+          lpad('' + stores_GameStore.winddir, '0', 3),
+          '\xB0 / ',
+          stores_GameStore.windspd,
+          ' kts'
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        Object(preact_min["h"])(
+          'span',
+          null,
+          'ATIS: ',
+          stores_GameStore.getAtis()
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        Object(preact_min["h"])(
+          'span',
+          null,
+          'Altimeter: ',
+          stores_GameStore.altimeter
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        Object(preact_min["h"])(
+          'span',
+          null,
+          'Elevation: ',
+          stores_GameStore.airport.elevation
+        )
+      ),
+      InfoPanel__ref2,
+      InfoPanel__ref3,
+      stores_GameStore.airport.runways && stores_GameStore.airport.runways.map(function (rwy) {
+        return runwayUsage(rwy);
+      }),
+      InfoPanel__ref4,
+      Object(preact_min["h"])(
+        'button',
+        { className: 'button', onClick: this.handleScreenShotButtonClick },
+        InfoPanel__ref5,
+        ' Save Radar as SVG'
+      ),
+      Object(preact_min["h"])(
+        'button',
+        { onClick: this.props.onToggle },
+        InfoPanel__ref6,
+        ' Hide Panel'
       )
     );
   };
 
-  return Airport;
-}(preact_compat_es["Component"]);
+  return InfoPanel;
+}(preact_min["Component"]);
 
-/* harmony default export */ var components_Airport_Airport = (Airport_Airport);
+/* harmony default export */ var containers_InfoPanel_InfoPanel = (InfoPanel_InfoPanel_InfoPanel);
+// EXTERNAL MODULE: ./containers/AboutPanel/AboutPanel.css
+var AboutPanel_AboutPanel = __webpack_require__("tBPK");
+var AboutPanel_default = /*#__PURE__*/__webpack_require__.n(AboutPanel_AboutPanel);
+
+// EXTERNAL MODULE: ./node_modules/react-github-button/lib/index.js
+var lib = __webpack_require__("WUqk");
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+
 // EXTERNAL MODULE: ./containers/Donate/Donate.css
 var Donate = __webpack_require__("sjZI");
 var Donate_default = /*#__PURE__*/__webpack_require__.n(Donate);
@@ -12830,304 +12780,26 @@ var Donate_Donate = function (_Component) {
 }(preact_min["Component"]);
 
 /* harmony default export */ var containers_Donate_Donate = (Donate_Donate);
-// EXTERNAL MODULE: ./components/BackgroundSvg/BackgroundSvg.css
-var BackgroundSvg_BackgroundSvg = __webpack_require__("9GBv");
-var BackgroundSvg_default = /*#__PURE__*/__webpack_require__.n(BackgroundSvg_BackgroundSvg);
+// CONCATENATED MODULE: ./containers/AboutPanel/AboutPanel.js
 
-// CONCATENATED MODULE: ./components/BackgroundSvg/BackgroundSvg.js
 
+function AboutPanel__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function BackgroundSvg__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function AboutPanel__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function BackgroundSvg__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function AboutPanel__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function BackgroundSvg__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
-var BackgroundSvg_BackgroundSvg_BackgroundSvg = function (_Component) {
-  BackgroundSvg__inherits(BackgroundSvg, _Component);
 
-  function BackgroundSvg() {
-    BackgroundSvg__classCallCheck(this, BackgroundSvg);
 
-    return BackgroundSvg__possibleConstructorReturn(this, _Component.call(this));
-  }
+var AboutPanel__ref = Object(preact_min["h"])(lib_default.a, { type: 'stargazers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
 
-  BackgroundSvg.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
-    return nextProps.name !== this.props.name;
-  };
+var AboutPanel__ref2 = Object(preact_min["h"])(lib_default.a, { type: 'watchers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
 
-  BackgroundSvg.prototype.render = function render() {
-    var _this2 = this;
-
-    var url = 'assets/maps/' + this.props.name + '.xml';
-    if (typeof window === 'undefined') url = 'https://esstudio.site/atc-manager-2/' + url;
-    if (this.props.name) {
-      fetch(url).then(function (response) {
-        return response.text();
-      }).then(function (xml) {
-        return _this2.el.innerHTML = xml;
-      });
-    }
-    return Object(preact_min["h"])('g', { transform: 'translate(-640, -360)', className: 'background', ref: function ref(el) {
-        return _this2.el = el;
-      } });
-  };
-
-  return BackgroundSvg;
-}(preact_compat_es["Component"]);
-
-/* harmony default export */ var components_BackgroundSvg_BackgroundSvg = (BackgroundSvg_BackgroundSvg_BackgroundSvg);
-// EXTERNAL MODULE: ./components/GameMetaControls/GameMetaControls.css
-var GameMetaControls_GameMetaControls = __webpack_require__("rcWw");
-var GameMetaControls_default = /*#__PURE__*/__webpack_require__.n(GameMetaControls_GameMetaControls);
-
-// CONCATENATED MODULE: ./components/GameMetaControls/GameMetaControls.js
-
-
-function GameMetaControls__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function GameMetaControls__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function GameMetaControls__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-
-
-var GameMetaControls__ref = Object(preact_min["h"])(
-  'span',
-  null,
-  Object(preact_min["h"])(FaPlay, null),
-  ' Resume'
-);
-
-var GameMetaControls__ref2 = Object(preact_min["h"])(
-  'span',
-  null,
-  Object(preact_min["h"])(FaPause, null),
-  ' Pause'
-);
-
-var GameMetaControls__ref3 = Object(preact_min["h"])(FaSave, null);
-
-var GameMetaControls_GameMetaControls_GameMetaControls = function (_Component) {
-  GameMetaControls__inherits(GameMetaControls, _Component);
-
-  function GameMetaControls(props) {
-    GameMetaControls__classCallCheck(this, GameMetaControls);
-
-    var _this = GameMetaControls__possibleConstructorReturn(this, _Component.call(this));
-
-    _this.handleGameStoreChange = function () {
-      _this.setState({
-        paused: stores_GameStore.paused,
-        started: stores_GameStore.started
-      });
-    };
-
-    _this.handlePauseResumeButtonClick = function () {
-      stores_GameStore[stores_GameStore.paused ? 'resume' : 'pause']();
-    };
-
-    _this.handleSaveButtonClick = function () {
-      var game = stores_GameStore.toJson();
-      var state = loadState();
-      var name = prompt('Name of your save?', stores_GameStore.mapName + ' - ' + new Date().toLocaleDateString());
-      if (name === null) return;
-      if (state.games[name]) return sendMessageError('Sorry this name already exists...');
-      state.games[name] = game;
-      saveState(state);
-    };
-
-    _this.state = {
-      paused: stores_GameStore.paused,
-      started: stores_GameStore.started
-    };
-    return _this;
-  }
-
-  GameMetaControls.prototype.componentWillMount = function componentWillMount() {
-    stores_GameStore.on('change', this.handleGameStoreChange);
-  };
-
-  GameMetaControls.prototype.componentWillUnmount = function componentWillUnmount() {
-    stores_GameStore.removeListener('change', this.handleGameStoreChange);
-  };
-
-  GameMetaControls.prototype.render = function render() {
-    var paused = this.state.paused;
-    return Object(preact_min["h"])(
-      'div',
-      { className: 'gamemetacontrols' },
-      Object(preact_min["h"])(
-        'button',
-        { className: 'w-50', onClick: this.handlePauseResumeButtonClick },
-        paused ? GameMetaControls__ref : GameMetaControls__ref2
-      ),
-      Object(preact_min["h"])(
-        'button',
-        { className: 'w-50', onClick: this.handleSaveButtonClick },
-        GameMetaControls__ref3,
-        ' Save'
-      )
-    );
-  };
-
-  return GameMetaControls;
-}(preact_min["Component"]);
-
-/* harmony default export */ var components_GameMetaControls_GameMetaControls = (GameMetaControls_GameMetaControls_GameMetaControls);
-// EXTERNAL MODULE: ./node_modules/react-copy-to-clipboard/lib/index.js
-var lib = __webpack_require__("sQ20");
-var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
-
-// EXTERNAL MODULE: ./node_modules/react-github-button/lib/index.js
-var react_github_button_lib = __webpack_require__("WUqk");
-var react_github_button_lib_default = /*#__PURE__*/__webpack_require__.n(react_github_button_lib);
-
-// EXTERNAL MODULE: ./node_modules/file-saver/FileSaver.js
-var FileSaver = __webpack_require__("lDdF");
-var FileSaver_default = /*#__PURE__*/__webpack_require__.n(FileSaver);
-
-// CONCATENATED MODULE: ./containers/AtcView/AtcView.js
-var AtcView__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-function AtcView__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function AtcView__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function AtcView__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var AtcView__ref = Object(preact_min["h"])('circle', { cx: '0', cy: '0', r: '2', 'stroke-width': '0' });
-
-var AtcView__ref2 = Object(preact_min["h"])(
-  'span',
-  null,
-  'Heading (\xB0)'
-);
-
-var AtcView__ref3 = Object(preact_min["h"])(
-  'span',
-  null,
-  'Direct to '
-);
-
-var AtcView__ref4 = Object(preact_min["h"])(
-  'span',
-  null,
-  'Speed (KTS)'
-);
-
-var AtcView__ref5 = Object(preact_min["h"])(
-  'span',
-  null,
-  'Altitude (FT)'
-);
-
-var AtcView__ref6 = Object(preact_min["h"])(FaPaperPlane, null);
-
-var AtcView__ref7 = Object(preact_min["h"])(FaPlane, null);
-
-var AtcView__ref8 = Object(preact_min["h"])('span', { 'class': 'slider' });
-
-var AtcView__ref9 = Object(preact_min["h"])('span', { 'class': 'slider' });
-
-var AtcView__ref10 = Object(preact_min["h"])(components_WayPoints_WayPoints, null);
-
-var AtcView__ref11 = Object(preact_min["h"])(components_Airport_Airport, null);
-
-var AtcView__ref12 = Object(preact_min["h"])('rect', { width: '100%', height: '100%', fill: 'none', stroke: '#fff', 'stroke-dasharray': '20, 20' });
-
-var AtcView__ref13 = Object(preact_min["h"])('div', { className: 'abs-container scores' });
-
-var AtcView__ref14 = Object(preact_min["h"])(FaCog, null);
-
-var AtcView__ref15 = Object(preact_min["h"])(FaCommentDots, null);
-
-var AtcView__ref16 = Object(preact_min["h"])(FaQuestion, null);
-
-var AtcView__ref17 = Object(preact_min["h"])(FaInfo, null);
-
-var AtcView__ref18 = Object(preact_min["h"])(components_GameMetaControls_GameMetaControls, null);
-
-var AtcView__ref19 = Object(preact_min["h"])(
-  'h5',
-  null,
-  'Settings'
-);
-
-var _ref20 = Object(preact_min["h"])('hr', null);
-
-var _ref21 = Object(preact_min["h"])(components_Settings_Settings, null);
-
-var _ref22 = Object(preact_min["h"])('br', null);
-
-var _ref23 = Object(preact_min["h"])(FaCompress, null);
-
-var _ref24 = Object(preact_min["h"])('hr', null);
-
-var _ref25 = Object(preact_min["h"])('br', null);
-
-var _ref26 = Object(preact_min["h"])('br', null);
-
-var _ref27 = Object(preact_min["h"])('br', null);
-
-var _ref28 = Object(preact_min["h"])(FaCompress, null);
-
-var _ref29 = Object(preact_min["h"])(
-  'button',
-  null,
-  'Copy logs'
-);
-
-var _ref30 = Object(preact_min["h"])(FaCompress, null);
-
-var _ref31 = Object(preact_min["h"])('br', null);
-
-var _ref32 = Object(preact_min["h"])(
-  'div',
-  null,
-  'Runways: '
-);
-
-var _ref33 = Object(preact_min["h"])('br', null);
-
-var _ref34 = Object(preact_min["h"])(FaDesktop, null);
-
-var _ref35 = Object(preact_min["h"])(FaCompress, null);
-
-var _ref36 = Object(preact_min["h"])(react_github_button_lib_default.a, { type: 'stargazers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
-
-var _ref37 = Object(preact_min["h"])(react_github_button_lib_default.a, { type: 'watchers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
-
-var _ref38 = Object(preact_min["h"])(
+var AboutPanel__ref3 = Object(preact_min["h"])(
   'a',
   { 'class': 'header-btn', href: 'https://www.paypal.me/esstudio', target: '_blank' },
   Object(preact_min["h"])(
@@ -13142,33 +12814,33 @@ var _ref38 = Object(preact_min["h"])(
   )
 );
 
-var _ref39 = Object(preact_min["h"])('br', null);
+var AboutPanel__ref4 = Object(preact_min["h"])('br', null);
 
-var _ref40 = Object(preact_min["h"])('br', null);
+var AboutPanel__ref5 = Object(preact_min["h"])('br', null);
 
-var _ref41 = Object(preact_min["h"])(
+var AboutPanel__ref6 = Object(preact_min["h"])(
   'a',
   { href: 'https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US', target: '_blank' },
   'ATC Manager 1 App'
 );
 
-var _ref42 = Object(preact_min["h"])(containers_Donate_Donate, null);
+var AboutPanel__ref7 = Object(preact_min["h"])(containers_Donate_Donate, null);
 
-var _ref43 = Object(preact_min["h"])('br', null);
+var AboutPanel__ref8 = Object(preact_min["h"])('br', null);
 
-var _ref44 = Object(preact_min["h"])(
+var AboutPanel__ref9 = Object(preact_min["h"])(
   'h5',
   null,
   'A Special thanks to...'
 );
 
-var _ref45 = Object(preact_min["h"])(
+var AboutPanel__ref10 = Object(preact_min["h"])(
   'b',
   null,
   'Donator(s) to the project: '
 );
 
-var _ref46 = Object(preact_min["h"])(
+var AboutPanel__ref11 = Object(preact_min["h"])(
   'ul',
   null,
   Object(preact_min["h"])(
@@ -13182,13 +12854,13 @@ var _ref46 = Object(preact_min["h"])(
   )
 );
 
-var _ref47 = Object(preact_min["h"])(
+var AboutPanel__ref12 = Object(preact_min["h"])(
   'b',
   null,
   'Top Contributors:'
 );
 
-var _ref48 = Object(preact_min["h"])(
+var AboutPanel__ref13 = Object(preact_min["h"])(
   'ul',
   null,
   Object(preact_min["h"])(
@@ -13211,13 +12883,13 @@ var _ref48 = Object(preact_min["h"])(
   )
 );
 
-var _ref49 = Object(preact_min["h"])(
+var AboutPanel__ref14 = Object(preact_min["h"])(
   'b',
   null,
   'Others that have contributed to the project, gave feedback or helped in any other way:'
 );
 
-var _ref50 = Object(preact_min["h"])(
+var AboutPanel__ref15 = Object(preact_min["h"])(
   'ul',
   null,
   Object(preact_min["h"])(
@@ -13420,13 +13092,54 @@ var _ref50 = Object(preact_min["h"])(
   )
 );
 
-var _ref51 = Object(preact_min["h"])(
+var AboutPanel__ref16 = Object(preact_min["h"])(
+  'h5',
+  null,
+  'Links: (external)'
+);
+
+var AboutPanel__ref17 = Object(preact_min["h"])(
+  'ul',
+  null,
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { target: '_blank', href: 'https://click.linksynergy.com/fs-bin/click?id=gX56itLGvIE&offerid=145238.10000683&type=3&subid=0' },
+      'Tech eBooks'
+    ),
+    Object(preact_min["h"])('img', { border: '0', width: '1', alt: '', height: '1', src: 'https://ad.linksynergy.com/fs-bin/show?id=gX56itLGvIE&bids=145238.10000683&type=3&subid=0' })
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { target: '_blank', href: 'https://click.linksynergy.com/fs-bin/click?id=gX56itLGvIE&offerid=579862.416&type=3&subid=0' },
+      'Tech courses'
+    ),
+    Object(preact_min["h"])('img', { border: '0', width: '1', alt: '', height: '1', src: 'https://ad.linksynergy.com/fs-bin/show?id=gX56itLGvIE&bids=579862.416&type=3&subid=0' })
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    Object(preact_min["h"])(
+      'a',
+      { target: '_blank', href: 'https://click.linksynergy.com/deeplink?id=gX56itLGvIE&mid=42440&u1=sp&murl=https%3A%2F%2Fwww.quickstart.com%2Fjavascript-basics-web-development-building-blocks.html' },
+      'Learn to program your own web game.'
+    ),
+    Object(preact_min["h"])('img', { alt: 'icon', width: '1', height: '1', src: 'https://ad.linksynergy.com/fs-bin/show?id=gX56itLGvIE&bids=579862.1&type=10' })
+  )
+);
+
+var AboutPanel__ref18 = Object(preact_min["h"])(
   'a',
   { title: 'Contact', href: 'https://esstudio.site/contact/' },
   'Contact Me'
 );
 
-var _ref52 = Object(preact_min["h"])(
+var AboutPanel__ref19 = Object(preact_min["h"])(
   'div',
   null,
   'Icons made by ',
@@ -13449,7 +13162,1357 @@ var _ref52 = Object(preact_min["h"])(
   )
 );
 
-var _ref53 = Object(preact_min["h"])(FaCompress, null);
+var AboutPanel__ref20 = Object(preact_min["h"])(FaCompress, null);
+
+var AboutPanel_AboutPanel_AboutPanel = function (_Component) {
+  AboutPanel__inherits(AboutPanel, _Component);
+
+  function AboutPanel(props) {
+    AboutPanel__classCallCheck(this, AboutPanel);
+
+    var _this = AboutPanel__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.state = {};
+
+    return _this;
+  }
+
+  AboutPanel.prototype.componentWillMount = function componentWillMount() {};
+
+  AboutPanel.prototype.componentWillUnmount = function componentWillUnmount() {};
+
+  AboutPanel.prototype.render = function render() {
+    return Object(preact_min["h"])(
+      'div',
+      { className: [this.props.expanded ? null : 'hidden', 'about-panel'].join(' ') },
+      AboutPanel__ref,
+      '\xA0',
+      AboutPanel__ref2,
+      '\xA0',
+      AboutPanel__ref3,
+      AboutPanel__ref4,
+      AboutPanel__ref5,
+      'ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator. Check out the ',
+      AboutPanel__ref6,
+      AboutPanel__ref7,
+      AboutPanel__ref8,
+      AboutPanel__ref9,
+      AboutPanel__ref10,
+      AboutPanel__ref11,
+      AboutPanel__ref12,
+      AboutPanel__ref13,
+      AboutPanel__ref14,
+      AboutPanel__ref15,
+      AboutPanel__ref16,
+      AboutPanel__ref17,
+      AboutPanel__ref18,
+      AboutPanel__ref19,
+      Object(preact_min["h"])(
+        'button',
+        { onClick: this.props.onToggle },
+        AboutPanel__ref20,
+        ' Hide Panel'
+      )
+    );
+  };
+
+  return AboutPanel;
+}(preact_min["Component"]);
+
+/* harmony default export */ var containers_AboutPanel_AboutPanel = (AboutPanel_AboutPanel_AboutPanel);
+// EXTERNAL MODULE: ./node_modules/react-copy-to-clipboard/lib/index.js
+var react_copy_to_clipboard_lib = __webpack_require__("sQ20");
+var react_copy_to_clipboard_lib_default = /*#__PURE__*/__webpack_require__.n(react_copy_to_clipboard_lib);
+
+// EXTERNAL MODULE: ./containers/AirplaneInfoPanel/AirplaneInfoPanel.css
+var AirplaneInfoPanel_AirplaneInfoPanel = __webpack_require__("oEh3");
+var AirplaneInfoPanel_default = /*#__PURE__*/__webpack_require__.n(AirplaneInfoPanel_AirplaneInfoPanel);
+
+// EXTERNAL MODULE: ./containers/AltFmt/AltFmt.css
+var AltFmt_AltFmt = __webpack_require__("HH5f");
+var AltFmt_default = /*#__PURE__*/__webpack_require__.n(AltFmt_AltFmt);
+
+// CONCATENATED MODULE: ./containers/AltFmt/AltFmt.js
+
+
+
+var AltFmt_AltFmt_AltFmt = function AltFmt(_ref) {
+  var altitude = _ref.altitude,
+      tagName = _ref.tagName;
+
+  var TagName = tagName;
+  return Object(preact_min["h"])(
+    TagName,
+    null,
+    altitude > 18000 ? 'FL' + Math.floor(altitude * .01) : Math.floor(altitude) + 'FT'
+  );
+};
+
+/* harmony default export */ var containers_AltFmt_AltFmt = (AltFmt_AltFmt_AltFmt);
+// CONCATENATED MODULE: ./containers/AirplaneInfoPanel/AirplaneInfoPanel.js
+
+
+function AirplaneInfoPanel__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function AirplaneInfoPanel__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function AirplaneInfoPanel__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+
+
+
+var AirplaneInfoPanel__ref = Object(preact_min["h"])('hr', null);
+
+var AirplaneInfoPanel__ref2 = Object(preact_min["h"])('br', null);
+
+var AirplaneInfoPanel__ref3 = Object(preact_min["h"])('br', null);
+
+var AirplaneInfoPanel__ref4 = Object(preact_min["h"])('br', null);
+
+var AirplaneInfoPanel__ref5 = Object(preact_min["h"])(FaCompress, null);
+
+var AirplaneInfoPanel_AirplaneInfoPanel_AirplaneInfoPanel = function (_Component) {
+  AirplaneInfoPanel__inherits(AirplaneInfoPanel, _Component);
+
+  function AirplaneInfoPanel(props) {
+    AirplaneInfoPanel__classCallCheck(this, AirplaneInfoPanel);
+
+    var _this = AirplaneInfoPanel__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.state = {};
+
+    return _this;
+  }
+
+  AirplaneInfoPanel.prototype.componentWillMount = function componentWillMount() {};
+
+  AirplaneInfoPanel.prototype.componentWillUnmount = function componentWillUnmount() {};
+
+  AirplaneInfoPanel.prototype.render = function render() {
+    if (!this.props.infoPanelTgt) return null;
+    return Object(preact_min["h"])(
+      'div',
+      { className: 'airplane-info-panel' },
+      Object(preact_min["h"])(
+        'h5',
+        null,
+        communications.getCallsign(this.props.infoPanelTgt.airplane)
+      ),
+      AirplaneInfoPanel__ref,
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Airplane: ',
+        this.props.infoPanelTgt.model.name
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Traffic Type: ',
+        upcase(routeTypes[this.props.infoPanelTgt.airplane.routeType])
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        this.props.infoPanelTgt.airplane.routeType === routeTypes.OUTBOUND && 'Departure runway: ' + this.props.infoPanelTgt.airplane.outboundRwy || null
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Operators: ',
+        this.props.infoPanelTgt.model.operators.map(function (o) {
+          return operatorsById[o].name;
+        }).join(', ') || 'None'
+      ),
+      AirplaneInfoPanel__ref2,
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Speed: ',
+        this.props.infoPanelTgt.airplane.speed,
+        'KTS'
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Altitude: ',
+        Object(preact_min["h"])(containers_AltFmt_AltFmt, { altitude: this.props.infoPanelTgt.airplane.altitude, tagName: 'span' })
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'heading: ',
+        lpad('' + this.props.infoPanelTgt.airplane.heading, '0', 3),
+        '\xB0'
+      ),
+      AirplaneInfoPanel__ref3,
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Ceiling: ',
+        Object(preact_min["h"])(containers_AltFmt_AltFmt, { altitude: this.props.infoPanelTgt.model.ceiling * 1000, tagName: 'span' })
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Top speed: ',
+        this.props.infoPanelTgt.model.topSpeed,
+        'KTS'
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Landing speed: ',
+        this.props.infoPanelTgt.model.landingSpeed,
+        'KTS'
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Min speed: ',
+        this.props.infoPanelTgt.model.minSpeed,
+        'KTS'
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Min landing runway length: ',
+        this.props.infoPanelTgt.model.landingMinRunwayLength,
+        'FT'
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Min takeoff runway length: ',
+        this.props.infoPanelTgt.model.takeoffMinRunwayLength,
+        'FT'
+      ),
+      AirplaneInfoPanel__ref4,
+      Object(preact_min["h"])(
+        'button',
+        { onClick: this.props.onToggle },
+        AirplaneInfoPanel__ref5,
+        ' Hide Panel'
+      )
+    );
+  };
+
+  return AirplaneInfoPanel;
+}(preact_min["Component"]);
+
+/* harmony default export */ var containers_AirplaneInfoPanel_AirplaneInfoPanel = (AirplaneInfoPanel_AirplaneInfoPanel_AirplaneInfoPanel);
+// EXTERNAL MODULE: ./containers/LogsPanel/LogsPanel.css
+var LogsPanel_LogsPanel = __webpack_require__("46EZ");
+var LogsPanel_default = /*#__PURE__*/__webpack_require__.n(LogsPanel_LogsPanel);
+
+// CONCATENATED MODULE: ./containers/LogsPanel/LogsPanel.js
+
+
+function LogsPanel__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function LogsPanel__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function LogsPanel__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var LogsPanel__ref = Object(preact_min["h"])(
+  'button',
+  null,
+  'Copy logs'
+);
+
+var LogsPanel__ref2 = Object(preact_min["h"])(FaCompress, null);
+
+var LogsPanel_LogsPanel_LogsPanel = function (_Component) {
+  LogsPanel__inherits(LogsPanel, _Component);
+
+  function LogsPanel(props) {
+    LogsPanel__classCallCheck(this, LogsPanel);
+
+    var _this = LogsPanel__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.handleOnlySelfButton = function () {
+      _this.setState({ logsOnlySelf: !_this.state.logsOnlySelf });
+    };
+
+    _this.state = {
+      logsOnlySelf: false
+    };
+
+    return _this;
+  }
+
+  LogsPanel.prototype.componentWillMount = function componentWillMount() {};
+
+  LogsPanel.prototype.componentWillUnmount = function componentWillUnmount() {};
+
+  LogsPanel.prototype.render = function render() {
+    var logs = this.state.logsOnlySelf ? stores_GameStore.selfLog : stores_GameStore.log;
+    return Object(preact_min["h"])(
+      'div',
+      { className: [this.props.expanded ? null : 'hidden', 'logs-panel'].join(' ') },
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Departures: ',
+        stores_GameStore.departures
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Arrivals: ',
+        stores_GameStore.arrivals
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Seperation violations: ',
+        stores_GameStore.distanceVialations
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        'Unpermitted departures: ',
+        stores_GameStore.unpermittedDepartures
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { 'class': 'logs-container' },
+        Object(preact_min["h"])(
+          'div',
+          { 'class': 'logs-inner' },
+          logs.slice(logs.length - 10, logs.length).map(function (x, i) {
+            return Object(preact_min["h"])(
+              'div',
+              { key: i },
+              x
+            );
+          })
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { style: { color: '#19242e' } },
+        this.state.logsCopied ? 'Copied.' : '\xA0'
+      ),
+      Object(preact_min["h"])(
+        react_copy_to_clipboard_lib["CopyToClipboard"],
+        { text: logs.join('\r\n'),
+          onCopy: this.handleLogsCopied },
+        LogsPanel__ref
+      ),
+      Object(preact_min["h"])(
+        'button',
+        { onClick: this.handleOnlySelfButton },
+        this.state.logsOnlySelf ? 'Show all' : 'Only me'
+      ),
+      Object(preact_min["h"])(
+        'button',
+        { onClick: this.props.onToggle },
+        LogsPanel__ref2,
+        ' Hide Panel'
+      )
+    );
+  };
+
+  return LogsPanel;
+}(preact_min["Component"]);
+
+/* harmony default export */ var containers_LogsPanel_LogsPanel = (LogsPanel_LogsPanel_LogsPanel);
+// EXTERNAL MODULE: ./containers/TrafficStackEntry/TrafficStackEntry.css
+var TrafficStackEntry_TrafficStackEntry = __webpack_require__("PEk/");
+var TrafficStackEntry_default = /*#__PURE__*/__webpack_require__.n(TrafficStackEntry_TrafficStackEntry);
+
+// EXTERNAL MODULE: ./containers/PlaneAlt/PlaneAlt.css
+var PlaneAlt_PlaneAlt = __webpack_require__("/+Qt");
+var PlaneAlt_default = /*#__PURE__*/__webpack_require__.n(PlaneAlt_PlaneAlt);
+
+// CONCATENATED MODULE: ./containers/PlaneAlt/PlaneAlt.js
+
+
+
+
+
+
+
+var PlaneAlt_PlaneAlt_PlaneAlt = function PlaneAlt(_ref) {
+  var airplane = _ref.airplane,
+      tagName = _ref.tagName;
+
+  var cs = stores_GameStore.callsignsPos[airplane.tgtDirection];
+  var isLanding = cs && cs.ref.type === idType.RWY && airplane.routeType === routeTypes.INBOUND;
+  var TagName = tagName;
+  var showTgt = Math.abs(airplane.tgtAltitude - airplane.altitude) > 100 && airplane.altitude && !isLanding;
+  var tgt = showTgt && Object(preact_min["h"])(
+    TagName,
+    { className: airplane.tgtAltitude > airplane.altitude ? 'up' : 'down' },
+    airplane.tgtAltitude > airplane.altitude ? '⇧' : '⇩',
+    Object(preact_min["h"])(containers_AltFmt_AltFmt, { altitude: airplane.tgtAltitude, tagName: tagName })
+  ) || null;
+
+  return Object(preact_min["h"])(
+    TagName,
+    null,
+    Object(preact_min["h"])(containers_AltFmt_AltFmt, { altitude: airplane.altitude, tagName: tagName }),
+    tgt
+  );
+};
+
+/* harmony default export */ var containers_PlaneAlt_PlaneAlt = (PlaneAlt_PlaneAlt_PlaneAlt);
+// CONCATENATED MODULE: ./containers/TrafficStackEntry/TrafficStackEntry.js
+
+
+function TrafficStackEntry__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function TrafficStackEntry__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function TrafficStackEntry__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+var TrafficStackEntry_TrafficStackEntry_TrafficStackEntry = function (_Component) {
+  TrafficStackEntry__inherits(TrafficStackEntry, _Component);
+
+  function TrafficStackEntry(props) {
+    TrafficStackEntry__classCallCheck(this, TrafficStackEntry);
+
+    var _this = TrafficStackEntry__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.reRender = function () {
+      _this.setState({});
+    };
+
+    _this.state = {};
+    return _this;
+  }
+
+  TrafficStackEntry.prototype.componentWillMount = function componentWillMount() {
+    stores_GameStore.on('change', this.reRender);
+  };
+
+  TrafficStackEntry.prototype.componentWillUnmount = function componentWillUnmount() {
+    stores_GameStore.removeListener('change', this.reRender);
+  };
+
+  TrafficStackEntry.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    this.reRender();
+  };
+
+  TrafficStackEntry.prototype.render = function render() {
+    var airplane = this.props.airplane;
+    var spd = Object(preact_min["h"])(PlaneSpd_PlaneSpd, { airplane: airplane, tagName: 'span' });
+    var alt = Object(preact_min["h"])(containers_PlaneAlt_PlaneAlt, { airplane: airplane, tagName: 'span' });
+    var heading = ('000' + Math.floor(airplane.heading)).substr(-3);
+    var model = airplanesById[airplane.typeId];
+
+    return Object(preact_min["h"])(
+      'div',
+      { className: 'traffic-stack-entry ' + routeTypes[airplane.routeType] + ' ' + (this.props.cmd.tgt === airplane ? 'traffic-active' : 'traffic-not-active'), 'data-index': this.props.index },
+      operatorsById[airplane.operatorId].callsign,
+      airplane.flight,
+      ' ',
+      spd,
+      ' ',
+      alt,
+      ' ',
+      model.shortName,
+      ' ',
+      heading,
+      '\xB0',
+      airplane.outboundWaypoint ? '\u21E8' + airplane.outboundWaypoint : null,
+      airplane.outboundRwy ? Object(preact_min["h"])(
+        'span',
+        null,
+        ' RWY ',
+        airplane.outboundRwy
+      ) : null,
+      Object(preact_min["h"])(
+        'button',
+        { onClick: this.handleTrafficStackInfoButtonClick, 'class': 'airplane-traffic-stack-info-btn' },
+        '?'
+      )
+    );
+  };
+
+  return TrafficStackEntry;
+}(preact_min["Component"]);
+
+/* harmony default export */ var containers_TrafficStackEntry_TrafficStackEntry = (TrafficStackEntry_TrafficStackEntry_TrafficStackEntry);
+// CONCATENATED MODULE: ./containers/TrafficStack/TrafficStack.js
+
+
+function TrafficStack__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function TrafficStack__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function TrafficStack__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var TrafficStack__ref = Object(preact_min["h"])(
+  'span',
+  null,
+  'Heading (\xB0)'
+);
+
+var TrafficStack__ref2 = Object(preact_min["h"])(
+  'span',
+  null,
+  'Direct to '
+);
+
+var TrafficStack__ref3 = Object(preact_min["h"])(
+  'span',
+  null,
+  'Speed (KTS)'
+);
+
+var TrafficStack__ref4 = Object(preact_min["h"])(
+  'span',
+  null,
+  'Altitude (FT)'
+);
+
+var TrafficStack__ref5 = Object(preact_min["h"])(FaPaperPlane, null);
+
+var TrafficStack__ref6 = Object(preact_min["h"])(FaPlane, null);
+
+var TrafficStack__ref7 = Object(preact_min["h"])(FaPlane, null);
+
+var TrafficStack__ref8 = Object(preact_min["h"])(FaCog, null);
+
+var TrafficStack__ref9 = Object(preact_min["h"])(FaCommentDots, null);
+
+var TrafficStack__ref10 = Object(preact_min["h"])(FaQuestion, null);
+
+var TrafficStack__ref11 = Object(preact_min["h"])(FaInfo, null);
+
+var TrafficStack__ref12 = Object(preact_min["h"])(components_GameMetaControls_GameMetaControls, null);
+
+var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
+  TrafficStack__inherits(TrafficStack, _Component);
+
+  function TrafficStack(props) {
+    TrafficStack__classCallCheck(this, TrafficStack);
+
+    var _this = TrafficStack__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.handleKeyPress = function (e) {
+      if (e.keyCode == 13 && _this.state.cmd.tgt) {
+        _this.props.onCmdExecution();
+        return false;
+      }
+    };
+
+    _this.handleGameStoreChange = function () {
+      _this.setState({});
+    };
+
+    _this.handleTakeoffClick = function () {
+      _this.setState(function (prevstate) {
+        prevstate.cmd.takeoff = true;
+        return prevstate;
+      }, function () {
+        _this.props.onChange(_this.state.cmd);
+        _this.props.onCmdExecution();
+      });
+    };
+
+    _this.handleExpandSettingsButtonClick = function () {
+      _this.setState({ settingsExpanded: !_this.state.settingsExpanded }, function () {
+        return _this.props.onChange(_this.state.cmd);
+      });
+    };
+
+    _this.handleAboutExpanded = function () {
+      _this.setState({ aboutExpanded: !_this.state.aboutExpanded });
+    };
+
+    _this.handleLogsExpanded = function () {
+      _this.setState({ copied: false, logsExpanded: !_this.state.logsExpanded });
+    };
+
+    _this.handleLogsCopied = function () {
+      _this.setState({ logsCopied: true });
+    };
+
+    _this.handleCloseAirplaneInfoPanel = function (e) {
+      _this.setState({ infoPanelTgt: null });
+    };
+
+    _this.handleTrafficStackInfoButtonClick = function (e) {
+      var index = e.srcElement.parentElement.getAttribute('data-index');
+      var airplane = stores_GameStore.traffic[index];
+      var model = airplanesById[airplane.typeId];
+
+      _this.setState({ infoPanelTgt: { airplane: airplane, model: model } });
+    };
+
+    _this.handleGoAroundClick = function (e) {
+      var airplane = _this.state.cmd.tgt;
+      _this.setState({
+        cmd: {
+          tgt: airplane,
+          direction: '',
+          altitude: airplane.tgtAltitude,
+          heading: Math.round(airplane.heading + 359) % 360 + 1,
+          speed: airplane.tgtSpeed
+        }
+      }, function () {
+        return _this.props.onChange(_this.state.cmd);
+      });
+      // TODO: Speech
+    };
+
+    _this.handleInfoExpanded = function (e) {
+      _this.setState({ infoExpanded: !_this.state.infoExpanded });
+    };
+
+    _this.handleHeadingTgtChange = function (e) {
+      _this.setState(function (prevstate) {
+        prevstate.cmd.heading = +e.target.value;
+        return prevstate;
+      }, function () {
+        _this.props.onChange(_this.state.cmd);
+      });
+    };
+
+    _this.handleAltitudeTgtChange = function (e) {
+      _this.setState(function (prevstate) {
+        prevstate.cmd.altitude = Math.min(+e.target.max, e.target.value);
+        return prevstate;
+      }, function () {
+        _this.props.onChange(_this.state.cmd);
+      });
+    };
+
+    _this.handleSpeedTgtChange = function (e) {
+      _this.setState(function (prevstate) {
+        prevstate.cmd.speed = Math.min(+e.target.max, e.target.value);
+        return prevstate;
+      }, function () {
+        _this.props.onChange(_this.state.cmd);
+      });
+    };
+
+    _this.handleDirectToTgtChange = function (e) {
+      if (!_this.state.cmd.tgt) return;
+      _this.setState(function (prevstate) {
+        prevstate.cmd.direction = e.target.value.toUpperCase().trim();
+        prevstate.cmd.directionOld = false;
+        return prevstate;
+      }, function () {
+        _this.props.onChange(_this.state.cmd);
+      });
+    };
+
+    _this.renderTrafficStack = function () {
+      return stores_GameStore.traffic.map(function (airplane, i) {
+        return Object(preact_min["h"])(containers_TrafficStackEntry_TrafficStackEntry, { cmd: _this.state.cmd, airplane: airplane, index: i });
+      });
+    };
+
+    _this.renderTrafficControl = function () {
+      var cmd = _this.props.cmd;
+      if (!cmd.tgt) return;
+      var model = airplanesById[cmd.tgt.typeId];
+      var topSpeed = model.topSpeed;
+      var minSpeed = model.minSpeed;
+
+      var landableRwyNamesArr = _this.props.cmd.tgt && _this.props.cmd.tgt.altitude < 3200 ? map_landableRwys(stores_GameStore.airport, _this.props.cmd.tgt, config.width, config.height).map(function (lr) {
+        return lr.rev ? lr.rwy.name2 : lr.rwy.name1;
+      }) : [];
+      var landableRwysArr = landableRwyNamesArr.map(function (name) {
+        return Object(preact_min["h"])('option', { value: name });
+      });
+
+      var directToValue = cmd.directionOld ? '' : cmd.direction;
+      var directToPlaceholder = cmd.directionOld ? cmd.direction : '';
+
+      return Object(preact_min["h"])(
+        'div',
+        null,
+        Object(preact_min["h"])(
+          'div',
+          null,
+          TrafficStack__ref,
+          Object(preact_min["h"])('input', { onInput: _this.handleHeadingTgtChange, value: cmd.heading, type: 'number', step: '10' })
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          TrafficStack__ref2,
+          Object(preact_min["h"])('input', { className: 'direct-to-input', type: 'text', value: directToValue, placeholder: directToPlaceholder,
+            list: _this.dtcToDataListId, onInput: _this.handleDirectToTgtChange }),
+          Object(preact_min["h"])(
+            'datalist',
+            { id: _this.dtcToDataListId },
+            cmd.tgt.routeType === routeTypes.INBOUND ? landableRwysArr : null,
+            Object.keys(stores_GameStore.waypoints).map(function (w) {
+              return Object(preact_min["h"])('option', { value: w });
+            })
+          )
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          TrafficStack__ref3,
+          Object(preact_min["h"])('input', { onInput: _this.handleSpeedTgtChange, value: cmd.speed, type: 'number', min: minSpeed, max: topSpeed, step: '10' })
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          TrafficStack__ref4,
+          Object(preact_min["h"])('input', { onInput: _this.handleAltitudeTgtChange, value: cmd.altitude, type: 'number', min: '2000', max: model.ceiling * 1000, step: '1000' })
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          Object(preact_min["h"])(
+            'button',
+            { onClick: _this.props.onCmdExecution },
+            TrafficStack__ref5,
+            ' Give Command'
+          )
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          Object(preact_min["h"])(
+            'button',
+            { onClick: _this.handleTakeoffClick, className: cmd.tgt.outboundRwy ? '' : 'hidden' },
+            TrafficStack__ref6,
+            ' Takeoff'
+          )
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          cmd.tgt.routeType === routeTypes.INBOUND && landableRwysArr.length > 0 && landableRwyNamesArr.includes(cmd.tgt.tgtDirection) === false ? 'Land using "Direct to"' : null
+        ),
+        Object(preact_min["h"])(
+          'div',
+          null,
+          cmd.tgt.routeType === routeTypes.INBOUND && landableRwysArr.length > 0 && landableRwyNamesArr.includes(cmd.tgt.tgtDirection) ? Object(preact_min["h"])(
+            'button',
+            { onClick: _this.handleGoAroundClick },
+            TrafficStack__ref7,
+            ' Go Around'
+          ) : null
+        )
+      );
+    };
+
+    _this.state = {
+      settingsExpanded: false,
+      logsExpanded: false,
+      aboutExpanded: false,
+      infoExpanded: false,
+      cmd: props.cmd
+    };
+
+    _this.dtcToDataListId = 'dct-tgt-' + Math.random().toString().replace('.', '');
+    return _this;
+  }
+
+  TrafficStack.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    this.setState({ cmd: nextProps.cmd });
+  };
+
+  TrafficStack.prototype.componentWillMount = function componentWillMount() {
+    stores_GameStore.on('change', this.handleGameStoreChange);
+    if (typeof window !== 'undefined') window.addEventListener('keypress', this.handleKeyPress);
+  };
+
+  TrafficStack.prototype.componentWillUnmount = function componentWillUnmount() {
+    stores_GameStore.removeListener('change', this.handleGameStoreChange);
+    if (typeof window !== 'undefined') window.removeEventListener('keypress', this.handleKeyPress);
+  };
+
+  TrafficStack.prototype.render = function render() {
+    var trafficStack = this.renderTrafficStack();
+    var trafficControl = this.renderTrafficControl();
+
+    var innerHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
+
+    return Object(preact_min["h"])(
+      'div',
+      null,
+      Object(preact_min["h"])(
+        'div',
+        { className: 'traffic-stack-wrapper', style: { height: innerHeight } },
+        Object(preact_min["h"])(
+          'div',
+          { className: 'traffic-stack', onClick: this.props.onClick },
+          Object(preact_min["h"])(
+            'div',
+            { className: 'wind' },
+            'wind: ',
+            stores_GameStore.winddir,
+            '\xB0 @ ',
+            stores_GameStore.windspd,
+            'KTS'
+          ),
+          trafficStack
+        ),
+        Object(preact_min["h"])(
+          'div',
+          { className: 'traffic-control' },
+          trafficControl
+        ),
+        Object(preact_min["h"])(
+          'div',
+          { className: 'atc-view-buttons' },
+          Object(preact_min["h"])(
+            'button',
+            { className: 'w-100', onClick: this.handleExpandSettingsButtonClick },
+            TrafficStack__ref8,
+            '\xA0',
+            this.state.settingsExpanded ? 'Hide options' : 'Expand options'
+          ),
+          Object(preact_min["h"])(
+            'button',
+            { className: 'w-100', onClick: this.handleLogsExpanded },
+            TrafficStack__ref9,
+            '\xA0',
+            this.state.logsExpanded ? 'Hide logs' : 'Expand logs'
+          ),
+          Object(preact_min["h"])(
+            'button',
+            { className: 'w-100', onClick: this.handleAboutExpanded },
+            TrafficStack__ref10,
+            '\xA0',
+            this.state.aboutExpanded ? 'Hide about' : 'Expand about'
+          ),
+          Object(preact_min["h"])(
+            'button',
+            { className: 'w-100', onClick: this.handleInfoExpanded },
+            TrafficStack__ref11,
+            '\xA0',
+            this.state.infoExpanded ? 'Hide info' : 'Expand info'
+          ),
+          TrafficStack__ref12
+        )
+      ),
+      Object(preact_min["h"])(containers_SettingsPanel_SettingsPanel, { expanded: this.state.settingsExpanded, onToggle: this.handleExpandSettingsButtonClick }),
+      Object(preact_min["h"])(containers_AirplaneInfoPanel_AirplaneInfoPanel, { infoPanelTgt: this.state.infoPanelTgt, onToggle: this.handleCloseAirplaneInfoPanel }),
+      Object(preact_min["h"])(containers_LogsPanel_LogsPanel, { expanded: this.state.logsExpanded, onToggle: this.handleLogsExpanded }),
+      Object(preact_min["h"])(containers_InfoPanel_InfoPanel, { expanded: this.state.infoExpanded, onToggle: this.handleInfoExpanded }),
+      Object(preact_min["h"])(containers_AboutPanel_AboutPanel, { expanded: this.state.aboutExpanded, onToggle: this.handleAboutExpanded })
+    );
+  };
+
+  return TrafficStack;
+}(preact_min["Component"]);
+
+/* harmony default export */ var containers_TrafficStack_TrafficStack = (TrafficStack_TrafficStack_TrafficStack);
+// EXTERNAL MODULE: ./containers/SvgRadar/SvgRadar.css
+var SvgRadar_SvgRadar = __webpack_require__("/d4d");
+var SvgRadar_default = /*#__PURE__*/__webpack_require__.n(SvgRadar_SvgRadar);
+
+// EXTERNAL MODULE: ./components/WayPoints/WayPoints.css
+var WayPoints_WayPoints = __webpack_require__("1t2z");
+var WayPoints_default = /*#__PURE__*/__webpack_require__.n(WayPoints_WayPoints);
+
+// CONCATENATED MODULE: ./components/WayPoints/WayPoints.js
+
+
+function WayPoints__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function WayPoints__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function WayPoints__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+var WayPoints__ref = Object(preact_min["h"])('circle', { r: '2' });
+
+var WayPoints_WayPoints_WayPoints = function (_Component) {
+  WayPoints__inherits(WayPoints, _Component);
+
+  function WayPoints(props) {
+    WayPoints__classCallCheck(this, WayPoints);
+
+    var _this = WayPoints__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.state = {
+      waypoints: stores_GameStore.waypoints
+    };
+
+    _this.handleGameStoreStart = _this.handleGameStoreStart.bind(_this);
+    return _this;
+  }
+
+  WayPoints.prototype.componentWillMount = function componentWillMount() {
+    stores_GameStore.on('start', this.handleGameStoreStart);
+  };
+
+  WayPoints.prototype.componentWillUnmount = function componentWillUnmount() {
+    stores_GameStore.removeListener('start', this.handleGameStoreStart);
+  };
+
+  WayPoints.prototype.handleGameStoreStart = function handleGameStoreStart() {
+    this.setState({
+      waypoints: stores_GameStore.waypoints
+    });
+  };
+
+  WayPoints.prototype.render = function render() {
+    var _this2 = this;
+
+    var waypointsJsx = Object.keys(this.state.waypoints).map(function (w) {
+      var waypoint = _this2.state.waypoints[w];
+      return Object(preact_min["h"])(
+        'g',
+        { className: 'waypoint', transform: 'translate(' + waypoint.x + ' ' + (config.height - waypoint.y) + ')' },
+        WayPoints__ref,
+        Object(preact_min["h"])(
+          'text',
+          { x: '4' },
+          w
+        )
+      );
+    });
+
+    return Object(preact_min["h"])(
+      'g',
+      { className: 'waypoints' },
+      waypointsJsx
+    );
+  };
+
+  return WayPoints;
+}(preact_min["Component"]);
+
+/* harmony default export */ var components_WayPoints_WayPoints = (WayPoints_WayPoints_WayPoints);
+// EXTERNAL MODULE: ./node_modules/preact-compat/dist/preact-compat.es.js
+var preact_compat_es = __webpack_require__("AX2D");
+
+// CONCATENATED MODULE: ./components/Airport/Airport.js
+
+
+function Airport__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Airport__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function Airport__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+var Airport__ref = Object(preact_min["h"])('circle', { r: '2', fill: '#fff' });
+
+var Airport_Airport = function (_Component) {
+  Airport__inherits(Airport, _Component);
+
+  function Airport(props) {
+    Airport__classCallCheck(this, Airport);
+
+    var _this = Airport__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.state = {
+      airport: stores_GameStore.airport
+    };
+
+    _this.handleGameStoreStart = _this.handleGameStoreStart.bind(_this);
+    return _this;
+  }
+
+  Airport.prototype.componentWillMount = function componentWillMount() {
+    stores_GameStore.on('start', this.handleGameStoreStart);
+  };
+
+  Airport.prototype.componentWillUnmount = function componentWillUnmount() {
+    stores_GameStore.removeListener('start', this.handleGameStoreStart);
+  };
+
+  Airport.prototype.handleGameStoreStart = function handleGameStoreStart() {
+    this.setState({
+      airport: stores_GameStore.airport
+    });
+  };
+
+  Airport.prototype.renderRwy = function renderRwy(rwy) {
+    var len = rwy.length * config.rwyLenScale;
+    var x1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -len;
+    var y1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -len;
+    var x2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -len;
+    var y2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -len;
+
+    var ilsx1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
+    var ilsy1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
+    var ilsx2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
+    var ilsy2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
+    return Object(preact_min["h"])(
+      'g',
+      { className: 'rwy', transform: 'translate(' + rwy.x + ' ' + -rwy.y + ')' },
+      Object(preact_min["h"])('line', { className: 'ils-line ils-line-1', 'stroke-dasharray': stores_SettingsStore.ilsDashInterval.join(), x1: x1, y1: -y1, x2: ilsx1, y2: -ilsy1 }),
+      Object(preact_min["h"])('line', { className: 'ils-line ils-line-2', 'stroke-dasharray': stores_SettingsStore.ilsDashInterval.join(), x1: x2, y1: -y2, x2: ilsx2, y2: -ilsy2 }),
+      Object(preact_min["h"])('line', { className: 'rwy-line', x1: x1, y1: -y1, x2: x2, y2: -y2 }),
+      Object(preact_min["h"])(
+        'text',
+        { className: 'rwy-name', x: x1 * rwy.labelSpread1, y: -y1 * rwy.labelSpread1 + 4 },
+        rwy.name1
+      ),
+      Object(preact_min["h"])(
+        'text',
+        { className: 'rwy-name', x: x2 * rwy.labelSpread2, y: -y2 * rwy.labelSpread2 + 4 },
+        rwy.name2
+      )
+    );
+  };
+
+  Airport.prototype.render = function render() {
+    var _this2 = this;
+
+    var airport = this.state.airport;
+    if (!airport || !airport.runways) return null;
+
+    var x = config.width / 2 + airport.x;
+    var y = config.height / 2 + airport.y;
+
+    var airportJsx = airport.runways.map(function (rwy) {
+      return _this2.renderRwy(rwy);
+    });
+    var distanceCirlces = null;
+    if (stores_SettingsStore.distanceCircles) {
+      distanceCirlces = new Array(stores_SettingsStore.distanceCirclesAmount);
+      for (var i = 0; i < distanceCirlces.length; i++) {
+        distanceCirlces[i] = Object(preact_min["h"])('circle', { key: i, r: (i + 1) * stores_SettingsStore.distanceCirclesDistance,
+          fill: 'none', stroke: stores_SettingsStore.distanceCircleColor });
+      }
+    }
+
+    return Object(preact_min["h"])(
+      'g',
+      { className: 'Airport', transform: 'translate(' + x + ' ' + y + ')' },
+      distanceCirlces,
+      Airport__ref,
+      Object(preact_min["h"])(
+        'g',
+        { className: 'runways' },
+        airportJsx
+      ),
+      Object(preact_min["h"])(
+        'text',
+        { x: '4' },
+        this.state.airport.callsign
+      )
+    );
+  };
+
+  return Airport;
+}(preact_compat_es["Component"]);
+
+/* harmony default export */ var components_Airport_Airport = (Airport_Airport);
+// EXTERNAL MODULE: ./components/BackgroundSvg/BackgroundSvg.css
+var BackgroundSvg_BackgroundSvg = __webpack_require__("9GBv");
+var BackgroundSvg_default = /*#__PURE__*/__webpack_require__.n(BackgroundSvg_BackgroundSvg);
+
+// CONCATENATED MODULE: ./components/BackgroundSvg/BackgroundSvg.js
+
+
+function BackgroundSvg__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function BackgroundSvg__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function BackgroundSvg__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var BackgroundSvg_BackgroundSvg_BackgroundSvg = function (_Component) {
+  BackgroundSvg__inherits(BackgroundSvg, _Component);
+
+  function BackgroundSvg() {
+    BackgroundSvg__classCallCheck(this, BackgroundSvg);
+
+    return BackgroundSvg__possibleConstructorReturn(this, _Component.call(this));
+  }
+
+  BackgroundSvg.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
+    return nextProps.name !== this.props.name;
+  };
+
+  BackgroundSvg.prototype.render = function render() {
+    var _this2 = this;
+
+    var url = 'assets/maps/' + this.props.name + '.xml';
+    if (typeof window === 'undefined') url = 'https://esstudio.site/atc-manager-2/' + url;
+    if (this.props.name) {
+      fetch(url).then(function (response) {
+        return response.text();
+      }).then(function (xml) {
+        return _this2.el.innerHTML = xml;
+      });
+    }
+    return Object(preact_min["h"])('g', { transform: 'translate(-640, -360)', className: 'background', ref: function ref(el) {
+        return _this2.el = el;
+      } });
+  };
+
+  return BackgroundSvg;
+}(preact_compat_es["Component"]);
+
+/* harmony default export */ var components_BackgroundSvg_BackgroundSvg = (BackgroundSvg_BackgroundSvg_BackgroundSvg);
+// EXTERNAL MODULE: ./containers/RadarTraffic/RadarTraffic.css
+var RadarTraffic_RadarTraffic = __webpack_require__("NuU9");
+var RadarTraffic_default = /*#__PURE__*/__webpack_require__.n(RadarTraffic_RadarTraffic);
+
+// CONCATENATED MODULE: ./containers/RadarTraffic/RadarTraffic.js
+
+
+function RadarTraffic__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function RadarTraffic__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function RadarTraffic__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+
+var RadarTraffic__ref = Object(preact_min["h"])('circle', { cx: '0', cy: '0', r: '2', 'stroke-width': '0' });
+
+var RadarTraffic_RadarTraffic_RadarTraffic = function (_Component) {
+  RadarTraffic__inherits(RadarTraffic, _Component);
+
+  function RadarTraffic(props) {
+    RadarTraffic__classCallCheck(this, RadarTraffic);
+
+    var _this = RadarTraffic__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.handleGameStoreChange = function () {
+      return _this.setState({});
+    };
+
+    return _this;
+  }
+
+  RadarTraffic.prototype.componentWillMount = function componentWillMount() {
+    stores_GameStore.on('change', this.handleGameStoreChange);
+  };
+
+  RadarTraffic.prototype.componentWillUnmount = function componentWillUnmount() {
+    stores_GameStore.removeListener('change', this.handleGameStoreChange);
+  };
+
+  RadarTraffic.prototype.render = function render() {
+    var airplane = this.props.airplane;
+
+    if (airplane.outboundRwy) return;
+    var y = config.height - airplane.y;
+    var x = airplane.x;
+    var spd = Object(preact_min["h"])(containers_PlaneAlt_PlaneAlt, { airplane: airplane, tagName: 'tspan' });
+    var alt = Object(preact_min["h"])(PlaneSpd_PlaneSpd, { airplane: airplane, tagName: 'tspan' });
+    var ltx = Math.sin(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
+    var lty = Math.cos(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
+    var path = 'M0,0 ' + airplane.path.map(function (p) {
+      return 'L' + (p[0] - airplane.x) + ', ' + -(p[1] - airplane.y);
+    });
+    var violatingSep = stores_GameStore.sepDistanceVialotions[airplane.flight];
+    var textHeight = (airplane.outboundWaypoint ? 4 : 3) * 14;
+
+    var textLineX = airplane.textRotation === 1 || airplane.textRotation === 2 ? -config.airplaneTextDistance : config.airplaneTextDistance;
+    var textLineY = airplane.textRotation > 1 ? -config.airplaneTextDistance : config.airplaneTextDistance;
+
+    var textAnchor = airplane.textRotation === 1 || airplane.textRotation === 2 ? 'end' : 'start';
+    var textTransformY = airplane.textRotation > 1 ? -textHeight : 0;
+    var textTranslate = 'translate(' + textLineX + ', ' + (textTransformY + textLineY) + ')';
+
+    return Object(preact_min["h"])(
+      'g',
+      { className: 'airplane ' + routeTypes[airplane.routeType] + ' ' + (this.props.cmd.tgt === airplane ? 'airplane-active' : 'airplane-inactive'),
+        'data-index': this.props.index, transform: 'translate(' + x + ', ' + y + ')', 'data-heading': airplane.heading },
+      violatingSep ? Object(preact_min["h"])('circle', { r: config.threeMileRuleDistance, className: 'sep' }) : null,
+      RadarTraffic__ref,
+      Object(preact_min["h"])('line', { x1: '0', y1: '0', x2: ltx, y2: -lty }),
+      Object(preact_min["h"])('path', { 'stroke-dasharray': '4, 5', d: path }),
+      Object(preact_min["h"])('line', { x1: '0', y1: '0', x2: textLineX, y2: textLineY }),
+      Object(preact_min["h"])(
+        'g',
+        null,
+        Object(preact_min["h"])(
+          'text',
+          { transform: textTranslate, 'text-anchor': textAnchor },
+          Object(preact_min["h"])(
+            'tspan',
+            { dy: '1em' },
+            operatorsById[airplane.operatorId].callsign,
+            airplane.flight
+          ),
+          Object(preact_min["h"])(
+            'tspan',
+            { dy: '1em', x: '0' },
+            spd
+          ),
+          Object(preact_min["h"])(
+            'tspan',
+            { dy: '1em', x: '0' },
+            alt
+          ),
+          airplane.outboundWaypoint ? Object(preact_min["h"])(
+            'tspan',
+            { dy: '1em', x: '0' },
+            '\u21E8',
+            airplane.outboundWaypoint
+          ) : null
+        )
+      )
+    );
+  };
+
+  return RadarTraffic;
+}(preact_min["Component"]);
+
+/* harmony default export */ var containers_RadarTraffic_RadarTraffic = (RadarTraffic_RadarTraffic_RadarTraffic);
+// CONCATENATED MODULE: ./containers/SvgRadar/SvgRadar.js
+
+
+function SvgRadar__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function SvgRadar__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function SvgRadar__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+
+var SvgRadar__ref = Object(preact_min["h"])(components_WayPoints_WayPoints, null);
+
+var SvgRadar__ref2 = Object(preact_min["h"])(components_Airport_Airport, null);
+
+var SvgRadar__ref3 = Object(preact_min["h"])('rect', { width: '100%', height: '100%', fill: 'none', stroke: '#fff', 'stroke-dasharray': '20, 20' });
+
+var SvgRadar_SvgRadar_SvgRadar = function (_Component) {
+  SvgRadar__inherits(SvgRadar, _Component);
+
+  function SvgRadar(props) {
+    SvgRadar__classCallCheck(this, SvgRadar);
+
+    var _this = SvgRadar__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.reRender = function () {
+      _this.setState({});
+    };
+
+    _this.state = {};
+    return _this;
+  }
+
+  SvgRadar.prototype.componentWillMount = function componentWillMount() {
+    stores_GameStore.on('change', this.reRender);
+    stores_SettingsStore.on('change', this.reRender);
+  };
+
+  SvgRadar.prototype.componentWillUnmount = function componentWillUnmount() {
+    stores_GameStore.removeListener('change', this.reRender);
+    stores_SettingsStore.removeListener('change', this.reRender);
+  };
+
+  SvgRadar.prototype.render = function render() {
+    var _this2 = this;
+
+    var airplanes = stores_GameStore.traffic.map(function (airplane, i) {
+      return Object(preact_min["h"])(containers_RadarTraffic_RadarTraffic, { key: i, index: i, airplane: airplane, cmd: _this2.props.cmd });
+    });
+
+    var innerWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
+    var innerHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
+
+    return Object(preact_min["h"])(
+      'svg',
+      { xmlns: 'http://www.w3.org/2000/svg', className: 'atc-view-svg', width: innerWidth - 250, height: innerHeight,
+        onClick: this.props.onClick, viewBox: '0 0 1280 720', style: 'background: #194850; overflow: visible; font-size: ' + stores_SettingsStore.radarFontsize + 'px;' },
+      Object(preact_min["h"])(
+        'style',
+        null,
+        SvgRadar_getStyle()
+      ),
+      Object(preact_min["h"])(components_BackgroundSvg_BackgroundSvg, { name: stores_GameStore.id }),
+      SvgRadar__ref,
+      SvgRadar__ref2,
+      airplanes,
+      SvgRadar__ref3
+    );
+  };
+
+  return SvgRadar;
+}(preact_min["Component"]);
+
+var SvgRadar_getStyle = function getStyle() {
+  return 'text {\n  font: 1em \'Helvetica\';\n  fill: #fff;\n}\n.airplane circle {\n  fill: #fff;\n}\n.airplane line, .airplane path {\n  stroke: #fff;\n  stroke-width: 1;\n  fill: none;\n}\n.airplane.inbound line, .airplane.inbound path {\n  stroke: #bbf;\n}\n.airplane.outbound line, .airplane.outbound path {\n  stroke: #bfb;\n}\n.airplane.enroute line, .airplane.enroute path {\n  stroke: #ffb;\n}\n.airplane.inbound text, .airplane.inbound circle {\n  fill: #bbf;\n}\n.airplane.outbound text, .airplane.outbound circle {\n  fill: #bfb;\n}\n.airplane.enroute text, .airplane.enroute circle {\n  fill: #ffb;\n}\n.airplane tspan.up {\n  fill: #0f0;\n}\n.airplane tspan.down {\n  fill: #f00;\n}\n.waypoint circle {\n  fill: #fff;\n}\n.rwy-line {\n  stroke: #fff;\n  stroke-width: 3;\n  opacity: 0.7;\n}\n.ils-line {\n  stroke: ' + stores_SettingsStore.ilsPathColor + ';\n  stroke-width: 1;\n}\n.background path {\n  fill: #1e606b;\n}\n.airplane circle.sep {\n  fill: ' + stores_SettingsStore.sepVialationCircleColor + ';\n  fill-opacity: 0.2;\n  stroke: #f00;\n}\n.rwy-name {\n  text-anchor: middle;\n}\n';
+};
+
+/* harmony default export */ var containers_SvgRadar_SvgRadar = (SvgRadar_SvgRadar_SvgRadar);
+// CONCATENATED MODULE: ./containers/AtcView/AtcView.js
+var AtcView__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+function AtcView__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function AtcView__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function AtcView__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
 
 var AtcView_AtcView_AtcView = function (_Component) {
   AtcView__inherits(AtcView, _Component);
@@ -13459,23 +14522,46 @@ var AtcView_AtcView_AtcView = function (_Component) {
 
     var _this = AtcView__possibleConstructorReturn(this, _Component.call(this));
 
-    _this.handleKeyPress = function (e) {
-      if (e.keyCode == 13 && _this.state.cmd.tgt) {
-        _this.handleCmdExecution();
-        return false;
-      }
-    };
-
     _this.handleGameStoreChange = function () {
-      _this.setState({
-        traffic: stores_GameStore.traffic,
-        gameWidth: stores_GameStore.width,
-        gameHeight: stores_GameStore.height
-      });
+      _this.setState({});
     };
 
-    _this.handleSettingsStoreChange = function () {
-      _this.setState({});
+    _this.handleSVGClick = function (e) {
+      var airplane = getParent(e, function (element) {
+        return (element.getAttribute('class') || '').indexOf('airplane') !== -1;
+      });
+      if (!airplane) return;
+      var index = airplane.getAttribute('data-index');
+      _this.handleAirplaneClick(index);
+    };
+
+    _this.handleTrafficStackClick = function (e) {
+      var airplane = getParent(e, function (element) {
+        return (element.getAttribute('class') || '').indexOf('traffic-stack-entry') !== -1;
+      });
+      if (!airplane) return;
+      var index = airplane.getAttribute('data-index');
+      _this.handleAirplaneClick(index);
+    };
+
+    _this.handleAirplaneClick = function (index) {
+      var airplane = stores_GameStore.traffic[index];
+      if (airplane === _this.state.cmd.tgt) {
+        airplane.textRotation = (airplane.textRotation || 0) + 1;
+        airplane.textRotation %= 4;
+        _this.setState({});
+        return;
+      }
+      // if (this.state.cmd.tgt) this.handleCmdExecution(); // flush possible previous changes that werent yet debounced.
+      _this.setState({
+        cmd: {
+          tgt: airplane,
+          direction: typeof airplane.tgtDirection === 'string' ? airplane.tgtDirection : null,
+          altitude: airplane.tgtAltitude,
+          heading: typeof airplane.tgtDirection === 'number' ? airplane.tgtDirection : null,
+          speed: airplane.tgtSpeed
+        }
+      });
     };
 
     _this.handleCmdExecution = function () {
@@ -13512,313 +14598,14 @@ var AtcView_AtcView_AtcView = function (_Component) {
         // do nothing
         return;
       }
-      console.log('UPDATE', delta);
     };
 
-    _this.handleHeadingTgtChange = function (e) {
-      _this.setState(function (prevstate) {
-        prevstate.cmd.heading = +e.target.value;
-      });
-    };
-
-    _this.handleAltitudeTgtChange = function (e) {
-      _this.setState(function (prevstate) {
-        prevstate.cmd.altitude = Math.min(+e.target.max, e.target.value);
-        return prevstate;
-      });
-    };
-
-    _this.handleSpeedTgtChange = function (e) {
-      _this.setState(function (prevstate) {
-        prevstate.cmd.speed = Math.min(+e.target.max, e.target.value);
-        return prevstate;
-      });
-    };
-
-    _this.handleDirectToTgtChange = function (e) {
-      if (!_this.state.cmd.tgt) return;
-      _this.setState(function (prevstate) {
-        prevstate.cmd.direction = e.target.value.toUpperCase().trim();
-        prevstate.cmd.directionOld = false;
-        return prevstate;
-      });
-    };
-
-    _this.handleSVGClick = function (e) {
-      var airplane = getParent(e, function (element) {
-        return (element.getAttribute('class') || '').indexOf('airplane') !== -1;
-      });
-      if (!airplane) return;
-      var index = airplane.getAttribute('data-index');
-      _this.handleAirplaneClick(index);
-    };
-
-    _this.handleTrafficStackClick = function (e) {
-      var airplane = getParent(e, function (element) {
-        return (element.getAttribute('class') || '').indexOf('traffic-stack-entry') !== -1;
-      });
-      if (!airplane) return;
-      var index = airplane.getAttribute('data-index');
-      _this.handleAirplaneClick(index);
-    };
-
-    _this.handleAirplaneClick = function (index) {
-      var airplane = _this.state.traffic[index];
-      if (airplane === _this.state.cmd.tgt) {
-        airplane.textRotation = (airplane.textRotation || 0) + 1;
-        airplane.textRotation %= 4;
-        _this.setState({});
-        return;
-      }
-      // if (this.state.cmd.tgt) this.handleCmdExecution(); // flush possible previous changes that werent yet debounced.
-      _this.setState({
-        cmd: {
-          tgt: airplane,
-          direction: typeof airplane.tgtDirection === 'string' ? airplane.tgtDirection : null,
-          altitude: airplane.tgtAltitude,
-          heading: typeof airplane.tgtDirection === 'number' ? airplane.tgtDirection : null,
-          speed: airplane.tgtSpeed
-        }
-      });
-    };
-
-    _this.handleTakeoffClick = function () {
-      _this.setState(function (prevstate) {
-        prevstate.cmd.takeoff = true;
-        return prevstate;
-      });
-      _this.handleCmdExecution();
-    };
-
-    _this.handleExpandSettingsButtonClick = function () {
-      _this.setState({ settingsExpanded: !_this.state.settingsExpanded });
-    };
-
-    _this.handleAboutExpanded = function () {
-      _this.setState({ aboutExpanded: !_this.state.aboutExpanded });
-    };
-
-    _this.handleLogsExpanded = function () {
-      _this.setState({ copied: false, logsExpanded: !_this.state.logsExpanded });
-    };
-
-    _this.handleOnlySelfButton = function () {
-      _this.setState({ logsOnlySelf: !_this.state.logsOnlySelf });
-    };
-
-    _this.handleLogsCopied = function () {
-      _this.setState({ logsCopied: true });
-    };
-
-    _this.handleCloseAirplaneInfoPanel = function (e) {
-      _this.setState({ infoPanelTgt: null });
-    };
-
-    _this.handleTrafficStackInfoButtonClick = function (e) {
-      var index = e.srcElement.parentElement.getAttribute('data-index');
-      var airplane = _this.state.traffic[index];
-      var model = airplanesById[airplane.typeId];
-
-      _this.setState({ infoPanelTgt: { airplane: airplane, model: model } });
-    };
-
-    _this.handleScreenShotButtonClick = function (e) {
-      if (!stores_GameStore.svgEl) return;
-      var el = stores_GameStore.svgEl.getElementsByTagName('svg')[0];
-      var source = '<?xml version="1.0" standalone="no"?>\n' + el.outerHTML;
-
-      Object(FileSaver["saveAs"])(new Blob([source], {
-        type: 'image/svg+xml'
-      }), 'Screenshot ' + stores_GameStore.map.name + '.svg');
-    };
-
-    _this.renderTraffic = function () {
-      return _this.state.traffic.map(function (airplane, i) {
-        if (airplane.outboundRwy) return;
-        var y = _this.state.gameHeight - airplane.y;
-        var x = airplane.x;
-        var spd = AtcView_getSpdJsx(airplane, 'tspan');
-        var alt = AtcView_getAltJsx(airplane, 'tspan');
-        var ltx = Math.sin(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
-        var lty = Math.cos(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
-        var path = 'M0,0 ' + airplane.path.map(function (p) {
-          return 'L' + (p[0] - airplane.x) + ', ' + -(p[1] - airplane.y);
-        });
-        var violatingSep = stores_GameStore.sepDistanceVialotions[airplane.flight];
-        var textHeight = (airplane.outboundWaypoint ? 4 : 3) * 14;
-
-        var textAnchor = airplane.textRotation === 1 || airplane.textRotation === 2 ? 'end' : 'start';
-        var textTranslate = 'translate(0, ' + (airplane.textRotation > 1 ? -textHeight : 0) + ')';
-
-        return Object(preact_min["h"])(
-          'g',
-          { className: 'airplane ' + routeTypes[airplane.routeType] + ' ' + (_this.state.cmd.tgt === airplane ? 'airplane-active' : 'airplane-inactive'),
-            'data-index': i, key: i, transform: 'translate(' + x + ', ' + y + ')', 'data-heading': airplane.heading },
-          violatingSep ? Object(preact_min["h"])('circle', { r: config.threeMileRuleDistance, className: 'sep' }) : null,
-          AtcView__ref,
-          Object(preact_min["h"])('line', { x1: '0', y1: '0', x2: ltx, y2: -lty }),
-          Object(preact_min["h"])('path', { 'stroke-dasharray': '4, 5', d: path }),
-          Object(preact_min["h"])(
-            'text',
-            { transform: textTranslate, 'text-anchor': textAnchor },
-            Object(preact_min["h"])(
-              'tspan',
-              { dy: '1em' },
-              operatorsById[airplane.operatorId].callsign,
-              airplane.flight
-            ),
-            Object(preact_min["h"])(
-              'tspan',
-              { dy: '1em', x: '0' },
-              spd
-            ),
-            Object(preact_min["h"])(
-              'tspan',
-              { dy: '1em', x: '0' },
-              alt
-            ),
-            airplane.outboundWaypoint ? Object(preact_min["h"])(
-              'tspan',
-              { dy: '1em', x: '0' },
-              '\u21E8',
-              airplane.outboundWaypoint
-            ) : null
-          )
-        );
-      });
-    };
-
-    _this.renderTrafficStack = function () {
-      return _this.state.traffic.map(function (airplane, i) {
-        var spd = AtcView_getSpdJsx(airplane, 'span');
-        var alt = AtcView_getAltJsx(airplane, 'span');
-        var heading = ('000' + Math.floor(airplane.heading)).substr(-3);
-        var model = airplanesById[airplane.typeId];
-        return Object(preact_min["h"])(
-          'div',
-          { className: 'traffic-stack-entry ' + routeTypes[airplane.routeType] + ' ' + (_this.state.cmd.tgt === airplane ? 'traffic-active' : 'traffic-not-active'), 'data-index': i, key: i },
-          operatorsById[airplane.operatorId].callsign,
-          airplane.flight,
-          ' ',
-          spd,
-          ' ',
-          alt,
-          ' ',
-          model.shortName,
-          ' ',
-          heading,
-          '\xB0',
-          airplane.outboundWaypoint ? '\u21E8' + airplane.outboundWaypoint : null,
-          airplane.outboundRwy ? Object(preact_min["h"])(
-            'span',
-            null,
-            ' RWY ',
-            airplane.outboundRwy
-          ) : null,
-          Object(preact_min["h"])(
-            'button',
-            { onClick: _this.handleTrafficStackInfoButtonClick, 'class': 'airplane-traffic-stack-info-btn' },
-            '?'
-          )
-        );
-      });
-    };
-
-    _this.renderTrafficControl = function () {
-      var cmd = _this.state.cmd;
-      if (!cmd.tgt) return;
-      var model = airplanesById[cmd.tgt.typeId];
-      var topSpeed = cmd.tgt.altitude > 10000 ? model.topSpeed : Math.min(model.topSpeed, 250);
-      var landableRwysArr = _this.state.cmd.tgt && _this.state.cmd.tgt.altitude < 3200 ? map_landableRwys(stores_GameStore.airport, _this.state.cmd.tgt, _this.state.gameWidth, _this.state.gameHeight).map(function (lr) {
-        return lr.rev ? lr.rwy.name2 : lr.rwy.name1;
-      }).map(function (name) {
-        return Object(preact_min["h"])('option', { value: name });
-      }) : null;
-
-      var directToValue = cmd.directionOld ? '' : cmd.direction;
-      var directToPlaceholder = cmd.directionOld ? cmd.direction : '';
-
-      return Object(preact_min["h"])(
-        'div',
-        null,
-        Object(preact_min["h"])(
-          'div',
-          null,
-          AtcView__ref2,
-          Object(preact_min["h"])('input', { onInput: _this.handleHeadingTgtChange, value: cmd.heading, type: 'number', step: '10' })
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          AtcView__ref3,
-          Object(preact_min["h"])('input', { className: 'direct-to-input', type: 'text', value: directToValue, placeholder: directToPlaceholder,
-            list: _this.dtcToDataListId, onInput: _this.handleDirectToTgtChange }),
-          Object(preact_min["h"])(
-            'datalist',
-            { id: _this.dtcToDataListId },
-            cmd.tgt.routeType === routeTypes.INBOUND ? landableRwysArr : null,
-            Object.keys(stores_GameStore.waypoints).map(function (w) {
-              return Object(preact_min["h"])('option', { value: w });
-            })
-          )
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          AtcView__ref4,
-          Object(preact_min["h"])('input', { onInput: _this.handleSpeedTgtChange, value: cmd.speed, type: 'number', max: topSpeed, step: '10' })
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          AtcView__ref5,
-          Object(preact_min["h"])('input', { onInput: _this.handleAltitudeTgtChange, value: cmd.altitude, type: 'number', max: model.ceiling * 1000, step: '1000' })
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          Object(preact_min["h"])(
-            'button',
-            { onClick: _this.handleCmdExecution },
-            AtcView__ref6,
-            ' Give Command'
-          )
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          Object(preact_min["h"])(
-            'button',
-            { onClick: _this.handleTakeoffClick, className: cmd.tgt.outboundRwy ? '' : 'hidden' },
-            AtcView__ref7,
-            ' Takeoff'
-          )
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          cmd.tgt.routeType === routeTypes.INBOUND && landableRwysArr && landableRwysArr.length > 0 ? 'Land using "Direct to"' : null
-        )
-      );
-    };
-
-    _this.handleTakeoffRunwayAssignInput = function (e) {
-      var rwyName = e.srcElement.getAttribute('data-rwy-name');
-      stores_GameStore.disableTakoffsOnRwysSet[rwyName] = !stores_GameStore.disableTakoffsOnRwysSet[rwyName];
-    };
-
-    _this.handleInfoExpanded = function (e) {
-      _this.setState({ infoExpanded: !_this.state.infoExpanded });
+    _this.handleCmdChange = function (cmd) {
+      console.log(cmd);
+      _this.setState({ cmd: cmd });
     };
 
     _this.state = {
-      traffic: stores_GameStore.traffic,
-      gameWidth: stores_GameStore.width,
-      gameHeight: stores_GameStore.height,
-      settingsExpanded: false,
-      logsExpanded: false,
-      aboutExpanded: false,
-      infoExpanded: false,
       logsOnlySelf: false,
       infoPanelTgt: null,
 
@@ -13826,523 +14613,37 @@ var AtcView_AtcView_AtcView = function (_Component) {
         tgt: null,
         heading: null,
         altitude: null,
-        speed: null
+        direction: null,
+        speed: null,
+        directionOld: null
       }
     };
-
-    _this.dtcToDataListId = 'dct-tgt-' + Math.random().toString().replace('.', '');
     return _this;
   }
 
   AtcView.prototype.componentWillMount = function componentWillMount() {
     stores_GameStore.on('change', this.handleGameStoreChange);
-    stores_SettingsStore.on('change', this.handleSettingsStoreChange);
-
-    if (typeof window !== 'undefined') window.addEventListener('keypress', this.handleKeyPress);
   };
 
   AtcView.prototype.componentWillUnmount = function componentWillUnmount() {
     stores_GameStore.removeListener('change', this.handleGameStoreChange);
-    stores_SettingsStore.removeListener('change', this.handleSettingsStoreChange);
-
-    if (typeof window !== 'undefined') window.removeEventListener('keypress', this.handleKeyPress);
   };
 
   AtcView.prototype.render = function render() {
-    var _this2 = this;
-
-    var airplanes = this.renderTraffic();
-    var trafficstack = this.renderTrafficStack();
-    var trafficcontrol = this.renderTrafficControl();
-    var logs = this.state.logsOnlySelf ? stores_GameStore.selfLog : stores_GameStore.log;
-
-    var innerWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
-    var innerHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
-
-    var activeRunways = stores_GameStore.airport.rwyusage ? activeRwys(stores_GameStore.airport, stores_GameStore.winddir) : [];
-
-    var runwayUsage = function runwayUsage(rwy) {
-      return Object(preact_min["h"])(
-        'div',
-        null,
-        Object(preact_min["h"])(
-          'div',
-          null,
-          rwy.name1,
-          ' ',
-          lpad('' + rwy.hdg1, '0', 3),
-          '\xB0 ',
-          rwy.elevation1,
-          'FT ',
-          capitalize(rwy.surface),
-          '/',
-          rwy.length1,
-          'FT ',
-          activeRunways.includes(rwy.name1) ? Object(preact_min["h"])(
-            'span',
-            null,
-            '- Departure runway ',
-            Object(preact_min["h"])(
-              'label',
-              { 'class': 'switch' },
-              Object(preact_min["h"])('input', { type: 'checkbox', onInput: _this2.handleTakeoffRunwayAssignInput, 'data-rwy-name': rwy.name1,
-                checked: !stores_GameStore.disableTakoffsOnRwysSet[rwy.name1] }),
-              AtcView__ref8
-            )
-          ) : ''
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          rwy.name2,
-          ' ',
-          lpad('' + rwy.hdg2, '0', 3),
-          '\xB0 ',
-          rwy.elevation2,
-          'FT ',
-          capitalize(rwy.surface),
-          '/',
-          rwy.length2,
-          'FT ',
-          activeRunways.includes(rwy.name2) ? Object(preact_min["h"])(
-            'span',
-            null,
-            '- Departure runway ',
-            Object(preact_min["h"])(
-              'label',
-              { 'class': 'switch' },
-              Object(preact_min["h"])('input', { type: 'checkbox', onInput: _this2.handleTakeoffRunwayAssignInput, 'data-rwy-name': rwy.name2,
-                checked: !stores_GameStore.disableTakoffsOnRwysSet[rwy.name2] }),
-              AtcView__ref9
-            )
-          ) : ''
-        )
-      );
-    };
-
     return Object(preact_min["h"])(
       'div',
       { className: 'atc-view' },
-      Object(preact_min["h"])(
-        'svg',
-        { xmlns: 'http://www.w3.org/2000/svg', className: 'atc-view-svg', width: innerWidth - 250, height: innerHeight,
-          onClick: this.handleSVGClick, viewBox: '0 0 1280 720', style: 'background: #194850; overflow: visible; font-size: ' + stores_SettingsStore.radarFontsize + 'px;' },
-        Object(preact_min["h"])(
-          'style',
-          null,
-          '\n            text {\n              font: 1em \'Helvetica\';\n              fill: #fff;\n            }\n            .airplane circle {\n              fill: #fff;\n            }\n            .airplane line, .airplane path {\n              stroke: #fff;\n              stroke-width: 1;\n              fill: none;\n            }\n            .airplane.inbound line, .airplane.inbound path {\n              stroke: #bbf;\n            }\n            .airplane.outbound line, .airplane.outbound path {\n              stroke: #bfb;\n            }\n            .airplane.enroute line, .airplane.enroute path {\n              stroke: #ffb;\n            }\n            .airplane.inbound text, .airplane.inbound circle {\n              fill: #bbf;\n            }\n            .airplane.outbound text, .airplane.outbound circle {\n              fill: #bfb;\n            }\n            .airplane.enroute text, .airplane.enroute circle {\n              fill: #ffb;\n            }\n            .airplane tspan.up {\n              fill: #0f0;\n            }\n            .airplane tspan.down {\n              fill: #f00;\n            }\n            .waypoint circle {\n              fill: #fff;\n            }\n            .rwy-line {\n              stroke: #fff;\n              stroke-width: 3;\n              opacity: 0.7;\n            }\n            .ils-line {\n              stroke: ' + stores_SettingsStore.ilsPathColor + ';\n              stroke-width: 1;\n            }\n            .background path {\n              fill: #1e606b;\n            }\n            .airplane circle.sep {\n              fill: ' + stores_SettingsStore.sepVialationCircleColor + ';\n              fill-opacity: 0.2;\n              stroke: #f00;\n            }\n            .rwy-name {\n              text-anchor: middle;\n            }\n          '
-        ),
-        Object(preact_min["h"])(components_BackgroundSvg_BackgroundSvg, { name: stores_GameStore.id }),
-        AtcView__ref10,
-        AtcView__ref11,
-        airplanes,
-        AtcView__ref12
-      ),
-      AtcView__ref13,
-      Object(preact_min["h"])(
-        'div',
-        { className: 'traffic-stack-wrapper', style: { height: innerHeight } },
-        Object(preact_min["h"])(
-          'div',
-          { className: 'traffic-stack', onClick: this.handleTrafficStackClick },
-          trafficstack
-        ),
-        Object(preact_min["h"])(
-          'div',
-          { className: 'traffic-control' },
-          trafficcontrol
-        ),
-        Object(preact_min["h"])(
-          'div',
-          { className: 'atc-view-buttons' },
-          Object(preact_min["h"])(
-            'button',
-            { className: 'w-100', onClick: this.handleExpandSettingsButtonClick },
-            AtcView__ref14,
-            '\xA0',
-            this.state.settingsExpanded ? 'Hide options' : 'Expand options'
-          ),
-          Object(preact_min["h"])(
-            'button',
-            { className: 'w-100', onClick: this.handleLogsExpanded },
-            AtcView__ref15,
-            '\xA0',
-            this.state.logsExpanded ? 'Hide logs' : 'Expand logs'
-          ),
-          Object(preact_min["h"])(
-            'button',
-            { className: 'w-100', onClick: this.handleAboutExpanded },
-            AtcView__ref16,
-            '\xA0',
-            this.state.aboutExpanded ? 'Hide about' : 'Expand about'
-          ),
-          Object(preact_min["h"])(
-            'button',
-            { className: 'w-100', onClick: this.handleInfoExpanded },
-            AtcView__ref17,
-            '\xA0',
-            this.state.infoExpanded ? 'Hide info' : 'Expand info'
-          ),
-          AtcView__ref18
-        )
-      ),
-      Object(preact_min["h"])(
-        'div',
-        { className: [this.state.settingsExpanded ? null : 'hidden', 'settings-panel'].join(' ') },
-        AtcView__ref19,
-        _ref20,
-        _ref21,
-        _ref22,
-        Object(preact_min["h"])(
-          'button',
-          { onClick: this.handleExpandSettingsButtonClick },
-          _ref23,
-          ' Hide Options'
-        )
-      ),
-      this.state.infoPanelTgt !== null ? Object(preact_min["h"])(
-        'div',
-        { className: 'airplane-info-panel' },
-        Object(preact_min["h"])(
-          'h5',
-          null,
-          communications.getCallsign(this.state.infoPanelTgt.airplane)
-        ),
-        _ref24,
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Airplane: ',
-          this.state.infoPanelTgt.model.name
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Traffic Type: ',
-          capitalize(routeTypes[this.state.infoPanelTgt.airplane.routeType])
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          this.state.infoPanelTgt.airplane.routeType === routeTypes.OUTBOUND && 'Departure runway: ' + this.state.infoPanelTgt.airplane.outboundRwy || null
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Operators: ',
-          this.state.infoPanelTgt.model.operators.map(function (o) {
-            return operatorsById[o].name;
-          }).join(', ')
-        ),
-        _ref25,
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Speed: ',
-          this.state.infoPanelTgt.airplane.speed,
-          'KTS'
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Altitude: ',
-          AtcView_getAltFmtJSx(this.state.infoPanelTgt.airplane.altitude, 'span')
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'heading: ',
-          lpad('' + this.state.infoPanelTgt.airplane.heading, '0', 3),
-          '\xB0'
-        ),
-        _ref26,
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Ceiling: ',
-          AtcView_getAltFmtJSx(this.state.infoPanelTgt.model.ceiling * 1000, 'span')
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Top speed: ',
-          this.state.infoPanelTgt.model.topSpeed,
-          'KTS'
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Landing speed: ',
-          this.state.infoPanelTgt.model.landingSpeed,
-          'KTS'
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Min speed: ',
-          this.state.infoPanelTgt.model.minSpeed,
-          'KTS'
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Min landing runway length: ',
-          this.state.infoPanelTgt.model.landingMinRunwayLength,
-          'FT'
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Min takeoff runway length: ',
-          this.state.infoPanelTgt.model.takeoffMinRunwayLength,
-          'FT'
-        ),
-        _ref27,
-        Object(preact_min["h"])(
-          'button',
-          { onClick: this.handleCloseAirplaneInfoPanel },
-          _ref28,
-          ' Hide Panel'
-        )
-      ) : null,
-      Object(preact_min["h"])(
-        'div',
-        { className: [this.state.logsExpanded ? null : 'hidden', 'logs-panel'].join(' ') },
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Departures: ',
-          stores_GameStore.departures
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Arrivals: ',
-          stores_GameStore.arrivals
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Seperation violations: ',
-          stores_GameStore.distanceVialations
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Unpermitted departures: ',
-          stores_GameStore.unpermittedDepartures
-        ),
-        Object(preact_min["h"])(
-          'div',
-          { 'class': 'logs-container' },
-          Object(preact_min["h"])(
-            'div',
-            { 'class': 'logs-inner' },
-            logs.slice(logs.length - 10, logs.length).map(function (x, i) {
-              return Object(preact_min["h"])(
-                'div',
-                { key: i },
-                x
-              );
-            })
-          )
-        ),
-        Object(preact_min["h"])(
-          'div',
-          { style: { color: '#19242e' } },
-          this.state.logsCopied ? 'Copied.' : '\xA0'
-        ),
-        Object(preact_min["h"])(
-          lib["CopyToClipboard"],
-          { text: logs.join('\r\n'),
-            onCopy: this.handleLogsCopied },
-          _ref29
-        ),
-        Object(preact_min["h"])(
-          'button',
-          { onClick: this.handleOnlySelfButton },
-          this.state.logsOnlySelf ? 'Show all' : 'Only me'
-        ),
-        Object(preact_min["h"])(
-          'button',
-          { onClick: this.handleLogsExpanded },
-          _ref30,
-          ' Hide Panel'
-        )
-      ),
-      Object(preact_min["h"])(
-        'div',
-        { className: [this.state.infoExpanded ? null : 'hidden', 'about-panel'].join(' ') },
-        Object(preact_min["h"])(
-          'div',
-          null,
-          'Airport: ',
-          stores_GameStore.mapName,
-          ' - ',
-          stores_GameStore.airport.callsign
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          Object(preact_min["h"])(
-            'span',
-            null,
-            'Wind: ',
-            lpad('' + stores_GameStore.winddir, '0', 3),
-            '\xB0 / ',
-            stores_GameStore.windspd,
-            ' kts'
-          )
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          Object(preact_min["h"])(
-            'span',
-            null,
-            'ATIS: ',
-            stores_GameStore.getAtis()
-          )
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          Object(preact_min["h"])(
-            'span',
-            null,
-            'Altimeter: ',
-            stores_GameStore.altimeter
-          )
-        ),
-        Object(preact_min["h"])(
-          'div',
-          null,
-          Object(preact_min["h"])(
-            'span',
-            null,
-            'Elevation: ',
-            stores_GameStore.airport.elevation
-          )
-        ),
-        _ref31,
-        _ref32,
-        stores_GameStore.airport.runways && stores_GameStore.airport.runways.map(function (rwy) {
-          return runwayUsage(rwy);
-        }),
-        _ref33,
-        Object(preact_min["h"])(
-          'button',
-          { className: 'button', onClick: this.handleScreenShotButtonClick },
-          _ref34,
-          ' Save Radar as SVG'
-        ),
-        Object(preact_min["h"])(
-          'button',
-          { onClick: this.handleInfoExpanded },
-          _ref35,
-          ' Hide Panel'
-        )
-      ),
-      Object(preact_min["h"])(
-        'div',
-        { className: [this.state.aboutExpanded ? null : 'hidden', 'about-panel'].join(' ') },
-        _ref36,
-        '\xA0',
-        _ref37,
-        '\xA0',
-        _ref38,
-        _ref39,
-        _ref40,
-        'ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator. Check out the ',
-        _ref41,
-        _ref42,
-        _ref43,
-        _ref44,
-        _ref45,
-        _ref46,
-        _ref47,
-        _ref48,
-        _ref49,
-        _ref50,
-        _ref51,
-        _ref52,
-        Object(preact_min["h"])(
-          'button',
-          { onClick: this.handleAboutExpanded },
-          _ref53,
-          ' Hide Panel'
-        )
-      )
+      Object(preact_min["h"])(containers_SvgRadar_SvgRadar, { onClick: this.handleSVGClick, cmd: this.state.cmd }),
+      Object(preact_min["h"])(containers_TrafficStack_TrafficStack, {
+        cmd: this.state.cmd,
+        onChange: this.handleCmdChange,
+        onCmdExecution: this.handleCmdExecution,
+        onClick: this.handleTrafficStackClick })
     );
   };
 
   return AtcView;
 }(preact_min["Component"]);
-
-var AtcView_getSpdJsx = function getSpdJsx(airplane, TagName) {
-  var tgtSpeed = airplane.altitude < 10000 ? Math.min(airplane.tgtSpeed, 250) : airplane.tgtSpeed;
-  if (Math.abs(airplane.speed - tgtSpeed) > 5) {
-    return Object(preact_min["h"])(
-      TagName,
-      null,
-      Math.round(airplane.speed),
-      'KTS',
-      tgtSpeed > airplane.speed ? Object(preact_min["h"])(
-        TagName,
-        { className: 'up' },
-        '\u21E7',
-        Math.round(tgtSpeed),
-        'KTS'
-      ) : Object(preact_min["h"])(
-        TagName,
-        { className: 'down' },
-        '\u21E9',
-        Math.round(tgtSpeed),
-        'KTS'
-      )
-    );
-  } else {
-    return Object(preact_min["h"])(
-      TagName,
-      null,
-      Math.round(airplane.speed),
-      'KTS'
-    );
-  }
-};
-
-var AtcView_getAltFmtJSx = function getAltFmtJSx(alt, TagName) {
-  return Object(preact_min["h"])(
-    TagName,
-    null,
-    alt > 18000 ? 'FL' + Math.floor(alt * .01) : Math.floor(alt) + 'FT'
-  );
-};
-
-var AtcView_getAltJsx = function getAltJsx(airplane, TagName) {
-  var cs = stores_GameStore.callsignsPos[airplane.tgtDirection];
-  var isLanding = cs && cs.ref.type === idType.RWY && airplane.routeType === routeTypes.INBOUND;
-  if (Math.abs(airplane.tgtAltitude - airplane.altitude) > 100 && airplane.altitude && !isLanding) {
-    return Object(preact_min["h"])(
-      TagName,
-      null,
-      AtcView_getAltFmtJSx(airplane.altitude, TagName),
-      airplane.tgtAltitude > airplane.altitude ? Object(preact_min["h"])(
-        TagName,
-        { className: 'up' },
-        '\u21E7',
-        AtcView_getAltFmtJSx(airplane.tgtAltitude, TagName)
-      ) : Object(preact_min["h"])(
-        TagName,
-        { className: 'down' },
-        '\u21E9',
-        AtcView_getAltFmtJSx(airplane.tgtAltitude, TagName)
-      )
-    );
-  } else {
-    return AtcView_getAltFmtJSx(airplane.altitude, TagName);
-  }
-};
 
 var getParent = function getParent(e, matcher) {
   var el = e.target;
@@ -14351,16 +14652,6 @@ var getParent = function getParent(e, matcher) {
     el = el.parentElement;
   }
   return null;
-};
-
-var capitalize = function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.substr(1);
-};
-
-var lpad = function lpad(str, padChar, length) {
-  while (str.length < length) {
-    str = padChar + str;
-  }return str;
 };
 
 /* harmony default export */ var containers_AtcView_AtcView = (AtcView_AtcView_AtcView);
@@ -14372,7 +14663,6 @@ function Game__classCallCheck(instance, Constructor) { if (!(instance instanceof
 function Game__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function Game__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -14547,29 +14837,6 @@ var SavedGamesOpen_SavedGamesOpen_SavedGamesOpen = function (_Component) {
 }(preact_min["Component"]);
 
 /* harmony default export */ var components_SavedGamesOpen_SavedGamesOpen = (SavedGamesOpen_SavedGamesOpen_SavedGamesOpen);
-// CONCATENATED MODULE: ./lib/util.js
-var util__this = this,
-    _arguments = arguments;
-
-var upcase = function upcase(str) {
-  return str[0].toUpperCase() + str.slice(1);
-};
-
-var debounce = function debounce(func, wait, immediate) {
-  var timeout;
-  return function () {
-    var context = util__this,
-        args = _arguments;
-    var later = function later() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-};
 // CONCATENATED MODULE: ./node_modules/preact-cli/lib/lib/webpack/dummy-loader.js!./containers/Home/Home.js
 
 
@@ -14701,6 +14968,10 @@ var Home_Home_Home = function (_Component) {
 
     var _this = Home__possibleConstructorReturn(this, _Component.call(this));
 
+    _this.reRender = function () {
+      return _this.setState({});
+    };
+
     _this.state = {
       mapname: mapNames[0]
     };
@@ -14711,14 +14982,12 @@ var Home_Home_Home = function (_Component) {
   }
 
   Home.prototype.componentWillMount = function componentWillMount() {
-    var _this2 = this;
-
-    router.on('change', function () {
-      return _this2.setState({});
-    });
+    router.on('change', this.reRender);
   };
 
-  Home.prototype.componentWillUnmount = function componentWillUnmount() {};
+  Home.prototype.componentWillUnmount = function componentWillUnmount() {
+    router.removeListener('change', this.reRender);
+  };
 
   Home.prototype.handleMapSelectionChange = function handleMapSelectionChange(e) {
     this.setState({ mapname: e.target.value });
@@ -14742,7 +15011,7 @@ var Home_Home_Home = function (_Component) {
   };
 
   Home.prototype.render = function render() {
-    var _this3 = this;
+    var _this2 = this;
 
     return Object(preact_min["h"])(
       'div',
@@ -14769,7 +15038,7 @@ var Home_Home_Home = function (_Component) {
           mapNames.map(function (name) {
             return Object(preact_min["h"])(
               'option',
-              { selected: name === _this3.state.mapname, value: name },
+              { selected: name === _this2.state.mapname, value: name },
               upcase(name)
             );
           })
@@ -15063,7 +15332,7 @@ var AirplaneEditor__ref22 = Object(preact_min["h"])('textarea', { name: 'message
 
 var AirplaneEditor__ref23 = Object(preact_min["h"])('br', null);
 
-var AirplaneEditor__ref24 = Object(preact_min["h"])('br', null);
+var _ref24 = Object(preact_min["h"])('br', null);
 
 var AirplaneEditor_AirplaneEditor_AirplaneEditor = function (_Component) {
   AirplaneEditor__inherits(AirplaneEditor, _Component);
@@ -15290,7 +15559,7 @@ var AirplaneEditor_AirplaneEditor_AirplaneEditor = function (_Component) {
         Object(preact_min["h"])('input', { onChange: this.readFromFile, id: 'saveseditor', className: 'inputfile', type: 'file', accept: '.json', disabled: !this.state.plane || this.state.plane.name === '' }),
         AirplaneEditor__ref10,
         Object(preact_min["h"])(
-          lib["CopyToClipboard"],
+          react_copy_to_clipboard_lib["CopyToClipboard"],
           { text: this.state.json,
             onCopy: this.handleCopy },
           Object(preact_min["h"])(
@@ -15325,7 +15594,7 @@ var AirplaneEditor_AirplaneEditor_AirplaneEditor = function (_Component) {
           AirplaneEditor__ref21,
           AirplaneEditor__ref22,
           AirplaneEditor__ref23,
-          AirplaneEditor__ref24,
+          _ref24,
           Object(preact_min["h"])(
             'button',
             { disabled: this.state.debouncing || this.state.plane === null, type: 'submit' },
@@ -15584,7 +15853,7 @@ var SavesEditor_SavesEditor_SavesEditor = function (_Component) {
         Object(preact_min["h"])('input', { onChange: this.readFromFile, id: 'saveseditor', className: 'inputfile', type: 'file', accept: '.json', disabled: this.state.saveName === '' }),
         SavesEditor__ref7,
         Object(preact_min["h"])(
-          lib["CopyToClipboard"],
+          react_copy_to_clipboard_lib["CopyToClipboard"],
           { text: this.state.json,
             onCopy: this.handleCopy },
           Object(preact_min["h"])(
@@ -15956,7 +16225,7 @@ var OperatorEditor_OperatorEditor_OperatorEditor = function (_Component) {
         Object(preact_min["h"])('input', { onChange: this.readFromFile, id: 'saveseditor', className: 'inputfile', type: 'file', accept: '.json', disabled: !this.state.operator || this.state.operator.name === '' }),
         OperatorEditor__ref10,
         Object(preact_min["h"])(
-          lib["CopyToClipboard"],
+          react_copy_to_clipboard_lib["CopyToClipboard"],
           { text: this.state.json,
             onCopy: this.handleCopy },
           Object(preact_min["h"])(
@@ -16190,6 +16459,166 @@ var EditorsRoot_EditorsRoot_EditorsRoot = function (_Component) {
 }(preact_min["Component"]);
 
 /* harmony default export */ var dummy_loader_js_containers_EditorsRoot_EditorsRoot = (EditorsRoot_EditorsRoot_EditorsRoot);
+// EXTERNAL MODULE: ./containers/AptDat/AptDat.css
+var AptDat_AptDat = __webpack_require__("Tpj/");
+var AptDat_default = /*#__PURE__*/__webpack_require__.n(AptDat_AptDat);
+
+// CONCATENATED MODULE: ./stores/AptDatStore.js
+function AptDatStore__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function AptDatStore__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function AptDatStore__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var AptDatStore_AptDatStore = function (_EventEmitter) {
+  AptDatStore__inherits(AptDatStore, _EventEmitter);
+
+  function AptDatStore() {
+    AptDatStore__classCallCheck(this, AptDatStore);
+
+    var _this = AptDatStore__possibleConstructorReturn(this, _EventEmitter.call(this));
+
+    _this.handleDataloaded = function (resolved) {
+      var aptNav = resolved[0],
+          earthFix = resolved[1],
+          earthNav = resolved[2];
+
+      console.log('data loaded');
+      _this.loading = false;
+      _this.emit('change');
+
+      return resolved;
+    };
+
+    _this.searchAptIcao = function (icao) {
+      return _this.datPromise.then(function (resolved) {
+        var aptNav = resolved[0],
+            earthFix = resolved[1],
+            earthNav = resolved[2];
+
+
+        return aptNav.split('\n').filter(function (apt) {
+          return apt.split(' ')[0].includes(icao);
+        });
+      });
+    };
+
+    _this.searchAptName = function (name) {
+      return _this.datPromise.then(function (resolved) {
+        var aptNav = resolved[0],
+            earthFix = resolved[1],
+            earthNav = resolved[2];
+
+
+        return aptNav.split('\n').filter(function (apt) {
+          return apt.split(' ').slice(3).join(' ').includes(name);
+        });
+      });
+    };
+
+    var url = 'https://esstudio.site/apt-dat-parser-js/data/';
+
+    _this.loading = true;
+    var aptNavPromise = fetch(url + 'apt_nav.txt').then(function (x) {
+      return x.text();
+    });
+    var earthFixPromise = fetch(url + 'earth_fix.txt').then(function (x) {
+      return x.text();
+    });
+    var earthNavPromise = fetch(url + 'earth_nav.txt').then(function (x) {
+      return x.text();
+    });
+
+    _this.datPromise = Promise.all([aptNavPromise, earthFixPromise, earthNavPromise]).then(_this.handleDataloaded).catch(function (err) {
+      sendMessageError('Something wen\'t wrong while loading world data.');
+      console.error(err);
+    });
+
+    return _this;
+  }
+
+  return AptDatStore;
+}(external__events_["EventEmitter"]);
+
+/* harmony default export */ var stores_AptDatStore = (new AptDatStore_AptDatStore());
+// CONCATENATED MODULE: ./node_modules/preact-cli/lib/lib/webpack/dummy-loader.js!./containers/AptDat/AptDat.js
+
+
+function AptDat__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function AptDat__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function AptDat__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var AptDat__ref = Object(preact_min["h"])(
+  'h1',
+  null,
+  '404'
+);
+
+var AptDat__ref2 = Object(preact_min["h"])('br', null);
+
+var AptDat__ref3 = Object(preact_min["h"])('br', null);
+
+var AptDat_AptDat_AptDat = function (_Component) {
+  AptDat__inherits(AptDat, _Component);
+
+  function AptDat(props) {
+    AptDat__classCallCheck(this, AptDat);
+
+    var _this = AptDat__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.state = {};
+
+    return _this;
+  }
+
+  AptDat.prototype.componentWillMount = function componentWillMount() {};
+
+  AptDat.prototype.componentWillUnmount = function componentWillUnmount() {};
+
+  AptDat.prototype.render = function render() {
+    return Object(preact_min["h"])(
+      'div',
+      { className: 'NotFound' },
+      Object(preact_min["h"])(
+        'div',
+        { className: 'panel' },
+        AptDat__ref,
+        'Page not found',
+        AptDat__ref2,
+        AptDat__ref3,
+        Object(preact_min["h"])(
+          'button',
+          { onclick: function onclick() {
+              return route('/');
+            } },
+          'Home'
+        ),
+        Object(preact_min["h"])(
+          'button',
+          { onclick: function onclick() {
+              return index_history.goBack();
+            } },
+          'Back'
+        )
+      )
+    );
+  };
+
+  return AptDat;
+}(preact_min["Component"]);
+
+/* harmony default export */ var dummy_loader_js_containers_AptDat_AptDat = (AptDat_AptDat_AptDat);
 // CONCATENATED MODULE: ./index.js
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "router", function() { return router; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "history", function() { return index_history; });
@@ -16201,6 +16630,7 @@ function index__classCallCheck(instance, Constructor) { if (!(instance instanceo
 function index__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function index__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -16229,9 +16659,11 @@ var index__ref2 = Object(preact_min["h"])(dummy_loader_js_containers_Game_Game, 
 
 var index__ref3 = Object(preact_min["h"])(dummy_loader_js_containers_EditorsRoot_EditorsRoot, { path: '/editor/:editorroute' });
 
-var index__ref4 = Object(preact_min["h"])(dummy_loader_js_containers_NotFound_NotFound, { 'default': true });
+var index__ref4 = Object(preact_min["h"])(dummy_loader_js_containers_AptDat_AptDat, { path: '/apt-dat' });
 
-var index__ref5 = Object(preact_min["h"])(GameMessages_GameMessages_GameMessages, null);
+var index__ref5 = Object(preact_min["h"])(dummy_loader_js_containers_NotFound_NotFound, { 'default': true });
+
+var index__ref6 = Object(preact_min["h"])(GameMessages_GameMessages_GameMessages, null);
 
 var index_App = function (_Component) {
   index__inherits(App, _Component);
@@ -16252,9 +16684,10 @@ var index_App = function (_Component) {
         index__ref,
         index__ref2,
         index__ref3,
-        index__ref4
+        index__ref4,
+        index__ref5
       ),
-      index__ref5
+      index__ref6
     );
   };
 
@@ -18317,6 +18750,13 @@ exports.default = _Form2.default;
 
 /***/ }),
 
+/***/ "NuU9":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "Num3":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18575,6 +19015,13 @@ if (false) {
 }
 
 exports.default = DateTimeWidget;
+
+/***/ }),
+
+/***/ "PEk/":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -19824,6 +20271,13 @@ module.exports = !$assign || __webpack_require__("S82l")(function () {
     }
   }return T;
 } : $assign;
+
+/***/ }),
+
+/***/ "Tpj/":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -23776,6 +24230,13 @@ module.exports = __webpack_amd_options__;
 
 /***/ }),
 
+/***/ "oEh3":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "oM7Q":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25367,6 +25828,13 @@ module.exports = CopyToClipboard;
 
 /***/ }),
 
+/***/ "smk6":
+/***/ (function(module, exports) {
+
+module.exports = [{"id":0,"name":"KLM","shortName":"KLM","callsign":"KLM","color":"#00a1e4"},{"id":1,"name":"Delta Airlines","callsign":"DLT","shortName":"Delta","color":"#003a70"},{"id":2,"name":"JetBlue","callsign":"JBU","shortName":"JetBlue","color":"#003876"},{"id":3,"name":"United Airlines","callsign":"UAL","shortName":"United","color":"#005DAA"},{"id":4,"name":"Southwest Airlines","callsign":"SWA","shortName":"Southwest","color":"#304cb2"},{"id":5,"name":"American Airlines","callsign":"AAL","shortName":"American","color":"#d41525"},{"id":6,"name":"British Airways","callsign":"BAW","shortName":"Speedbird","color":"#2a5c9a"},{"id":7,"name":"Continental Airlines","callsign":"COA","shortName":"Continental","color":"#0060aa"},{"id":8,"name":"Lufthansa","callsign":"DLH","shortName":"Lufthansa","color":"#00225e"},{"id":9,"name":"Air France","callsign":"AFR","shortName":"Air France","color":"#002157"},{"id":10,"name":"China Southern Airlines","callsign":"CSN","shortName":"China Southern","color":"#008dd2"},{"id":11,"name":"China Eastern Airlines","callsign":"CES","shortName":"China Eastern","color":"#e31614"},{"id":12,"name":"All Nippon Airways","callsign":"ANA","shortName":"All Nippon","color":"#083191"},{"id":13,"name":"Ryanair","callsign":"RYR","shortName":"Ryanair","color":"#0027b5"},{"id":14,"name":"Turkish Airlines","callsign":"THY","shortName":"Turkish","color":"#ee2e24"},{"id":15,"name":"Emirates","callsign":"UAE","shortName":"Emirates","color":"#d8131b"},{"id":16,"name":"FedEx Express","callsign":"FDX","shortName":"Fedex","color":"#2a007c"},{"id":17,"name":"UPS Airlines","callsign":"UPS","shortName":"UPS","color":"#fab903"},{"id":18,"name":"Cathay Pacific","callsign":"CPA","shortName":"Cathay","color":"#006b6e"},{"id":19,"name":"Qatar Airways","callsign":"QTR","shortName":"Qatari","color":"#5c0632"},{"id":20,"name":"Korean Air","callsign":"KAL","shortName":"Korean Air","color":"#154d9e"},{"id":21,"name":"Cargolux","callsign":"CLX","shortName":"Cargolux","color":"#d40000"},{"id":22,"name":"Air China","callsign":"CCA","shortName":"Air China","color":"#ee151f"},{"id":23,"name":"Egyptair","callsign":"MSR","shortName":"Egyptair","color":"#00265d"},{"id":24,"name":"Cathay Dragon","callsign":"HDA","shortName":"Dragon","color":"#950714"}]
+
+/***/ }),
+
 /***/ "sqs/":
 /***/ (function(module, exports) {
 
@@ -26510,6 +26978,13 @@ exports.default = ArrayField;
 
 /***/ }),
 
+/***/ "tBPK":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "tMlx":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26643,6 +27118,13 @@ module.exports = __webpack_require__("qo66")(SET, function (get) {
     return strong.def(validate(this, SET), value = value === 0 ? 0 : value, value);
   }
 }, strong);
+
+/***/ }),
+
+/***/ "uW+5":
+/***/ (function(module, exports) {
+
+module.exports = [{"id":0,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Boeing 737","shortName":"B737","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[0,1,5,3,2,7,10,11,12,13,14,22,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 747","shortName":"B747","topSpeed":330,"landingSpeed":145,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":180,"turningRate":[5,3,2],"ceiling":41,"operators":[0,1,2,3,6,8,14,17,18,19,20,21,22],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"heavy"},{"id":2,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 757","shortName":"B757","topSpeed":330,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"minSpeed":160,"accelerationSpeed":1,"deAccelerationSpeed":1,"turningRate":[5,3,2],"ceiling":42,"operators":[0,1,5,3,2,7,16,17],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":3,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 767","shortName":"B767","topSpeed":330,"landingSpeed":140,"minSpeed":160,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"turningRate":[5,3,2],"ceiling":43,"operators":[1,3,5,6,7,12,16],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"heavy"},{"id":4,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 777","shortName":"B777","topSpeed":330,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"ceiling":43,"operators":[0,1,6,7,8,9,10,11,12,14,15,16,18,19,20,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"heavy"},{"id":5,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Airbus A380","shortName":"A380","topSpeed":330,"landingSpeed":150,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"ceiling":43,"operators":[6,9,10,15,20],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"super"},{"id":6,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Airbus A330","shortName":"A330","ceiling":39,"topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[0,1,3,5,8,9,11,14,18,19,20,22,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":7,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":39,"name":"Boeing 787 Dreamliner","shortName":"B787","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[0,3,5,6,10,11,12,19,22,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"heavy"},{"id":8,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Airbus A319","shortName":"A319","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,5,6,8,10,11,14,19,22],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":9,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Airbus A320","shortName":"A320","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,5,3,2,6,8,9,10,11,12,14,19,20,22,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":10,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Airbus A321","shortName":"A321","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,5,3,2,6,8,9,10,11,12,14,19,20,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":11,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":41,"name":"Airbus A350","shortName":"A350","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,8,10,14,18,19,22],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"heavy"},{"id":12,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"Boeing 717","shortName":"B717","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[1],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":13,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-88","shortName":"MD-88","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[1],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":14,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-90","shortName":"MD-90","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[1],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":15,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":38,"name":"Embraer 190","shortName":"E190","topSpeed":310,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[2,5,10],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":16,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-82","shortName":"MD-82","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[5],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":17,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-83","shortName":"MD-83","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[5],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"}]
 
 /***/ }),
 
@@ -27017,6 +27499,13 @@ var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a
 
 // IE 8- don't enum bug keys
 module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'.split(',');
+
+/***/ }),
+
+/***/ "yDY4":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 

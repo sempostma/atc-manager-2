@@ -109,16 +109,14 @@ class AtcView extends Component {
   }
 
   handleCmdChange = cmd => {
+    console.log(cmd);
     this.setState({ cmd });
   }
 
   render() {
-
-    
-
     return (
       <div className="atc-view">
-        <SvgRadar cmd={this.state.cmd} />
+        <SvgRadar onClick={this.handleSVGClick} cmd={this.state.cmd} />
 
         <TrafficStack 
           cmd={this.state.cmd} 

@@ -4,6 +4,7 @@ import SettingsStore from '../../stores/SettingsStore';
 import Communications from '../../lib/communications';
 import GameStore from '../../stores/GameStore';
 import { FaCompress, FaExpand } from 'react-icons/fa/index.mjs';
+import config from '../../lib/config';
 
 class Settings extends Component {
   constructor(props) {
@@ -12,18 +13,6 @@ class Settings extends Component {
       difficulty: 'normal',
       expanded: false,
     };
-
-    this.handleSpeechRecognitionSettingChange = this.handleSpeechRecognitionSettingChange.bind(this);
-    this.handleSpeechSynthesisSettingChange = this.handleSpeechSynthesisSettingChange.bind(this);
-    this.handleVoicesChange = this.handleVoicesChange.bind(this);
-    this.handlePitchChange = this.handlePitchChange.bind(this);
-    this.handleRateChange = this.handleRateChange.bind(this);
-    this.handleSpeechVoiceChange = this.handleSpeechVoiceChange.bind(this);
-    this.handleSettingsStoreChange = this.handleSettingsStoreChange.bind(this);
-    this.handleSpeedChange = this.handleSpeedChange.bind(this);
-    this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
-    this.handleIlsPathColorChange = this.handleIlsPathColorChange.bind(this);
-    this.handleDistanceCircleColor = this.handleDistanceCircleColor.bind(this);
   }
 
   componentWillMount() {
@@ -37,7 +26,7 @@ class Settings extends Component {
 
   }
 
-  handleSettingsStoreChange() {
+  handleSettingsStoreChange = () => {
     this.setState({});
   }
 
@@ -51,55 +40,58 @@ class Settings extends Component {
     SettingsStore.emit('change');
   }
 
-  handleSpeechVoiceChange(e) {
+  handleSpeechVoiceChange = e => {
     SettingsStore.changeVoice(SettingsStore.voices[+e.target.value]);
     SettingsStore.emit('change');
   }
 
-  handleSpeechSynthesisSettingChange(e) {
+  handleSpeechSynthesisSettingChange = e => {
     SettingsStore.speechsynthesis = e.target.checked;
     SettingsStore.emit('change');
   }
 
-  handleSpeechRecognitionSettingChange(e) {
+  handleSpeechRecognitionSettingChange = e => {
     SettingsStore.speechrecognition = e.target.checked;
     SettingsStore.emit('change');
   }
 
-  handleVoicesChange(e) {
+  handleVoicesChange = e => {
     SettingsStore.emit('change');
   }
 
-  handlePitchChange(e) {
+  handlePitchChange = e => {
     SettingsStore.changePitch(+e.target.value);
     SettingsStore.emit('change');
   }
 
-  handleRateChange(e) {
+  handleRateChange = e => {
     SettingsStore.changeRate(+e.target.value);
     SettingsStore.emit('change');
   }
 
-  handleSpeedChange(e) {
+  handleSpeedChange = e => {
     SettingsStore.setSpeed(+e.target.value);
     SettingsStore.emit('change');
   }
 
-  handleDifficultyChange(e) {
+  handleDifficultyChange = e => {
     switch (e.target.value) {
     case 'easy':
       SettingsStore.startingInboundPlanes = 1;
       SettingsStore.startingOutboundPlanes = 1;
+      SettingsStore.startingEnroutePlanes = 0;
       SettingsStore.newPlaneInterval = 180;
       break;
     case 'normal':
       SettingsStore.startingInboundPlanes = 3;
       SettingsStore.startingOutboundPlanes = 2;
+      SettingsStore.startingEnroutePlanes = 1;
       SettingsStore.newPlaneInterval = 100;
       break;
     case 'hard':
       SettingsStore.startingInboundPlanes = 4;
       SettingsStore.startingOutboundPlanes = 3;
+      SettingsStore.startingEnroutePlanes = 0;
       SettingsStore.newPlaneInterval = 70;
       break;
     }
@@ -132,6 +124,16 @@ class Settings extends Component {
     this.setState({ expanded: !this.state.expanded });
   }
 
+  handleGA = e => {
+    SettingsStore.ga = e.target.checked;
+    SettingsStore.emit('change');
+  }
+
+  handleEnroute = e => {
+    SettingsStore.enroute = e.target.checked;
+    SettingsStore.emit('change');
+  }
+
   render() {
     return (
       <div className="settings">
@@ -152,6 +154,20 @@ class Settings extends Component {
           <span>Distance circle</span>
           <label class="switch">
             <input type="checkbox" onInput={this.handleDistanceCircleChange} checked={SettingsStore.distanceCircles} />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div className={`mb ${css.SwitchInput}`}>
+          <span>General Aviation</span>
+          <label class="switch">
+            <input type="checkbox" onInput={this.handleGA} checked={SettingsStore.ga} />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div className={`mb ${css.SwitchInput}`}>
+          <span>Enroute Traffic</span>
+          <label class="switch">
+            <input type="checkbox" onInput={this.handleEnroute} checked={SettingsStore.enroute} />
             <span class="slider"></span>
           </label>
         </div>

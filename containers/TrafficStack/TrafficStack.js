@@ -1,5 +1,5 @@
 import { Component } from 'preact';
-import { FaInfo, FaCommentDots, FaCog, FaCompress, FaPlane, FaPaperPlane, FaQuestion } from 'react-icons/fa/index.mjs';
+import { FaInfo, FaCommentDots, FaCog, FaPlane, FaPaperPlane, FaQuestion } from 'react-icons/fa/index.mjs';
 import './TrafficStack.css';
 import GameStore from '../../stores/GameStore';
 import GameMetaControls from '../../components/GameMetaControls/GameMetaControls';
@@ -8,14 +8,12 @@ import PlaneSpd from '../PlaneSpd/PlaneSpd';
 import PlaneAlt from '../PlaneSpd/PlaneSpd';
 import { landableRwys } from '../../lib/map';
 import config from '../../lib/config';
-import Communications from '../../lib/communications';
-import SettingsStore from '../../stores/SettingsStore';
-
 import SettingsPanel from '../SettingsPanel/SettingsPanel';
 import InfoPanel from '../InfoPanel/InfoPanel';
 import AboutPanel from '../AboutPanel/AboutPanel';
 import AirplaneInfoPanel from '../AirplaneInfoPanel/AirplaneInfoPanel';
 import LogsPanel from '../LogsPanel/LogsPanel';
+import TrafficStackEntry from '../TrafficStackEntry/TrafficStackEntry';
 
 class TrafficStack extends Component {
   constructor(props) {
@@ -31,6 +29,10 @@ class TrafficStack extends Component {
     this.dtcToDataListId = `dct-tgt-${Math.random().toString().replace('.', '')}`;
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ cmd: nextProps.cmd });
+  }
+
   componentWillMount() {
     GameStore.on('change', this.handleGameStoreChange);
     if (typeof window !== 'undefined') window.addEventListener('keypress', this.handleKeyPress);
@@ -40,7 +42,6 @@ class TrafficStack extends Component {
     GameStore.removeListener('change', this.handleGameStoreChange);
     if (typeof window !== 'undefined') window.removeEventListener('keypress', this.handleKeyPress);
   }
-
 
   handleKeyPress = e => {
     if (e.keyCode == 13 && this.state.cmd.tgt) {
@@ -57,13 +58,15 @@ class TrafficStack extends Component {
     this.setState(prevstate => {
       prevstate.cmd.takeoff = true;
       return prevstate;
+    }, () => {
+      this.props.onChange(this.state.cmd);
+      this.props.onCmdExecution();
     });
-    this.handleCmdExecution();
   }
 
   handleExpandSettingsButtonClick = () => {
-    this.setState({ settingsExpanded: !this.state.settingsExpanded });
-    this.props.onChange(this.state.cmd);
+    this.setState({ settingsExpanded: !this.state.settingsExpanded },
+      () => this.props.onChange(this.state.cmd));
   }
 
   handleAboutExpanded = () => {
@@ -100,7 +103,7 @@ class TrafficStack extends Component {
         heading: Math.round(airplane.heading + 359) % 360 + 1,
         speed: airplane.tgtSpeed,
       }
-    });
+    }, () => this.props.onChange(this.state.cmd));
     // TODO: Speech
   }
 
@@ -108,26 +111,54 @@ class TrafficStack extends Component {
     this.setState({ infoExpanded: !this.state.infoExpanded });
   }
 
-  renderTrafficStack = () => {
-    return GameStore.traffic.map((airplane, i) => {
-      const spd = <PlaneSpd airplane={airplane} tagName="span" />;
-      const alt = <PlaneAlt airplane={airplane} tagName="span" />;
-      const heading = `000${Math.floor(airplane.heading)}`.substr(-3);
-      const model = airplanesById[airplane.typeId];
-      return (<div className={`traffic-stack-entry ${routeTypes[airplane.routeType]} ${this.props.cmd.tgt === airplane ? 'traffic-active' : 'traffic-not-active'}`} data-index={i} key={i}>
-        {operatorsById[airplane.operatorId].callsign}{airplane.flight} {spd} {alt} {model.shortName} {heading}°
-        {airplane.outboundWaypoint ? `⇨${airplane.outboundWaypoint}` : null}
-        {airplane.outboundRwy ? <span> RWY {airplane.outboundRwy}</span> : null}
-        <button onClick={this.handleTrafficStackInfoButtonClick} class="airplane-traffic-stack-info-btn">?</button>
-      </div>);
+  handleHeadingTgtChange = e => {
+    this.setState(prevstate => {
+      prevstate.cmd.heading = +e.target.value;
+      return prevstate;
+    }, () => {
+      this.props.onChange(this.state.cmd);
     });
+  }
+
+  handleAltitudeTgtChange = e => {
+    this.setState(prevstate => {
+      prevstate.cmd.altitude = Math.min(+e.target.max, e.target.value);
+      return prevstate;
+    }, () => {
+      this.props.onChange(this.state.cmd);
+    });
+  }
+
+  handleSpeedTgtChange = e => {
+    this.setState(prevstate => {
+      prevstate.cmd.speed = Math.min(+e.target.max, e.target.value);
+      return prevstate;
+    }, () => {
+      this.props.onChange(this.state.cmd);
+    });
+  }
+
+  handleDirectToTgtChange = e => {
+    if (!this.state.cmd.tgt) return;
+    this.setState(prevstate => {
+      prevstate.cmd.direction = e.target.value.toUpperCase().trim();
+      prevstate.cmd.directionOld = false;
+      return prevstate;
+    }, () => {
+      this.props.onChange(this.state.cmd);
+    });
+  }
+
+  renderTrafficStack = () => {
+    return GameStore.traffic.map((airplane, i) => <TrafficStackEntry cmd={this.state.cmd} airplane={airplane} index={i} />);
   }
 
   renderTrafficControl = () => {
     const cmd = this.props.cmd;
     if (!cmd.tgt) return;
     const model = airplanesById[cmd.tgt.typeId];
-    const topSpeed = cmd.tgt.altitude > 10000 ? model.topSpeed : Math.min(model.topSpeed, 250);
+    const topSpeed = model.topSpeed;
+    const minSpeed = model.minSpeed;
 
     const landableRwyNamesArr = this.props.cmd.tgt && this.props.cmd.tgt.altitude < 3200
       ? landableRwys(GameStore.airport, this.props.cmd.tgt, config.width, config.height)
@@ -154,11 +185,11 @@ class TrafficStack extends Component {
       </div>
       <div>
         <span>Speed (KTS)</span>
-        <input onInput={this.handleSpeedTgtChange} value={cmd.speed} type="number" max={topSpeed} step="10" />
+        <input onInput={this.handleSpeedTgtChange} value={cmd.speed} type="number" min={minSpeed} max={topSpeed} step="10" />
       </div>
       <div>
         <span>Altitude (FT)</span>
-        <input onInput={this.handleAltitudeTgtChange} value={cmd.altitude} type="number" max={model.ceiling * 1000} step="1000" />
+        <input onInput={this.handleAltitudeTgtChange} value={cmd.altitude} type="number" min="2000" max={model.ceiling * 1000} step="1000" />
       </div>
       <div>
         <button onClick={this.props.onCmdExecution}><FaPaperPlane /> Give Command</button>
@@ -188,7 +219,7 @@ class TrafficStack extends Component {
     return (
       <div>
         <div className="traffic-stack-wrapper" style={{ height: innerHeight }}>
-          <div className="traffic-stack">
+          <div className="traffic-stack" onClick={this.props.onClick}>
             <div className="wind">wind: {GameStore.winddir}° @ {GameStore.windspd}KTS</div>
             {trafficStack}
           </div>
@@ -214,7 +245,7 @@ class TrafficStack extends Component {
 
         {/* panels */}
         <SettingsPanel expanded={this.state.settingsExpanded} onToggle={this.handleExpandSettingsButtonClick} />
-        <AirplaneInfoPanel infoPanelTgt={this.state.infoPanelTgt} getAltFmtJSx={this.props.getAltFmtJSx} onToggle={this.handleCloseAirplaneInfoPanel} />
+        <AirplaneInfoPanel infoPanelTgt={this.state.infoPanelTgt} onToggle={this.handleCloseAirplaneInfoPanel} />
         <LogsPanel expanded={this.state.logsExpanded} onToggle={this.handleLogsExpanded} />
         <InfoPanel expanded={this.state.infoExpanded} onToggle={this.handleInfoExpanded} />
         <AboutPanel expanded={this.state.aboutExpanded} onToggle={this.handleAboutExpanded} />
