@@ -4,7 +4,7 @@ import { FaPaperPlane, FaSpinner } from 'react-icons/fa/index.mjs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { saveAs } from 'file-saver';
 import { saveState, loadState } from '../../lib/persistance';
-import { airplanesById, airplanes, refresh, defaultAirplanes } from '../../lib/airplane-library';
+import { airplanesById, airplanes, refresh, defaultAirplanes } from '../../lib/airplane-library/airplane-library';
 import SchemaForm from 'react-jsonschema-form';
 import { sendMessageInfo, sendMessageError, sendMessageWarning } from '../../components/GameMessages/GameMessages';
 const airplaneSchema = require('../../schema/airplane-model.json');

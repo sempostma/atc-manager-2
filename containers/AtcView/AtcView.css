@@ -1,26 +1,4 @@
-.traffic-stack-wrapper {
-    width: 250px;
-    background: #19242e;
-    color: #fff;
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 3px;
-    overflow-y: auto;
-}
 
-.traffic-stack-wrapper input,
- {
-    color: #fff;
-    margin-bottom: 5px;
-}
-
-.traffic-stack-wrapper select {
-  height: 1.8em;
-  padding: 0 2px;
-  color: #000;
-  background: #fff;
-}
 
 .atc-view-svg {
     float: left;
@@ -29,43 +7,6 @@
 
 .atc-view-svg span {
     color: #ccc;
-}
-
-.traffic-stack-entry {
-  transition: all 0.2s ease;
-}
-
-.traffic-stack-entry::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.traffic-stack-entry:hover, .traffic-stack-entry.traffic-active {
-  transform: translateX(5px);
-}
-
-.traffic-stack-entry.inbound {
-    background: #99f;
-    margin-bottom: 3px;
-}
-
-.traffic-stack-entry.outbound {
-  background: #696;
-  margin-bottom: 3px;
-}
-
-.traffic-stack {
-    padding: 3px;
-    background: #1e606b;
-    height: calc(100% - 360px);
-    overflow: auto;
-    overflow-x: hidden;
-}
-
-.traffic-stack::-webkit-scrollbar-thumb
-{
-  background-color: rgb(25, 72, 80);
 }
 
 span.down {
@@ -83,6 +24,12 @@ svg g.airplane.airplane-active tspan {
 svg.atc-view-svg {
   padding: 10px;
   padding-right: 45px;
+}
+
+@media screen and (min-width: 2000px) {
+  svg.atc-view-svg {
+    padding: 30px;
+  }
 }
 
 input.direct-to-input::placeholder {
@@ -231,5 +178,10 @@ input.direct-to-input::placeholder {
 
 .atc-view .airplane-info-panel hr {
   margin: 7px 0;
+}
+
+.atc-view .wind {
+  line-height: 20px;
+  margin-top: -3px;
 }
 

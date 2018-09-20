@@ -1,0 +1,20 @@
+
+.AptDat {
+  overflow: hidden;
+  background: rgb(25, 72, 80) no-repeat center center;
+  background-size: cover;
+  padding-bottom: 100px;
+  min-height: 100vh;
+}
+
+.AptDat .panel {
+  width: 600px;
+  max-width: 100%;
+  margin: auto;
+  margin-top: 50px;
+  padding: 5px;
+  border: 6px solid #1e606b;
+  border-radius: 4px;
+}
+
+
