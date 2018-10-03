@@ -7,7 +7,7 @@ import { upcase, lpad } from '../../lib/util';
 import Communications from '../../lib/communications';
 import './AirplaneInfoPanel.css';
 import { routeTypes, operatorsById } from '../../lib/airplane-library/airplane-library';
-import AltFmt from '../AltFmt/AltFmt';
+import AltFmt from '../../components/AltFmt/AltFmt';
 
 class AirplaneInfoPanel extends Component {
   constructor(props) {
@@ -27,11 +27,11 @@ class AirplaneInfoPanel extends Component {
     if (!this.props.infoPanelTgt) return null;
     return (
       <div className={'airplane-info-panel'}>
-        <h5>{Communications.getCallsign(this.props.infoPanelTgt.airplane)}</h5>
+        <h5>{Communications.getCallsign(this.props.infoPanelTgt.airplane, true)}</h5>
         <hr />
         <div>Airplane: {this.props.infoPanelTgt.model.name}</div>
         <div>Traffic Type: {upcase(routeTypes[this.props.infoPanelTgt.airplane.routeType])}</div>
-        <div>{this.props.infoPanelTgt.airplane.routeType === routeTypes.OUTBOUND && ('Departure runway: ' + this.props.infoPanelTgt.airplane.outboundRwy) || null}</div>
+        <div>{this.props.infoPanelTgt.airplane.routeType === routeTypes.OUTBOUND && ('Departure runway: ' + this.props.infoPanelTgt.airplane.rwy) || null}</div>
         <div>Operators: {this.props.infoPanelTgt.model.operators.map(o => operatorsById[o].name).join(', ') || 'None'}</div>
         <br />
         <div>Speed: {this.props.infoPanelTgt.airplane.speed}KTS</div>

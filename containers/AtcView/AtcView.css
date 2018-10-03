@@ -92,13 +92,22 @@ input.direct-to-input::placeholder {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  width: 600px;
+  width: 700px;
   max-width: 80%;
   background: rgb(25, 72, 80);
   border: 5px solid #1e606b;
   padding: 10px;
   max-height: 90vh;
   overflow-y: auto;
+}
+
+.atc-view .about-panel .rwyusage {
+  position: relative;
+}
+
+.atc-view .about-panel select {
+  width: auto;
+  height: 22px;
 }
 
 .atc-view .about-panel li {

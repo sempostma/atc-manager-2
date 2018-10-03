@@ -1,5 +1,5 @@
 import { Component } from 'preact';
-import css from './Settings.css';
+import './Settings.css';
 import SettingsStore from '../../stores/SettingsStore';
 import Communications from '../../lib/communications';
 import GameStore from '../../stores/GameStore';
@@ -76,24 +76,24 @@ class Settings extends Component {
 
   handleDifficultyChange = e => {
     switch (e.target.value) {
-    case 'easy':
-      SettingsStore.startingInboundPlanes = 1;
-      SettingsStore.startingOutboundPlanes = 1;
-      SettingsStore.startingEnroutePlanes = 0;
-      SettingsStore.newPlaneInterval = 180;
-      break;
-    case 'normal':
-      SettingsStore.startingInboundPlanes = 3;
-      SettingsStore.startingOutboundPlanes = 2;
-      SettingsStore.startingEnroutePlanes = 1;
-      SettingsStore.newPlaneInterval = 100;
-      break;
-    case 'hard':
-      SettingsStore.startingInboundPlanes = 4;
-      SettingsStore.startingOutboundPlanes = 3;
-      SettingsStore.startingEnroutePlanes = 0;
-      SettingsStore.newPlaneInterval = 70;
-      break;
+      case 'easy':
+        SettingsStore.startingInboundPlanes = 1;
+        SettingsStore.startingOutboundPlanes = 1;
+        SettingsStore.startingEnroutePlanes = 0;
+        SettingsStore.newPlaneInterval = 180;
+        break;
+      case 'normal':
+        SettingsStore.startingInboundPlanes = 3;
+        SettingsStore.startingOutboundPlanes = 2;
+        SettingsStore.startingEnroutePlanes = 1;
+        SettingsStore.newPlaneInterval = 100;
+        break;
+      case 'hard':
+        SettingsStore.startingInboundPlanes = 4;
+        SettingsStore.startingOutboundPlanes = 3;
+        SettingsStore.startingEnroutePlanes = 0;
+        SettingsStore.newPlaneInterval = 70;
+        break;
     }
     this.setState({
       difficulty: e.target.value,
@@ -134,6 +134,11 @@ class Settings extends Component {
     SettingsStore.emit('change');
   }
 
+  handleTakeoffInOrderChange = e => {
+    SettingsStore.takeoffInOrder = e.target.checked;
+    SettingsStore.emit('change');
+  }
+
   render() {
     return (
       <div className="settings">
@@ -150,36 +155,36 @@ class Settings extends Component {
             <option value="hard">Hard</option>
           </select>
         </div>
-        <div className={`mb ${css.SwitchInput}`}>
+        <div className="mb SwitchInput">
           <span>Distance circle</span>
           <label class="switch">
             <input type="checkbox" onInput={this.handleDistanceCircleChange} checked={SettingsStore.distanceCircles} />
             <span class="slider"></span>
           </label>
         </div>
-        <div className={`mb ${css.SwitchInput}`}>
+        <div className="mb SwitchInput">
           <span>General Aviation</span>
           <label class="switch">
             <input type="checkbox" onInput={this.handleGA} checked={SettingsStore.ga} />
             <span class="slider"></span>
           </label>
         </div>
-        <div className={`mb ${css.SwitchInput}`}>
+        <div className="mb SwitchInput">
           <span>Enroute Traffic</span>
           <label class="switch">
             <input type="checkbox" onInput={this.handleEnroute} checked={SettingsStore.enroute} />
             <span class="slider"></span>
           </label>
         </div>
-        <div className={`mb ${css.ColorInput}`}>
+        <div className="mb ColorInput">
           <span>Distance circle color:</span>
           <input type="color" value={SettingsStore.distanceCircleColor} onInput={this.handleDistanceCircleColor} />
         </div>
-        <div className={`mb ${css.ColorInput}`}>
+        <div className="mb ColorInput">
           <span>ILS indicator color:</span>
           <input type="color" value={SettingsStore.ilsPathColor} onInput={this.handleIlsPathColorChange} />
         </div>
-        <div className={`mb ${css.ColorInput}`}>
+        <div className="mb ColorInput">
           <span>Seperatorion circle color:</span>
           <input type="color" value={SettingsStore.sepVialationCircleColor} onInput={this.handleSepVialotionCircleColor} />
         </div>
@@ -193,7 +198,7 @@ class Settings extends Component {
           ? <span><FaCompress /> Hide advanced settings</span>
           : <span><FaExpand /> Show advanced settings </span>}</button>
         <div style="border: 1px solid #1e606b; border-radius: 5px; padding: 5px;" className={this.state.expanded ? null : 'hidden'}>
-          <div className={`speechsynthesis-setting mb ${css.SwitchInput}`}>
+          <div className="speechsynthesis-setting mb SwitchInput">
             <span>Speech synthesis</span>
             <label class="switch">
               <input type="checkbox" onInput={this.handleSpeechSynthesisSettingChange} checked={SettingsStore.speechsynthesis} />
@@ -230,6 +235,13 @@ class Settings extends Component {
             <input className="range-slider__range" type="range" min="20" max="400" step="10" value={SettingsStore.newPlaneInterval} onInput={this.handleNewPlaneIntervalChange} />
             <span class="range-slider__value">{SettingsStore.newPlaneInterval} seconds</span>
           </div>
+        </div>
+        <div className="takeoff-in-order mb SwitchInput">
+          <span>Takeoff in order</span>
+          <label class="switch">
+            <input type="checkbox" onInput={this.handleTakeoffInOrderChange} checked={SettingsStore.takeoffInOrder} />
+            <span class="slider"></span>
+          </label>
         </div>
       </div>
     );

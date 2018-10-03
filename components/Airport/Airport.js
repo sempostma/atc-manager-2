@@ -29,16 +29,17 @@ class Airport extends Component {
 
   renderRwy(rwy) {
     const len = rwy.length * config.rwyLenScale;
-    let x1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -len;
-    let y1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -len;
-    let x2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -len;
-    let y2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -len;
+    let x1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -len * GameStore.zoom;
+    let y1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -len * GameStore.zoom;
+    let x2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -len * GameStore.zoom;
+    let y2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -len * GameStore.zoom;
 
-    let ilsx1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -SettingsStore.ilsPathLength;
-    let ilsy1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -SettingsStore.ilsPathLength;
-    let ilsx2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -SettingsStore.ilsPathLength;
-    let ilsy2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -SettingsStore.ilsPathLength;
-    return <g className="rwy" transform={`translate(${rwy.x} ${-rwy.y})`}>
+    let ilsx1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -SettingsStore.ilsPathLength * GameStore.zoom;
+    let ilsy1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -SettingsStore.ilsPathLength * GameStore.zoom;
+    let ilsx2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -SettingsStore.ilsPathLength * GameStore.zoom;
+    let ilsy2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -SettingsStore.ilsPathLength * GameStore.zoom;
+
+    return <g className="rwy" transform={`translate(${rwy.x * GameStore.zoom} ${rwy.y * GameStore.zoom})`}>
       <line className="ils-line ils-line-1" stroke-dasharray={SettingsStore.ilsDashInterval.join()} x1={x1} y1={-y1} x2={ilsx1} y2={-ilsy1} />
       <line className="ils-line ils-line-2" stroke-dasharray={SettingsStore.ilsDashInterval.join()} x1={x2} y1={-y2} x2={ilsx2} y2={-ilsy2} />
       <line className="rwy-line" x1={x1} y1={-y1} x2={x2} y2={-y2} />
@@ -59,7 +60,7 @@ class Airport extends Component {
     if (SettingsStore.distanceCircles) {
       distanceCirlces = new Array(SettingsStore.distanceCirclesAmount);
       for(let i = 0; i < distanceCirlces.length; i++) {
-        distanceCirlces[i] = <circle key={i} r={(i+1) * SettingsStore.distanceCirclesDistance} 
+        distanceCirlces[i] = <circle key={i} r={(i+1) * SettingsStore.distanceCirclesDistance * GameStore.zoom} 
           fill="none" stroke={SettingsStore.distanceCircleColor} />;
       }
     }

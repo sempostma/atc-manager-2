@@ -19,7 +19,7 @@ class Donate extends Component {
     return (
       <div className="Donate">
         If you like the game and you want the game to stay (advertisement) free, please check out the <a href="https://www.gofundme.com/manage/atc-manager-2" target="_blank">GoFundMe Page</a> or:
-        <br /><br />
+        <br />
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin-bottom: 0;">
           <input type="hidden" name="business"
             value="thankyousomuchyouareamazing@esstudio.site" />
@@ -39,6 +39,7 @@ class Donate extends Component {
               <option value="1.00">1.00 - Bugfixing</option>
               <option selected value="2.00">2.00 - Buy us a coffee</option>
             </select>
+            <br />
           </div><div>
             <small>If you're preferred currency is not listed, please use "Give a custom amount"</small>
           </div><div>

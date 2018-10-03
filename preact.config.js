@@ -6,6 +6,10 @@ export default function (config, env, helpers) {
   if (env.isProd) {
     config.devtool = false; // disable sourcemaps
   }
+
+  const { loader: cssLoader } =
+    helpers.getLoadersByName(config, 'css-loader')[0];
+  cssLoader.options.modules = false;
 }
 
 require('./node_modules/postcss');

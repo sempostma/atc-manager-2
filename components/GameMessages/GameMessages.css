@@ -1,6 +1,6 @@
 
 
-.GameMessages {
+.game-messages {
     position: fixed;
     left: 20px;
     top: 20px;
@@ -9,7 +9,7 @@
     pointer-events: none;
 }
 
-.Message {
+.message {
    padding: 3px 10px;
    background: #19242e;
    border: 2px solid #1e606b;
@@ -20,28 +20,28 @@
    clear: both;
 }
 
-.Message svg {
+.message svg {
   vertical-align: middle;
 }
 
-.Message[data-type="info"] {
+.message[data-type="info"] {
 }
 
 
-.Message[data-type="warning"] {
+.message[data-type="warning"] {
   color: #f90;
 }
 
 
-.Message[data-type="error"] {
+.message[data-type="error"] {
   color: #f00;
 }
 
 @keyframes lifetime {
-  0% { transform: scaleY(0); display: block; margin-top: -27px; }
+  0% { transform: scaleY(0); display: block; margin-top: -35px; }
   10% { margin-top: 0; display: block; margin-top: 0; transform: scaleY(1); }
   90% { margin-top: 0; display: block; margin-top: 0; transform: scaleY(1); opacity: 1; }
-  99% { transform: scaleY(0); margin-top: -27px; display: block; opacity: 0; position: static; }
-  100% { transform: scaleY(0); display: none; opacity: 0; margin-top: -27px; position: absolute; }
+  99% { transform: scaleY(0); margin-top: -35px; display: block; opacity: 0; position: static; }
+  100% { transform: scaleY(0); display: none; opacity: 0; margin-top: -35px; position: absolute; }
 }
 

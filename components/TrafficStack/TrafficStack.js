@@ -3,17 +3,18 @@ import { FaInfo, FaCommentDots, FaCog, FaPlane, FaPaperPlane, FaQuestion } from 
 import './TrafficStack.css';
 import GameStore from '../../stores/GameStore';
 import GameMetaControls from '../../components/GameMetaControls/GameMetaControls';
-import { routeTypes, operatorsById, airplanesById } from '../../lib/airplane-library/airplane-library';
+import { routeTypes, operatorsById, airplanesById, VFRStates, allowedVFRStates } from '../../lib/airplane-library/airplane-library';
 import PlaneSpd from '../PlaneSpd/PlaneSpd';
 import PlaneAlt from '../PlaneSpd/PlaneSpd';
-import { landableRwys } from '../../lib/map';
+import { landableRwys, activeRwys } from '../../lib/map';
 import config from '../../lib/config';
-import SettingsPanel from '../SettingsPanel/SettingsPanel';
-import InfoPanel from '../InfoPanel/InfoPanel';
-import AboutPanel from '../AboutPanel/AboutPanel';
-import AirplaneInfoPanel from '../AirplaneInfoPanel/AirplaneInfoPanel';
-import LogsPanel from '../LogsPanel/LogsPanel';
+import SettingsPanel from '../../containers/SettingsPanel/SettingsPanel';
+import InfoPanel from '../../containers/InfoPanel/InfoPanel';
+import AboutPanel from '../../containers/AboutPanel/AboutPanel';
+import AirplaneInfoPanel from '../../containers/AirplaneInfoPanel/AirplaneInfoPanel';
+import LogsPanel from '../../containers/LogsPanel/LogsPanel';
 import TrafficStackEntry from '../TrafficStackEntry/TrafficStackEntry';
+import Airplane from '../../lib/airplane';
 
 class TrafficStack extends Component {
   constructor(props) {
@@ -100,10 +101,13 @@ class TrafficStack extends Component {
         tgt: airplane,
         direction: '',
         altitude: airplane.tgtAltitude,
-        heading: Math.round(airplane.heading + 359) % 360 + 1,
+        heading: null,
         speed: airplane.tgtSpeed,
       }
-    }, () => this.props.onChange(this.state.cmd));
+    }, () => {
+      this.props.onChange(this.state.cmd);
+      this.props.onCmdExecution();
+    });
     // TODO: Speech
   }
 
@@ -150,12 +154,16 @@ class TrafficStack extends Component {
   }
 
   renderTrafficStack = () => {
-    return GameStore.traffic.map((airplane, i) => <TrafficStackEntry cmd={this.state.cmd} airplane={airplane} index={i} />);
+    return GameStore.traffic.map((airplane, i) => 
+      <TrafficStackEntry 
+        cmd={this.state.cmd}
+        airplane={airplane}
+        index={i}
+        onClick={this.handleTrafficStackInfoButtonClick} />);
   }
 
-  renderTrafficControl = () => {
+  renderIFRTrafficControl = () => {
     const cmd = this.props.cmd;
-    if (!cmd.tgt) return;
     const model = airplanesById[cmd.tgt.typeId];
     const topSpeed = model.topSpeed;
     const minSpeed = model.minSpeed;
@@ -195,7 +203,7 @@ class TrafficStack extends Component {
         <button onClick={this.props.onCmdExecution}><FaPaperPlane /> Give Command</button>
       </div>
       <div>
-        <button onClick={this.handleTakeoffClick} className={cmd.tgt.outboundRwy ? '' : 'hidden'}><FaPlane /> Takeoff</button>
+        <button onClick={this.handleTakeoffClick} className={cmd.tgt.waiting ? '' : 'hidden'}><FaPlane /> Takeoff</button>
       </div>
       <div>{
         cmd.tgt.routeType === routeTypes.INBOUND && landableRwysArr.length > 0 && landableRwyNamesArr.includes(cmd.tgt.tgtDirection) === false
@@ -210,9 +218,91 @@ class TrafficStack extends Component {
     </div>);
   }
 
+  getDctName = airplane => {
+    switch (airplane.routeType) {
+    case routeTypes.VFR_CLOSED_PATTERN:
+      return 'Runway';
+
+    default:
+      return 'WIP';
+    }
+  }
+
+  
+  handleVFRTgtState = e => {
+    this.setState(prevstate => {
+      prevstate.cmd.tgtVfrState = +e.target.value;
+      return prevstate;
+    }, () => {
+      this.props.onChange(this.state.cmd);
+    });
+  }
+
+  handleGoAroundUpwindClick = e => {
+    this.setState(prevstate => {
+      prevstate.cmd.goAroundVFR = true;
+      return prevstate;
+    }, () => {
+      this.props.onChange(this.state.cmd);
+      this.props.onCmdExecution();
+    });
+    // TODO: Speech
+  }
+
+  renderVFRTrafficControl() {
+    const cmd = this.props.cmd;
+    const dctName = this.getDctName(cmd.tgt);
+
+    const landableRwyNamesArr = this.props.cmd.tgt && this.props.cmd.tgt.altitude < 3200
+      ? landableRwys(GameStore.airport, this.props.cmd.tgt, config.width, config.height)
+        .map(lr => lr.rev ? lr.rwy.name2 : lr.rwy.name1)
+      : [];
+    const landableRwysArr = landableRwyNamesArr.map(name => <option value={name} />);
+
+    const directToValue = cmd.directionOld ? '' : cmd.direction;
+    const directToPlaceholder = cmd.directionOld ? cmd.direction : '';
+
+    const hideDirectionInput = cmd.tgt.routeType === routeTypes.VFR_ENROUTE || cmd.tgt.routeType == routeTypes.VFR_OUTBOUND;
+
+    return (
+      <div>
+        <div className={hideDirectionInput ? 'hidden' : ''}>
+          <span>{dctName} </span>
+          <input className="direct-to-input" type="text" value={directToValue} placeholder={directToPlaceholder}
+            list={this.dtcToDataListId} onInput={this.handleDirectToTgtChange} />
+          <datalist id={this.dtcToDataListId}>
+            {activeRwys(GameStore.airport, GameStore.winddir)}
+          </datalist>
+        </div>
+        <div>
+          <span>State </span>
+          <select className="state-input" onInput={this.handleVFRTgtState} value={this.state.cmd.tgtVfrState}>
+            { allowedVFRStates(this.state.cmd.tgt).map(x => <option value={x}>{VFRStates[x]}</option>)} />
+          </select>
+        </div>
+        <div>
+          <button onClick={this.props.onCmdExecution}><FaPaperPlane /> Give Command</button>
+        </div>
+        <div>
+          <button onClick={this.handleTakeoffClick} className={cmd.tgt.waiting ? '' : 'hidden'}><FaPlane /> Takeoff</button>
+        </div>
+        <div>{
+          cmd.tgt.landing === true && cmd.tgt.dirty === true
+            ? <button onClick={this.handleGoAroundUpwindClick}><FaPlane /> Go Around</button>
+            : null
+        }</div>
+      </div>
+    );
+  }
+
   render() {
     const trafficStack = this.renderTrafficStack();
-    const trafficControl = this.renderTrafficControl();
+
+    const trafficControl = this.state.cmd.tgt ?
+      Airplane.isVFR(this.state.cmd.tgt)
+        ? this.renderVFRTrafficControl()
+        : this.renderIFRTrafficControl()
+      : null;
 
     const innerHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
 
@@ -250,7 +340,6 @@ class TrafficStack extends Component {
         <InfoPanel expanded={this.state.infoExpanded} onToggle={this.handleInfoExpanded} />
         <AboutPanel expanded={this.state.aboutExpanded} onToggle={this.handleAboutExpanded} />
       </div>
-
     );
   }
 }

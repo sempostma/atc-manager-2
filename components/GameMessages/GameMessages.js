@@ -1,5 +1,5 @@
 import { Component } from 'preact';
-import css from './GameMessages.css';
+import './GameMessages.css';
 import { EventEmitter } from 'events';
 import { FaExclamationCircle, FaInfoCircle, FaTimesCircle } from 'react-icons/fa/index.mjs';
 
@@ -47,6 +47,7 @@ export class GameMessages extends Component {
   }
 
   componentWillUnmount() {
+    emitter.removeListener('message', this.handleMessage);
   }
 
   handleMessage = (type, message) => {
@@ -59,9 +60,9 @@ export class GameMessages extends Component {
 
   render() {
     return (
-      <div className={css.GameMessages}>
+      <div className="game-messages">
         {this.state.messages.map(msg =>
-          <div data-type={msg.type} className={`${css.Message}`}>
+          <div data-type={msg.type} className="message">
             {icons[msg.type]()} {msg.message}
           </div>
         )}

@@ -8,9 +8,8 @@ class AboutPanel extends Component {
   constructor(props) {
     super();
     this.state = {
-
+      
     };
-
   }
 
   componentWillMount() {
@@ -27,7 +26,7 @@ class AboutPanel extends Component {
         <a class="header-btn" href="https://www.paypal.me/esstudio" target="_blank"><span class="legend">support</span><span class="paypal">paypal</span></a>
         <br /><br />
         ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.
-          Check out the <a href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US" target="_blank">ATC Manager 1 App</a>
+          Check out the <a href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US" target="_blank">ATC Manager 1 App</a>.
         <Donate />
         <br />
         <h5>A Special thanks to...</h5>
@@ -64,6 +63,7 @@ class AboutPanel extends Component {
           <li><a href="https://www.reddit.com/user/RoboRager" target="_blank">RoboRager</a></li>
           <li><a href="https://www.reddit.com/user/cplane97" target="_blank">cplane97</a></li>
           <li><a href="https://www.reddit.com/user/seungseung22" target="_blank">seungseung22</a></li>
+          <li>Harryhylai (HL3177)</li>
         </ul>
 
         <h5>Links: (external)</h5>

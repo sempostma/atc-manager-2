@@ -4,6 +4,7 @@ import { operatorsById, routeTypes, airplanesById } from '../../lib/airplane-lib
 import GameStore from '../../stores/GameStore';
 import PlaneSpd from '../PlaneSpd/PlaneSpd';
 import PlaneAlt from '../PlaneAlt/PlaneAlt';
+import communications from '../../lib/communications';
 
 class TrafficStackEntry extends Component {
   constructor(props) {
@@ -35,11 +36,12 @@ class TrafficStackEntry extends Component {
     const heading = `000${Math.floor(airplane.heading)}`.substr(-3);
     const model = airplanesById[airplane.typeId];
 
-    return (<div className={`traffic-stack-entry ${routeTypes[airplane.routeType]} ${this.props.cmd.tgt === airplane ? 'traffic-active' : 'traffic-not-active'}`} data-index={this.props.index}>
-      {operatorsById[airplane.operatorId].callsign}{airplane.flight} {spd} {alt} {model.shortName} {heading}°
+    return (<div className={`traffic-stack-entry ${routeTypes[airplane.routeType].replace(/ /g, '-')} ${this.props.cmd.tgt === airplane ? 'traffic-active' : 'traffic-not-active'}`} data-index={this.props.index}>
+      {communications.getCallsign(airplane, true)} {spd} {alt} {model.shortName} {heading}°
       {airplane.outboundWaypoint ? `⇨${airplane.outboundWaypoint}` : null}
-      {airplane.outboundRwy ? <span> RWY {airplane.outboundRwy}</span> : null}
-      <button onClick={this.handleTrafficStackInfoButtonClick} class="airplane-traffic-stack-info-btn">?</button>
+      {airplane.rwy ? <span> RWY {airplane.rwy}</span> : null}
+      {airplane.tgs !== undefined && airplane.tgs > 0 ? ` TGL ${airplane.tgs}` : null}
+      <button onClick={this.props.onClick} class="airplane-traffic-stack-info-btn">?</button>
     </div>);
   }
 }

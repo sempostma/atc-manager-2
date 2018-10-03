@@ -1,0 +1,1666 @@
+[
+  {
+      "countryRegion": "afghanistan",
+      "registrationPrefix": "ya",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "albania",
+      "registrationPrefix": "za",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "algeria",
+      "registrationPrefix": "7t",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "andorra",
+      "registrationPrefix": "c3",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "angola",
+      "registrationPrefix": "d2",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "anguilla",
+      "registrationPrefix": "vp-a",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "antigua_and_barbuda",
+      "registrationPrefix": "v2",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "argentina",
+      "registrationPrefix": "lq",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "argentina",
+      "registrationPrefix": "lv",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "armenia",
+      "registrationPrefix": "ek",
+      "suffixPattern": [
+          "12345"
+      ]
+  },
+  {
+      "countryRegion": "aruba",
+      "registrationPrefix": "p4",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "australia",
+      "registrationPrefix": "vh",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "austria",
+      "registrationPrefix": "oe",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "austria",
+      "registrationPrefix": "oe",
+      "suffixPattern": [
+          "1234 (gliders only)"
+      ]
+  },
+  {
+      "countryRegion": "azerbaijan",
+      "registrationPrefix": "4k",
+      "suffixPattern": [
+          "ab1",
+          "or",
+          "ab12",
+          "or",
+          "12345"
+      ]
+  },
+  {
+      "countryRegion": "bahamas",
+      "registrationPrefix": "c6",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "bahrain",
+      "registrationPrefix": "a9c",
+      "suffixPattern": [
+          "ab",
+          "or",
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "bangladesh",
+      "registrationPrefix": "s2",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "barbados",
+      "registrationPrefix": "8p",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "belarus",
+      "registrationPrefix": "ew",
+      "suffixPattern": [
+          "123ab",
+          "or",
+          "12345"
+      ]
+  },
+  {
+      "countryRegion": "belgium",
+      "registrationPrefix": "oo",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "belize",
+      "registrationPrefix": "v3",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "benin",
+      "registrationPrefix": "ty",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "bermuda",
+      "registrationPrefix": "vp-b",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "bhutan",
+      "registrationPrefix": "a5",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "bolivia",
+      "registrationPrefix": "cp",
+      "suffixPattern": [
+          "1234"
+      ]
+  },
+  {
+      "countryRegion": "bosnia_and_herzegovina",
+      "registrationPrefix": "t9",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "botswana",
+      "registrationPrefix": "a2",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "brazil",
+      "registrationPrefix": "pp",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "brazil",
+      "registrationPrefix": "pr",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "brazil",
+      "registrationPrefix": "pt",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "brazil",
+      "registrationPrefix": "pu",
+      "suffixPattern": [
+          "abc (reserved for ultralights)"
+      ]
+  },
+  {
+      "countryRegion": "british_virgin_islands",
+      "registrationPrefix": "vp-l",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "brunei",
+      "registrationPrefix": "v8",
+      "suffixPattern": [
+          "abc",
+          "or",
+          "ab1",
+          "or",
+          "123"
+      ]
+  },
+  {
+      "countryRegion": "bulgaria",
+      "registrationPrefix": "lz",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "burkina_faso",
+      "registrationPrefix": "xt",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "burundi",
+      "registrationPrefix": "9u",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "cambodia",
+      "registrationPrefix": "xu",
+      "suffixPattern": [
+          "123"
+      ]
+  },
+  {
+      "countryRegion": "cameroon",
+      "registrationPrefix": "tj",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "canada",
+      "registrationPrefix": "cf-",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "canada",
+      "registrationPrefix": "c-f",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "canada",
+      "registrationPrefix": "c-g",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "canada",
+      "registrationPrefix": "c-i",
+      "suffixPattern": [
+          "abc (ultralight aeroplanes only)"
+      ]
+  },
+  {
+      "countryRegion": "cape_verde",
+      "registrationPrefix": "d4",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "cayman_islands",
+      "registrationPrefix": "vp-c",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "central_african_republic",
+      "registrationPrefix": "tl",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "chad",
+      "registrationPrefix": "tt",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "chile",
+      "registrationPrefix": "cc",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "china_peoples_republic",
+      "registrationPrefix": "b",
+      "suffixPattern": [
+          "1234"
+      ]
+  },
+  {
+      "countryRegion": "china_republic_taiwan",
+      "registrationPrefix": "b",
+      "suffixPattern": [
+          "12345"
+      ]
+  },
+  {
+      "countryRegion": "hong_kong_china",
+      "registrationPrefix": "b-h",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "hong_kong_china",
+      "registrationPrefix": "b-k",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "hong_kong_china",
+      "registrationPrefix": "b-l",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "macau_china",
+      "registrationPrefix": "b-m",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "colombia",
+      "registrationPrefix": "hj",
+      "suffixPattern": [
+          "1234a"
+      ]
+  },
+  {
+      "countryRegion": "colombia",
+      "registrationPrefix": "hk",
+      "suffixPattern": [
+          "1234a"
+      ]
+  },
+  {
+      "countryRegion": "comoros",
+      "registrationPrefix": "d6",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "congo_republic_of",
+      "registrationPrefix": "tn",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "cook_islands",
+      "registrationPrefix": "e5",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "congo_democratic_republic_of",
+      "registrationPrefix": "9q",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "costa_rica",
+      "registrationPrefix": "ti",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "croatia",
+      "registrationPrefix": "9a",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "cuba",
+      "registrationPrefix": "cu-t",
+      "suffixPattern": [
+          "1234"
+      ]
+  },
+  {
+      "countryRegion": "cyprus_republic_of",
+      "registrationPrefix": "5b",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "czech_republic",
+      "registrationPrefix": "ok",
+      "suffixPattern": [
+          "abc,abc12,1234",
+          "or",
+          "a123"
+      ]
+  },
+  {
+      "countryRegion": "denmark",
+      "registrationPrefix": "oy",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "denmark",
+      "registrationPrefix": "oy-x",
+      "suffixPattern": [
+          "ab (only gliders)"
+      ]
+  },
+  {
+      "countryRegion": "denmark",
+      "registrationPrefix": "oy-b",
+      "suffixPattern": [
+          "ab (preferred for hot-air balloons)"
+      ]
+  },
+  {
+      "countryRegion": "djibouti",
+      "registrationPrefix": "j2",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "dominica",
+      "registrationPrefix": "j7",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "dominican_republic",
+      "registrationPrefix": "hi",
+      "suffixPattern": [
+          "123ab"
+      ]
+  },
+  {
+      "countryRegion": "ecuador",
+      "registrationPrefix": "hc",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "egypt",
+      "registrationPrefix": "su",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "el_salvador",
+      "registrationPrefix": "ys",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "eritrea",
+      "registrationPrefix": "e3",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "estonia",
+      "registrationPrefix": "es",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "ethiopia",
+      "registrationPrefix": "et",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "falkland_islands_malvinas",
+      "registrationPrefix": "vp-f",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "faroe_islands",
+      "registrationPrefix": "oy",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "fiji_islands",
+      "registrationPrefix": "dq",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "finland",
+      "registrationPrefix": "oh",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "france",
+      "registrationPrefix": "f",
+      "suffixPattern": [
+          "abcd"
+      ]
+  },
+  {
+      "countryRegion": "french_west_indies",
+      "registrationPrefix": "f-og",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "french_guyana",
+      "registrationPrefix": "f-o",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "gabon",
+      "registrationPrefix": "tr",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "gambia",
+      "registrationPrefix": "c5",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "georgia",
+      "registrationPrefix": "4l",
+      "suffixPattern": [
+          "12345",
+          "or",
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "germany",
+      "registrationPrefix": "d",
+      "suffixPattern": [
+          "abcd"
+      ]
+  },
+  {
+      "countryRegion": "ghana",
+      "registrationPrefix": "9g",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "gibraltar",
+      "registrationPrefix": "vp-g",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "greece",
+      "registrationPrefix": "sx",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "greenland",
+      "registrationPrefix": "oy",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "grenada",
+      "registrationPrefix": "j3",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "guatemala",
+      "registrationPrefix": "tg",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "guinea",
+      "registrationPrefix": "3x",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "guinea_bissau",
+      "registrationPrefix": "j5",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "guyana",
+      "registrationPrefix": "8r",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "haiti",
+      "registrationPrefix": "hh",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "honduras",
+      "registrationPrefix": "hr",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "hungary",
+      "registrationPrefix": "ha",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "iceland",
+      "registrationPrefix": "tf",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "india",
+      "registrationPrefix": "vt",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "indonesia",
+      "registrationPrefix": "pk",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "iran",
+      "registrationPrefix": "ep",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "iraq",
+      "registrationPrefix": "yi",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "ireland",
+      "registrationPrefix": "ei",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "isle_of_man",
+      "registrationPrefix": "m",
+      "suffixPattern": [
+          "abcd"
+      ]
+  },
+  {
+      "countryRegion": "israel",
+      "registrationPrefix": "4x",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "italy",
+      "registrationPrefix": "i",
+      "suffixPattern": [
+          "abcd"
+      ]
+  },
+  {
+      "countryRegion": "ivory_coast",
+      "registrationPrefix": "tu",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "jamaica",
+      "registrationPrefix": "6y",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "japan",
+      "registrationPrefix": "ja",
+      "suffixPattern": [
+          "1234",
+          "or",
+          "123a",
+          "or",
+          "12ab",
+          "or",
+          "a123"
+      ]
+  },
+  {
+      "countryRegion": "jordan",
+      "registrationPrefix": "jy",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "kazakhstan",
+      "registrationPrefix": "un",
+      "suffixPattern": [
+          "12345"
+      ]
+  },
+  {
+      "countryRegion": "kenya",
+      "registrationPrefix": "5y",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "kiribati",
+      "registrationPrefix": "t3",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "korea_peoples_democratic_rep.",
+      "registrationPrefix": "p",
+      "suffixPattern": [
+          "123"
+      ]
+  },
+  {
+      "countryRegion": "korea_republic_of",
+      "registrationPrefix": "hl",
+      "suffixPattern": [
+          "1234"
+      ]
+  },
+  {
+      "countryRegion": "kuwait",
+      "registrationPrefix": "9k",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "kyrgyzstan",
+      "registrationPrefix": "ex",
+      "suffixPattern": [
+          "12345",
+          "or",
+          "123"
+      ]
+  },
+  {
+      "countryRegion": "laos",
+      "registrationPrefix": "rdpl",
+      "suffixPattern": [
+          "12345"
+      ]
+  },
+  {
+      "countryRegion": "latvia",
+      "registrationPrefix": "yl",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "lebanon",
+      "registrationPrefix": "od",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "lesotho",
+      "registrationPrefix": "7p",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "liberia",
+      "registrationPrefix": "a8",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "libya",
+      "registrationPrefix": "5a",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "lithuania",
+      "registrationPrefix": "ly",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "luxembourg",
+      "registrationPrefix": "lx",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "macedonia",
+      "registrationPrefix": "z3",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "madagascar",
+      "registrationPrefix": "5r",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "malawi",
+      "registrationPrefix": "7q",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "malaysia",
+      "registrationPrefix": "9m",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "maldives",
+      "registrationPrefix": "8q",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "mali",
+      "registrationPrefix": "tz",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "malta",
+      "registrationPrefix": "9h",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "marshall_islands",
+      "registrationPrefix": "v7",
+      "suffixPattern": [
+          "1234"
+      ]
+  },
+  {
+      "countryRegion": "mauritania",
+      "registrationPrefix": "5t",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "mauritius",
+      "registrationPrefix": "3b",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "mexico",
+      "registrationPrefix": "xa",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "mexico",
+      "registrationPrefix": "xb",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "mexico",
+      "registrationPrefix": "xc",
+      "suffixPattern": [
+          "abc and abc12"
+      ]
+  },
+  {
+      "countryRegion": "micronesia",
+      "registrationPrefix": "v6",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "moldova",
+      "registrationPrefix": "er",
+      "suffixPattern": [
+          "abc",
+          "or",
+          "12345"
+      ]
+  },
+  {
+      "countryRegion": "monaco",
+      "registrationPrefix": "3a",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "mongolia",
+      "registrationPrefix": "ju",
+      "suffixPattern": [
+          "1234"
+      ]
+  },
+  {
+      "countryRegion": "montenegro",
+      "registrationPrefix": "4o",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "montserrat",
+      "registrationPrefix": "vp-m",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "morocco",
+      "registrationPrefix": "cn",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "mozambique",
+      "registrationPrefix": "c9",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "myanmar",
+      "registrationPrefix": "xy",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "myanmar",
+      "registrationPrefix": "xz",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "namibia",
+      "registrationPrefix": "v5",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "nauru",
+      "registrationPrefix": "c2",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "nepal",
+      "registrationPrefix": "9n",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "netherlands",
+      "registrationPrefix": "ph",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "netherlands_antilles",
+      "registrationPrefix": "pj",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "new_zealand",
+      "registrationPrefix": "zk",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "new_zealand",
+      "registrationPrefix": "zl",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "new_zealand",
+      "registrationPrefix": "zm",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "nicaragua",
+      "registrationPrefix": "yn",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "niger",
+      "registrationPrefix": "5u",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "nigeria",
+      "registrationPrefix": "5n",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "norway",
+      "registrationPrefix": "ln",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "oman",
+      "registrationPrefix": "a4o",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "pakistan",
+      "registrationPrefix": "ap",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "panama",
+      "registrationPrefix": "hp",
+      "suffixPattern": [
+          "1234abc"
+      ]
+  },
+  {
+      "countryRegion": "papua_new_guinea",
+      "registrationPrefix": "p2",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "paraguay",
+      "registrationPrefix": "zp",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "peru",
+      "registrationPrefix": "ob",
+      "suffixPattern": [
+          "1234"
+      ]
+  },
+  {
+      "countryRegion": "philippines",
+      "registrationPrefix": "rpc",
+      "suffixPattern": [
+          "1234"
+      ]
+  },
+  {
+      "countryRegion": "poland",
+      "registrationPrefix": "sp",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "portugal",
+      "registrationPrefix": "cr",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "portugal",
+      "registrationPrefix": "cs",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "qatar",
+      "registrationPrefix": "a7",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "réunion_island",
+      "registrationPrefix": "f-od",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "romania",
+      "registrationPrefix": "yr",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "russian_federation",
+      "registrationPrefix": "ra",
+      "suffixPattern": [
+          "12345",
+          "or",
+          "1234k"
+      ]
+  },
+  {
+      "countryRegion": "rwanda",
+      "registrationPrefix": "9xr",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "saint_helena/ascension",
+      "registrationPrefix": "vq-h",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "saint_kitts_and_nevis",
+      "registrationPrefix": "v4",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "saint_lucia",
+      "registrationPrefix": "j6",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "saint_vincent_and_the_grenadines",
+      "registrationPrefix": "j8",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "samoa",
+      "registrationPrefix": "5w",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "san_marino",
+      "registrationPrefix": "t7",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "saudi_arabia",
+      "registrationPrefix": "hz",
+      "suffixPattern": [
+          "abc,ab1,ab12",
+          "or",
+          "abc1"
+      ]
+  },
+  {
+      "countryRegion": "senegal",
+      "registrationPrefix": "6v",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "senegal",
+      "registrationPrefix": "6w",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "serbia",
+      "registrationPrefix": "yu",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "seychelles",
+      "registrationPrefix": "s7",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "sierra_leone",
+      "registrationPrefix": "9l",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "singapore",
+      "registrationPrefix": "9v",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "slovakia",
+      "registrationPrefix": "om",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "slovenia",
+      "registrationPrefix": "s5",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "solomon_islands",
+      "registrationPrefix": "h4",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "somalia",
+      "registrationPrefix": "6o",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "south_africa",
+      "registrationPrefix": "zs",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "south_africa",
+      "registrationPrefix": "zt",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "south_africa",
+      "registrationPrefix": "zu",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "spain",
+      "registrationPrefix": "ec",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "sri_lanka",
+      "registrationPrefix": "4r",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "sudan",
+      "registrationPrefix": "st",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "surinam",
+      "registrationPrefix": "pz",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "swaziland",
+      "registrationPrefix": "3d",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "sweden",
+      "registrationPrefix": "se",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "switzerland",
+      "registrationPrefix": "hb",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "syria",
+      "registrationPrefix": "yk",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "tahiti",
+      "registrationPrefix": "f-oh",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "tajikistan",
+      "registrationPrefix": "ey",
+      "suffixPattern": [
+          "12345"
+      ]
+  },
+  {
+      "countryRegion": "tanzania",
+      "registrationPrefix": "5h",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "thailand",
+      "registrationPrefix": "hs",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "togo",
+      "registrationPrefix": "5v",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "tonga",
+      "registrationPrefix": "a3",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "trinidad_and_tobago",
+      "registrationPrefix": "9y",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "tunisia",
+      "registrationPrefix": "ts",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "turkey",
+      "registrationPrefix": "tc",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "turkmenistan",
+      "registrationPrefix": "ez",
+      "suffixPattern": [
+          "a123"
+      ]
+  },
+  {
+      "countryRegion": "turks_and_caicos",
+      "registrationPrefix": "vq-t",
+      "suffixPattern": [
+          "ab"
+      ]
+  },
+  {
+      "countryRegion": "tuvalu",
+      "registrationPrefix": "t2",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "uganda",
+      "registrationPrefix": "5x",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "ukraine",
+      "registrationPrefix": "ur",
+      "suffixPattern": [
+          "12345",
+          "or",
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "united_arab_emirates",
+      "registrationPrefix": "a6",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "united_kingdom",
+      "registrationPrefix": "g",
+      "suffixPattern": [
+          "abcd"
+      ]
+  },
+  {
+      "countryRegion": "united_nations",
+      "registrationPrefix": "4u",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "united_states_of_america",
+      "registrationPrefix": "n",
+      "suffixPattern": [
+          "1,12,123,1234,12345,1a,12a,123a,1234a,1ab,12ab",
+          "or",
+          "123ab"
+      ]
+  },
+  {
+      "countryRegion": "uruguay",
+      "registrationPrefix": "cx",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "uzbekistan",
+      "registrationPrefix": "uk",
+      "suffixPattern": [
+          "12345"
+      ]
+  },
+  {
+      "countryRegion": "vanuatu",
+      "registrationPrefix": "yj",
+      "suffixPattern": [
+          "ab1",
+          "or",
+          "ab12"
+      ]
+  },
+  {
+      "countryRegion": "venezuela",
+      "registrationPrefix": "yv",
+      "suffixPattern": [
+          "123a,1234",
+          "or",
+          "o123,kw1,sata1 (official use)"
+      ]
+  },
+  {
+      "countryRegion": "vietnam",
+      "registrationPrefix": "vn",
+      "suffixPattern": [
+          "1234",
+          "or",
+          "a123"
+      ]
+  },
+  {
+      "countryRegion": "yemen",
+      "registrationPrefix": "7o",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "zambia",
+      "registrationPrefix": "9j",
+      "suffixPattern": [
+          "abc"
+      ]
+  },
+  {
+      "countryRegion": "zimbabwe",
+      "registrationPrefix": "z",
+      "suffixPattern": [
+          "abc"
+      ]
+  }
+]

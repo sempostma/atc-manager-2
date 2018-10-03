@@ -26,8 +26,8 @@ class SettingsStore extends EventEmitter {
     this.startingEnroutePlanes = 1;
     this.radarFontsize = 14;
     this.ga = false;
-    this.enroute = false,
-
+    this.enroute = false;
+    this.takeoffInOrder = false;
     this.defaultSettings = JSON.parse(this.toJson());
 
     const persistedSettings = loadState().settings;
@@ -40,7 +40,7 @@ class SettingsStore extends EventEmitter {
 
     this.addListener('change', () => {
       this.persist();
-    })
+    });
 
     this.changePitch = this.changePitch.bind(this);
     this.changeRate = this.changeRate.bind(this);
@@ -92,7 +92,7 @@ class SettingsStore extends EventEmitter {
 
   toJson = () => {
     return JSON.stringify(this,
-      ['distanceCircles', 'distanceCirclesDistance',
+      ['distanceCircles', 'distanceCirclesDistance', 'takeoffInOrder',
         'distanceCirclesAmount', 'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 
         'startingEnroutePlanes', 'sepVialationCircleColor', 'ga', 'enroute'], 4);
   }

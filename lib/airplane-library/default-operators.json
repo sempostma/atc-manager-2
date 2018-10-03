@@ -173,5 +173,19 @@
     "callsign": "HDA",
     "shortName": "Dragon",
     "color": "#950714"
+  },
+  {
+    "id": 25,
+    "name": "Norwegian Air Shuttle",
+    "callsign": "NAX",
+    "shortName": "Norwegian",
+    "color": "#ff2121"
+  },
+  {
+    "id": 26,
+    "name": "Finnair",
+    "callsign": "FIN",
+    "shortName": "Finnair",
+    "color": "#121c83"
   }
 ]

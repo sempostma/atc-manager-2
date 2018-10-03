@@ -2,6 +2,7 @@ import { Component } from 'preact';
 import './WayPoints.css';
 import GameStore from '../../stores/GameStore';
 import config from '../../lib/config';
+import { idType } from '../../lib/map';
 
 class WayPoints extends Component {
   constructor(props) {
@@ -29,9 +30,11 @@ class WayPoints extends Component {
   }
 
   render() {
-    const waypointsJsx = Object.keys(this.state.waypoints).map(w => {
+    const waypointsJsx = Object.keys(this.state.waypoints).filter(x => this.state.waypoints[x].type !== idType.DIRECTION).map(w => {
       const waypoint = this.state.waypoints[w];
-      return <g className="waypoint" transform={`translate(${waypoint.x} ${config.height - waypoint.y})`}>
+      const x = (waypoint.x - config.width / 2) * GameStore.zoom + config.width / 2;
+      const y = (config.height / 2 - waypoint.y) * GameStore.zoom + config.height / 2;
+      return <g className="waypoint" transform={`translate(${x} ${y})`}>
         <circle r="2" />
         <text x="4">{w}</text>
       </g>;

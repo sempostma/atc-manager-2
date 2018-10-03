@@ -5,6 +5,7 @@ import { activeRwys } from '../../lib/map';
 import { upcase, lpad } from '../../lib/util';
 import './InfoPanel.css';
 import { saveAs } from 'file-saver';
+import SettingsStore from '../../stores/SettingsStore';
 
 
 class InfoPanel extends Component {
@@ -25,7 +26,7 @@ class InfoPanel extends Component {
 
   handleTakeoffRunwayAssignInput = e => {
     const rwyName = e.srcElement.getAttribute('data-rwy-name');
-    GameStore.disableTakoffsOnRwysSet[rwyName] = !GameStore.disableTakoffsOnRwysSet[rwyName];
+    GameStore.disableTakoffsOnRwysSet[rwyName] = e.target.value;
   }
 
   handleScreenShotButtonClick = e => {
@@ -42,12 +43,16 @@ class InfoPanel extends Component {
     const activeRunways = GameStore.airport.rwyusage ? activeRwys(GameStore.airport, GameStore.winddir) : [];
 
     const runwayUsage = rwy => ['1', '2'].map(t =>
-      <div>{rwy.name1} {lpad('' + rwy['hdg' + t], '0', 3)}° {rwy['elevation' + t]}FT {upcase(rwy.surface)}/{rwy['length' + t]}
-        FT {activeRunways.includes(rwy['name' + t]) ? <span>- Departure runway <label class="switch">
-          <input type="checkbox" onInput={this.handleTakeoffRunwayAssignInput} data-rwy-name={rwy['name' + t]}
-            checked={!GameStore.disableTakoffsOnRwysSet[rwy['name' + t]]} />
-          <span class="slider"></span>
-        </label></span> : ''}</div>);
+      <div className="rwyusage">{rwy['name' + t]} {lpad('' + rwy['hdg' + t], '0', 3)}° {rwy['elevation' + t]}FT {upcase(rwy.surface)}/{rwy['length' + t]}
+        FT {activeRunways.includes(rwy['name' + t]) ? <span>- Departure runway 
+          <select onInput={this.handleTakeoffRunwayAssignInput} data-rwy-name={rwy['name' + t]}
+            value={GameStore.disableTakoffsOnRwysSet[rwy['name' + t]]}>
+            <option default value="all">All</option>
+            { SettingsStore.ga && GameStore.map.ga > 0 && <option value="ga">General Aviation</option> }
+            { GameStore.map.commercial > 0 && <option value="commercial">Commercial Flights</option> }
+            <option value="none">None</option>
+          </select>
+        </span> : ''}</div>);
 
     return (
       <div className={[this.props.expanded ? null : 'hidden', 'about-panel'].join(' ')}>

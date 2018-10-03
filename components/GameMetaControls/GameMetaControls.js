@@ -3,7 +3,7 @@ import './GameMetaControls.css';
 import GameStore from '../../stores/GameStore';
 import { saveState, loadState } from '../../lib/persistance';
 import { FaPause, FaPlay, FaDesktop, FaSave, FaPlane } from 'react-icons/fa/index.mjs';
-import { sendMessageError } from '../GameMessages/GameMessages';
+import { sendMessageError, sendMessageWarning, sendMessageInfo } from '../GameMessages/GameMessages';
 
 
 class GameMetaControls extends Component {
@@ -39,10 +39,16 @@ class GameMetaControls extends Component {
     const game = GameStore.toJson();
     const state = loadState();
     let name = prompt('Name of your save?', `${GameStore.mapName} - ${new Date().toLocaleDateString()}`);
-    if (name === null) return;
-    if (state.games[name]) return sendMessageError('Sorry this name already exists...');
+    while(!name) {
+      sendMessageWarning('Please give a valid name...');
+    }
+    if (state.games[name]) {
+      var result = confirm('This save already exists. Do you want to overwrite it?');
+      if (result === false) return sendMessageWarning(`${name} was not saved...`);
+    }
     state.games[name] = game;
     saveState(state);
+    sendMessageInfo(`${name} was saved...`);
   }
 
   render() {
