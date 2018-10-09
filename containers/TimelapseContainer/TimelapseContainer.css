@@ -1,0 +1,57 @@
+
+.TimelapseContainer {
+    overflow: hidden;
+}
+
+.TimelapseContainer .panel {
+  margin-bottom: 60px;
+}
+
+.TimelapseContainer .timelapse-footer-options {
+  font-size: 20px;
+  margin-bottom: -10px;
+  padding: 20px;
+}
+
+.TimelapseContainer .timelapse-footer-options svg {
+  font-size: 2em;
+  vertical-align: middle;
+}
+
+.TimelapseContainer .timelapse-footer-options .option {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.TimelapseContainer .sharing-panel {
+  width: 700px;
+}
+
+.TimelapseContainer .panel-open-bg {
+  position: fixed;
+  top: -10px;
+  left: -10px;
+  bottom: -10px;
+  right: -10px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.TimelapseContainer .recharts-tooltip-label {
+  display: none;
+}
+
+.TimelapseContainer .recharts-tooltip-item {
+  margin-bottom: 3px;
+}
+
+.TimelapseContainer .recharts-default-tooltip {
+  background-color: rgb(25, 72, 80)!important;
+  border: 6px solid #1e606b!important;
+  border-radius: 4px!important;
+
+}
+
+.TimelapseContainer .recharts-legend-item {
+  margin-bottom: 0;
+  margin-top: 5px;
+}

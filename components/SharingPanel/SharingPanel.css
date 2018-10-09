@@ -1,0 +1,101 @@
+
+.sharing-panel {
+  position: fixed;
+  top: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 100%;
+  background: rgb(25, 72, 80);
+  border: 5px solid #1e606b;
+  padding: 10px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000;
+  padding-top: 40px;
+  min-height: 344px;
+}
+
+.sharing-panel svg {
+  font-size: 30px;
+  vertical-align: middle;
+}
+
+.sharing-panel a svg {
+  margin-right: -2px;
+}
+
+.sharing-panel a {
+  margin: 0;
+}
+
+.sharing-panel .SocialButtons {
+  display: inline;
+}
+
+.sharing-panel .resp-sharing-buton__text {
+  display: none;
+}
+
+.sharing-panel button,
+.sharing-panel a .resp-sharing-button {
+  height: auto;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .1rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.5rem;
+  margin: 2px 2px 0 0;
+  background-color: #19242e;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.sharing-panel textarea {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 200px;
+  margin-top: 10px;
+  height: 150px;
+  resize: none;
+}
+
+.sharing-panel.loading .content {
+  display: none;
+}
+
+.sharing-panel .close {
+  font-size: 30px;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  appearance: none;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.sharing-panel.loading::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: calc(50% - 60px);
+  left: calc(50% - 60px);
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #19242e;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+

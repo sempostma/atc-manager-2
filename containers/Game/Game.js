@@ -6,11 +6,7 @@ import GameStore from '../../stores/GameStore';
 class Game extends Component {
   constructor(props) {
     super();
-    this.name = 'default'
-    this.setRoot = el => {
-      this.root = el;
-      GameStore.setSvgEl(el);
-    };
+    this.name = 'default';
   }
 
   componentWillMount() {
@@ -20,7 +16,7 @@ class Game extends Component {
 
   render() {
     return (
-      <div ref={this.setRoot} className="Game">
+      <div className="Game">
         <div id="atc-game">
           <AtcView />
         </div>

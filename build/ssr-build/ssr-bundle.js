@@ -129,6 +129,13 @@ module.exports = function (fn, that, length) {
 
 /***/ }),
 
+/***/ "+jvH":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "+r1/":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -285,13 +292,6 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 /***/ }),
 
-/***/ "/+Qt":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "//Fk":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -303,13 +303,6 @@ module.exports = { "default": __webpack_require__("U5ju"), __esModule: true };
 /***/ (function(module, exports) {
 
 module.exports = {};
-
-/***/ }),
-
-/***/ "/d4d":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -619,7 +612,6 @@ exports.f = Object.getOwnPropertySymbols;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"WayPoints":"WayPoints__5Srsb"};
 
 /***/ }),
 
@@ -783,6 +775,41 @@ var px = Math.random();
 module.exports = function (key) {
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
+
+/***/ }),
+
+/***/ "3IRH":
+/***/ (function(module, exports) {
+
+module.exports = function (module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function () {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function get() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function get() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+/***/ }),
+
+/***/ "3TAv":
+/***/ (function(module, exports) {
+
+module.exports = require("os");
 
 /***/ }),
 
@@ -1287,13 +1314,6 @@ module.exports = __webpack_require__("FeBl").Array.from;
 
 /***/ }),
 
-/***/ "6a/W":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "6nap":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1772,6 +1792,165 @@ function setLogger(self) {
 }
 
 function noop() {}
+
+/***/ }),
+
+/***/ "72Lu":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+	"aliceblue": [240, 248, 255],
+	"antiquewhite": [250, 235, 215],
+	"aqua": [0, 255, 255],
+	"aquamarine": [127, 255, 212],
+	"azure": [240, 255, 255],
+	"beige": [245, 245, 220],
+	"bisque": [255, 228, 196],
+	"black": [0, 0, 0],
+	"blanchedalmond": [255, 235, 205],
+	"blue": [0, 0, 255],
+	"blueviolet": [138, 43, 226],
+	"brown": [165, 42, 42],
+	"burlywood": [222, 184, 135],
+	"cadetblue": [95, 158, 160],
+	"chartreuse": [127, 255, 0],
+	"chocolate": [210, 105, 30],
+	"coral": [255, 127, 80],
+	"cornflowerblue": [100, 149, 237],
+	"cornsilk": [255, 248, 220],
+	"crimson": [220, 20, 60],
+	"cyan": [0, 255, 255],
+	"darkblue": [0, 0, 139],
+	"darkcyan": [0, 139, 139],
+	"darkgoldenrod": [184, 134, 11],
+	"darkgray": [169, 169, 169],
+	"darkgreen": [0, 100, 0],
+	"darkgrey": [169, 169, 169],
+	"darkkhaki": [189, 183, 107],
+	"darkmagenta": [139, 0, 139],
+	"darkolivegreen": [85, 107, 47],
+	"darkorange": [255, 140, 0],
+	"darkorchid": [153, 50, 204],
+	"darkred": [139, 0, 0],
+	"darksalmon": [233, 150, 122],
+	"darkseagreen": [143, 188, 143],
+	"darkslateblue": [72, 61, 139],
+	"darkslategray": [47, 79, 79],
+	"darkslategrey": [47, 79, 79],
+	"darkturquoise": [0, 206, 209],
+	"darkviolet": [148, 0, 211],
+	"deeppink": [255, 20, 147],
+	"deepskyblue": [0, 191, 255],
+	"dimgray": [105, 105, 105],
+	"dimgrey": [105, 105, 105],
+	"dodgerblue": [30, 144, 255],
+	"firebrick": [178, 34, 34],
+	"floralwhite": [255, 250, 240],
+	"forestgreen": [34, 139, 34],
+	"fuchsia": [255, 0, 255],
+	"gainsboro": [220, 220, 220],
+	"ghostwhite": [248, 248, 255],
+	"gold": [255, 215, 0],
+	"goldenrod": [218, 165, 32],
+	"gray": [128, 128, 128],
+	"green": [0, 128, 0],
+	"greenyellow": [173, 255, 47],
+	"grey": [128, 128, 128],
+	"honeydew": [240, 255, 240],
+	"hotpink": [255, 105, 180],
+	"indianred": [205, 92, 92],
+	"indigo": [75, 0, 130],
+	"ivory": [255, 255, 240],
+	"khaki": [240, 230, 140],
+	"lavender": [230, 230, 250],
+	"lavenderblush": [255, 240, 245],
+	"lawngreen": [124, 252, 0],
+	"lemonchiffon": [255, 250, 205],
+	"lightblue": [173, 216, 230],
+	"lightcoral": [240, 128, 128],
+	"lightcyan": [224, 255, 255],
+	"lightgoldenrodyellow": [250, 250, 210],
+	"lightgray": [211, 211, 211],
+	"lightgreen": [144, 238, 144],
+	"lightgrey": [211, 211, 211],
+	"lightpink": [255, 182, 193],
+	"lightsalmon": [255, 160, 122],
+	"lightseagreen": [32, 178, 170],
+	"lightskyblue": [135, 206, 250],
+	"lightslategray": [119, 136, 153],
+	"lightslategrey": [119, 136, 153],
+	"lightsteelblue": [176, 196, 222],
+	"lightyellow": [255, 255, 224],
+	"lime": [0, 255, 0],
+	"limegreen": [50, 205, 50],
+	"linen": [250, 240, 230],
+	"magenta": [255, 0, 255],
+	"maroon": [128, 0, 0],
+	"mediumaquamarine": [102, 205, 170],
+	"mediumblue": [0, 0, 205],
+	"mediumorchid": [186, 85, 211],
+	"mediumpurple": [147, 112, 219],
+	"mediumseagreen": [60, 179, 113],
+	"mediumslateblue": [123, 104, 238],
+	"mediumspringgreen": [0, 250, 154],
+	"mediumturquoise": [72, 209, 204],
+	"mediumvioletred": [199, 21, 133],
+	"midnightblue": [25, 25, 112],
+	"mintcream": [245, 255, 250],
+	"mistyrose": [255, 228, 225],
+	"moccasin": [255, 228, 181],
+	"navajowhite": [255, 222, 173],
+	"navy": [0, 0, 128],
+	"oldlace": [253, 245, 230],
+	"olive": [128, 128, 0],
+	"olivedrab": [107, 142, 35],
+	"orange": [255, 165, 0],
+	"orangered": [255, 69, 0],
+	"orchid": [218, 112, 214],
+	"palegoldenrod": [238, 232, 170],
+	"palegreen": [152, 251, 152],
+	"paleturquoise": [175, 238, 238],
+	"palevioletred": [219, 112, 147],
+	"papayawhip": [255, 239, 213],
+	"peachpuff": [255, 218, 185],
+	"peru": [205, 133, 63],
+	"pink": [255, 192, 203],
+	"plum": [221, 160, 221],
+	"powderblue": [176, 224, 230],
+	"purple": [128, 0, 128],
+	"rebeccapurple": [102, 51, 153],
+	"red": [255, 0, 0],
+	"rosybrown": [188, 143, 143],
+	"royalblue": [65, 105, 225],
+	"saddlebrown": [139, 69, 19],
+	"salmon": [250, 128, 114],
+	"sandybrown": [244, 164, 96],
+	"seagreen": [46, 139, 87],
+	"seashell": [255, 245, 238],
+	"sienna": [160, 82, 45],
+	"silver": [192, 192, 192],
+	"skyblue": [135, 206, 235],
+	"slateblue": [106, 90, 205],
+	"slategray": [112, 128, 144],
+	"slategrey": [112, 128, 144],
+	"snow": [255, 250, 250],
+	"springgreen": [0, 255, 127],
+	"steelblue": [70, 130, 180],
+	"tan": [210, 180, 140],
+	"teal": [0, 128, 128],
+	"thistle": [216, 191, 216],
+	"tomato": [255, 99, 71],
+	"turquoise": [64, 224, 208],
+	"violet": [238, 130, 238],
+	"wheat": [245, 222, 179],
+	"white": [255, 255, 255],
+	"whitesmoke": [245, 245, 245],
+	"yellow": [255, 255, 0],
+	"yellowgreen": [154, 205, 50]
+};
 
 /***/ }),
 
@@ -2861,6 +3040,13 @@ module.exports = function generate__limitProperties(it, $keyword, $ruleType) {
 
 /***/ }),
 
+/***/ "8Y99":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "92I6":
 /***/ (function(module, exports) {
 
@@ -3107,7 +3293,6 @@ module.exports = {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"BackgroundSvg":"BackgroundSvg__2wFPq"};
 
 /***/ }),
 
@@ -3192,6 +3377,137 @@ __webpack_require__("mClu");
 var $Object = __webpack_require__("FeBl").Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
+};
+
+/***/ }),
+
+/***/ "AFNu":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var os = __webpack_require__("3TAv");
+var hasFlag = __webpack_require__("Kq5Q");
+
+var env = process.env;
+
+var forceColor = void 0;
+if (hasFlag('no-color') || hasFlag('no-colors') || hasFlag('color=false')) {
+	forceColor = false;
+} else if (hasFlag('color') || hasFlag('colors') || hasFlag('color=true') || hasFlag('color=always')) {
+	forceColor = true;
+}
+if ('FORCE_COLOR' in env) {
+	forceColor = env.FORCE_COLOR.length === 0 || parseInt(env.FORCE_COLOR, 10) !== 0;
+}
+
+function translateLevel(level) {
+	if (level === 0) {
+		return false;
+	}
+
+	return {
+		level: level,
+		hasBasic: true,
+		has256: level >= 2,
+		has16m: level >= 3
+	};
+}
+
+function supportsColor(stream) {
+	if (forceColor === false) {
+		return 0;
+	}
+
+	if (hasFlag('color=16m') || hasFlag('color=full') || hasFlag('color=truecolor')) {
+		return 3;
+	}
+
+	if (hasFlag('color=256')) {
+		return 2;
+	}
+
+	if (stream && !stream.isTTY && forceColor !== true) {
+		return 0;
+	}
+
+	var min = forceColor ? 1 : 0;
+
+	if (process.platform === 'win32') {
+		// Node.js 7.5.0 is the first version of Node.js to include a patch to
+		// libuv that enables 256 color output on Windows. Anything earlier and it
+		// won't work. However, here we target Node.js 8 at minimum as it is an LTS
+		// release, and Node.js 7 is not. Windows 10 build 10586 is the first Windows
+		// release that supports 256 colors. Windows 10 build 14931 is the first release
+		// that supports 16m/TrueColor.
+		var osRelease = os.release().split('.');
+		if (Number(process.versions.node.split('.')[0]) >= 8 && Number(osRelease[0]) >= 10 && Number(osRelease[2]) >= 10586) {
+			return Number(osRelease[2]) >= 14931 ? 3 : 2;
+		}
+
+		return 1;
+	}
+
+	if ('CI' in env) {
+		if (['TRAVIS', 'CIRCLECI', 'APPVEYOR', 'GITLAB_CI'].some(function (sign) {
+			return sign in env;
+		}) || env.CI_NAME === 'codeship') {
+			return 1;
+		}
+
+		return min;
+	}
+
+	if ('TEAMCITY_VERSION' in env) {
+		return (/^(9\.(0*[1-9]\d*)\.|\d{2,}\.)/.test(env.TEAMCITY_VERSION) ? 1 : 0
+		);
+	}
+
+	if (env.COLORTERM === 'truecolor') {
+		return 3;
+	}
+
+	if ('TERM_PROGRAM' in env) {
+		var version = parseInt((env.TERM_PROGRAM_VERSION || '').split('.')[0], 10);
+
+		switch (env.TERM_PROGRAM) {
+			case 'iTerm.app':
+				return version >= 3 ? 3 : 2;
+			case 'Apple_Terminal':
+				return 2;
+			// No default
+		}
+	}
+
+	if (/-256(color)?$/i.test(env.TERM)) {
+		return 2;
+	}
+
+	if (/^screen|^xterm|^vt100|^vt220|^rxvt|color|ansi|cygwin|linux/i.test(env.TERM)) {
+		return 1;
+	}
+
+	if ('COLORTERM' in env) {
+		return 1;
+	}
+
+	if (env.TERM === 'dumb') {
+		return min;
+	}
+
+	return min;
+}
+
+function getSupportLevel(stream) {
+	var level = supportsColor(stream);
+	return translateLevel(level);
+}
+
+module.exports = {
+	supportsColor: getSupportLevel,
+	stdout: getSupportLevel(process.stdout),
+	stderr: getSupportLevel(process.stderr)
 };
 
 /***/ }),
@@ -5558,6 +5874,24 @@ exports.default = TextWidget;
 
 /***/ }),
 
+/***/ "Eh6b":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var matchOperatorsRe = /[|\\{}()[\]^$+*?.]/g;
+
+module.exports = function (str) {
+	if (typeof str !== 'string') {
+		throw new TypeError('Expected a string');
+	}
+
+	return str.replace(matchOperatorsRe, '\\$&');
+};
+
+/***/ }),
+
 /***/ "EmRd":
 /***/ (function(module, exports) {
 
@@ -5911,6 +6245,185 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 /***/ }),
 
+/***/ "FnaF":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var TEMPLATE_REGEX = /(?:\\(u[a-f\d]{4}|x[a-f\d]{2}|.))|(?:\{(~)?(\w+(?:\([^)]*\))?(?:\.\w+(?:\([^)]*\))?)*)(?:[ \t]|(?=\r?\n)))|(\})|((?:.|[\r\n\f])+?)/gi;
+var STYLE_REGEX = /(?:^|\.)(\w+)(?:\(([^)]*)\))?/g;
+var STRING_REGEX = /^(['"])((?:\\.|(?!\1)[^\\])*)\1$/;
+var ESCAPE_REGEX = /\\(u[a-f\d]{4}|x[a-f\d]{2}|.)|([^\\])/gi;
+
+var ESCAPES = new Map([['n', '\n'], ['r', '\r'], ['t', '\t'], ['b', '\b'], ['f', '\f'], ['v', '\v'], ['0', '\0'], ['\\', '\\'], ['e', '\x1B'], ['a', '\x07']]);
+
+function unescape(c) {
+	if (c[0] === 'u' && c.length === 5 || c[0] === 'x' && c.length === 3) {
+		return String.fromCharCode(parseInt(c.slice(1), 16));
+	}
+
+	return ESCAPES.get(c) || c;
+}
+
+function parseArguments(name, args) {
+	var results = [];
+	var chunks = args.trim().split(/\s*,\s*/g);
+	var matches = void 0;
+
+	for (var _iterator = chunks, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+		var _ref;
+
+		if (_isArray) {
+			if (_i >= _iterator.length) break;
+			_ref = _iterator[_i++];
+		} else {
+			_i = _iterator.next();
+			if (_i.done) break;
+			_ref = _i.value;
+		}
+
+		var chunk = _ref;
+
+		if (!isNaN(chunk)) {
+			results.push(Number(chunk));
+		} else if (matches = chunk.match(STRING_REGEX)) {
+			results.push(matches[2].replace(ESCAPE_REGEX, function (m, escape, chr) {
+				return escape ? unescape(escape) : chr;
+			}));
+		} else {
+			throw new Error('Invalid Chalk template style argument: ' + chunk + ' (in style \'' + name + '\')');
+		}
+	}
+
+	return results;
+}
+
+function parseStyle(style) {
+	STYLE_REGEX.lastIndex = 0;
+
+	var results = [];
+	var matches = void 0;
+
+	while ((matches = STYLE_REGEX.exec(style)) !== null) {
+		var name = matches[1];
+
+		if (matches[2]) {
+			var args = parseArguments(name, matches[2]);
+			results.push([name].concat(args));
+		} else {
+			results.push([name]);
+		}
+	}
+
+	return results;
+}
+
+function buildStyle(chalk, styles) {
+	var enabled = {};
+
+	for (var _iterator2 = styles, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+		var _ref2;
+
+		if (_isArray2) {
+			if (_i2 >= _iterator2.length) break;
+			_ref2 = _iterator2[_i2++];
+		} else {
+			_i2 = _iterator2.next();
+			if (_i2.done) break;
+			_ref2 = _i2.value;
+		}
+
+		var layer = _ref2;
+
+		for (var _iterator4 = layer.styles, _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
+			var _ref4;
+
+			if (_isArray4) {
+				if (_i4 >= _iterator4.length) break;
+				_ref4 = _iterator4[_i4++];
+			} else {
+				_i4 = _iterator4.next();
+				if (_i4.done) break;
+				_ref4 = _i4.value;
+			}
+
+			var style = _ref4;
+
+			enabled[style[0]] = layer.inverse ? null : style.slice(1);
+		}
+	}
+
+	var current = chalk;
+	for (var _iterator3 = Object.keys(enabled), _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+		var _ref3;
+
+		if (_isArray3) {
+			if (_i3 >= _iterator3.length) break;
+			_ref3 = _iterator3[_i3++];
+		} else {
+			_i3 = _iterator3.next();
+			if (_i3.done) break;
+			_ref3 = _i3.value;
+		}
+
+		var styleName = _ref3;
+
+		if (Array.isArray(enabled[styleName])) {
+			if (!(styleName in current)) {
+				throw new Error('Unknown Chalk style: ' + styleName);
+			}
+
+			if (enabled[styleName].length > 0) {
+				current = current[styleName].apply(current, enabled[styleName]);
+			} else {
+				current = current[styleName];
+			}
+		}
+	}
+
+	return current;
+}
+
+module.exports = function (chalk, tmp) {
+	var styles = [];
+	var chunks = [];
+	var chunk = [];
+
+	// eslint-disable-next-line max-params
+	tmp.replace(TEMPLATE_REGEX, function (m, escapeChar, inverse, style, close, chr) {
+		if (escapeChar) {
+			chunk.push(unescape(escapeChar));
+		} else if (style) {
+			var str = chunk.join('');
+			chunk = [];
+			chunks.push(styles.length === 0 ? str : buildStyle(chalk, styles)(str));
+			styles.push({ inverse: inverse, styles: parseStyle(style) });
+		} else if (close) {
+			if (styles.length === 0) {
+				throw new Error('Found extraneous } in Chalk template literal');
+			}
+
+			chunks.push(buildStyle(chalk, styles)(chunk.join('')));
+			chunk = [];
+			styles.pop();
+		} else {
+			chunk.push(chr);
+		}
+	});
+
+	chunks.push(chunk.join(''));
+
+	if (styles.length > 0) {
+		var errMsg = 'Chalk template literal is missing ' + styles.length + ' closing bracket' + (styles.length === 1 ? '' : 's') + ' (`}`)';
+		throw new Error(errMsg);
+	}
+
+	return chunks.join('');
+};
+
+/***/ }),
+
 /***/ "FpCL":
 /***/ (function(module, exports) {
 
@@ -6050,20 +6563,6 @@ exports.default = function (arr) {
     return (0, _from2.default)(arr);
   }
 };
-
-/***/ }),
-
-/***/ "HH5f":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "HYSH":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -6297,7 +6796,6 @@ var createPath = exports.createPath = function createPath(location) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"SavedGamesOpen":"SavedGamesOpen__2FH8V"};
 
 /***/ }),
 
@@ -7399,12 +7897,12 @@ var external__events_ = __webpack_require__("FpCL");
 var external__events__default = /*#__PURE__*/__webpack_require__.n(external__events_);
 
 // CONCATENATED MODULE: ./lib/persistance.js
-
+var persistance_name = 'atc-manager-2-game-persistance-v3';
 var val = null;
 
 var loadState = function loadState() {
   if (val === null) {
-    var json = typeof window !== 'undefined' ? localStorage.getItem('atc-manager-2-game-persistance-v2') : null;
+    var json = typeof window !== 'undefined' ? localStorage.getItem(persistance_name) : null;
     if (json) {
       val = JSON.parse(json);
       return val;
@@ -7423,7 +7921,7 @@ var saveState = function saveState(state) {
   var str = JSON.stringify(state, function (key, val) {
     return val !== null && val !== undefined && val.toFixed ? +val.toFixed(3) : val;
   });
-  localStorage.setItem('atc-manager-2-game-persistance-v2', str);
+  localStorage.setItem(persistance_name, str);
 };
 // EXTERNAL MODULE: ./lib/airplane-library/default-airplanes.json
 var default_airplanes = __webpack_require__("uW+5");
@@ -7449,9 +7947,62 @@ var routeTypes = {
   VFR_OUTBOUND: 5,
   VFR_INBOUND: 6,
   VFR_INBOUND_TG: 7,
+  VFR_ENROUTE: 8,
+
   0: 'inbound',
   1: 'outbound',
-  2: 'enroute'
+  2: 'enroute',
+  3: 'vfr closed pattern full stop',
+  4: 'vfr closed pattern touch and go',
+  5: 'vfr outbound',
+  6: 'vfr inbound full stop',
+  7: 'vfr inbound touch and go',
+  8: 'vfr enroute'
+};
+
+var VFRStates = {
+  RWY: 0,
+  UPWIND: 1,
+  CROSSWIND: 2,
+  DOWNWIND: 3,
+  BASE: 4,
+  FINAL: 5,
+
+  STRAIGHT_OUT: 6,
+  EXIT_45_DEG_OUT: 7,
+  OWN_DISCRETION: 8,
+  STRAIGHT_IN: 9,
+
+  0: 'runway',
+  1: 'upwind',
+  2: 'crosswind',
+  3: 'downwind',
+  4: 'base',
+  5: 'final',
+
+  6: 'straight out',
+  7: '45 deg out',
+  8: 'own discretion',
+  9: 'straight in'
+};
+
+var allowedVFRStates = function allowedVFRStates(airplane) {
+  var routeType = airplane.routeType;
+  switch (routeType) {
+    case routeTypes.VFR_CLOSED_PATTERN:
+      return [VFRStates.RWY, VFRStates.UPWIND, VFRStates.CROSSWIND, VFRStates.DOWNWIND, VFRStates.BASE, VFRStates.FINAL];
+    case routeTypes.VFR_CLOSED_PATTERN_TG:
+      return [VFRStates.RWY, VFRStates.UPWIND, VFRStates.CROSSWIND, VFRStates.DOWNWIND, VFRStates.BASE, VFRStates.FINAL];
+    case routeTypes.VFR_OUTBOUND:
+      if (airplane.tgtVfrState === VFRStates.OWN_DISCRETION) return [VFRStates.OWN_DISCRETION];
+      return [VFRStates.STRAIGHT_OUT, VFRStates.EXIT_45_DEG_OUT, VFRStates.OWN_DISCRETION];
+    case routeTypes.VFR_INBOUND:
+      return [VFRStates.RWY, VFRStates.UPWIND, VFRStates.CROSSWIND, VFRStates.DOWNWIND, VFRStates.BASE, VFRStates.FINAL, VFRStates.STRAIGHT_IN];
+    case routeTypes.VFR_INBOUND_TG:
+      return [VFRStates.RWY, VFRStates.UPWIND, VFRStates.CROSSWIND, VFRStates.DOWNWIND, VFRStates.BASE, VFRStates.FINAL, VFRStates.STRAIGHT_IN];
+    case routeTypes.VFR_ENROUTE:
+      return [VFRStates.OWN_DISCRETION];
+  }
 };
 
 var defaultAirplanes = default_airplanes_default.a;
@@ -7464,6 +8015,36 @@ var airplanesById = void 0;
 var operatorsById = void 0;
 var airplane_library_airplanes = void 0;
 var operators = void 0;
+
+var rndAirplane = function rndAirplane(ga) {
+  var aps = airplane_library_airplanes.filter(function (ap) {
+    return ga ? ap.ga > 0 : ap.commercial > 0;
+  });
+  var counter = 0;
+  var airplaneRatios = aps.map(function (plane) {
+    return { airplane: plane, count: counter += plane.rarity };
+  });
+  var max = airplaneRatios[airplaneRatios.length - 1].count;
+  var rnd = Math.random() * max;
+  for (var i = 0; i < airplaneRatios.length; i++) {
+    if (rnd < airplaneRatios[i].count) return airplaneRatios[i].airplane;
+  }
+};
+
+var rndOperator = function rndOperator(airplane) {
+  var operators = airplane.operators.map(function (op) {
+    return operatorsById[op];
+  });
+  var counter = 0;
+  var operatorRatios = operators.map(function (op) {
+    return { opid: op.id, count: counter += op.rarity };
+  });
+  var max = operatorRatios[operatorRatios.length - 1].count;
+  var rnd = Math.random() * max;
+  for (var i = 0; i < operatorRatios.length; i++) {
+    if (rnd < operatorRatios[i].count) return operatorRatios[i].opid;
+  }
+};
 
 var airplane_library_refresh = function refresh() {
   if (typeof window !== undefined) {
@@ -7479,23 +8060,61 @@ var airplane_library_refresh = function refresh() {
 
     return _ref = {}, _ref[x.id] = x, _ref;
   })));
-
   operatorsById = _extends.apply(undefined, [{}].concat(operatorsArr.map(function (x) {
     var _ref2;
 
     return _ref2 = {}, _ref2[x.id] = x, _ref2;
   })));
-
   airplane_library_airplanes = Object.values(airplanesById);
-
   operators = Object.values(operatorsById);
 };
 
 airplane_library_refresh();
+// CONCATENATED MODULE: ./lib/config.js
+/* harmony default export */ var config = ({
+  headingInitVariation: 10,
+  globalSpeed: 1,
+  baseAirplaneSpeed: 0.0015,
+  updateInterval: 300,
+  headingIndicatorLineLen: 20,
+  pathCounterUpdateEvery: 20,
+  maxPathLen: 10,
+  rwyLenScale: 0.0014,
+  ilsSlopeSteepness: 37.5,
+  threeMileRuleDistance: 15,
+  oneMileRuleDistance: 5,
+  climbSpeed: 18,
+  descendSpeed: 22,
+  accelerationSpeed: 1.6,
+  deAccelerationSpeed: 1.2,
+  turnRate: 0.3,
+  flyStraightAfterTakeoffUntilHeight: 2000,
+  airplaneTextDistance: 7,
+  width: 1280,
+  height: 720,
+  controlAreaRadius: 200,
+  inboundPatternEntryDistance: 100,
+  maxTrafficPatternSpeed: 210,
+  maxTouchAndGos: 9,
+  zoomSpeed: .002,
+  minZoom: 1,
+  maxZoom: 6,
+  windSpdChange: 0.01,
+  windDirChange: 0.05,
+  windSpdMin: 1,
+  windSpdMax: 30,
+  roughWindSpd: 10,
+  extremeWindSpd: 20,
+  windRandomChangeOfLoweringWhenRoughWindSpd: 0.05,
+  likelyNessOfGoAroundDueWindSpd: 0.01,
+  likelyNessOfGoAroundDueWindHhdg: 0.01,
+  likelyNessOfGoAround: 0.01
+});
 // CONCATENATED MODULE: ./lib/airplane.js
 var _class, _temp;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 
 
@@ -7506,6 +8125,23 @@ for (var airplane_i = 0; airplane_i < 1900; airplane_i++) {
 }flightNums.sort(function () {
   return Math.random() - .5;
 });
+
+var rndNum = function rndNum() {
+  return Math.floor(Math.random() * 10);
+};
+var rndLetter = function rndLetter() {
+  return String.fromCharCode(65 + Math.floor(Math.random() * 26));
+};
+var regNumCounter = 0;
+var t_obj = {};
+for (var airplane__i = 0; airplane__i < 2000; airplane__i++) {
+  var ret = '';
+  do {
+    ret = rndLetter() + rndLetter() + rndLetter() + rndNum() + rndNum();
+  } while (t_obj[ret] === false);
+  t_obj[ret] = true;
+}
+var regNums = Object.keys(t_obj);
 
 var airplane_Airplane = (_temp = _class = function () {
   function Airplane(speed, altitude, heading, x, y, operatorId, flight, typeId, routeType) {
@@ -7525,17 +8161,23 @@ var airplane_Airplane = (_temp = _class = function () {
     this.typeId = typeId;
     this.routeType = routeType;
     this.textRotation = 0;
+    this.dirty = true;
   }
 
-  Airplane.create = function create(x, y, heading, routeType) {
-    var airplane = airplane_library_airplanes[Math.floor(Math.random() * airplane_library_airplanes.length)];
-    var operatorId = airplane.operators.length > 0 ? airplane.operators[Math.floor(Math.random() * airplane.operators.length)] : null;
+  Airplane.create = function create(x, y, heading, routeType, ga) {
+    var airplane = rndAirplane(ga);
+    var operatorId = airplane.operators.length > 0 ? rndOperator(airplane) : null;
     var speed = airplane.topSpeed;
     var altitudeThousands = Math.floor(airplane.ceiling * .5 - Math.random() * airplane.ceiling * .2);
     var altitude = (altitudeThousands % 2 === 0 === heading < 180 ? altitudeThousands - 1 : altitudeThousands) * 1000;
     if (altitude < 10000) speed = Math.min(250, speed);
-    var flight = flightNums[counter++];
-    counter %= 1950;
+    var flight = void 0;
+    if (ga) {
+      flight = null;
+    } else {
+      flight = flightNums[counter++];
+      counter %= 1950;
+    }
     var typeId = airplane.id;
     return new Airplane(speed, altitude, heading, x, y, operatorId, flight, typeId, routeType);
   };
@@ -7544,8 +8186,25 @@ var airplane_Airplane = (_temp = _class = function () {
     var airplane = Airplane.create(x, y, heading, routeTypes.OUTBOUND);
     airplane.altitude = 0;
     airplane.speed = 0;
-    airplane.outboundRwy = rwy;
+    airplane.dirty = false;
+    airplane.rwy = rwy;
     airplane.outboundWaypoint = outboundWaypoint;
+    airplane.waiting = true;
+    return airplane;
+  };
+
+  Airplane.createVFROutbound = function createVFROutbound(x, y, heading, rwy, outboundWaypoint) {
+    var airplane = Airplane.create(x, y, heading, routeTypes.VFR_OUTBOUND, true);
+    airplane.altitude = 0;
+    airplane.speed = 0;
+    airplane.dirty = false;
+    airplane.rwy = rwy;
+    airplane.tgtVfrState = VFRStates.STRAIGHT_OUT;
+    airplane.outboundWaypoint = outboundWaypoint;
+    airplane.regNum = regNums[regNumCounter++];
+    airplane.tgtDirection = outboundWaypoint;
+    regNumCounter %= 2000;
+    airplane.waiting = true;
     return airplane;
   };
 
@@ -7553,6 +8212,45 @@ var airplane_Airplane = (_temp = _class = function () {
     var airplane = Airplane.create(x, y, heading, routeTypes.ENROUTE);
     airplane.outboundWaypoint = outboundWaypoint;
     return airplane;
+  };
+
+  Airplane.createVFRClosedPattern = function createVFRClosedPattern(x, y, heading, rwy, touchandgo) {
+    var airplane = Airplane.create(x, y, heading, touchandgo ? routeTypes.VFR_CLOSED_PATTERN_TG : routeTypes.VFR_CLOSED_PATTERN, true);
+    airplane.altitude = 0;
+    airplane.speed = 0;
+    airplane.dirty = false;
+    airplane.rwy = rwy;
+    airplane.tgtDirection = rwy;
+    airplane.tgtAltitude = 1000;
+    airplane.regNum = regNums[regNumCounter++];
+    airplane.tgtVfrState = VFRStates.RWY;
+    regNumCounter %= 2000;
+    airplane.waiting = true;
+    if (touchandgo) airplane.tgs = Math.floor(Math.random()) * (config.maxTouchAndGos - 1) + 1;
+    return airplane;
+  };
+
+  Airplane.createVFREnroute = function createVFREnroute(x, y, heading, outboundWaypoint) {
+    var airplane = Airplane.create(x, y, heading, routeTypes.VFR_ENROUTE, true);
+    airplane.altitude = airplane.tgtAltitude = Math.floor(Math.random() * 3 + 2) * 1000;
+    airplane.regNum = regNums[regNumCounter++];
+    airplane.outboundWaypoint = airplane.tgtDirection = outboundWaypoint;
+    airplane.tgtVfrState = VFRStates.OWN_DISCRETION;
+    return airplane;
+  };
+
+  Airplane.createVFRInbound = function createVFRInbound(x, y, heading, touchandgo) {
+    var airplane = Airplane.create(x, y, heading, touchandgo ? routeTypes.VFR_INBOUND_TG : routeTypes.VFR_INBOUND, true);
+    airplane.altitude = airplane.tgtAltitude = Math.floor(Math.random() * 3 + 2) * 1000;
+    airplane.regNum = regNums[regNumCounter++];
+    airplane.tgtVfrState = VFRStates.RWY;
+    regNumCounter %= 2000;
+    if (touchandgo) airplane.tgs = Math.floor(Math.random()) * (config.maxTouchAndGos - 1) + 1;
+    return airplane;
+  };
+
+  Airplane.isVFR = function isVFR(airplane) {
+    return airplane.tgtVfrState !== undefined && routeTypes[airplane.routeType].startsWith('vfr');
   };
 
   return Airplane;
@@ -7563,28 +8261,6 @@ var airplane_Airplane = (_temp = _class = function () {
   if (airplane.speed <= model.minSpeed) return turningRate[0];else if (airplane.speed <= 250) return turningRate[0] + (airplane.speed - model.minSpeed) / (250 - model.minSpeed) * (turningRate[1] - turningRate[0]);else return turningRate[1] + (airplane.speed - 250) / (model.topSpeed - 250) * (turningRate[2] - turningRate[1]);
 }, _temp);
 
-// CONCATENATED MODULE: ./lib/config.js
-/* harmony default export */ var config = ({
-  headingInitVariation: 10,
-  globalSpeed: 1,
-  baseAirplaneSpeed: 0.0015,
-  updateInterval: 300,
-  headingIndicatorLineLen: 20,
-  pathCounterUpdateEvery: 20,
-  maxPathLen: 10,
-  rwyLenScale: 0.0014,
-  ilsSlopeSteepness: 37.5,
-  threeMileRuleDistance: 15,
-  climbSpeed: 18,
-  descendSpeed: 22,
-  accelerationSpeed: 1.6,
-  deAccelerationSpeed: 1.2,
-  turnRate: 0.3,
-  flyStraightAfterTakeoffUntilHeight: 2000,
-  airplaneTextDistance: 7,
-  width: 1280,
-  height: 720
-});
 // CONCATENATED MODULE: ./lib/map.js
 var map__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -7593,7 +8269,15 @@ var map__extends = Object.assign || function (target) { for (var i = 1; i < argu
 var idType = {
   WAYPOINT: 0,
   AIRPORT: 1,
-  RWY: 2
+  RWY: 2,
+  DIRECTION: 3
+};
+
+var directions = {
+  NORTH: 0,
+  EAST: 90,
+  SOUTH: 180,
+  WEST: 270
 };
 
 var loadMap = function loadMap(key) {
@@ -7609,6 +8293,32 @@ var loadMap = function loadMap(key) {
   return maps[key];
 };
 
+var findHdgAround = function findHdgAround(centerx, centery, radius, px, py, hdg, tx, ty) {
+  var hdgToTgt = headingTo(px, py, tx, ty);
+  var hdgToTgtVector = hdgToVector(hdgToTgt);
+  var perpendicularVectorRight = [hdgToTgtVector[1], -hdgToTgtVector[0]];
+  var perpendicularVectorLeft = [-hdgToTgtVector[1], hdgToTgtVector[0]];
+
+  var rx = centerx + perpendicularVectorRight[0] * radius;
+  var ry = centery + perpendicularVectorRight[1] * radius;
+  var lx = centerx + perpendicularVectorLeft[0] * radius;
+  var ly = centery + perpendicularVectorLeft[1] * radius;
+
+  var hdgToRight = headingTo(px, py, rx, ry);
+  var hdgToLeft = headingTo(px, py, lx, ly);
+
+  var hdgToRightDelta = angleDelta(hdg, hdgToRight);
+  var hdgToLeftDelta = angleDelta(hdg, hdgToLeft);
+
+  if (hdgToRightDelta > 0 && hdgToRightDelta < 90 && hdgToLeftDelta < 0 && hdgToLeftDelta > -90) {
+    return Math.abs(hdgToRightDelta) < Math.abs(hdgToLeftDelta) ? hdgToRight : hdgToLeft;
+  } else return hdg;
+};
+
+var hdgToVector = function hdgToVector(hdg) {
+  return [Math.sin(hdg * Math.PI / 180), Math.cos(hdg * Math.PI / 180)];
+};
+
 var headingTo = function headingTo(x1, y1, x2, y2) {
   return (Math.atan2(x2 - x1, y2 - y1) * 180 / Math.PI + 360) % 360;
 };
@@ -7617,6 +8327,16 @@ var angleDelta = function angleDelta(a0, a1) {
   var max = 360;
   var da = (a1 - a0) % max;
   return 2 * da % max - da;
+};
+
+var parrelelLinesDistance = function parrelelLinesDistance(px1, py1, px2, py2, hdg) {
+  var distanceBetweenPoints = Math.sqrt(Math.pow(px1 - px2, 2) + Math.pow(py1 - py2, 2));
+  var p1ToP2AngleRad = Math.atan2(px2 - px1, py2 - py1);
+  var hdgRad = hdg * Math.PI / 180;
+  var perpendicularAngle = hdgRad + Math.PI / 2; // hdg1 + 90deg
+  var phiAngle = perpendicularAngle - p1ToP2AngleRad;
+  var distance = Math.abs(Math.cos(phiAngle) * distanceBetweenPoints);
+  return distance;
 };
 
 var activeRwys = function activeRwys(airport, winddir) {
@@ -7675,303 +8395,10 @@ var map_landableRwys = function landableRwys(airport, airplane, width, height) {
 };
 
 var rwyHeading = function rwyHeading(rwy, name) {
-  return rwy.name1 === name ? rwy.ref.hdg1 : rwy.ref.hdg2;
+  return rwy.ref.name1 === name ? rwy.ref.hdg1 : rwy.ref.hdg2;
 };
 
-var maps = {
-  default: {
-    id: 'default',
-    name: 'Default',
-    outboundWaypoints: ['LAIKA', 'PLM', 'DAVOT', 'EZOS', 'EDOS'],
-    inboundWaypoints: ['EVKOS', 'ELROS', 'KTDOS', 'QEDOS'],
-    gaEnroute: false,
-    gaTakeoffAndLanding: false,
-    waypoints: {
-      EVKOS: { x: 0, y: 360 },
-      QEDOS: { x: 1280, y: 400 },
-      KTDOS: { x: 250, y: 0 },
-      EKOS: { x: 20, y: 20 },
-      EDOS: { x: 0, y: 720 },
-      ELROS: { x: 1280, y: 720 },
-      EBOS: { x: 100, y: 600 },
-      ESOS: { x: 1200, y: 90 },
-      ELOS: { x: 220, y: 200 },
-      EZOS: { x: 1280, y: 0 },
-      EDROS: { x: 290, y: 820 },
-      KOS: { x: 80, y: 90 },
-      PLM: { x: 1280, y: 70 },
-      DAVOT: { x: 0, y: 90 },
-      LAIKA: { x: 900, y: 0 },
-      RUNAW: { x: 30, y: 20 },
-      EH11: { x: 623.268587103299, y: 111.60881397780415 },
-      EH13: { x: 666.731412896701, y: 608.3911860221958 },
-      EH26: { x: 635.2208641964845, y: 248.22396629001187 },
-      EH9: { x: 659.1254183828556, y: 521.4542709144273 }
-    },
-    routes: {
-      // oubound
-      '18->LAIKA': '18->EH26->LAIKA/${CRZ}',
-      '36->LAIKA': '36->EH9->LAIKA/${CRZ}',
-      '18->PLM': '36->EH9->PLM/${CRZ}',
-      '36->PLM': '36->EH9->PLM/${CRZ}',
-      '18->EZOS': '36->EH9->EZOS/${CRZ}',
-      '36->EZOS': '36->EH9->EZOS/${CRZ}',
-      '18->DAVOT': '36->EH9->DAVOT/${CRZ}',
-      '36->DAVOT': '36->EH9->DAVOT/${CRZ}',
-      '18->EDOS': '36->EH9->EDOS/${CRZ}',
-      '36->EDOS': '36->EH9->EDOS/${CRZ}',
-      // inbound
-      'LAIKA->18': 'LAIKA->EH9/3000->18',
-      'LAIKA->36': 'LAIKA->EH26/3000->36',
-      'PLM->18': 'PLM->EH9/3000->18',
-      'PLM->36': 'PLM->EH26/3000->36',
-      'EZOS->18': 'EZOS->EH9/3000->18',
-      'EZOS->36': 'EZOS->EH26/3000->36',
-      'DAVOT->18': 'DAVOT->EH9/3000->18',
-      'DAVOT->36': 'DAVOT->EH26/3000->36',
-      // enroute
-      'EVKOS->PLM': 'EVKOS->EHZM->PLM',
-      'QEDOS->EDOS': 'QEDOS->EHZM->EDOS'
-    },
-    airport: {
-      elevation: 22,
-      rwyusage: [{ dir: 95, rwys: ['18'] }, { dir: 275, rwys: ['36'] }],
-      callsign: 'EHZM',
-      x: 0,
-      y: 0,
-      runways: [{
-        x: 5,
-        y: 0,
-        length: 12467,
-        length1: 12467,
-        length2: 12467,
-        surface: 'asphalt', // EXPERMINTAL / WIP
-        size: 150, // EXPERMINTAL / WIP
-        hdg1: 5,
-        hdg2: 185,
-        labelSpread1: 1,
-        labelSpread2: 1,
-        elevation1: 25,
-        elevation2: 23,
-        name1: '36',
-        name2: '18'
-      }]
-    }
-  },
-  heathrow: {
-    id: 'heathrow',
-    name: 'Heathrow',
-    gaEnroute: false,
-    gaTakeoffAndLanding: false,
-    outboundWaypoints: ['FOS', 'BIG', 'LAM'],
-    inboundWaypoints: ['BLC', 'BENSU', 'EPM', 'LCY'],
-    waypoints: {
-      BLC: { x: 40, y: 0 },
-      WOD: { x: 0, y: 400 },
-      BENSU: { x: 0, y: 600 },
-      BUR: { x: 100, y: 500 },
-      FRK: { x: 550, y: 20 },
-      FOS: { x: 580, y: 0 },
-      OCK: { x: 640, y: 0 },
-      EPM: { x: 730, y: 0 },
-      BIG: { x: 1280, y: 0 },
-      LCY: { x: 1280, y: 360 },
-      LAM: { x: 1280, y: 720 },
-      GOXUL: { x: 900, y: 90 },
-      FINCH: { x: 880, y: 800 },
-      CHT: { x: 600, y: 1050 },
-      D175F: { x: 680, y: 220 },
-      EGWU: { x: 690, y: 960 },
-      RICHY: { x: 939.9543085469174, y: 344.7642780688151 },
-      BARNS: { x: 939.9543085469174, y: 364.7642780688151 },
-      WINSR: { x: 340.0456914530826, y: 355.235721931185 },
-      MARLO: { x: 340.0456914530826, y: 375.235721931185 },
-      '40LO2': { x: 490.0228457265413, y: 352.6178609655925 },
-      '40LOC': { x: 490.0228457265413, y: 372.6178609655925 },
-      '40LO3': { x: 789.9771542734587, y: 347.38213903440754 }
-
-    },
-    routes: {},
-    airport: {
-      elevation: 77,
-      rwyusage: [{ dir: 1, rwys: ['09R', '09L'] }, { dir: 181, rwys: ['27R', '27L'] }],
-      callsign: 'EGLL',
-      x: 0,
-      y: 0,
-      runways: [{
-        x: 0,
-        y: -10,
-        length: 12802,
-        length1: 12802,
-        length2: 12802,
-        surface: 'asphalt', // EXPERMINTAL / WIP
-        size: 164, // EXPERMINTAL / WIP
-        hdg1: 91,
-        hdg2: 271,
-        name1: '09R',
-        name2: '27L',
-        elevation1: 77,
-        elevation2: 77,
-        labelSpread1: 1,
-        labelSpread2: 1
-      }, {
-        x: 0,
-        y: 10,
-        length: 12008,
-        length1: 12008,
-        length2: 12008,
-        surface: 'asphalt', // EXPERMINTAL / WIP
-        size: 164, // EXPERMINTAL / WIP
-        hdg1: 91,
-        hdg2: 271,
-        name1: '09L',
-        name2: '27R',
-        elevation1: 77,
-        elevation2: 77,
-        labelSpread1: 1,
-        labelSpread2: 1
-      }]
-    }
-  },
-  schiphol: {
-    id: 'schiphol',
-    name: 'Schiphol',
-    gaEnroute: false,
-    gaTakeoffAndLanding: false,
-    outboundWaypoints: ['EH610', 'SPY', 'OMORU', 'TULIP'],
-    inboundWaypoints: ['EH040', 'LILSI', 'IVLET', 'SUSET'],
-    waypoints: {
-      NV: { x: 670, y: 0 },
-      CH: { x: 400, y: 100 },
-      EKROS: { x: 500, y: 150 },
-      BASNO: { x: 410, y: 390 },
-      EH040: { x: 300, y: 0 },
-      EH610: { x: 0, y: 100 },
-      SPY: { x: 400, y: 720 },
-      OA: { x: 640, y: 550 },
-      LILSI: { x: 1280, y: 600 },
-      PAM: { x: 600, y: 360 },
-      OMORU: { x: 1280, y: 360 },
-      IVLET: { x: 1280, y: 200 },
-      SUSET: { x: 1100, y: 0 },
-      TULIP: { x: 0, y: 640 },
-      EH639: { x: 794.794430213186, y: 387.85039343644166 },
-      EH633: { x: 605.3459322519757, y: 80.38373026871932 },
-      EH635: { x: 645.3459322519757, y: 73.38373026871932 },
-      EH126: { x: 585.3459322519757, y: 100.38373026871932 },
-      EH642: { x: 365.3837302687193, y: 365.3459322519757 },
-      EH047: { x: 611.5139103734476, y: 599.6984976460062 },
-      EH626: { x: 634.6540677480242, y: 639.6162697312807 },
-      EH616: { x: 404.5465330762007, y: 201.62260601470263 },
-      EH654: { x: 879.4534669237993, y: 498.37739398529743 }
-    },
-    routes: {},
-    airport: {
-      elevation: -11,
-      rwyusage: [{ dir: 45, rwys: ['09'] }, { dir: 135, rwys: ['36L', '36C'] }, { dir: 220, rwys: ['24', '27'] }, { dir: 330, rwys: ['18L', '36R'] }],
-      callsign: 'EHAM',
-      x: 0,
-      y: 0,
-      runways: [{
-        x: -40,
-        y: 20,
-        length: 12468,
-        length1: 12468,
-        length2: 12468,
-        surface: 'asphalt', // EXPERMINTAL / WIP
-        size: 164, // EXPERMINTAL / WIP
-        hdg1: 3,
-        hdg2: 183,
-        name1: '36L',
-        name2: '18R',
-        elevation1: -11,
-        elevation2: -11,
-        labelSpread1: 1.2,
-        labelSpread2: 1.2
-      }, {
-        x: 2,
-        y: -10,
-        length: 11483,
-        length1: 11483,
-        length2: 11483,
-        surface: 'asphalt', // EXPERMINTAL / WIP
-        size: 164, // EXPERMINTAL / WIP
-        hdg1: 58,
-        hdg2: 238,
-        name1: '06',
-        name2: '24',
-        elevation1: -11,
-        elevation2: -11,
-        labelSpread1: 1,
-        labelSpread2: 0.5
-      }, {
-        x: 5,
-        y: 20,
-        length: 11329,
-        length1: 11329,
-        length2: 11329,
-        surface: 'asphalt', // EXPERMINTAL / WIP
-        size: 164, // EXPERMINTAL / WIP
-        hdg1: 87,
-        hdg2: 267,
-        name1: '09',
-        name2: '27',
-        elevation1: -11,
-        elevation2: -11,
-        labelSpread1: 2,
-        labelSpread2: 2
-      }, {
-        x: 20,
-        y: -7,
-        length: 11155,
-        length1: 11155,
-        length2: 11155,
-        surface: 'asphalt', // EXPERMINTAL / WIP
-        size: 164, // EXPERMINTAL / WIP
-        hdg1: 3,
-        hdg2: 183,
-        name1: '36R',
-        name2: '18L',
-        elevation1: -11,
-        elevation2: -11,
-        labelSpread1: 2,
-        labelSpread2: 3
-      }, {
-        x: -20,
-        y: 0,
-        length: 10827,
-        length1: 10827,
-        length2: 10827,
-        surface: 'asphalt', // EXPERMINTAL / WIP
-        size: 164, // EXPERMINTAL / WIP
-        hdg1: 3,
-        hdg2: 183,
-        name1: '36C',
-        name2: '18C',
-        elevation1: -11,
-        elevation2: -11,
-        labelSpread1: 2,
-        labelSpread2: 2
-      }, {
-        x: 35,
-        y: -5,
-        length: 10827,
-        length1: 10827,
-        length2: 10827,
-        surface: 'asphalt', // EXPERMINTAL / WIP
-        size: 164, // EXPERMINTAL / WIP
-        hdg1: 41,
-        hdg2: 221,
-        name1: '04',
-        name2: '22',
-        elevation1: -11,
-        elevation2: -11,
-        labelSpread1: 1,
-        labelSpread2: 1.4
-      }]
-    }
-  }
-};
+var maps = __webpack_require__("pH8P");
 
 var mapNames = [];
 for (var map_key in maps) {
@@ -8033,29 +8460,41 @@ var communications_Communications = function (_EventEmitter) {
   }
 
   Communications.prototype.getCallsign = function getCallsign(airplane, short) {
-    return [operatorsById[airplane.operatorId][short ? 'callsign' : 'shortName'] + (short ? '' : ' ') + airplane.flight];
+    var operator = operatorsById[airplane.operatorId];
+    if (operator) {
+      var cs = operator[short ? 'callsign' : 'shortName'] + (short ? '' : ' ') + airplane.flight;
+      return (airplane.class === 'heavy' || airplane.class === 'super') && !short ? cs + ' ' + airplane.class : cs;
+    } else {
+      if (short) {
+        return airplane.regNum;
+      } else {
+        return airplane.regNum.replace(/[A-Z]/g, function (match) {
+          return natoAlphabet[match[0]] + ' ';
+        });
+      }
+    }
   };
 
   Communications.prototype.getCommandText = function getCommandText(cmd, winddir, windspd) {
     var airplane = cmd.tgt;
     var txt = [];
-    if (cmd.takeoff && cmd.tgt.outboundRwy) {
-      txt.push("takeoff runway " + cmd.tgt.outboundRwy + ", the wind is " + winddir + " at " + windspd + " knots");
+    if (cmd.takeoff && cmd.tgt.rwy) {
+      txt.push('takeoff runway ' + cmd.tgt.rwy + ', the wind is ' + winddir + ' at ' + windspd + ' knots');
     }
     if (cmd.direction) {
-      if (cmd.direction !== cmd.tgt.tgtDirection) txt.push("direct to " + cmd.direction);
+      if (cmd.direction !== cmd.tgt.tgtDirection) txt.push('direct to ' + cmd.direction);
     } else if (typeof cmd.heading === 'number' && cmd.heading !== cmd.tgt.tgtDirection) {
       var tHdg = cmd.heading;
       var hdg = airplane.heading;
 
-      txt.push(tHdg - hdg < -(hdg - tHdg) ? "turn left heading " + tHdg : "turn right heading " + tHdg);
+      txt.push(tHdg - hdg < -(hdg - tHdg) ? 'turn left heading ' + tHdg : 'turn right heading ' + tHdg);
     }
     if (cmd.altitude && cmd.altitude !== cmd.tgt.tgtAltitude) {
-      var tAlt = cmd.altitude > 18000 ? "flight level " + Math.round(cmd.altitude / 100) + " " : cmd.altitude + " feet ";
-      txt.push(cmd.altitude < airplane.altitude ? "descend and maintain " + tAlt : "climb and maintain " + tAlt);
+      var tAlt = cmd.altitude > 18000 ? 'flight level ' + Math.round(cmd.altitude / 100) + ' ' : cmd.altitude + ' feet ';
+      txt.push(cmd.altitude < airplane.altitude ? 'descend and maintain ' + tAlt : 'climb and maintain ' + tAlt);
     }
     if (cmd.speed && cmd.speed !== cmd.tgt.tgtSpeed) {
-      txt.push(cmd.speed < airplane.speed ? "slow down to " + cmd.speed + " knots" : "increase your airspeed to " + cmd.speed + " knots");
+      txt.push(cmd.speed < airplane.speed ? 'slow down to ' + cmd.speed + ' knots' : 'increase your airspeed to ' + cmd.speed + ' knots');
     }
 
     if (txt.length > 2) txt.splice(txt.length - 1, 0, 'and');
@@ -8076,32 +8515,32 @@ var communications_Communications = function (_EventEmitter) {
 }(external__events_["EventEmitter"]);
 
 var natoAlphabet = {
-  "A": "Alfa",
-  "B": "Bravo",
-  "C": "Charlie",
-  "D": "Delta",
-  "E": "Echo",
-  "F": "Foxtrot",
-  "G": "Golf",
-  "H": "Hotel",
-  "I": "India",
-  "J": "Juliett",
-  "K": "Kilo",
-  "L": "Lima",
-  "M": "Mike",
-  "N": "November",
-  "O": "Oscar",
-  "P": "Papa",
-  "Q": "Quebec",
-  "R": "Romeo",
-  "S": "Sierra",
-  "T": "Tango",
-  "U": "Uniform",
-  "V": "Victor",
-  "W": "Whiskey",
-  "X": "X-ray",
-  "Y": "Yankee",
-  "Z": "Zulu"
+  'A': 'Alfa',
+  'B': 'Bravo',
+  'C': 'Charlie',
+  'D': 'Delta',
+  'E': 'Echo',
+  'F': 'Foxtrot',
+  'G': 'Golf',
+  'H': 'Hotel',
+  'I': 'India',
+  'J': 'Juliett',
+  'K': 'Kilo',
+  'L': 'Lima',
+  'M': 'Mike',
+  'N': 'November',
+  'O': 'Oscar',
+  'P': 'Papa',
+  'Q': 'Quebec',
+  'R': 'Romeo',
+  'S': 'Sierra',
+  'T': 'Tango',
+  'U': 'Uniform',
+  'V': 'Victor',
+  'W': 'Whiskey',
+  'X': 'X-ray',
+  'Y': 'Yankee',
+  'Z': 'Zulu'
 };
 
 /* harmony default export */ var communications = (new communications_Communications());
@@ -8136,7 +8575,7 @@ var SettingsStore_SettingsStore = function (_EventEmitter) {
     };
 
     _this.toJson = function () {
-      return JSON.stringify(_this, ['distanceCircles', 'distanceCirclesDistance', 'distanceCirclesAmount', 'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 'startingEnroutePlanes', 'sepVialationCircleColor', 'ga', 'enroute'], 4);
+      return JSON.stringify(_this, ['distanceCircles', 'distanceCirclesDistance', 'takeoffInOrder', 'useTextCmd', 'goArounds', 'distanceCirclesAmount', 'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 'sepVialationCircleColor', 'ga', 'enroute'], 4);
     };
 
     _this.speechsynthesis = false;
@@ -8154,13 +8593,17 @@ var SettingsStore_SettingsStore = function (_EventEmitter) {
     _this.ilsPathColor = '#8aa8ad';
     _this.ilsDashInterval = [20, 30];
     _this.sepVialationCircleColor = '#ff0000';
+    _this.useTextCmd = false;
     _this.newPlaneInterval = 100;
     _this.startingInboundPlanes = 3;
     _this.startingOutboundPlanes = 2;
     _this.startingEnroutePlanes = 1;
     _this.radarFontsize = 14;
     _this.ga = false;
-    _this.enroute = false, _this.defaultSettings = JSON.parse(_this.toJson());
+    _this.enroute = false;
+    _this.takeoffInOrder = false;
+    _this.goArounds = false;
+    _this.defaultSettings = JSON.parse(_this.toJson());
 
     var persistedSettings = loadState().settings;
     if (persistedSettings) {
@@ -11231,7 +11674,7 @@ var sendMessageError = function sendMessageError(error) {
 
 var GameMessages__ref = Object(preact_min["h"])(FaInfoCircle, null);
 
-var _ref2 = Object(preact_min["h"])(FaExclamationCircle, null);
+var GameMessages__ref2 = Object(preact_min["h"])(FaExclamationCircle, null);
 
 var _ref3 = Object(preact_min["h"])(FaTimesCircle, null);
 
@@ -11240,7 +11683,7 @@ var icons = {
     return GameMessages__ref;
   },
   warning: function warning() {
-    return _ref2;
+    return GameMessages__ref2;
   },
   error: function error() {
     return _ref3;
@@ -11284,16 +11727,18 @@ var GameMessages_GameMessages_GameMessages = function (_Component) {
     emitter.addListener('message', this.handleMessage);
   };
 
-  GameMessages.prototype.componentWillUnmount = function componentWillUnmount() {};
+  GameMessages.prototype.componentWillUnmount = function componentWillUnmount() {
+    emitter.removeListener('message', this.handleMessage);
+  };
 
   GameMessages.prototype.render = function render() {
     return Object(preact_min["h"])(
       'div',
-      { className: GameMessages_default.a.GameMessages },
+      { className: 'game-messages' },
       this.state.messages.map(function (msg) {
         return Object(preact_min["h"])(
           'div',
-          { 'data-type': msg.type, className: '' + GameMessages_default.a.Message },
+          { 'data-type': msg.type, className: 'message' },
           icons[msg.type](),
           ' ',
           msg.message
@@ -11304,7 +11749,52 @@ var GameMessages_GameMessages_GameMessages = function (_Component) {
 
   return GameMessages;
 }(preact_min["Component"]);
+// CONCATENATED MODULE: ./lib/util.js
+var util__this = this,
+    _arguments = arguments;
+
+var rndArr = function rndArr(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+};
+
+var upcase = function upcase(str) {
+  return str[0].toUpperCase() + str.slice(1);
+};
+
+var debounce = function debounce(func, wait, immediate) {
+  var timeout;
+  return function () {
+    var context = util__this,
+        args = _arguments;
+    var later = function later() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+
+var lpad = function lpad(str, padChar, length) {
+  while (str.length < length) {
+    str = padChar + str;
+  }return str;
+};
+
+var getParameterByName = function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+};
 // CONCATENATED MODULE: ./stores/GameStore.js
+var GameStore__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function GameStore__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function GameStore__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -11321,6 +11811,9 @@ function GameStore__inherits(subClass, superClass) { if (typeof superClass !== "
 
 
 
+
+var oneMileByThreeMileRuleDistance = Math.pow(config.oneMileRuleDistance / config.threeMileRuleDistance, 2);
+
 var GameStore_GameStore = function (_EventEmitter) {
   GameStore__inherits(GameStore, _EventEmitter);
 
@@ -11329,24 +11822,271 @@ var GameStore_GameStore = function (_EventEmitter) {
 
     var _this = GameStore__possibleConstructorReturn(this, _EventEmitter.call(this));
 
+    _this.adjustZoom = function (delta) {
+      _this.zoom = Math.min(config.maxZoom, Math.max(config.minZoom, _this.zoom + _this.zoom * (delta * config.zoomSpeed)));
+      _this.emit('change');
+    };
+
+    _this.setupWaypoints = function () {
+      _this.inboundWpOrdered = _this.map.inboundWaypoints.slice(0).sort(function () {
+        return Math.random() - .5;
+      });
+      _this.outboundWpOrdered = _this.map.outboundWaypoints.slice(0).sort(function () {
+        return Math.random() - .5;
+      });
+    };
+
+    _this.spawnVFRPlane = function () {
+      var opts = [_this.newPlaneVFRClosedPattern.bind(_this, Math.random() > 0.5), _this.newPlaneVFRInbound.bind(_this, Math.random() > 0.5), _this.newPlaneVFROutbound];
+      if (stores_SettingsStore.enroute) opts.push(_this.newPlaneVFREnroute);
+      rndArr(opts)();
+    };
+
+    _this.newPlane = function () {
+      if (_this.paused) return;
+      var rnd = Math.random();
+      var trafficSum = _this.map.ga + _this.map.commercial;
+      var opts = [_this.newPlaneInbound, _this.newPlaneOutbound];
+      if (stores_SettingsStore.ga && rnd > _this.map.ga / trafficSum) opts.push(_this.spawnVFRPlane);
+      if (stores_SettingsStore.enroute) opts.push(_this.newPlaneEnroute);
+      rndArr(opts)();
+    };
+
+    _this.newPlaneVFRClosedPattern = function (touchandgo) {
+      var activeRunways = activeRwys(_this.airport, _this.winddir);
+      var activeRunwaysAssigned = activeRunways.filter(function (rwy) {
+        return _this.disableTakoffsOnRwysSet[rwy] !== 'none' && _this.disableTakoffsOnRwysSet[rwy] !== 'commercial';
+      });
+      // if the user has a preffered runway. Use that runway. If the user has al of the runways disabled choose one at random.
+      var couldNotFindAssignedRwy = activeRunwaysAssigned.length === 0;
+      if (activeRunwaysAssigned.length > 0) activeRunways = activeRunwaysAssigned;
+
+      var item = activeRunways[Math.floor(Math.random() * activeRunways.length)];
+      var rwy = _this.callsignsPos[item];
+      var hdg = rwy.ref.name1 === item ? rwy.ref.hdg1 : rwy.ref.hdg2;
+      var airplane = airplane_Airplane.createVFRClosedPattern(rwy.x, rwy.y, hdg, item, touchandgo);
+      _this.traffic.push(airplane);
+
+      var callsign = communications.getCallsign(airplane, true);
+
+      if (couldNotFindAssignedRwy) sendMessageWarning('No assigned takeoff runway for general aviation, ' + callsign + ' was ordered to taxi to RWY ' + item + '.');
+    };
+
+    _this.newPlaneVFREnroute = function () {
+      var map = _this.map;
+
+      var side = Math.floor(Math.random() * 4);
+      var x = side === 1 ? config.width : side === 3 ? 0 : Math.random() * config.width;
+      var y = side === 0 ? config.height : side === 2 ? 0 : Math.random() * config.height;
+
+      var mx = config.width / 2;
+      var my = config.height / 2;
+
+      var tgtSides = [0, 1, 2, 3];
+      tgtSides.splice(tgtSides.indexOf(side), 1);
+      var tgtside = tgtSides.sort(function (a) {
+        return Math.random() - .5;
+      }).pop();
+      var xt = tgtside === 1 ? config.width : tgtside === 3 ? 0 : .5 * config.width;
+      var yt = tgtside === 0 ? config.height : tgtside === 2 ? 0 : .5 * config.height;
+      var outboundWaypoint = ['NORTH', 'EAST', 'SOUTH', 'WEST'][tgtside];
+
+      var heading = Math.floor(headingTo(x, y, xt, yt) + 360) % 360;
+      var airplane = airplane_Airplane.createVFREnroute(x, y, heading, outboundWaypoint);
+      _this.traffic.push(airplane);
+    };
+
+    _this.newPlaneVFRInbound = function (touchandgo) {
+      var map = _this.map;
+      if (_this.inboundWpOrdered.length === 0) {
+        _this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(function () {
+          return Math.random() - .5;
+        });
+      }
+      var inboundWaypoint = _this.inboundWpOrdered.pop();
+      var pos = _this.callsignsPos[inboundWaypoint];
+      var mx = config.width / 2;
+      var my = config.height / 2;
+      var heading = Math.floor(headingTo(pos.x, pos.y, mx, my)) % 360;
+      var airplane = airplane_Airplane.createVFRInbound(pos.x, pos.y, heading, touchandgo);
+      _this.traffic.push(airplane);
+
+      var callsign = communications.getCallsign(airplane, true);
+    };
+
+    _this.newPlaneVFROutbound = function () {
+      var activeRunways = activeRwys(_this.airport, _this.winddir);
+      var activeRunwaysAssigned = activeRunways.filter(function (rwy) {
+        return _this.disableTakoffsOnRwysSet[rwy] !== 'commercial' && _this.disableTakoffsOnRwysSet[rwy] !== 'none';
+      });
+      // if the user has a prefered runway. Use that runway. If the user has al of the runways disabled choose one at random.
+      var couldNotFindAssignedRwy = activeRunwaysAssigned.length === 0;
+      if (activeRunwaysAssigned.length > 0) activeRunways = activeRunwaysAssigned;
+      var item = activeRunways[Math.floor(Math.random() * activeRunways.length)];
+      var rwy = _this.callsignsPos[item];
+      var hdg = rwyHeading(rwy, item);
+
+      var outboundWaypoint = ['NORTH', 'EAST', 'SOUTH', 'WEST'][Math.floor(Math.random() * 4)];
+
+      var airplane = airplane_Airplane.createVFROutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint);
+
+      var callsign = communications.getCallsign(airplane, true);
+
+      if (couldNotFindAssignedRwy) sendMessageWarning('No assigned takeoff runway for general aviation, ' + communications.getCallsign(airplane, true) + ' was ordered to taxi to RWY ' + item + '.');
+
+      _this.traffic.push(airplane);
+
+      // has atis
+      var msg = _this.airport.callsign + ' approach, with you for ' + item + '.';
+      _this.addLog(msg, callsign);
+
+      var atcMsg = callsign + ', ' + _this.airport.callsign + ' approach, hold short ' + item + '.';
+      _this.addLog(atcMsg, 'ATC');
+
+      var readBackMsg = 'Roger hold short of ' + item + ', ' + callsign + '.';
+      _this.addLog(readBackMsg, callsign);
+    };
+
+    _this.newPlaneEnroute = function () {
+      var map = _this.map;
+      if (_this.inboundWpOrdered.length === 0) {
+        _this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(function () {
+          return Math.random() - .5;
+        });
+      }
+      if (_this.outboundWpOrdered.length === 0) {
+        _this.outboundWpOrdered = map.outboundWaypoints.slice(0).sort(function () {
+          return Math.random() - .5;
+        });
+      }
+      var inboundWaypoint = _this.inboundWpOrdered.pop();
+      var pos = _this.callsignsPos[inboundWaypoint];
+
+      var outboundWaypoint = _this.outboundWpOrdered.pop();
+      var tgt = _this.callsignsPos[outboundWaypoint];
+
+      var heading = Math.floor(headingTo(pos.x, pos.y, tgt.x, tgt.y)) % 360;
+      var airplane = airplane_Airplane.createEnroute(pos.x, pos.y, heading, outboundWaypoint);
+      _this.traffic.push(airplane);
+
+      // TODO: Speech for outbound
+      // const callsign = communications.getCallsign(airplane, true);
+      // if (Math.random() > .5) {
+      //   // has atis
+      //   const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + ' with ' + this.getAtis() + '.';
+      //   this.addLog(msg, callsign);
+
+      //   const atcMsg = callsign + ', ' + this.airport.callsign + ' approach, maintain current heading.';
+      //   this.addLog(atcMsg, 'ATC');
+      // } else {
+      //   // does not have atis
+      //   const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + '.';
+      //   this.addLog(msg, callsign);
+
+      //   const atcMsg = callsign + ', information ' + this.getAtis() + ' is current, altimeter ' + this.altimeter + ', maintain current heading.';
+      //   this.addLog(atcMsg, 'ATC');
+      // }
+    };
+
+    _this.newPlaneInbound = function () {
+      var map = _this.map;
+      if (_this.inboundWpOrdered.length === 0) {
+        _this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(function () {
+          return Math.random() - .5;
+        });
+      }
+      var inboundWaypoint = _this.inboundWpOrdered.pop();
+      var pos = _this.callsignsPos[inboundWaypoint];
+      var mx = config.width / 2;
+      var my = config.height / 2;
+      var heading = Math.floor(headingTo(pos.x, pos.y, mx, my)) % 360;
+      var airplane = airplane_Airplane.create(pos.x, pos.y, heading, routeTypes.INBOUND);
+      _this.traffic.push(airplane);
+
+      var callsign = communications.getCallsign(airplane, true);
+      if (Math.random() > .5) {
+        // has atis
+        var msg = _this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + ' with ' + _this.getAtis() + '.';
+        _this.addLog(msg, callsign);
+        var atcMsg = callsign + ', ' + _this.airport.callsign + ' approach, maintain current heading.';
+        _this.addLog(atcMsg, 'ATC');
+      } else {
+        // does not have atis
+        var _msg = _this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + '.';
+        _this.addLog(_msg, callsign);
+        var _atcMsg = callsign + ', information ' + _this.getAtis() + ' is current, altimeter ' + _this.altimeter + ', maintain current heading.';
+        _this.addLog(_atcMsg, 'ATC');
+      }
+    };
+
+    _this._newPlaneInboundOnEdge = function () {
+      var hdgVar = config.headingInitVariation;
+      var side = Math.floor(Math.random() * 4);
+      var x = side === 1 ? config.width : side === 3 ? 0 : Math.random() * config.width;
+      var y = side === 0 ? config.height : side === 2 ? 0 : Math.random() * config.height;
+      var mx = config.width / 2;
+      var my = config.height / 2;
+      var heading = Math.floor(headingTo(x, y, mx, my) - hdgVar * .5 + Math.random() * hdgVar) % 360;
+      _this.traffic.push(airplane_Airplane.create(x, y, heading, routeTypes.INBOUND));
+    };
+
+    _this.newPlaneOutbound = function () {
+      var activeRunways = activeRwys(_this.airport, _this.winddir);
+      var activeRunwaysAssigned = activeRunways.filter(function (rwy) {
+        return _this.disableTakoffsOnRwysSet[rwy] !== 'ga' && _this.disableTakoffsOnRwysSet[rwy] !== 'none';
+      });
+      // if the user has a prefered runway. Use that runway. If the user has al of the runways disabled choose one at random.
+      var couldNotFindAssignedRwy = activeRunwaysAssigned.length === 0;
+      if (activeRunwaysAssigned.length > 0) activeRunways = activeRunwaysAssigned;
+
+      var item = activeRunways[Math.floor(Math.random() * activeRunways.length)];
+      var rwy = _this.callsignsPos[item];
+      var hdg = rwy.ref.name1 === item ? rwy.ref.hdg1 : rwy.ref.hdg2;
+      var outboundWaypoint = _this.map.outboundWaypoints[Math.floor(Math.random() * _this.map.outboundWaypoints.length)];
+      var airplane = airplane_Airplane.createOutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint);
+      _this.traffic.push(airplane);
+
+      var callsign = communications.getCallsign(airplane, true);
+
+      if (couldNotFindAssignedRwy) sendMessageWarning('No assigned takeoff runway for commercial flights, ' + communications.getCallsign(airplane, true) + ' was ordered to taxi to RWY ' + item + '.');
+
+      // has atis
+      var msg = _this.airport.callsign + ' approach, with you for ' + item + '.';
+      _this.addLog(msg, callsign);
+
+      var atcMsg = callsign + ', ' + _this.airport.callsign + ' approach, hold short ' + item + '.';
+      _this.addLog(atcMsg, 'ATC');
+
+      var readBackMsg = 'Roger hold short of ' + item + ', ' + callsign + '.';
+      _this.addLog(readBackMsg, callsign);
+    };
+
     _this.update = function () {
       if (_this.paused) return;
       var s = config.globalSpeed * stores_SettingsStore.speed;
       _this.trySpawn();
       _this.pathCounter = ++_this.pathCounter % Math.floor(config.pathCounterUpdateEvery / s);
-      for (var key in _this.sepDistanceVialotions) {
-        delete _this.sepDistanceVialotions[key];
+      for (var key in _this.oldSepDistanceVialotions) {
+        delete _this.oldSepDistanceVialotions[key];
+      }GameStore__extends(_this.oldSepDistanceVialotions, _this.sepDistanceVialotions);
+      for (var _key in _this.sepDistanceVialotions) {
+        delete _this.sepDistanceVialotions[_key];
       }_this.traffic.forEach(_this.planeUpdate);
-      for (var _key in _this._edgeDetection) {
-        delete _this._edgeDetection[_key];
+      for (var _key2 in _this._edgeDetection) {
+        delete _this._edgeDetection[_key2];
       }for (var i = 0; i < _this._remove.length; i++) {
         _this.traffic.splice(_this.traffic.indexOf(_this._remove[i]), 1);
-      }_this._remove.length = 0;
+      }_this.time += s;
+      _this.time %= 86400; // seconds in a year
+      _this._remove.length = 0;
+      _this.winddir = wrapHeadig(_this.winddir + (Math.random() - .5) * s * config.windDirChange);
+      _this.windspd = Math.max(config.windSpdMin, Math.min(config.windSpdMax, _this.windspd + (Math.random() - 0.5) * s * config.windSpdChange));
+      if (_this.windspd > config.roughWindSpd && Math.random() < config.windRandomChangeOfLoweringWhenRoughWindSpd) _this.windspd -= Math.random();
       _this.emit('change');
     };
 
     _this.planeUpdate = function (airplane, i) {
-      if (airplane.outboundRwy) return;
+      if (airplane.waiting) return;
 
       var model = airplanesById[airplane.typeId];
       var s = config.globalSpeed * stores_SettingsStore.speed;
@@ -11356,6 +12096,7 @@ var GameStore_GameStore = function (_EventEmitter) {
       var spdChange = 0;
       var altChange = Math.min(config.climbSpeed * model.climbSpeed * s, Math.max(-config.descendSpeed * model.descendSpeed * s, airplane.tgtAltitude - airplane.altitude));
       var tgtSpeed = airplane.altitude < 10000 && airplane.tgtSpeed > 250 ? Math.min(250, airplane.tgtSpeed) : airplane.tgtSpeed;
+      var landing = false;
 
       airplane.x += dx * s * airplane.speed * config.baseAirplaneSpeed;
       airplane.y += dy * s * airplane.speed * config.baseAirplaneSpeed;
@@ -11368,28 +12109,65 @@ var GameStore_GameStore = function (_EventEmitter) {
         if (altChange * exceeds250Multiplier + airplane.altitude < 10000) airplane.tgtSpeed = 250; // slow down to 250kts
         if (airplane.altitude + altChange < 10000) altChange = 10000 - airplane.altitude; // don't descend < fl100 < 250kts
       }
-      spdChange = Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
-      if (spdChange < 0 && altChange < 0) /* descelerating and descending */altChange *= model.descendRatioWhileDecelerating;
+
+      var trafficDirection = 'left';
+      var trafficDirectionMult = trafficDirection ? -1 : 1;
+
+      var shouldFindHeadingAround = airplane.routeType === routeTypes.VFR_ENROUTE || airplane.routeType === routeTypes.VFR_OUTBOUND && airplane.tgtVfrState === VFRStates.OWN_DISCRETION && airplane.altitude > 800 + _this.airport.elevation;
+
+      var outsideControlAreaRadius = Math.pow(airplane.x - (_this.airport.x + config.width / 2), 2) + Math.pow(airplane.y - (_this.airport.y + config.height / 2), 2) > Math.pow(config.controlAreaRadius + 5, 2);
+
+      if (outsideControlAreaRadius && airplane.routeType === routeTypes.VFR_OUTBOUND && airplane.tgtVfrState === VFRStates.STRAIGHT_OUT) {
+        // TODO: Speech
+        airplane.tgtVfrState = VFRStates.OWN_DISCRETION;
+      }
+
+      if (outsideControlAreaRadius && airplane.routeType === routeTypes.VFR_OUTBOUND && airplane.tgtVfrState === VFRStates.EXIT_45_DEG_OUT) {
+        // TODO: Speech
+        airplane.tgtVfrState = VFRStates.OWN_DISCRETION;
+      }
 
       if (typeof airplane.tgtDirection === 'number') tgtHeading = airplane.tgtDirection; // heading
       else if (typeof airplane.tgtDirection === 'string') {
           // waypoint
           var waypointPosition = _this.callsignsPos[airplane.tgtDirection];
           if (waypointPosition) {
-            if (airplane.routeType === routeTypes.INBOUND && waypointPosition.ref.type === idType.RWY) tryLand.call(_this, waypointPosition);else tgtHeading = headingTo(airplane.x, airplane.y, waypointPosition.x, waypointPosition.y);
-          } else tgtHeading = airplane.heading;
+            if (airplane.tgtVfrState === VFRStates.STRAIGHT_OUT) {
+              var outboundRwy = _this.callsignsPos[airplane.rwy];
+              tgtHeading = rwyHeading(outboundRwy, airplane.rwy);
+            } else if (airplane.tgtVfrState === VFRStates.EXIT_45_DEG_OUT) {
+              var _outboundRwy = _this.callsignsPos[airplane.rwy];
+              tgtHeading = rwyHeading(_outboundRwy, airplane.rwy);
+              if (airplane.altitude > 800) {
+                tgtHeading = wrapHeadig(tgtHeading + 45 * trafficDirectionMult);
+              }
+            } else if (waypointPosition.ref.type === idType.RWY) {
+              if (airplane_Airplane.isVFR(airplane)) vfrPattern.call(_this, waypointPosition);else if (airplane.routeType === routeTypes.INBOUND) tryLand.call(_this, waypointPosition);
+            } else tgtHeading = headingTo(airplane.x, airplane.y, waypointPosition.x, waypointPosition.y);
+          }
         }
+
+      if (shouldFindHeadingAround) {
+        tgtHeading = findHdgAround(_this.airport.x + config.width / 2, _this.airport.y + config.height / 2, config.controlAreaRadius + 50, airplane.x, airplane.y, headingTo(airplane.x, airplane.y, _this.callsignsPos[airplane.tgtDirection].x, _this.callsignsPos[airplane.tgtDirection].y), _this.callsignsPos[airplane.tgtDirection].x, _this.callsignsPos[airplane.tgtDirection].y);
+      }
+
+      spdChange = Math.min(s * config.accelerationSpeed * model.accelerationSpeed, Math.max(-s * config.deAccelerationSpeed * model.deAccelerationSpeed, tgtSpeed - airplane.speed));
+      if (spdChange < 0 && altChange < 0 && !landing) /* descelerating and descending */altChange *= model.descendRatioWhileDecelerating;
 
       if (isAtManeuveringSpeed) airplane.altitude += altChange;
       airplane.speed += spdChange;
 
-      if (airplane.routeType === routeTypes.OUTBOUND || airplane.routeType === routeTypes.ENROUTE) {
+      if (airplane.routeType === routeTypes.OUTBOUND || airplane.routeType === routeTypes.ENROUTE || airplane.routeType === routeTypes.VFR_OUTBOUND || airplane.routeType === routeTypes.VFR_ENROUTE) {
         var wp = _this.callsignsPos[airplane.outboundWaypoint];
         if (Math.abs(airplane.x - wp.x) + Math.abs(airplane.y - wp.y) < 15) {
           _this.departures++;
           _this._remove.push(airplane);
           return;
         }
+      }
+
+      if (airplane_Airplane.isVFR(airplane)) {
+        collisionAvoidance.call(_this);
       }
 
       if (isAtManeuveringSpeed && canChangeHeading) {
@@ -11414,6 +12192,151 @@ var GameStore_GameStore = function (_EventEmitter) {
 
       // END
 
+      function vfrPattern(rwyPos) {
+        var _this2 = this,
+            _legs;
+
+        var rwyElev = rwyPos.ref.name1 === airplane.tgtDirection ? rwyPos.ref.elevation1 : rwyPos.ref.elevation2;
+        var rwyHdg = rwyPos.ref.name1 === airplane.tgtDirection ? rwyPos.ref.hdg1 : rwyPos.ref.hdg2;
+        var hdgToRwy = (Math.atan2(rwyPos.x - airplane.x, rwyPos.y - airplane.y) * 180 / Math.PI + 360) % 360;
+        var distanceToRwyPos = Math.sqrt(Math.pow(rwyPos.x - airplane.x, 2) + Math.pow(rwyPos.y - airplane.y, 2));
+        var deg = angleDelta(rwyHdg, hdgToRwy);
+        var within45DegILS = Math.abs(deg) < 45;
+        var within45DegILSOpposite = Math.abs(angleDelta(rwyHdg, hdgToRwy + 180)) < 45;
+        var rwyHdgDelta = angleDelta(rwyHdg, airplane.heading) * trafficDirectionMult;
+        var perpendicularDistance = parrelelLinesDistance(airplane.x, airplane.y, rwyPos.x, rwyPos.y, rwyHdg);
+        var parrelelDistance = parrelelLinesDistance(airplane.x, airplane.y, rwyPos.x, rwyPos.y, rwyHdg + 90);
+        var rwyMiddleX = config.width / 2 + this.airport.x + rwyPos.ref.x;
+        var rwyMiddleY = config.height / 2 + this.airport.y + rwyPos.ref.y;
+        var goodSideOfRwy = angleDelta(hdgToRwy, rwyHdg) * trafficDirectionMult >= 0;
+
+        var perpendicularDistMin = 12;
+        var perpendicularDistMax = 30;
+        var perpendicularDistMaxPreffered = 17;
+
+        if (airplane_Airplane.isVFR(airplane) && airplane.altitude > 1010 + rwyElev && (airplane.routeType === routeTypes.VFR_INBOUND || airplane.routeType === routeTypes.VFR_INBOUND_TG)) {
+
+          if (airplane.tgtVfrState === VFRStates.STRAIGHT_IN) {
+            var vector = hdgToVector(rwyHdg);
+            var lineupVector = [vector[0] * config.inboundPatternEntryDistance, vector[1] * config.inboundPatternEntryDistance];
+
+            var entry1 = [rwyMiddleX - lineupVector[1] * .5 - lineupVector[0], rwyMiddleY + lineupVector[0] * .5 - lineupVector[1]];
+            var entry2 = [rwyMiddleX + lineupVector[1] * .5 - lineupVector[0], rwyMiddleY - lineupVector[0] * .5 - lineupVector[1]];
+            var entry3 = [rwyMiddleX - lineupVector[0] * 1.5, rwyMiddleY - lineupVector[1] * 1.5];
+
+            var entry1Dist = Math.sqrt(Math.pow(entry1[0] - airplane.x, 2) + Math.pow(entry1[1] - airplane.y, 2));
+            var entry2Dist = Math.sqrt(Math.pow(entry2[0] - airplane.x, 2) + Math.pow(entry2[1] - airplane.y, 2));
+            var entry3Dist = Math.sqrt(Math.pow(entry3[0] - airplane.x, 2) + Math.pow(entry3[1] - airplane.y, 2));
+
+            if (entry1Dist < 5 || entry2Dist < 5 || entry3Dist < 5) {
+              airplane.tgtAltitude = Math.min(airplane.tgtAltitude, 1000 + rwyElev);
+            } else {
+              airplane.tgtAltitude = Math.max(airplane.altitude, 2000 + rwyElev);
+              if (entry1Dist < entry2Dist && entry1Dist < entry3Dist) {
+                tgtHeading = headingTo(airplane.x, airplane.y, entry1[0], entry1[1]);
+              } else if (entry2Dist < entry3Dist) {
+                tgtHeading = headingTo(airplane.x, airplane.y, entry2[0], entry2[1]);
+              } else {
+                tgtHeading = headingTo(airplane.x, airplane.y, entry3[0], entry3[1]);
+              }
+            }
+
+            if (within45DegILS && airplane.dirty) {
+              tryLand.call(this, rwyPos);
+            }
+          } else {
+            var _vector = hdgToVector(rwyHdg);
+            var _entry = [rwyMiddleX - _vector[1] * config.inboundPatternEntryDistance, rwyMiddleY + _vector[0] * config.inboundPatternEntryDistance];
+            var _entry2 = [rwyMiddleX + _vector[1] * config.inboundPatternEntryDistance, rwyMiddleY - _vector[0] * config.inboundPatternEntryDistance];
+
+            var _entry1Dist = Math.sqrt(Math.pow(_entry[0] - airplane.x, 2) + Math.pow(_entry[1] - airplane.y, 2));
+            var _entry2Dist = Math.sqrt(Math.pow(_entry2[0] - airplane.x, 2) + Math.pow(_entry2[1] - airplane.y, 2));
+
+            if (perpendicularDistance <= perpendicularDistMax && goodSideOfRwy && perpendicularDistance >= perpendicularDistMin) {
+              airplane.tgtAltitude = 1000 + rwyElev;
+              if (perpendicularDistance < perpendicularDistMin || goodSideOfRwy === false) tgtHeading = wrapHeadig(rwyHdg + 135 * trafficDirectionMult);else if (perpendicularDistance > perpendicularDistMaxPreffered && goodSideOfRwy) tgtHeading = wrapHeadig(rwyHdg + 225 * trafficDirectionMult);else tgtHeading = wrapHeadig(rwyHdg + 180 * trafficDirectionMult);
+              tgtSpeed = Math.min(model.topSpeed, config.maxTrafficPatternSpeed);
+            } else if (distanceToRwyPos < config.inboundPatternEntryDistance || _entry1Dist < 5 || _entry2Dist < 5) {
+              if (perpendicularDistance > perpendicularDistMin) {
+                tgtHeading = headingTo(airplane.x, airplane.y, rwyMiddleX, rwyMiddleY);
+                airplane.tgtAltitude = 2000 + rwyElev;
+              }
+            } else {
+              airplane.tgtAltitude = Math.max(airplane.altitude, 2000 + rwyElev);
+              if (_entry1Dist < _entry2Dist) {
+                tgtHeading = headingTo(airplane.x, airplane.y, _entry[0], _entry[1]);
+              } else {
+                tgtHeading = headingTo(airplane.x, airplane.y, _entry2[0], _entry2[1]);
+              }
+            }
+          }
+          return;
+        }
+
+        var final = within45DegILS && Math.abs(deg) < 91 || airplane.altitude < 790 + rwyElev;
+        if (airplane.routeType === routeTypes.VFR_CLOSED_PATTERN_TG) {
+          final = within45DegILS && Math.abs(deg) < 91 || airplane.altitude < 790 + rwyElev;
+        }
+
+        var validLeg = function validLeg(leg, naturalValid) {
+          if (legsOrder[leg] > legsOrder[airplane.tgtVfrState]) return false;else return naturalValid;
+        };
+
+        var legs = (_legs = {}, _legs[VFRStates.RWY] = function () {
+          airplane.tgtAltitude = 800 + rwyElev;
+          tgtHeading = rwyHdg;
+          tgtSpeed = Math.min(model.topSpeed, config.maxTrafficPatternSpeed);
+          tryLand.call(_this2, rwyPos);
+        }, _legs[VFRStates.FINAL] = function () {
+          airplane.tgtAltitude = 800 + rwyElev;
+          tgtHeading = rwyHdg;
+          tgtSpeed = Math.min(model.topSpeed, config.maxTrafficPatternSpeed);
+          tryLand.call(_this2, rwyPos);
+        }, _legs[VFRStates.BASE] = function () {
+          airplane.dirty = true;
+          airplane.tgtAltitude = 800 + rwyElev;
+          tgtHeading = wrapHeadig(rwyHdg + 270 * trafficDirectionMult);
+          tgtSpeed = Math.min(model.topSpeed, config.maxTrafficPatternSpeed);
+        }, _legs[VFRStates.DOWNWIND] = function () {
+          airplane.dirty = true;
+          airplane.tgtAltitude = 1000 + rwyElev;
+          if (perpendicularDistance < perpendicularDistMin || goodSideOfRwy === false) tgtHeading = wrapHeadig(rwyHdg + 135 * trafficDirectionMult);else if (perpendicularDistance > perpendicularDistMaxPreffered && goodSideOfRwy) tgtHeading = wrapHeadig(rwyHdg + 225 * trafficDirectionMult);else tgtHeading = wrapHeadig(rwyHdg + 180 * trafficDirectionMult);
+          tgtSpeed = Math.min(model.topSpeed, config.maxTrafficPatternSpeed);
+        }, _legs[VFRStates.CROSSWIND] = function () {
+          airplane.dirty = true;
+          airplane.tgtAltitude = 1000 + rwyElev;
+          tgtHeading = wrapHeadig(rwyHdg + 90 * trafficDirectionMult);
+          tgtSpeed = Math.min(model.topSpeed, config.maxTrafficPatternSpeed);
+        }, _legs[VFRStates.UPWIND] = function () {
+          airplane.tgtAltitude = 1000 + rwyElev;
+          airplane.tgtHeading = rwyHdg;
+          tgtHeading = wrapHeadig(rwyHdg);
+          tgtSpeed = Math.min(model.topSpeed, config.maxTrafficPatternSpeed);
+        }, _legs);
+
+        // upwind
+        if (validLeg(VFRStates.FINAL, final && Math.abs(rwyHdgDelta) < 91 && airplane.dirty)) {
+          // final
+          legs[VFRStates.FINAL]();
+        } else if (validLeg(VFRStates.BASE, within45DegILS && parrelelDistance > 25)) {
+          // base
+          legs[VFRStates.BASE]();
+        } else if (validLeg(VFRStates.DOWNWIND, /*Math.abs(rwyHdgDelta) < 181 && Math.abs(rwyHdgDelta) > 89 && */perpendicularDistance > perpendicularDistMin)) {
+          // downwind
+          legs[VFRStates.DOWNWIND]();
+        } else if (validLeg(VFRStates.CROSSWIND, rwyHdgDelta < 91 && rwyHdgDelta > -1 && within45DegILSOpposite && airplane.altitude + rwyElev > 800 && distanceToRwyPos > 20)) {
+          // crosswind
+          legs[VFRStates.CROSSWIND]();
+        } else if (validLeg(VFRStates.UPWIND, rwyHdgDelta < 1 && rwyHdgDelta > -1)) {
+          // upwind
+          legs[VFRStates.UPWIND]();
+        } else {
+          if (legs[airplane.tgtVfrState]) {
+            legs[airplane.tgtVfrState]();
+          }
+        }
+      }
+
       function edgeDetectionViolation() {
         var airplaneSepDistViolation = false;
         var t = config.threeMileRuleDistance,
@@ -11423,7 +12346,7 @@ var GameStore_GameStore = function (_EventEmitter) {
           for (var _i = 0; _i < 9; _i++) {
             var identity = Math.round(x + _i % 3 - 1) + 'x' + Math.round(y + _i / 3 - 1) + '/' + (Math.floor(airplane.altitude * .0005) + a),
                 sameIdentity = this._edgeDetection[identity];
-            if (sameIdentity && !sameIdentity[airplane.flight]) {
+            if (sameIdentity && !sameIdentity[communications.getCallsign(airplane, true)]) {
               // do actual calculation
               for (var key in sameIdentity) {
                 var oa = sameIdentity[key];
@@ -11431,36 +12354,92 @@ var GameStore_GameStore = function (_EventEmitter) {
                 var xd = Math.abs(airplane.x - oa.x) / t;
                 var yd = Math.abs(airplane.y - oa.y) / t;
                 if (xd * xd + yd * yd < 1) {
-                  this.sepDistanceVialotions[oa.flight] = airplane;
-                  this.sepDistanceVialotions[airplane.flight] = oa;
+                  if (xd * xd + yd * yd >= oneMileByThreeMileRuleDistance && (airplane_Airplane.isVFR(airplane) || airplane_Airplane.isVFR(oa))) return;
+                  this.sepDistanceVialotions[communications.getCallsign(oa, true)] = airplane;
+                  this.sepDistanceVialotions[communications.getCallsign(airplane, true)] = oa;
                   airplaneSepDistViolation = true;
                 }
               }
             }
             this._edgeDetection[identity] = sameIdentity || {};
-            this._edgeDetection[identity][airplane.flight] = airplane;
+            this._edgeDetection[identity][communications.getCallsign(airplane, true)] = airplane;
           }
         }
         return airplaneSepDistViolation;
       }
 
+      function collisionAvoidance() {
+        var oa = this.oldSepDistanceVialotions[communications.getCallsign(airplane, true)];
+        if (oa) {
+          var hdgTo = headingTo(airplane.x, airplane.y, oa.x, oa.y);
+          var headingToDelta = angleDelta(airplane.heading, hdgTo);
+
+          var maxAngle = 100;
+
+          if (headingToDelta >= -10 && headingToDelta <= maxAngle) {
+            tgtHeading = wrapHeadig(hdgTo - maxAngle - .1);
+          } else if (headingToDelta < -10 && headingToDelta >= maxAngle) {
+            tgtHeading = wrapHeadig(hdgTo + maxAngle + .1);
+          }
+        }
+      }
+
       function tryLand(rwyPos) {
         var rwyHdg = rwyPos.ref.name1 === airplane.tgtDirection ? rwyPos.ref.hdg1 : rwyPos.ref.hdg2;
+        var rwyElev = rwyPos.ref.name1 === airplane.tgtDirection ? rwyPos.ref.elevation1 : rwyPos.ref.elevation2;
         var hdgToRwy = Math.atan2(rwyPos.x - airplane.x, rwyPos.y - airplane.y) * 180 / Math.PI;
         var deg = angleDelta(rwyHdg, hdgToRwy);
         var distance = (rwyPos.x - airplane.x) / Math.sin(hdgToRwy * Math.PI / 180);
         var rwyAirplaneHdgDiff = angleDelta(airplane.heading, rwyHdg);
-        var tooHigh = airplane.altitude > distance * config.ilsSlopeSteepness * 2 + 500 /* safety */;
+        var tooHigh = airplane.altitude > distance * config.ilsSlopeSteepness * 2 + (500 + rwyElev) /* safety */;
         distance = isFinite(distance) ? distance : .1;
-        if (airplane.altitude < 3200 && Math.abs(deg) < 20 && Math.abs(rwyAirplaneHdgDiff) < 20 && !tooHigh) {
-          altChange = Math.min(100 * s, Math.max(-100 * s, Math.min(airplane.altitude, distance * config.ilsSlopeSteepness) - airplane.altitude));
+        landing = true;
+
+        var isTouchAndGo = airplane.routeType === routeTypes.VFR_CLOSED_PATTERN_TG || airplane.routeType === routeTypes.VFR_INBOUND_TG;
+
+        if (Math.abs(deg) < 20 && Math.abs(rwyAirplaneHdgDiff) < 20 && !tooHigh) {
+          if (!tooHigh) {
+            altChange = Math.min(100 * s, Math.max(-100 * s, Math.min(airplane.altitude, distance * config.ilsSlopeSteepness + rwyElev) - airplane.altitude));
+          }
+          if (airplane.altitude < 2000 + rwyElev) {
+            tgtSpeed = model.minSpeed;
+          }
+          if (airplane.altitude < 600 + rwyElev) {
+            tgtSpeed = model.landingSpeed;
+          }
         }
-        if (airplane.altitude < 3200 && Math.abs(deg) < 20) {
+        if (Math.abs(deg) < 20) {
           tgtHeading = rwyHdg + Math.min(45, Math.max(-45, Math.max(Math.abs(deg), 10 /* weight */) * deg));
-        } else if (airplane.altitude < 500 && Math.abs(rwyAirplaneHdgDiff) < 20) {
-          //landed
-          this.arrivals++;
-          this._remove.push(airplane);
+          airplane.landing = true;
+        } else if (airplane.altitude < 500 + rwyElev && Math.abs(rwyAirplaneHdgDiff) < 20) {
+          if (isTouchAndGo === false && airplane.landing) {
+            var _s = this.windspd / config.windSpdMax * config.likelyNessOfGoAroundDueWindSpd;
+            var crosswind = Math.abs(angleDelta(rwyHdg, this.winddir));
+            var crossWindMultiplier = 1 - Math.abs(crosswind - 90) / 90;
+            var d = crossWindMultiplier * config.likelyNessOfGoAroundDueWindHhdg;
+            var rnd = Math.random();
+            if (rnd - d - _s < config.likelyNessOfGoAround && stores_SettingsStore.goArounds) {
+              if (rnd < config.likelyNessOfGoAround) sendMessageInfo(communications.getCallsign(airplane, true) + ' is going around.');else if (rnd - d - _s < config.likelyNessOfGoAround && this.windspd > 10 && crossWindMultiplier > 0.5) sendMessageInfo(communications.getCallsign(airplane, true) + ' is making a go around because of a ' + this.windspd + 'KTS crosswind.');else if (rnd - d - _s < config.likelyNessOfGoAround) sendMessageInfo(communications.getCallsign(airplane, true) + ' is making a go around because of bad weather.');
+              // go-around
+              airplane.landing = false;
+            } else {
+              //landed
+              this.arrivals++;
+              this._remove.push(airplane);
+            }
+          } else if (airplane.landing) {
+            airplane.landing = false;
+            if (--airplane.tgs <= 0) {
+              switch (airplane.routeType) {
+                case routeTypes.VFR_CLOSED_PATTERN_TG:
+                  airplane.routeType = routeTypes.VFR_CLOSED_PATTERN;
+                  break;
+                case routeTypes.VFR_INBOUND_TG:
+                  airplane.routeType = routeTypes.VFR_INBOUND;
+                  break;
+              }
+            }
+          }
           return;
         } else {
           // unable to land, not in range, or any other reason not to land
@@ -11484,16 +12463,27 @@ var GameStore_GameStore = function (_EventEmitter) {
     _this._spawnPlaneCounter = 0;
     _this.mapName = null;
     _this.disableTakoffsOnRwysSet = {};
+    _this.zoom = 1;
+    var dt = new Date();
+    _this.time = dt.getSeconds() + 60 * dt.getMinutes() + 60 * 60 * dt.getHours();
 
     _this.update = _this.update.bind(_this); // called within a setInterval so bind to this object and not the window object.
-    _this._newPlane = _this._newPlane.bind(_this); // called within a setInterval so bind to this object and not the window object.
+    _this._newPlane = _this.newPlane.bind(_this); // called within a setInterval so bind to this object and not the window object.
 
-    _this.setMaxListeners(20);
+    _this.setMaxListeners(100);
     return _this;
   }
 
   GameStore.prototype.getAtis = function getAtis() {
     return natoAlphabet[String.fromCharCode(this.atis % 26 + 97).toUpperCase()];
+  };
+
+  GameStore.prototype.rwyWaitingOn = function rwyWaitingOn(airplane) {
+    if (!stores_SettingsStore.takeoffInOrder) return [];
+    var index = this.traffic.indexOf(airplane);
+    return this.traffic.filter(function (x, i) {
+      return x.rwy === airplane.rwy && i < index;
+    });
   };
 
   GameStore.prototype.startMap = function startMap(mapName) {
@@ -11504,21 +12494,24 @@ var GameStore_GameStore = function (_EventEmitter) {
     this.distanceVialations = 0;
     var map = this.map = loadMap(mapName);
     this.id = mapName;
-    this.winddir = Math.floor(Math.random() * 360);
+    this.winddir = Math.random() * 360;
     this.altimeter = (29 + Math.random() * 2).toFixed(2);
     this.atis = Math.floor(Math.random() * 26);
-    this.windspd = Math.floor(Math.random() * 12);
-    this._setup(map);
-    // create planes
+    this.windspd = Math.random() * 12;
+    this.setup(map);
+
+    var isAptCommercial = map.commercial >= map.ga || !stores_SettingsStore.ga;
+    // create planes (if airport isvfr(map.ga > map.commercial) then { spawn all vfr and one ifr } else { spawn all ifr and one vfr } 
     for (var i = 0; i < stores_SettingsStore.startingInboundPlanes; i++) {
-      this._newPlaneInbound();
+      isAptCommercial ? this.newPlaneInbound() : this.newPlaneVFRInbound(Math.random() > .5);
     }for (var _i2 = 0; _i2 < stores_SettingsStore.startingOutboundPlanes; _i2++) {
-      this.newPlaneOutbound();
+      isAptCommercial ? this.newPlaneOutbound() : this.newPlaneVFROutbound(Math.random() > .5);
     }if (stores_SettingsStore.enroute) {
       for (var _i3 = 0; _i3 < stores_SettingsStore.startingEnroutePlanes; _i3++) {
-        this._newPlaneEnroute();
+        isAptCommercial ? this.newPlaneEnroute() : this.newPlaneVFREnroute(Math.random() > .5);
       }
     }
+    if (stores_SettingsStore.ga && map.ga > 0) isAptCommercial ? this.newPlaneVFROutbound() : this.newPlaneOutbound();
   };
 
   GameStore.prototype.startSaved = function startSaved(saveName) {
@@ -11526,17 +12519,28 @@ var GameStore_GameStore = function (_EventEmitter) {
     var game = state.games[saveName];
     this.loadJson(game);
     var map = this.map = loadMap(game.id);
-    this._setup(map);
+    this.setup(map);
   };
 
-  GameStore.prototype._setup = function _setup(map) {
+  GameStore.prototype.setup = function setup(map) {
     this.waypoints = map.waypoints;
+    this.waypoints.NORTH = { x: config.width / 2, y: config.height, type: idType.DIRECTION };
+    this.waypoints.EAST = { x: config.width, y: config.height / 2, type: idType.DIRECTION };
+    this.waypoints.SOUTH = { x: config.width / 2, y: 0, type: idType.DIRECTION };
+    this.waypoints.WEST = { x: 0, y: config.height / 2, type: idType.DIRECTION };
+
     this.airport = map.airport;
     this._edgeDetection = {};
     this.sepDistanceVialotions = {};
+    this.oldSepDistanceVialotions = {};
     this.started = true;
     this.callsigns = setCallsigns(map, this.waypoints);
     this.callsignsPos = callsignPositions(map, this.waypoints, config.width, config.height);
+    GameStore__extends.apply(undefined, [this.disableTakoffsOnRwysSet].concat(map.airport.runways.map(function (rwy) {
+      var _ref;
+
+      return _ref = {}, _ref[rwy.name1] = 'all', _ref[rwy.name2] = 'all', _ref;
+    })));
     this.mapName = map.id;
     this.setupWaypoints(map);
 
@@ -11545,146 +12549,8 @@ var GameStore_GameStore = function (_EventEmitter) {
     this.emit('start');
   };
 
-  GameStore.prototype.setupWaypoints = function setupWaypoints() {
-    this.inboundWpOrdered = this.map.inboundWaypoints.slice(0).sort(function () {
-      return Math.random() - .5;
-    });
-    this.outboundWpOrdered = this.map.outboundWaypoints.slice(0).sort(function () {
-      return Math.random() - .5;
-    });
-  };
-
-  GameStore.prototype._newPlane = function _newPlane() {
-    if (this.paused) return;
-    var rnd = Math.random();
-
-    if (stores_SettingsStore.enroute) {
-      if (rnd < .33) this._newPlaneInbound();else if (rnd < .66) this.newPlaneOutbound();else this._newPlaneEnroute();
-    } else {
-      if (rnd < .5) this._newPlaneInbound();else this.newPlaneOutbound();
-    }
-  };
-
-  GameStore.prototype._newPlaneEnroute = function _newPlaneEnroute() {
-    var map = this.map;
-    if (this.inboundWpOrdered.length === 0) {
-      this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(function () {
-        return Math.random() - .5;
-      });
-    }
-    if (this.outboundWpOrdered.length === 0) {
-      this.outboundWpOrdered = map.outboundWaypoints.slice(0).sort(function () {
-        return Math.random() - .5;
-      });
-    }
-    var inboundWaypoint = this.inboundWpOrdered.pop();
-    var pos = this.callsignsPos[inboundWaypoint];
-
-    var outBoundWaypoint = this.outboundWpOrdered.pop();
-    var tgt = this.callsignsPos[outBoundWaypoint];
-
-    var heading = Math.floor(headingTo(pos.x, pos.y, tgt.x, tgt.y)) % 360;
-    var airplane = airplane_Airplane.createEnroute(pos.x, pos.y, heading, outBoundWaypoint);
-    this.traffic.push(airplane);
-
-    // TODO: Speech for outbound
-    // const callsign = operatorsById[airplane.operatorId].shortName + ' ' + airplane.flight;
-    // if (Math.random() > .5) {
-    //   // has atis
-    //   const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + ' with ' + this.getAtis() + '.';
-    //   this.addLog(msg, callsign);
-
-    //   const atcMsg = callsign + ', ' + this.airport.callsign + ' approach, maintain current heading.';
-    //   this.addLog(atcMsg, 'ATC');
-    // } else {
-    //   // does not have atis
-    //   const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + '.';
-    //   this.addLog(msg, callsign);
-
-    //   const atcMsg = callsign + ', information ' + this.getAtis() + ' is current, altimeter ' + this.altimeter + ', maintain current heading.';
-    //   this.addLog(atcMsg, 'ATC');
-    // }
-  };
-
-  GameStore.prototype._newPlaneInbound = function _newPlaneInbound() {
-    var map = this.map;
-    if (this.inboundWpOrdered.length === 0) {
-      this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(function () {
-        return Math.random() - .5;
-      });
-    }
-    var inboundWaypoint = this.inboundWpOrdered.pop();
-    var pos = this.callsignsPos[inboundWaypoint];
-    var mx = config.width / 2;
-    var my = config.height / 2;
-    var heading = Math.floor(headingTo(pos.x, pos.y, mx, my)) % 360;
-    var airplane = airplane_Airplane.create(pos.x, pos.y, heading, routeTypes.INBOUND);
-    this.traffic.push(airplane);
-
-    var callsign = operatorsById[airplane.operatorId].shortName + ' ' + airplane.flight;
-    if (Math.random() > .5) {
-      // has atis
-      var msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + ' with ' + this.getAtis() + '.';
-      this.addLog(msg, callsign);
-
-      var atcMsg = callsign + ', ' + this.airport.callsign + ' approach, maintain current heading.';
-      this.addLog(atcMsg, 'ATC');
-    } else {
-      // does not have atis
-      var _msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + '.';
-      this.addLog(_msg, callsign);
-
-      var _atcMsg = callsign + ', information ' + this.getAtis() + ' is current, altimeter ' + this.altimeter + ', maintain current heading.';
-      this.addLog(_atcMsg, 'ATC');
-    }
-  };
-
   // deprecated
 
-
-  GameStore.prototype._newPlaneInboundOnEdge = function _newPlaneInboundOnEdge() {
-    var hdgVar = config.headingInitVariation;
-    var side = Math.floor(Math.random() * 4);
-    var x = side === 1 ? config.width : side === 3 ? 0 : Math.random() * config.width;
-    var y = side === 0 ? config.height : side === 2 ? 0 : Math.random() * config.height;
-    var mx = config.width / 2;
-    var my = config.height / 2;
-    var heading = Math.floor(headingTo(x, y, mx, my) - hdgVar * .5 + Math.random() * hdgVar) % 360;
-    this.traffic.push(airplane_Airplane.create(x, y, heading, routeTypes.INBOUND));
-  };
-
-  GameStore.prototype.newPlaneOutbound = function newPlaneOutbound() {
-    var _this2 = this;
-
-    var activeRunways = activeRwys(this.airport, this.winddir);
-    var activeRunwaysAssigned = activeRunways.filter(function (rwy) {
-      return !_this2.disableTakoffsOnRwysSet[rwy];
-    });
-    // if the user has a prefered runway. Use that runway. If the user has al of the runways disabled choose one at random.
-    var couldNotFindAssignedRwy = activeRunwaysAssigned.length === 0;
-    if (activeRunwaysAssigned.length > 0) activeRunways = activeRunwaysAssigned;
-
-    var item = activeRunways[Math.floor(Math.random() * activeRunways.length)];
-    var rwy = this.callsignsPos[item];
-    var hdg = rwy.ref.name1 === item ? rwy.ref.hdg1 : rwy.ref.hdg2;
-    var outboundWaypoint = this.map.outboundWaypoints[Math.floor(Math.random() * this.map.outboundWaypoints.length)];
-    var airplane = airplane_Airplane.createOutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint);
-    this.traffic.push(airplane);
-
-    var callsign = operatorsById[airplane.operatorId].shortName + ' ' + airplane.flight;
-
-    if (couldNotFindAssignedRwy) sendMessageWarning('No assigned takeoff runway, ' + communications.getCallsign(airplane, true) + ' was ordered to taxi to RWY ' + item + '.');
-
-    // has atis
-    var msg = this.airport.callsign + ' approach, with you for ' + item + '.';
-    this.addLog(msg, callsign);
-
-    var atcMsg = callsign + ', ' + this.airport.callsign + ' approach, hold short ' + item + '.';
-    this.addLog(atcMsg, 'ATC');
-
-    var readBackMsg = 'Roger hold short of ' + item + ', ' + callsign + '.';
-    this.addLog(readBackMsg, callsign);
-  };
 
   GameStore.prototype.stop = function stop() {
     clearInterval(this.interval);
@@ -11732,18 +12598,28 @@ var GameStore_GameStore = function (_EventEmitter) {
     this._spawnPlaneCounter += config.updateInterval * stores_SettingsStore.speed;
     if (this._spawnPlaneCounter > stores_SettingsStore.newPlaneInterval * 1000) {
       this._spawnPlaneCounter %= stores_SettingsStore.newPlaneInterval;
-      this._newPlane();
+      this.newPlane();
     }
   };
 
   return GameStore;
 }(external__events_["EventEmitter"]);
 
-var persistanceProps = ['traffic', 'started', 'width', 'height', 'log', 'selfLog', 'pathCounter', 'mapName', 'id', 'arrivals', 'departures', 'enroutes', 'distanceVialations', 'mapName', 'winddir', 'windspd', 'unpermittedDepartures'];
+var persistanceProps = ['traffic', 'started', 'width', 'height', 'log', 'selfLog', 'pathCounter', 'mapName', 'id', 'arrivals', 'departures', 'enroutes', 'distanceVialations', 'mapName', 'winddir', 'windspd', 'unpermittedDepartures', 'time'];
+
+var wrapHeadig = function wrapHeadig(hdg) {
+  return (hdg + 360) % 360;
+};
+
+var legsOrder = GameStore__extends.apply(undefined, [{}].concat(['UPWIND', 'CROSSWIND', 'DOWNWIND', 'BASE', 'FINAL', 'RWY'].map(function (l, i) {
+  var _ref2;
+
+  return _ref2 = {}, _ref2[VFRStates[l]] = i, _ref2;
+})));
 
 /* harmony default export */ var stores_GameStore = (new GameStore_GameStore());
-// EXTERNAL MODULE: ./containers/TrafficStack/TrafficStack.css
-var TrafficStack_TrafficStack = __webpack_require__("6a/W");
+// EXTERNAL MODULE: ./components/TrafficStack/TrafficStack.css
+var TrafficStack_TrafficStack = __webpack_require__("ZMZp");
 var TrafficStack_default = /*#__PURE__*/__webpack_require__.n(TrafficStack_TrafficStack);
 
 // EXTERNAL MODULE: ./components/GameMetaControls/GameMetaControls.css
@@ -11805,10 +12681,14 @@ var GameMetaControls_GameMetaControls_GameMetaControls = function (_Component) {
       var game = stores_GameStore.toJson();
       var state = loadState();
       var name = prompt('Name of your save?', stores_GameStore.mapName + ' - ' + new Date().toLocaleDateString());
-      if (name === null) return;
-      if (state.games[name]) return sendMessageError('Sorry this name already exists...');
+      if (!name) return sendMessageWarning('Please give a valid name...');
+      if (state.games[name]) {
+        var result = confirm('This save already exists. Do you want to overwrite it?');
+        if (result === false) return sendMessageWarning(name + ' was not saved...');
+      }
       state.games[name] = game;
       saveState(state);
+      sendMessageInfo(name + ' was saved...');
     };
 
     _this.state = {
@@ -11849,11 +12729,15 @@ var GameMetaControls_GameMetaControls_GameMetaControls = function (_Component) {
 }(preact_min["Component"]);
 
 /* harmony default export */ var components_GameMetaControls_GameMetaControls = (GameMetaControls_GameMetaControls_GameMetaControls);
-// EXTERNAL MODULE: ./containers/PlaneSpd/PlaneSpd.css
-var PlaneSpd = __webpack_require__("HYSH");
+// EXTERNAL MODULE: ./components/PlaneSpd/PlaneSpd.css
+var PlaneSpd = __webpack_require__("vE7Y");
 var PlaneSpd_default = /*#__PURE__*/__webpack_require__.n(PlaneSpd);
 
-// CONCATENATED MODULE: ./containers/PlaneSpd/PlaneSpd.js
+// CONCATENATED MODULE: ./components/PlaneSpd/PlaneSpd.js
+
+
+
+
 
 
 
@@ -11861,26 +12745,28 @@ var PlaneSpd_getSpdJsx = function getSpdJsx(_ref) {
   var airplane = _ref.airplane,
       tagName = _ref.tagName;
 
+  var cs = stores_GameStore.callsignsPos[airplane.tgtDirection];
   var tgtSpeed = airplane.altitude < 10000 ? Math.min(airplane.tgtSpeed, 250) : airplane.tgtSpeed;
   var TagName = tagName;
-  if (Math.abs(airplane.speed - tgtSpeed) > 5) {
+  var isLandingOrApproaching = cs && cs.ref.type === idType.RWY && airplane.routeType === routeTypes.INBOUND;
+  if (Math.abs(airplane.speed - tgtSpeed) > 5 && !airplane_Airplane.isVFR(airplane) && !isLandingOrApproaching) {
     return Object(preact_min["h"])(
       TagName,
       null,
       Math.round(airplane.speed),
-      "KTS",
+      'KTS',
       tgtSpeed > airplane.speed ? Object(preact_min["h"])(
         TagName,
-        { className: "up" },
-        "\u21E7",
+        { className: 'up' },
+        '\u21E7',
         Math.round(tgtSpeed),
-        "KTS"
+        'KTS'
       ) : Object(preact_min["h"])(
         TagName,
-        { className: "down" },
-        "\u21E9",
+        { className: 'down' },
+        '\u21E9',
         Math.round(tgtSpeed),
-        "KTS"
+        'KTS'
       )
     );
   } else {
@@ -11888,7 +12774,7 @@ var PlaneSpd_getSpdJsx = function getSpdJsx(_ref) {
       TagName,
       null,
       Math.round(airplane.speed),
-      "KTS"
+      'KTS'
     );
   }
 };
@@ -11976,68 +12862,92 @@ var _ref11 = Object(preact_min["h"])('span', { 'class': 'slider' });
 var _ref12 = Object(preact_min["h"])(
   'span',
   null,
+  'Go-arounds'
+);
+
+var _ref13 = Object(preact_min["h"])('span', { 'class': 'slider' });
+
+var _ref14 = Object(preact_min["h"])(
+  'span',
+  null,
+  'Takeoff in order'
+);
+
+var _ref15 = Object(preact_min["h"])('span', { 'class': 'slider' });
+
+var _ref16 = Object(preact_min["h"])(
+  'span',
+  null,
+  'Text commands'
+);
+
+var _ref17 = Object(preact_min["h"])('span', { 'class': 'slider' });
+
+var _ref18 = Object(preact_min["h"])(
+  'span',
+  null,
   'Distance circle color:'
 );
 
-var _ref13 = Object(preact_min["h"])(
+var _ref19 = Object(preact_min["h"])(
   'span',
   null,
   'ILS indicator color:'
 );
 
-var _ref14 = Object(preact_min["h"])(
+var _ref20 = Object(preact_min["h"])(
   'span',
   null,
   'Seperatorion circle color:'
 );
 
-var _ref15 = Object(preact_min["h"])(
+var _ref21 = Object(preact_min["h"])(
   'span',
   null,
   'Radar font size:'
 );
 
-var _ref16 = Object(preact_min["h"])(
+var _ref22 = Object(preact_min["h"])(
   'span',
   null,
   Object(preact_min["h"])(FaCompress, null),
   ' Hide advanced settings'
 );
 
-var _ref17 = Object(preact_min["h"])(
+var _ref23 = Object(preact_min["h"])(
   'span',
   null,
   Object(preact_min["h"])(FaExpand, null),
   ' Show advanced settings '
 );
 
-var _ref18 = Object(preact_min["h"])(
+var _ref24 = Object(preact_min["h"])(
   'span',
   null,
   'Speech synthesis'
 );
 
-var _ref19 = Object(preact_min["h"])('span', { 'class': 'slider' });
+var _ref25 = Object(preact_min["h"])('span', { 'class': 'slider' });
 
-var _ref20 = Object(preact_min["h"])(
+var _ref26 = Object(preact_min["h"])(
   'span',
   null,
   'Speech synthesis voices'
 );
 
-var _ref21 = Object(preact_min["h"])(
+var _ref27 = Object(preact_min["h"])(
   'span',
   null,
   'Pitch:'
 );
 
-var _ref22 = Object(preact_min["h"])(
+var _ref28 = Object(preact_min["h"])(
   'span',
   null,
   'Rate:'
 );
 
-var _ref23 = Object(preact_min["h"])(
+var _ref29 = Object(preact_min["h"])(
   'span',
   null,
   'Spawn plane interval:'
@@ -12139,6 +13049,21 @@ var Settings_Settings_Settings = function (_Component) {
       stores_SettingsStore.emit('change');
     };
 
+    _this.handleTakeoffInOrderChange = function (e) {
+      stores_SettingsStore.takeoffInOrder = e.target.checked;
+      stores_SettingsStore.emit('change');
+    };
+
+    _this.handleTextCmds = function (e) {
+      stores_SettingsStore.useTextCmd = e.target.checked;
+      stores_SettingsStore.emit('change');
+    };
+
+    _this.handleGoArounds = function (e) {
+      stores_SettingsStore.goArounds = e.target.checked;
+      stores_SettingsStore.emit('change');
+    };
+
     _this.state = {
       difficulty: 'normal',
       expanded: false
@@ -12206,7 +13131,7 @@ var Settings_Settings_Settings = function (_Component) {
       ),
       Object(preact_min["h"])(
         'div',
-        { className: 'mb ' + Settings_default.a.SwitchInput },
+        { className: 'mb SwitchInput' },
         _ref6,
         Object(preact_min["h"])(
           'label',
@@ -12217,7 +13142,7 @@ var Settings_Settings_Settings = function (_Component) {
       ),
       Object(preact_min["h"])(
         'div',
-        { className: 'mb ' + Settings_default.a.SwitchInput },
+        { className: 'mb SwitchInput' },
         _ref8,
         Object(preact_min["h"])(
           'label',
@@ -12228,7 +13153,7 @@ var Settings_Settings_Settings = function (_Component) {
       ),
       Object(preact_min["h"])(
         'div',
-        { className: 'mb ' + Settings_default.a.SwitchInput },
+        { className: 'mb SwitchInput' },
         _ref10,
         Object(preact_min["h"])(
           'label',
@@ -12239,23 +13164,56 @@ var Settings_Settings_Settings = function (_Component) {
       ),
       Object(preact_min["h"])(
         'div',
-        { className: 'mb ' + Settings_default.a.ColorInput },
+        { className: 'takeoff-in-order mb SwitchInput' },
         _ref12,
+        Object(preact_min["h"])(
+          'label',
+          { 'class': 'switch' },
+          Object(preact_min["h"])('input', { type: 'checkbox', onInput: this.handleGoArounds, checked: stores_SettingsStore.goArounds }),
+          _ref13
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { className: 'takeoff-in-order mb SwitchInput' },
+        _ref14,
+        Object(preact_min["h"])(
+          'label',
+          { 'class': 'switch' },
+          Object(preact_min["h"])('input', { type: 'checkbox', onInput: this.handleTakeoffInOrderChange, checked: stores_SettingsStore.takeoffInOrder }),
+          _ref15
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { className: 'takeoff-in-order mb SwitchInput' },
+        _ref16,
+        Object(preact_min["h"])(
+          'label',
+          { 'class': 'switch' },
+          Object(preact_min["h"])('input', { type: 'checkbox', onInput: this.handleTextCmds, checked: stores_SettingsStore.useTextCmd }),
+          _ref17
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { className: 'mb ColorInput' },
+        _ref18,
         Object(preact_min["h"])('input', { type: 'color', value: stores_SettingsStore.distanceCircleColor, onInput: this.handleDistanceCircleColor })
       ),
       Object(preact_min["h"])(
         'div',
-        { className: 'mb ' + Settings_default.a.ColorInput },
-        _ref13,
+        { className: 'mb ColorInput' },
+        _ref19,
         Object(preact_min["h"])('input', { type: 'color', value: stores_SettingsStore.ilsPathColor, onInput: this.handleIlsPathColorChange })
       ),
       Object(preact_min["h"])(
         'div',
-        { className: 'mb ' + Settings_default.a.ColorInput },
-        _ref14,
+        { className: 'mb ColorInput' },
+        _ref20,
         Object(preact_min["h"])('input', { type: 'color', value: stores_SettingsStore.sepVialationCircleColor, onInput: this.handleSepVialotionCircleColor })
       ),
-      _ref15,
+      _ref21,
       Object(preact_min["h"])(
         'div',
         { className: 'fontsize-setting range-slider mb' },
@@ -12270,26 +13228,26 @@ var Settings_Settings_Settings = function (_Component) {
       Object(preact_min["h"])(
         'button',
         { onClick: this.handleToggleExpandClick },
-        this.state.expanded ? _ref16 : _ref17
+        this.state.expanded ? _ref22 : _ref23
       ),
       Object(preact_min["h"])(
         'div',
         { style: 'border: 1px solid #1e606b; border-radius: 5px; padding: 5px;', className: this.state.expanded ? null : 'hidden' },
         Object(preact_min["h"])(
           'div',
-          { className: 'speechsynthesis-setting mb ' + Settings_default.a.SwitchInput },
-          _ref18,
+          { className: 'speechsynthesis-setting mb SwitchInput' },
+          _ref24,
           Object(preact_min["h"])(
             'label',
             { 'class': 'switch' },
             Object(preact_min["h"])('input', { type: 'checkbox', onInput: this.handleSpeechSynthesisSettingChange, checked: stores_SettingsStore.speechsynthesis }),
-            _ref19
+            _ref25
           )
         ),
         Object(preact_min["h"])(
           'div',
           { className: 'speechsynthesis-voices-setting mb' },
-          _ref20,
+          _ref26,
           Object(preact_min["h"])(
             'select',
             { onInput: this.handleSpeechVoiceChange },
@@ -12304,7 +13262,7 @@ var Settings_Settings_Settings = function (_Component) {
             })
           )
         ),
-        _ref21,
+        _ref27,
         Object(preact_min["h"])(
           'div',
           { className: 'speechsynthesis-pitch-setting range-slider mb' },
@@ -12316,7 +13274,7 @@ var Settings_Settings_Settings = function (_Component) {
             'x'
           )
         ),
-        _ref22,
+        _ref28,
         Object(preact_min["h"])(
           'div',
           { className: 'speechsynthesis-rate-setting range-slider mb' },
@@ -12328,7 +13286,7 @@ var Settings_Settings_Settings = function (_Component) {
             'x'
           )
         ),
-        _ref23,
+        _ref29,
         Object(preact_min["h"])(
           'div',
           { className: 'fontsize-setting range-slider mb' },
@@ -12411,35 +13369,6 @@ var SettingsPanel_SettingsPanel_SettingsPanel = function (_Component) {
 }(preact_min["Component"]);
 
 /* harmony default export */ var containers_SettingsPanel_SettingsPanel = (SettingsPanel_SettingsPanel_SettingsPanel);
-// CONCATENATED MODULE: ./lib/util.js
-var util__this = this,
-    _arguments = arguments;
-
-var upcase = function upcase(str) {
-  return str[0].toUpperCase() + str.slice(1);
-};
-
-var debounce = function debounce(func, wait, immediate) {
-  var timeout;
-  return function () {
-    var context = util__this,
-        args = _arguments;
-    var later = function later() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-};
-
-var lpad = function lpad(str, padChar, length) {
-  while (str.length < length) {
-    str = padChar + str;
-  }return str;
-};
 // EXTERNAL MODULE: ./containers/InfoPanel/InfoPanel.css
 var InfoPanel_InfoPanel = __webpack_require__("Izif");
 var InfoPanel_default = /*#__PURE__*/__webpack_require__.n(InfoPanel_InfoPanel);
@@ -12448,6 +13377,3124 @@ var InfoPanel_default = /*#__PURE__*/__webpack_require__.n(InfoPanel_InfoPanel);
 var FileSaver = __webpack_require__("lDdF");
 var FileSaver_default = /*#__PURE__*/__webpack_require__.n(FileSaver);
 
+// EXTERNAL MODULE: ./node_modules/diff-match-patch/index.js
+var node_modules_diff_match_patch = __webpack_require__("j4hi");
+var diff_match_patch_default = /*#__PURE__*/__webpack_require__.n(node_modules_diff_match_patch);
+
+// EXTERNAL MODULE: ./node_modules/chalk/index.js
+var chalk = __webpack_require__("saTp");
+var chalk_default = /*#__PURE__*/__webpack_require__.n(chalk);
+
+// CONCATENATED MODULE: ./node_modules/jsondiffpatch/dist/jsondiffpatch.esm.js
+
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+var classCallCheck = function classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+var get = function get(object, property, receiver) {
+  if (object === null) object = Function.prototype;
+  var desc = Object.getOwnPropertyDescriptor(object, property);
+
+  if (desc === undefined) {
+    var parent = Object.getPrototypeOf(object);
+
+    if (parent === null) {
+      return undefined;
+    } else {
+      return get(parent, property, receiver);
+    }
+  } else if ("value" in desc) {
+    return desc.value;
+  } else {
+    var getter = desc.get;
+
+    if (getter === undefined) {
+      return undefined;
+    }
+
+    return getter.call(receiver);
+  }
+};
+
+var inherits = function inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+var possibleConstructorReturn = function possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
+
+var slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
+
+var toConsumableArray = function toConsumableArray(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+var Processor = function () {
+  function Processor(options) {
+    classCallCheck(this, Processor);
+
+    this.selfOptions = options || {};
+    this.pipes = {};
+  }
+
+  createClass(Processor, [{
+    key: 'options',
+    value: function options(_options) {
+      if (_options) {
+        this.selfOptions = _options;
+      }
+      return this.selfOptions;
+    }
+  }, {
+    key: 'pipe',
+    value: function pipe(name, pipeArg) {
+      var pipe = pipeArg;
+      if (typeof name === 'string') {
+        if (typeof pipe === 'undefined') {
+          return this.pipes[name];
+        } else {
+          this.pipes[name] = pipe;
+        }
+      }
+      if (name && name.name) {
+        pipe = name;
+        if (pipe.processor === this) {
+          return pipe;
+        }
+        this.pipes[pipe.name] = pipe;
+      }
+      pipe.processor = this;
+      return pipe;
+    }
+  }, {
+    key: 'process',
+    value: function process(input, pipe) {
+      var context = input;
+      context.options = this.options();
+      var nextPipe = pipe || input.pipe || 'default';
+      var lastPipe = void 0;
+      var lastContext = void 0;
+      while (nextPipe) {
+        if (typeof context.nextAfterChildren !== 'undefined') {
+          // children processed and coming back to parent
+          context.next = context.nextAfterChildren;
+          context.nextAfterChildren = null;
+        }
+
+        if (typeof nextPipe === 'string') {
+          nextPipe = this.pipe(nextPipe);
+        }
+        nextPipe.process(context);
+        lastContext = context;
+        lastPipe = nextPipe;
+        nextPipe = null;
+        if (context) {
+          if (context.next) {
+            context = context.next;
+            nextPipe = lastContext.nextPipe || context.pipe || lastPipe;
+          }
+        }
+      }
+      return context.hasResult ? context.result : undefined;
+    }
+  }]);
+  return Processor;
+}();
+
+var Pipe = function () {
+  function Pipe(name) {
+    classCallCheck(this, Pipe);
+
+    this.name = name;
+    this.filters = [];
+  }
+
+  createClass(Pipe, [{
+    key: 'process',
+    value: function process(input) {
+      if (!this.processor) {
+        throw new Error('add this pipe to a processor before using it');
+      }
+      var debug = this.debug;
+      var length = this.filters.length;
+      var context = input;
+      for (var index = 0; index < length; index++) {
+        var filter = this.filters[index];
+        if (debug) {
+          this.log('filter: ' + filter.filterName);
+        }
+        filter(context);
+        if ((typeof context === 'undefined' ? 'undefined' : _typeof(context)) === 'object' && context.exiting) {
+          context.exiting = false;
+          break;
+        }
+      }
+      if (!context.next && this.resultCheck) {
+        this.resultCheck(context);
+      }
+    }
+  }, {
+    key: 'log',
+    value: function log(msg) {
+      console.log('[jsondiffpatch] ' + this.name + ' pipe, ' + msg);
+    }
+  }, {
+    key: 'append',
+    value: function append() {
+      var _filters;
+
+      (_filters = this.filters).push.apply(_filters, arguments);
+      return this;
+    }
+  }, {
+    key: 'prepend',
+    value: function prepend() {
+      var _filters2;
+
+      (_filters2 = this.filters).unshift.apply(_filters2, arguments);
+      return this;
+    }
+  }, {
+    key: 'indexOf',
+    value: function indexOf(filterName) {
+      if (!filterName) {
+        throw new Error('a filter name is required');
+      }
+      for (var index = 0; index < this.filters.length; index++) {
+        var filter = this.filters[index];
+        if (filter.filterName === filterName) {
+          return index;
+        }
+      }
+      throw new Error('filter not found: ' + filterName);
+    }
+  }, {
+    key: 'list',
+    value: function list() {
+      return this.filters.map(function (f) {
+        return f.filterName;
+      });
+    }
+  }, {
+    key: 'after',
+    value: function after(filterName) {
+      var index = this.indexOf(filterName);
+      var params = Array.prototype.slice.call(arguments, 1);
+      if (!params.length) {
+        throw new Error('a filter is required');
+      }
+      params.unshift(index + 1, 0);
+      Array.prototype.splice.apply(this.filters, params);
+      return this;
+    }
+  }, {
+    key: 'before',
+    value: function before(filterName) {
+      var index = this.indexOf(filterName);
+      var params = Array.prototype.slice.call(arguments, 1);
+      if (!params.length) {
+        throw new Error('a filter is required');
+      }
+      params.unshift(index, 0);
+      Array.prototype.splice.apply(this.filters, params);
+      return this;
+    }
+  }, {
+    key: 'replace',
+    value: function replace(filterName) {
+      var index = this.indexOf(filterName);
+      var params = Array.prototype.slice.call(arguments, 1);
+      if (!params.length) {
+        throw new Error('a filter is required');
+      }
+      params.unshift(index, 1);
+      Array.prototype.splice.apply(this.filters, params);
+      return this;
+    }
+  }, {
+    key: 'remove',
+    value: function remove(filterName) {
+      var index = this.indexOf(filterName);
+      this.filters.splice(index, 1);
+      return this;
+    }
+  }, {
+    key: 'clear',
+    value: function clear() {
+      this.filters.length = 0;
+      return this;
+    }
+  }, {
+    key: 'shouldHaveResult',
+    value: function shouldHaveResult(should) {
+      if (should === false) {
+        this.resultCheck = null;
+        return;
+      }
+      if (this.resultCheck) {
+        return;
+      }
+      var pipe = this;
+      this.resultCheck = function (context) {
+        if (!context.hasResult) {
+          console.log(context);
+          var error = new Error(pipe.name + ' failed');
+          error.noResult = true;
+          throw error;
+        }
+      };
+      return this;
+    }
+  }]);
+  return Pipe;
+}();
+
+var Context = function () {
+  function Context() {
+    classCallCheck(this, Context);
+  }
+
+  createClass(Context, [{
+    key: 'setResult',
+    value: function setResult(result) {
+      this.result = result;
+      this.hasResult = true;
+      return this;
+    }
+  }, {
+    key: 'exit',
+    value: function exit() {
+      this.exiting = true;
+      return this;
+    }
+  }, {
+    key: 'switchTo',
+    value: function switchTo(next, pipe) {
+      if (typeof next === 'string' || next instanceof Pipe) {
+        this.nextPipe = next;
+      } else {
+        this.next = next;
+        if (pipe) {
+          this.nextPipe = pipe;
+        }
+      }
+      return this;
+    }
+  }, {
+    key: 'push',
+    value: function push(child, name) {
+      child.parent = this;
+      if (typeof name !== 'undefined') {
+        child.childName = name;
+      }
+      child.root = this.root || this;
+      child.options = child.options || this.options;
+      if (!this.children) {
+        this.children = [child];
+        this.nextAfterChildren = this.next || null;
+        this.next = child;
+      } else {
+        this.children[this.children.length - 1].next = child;
+        this.children.push(child);
+      }
+      child.next = this;
+      return this;
+    }
+  }]);
+  return Context;
+}();
+
+var isArray = typeof Array.isArray === 'function' ? Array.isArray : function (a) {
+  return a instanceof Array;
+};
+
+function cloneRegExp(re) {
+  var regexMatch = /^\/(.*)\/([gimyu]*)$/.exec(re.toString());
+  return new RegExp(regexMatch[1], regexMatch[2]);
+}
+
+function clone(arg) {
+  if ((typeof arg === 'undefined' ? 'undefined' : _typeof(arg)) !== 'object') {
+    return arg;
+  }
+  if (arg === null) {
+    return null;
+  }
+  if (isArray(arg)) {
+    return arg.map(clone);
+  }
+  if (arg instanceof Date) {
+    return new Date(arg.getTime());
+  }
+  if (arg instanceof RegExp) {
+    return cloneRegExp(arg);
+  }
+  var cloned = {};
+  for (var name in arg) {
+    if (Object.prototype.hasOwnProperty.call(arg, name)) {
+      cloned[name] = clone(arg[name]);
+    }
+  }
+  return cloned;
+}
+
+var DiffContext = function (_Context) {
+  inherits(DiffContext, _Context);
+
+  function DiffContext(left, right) {
+    classCallCheck(this, DiffContext);
+
+    var _this = possibleConstructorReturn(this, (DiffContext.__proto__ || Object.getPrototypeOf(DiffContext)).call(this));
+
+    _this.left = left;
+    _this.right = right;
+    _this.pipe = 'diff';
+    return _this;
+  }
+
+  createClass(DiffContext, [{
+    key: 'setResult',
+    value: function setResult(result) {
+      if (this.options.cloneDiffValues && (typeof result === 'undefined' ? 'undefined' : _typeof(result)) === 'object') {
+        var clone$$1 = typeof this.options.cloneDiffValues === 'function' ? this.options.cloneDiffValues : clone;
+        if (_typeof(result[0]) === 'object') {
+          result[0] = clone$$1(result[0]);
+        }
+        if (_typeof(result[1]) === 'object') {
+          result[1] = clone$$1(result[1]);
+        }
+      }
+      return Context.prototype.setResult.apply(this, arguments);
+    }
+  }]);
+  return DiffContext;
+}(Context);
+
+var PatchContext = function (_Context) {
+  inherits(PatchContext, _Context);
+
+  function PatchContext(left, delta) {
+    classCallCheck(this, PatchContext);
+
+    var _this = possibleConstructorReturn(this, (PatchContext.__proto__ || Object.getPrototypeOf(PatchContext)).call(this));
+
+    _this.left = left;
+    _this.delta = delta;
+    _this.pipe = 'patch';
+    return _this;
+  }
+
+  return PatchContext;
+}(Context);
+
+var ReverseContext = function (_Context) {
+  inherits(ReverseContext, _Context);
+
+  function ReverseContext(delta) {
+    classCallCheck(this, ReverseContext);
+
+    var _this = possibleConstructorReturn(this, (ReverseContext.__proto__ || Object.getPrototypeOf(ReverseContext)).call(this));
+
+    _this.delta = delta;
+    _this.pipe = 'reverse';
+    return _this;
+  }
+
+  return ReverseContext;
+}(Context);
+
+var isArray$1 = typeof Array.isArray === 'function' ? Array.isArray : function (a) {
+  return a instanceof Array;
+};
+
+var diffFilter = function trivialMatchesDiffFilter(context) {
+  if (context.left === context.right) {
+    context.setResult(undefined).exit();
+    return;
+  }
+  if (typeof context.left === 'undefined') {
+    if (typeof context.right === 'function') {
+      throw new Error('functions are not supported');
+    }
+    context.setResult([context.right]).exit();
+    return;
+  }
+  if (typeof context.right === 'undefined') {
+    context.setResult([context.left, 0, 0]).exit();
+    return;
+  }
+  if (typeof context.left === 'function' || typeof context.right === 'function') {
+    throw new Error('functions are not supported');
+  }
+  context.leftType = context.left === null ? 'null' : _typeof(context.left);
+  context.rightType = context.right === null ? 'null' : _typeof(context.right);
+  if (context.leftType !== context.rightType) {
+    context.setResult([context.left, context.right]).exit();
+    return;
+  }
+  if (context.leftType === 'boolean' || context.leftType === 'number') {
+    context.setResult([context.left, context.right]).exit();
+    return;
+  }
+  if (context.leftType === 'object') {
+    context.leftIsArray = isArray$1(context.left);
+  }
+  if (context.rightType === 'object') {
+    context.rightIsArray = isArray$1(context.right);
+  }
+  if (context.leftIsArray !== context.rightIsArray) {
+    context.setResult([context.left, context.right]).exit();
+    return;
+  }
+
+  if (context.left instanceof RegExp) {
+    if (context.right instanceof RegExp) {
+      context.setResult([context.left.toString(), context.right.toString()]).exit();
+    } else {
+      context.setResult([context.left, context.right]).exit();
+    }
+  }
+};
+diffFilter.filterName = 'trivial';
+
+var patchFilter = function trivialMatchesPatchFilter(context) {
+  if (typeof context.delta === 'undefined') {
+    context.setResult(context.left).exit();
+    return;
+  }
+  context.nested = !isArray$1(context.delta);
+  if (context.nested) {
+    return;
+  }
+  if (context.delta.length === 1) {
+    context.setResult(context.delta[0]).exit();
+    return;
+  }
+  if (context.delta.length === 2) {
+    if (context.left instanceof RegExp) {
+      var regexArgs = /^\/(.*)\/([gimyu]+)$/.exec(context.delta[1]);
+      if (regexArgs) {
+        context.setResult(new RegExp(regexArgs[1], regexArgs[2])).exit();
+        return;
+      }
+    }
+    context.setResult(context.delta[1]).exit();
+    return;
+  }
+  if (context.delta.length === 3 && context.delta[2] === 0) {
+    context.setResult(undefined).exit();
+  }
+};
+patchFilter.filterName = 'trivial';
+
+var reverseFilter = function trivialReferseFilter(context) {
+  if (typeof context.delta === 'undefined') {
+    context.setResult(context.delta).exit();
+    return;
+  }
+  context.nested = !isArray$1(context.delta);
+  if (context.nested) {
+    return;
+  }
+  if (context.delta.length === 1) {
+    context.setResult([context.delta[0], 0, 0]).exit();
+    return;
+  }
+  if (context.delta.length === 2) {
+    context.setResult([context.delta[1], context.delta[0]]).exit();
+    return;
+  }
+  if (context.delta.length === 3 && context.delta[2] === 0) {
+    context.setResult([context.delta[0]]).exit();
+  }
+};
+reverseFilter.filterName = 'trivial';
+
+function collectChildrenDiffFilter(context) {
+  if (!context || !context.children) {
+    return;
+  }
+  var length = context.children.length;
+  var child = void 0;
+  var result = context.result;
+  for (var index = 0; index < length; index++) {
+    child = context.children[index];
+    if (typeof child.result === 'undefined') {
+      continue;
+    }
+    result = result || {};
+    result[child.childName] = child.result;
+  }
+  if (result && context.leftIsArray) {
+    result._t = 'a';
+  }
+  context.setResult(result).exit();
+}
+collectChildrenDiffFilter.filterName = 'collectChildren';
+
+function objectsDiffFilter(context) {
+  if (context.leftIsArray || context.leftType !== 'object') {
+    return;
+  }
+
+  var name = void 0;
+  var child = void 0;
+  var propertyFilter = context.options.propertyFilter;
+  for (name in context.left) {
+    if (!Object.prototype.hasOwnProperty.call(context.left, name)) {
+      continue;
+    }
+    if (propertyFilter && !propertyFilter(name, context)) {
+      continue;
+    }
+    child = new DiffContext(context.left[name], context.right[name]);
+    context.push(child, name);
+  }
+  for (name in context.right) {
+    if (!Object.prototype.hasOwnProperty.call(context.right, name)) {
+      continue;
+    }
+    if (propertyFilter && !propertyFilter(name, context)) {
+      continue;
+    }
+    if (typeof context.left[name] === 'undefined') {
+      child = new DiffContext(undefined, context.right[name]);
+      context.push(child, name);
+    }
+  }
+
+  if (!context.children || context.children.length === 0) {
+    context.setResult(undefined).exit();
+    return;
+  }
+  context.exit();
+}
+objectsDiffFilter.filterName = 'objects';
+
+var patchFilter$1 = function nestedPatchFilter(context) {
+  if (!context.nested) {
+    return;
+  }
+  if (context.delta._t) {
+    return;
+  }
+  var name = void 0;
+  var child = void 0;
+  for (name in context.delta) {
+    child = new PatchContext(context.left[name], context.delta[name]);
+    context.push(child, name);
+  }
+  context.exit();
+};
+patchFilter$1.filterName = 'objects';
+
+var collectChildrenPatchFilter = function collectChildrenPatchFilter(context) {
+  if (!context || !context.children) {
+    return;
+  }
+  if (context.delta._t) {
+    return;
+  }
+  var length = context.children.length;
+  var child = void 0;
+  for (var index = 0; index < length; index++) {
+    child = context.children[index];
+    if (Object.prototype.hasOwnProperty.call(context.left, child.childName) && child.result === undefined) {
+      delete context.left[child.childName];
+    } else if (context.left[child.childName] !== child.result) {
+      context.left[child.childName] = child.result;
+    }
+  }
+  context.setResult(context.left).exit();
+};
+collectChildrenPatchFilter.filterName = 'collectChildren';
+
+var reverseFilter$1 = function nestedReverseFilter(context) {
+  if (!context.nested) {
+    return;
+  }
+  if (context.delta._t) {
+    return;
+  }
+  var name = void 0;
+  var child = void 0;
+  for (name in context.delta) {
+    child = new ReverseContext(context.delta[name]);
+    context.push(child, name);
+  }
+  context.exit();
+};
+reverseFilter$1.filterName = 'objects';
+
+function collectChildrenReverseFilter(context) {
+  if (!context || !context.children) {
+    return;
+  }
+  if (context.delta._t) {
+    return;
+  }
+  var length = context.children.length;
+  var child = void 0;
+  var delta = {};
+  for (var index = 0; index < length; index++) {
+    child = context.children[index];
+    if (delta[child.childName] !== child.result) {
+      delta[child.childName] = child.result;
+    }
+  }
+  context.setResult(delta).exit();
+}
+collectChildrenReverseFilter.filterName = 'collectChildren';
+
+/*
+
+LCS implementation that supports arrays or strings
+
+reference: http://en.wikipedia.org/wiki/Longest_common_subsequence_problem
+
+*/
+
+var defaultMatch = function defaultMatch(array1, array2, index1, index2) {
+  return array1[index1] === array2[index2];
+};
+
+var lengthMatrix = function lengthMatrix(array1, array2, match, context) {
+  var len1 = array1.length;
+  var len2 = array2.length;
+  var x = void 0,
+      y = void 0;
+
+  // initialize empty matrix of len1+1 x len2+1
+  var matrix = [len1 + 1];
+  for (x = 0; x < len1 + 1; x++) {
+    matrix[x] = [len2 + 1];
+    for (y = 0; y < len2 + 1; y++) {
+      matrix[x][y] = 0;
+    }
+  }
+  matrix.match = match;
+  // save sequence lengths for each coordinate
+  for (x = 1; x < len1 + 1; x++) {
+    for (y = 1; y < len2 + 1; y++) {
+      if (match(array1, array2, x - 1, y - 1, context)) {
+        matrix[x][y] = matrix[x - 1][y - 1] + 1;
+      } else {
+        matrix[x][y] = Math.max(matrix[x - 1][y], matrix[x][y - 1]);
+      }
+    }
+  }
+  return matrix;
+};
+
+var backtrack = function backtrack(matrix, array1, array2, index1, index2, context) {
+  if (index1 === 0 || index2 === 0) {
+    return {
+      sequence: [],
+      indices1: [],
+      indices2: []
+    };
+  }
+
+  if (matrix.match(array1, array2, index1 - 1, index2 - 1, context)) {
+    var subsequence = backtrack(matrix, array1, array2, index1 - 1, index2 - 1, context);
+    subsequence.sequence.push(array1[index1 - 1]);
+    subsequence.indices1.push(index1 - 1);
+    subsequence.indices2.push(index2 - 1);
+    return subsequence;
+  }
+
+  if (matrix[index1][index2 - 1] > matrix[index1 - 1][index2]) {
+    return backtrack(matrix, array1, array2, index1, index2 - 1, context);
+  } else {
+    return backtrack(matrix, array1, array2, index1 - 1, index2, context);
+  }
+};
+
+var get$1 = function get(array1, array2, match, context) {
+  var innerContext = context || {};
+  var matrix = lengthMatrix(array1, array2, match || defaultMatch, innerContext);
+  var result = backtrack(matrix, array1, array2, array1.length, array2.length, innerContext);
+  if (typeof array1 === 'string' && typeof array2 === 'string') {
+    result.sequence = result.sequence.join('');
+  }
+  return result;
+};
+
+var lcs = {
+  get: get$1
+};
+
+var ARRAY_MOVE = 3;
+
+var isArray$2 = typeof Array.isArray === 'function' ? Array.isArray : function (a) {
+  return a instanceof Array;
+};
+
+var arrayIndexOf = typeof Array.prototype.indexOf === 'function' ? function (array, item) {
+  return array.indexOf(item);
+} : function (array, item) {
+  var length = array.length;
+  for (var i = 0; i < length; i++) {
+    if (array[i] === item) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+function arraysHaveMatchByRef(array1, array2, len1, len2) {
+  for (var index1 = 0; index1 < len1; index1++) {
+    var val1 = array1[index1];
+    for (var index2 = 0; index2 < len2; index2++) {
+      var val2 = array2[index2];
+      if (index1 !== index2 && val1 === val2) {
+        return true;
+      }
+    }
+  }
+}
+
+function matchItems(array1, array2, index1, index2, context) {
+  var value1 = array1[index1];
+  var value2 = array2[index2];
+  if (value1 === value2) {
+    return true;
+  }
+  if ((typeof value1 === 'undefined' ? 'undefined' : _typeof(value1)) !== 'object' || (typeof value2 === 'undefined' ? 'undefined' : _typeof(value2)) !== 'object') {
+    return false;
+  }
+  var objectHash = context.objectHash;
+  if (!objectHash) {
+    // no way to match objects was provided, try match by position
+    return context.matchByPosition && index1 === index2;
+  }
+  var hash1 = void 0;
+  var hash2 = void 0;
+  if (typeof index1 === 'number') {
+    context.hashCache1 = context.hashCache1 || [];
+    hash1 = context.hashCache1[index1];
+    if (typeof hash1 === 'undefined') {
+      context.hashCache1[index1] = hash1 = objectHash(value1, index1);
+    }
+  } else {
+    hash1 = objectHash(value1);
+  }
+  if (typeof hash1 === 'undefined') {
+    return false;
+  }
+  if (typeof index2 === 'number') {
+    context.hashCache2 = context.hashCache2 || [];
+    hash2 = context.hashCache2[index2];
+    if (typeof hash2 === 'undefined') {
+      context.hashCache2[index2] = hash2 = objectHash(value2, index2);
+    }
+  } else {
+    hash2 = objectHash(value2);
+  }
+  if (typeof hash2 === 'undefined') {
+    return false;
+  }
+  return hash1 === hash2;
+}
+
+var diffFilter$1 = function arraysDiffFilter(context) {
+  if (!context.leftIsArray) {
+    return;
+  }
+
+  var matchContext = {
+    objectHash: context.options && context.options.objectHash,
+    matchByPosition: context.options && context.options.matchByPosition
+  };
+  var commonHead = 0;
+  var commonTail = 0;
+  var index = void 0;
+  var index1 = void 0;
+  var index2 = void 0;
+  var array1 = context.left;
+  var array2 = context.right;
+  var len1 = array1.length;
+  var len2 = array2.length;
+
+  var child = void 0;
+
+  if (len1 > 0 && len2 > 0 && !matchContext.objectHash && typeof matchContext.matchByPosition !== 'boolean') {
+    matchContext.matchByPosition = !arraysHaveMatchByRef(array1, array2, len1, len2);
+  }
+
+  // separate common head
+  while (commonHead < len1 && commonHead < len2 && matchItems(array1, array2, commonHead, commonHead, matchContext)) {
+    index = commonHead;
+    child = new DiffContext(context.left[index], context.right[index]);
+    context.push(child, index);
+    commonHead++;
+  }
+  // separate common tail
+  while (commonTail + commonHead < len1 && commonTail + commonHead < len2 && matchItems(array1, array2, len1 - 1 - commonTail, len2 - 1 - commonTail, matchContext)) {
+    index1 = len1 - 1 - commonTail;
+    index2 = len2 - 1 - commonTail;
+    child = new DiffContext(context.left[index1], context.right[index2]);
+    context.push(child, index2);
+    commonTail++;
+  }
+  var result = void 0;
+  if (commonHead + commonTail === len1) {
+    if (len1 === len2) {
+      // arrays are identical
+      context.setResult(undefined).exit();
+      return;
+    }
+    // trivial case, a block (1 or more consecutive items) was added
+    result = result || {
+      _t: 'a'
+    };
+    for (index = commonHead; index < len2 - commonTail; index++) {
+      result[index] = [array2[index]];
+    }
+    context.setResult(result).exit();
+    return;
+  }
+  if (commonHead + commonTail === len2) {
+    // trivial case, a block (1 or more consecutive items) was removed
+    result = result || {
+      _t: 'a'
+    };
+    for (index = commonHead; index < len1 - commonTail; index++) {
+      result['_' + index] = [array1[index], 0, 0];
+    }
+    context.setResult(result).exit();
+    return;
+  }
+  // reset hash cache
+  delete matchContext.hashCache1;
+  delete matchContext.hashCache2;
+
+  // diff is not trivial, find the LCS (Longest Common Subsequence)
+  var trimmed1 = array1.slice(commonHead, len1 - commonTail);
+  var trimmed2 = array2.slice(commonHead, len2 - commonTail);
+  var seq = lcs.get(trimmed1, trimmed2, matchItems, matchContext);
+  var removedItems = [];
+  result = result || {
+    _t: 'a'
+  };
+  for (index = commonHead; index < len1 - commonTail; index++) {
+    if (arrayIndexOf(seq.indices1, index - commonHead) < 0) {
+      // removed
+      result['_' + index] = [array1[index], 0, 0];
+      removedItems.push(index);
+    }
+  }
+
+  var detectMove = true;
+  if (context.options && context.options.arrays && context.options.arrays.detectMove === false) {
+    detectMove = false;
+  }
+  var includeValueOnMove = false;
+  if (context.options && context.options.arrays && context.options.arrays.includeValueOnMove) {
+    includeValueOnMove = true;
+  }
+
+  var removedItemsLength = removedItems.length;
+  for (index = commonHead; index < len2 - commonTail; index++) {
+    var indexOnArray2 = arrayIndexOf(seq.indices2, index - commonHead);
+    if (indexOnArray2 < 0) {
+      // added, try to match with a removed item and register as position move
+      var isMove = false;
+      if (detectMove && removedItemsLength > 0) {
+        for (var removeItemIndex1 = 0; removeItemIndex1 < removedItemsLength; removeItemIndex1++) {
+          index1 = removedItems[removeItemIndex1];
+          if (matchItems(trimmed1, trimmed2, index1 - commonHead, index - commonHead, matchContext)) {
+            // store position move as: [originalValue, newPosition, ARRAY_MOVE]
+            result['_' + index1].splice(1, 2, index, ARRAY_MOVE);
+            if (!includeValueOnMove) {
+              // don't include moved value on diff, to save bytes
+              result['_' + index1][0] = '';
+            }
+
+            index2 = index;
+            child = new DiffContext(context.left[index1], context.right[index2]);
+            context.push(child, index2);
+            removedItems.splice(removeItemIndex1, 1);
+            isMove = true;
+            break;
+          }
+        }
+      }
+      if (!isMove) {
+        // added
+        result[index] = [array2[index]];
+      }
+    } else {
+      // match, do inner diff
+      index1 = seq.indices1[indexOnArray2] + commonHead;
+      index2 = seq.indices2[indexOnArray2] + commonHead;
+      child = new DiffContext(context.left[index1], context.right[index2]);
+      context.push(child, index2);
+    }
+  }
+
+  context.setResult(result).exit();
+};
+diffFilter$1.filterName = 'arrays';
+
+var compare = {
+  numerically: function numerically(a, b) {
+    return a - b;
+  },
+  numericallyBy: function numericallyBy(name) {
+    return function (a, b) {
+      return a[name] - b[name];
+    };
+  }
+};
+
+var patchFilter$2 = function nestedPatchFilter(context) {
+  if (!context.nested) {
+    return;
+  }
+  if (context.delta._t !== 'a') {
+    return;
+  }
+  var index = void 0;
+  var index1 = void 0;
+
+  var delta = context.delta;
+  var array = context.left;
+
+  // first, separate removals, insertions and modifications
+  var toRemove = [];
+  var toInsert = [];
+  var toModify = [];
+  for (index in delta) {
+    if (index !== '_t') {
+      if (index[0] === '_') {
+        // removed item from original array
+        if (delta[index][2] === 0 || delta[index][2] === ARRAY_MOVE) {
+          toRemove.push(parseInt(index.slice(1), 10));
+        } else {
+          throw new Error('only removal or move can be applied at original array indices,' + (' invalid diff type: ' + delta[index][2]));
+        }
+      } else {
+        if (delta[index].length === 1) {
+          // added item at new array
+          toInsert.push({
+            index: parseInt(index, 10),
+            value: delta[index][0]
+          });
+        } else {
+          // modified item at new array
+          toModify.push({
+            index: parseInt(index, 10),
+            delta: delta[index]
+          });
+        }
+      }
+    }
+  }
+
+  // remove items, in reverse order to avoid sawing our own floor
+  toRemove = toRemove.sort(compare.numerically);
+  for (index = toRemove.length - 1; index >= 0; index--) {
+    index1 = toRemove[index];
+    var indexDiff = delta['_' + index1];
+    var removedValue = array.splice(index1, 1)[0];
+    if (indexDiff[2] === ARRAY_MOVE) {
+      // reinsert later
+      toInsert.push({
+        index: indexDiff[1],
+        value: removedValue
+      });
+    }
+  }
+
+  // insert items, in reverse order to avoid moving our own floor
+  toInsert = toInsert.sort(compare.numericallyBy('index'));
+  var toInsertLength = toInsert.length;
+  for (index = 0; index < toInsertLength; index++) {
+    var insertion = toInsert[index];
+    array.splice(insertion.index, 0, insertion.value);
+  }
+
+  // apply modifications
+  var toModifyLength = toModify.length;
+  var child = void 0;
+  if (toModifyLength > 0) {
+    for (index = 0; index < toModifyLength; index++) {
+      var modification = toModify[index];
+      child = new PatchContext(context.left[modification.index], modification.delta);
+      context.push(child, modification.index);
+    }
+  }
+
+  if (!context.children) {
+    context.setResult(context.left).exit();
+    return;
+  }
+  context.exit();
+};
+patchFilter$2.filterName = 'arrays';
+
+var collectChildrenPatchFilter$1 = function collectChildrenPatchFilter(context) {
+  if (!context || !context.children) {
+    return;
+  }
+  if (context.delta._t !== 'a') {
+    return;
+  }
+  var length = context.children.length;
+  var child = void 0;
+  for (var index = 0; index < length; index++) {
+    child = context.children[index];
+    context.left[child.childName] = child.result;
+  }
+  context.setResult(context.left).exit();
+};
+collectChildrenPatchFilter$1.filterName = 'arraysCollectChildren';
+
+var reverseFilter$2 = function arraysReverseFilter(context) {
+  if (!context.nested) {
+    if (context.delta[2] === ARRAY_MOVE) {
+      context.newName = '_' + context.delta[1];
+      context.setResult([context.delta[0], parseInt(context.childName.substr(1), 10), ARRAY_MOVE]).exit();
+    }
+    return;
+  }
+  if (context.delta._t !== 'a') {
+    return;
+  }
+  var name = void 0;
+  var child = void 0;
+  for (name in context.delta) {
+    if (name === '_t') {
+      continue;
+    }
+    child = new ReverseContext(context.delta[name]);
+    context.push(child, name);
+  }
+  context.exit();
+};
+reverseFilter$2.filterName = 'arrays';
+
+var reverseArrayDeltaIndex = function reverseArrayDeltaIndex(delta, index, itemDelta) {
+  if (typeof index === 'string' && index[0] === '_') {
+    return parseInt(index.substr(1), 10);
+  } else if (isArray$2(itemDelta) && itemDelta[2] === 0) {
+    return '_' + index;
+  }
+
+  var reverseIndex = +index;
+  for (var deltaIndex in delta) {
+    var deltaItem = delta[deltaIndex];
+    if (isArray$2(deltaItem)) {
+      if (deltaItem[2] === ARRAY_MOVE) {
+        var moveFromIndex = parseInt(deltaIndex.substr(1), 10);
+        var moveToIndex = deltaItem[1];
+        if (moveToIndex === +index) {
+          return moveFromIndex;
+        }
+        if (moveFromIndex <= reverseIndex && moveToIndex > reverseIndex) {
+          reverseIndex++;
+        } else if (moveFromIndex >= reverseIndex && moveToIndex < reverseIndex) {
+          reverseIndex--;
+        }
+      } else if (deltaItem[2] === 0) {
+        var deleteIndex = parseInt(deltaIndex.substr(1), 10);
+        if (deleteIndex <= reverseIndex) {
+          reverseIndex++;
+        }
+      } else if (deltaItem.length === 1 && deltaIndex <= reverseIndex) {
+        reverseIndex--;
+      }
+    }
+  }
+
+  return reverseIndex;
+};
+
+function collectChildrenReverseFilter$1(context) {
+  if (!context || !context.children) {
+    return;
+  }
+  if (context.delta._t !== 'a') {
+    return;
+  }
+  var length = context.children.length;
+  var child = void 0;
+  var delta = {
+    _t: 'a'
+  };
+
+  for (var index = 0; index < length; index++) {
+    child = context.children[index];
+    var name = child.newName;
+    if (typeof name === 'undefined') {
+      name = reverseArrayDeltaIndex(context.delta, child.childName, child.result);
+    }
+    if (delta[name] !== child.result) {
+      delta[name] = child.result;
+    }
+  }
+  context.setResult(delta).exit();
+}
+collectChildrenReverseFilter$1.filterName = 'arraysCollectChildren';
+
+var diffFilter$2 = function datesDiffFilter(context) {
+  if (context.left instanceof Date) {
+    if (context.right instanceof Date) {
+      if (context.left.getTime() !== context.right.getTime()) {
+        context.setResult([context.left, context.right]);
+      } else {
+        context.setResult(undefined);
+      }
+    } else {
+      context.setResult([context.left, context.right]);
+    }
+    context.exit();
+  } else if (context.right instanceof Date) {
+    context.setResult([context.left, context.right]).exit();
+  }
+};
+diffFilter$2.filterName = 'dates';
+
+/* global diff_match_patch */
+var TEXT_DIFF = 2;
+var DEFAULT_MIN_LENGTH = 60;
+var cachedDiffPatch = null;
+
+var jsondiffpatch_esm_getDiffMatchPatch = function getDiffMatchPatch(required) {
+  /* jshint camelcase: false */
+
+  if (!cachedDiffPatch) {
+    var instance = void 0;
+    /* eslint-disable camelcase, new-cap */
+    if (typeof diff_match_patch !== 'undefined') {
+      // already loaded, probably a browser
+      instance = typeof diff_match_patch === 'function' ? new diff_match_patch() : new diff_match_patch.diff_match_patch();
+    } else if (diff_match_patch_default.a) {
+      try {
+        instance = diff_match_patch_default.a && new diff_match_patch_default.a();
+      } catch (err) {
+        instance = null;
+      }
+    }
+    /* eslint-enable camelcase, new-cap */
+    if (!instance) {
+      if (!required) {
+        return null;
+      }
+      var error = new Error('text diff_match_patch library not found');
+      // eslint-disable-next-line camelcase
+      error.diff_match_patch_not_found = true;
+      throw error;
+    }
+    cachedDiffPatch = {
+      diff: function diff(txt1, txt2) {
+        return instance.patch_toText(instance.patch_make(txt1, txt2));
+      },
+      patch: function patch(txt1, _patch) {
+        var results = instance.patch_apply(instance.patch_fromText(_patch), txt1);
+        for (var i = 0; i < results[1].length; i++) {
+          if (!results[1][i]) {
+            var _error = new Error('text patch failed');
+            _error.textPatchFailed = true;
+          }
+        }
+        return results[0];
+      }
+    };
+  }
+  return cachedDiffPatch;
+};
+
+var diffFilter$3 = function textsDiffFilter(context) {
+  if (context.leftType !== 'string') {
+    return;
+  }
+  var minLength = context.options && context.options.textDiff && context.options.textDiff.minLength || DEFAULT_MIN_LENGTH;
+  if (context.left.length < minLength || context.right.length < minLength) {
+    context.setResult([context.left, context.right]).exit();
+    return;
+  }
+  // large text, try to use a text-diff algorithm
+  var diffMatchPatch = jsondiffpatch_esm_getDiffMatchPatch();
+  if (!diffMatchPatch) {
+    // diff-match-patch library not available,
+    // fallback to regular string replace
+    context.setResult([context.left, context.right]).exit();
+    return;
+  }
+  var diff = diffMatchPatch.diff;
+  context.setResult([diff(context.left, context.right), 0, TEXT_DIFF]).exit();
+};
+diffFilter$3.filterName = 'texts';
+
+var patchFilter$3 = function textsPatchFilter(context) {
+  if (context.nested) {
+    return;
+  }
+  if (context.delta[2] !== TEXT_DIFF) {
+    return;
+  }
+
+  // text-diff, use a text-patch algorithm
+  var patch = jsondiffpatch_esm_getDiffMatchPatch(true).patch;
+  context.setResult(patch(context.left, context.delta[0])).exit();
+};
+patchFilter$3.filterName = 'texts';
+
+var textDeltaReverse = function textDeltaReverse(delta) {
+  var i = void 0;
+  var l = void 0;
+  var lines = void 0;
+  var line = void 0;
+  var lineTmp = void 0;
+  var header = null;
+  var headerRegex = /^@@ +-(\d+),(\d+) +\+(\d+),(\d+) +@@$/;
+  var lineHeader = void 0;
+  lines = delta.split('\n');
+  for (i = 0, l = lines.length; i < l; i++) {
+    line = lines[i];
+    var lineStart = line.slice(0, 1);
+    if (lineStart === '@') {
+      header = headerRegex.exec(line);
+      lineHeader = i;
+
+      // fix header
+      lines[lineHeader] = '@@ -' + header[3] + ',' + header[4] + ' +' + header[1] + ',' + header[2] + ' @@';
+    } else if (lineStart === '+') {
+      lines[i] = '-' + lines[i].slice(1);
+      if (lines[i - 1].slice(0, 1) === '+') {
+        // swap lines to keep default order (-+)
+        lineTmp = lines[i];
+        lines[i] = lines[i - 1];
+        lines[i - 1] = lineTmp;
+      }
+    } else if (lineStart === '-') {
+      lines[i] = '+' + lines[i].slice(1);
+    }
+  }
+  return lines.join('\n');
+};
+
+var reverseFilter$3 = function textsReverseFilter(context) {
+  if (context.nested) {
+    return;
+  }
+  if (context.delta[2] !== TEXT_DIFF) {
+    return;
+  }
+
+  // text-diff, use a text-diff algorithm
+  context.setResult([textDeltaReverse(context.delta[0]), 0, TEXT_DIFF]).exit();
+};
+reverseFilter$3.filterName = 'texts';
+
+var DiffPatcher = function () {
+  function DiffPatcher(options) {
+    classCallCheck(this, DiffPatcher);
+
+    this.processor = new Processor(options);
+    this.processor.pipe(new Pipe('diff').append(collectChildrenDiffFilter, diffFilter, diffFilter$2, diffFilter$3, objectsDiffFilter, diffFilter$1).shouldHaveResult());
+    this.processor.pipe(new Pipe('patch').append(collectChildrenPatchFilter, collectChildrenPatchFilter$1, patchFilter, patchFilter$3, patchFilter$1, patchFilter$2).shouldHaveResult());
+    this.processor.pipe(new Pipe('reverse').append(collectChildrenReverseFilter, collectChildrenReverseFilter$1, reverseFilter, reverseFilter$3, reverseFilter$1, reverseFilter$2).shouldHaveResult());
+  }
+
+  createClass(DiffPatcher, [{
+    key: 'options',
+    value: function options() {
+      var _processor;
+
+      return (_processor = this.processor).options.apply(_processor, arguments);
+    }
+  }, {
+    key: 'diff',
+    value: function diff(left, right) {
+      return this.processor.process(new DiffContext(left, right));
+    }
+  }, {
+    key: 'patch',
+    value: function patch(left, delta) {
+      return this.processor.process(new PatchContext(left, delta));
+    }
+  }, {
+    key: 'reverse',
+    value: function reverse(delta) {
+      return this.processor.process(new ReverseContext(delta));
+    }
+  }, {
+    key: 'unpatch',
+    value: function unpatch(right, delta) {
+      return this.patch(right, this.reverse(delta));
+    }
+  }, {
+    key: 'clone',
+    value: function clone$$1(value) {
+      return clone(value);
+    }
+  }]);
+  return DiffPatcher;
+}();
+
+var isArray$3 = typeof Array.isArray === 'function' ? Array.isArray : function (a) {
+  return a instanceof Array;
+};
+
+var getObjectKeys = typeof Object.keys === 'function' ? function (obj) {
+  return Object.keys(obj);
+} : function (obj) {
+  var names = [];
+  for (var property in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, property)) {
+      names.push(property);
+    }
+  }
+  return names;
+};
+
+var trimUnderscore = function trimUnderscore(str) {
+  if (str.substr(0, 1) === '_') {
+    return str.slice(1);
+  }
+  return str;
+};
+
+var arrayKeyToSortNumber = function arrayKeyToSortNumber(key) {
+  if (key === '_t') {
+    return -1;
+  } else {
+    if (key.substr(0, 1) === '_') {
+      return parseInt(key.slice(1), 10);
+    } else {
+      return parseInt(key, 10) + 0.1;
+    }
+  }
+};
+
+var arrayKeyComparer = function arrayKeyComparer(key1, key2) {
+  return arrayKeyToSortNumber(key1) - arrayKeyToSortNumber(key2);
+};
+
+var BaseFormatter = function () {
+  function BaseFormatter() {
+    classCallCheck(this, BaseFormatter);
+  }
+
+  createClass(BaseFormatter, [{
+    key: 'format',
+    value: function format(delta, left) {
+      var context = {};
+      this.prepareContext(context);
+      this.recurse(context, delta, left);
+      return this.finalize(context);
+    }
+  }, {
+    key: 'prepareContext',
+    value: function prepareContext(context) {
+      context.buffer = [];
+      context.out = function () {
+        var _buffer;
+
+        (_buffer = this.buffer).push.apply(_buffer, arguments);
+      };
+    }
+  }, {
+    key: 'typeFormattterNotFound',
+    value: function typeFormattterNotFound(context, deltaType) {
+      throw new Error('cannot format delta type: ' + deltaType);
+    }
+  }, {
+    key: 'typeFormattterErrorFormatter',
+    value: function typeFormattterErrorFormatter(context, err) {
+      return err.toString();
+    }
+  }, {
+    key: 'finalize',
+    value: function finalize(_ref) {
+      var buffer = _ref.buffer;
+
+      if (isArray$3(buffer)) {
+        return buffer.join('');
+      }
+    }
+  }, {
+    key: 'recurse',
+    value: function recurse(context, delta, left, key, leftKey, movedFrom, isLast) {
+      var useMoveOriginHere = delta && movedFrom;
+      var leftValue = useMoveOriginHere ? movedFrom.value : left;
+
+      if (typeof delta === 'undefined' && typeof key === 'undefined') {
+        return undefined;
+      }
+
+      var type = this.getDeltaType(delta, movedFrom);
+      var nodeType = type === 'node' ? delta._t === 'a' ? 'array' : 'object' : '';
+
+      if (typeof key !== 'undefined') {
+        this.nodeBegin(context, key, leftKey, type, nodeType, isLast);
+      } else {
+        this.rootBegin(context, type, nodeType);
+      }
+
+      var typeFormattter = void 0;
+      try {
+        typeFormattter = this['format_' + type] || this.typeFormattterNotFound(context, type);
+        typeFormattter.call(this, context, delta, leftValue, key, leftKey, movedFrom);
+      } catch (err) {
+        this.typeFormattterErrorFormatter(context, err, delta, leftValue, key, leftKey, movedFrom);
+        if (typeof console !== 'undefined' && console.error) {
+          console.error(err.stack);
+        }
+      }
+
+      if (typeof key !== 'undefined') {
+        this.nodeEnd(context, key, leftKey, type, nodeType, isLast);
+      } else {
+        this.rootEnd(context, type, nodeType);
+      }
+    }
+  }, {
+    key: 'formatDeltaChildren',
+    value: function formatDeltaChildren(context, delta, left) {
+      var self = this;
+      this.forEachDeltaKey(delta, left, function (key, leftKey, movedFrom, isLast) {
+        self.recurse(context, delta[key], left ? left[leftKey] : undefined, key, leftKey, movedFrom, isLast);
+      });
+    }
+  }, {
+    key: 'forEachDeltaKey',
+    value: function forEachDeltaKey(delta, left, fn) {
+      var keys = getObjectKeys(delta);
+      var arrayKeys = delta._t === 'a';
+      var moveDestinations = {};
+      var name = void 0;
+      if (typeof left !== 'undefined') {
+        for (name in left) {
+          if (Object.prototype.hasOwnProperty.call(left, name)) {
+            if (typeof delta[name] === 'undefined' && (!arrayKeys || typeof delta['_' + name] === 'undefined')) {
+              keys.push(name);
+            }
+          }
+        }
+      }
+      // look for move destinations
+      for (name in delta) {
+        if (Object.prototype.hasOwnProperty.call(delta, name)) {
+          var value = delta[name];
+          if (isArray$3(value) && value[2] === 3) {
+            moveDestinations[value[1].toString()] = {
+              key: name,
+              value: left && left[parseInt(name.substr(1))]
+            };
+            if (this.includeMoveDestinations !== false) {
+              if (typeof left === 'undefined' && typeof delta[value[1]] === 'undefined') {
+                keys.push(value[1].toString());
+              }
+            }
+          }
+        }
+      }
+      if (arrayKeys) {
+        keys.sort(arrayKeyComparer);
+      } else {
+        keys.sort();
+      }
+      for (var index = 0, length = keys.length; index < length; index++) {
+        var key = keys[index];
+        if (arrayKeys && key === '_t') {
+          continue;
+        }
+        var leftKey = arrayKeys ? typeof key === 'number' ? key : parseInt(trimUnderscore(key), 10) : key;
+        var isLast = index === length - 1;
+        fn(key, leftKey, moveDestinations[leftKey], isLast);
+      }
+    }
+  }, {
+    key: 'getDeltaType',
+    value: function getDeltaType(delta, movedFrom) {
+      if (typeof delta === 'undefined') {
+        if (typeof movedFrom !== 'undefined') {
+          return 'movedestination';
+        }
+        return 'unchanged';
+      }
+      if (isArray$3(delta)) {
+        if (delta.length === 1) {
+          return 'added';
+        }
+        if (delta.length === 2) {
+          return 'modified';
+        }
+        if (delta.length === 3 && delta[2] === 0) {
+          return 'deleted';
+        }
+        if (delta.length === 3 && delta[2] === 2) {
+          return 'textdiff';
+        }
+        if (delta.length === 3 && delta[2] === 3) {
+          return 'moved';
+        }
+      } else if ((typeof delta === 'undefined' ? 'undefined' : _typeof(delta)) === 'object') {
+        return 'node';
+      }
+      return 'unknown';
+    }
+  }, {
+    key: 'parseTextDiff',
+    value: function parseTextDiff(value) {
+      var output = [];
+      var lines = value.split('\n@@ ');
+      for (var i = 0, l = lines.length; i < l; i++) {
+        var line = lines[i];
+        var lineOutput = {
+          pieces: []
+        };
+        var location = /^(?:@@ )?[-+]?(\d+),(\d+)/.exec(line).slice(1);
+        lineOutput.location = {
+          line: location[0],
+          chr: location[1]
+        };
+        var pieces = line.split('\n').slice(1);
+        for (var pieceIndex = 0, piecesLength = pieces.length; pieceIndex < piecesLength; pieceIndex++) {
+          var piece = pieces[pieceIndex];
+          if (!piece.length) {
+            continue;
+          }
+          var pieceOutput = {
+            type: 'context'
+          };
+          if (piece.substr(0, 1) === '+') {
+            pieceOutput.type = 'added';
+          } else if (piece.substr(0, 1) === '-') {
+            pieceOutput.type = 'deleted';
+          }
+          pieceOutput.text = piece.slice(1);
+          lineOutput.pieces.push(pieceOutput);
+        }
+        output.push(lineOutput);
+      }
+      return output;
+    }
+  }]);
+  return BaseFormatter;
+}();
+
+var base = Object.freeze({
+  default: BaseFormatter
+});
+
+var HtmlFormatter = function (_BaseFormatter) {
+  inherits(HtmlFormatter, _BaseFormatter);
+
+  function HtmlFormatter() {
+    classCallCheck(this, HtmlFormatter);
+    return possibleConstructorReturn(this, (HtmlFormatter.__proto__ || Object.getPrototypeOf(HtmlFormatter)).apply(this, arguments));
+  }
+
+  createClass(HtmlFormatter, [{
+    key: 'typeFormattterErrorFormatter',
+    value: function typeFormattterErrorFormatter(context, err) {
+      context.out('<pre class="jsondiffpatch-error">' + err + '</pre>');
+    }
+  }, {
+    key: 'formatValue',
+    value: function formatValue(context, value) {
+      context.out('<pre>' + htmlEscape(JSON.stringify(value, null, 2)) + '</pre>');
+    }
+  }, {
+    key: 'formatTextDiffString',
+    value: function formatTextDiffString(context, value) {
+      var lines = this.parseTextDiff(value);
+      context.out('<ul class="jsondiffpatch-textdiff">');
+      for (var i = 0, l = lines.length; i < l; i++) {
+        var line = lines[i];
+        context.out('<li><div class="jsondiffpatch-textdiff-location">' + ('<span class="jsondiffpatch-textdiff-line-number">' + line.location.line + '</span><span class="jsondiffpatch-textdiff-char">' + line.location.chr + '</span></div><div class="jsondiffpatch-textdiff-line">'));
+        var pieces = line.pieces;
+        for (var pieceIndex = 0, piecesLength = pieces.length; pieceIndex < piecesLength; pieceIndex++) {
+          /* global decodeURI */
+          var piece = pieces[pieceIndex];
+          context.out('<span class="jsondiffpatch-textdiff-' + piece.type + '">' + htmlEscape(decodeURI(piece.text)) + '</span>');
+        }
+        context.out('</div></li>');
+      }
+      context.out('</ul>');
+    }
+  }, {
+    key: 'rootBegin',
+    value: function rootBegin(context, type, nodeType) {
+      var nodeClass = 'jsondiffpatch-' + type + (nodeType ? ' jsondiffpatch-child-node-type-' + nodeType : '');
+      context.out('<div class="jsondiffpatch-delta ' + nodeClass + '">');
+    }
+  }, {
+    key: 'rootEnd',
+    value: function rootEnd(context) {
+      context.out('</div>' + (context.hasArrows ? '<script type="text/javascript">setTimeout(' + (adjustArrows.toString() + ',10);</script>') : ''));
+    }
+  }, {
+    key: 'nodeBegin',
+    value: function nodeBegin(context, key, leftKey, type, nodeType) {
+      var nodeClass = 'jsondiffpatch-' + type + (nodeType ? ' jsondiffpatch-child-node-type-' + nodeType : '');
+      context.out('<li class="' + nodeClass + '" data-key="' + leftKey + '">' + ('<div class="jsondiffpatch-property-name">' + leftKey + '</div>'));
+    }
+  }, {
+    key: 'nodeEnd',
+    value: function nodeEnd(context) {
+      context.out('</li>');
+    }
+
+    /* jshint camelcase: false */
+    /* eslint-disable camelcase */
+
+  }, {
+    key: 'format_unchanged',
+    value: function format_unchanged(context, delta, left) {
+      if (typeof left === 'undefined') {
+        return;
+      }
+      context.out('<div class="jsondiffpatch-value">');
+      this.formatValue(context, left);
+      context.out('</div>');
+    }
+  }, {
+    key: 'format_movedestination',
+    value: function format_movedestination(context, delta, left) {
+      if (typeof left === 'undefined') {
+        return;
+      }
+      context.out('<div class="jsondiffpatch-value">');
+      this.formatValue(context, left);
+      context.out('</div>');
+    }
+  }, {
+    key: 'format_node',
+    value: function format_node(context, delta, left) {
+      // recurse
+      var nodeType = delta._t === 'a' ? 'array' : 'object';
+      context.out('<ul class="jsondiffpatch-node jsondiffpatch-node-type-' + nodeType + '">');
+      this.formatDeltaChildren(context, delta, left);
+      context.out('</ul>');
+    }
+  }, {
+    key: 'format_added',
+    value: function format_added(context, delta) {
+      context.out('<div class="jsondiffpatch-value">');
+      this.formatValue(context, delta[0]);
+      context.out('</div>');
+    }
+  }, {
+    key: 'format_modified',
+    value: function format_modified(context, delta) {
+      context.out('<div class="jsondiffpatch-value jsondiffpatch-left-value">');
+      this.formatValue(context, delta[0]);
+      context.out('</div>' + '<div class="jsondiffpatch-value jsondiffpatch-right-value">');
+      this.formatValue(context, delta[1]);
+      context.out('</div>');
+    }
+  }, {
+    key: 'format_deleted',
+    value: function format_deleted(context, delta) {
+      context.out('<div class="jsondiffpatch-value">');
+      this.formatValue(context, delta[0]);
+      context.out('</div>');
+    }
+  }, {
+    key: 'format_moved',
+    value: function format_moved(context, delta) {
+      context.out('<div class="jsondiffpatch-value">');
+      this.formatValue(context, delta[0]);
+      context.out('</div><div class="jsondiffpatch-moved-destination">' + delta[1] + '</div>');
+
+      // draw an SVG arrow from here to move destination
+      context.out(
+      /* jshint multistr: true */
+      '<div class="jsondiffpatch-arrow" ' + 'style="position: relative; left: -34px;">\n          <svg width="30" height="60" ' + 'style="position: absolute; display: none;">\n          <defs>\n              <marker id="markerArrow" markerWidth="8" markerHeight="8"\n                 refx="2" refy="4"\n                     orient="auto" markerUnits="userSpaceOnUse">\n                  <path d="M1,1 L1,7 L7,4 L1,1" style="fill: #339;" />\n              </marker>\n          </defs>\n          <path d="M30,0 Q-10,25 26,50"\n            style="stroke: #88f; stroke-width: 2px; fill: none; ' + 'stroke-opacity: 0.5; marker-end: url(#markerArrow);"\n          ></path>\n          </svg>\n      </div>');
+      context.hasArrows = true;
+    }
+  }, {
+    key: 'format_textdiff',
+    value: function format_textdiff(context, delta) {
+      context.out('<div class="jsondiffpatch-value">');
+      this.formatTextDiffString(context, delta[0]);
+      context.out('</div>');
+    }
+  }]);
+  return HtmlFormatter;
+}(BaseFormatter);
+
+function htmlEscape(text) {
+  var html = text;
+  var replacements = [[/&/g, '&amp;'], [/</g, '&lt;'], [/>/g, '&gt;'], [/'/g, '&apos;'], [/"/g, '&quot;']];
+  for (var i = 0; i < replacements.length; i++) {
+    html = html.replace(replacements[i][0], replacements[i][1]);
+  }
+  return html;
+}
+
+var adjustArrows = function jsondiffpatchHtmlFormatterAdjustArrows(nodeArg) {
+  var node = nodeArg || document;
+  var getElementText = function getElementText(_ref) {
+    var textContent = _ref.textContent,
+        innerText = _ref.innerText;
+    return textContent || innerText;
+  };
+  var eachByQuery = function eachByQuery(el, query, fn) {
+    var elems = el.querySelectorAll(query);
+    for (var i = 0, l = elems.length; i < l; i++) {
+      fn(elems[i]);
+    }
+  };
+  var eachChildren = function eachChildren(_ref2, fn) {
+    var children = _ref2.children;
+
+    for (var i = 0, l = children.length; i < l; i++) {
+      fn(children[i], i);
+    }
+  };
+  eachByQuery(node, '.jsondiffpatch-arrow', function (_ref3) {
+    var parentNode = _ref3.parentNode,
+        children = _ref3.children,
+        style = _ref3.style;
+
+    var arrowParent = parentNode;
+    var svg = children[0];
+    var path = svg.children[1];
+    svg.style.display = 'none';
+    var destination = getElementText(arrowParent.querySelector('.jsondiffpatch-moved-destination'));
+    var container = arrowParent.parentNode;
+    var destinationElem = void 0;
+    eachChildren(container, function (child) {
+      if (child.getAttribute('data-key') === destination) {
+        destinationElem = child;
+      }
+    });
+    if (!destinationElem) {
+      return;
+    }
+    try {
+      var distance = destinationElem.offsetTop - arrowParent.offsetTop;
+      svg.setAttribute('height', Math.abs(distance) + 6);
+      style.top = -8 + (distance > 0 ? 0 : distance) + 'px';
+      var curve = distance > 0 ? 'M30,0 Q-10,' + Math.round(distance / 2) + ' 26,' + (distance - 4) : 'M30,' + -distance + ' Q-10,' + Math.round(-distance / 2) + ' 26,4';
+      path.setAttribute('d', curve);
+      svg.style.display = '';
+    } catch (err) {}
+  });
+};
+
+/* jshint camelcase: true */
+/* eslint-enable camelcase */
+
+var showUnchanged = function showUnchanged(show, node, delay) {
+  var el = node || document.body;
+  var prefix = 'jsondiffpatch-unchanged-';
+  var classes = {
+    showing: prefix + 'showing',
+    hiding: prefix + 'hiding',
+    visible: prefix + 'visible',
+    hidden: prefix + 'hidden'
+  };
+  var list = el.classList;
+  if (!list) {
+    return;
+  }
+  if (!delay) {
+    list.remove(classes.showing);
+    list.remove(classes.hiding);
+    list.remove(classes.visible);
+    list.remove(classes.hidden);
+    if (show === false) {
+      list.add(classes.hidden);
+    }
+    return;
+  }
+  if (show === false) {
+    list.remove(classes.showing);
+    list.add(classes.visible);
+    setTimeout(function () {
+      list.add(classes.hiding);
+    }, 10);
+  } else {
+    list.remove(classes.hiding);
+    list.add(classes.showing);
+    list.remove(classes.hidden);
+  }
+  var intervalId = setInterval(function () {
+    adjustArrows(el);
+  }, 100);
+  setTimeout(function () {
+    list.remove(classes.showing);
+    list.remove(classes.hiding);
+    if (show === false) {
+      list.add(classes.hidden);
+      list.remove(classes.visible);
+    } else {
+      list.add(classes.visible);
+      list.remove(classes.hidden);
+    }
+    setTimeout(function () {
+      list.remove(classes.visible);
+      clearInterval(intervalId);
+    }, delay + 400);
+  }, delay);
+};
+
+var hideUnchanged = function hideUnchanged(node, delay) {
+  return showUnchanged(false, node, delay);
+};
+
+var defaultInstance = void 0;
+
+function format(delta, left) {
+  if (!defaultInstance) {
+    defaultInstance = new HtmlFormatter();
+  }
+  return defaultInstance.format(delta, left);
+}
+
+var html = Object.freeze({
+  showUnchanged: showUnchanged,
+  hideUnchanged: hideUnchanged,
+  default: HtmlFormatter,
+  format: format
+});
+
+var AnnotatedFormatter = function (_BaseFormatter) {
+  inherits(AnnotatedFormatter, _BaseFormatter);
+
+  function AnnotatedFormatter() {
+    classCallCheck(this, AnnotatedFormatter);
+
+    var _this = possibleConstructorReturn(this, (AnnotatedFormatter.__proto__ || Object.getPrototypeOf(AnnotatedFormatter)).call(this));
+
+    _this.includeMoveDestinations = false;
+    return _this;
+  }
+
+  createClass(AnnotatedFormatter, [{
+    key: 'prepareContext',
+    value: function prepareContext(context) {
+      get(AnnotatedFormatter.prototype.__proto__ || Object.getPrototypeOf(AnnotatedFormatter.prototype), 'prepareContext', this).call(this, context);
+      context.indent = function (levels) {
+        this.indentLevel = (this.indentLevel || 0) + (typeof levels === 'undefined' ? 1 : levels);
+        this.indentPad = new Array(this.indentLevel + 1).join('&nbsp;&nbsp;');
+      };
+      context.row = function (json, htmlNote) {
+        context.out('<tr><td style="white-space: nowrap;">' + '<pre class="jsondiffpatch-annotated-indent"' + ' style="display: inline-block">');
+        context.out(context.indentPad);
+        context.out('</pre><pre style="display: inline-block">');
+        context.out(json);
+        context.out('</pre></td><td class="jsondiffpatch-delta-note"><div>');
+        context.out(htmlNote);
+        context.out('</div></td></tr>');
+      };
+    }
+  }, {
+    key: 'typeFormattterErrorFormatter',
+    value: function typeFormattterErrorFormatter(context, err) {
+      context.row('', '<pre class="jsondiffpatch-error">' + err + '</pre>');
+    }
+  }, {
+    key: 'formatTextDiffString',
+    value: function formatTextDiffString(context, value) {
+      var lines = this.parseTextDiff(value);
+      context.out('<ul class="jsondiffpatch-textdiff">');
+      for (var i = 0, l = lines.length; i < l; i++) {
+        var line = lines[i];
+        context.out('<li><div class="jsondiffpatch-textdiff-location">' + ('<span class="jsondiffpatch-textdiff-line-number">' + line.location.line + '</span><span class="jsondiffpatch-textdiff-char">' + line.location.chr + '</span></div><div class="jsondiffpatch-textdiff-line">'));
+        var pieces = line.pieces;
+        for (var pieceIndex = 0, piecesLength = pieces.length; pieceIndex < piecesLength; pieceIndex++) {
+          var piece = pieces[pieceIndex];
+          context.out('<span class="jsondiffpatch-textdiff-' + piece.type + '">' + piece.text + '</span>');
+        }
+        context.out('</div></li>');
+      }
+      context.out('</ul>');
+    }
+  }, {
+    key: 'rootBegin',
+    value: function rootBegin(context, type, nodeType) {
+      context.out('<table class="jsondiffpatch-annotated-delta">');
+      if (type === 'node') {
+        context.row('{');
+        context.indent();
+      }
+      if (nodeType === 'array') {
+        context.row('"_t": "a",', 'Array delta (member names indicate array indices)');
+      }
+    }
+  }, {
+    key: 'rootEnd',
+    value: function rootEnd(context, type) {
+      if (type === 'node') {
+        context.indent(-1);
+        context.row('}');
+      }
+      context.out('</table>');
+    }
+  }, {
+    key: 'nodeBegin',
+    value: function nodeBegin(context, key, leftKey, type, nodeType) {
+      context.row('&quot;' + key + '&quot;: {');
+      if (type === 'node') {
+        context.indent();
+      }
+      if (nodeType === 'array') {
+        context.row('"_t": "a",', 'Array delta (member names indicate array indices)');
+      }
+    }
+  }, {
+    key: 'nodeEnd',
+    value: function nodeEnd(context, key, leftKey, type, nodeType, isLast) {
+      if (type === 'node') {
+        context.indent(-1);
+      }
+      context.row('}' + (isLast ? '' : ','));
+    }
+
+    /* jshint camelcase: false */
+
+    /* eslint-disable camelcase */
+
+  }, {
+    key: 'format_unchanged',
+    value: function format_unchanged() {}
+  }, {
+    key: 'format_movedestination',
+    value: function format_movedestination() {}
+  }, {
+    key: 'format_node',
+    value: function format_node(context, delta, left) {
+      // recurse
+      this.formatDeltaChildren(context, delta, left);
+    }
+  }]);
+  return AnnotatedFormatter;
+}(BaseFormatter);
+
+/* eslint-enable camelcase */
+
+var wrapPropertyName = function wrapPropertyName(name) {
+  return '<pre style="display:inline-block">&quot;' + name + '&quot;</pre>';
+};
+
+var deltaAnnotations = {
+  added: function added(delta, left, key, leftKey) {
+    var formatLegend = ' <pre>([newValue])</pre>';
+    if (typeof leftKey === 'undefined') {
+      return 'new value' + formatLegend;
+    }
+    if (typeof leftKey === 'number') {
+      return 'insert at index ' + leftKey + formatLegend;
+    }
+    return 'add property ' + wrapPropertyName(leftKey) + formatLegend;
+  },
+  modified: function modified(delta, left, key, leftKey) {
+    var formatLegend = ' <pre>([previousValue, newValue])</pre>';
+    if (typeof leftKey === 'undefined') {
+      return 'modify value' + formatLegend;
+    }
+    if (typeof leftKey === 'number') {
+      return 'modify at index ' + leftKey + formatLegend;
+    }
+    return 'modify property ' + wrapPropertyName(leftKey) + formatLegend;
+  },
+  deleted: function deleted(delta, left, key, leftKey) {
+    var formatLegend = ' <pre>([previousValue, 0, 0])</pre>';
+    if (typeof leftKey === 'undefined') {
+      return 'delete value' + formatLegend;
+    }
+    if (typeof leftKey === 'number') {
+      return 'remove index ' + leftKey + formatLegend;
+    }
+    return 'delete property ' + wrapPropertyName(leftKey) + formatLegend;
+  },
+  moved: function moved(delta, left, key, leftKey) {
+    return 'move from <span title="(position to remove at original state)">' + ('index ' + leftKey + '</span> to <span title="(position to insert at final') + (' state)">index ' + delta[1] + '</span>');
+  },
+  textdiff: function textdiff(delta, left, key, leftKey) {
+    var location = typeof leftKey === 'undefined' ? '' : typeof leftKey === 'number' ? ' at index ' + leftKey : ' at property ' + wrapPropertyName(leftKey);
+    return 'text diff' + location + ', format is <a href="https://code.google.com/' + 'p/google-diff-match-patch/wiki/Unidiff">a variation of Unidiff</a>';
+  }
+};
+
+var formatAnyChange = function formatAnyChange(context, delta) {
+  var deltaType = this.getDeltaType(delta);
+  var annotator = deltaAnnotations[deltaType];
+  var htmlNote = annotator && annotator.apply(annotator, Array.prototype.slice.call(arguments, 1));
+  var json = JSON.stringify(delta, null, 2);
+  if (deltaType === 'textdiff') {
+    // split text diffs lines
+    json = json.split('\\n').join('\\n"+\n   "');
+  }
+  context.indent();
+  context.row(json, htmlNote);
+  context.indent(-1);
+};
+
+/* eslint-disable camelcase */
+AnnotatedFormatter.prototype.format_added = formatAnyChange;
+AnnotatedFormatter.prototype.format_modified = formatAnyChange;
+AnnotatedFormatter.prototype.format_deleted = formatAnyChange;
+AnnotatedFormatter.prototype.format_moved = formatAnyChange;
+AnnotatedFormatter.prototype.format_textdiff = formatAnyChange;
+var defaultInstance$1 = void 0;
+
+function format$1(delta, left) {
+  if (!defaultInstance$1) {
+    defaultInstance$1 = new AnnotatedFormatter();
+  }
+  return defaultInstance$1.format(delta, left);
+}
+
+var annotated = Object.freeze({
+  default: AnnotatedFormatter,
+  format: format$1
+});
+
+var OPERATIONS = {
+  add: 'add',
+  remove: 'remove',
+  replace: 'replace',
+  move: 'move'
+};
+
+var JSONFormatter = function (_BaseFormatter) {
+  inherits(JSONFormatter, _BaseFormatter);
+
+  function JSONFormatter() {
+    classCallCheck(this, JSONFormatter);
+
+    var _this = possibleConstructorReturn(this, (JSONFormatter.__proto__ || Object.getPrototypeOf(JSONFormatter)).call(this));
+
+    _this.includeMoveDestinations = true;
+    return _this;
+  }
+
+  createClass(JSONFormatter, [{
+    key: 'prepareContext',
+    value: function prepareContext(context) {
+      get(JSONFormatter.prototype.__proto__ || Object.getPrototypeOf(JSONFormatter.prototype), 'prepareContext', this).call(this, context);
+      context.result = [];
+      context.path = [];
+      context.pushCurrentOp = function (obj) {
+        var op = obj.op,
+            value = obj.value;
+
+        var val = {
+          op: op,
+          path: this.currentPath()
+        };
+        if (typeof value !== 'undefined') {
+          val.value = value;
+        }
+        this.result.push(val);
+      };
+
+      context.pushMoveOp = function (to) {
+        var from = this.currentPath();
+        this.result.push({
+          op: OPERATIONS.move,
+          from: from,
+          path: this.toPath(to)
+        });
+      };
+
+      context.currentPath = function () {
+        return '/' + this.path.join('/');
+      };
+
+      context.toPath = function (toPath) {
+        var to = this.path.slice();
+        to[to.length - 1] = toPath;
+        return '/' + to.join('/');
+      };
+    }
+  }, {
+    key: 'typeFormattterErrorFormatter',
+    value: function typeFormattterErrorFormatter(context, err) {
+      context.out('[ERROR] ' + err);
+    }
+  }, {
+    key: 'rootBegin',
+    value: function rootBegin() {}
+  }, {
+    key: 'rootEnd',
+    value: function rootEnd() {}
+  }, {
+    key: 'nodeBegin',
+    value: function nodeBegin(_ref, key, leftKey) {
+      var path = _ref.path;
+
+      path.push(leftKey);
+    }
+  }, {
+    key: 'nodeEnd',
+    value: function nodeEnd(_ref2) {
+      var path = _ref2.path;
+
+      path.pop();
+    }
+
+    /* jshint camelcase: false */
+    /* eslint-disable camelcase */
+
+  }, {
+    key: 'format_unchanged',
+    value: function format_unchanged() {}
+  }, {
+    key: 'format_movedestination',
+    value: function format_movedestination() {}
+  }, {
+    key: 'format_node',
+    value: function format_node(context, delta, left) {
+      this.formatDeltaChildren(context, delta, left);
+    }
+  }, {
+    key: 'format_added',
+    value: function format_added(context, delta) {
+      context.pushCurrentOp({ op: OPERATIONS.add, value: delta[0] });
+    }
+  }, {
+    key: 'format_modified',
+    value: function format_modified(context, delta) {
+      context.pushCurrentOp({ op: OPERATIONS.replace, value: delta[1] });
+    }
+  }, {
+    key: 'format_deleted',
+    value: function format_deleted(context) {
+      context.pushCurrentOp({ op: OPERATIONS.remove });
+    }
+  }, {
+    key: 'format_moved',
+    value: function format_moved(context, delta) {
+      var to = delta[1];
+      context.pushMoveOp(to);
+    }
+  }, {
+    key: 'format_textdiff',
+    value: function format_textdiff() {
+      throw new Error('Not implemented');
+    }
+  }, {
+    key: 'format',
+    value: function format(delta, left) {
+      var context = {};
+      this.prepareContext(context);
+      this.recurse(context, delta, left);
+      return context.result;
+    }
+  }]);
+  return JSONFormatter;
+}(BaseFormatter);
+
+var last = function last(arr) {
+  return arr[arr.length - 1];
+};
+
+var sortBy = function sortBy(arr, pred) {
+  arr.sort(pred);
+  return arr;
+};
+
+var compareByIndexDesc = function compareByIndexDesc(indexA, indexB) {
+  var lastA = parseInt(indexA, 10);
+  var lastB = parseInt(indexB, 10);
+  if (!(isNaN(lastA) || isNaN(lastB))) {
+    return lastB - lastA;
+  } else {
+    return 0;
+  }
+};
+
+var opsByDescendingOrder = function opsByDescendingOrder(removeOps) {
+  return sortBy(removeOps, function (a, b) {
+    var splitA = a.path.split('/');
+    var splitB = b.path.split('/');
+    if (splitA.length !== splitB.length) {
+      return splitA.length - splitB.length;
+    } else {
+      return compareByIndexDesc(last(splitA), last(splitB));
+    }
+  });
+};
+
+var partitionOps = function partitionOps(arr, fns) {
+  var initArr = Array(fns.length + 1).fill().map(function () {
+    return [];
+  });
+  return arr.map(function (item) {
+    var position = fns.map(function (fn) {
+      return fn(item);
+    }).indexOf(true);
+    if (position < 0) {
+      position = fns.length;
+    }
+    return { item: item, position: position };
+  }).reduce(function (acc, item) {
+    acc[item.position].push(item.item);
+    return acc;
+  }, initArr);
+};
+var isMoveOp = function isMoveOp(_ref3) {
+  var op = _ref3.op;
+  return op === 'move';
+};
+var isRemoveOp = function isRemoveOp(_ref4) {
+  var op = _ref4.op;
+  return op === 'remove';
+};
+
+var reorderOps = function reorderOps(diff) {
+  var _partitionOps = partitionOps(diff, [isMoveOp, isRemoveOp]),
+      _partitionOps2 = slicedToArray(_partitionOps, 3),
+      moveOps = _partitionOps2[0],
+      removedOps = _partitionOps2[1],
+      restOps = _partitionOps2[2];
+
+  var removeOpsReverse = opsByDescendingOrder(removedOps);
+  return [].concat(toConsumableArray(removeOpsReverse), toConsumableArray(moveOps), toConsumableArray(restOps));
+};
+
+var defaultInstance$2 = void 0;
+
+var format$2 = function format(delta, left) {
+  if (!defaultInstance$2) {
+    defaultInstance$2 = new JSONFormatter();
+  }
+  return reorderOps(defaultInstance$2.format(delta, left));
+};
+
+var log = function log(delta, left) {
+  console.log(format$2(delta, left));
+};
+
+var jsonpatch = Object.freeze({
+  default: JSONFormatter,
+  partitionOps: partitionOps,
+  format: format$2,
+  log: log
+});
+
+function chalkColor(name) {
+  return chalk_default.a && chalk_default.a[name] || function () {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return args;
+  };
+}
+
+var colors = {
+  added: chalkColor('green'),
+  deleted: chalkColor('red'),
+  movedestination: chalkColor('gray'),
+  moved: chalkColor('yellow'),
+  unchanged: chalkColor('gray'),
+  error: chalkColor('white.bgRed'),
+  textDiffLine: chalkColor('gray')
+};
+
+var ConsoleFormatter = function (_BaseFormatter) {
+  inherits(ConsoleFormatter, _BaseFormatter);
+
+  function ConsoleFormatter() {
+    classCallCheck(this, ConsoleFormatter);
+
+    var _this = possibleConstructorReturn(this, (ConsoleFormatter.__proto__ || Object.getPrototypeOf(ConsoleFormatter)).call(this));
+
+    _this.includeMoveDestinations = false;
+    return _this;
+  }
+
+  createClass(ConsoleFormatter, [{
+    key: 'prepareContext',
+    value: function prepareContext(context) {
+      get(ConsoleFormatter.prototype.__proto__ || Object.getPrototypeOf(ConsoleFormatter.prototype), 'prepareContext', this).call(this, context);
+      context.indent = function (levels) {
+        this.indentLevel = (this.indentLevel || 0) + (typeof levels === 'undefined' ? 1 : levels);
+        this.indentPad = new Array(this.indentLevel + 1).join('  ');
+        this.outLine();
+      };
+      context.outLine = function () {
+        this.buffer.push('\n' + (this.indentPad || ''));
+      };
+      context.out = function () {
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          args[_key2] = arguments[_key2];
+        }
+
+        for (var i = 0, l = args.length; i < l; i++) {
+          var lines = args[i].split('\n');
+          var text = lines.join('\n' + (this.indentPad || ''));
+          if (this.color && this.color[0]) {
+            text = this.color[0](text);
+          }
+          this.buffer.push(text);
+        }
+      };
+      context.pushColor = function (color) {
+        this.color = this.color || [];
+        this.color.unshift(color);
+      };
+      context.popColor = function () {
+        this.color = this.color || [];
+        this.color.shift();
+      };
+    }
+  }, {
+    key: 'typeFormattterErrorFormatter',
+    value: function typeFormattterErrorFormatter(context, err) {
+      context.pushColor(colors.error);
+      context.out('[ERROR]' + err);
+      context.popColor();
+    }
+  }, {
+    key: 'formatValue',
+    value: function formatValue(context, value) {
+      context.out(JSON.stringify(value, null, 2));
+    }
+  }, {
+    key: 'formatTextDiffString',
+    value: function formatTextDiffString(context, value) {
+      var lines = this.parseTextDiff(value);
+      context.indent();
+      for (var i = 0, l = lines.length; i < l; i++) {
+        var line = lines[i];
+        context.pushColor(colors.textDiffLine);
+        context.out(line.location.line + ',' + line.location.chr + ' ');
+        context.popColor();
+        var pieces = line.pieces;
+        for (var pieceIndex = 0, piecesLength = pieces.length; pieceIndex < piecesLength; pieceIndex++) {
+          var piece = pieces[pieceIndex];
+          context.pushColor(colors[piece.type]);
+          context.out(piece.text);
+          context.popColor();
+        }
+        if (i < l - 1) {
+          context.outLine();
+        }
+      }
+      context.indent(-1);
+    }
+  }, {
+    key: 'rootBegin',
+    value: function rootBegin(context, type, nodeType) {
+      context.pushColor(colors[type]);
+      if (type === 'node') {
+        context.out(nodeType === 'array' ? '[' : '{');
+        context.indent();
+      }
+    }
+  }, {
+    key: 'rootEnd',
+    value: function rootEnd(context, type, nodeType) {
+      if (type === 'node') {
+        context.indent(-1);
+        context.out(nodeType === 'array' ? ']' : '}');
+      }
+      context.popColor();
+    }
+  }, {
+    key: 'nodeBegin',
+    value: function nodeBegin(context, key, leftKey, type, nodeType) {
+      context.pushColor(colors[type]);
+      context.out(leftKey + ': ');
+      if (type === 'node') {
+        context.out(nodeType === 'array' ? '[' : '{');
+        context.indent();
+      }
+    }
+  }, {
+    key: 'nodeEnd',
+    value: function nodeEnd(context, key, leftKey, type, nodeType, isLast) {
+      if (type === 'node') {
+        context.indent(-1);
+        context.out(nodeType === 'array' ? ']' : '}' + (isLast ? '' : ','));
+      }
+      if (!isLast) {
+        context.outLine();
+      }
+      context.popColor();
+    }
+
+    /* jshint camelcase: false */
+    /* eslint-disable camelcase */
+
+  }, {
+    key: 'format_unchanged',
+    value: function format_unchanged(context, delta, left) {
+      if (typeof left === 'undefined') {
+        return;
+      }
+      this.formatValue(context, left);
+    }
+  }, {
+    key: 'format_movedestination',
+    value: function format_movedestination(context, delta, left) {
+      if (typeof left === 'undefined') {
+        return;
+      }
+      this.formatValue(context, left);
+    }
+  }, {
+    key: 'format_node',
+    value: function format_node(context, delta, left) {
+      // recurse
+      this.formatDeltaChildren(context, delta, left);
+    }
+  }, {
+    key: 'format_added',
+    value: function format_added(context, delta) {
+      this.formatValue(context, delta[0]);
+    }
+  }, {
+    key: 'format_modified',
+    value: function format_modified(context, delta) {
+      context.pushColor(colors.deleted);
+      this.formatValue(context, delta[0]);
+      context.popColor();
+      context.out(' => ');
+      context.pushColor(colors.added);
+      this.formatValue(context, delta[1]);
+      context.popColor();
+    }
+  }, {
+    key: 'format_deleted',
+    value: function format_deleted(context, delta) {
+      this.formatValue(context, delta[0]);
+    }
+  }, {
+    key: 'format_moved',
+    value: function format_moved(context, delta) {
+      context.out('==> ' + delta[1]);
+    }
+  }, {
+    key: 'format_textdiff',
+    value: function format_textdiff(context, delta) {
+      this.formatTextDiffString(context, delta[0]);
+    }
+  }]);
+  return ConsoleFormatter;
+}(BaseFormatter);
+
+var defaultInstance$3 = void 0;
+
+var format$3 = function format(delta, left) {
+  if (!defaultInstance$3) {
+    defaultInstance$3 = new ConsoleFormatter();
+  }
+  return defaultInstance$3.format(delta, left);
+};
+
+function log$1(delta, left) {
+  console.log(format$3(delta, left));
+}
+
+var console$1 = Object.freeze({
+  default: ConsoleFormatter,
+  format: format$3,
+  log: log$1
+});
+
+var jsondiffpatch_esm_index = Object.freeze({
+  base: base,
+  html: html,
+  annotated: annotated,
+  jsonpatch: jsonpatch,
+  console: console$1
+});
+
+// use as 2nd parameter for JSON.parse to revive Date instances
+function dateReviver(key, value) {
+  var parts = void 0;
+  if (typeof value === 'string') {
+    // eslint-disable-next-line max-len
+    parts = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d*))?(Z|([+-])(\d{2}):(\d{2}))$/.exec(value);
+    if (parts) {
+      return new Date(Date.UTC(+parts[1], +parts[2] - 1, +parts[3], +parts[4], +parts[5], +parts[6], +(parts[7] || 0)));
+    }
+  }
+  return value;
+}
+
+function jsondiffpatch_esm_create(options) {
+  return new DiffPatcher(options);
+}
+
+var defaultInstance$4 = void 0;
+
+function diff() {
+  if (!defaultInstance$4) {
+    defaultInstance$4 = new DiffPatcher();
+  }
+  return defaultInstance$4.diff.apply(defaultInstance$4, arguments);
+}
+
+function patch() {
+  if (!defaultInstance$4) {
+    defaultInstance$4 = new DiffPatcher();
+  }
+  return defaultInstance$4.patch.apply(defaultInstance$4, arguments);
+}
+
+function unpatch() {
+  if (!defaultInstance$4) {
+    defaultInstance$4 = new DiffPatcher();
+  }
+  return defaultInstance$4.unpatch.apply(defaultInstance$4, arguments);
+}
+
+function reverse() {
+  if (!defaultInstance$4) {
+    defaultInstance$4 = new DiffPatcher();
+  }
+  return defaultInstance$4.reverse.apply(defaultInstance$4, arguments);
+}
+
+function clone$1() {
+  if (!defaultInstance$4) {
+    defaultInstance$4 = new DiffPatcher();
+  }
+  return defaultInstance$4.clone.apply(defaultInstance$4, arguments);
+}
+
+
+//# sourceMappingURL=jsondiffpatch.esm.js.map
+// CONCATENATED MODULE: ./stores/TimelapseStore.js
+function TimelapseStore__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function TimelapseStore__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function TimelapseStore__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var lastState = null;
+
+var TimelapseStore_TimelapseStore = function (_EventEmitter) {
+  TimelapseStore__inherits(TimelapseStore, _EventEmitter);
+
+  function TimelapseStore() {
+    TimelapseStore__classCallCheck(this, TimelapseStore);
+
+    var _this = TimelapseStore__possibleConstructorReturn(this, _EventEmitter.call(this));
+
+    _this.handleGameStoreChange = function () {
+      if (_this.recording && _this.timelapse) {
+        var state = stores_GameStore.toJson();
+        var delta = diff(lastState, state);
+        _this.timelapse.patches.push(delta);
+      }
+      _this.emit('change');
+    };
+
+    _this.startTimelapse = function () {
+      _this.recording = true;
+      var state = stores_GameStore.toJson();
+      lastState = state;
+      _this.timelapse = {
+        start: state,
+        patches: [],
+        stats: null
+      };
+      _this.emit('change');
+    };
+
+    _this.stopTimelapse = function () {
+      _this.recording = false;
+      lastState = null;
+      _this.timelapse.stats = {
+        departures: stores_GameStore.departures - _this.timelapse.start.departures,
+        arrivals: stores_GameStore.arrivals - _this.timelapse.start.arrivals,
+        distanceVialations: stores_GameStore.distanceVialations - _this.timelapse.start.distanceVialations,
+        enroutes: stores_GameStore.enroutes - _this.timelapse.start.enroutes,
+        unpermittedDepartures: stores_GameStore.unpermittedDepartures - _this.timelapse.start.unpermittedDepartures
+      };
+      _this.emit('change');
+    };
+
+    _this.resetTimelapse = function () {
+      _this.recording = false;
+      lastState = null;
+      _this.timelapse = null;
+      _this.emit('change');
+    };
+
+    stores_GameStore.on('change', _this.handleGameStoreChange);
+    _this.timelapse = null;
+    _this.recording = false;
+    return _this;
+  }
+
+  return TimelapseStore;
+}(external__events_["EventEmitter"]);
+
+/* harmony default export */ var stores_TimelapseStore = (new TimelapseStore_TimelapseStore());
+// EXTERNAL MODULE: ./components/TimelapseRecorder/TimelapseRecorder.css
+var TimelapseRecorder_TimelapseRecorder = __webpack_require__("tKAm");
+var TimelapseRecorder_default = /*#__PURE__*/__webpack_require__.n(TimelapseRecorder_TimelapseRecorder);
+
+// EXTERNAL MODULE: ./components/SharingPanel/SharingPanel.css
+var SharingPanel_SharingPanel = __webpack_require__("aQgv");
+var SharingPanel_default = /*#__PURE__*/__webpack_require__.n(SharingPanel_SharingPanel);
+
+// EXTERNAL MODULE: ./node_modules/react-copy-to-clipboard/lib/index.js
+var lib = __webpack_require__("sQ20");
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+
+// CONCATENATED MODULE: ./components/SharingPanel/SharingPanel.js
+
+
+function SharingPanel__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function SharingPanel__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function SharingPanel__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+var SharingPanel__ref2 = Object(preact_min["h"])('br', null);
+
+var SharingPanel__ref3 = Object(preact_min["h"])('br', null);
+
+var SharingPanel__ref4 = Object(preact_min["h"])(FaShareAlt, null);
+
+var SharingPanel__ref5 = Object(preact_min["h"])(
+  'button',
+  { title: 'Copy url to clipboard', 'class': 'button' },
+  Object(preact_min["h"])(FaLink, null),
+  ' Copy Url'
+);
+
+var SharingPanel__ref6 = Object(preact_min["h"])(FaEnvelope, null);
+
+var SharingPanel_SharingPanel_SharingPanel = function (_Component) {
+  SharingPanel__inherits(SharingPanel, _Component);
+
+  function SharingPanel(props) {
+    SharingPanel__classCallCheck(this, SharingPanel);
+
+    var _this = SharingPanel__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.share = function (e) {
+      navigator.share({
+        title: _this.state.title,
+        text: _this.state.text,
+        url: _this.state.url
+      }).catch(function (err) {
+        sendMessageError('Unable to share :(, sorry...');
+      });
+    };
+
+    _this.handleCopy = function () {
+      sendMessageInfo('Copied ' + _this.state.url + ' to cliboard');
+    };
+
+    _this.handleMail = function () {
+      var body = encodeURIComponent(_this.state.text + '\n\n' + _this.state.url);
+      window.open('mailto:%20?subject=' + _this.state.title + '&body=' + body);
+    };
+
+    _this.handleTitleChange = function (e) {
+      _this.setState({
+        title: e.target.value
+      });
+    };
+
+    _this.handleTextChange = function (e) {
+      _this.setState({
+        text: e.target.value
+      });
+    };
+
+    _this.state = {
+      loading: true
+    };
+
+    props.promise.then(function (_ref) {
+      var title = _ref.title,
+          text = _ref.text,
+          url = _ref.url;
+
+      _this.setState({
+        loading: false,
+        title: title,
+        text: text,
+        url: url
+      });
+    });
+    return _this;
+  }
+
+  SharingPanel.prototype.componentWillMount = function componentWillMount() {};
+
+  SharingPanel.prototype.componentWillUnmount = function componentWillUnmount() {};
+
+  SharingPanel.prototype.render = function render() {
+    var canShare = typeof window !== 'undefined' && window.navigator.share !== undefined;
+    return Object(preact_min["h"])(
+      'div',
+      { className: 'sharing-panel ' + (this.state.loading ? 'loading' : '') },
+      Object(preact_min["h"])(
+        'button',
+        { onClick: this.props.onClose, 'class': 'close' },
+        '\xD7'
+      ),
+      Object(preact_min["h"])(
+        'div',
+        { 'class': 'content' },
+        Object(preact_min["h"])('input', { type: 'text', spellcheck: 'false', onInput: this.handleTitleChange, value: this.state.title }),
+        SharingPanel__ref2,
+        Object(preact_min["h"])(
+          'textarea',
+          { spellcheck: 'false', onChange: this.handleTextChange },
+          this.state.text
+        ),
+        SharingPanel__ref3,
+        canShare ? Object(preact_min["h"])(
+          'button',
+          { 'class': 'button', onClick: this.share },
+          SharingPanel__ref4,
+          ' Share'
+        ) : null,
+        Object(preact_min["h"])(
+          lib_default.a,
+          { text: this.state.url,
+            onCopy: this.handleCopy },
+          SharingPanel__ref5
+        ),
+        Object(preact_min["h"])(
+          'button',
+          { title: 'Email this link to someone', 'class': 'button', onClick: this.handleMail },
+          SharingPanel__ref6,
+          ' Email'
+        )
+      )
+    );
+  };
+
+  return SharingPanel;
+}(preact_min["Component"]);
+
+/* harmony default export */ var components_SharingPanel_SharingPanel = (SharingPanel_SharingPanel_SharingPanel);
+// CONCATENATED MODULE: ./components/TimelapseRecorder/TimelapseRecorder.js
+
+
+function TimelapseRecorder__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function TimelapseRecorder__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function TimelapseRecorder__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+
+
+
+
+var TimelapseRecorder__ref = Object(preact_min["h"])(
+  'span',
+  { className: 'color-red' },
+  'Timelapse was discarded.'
+);
+
+var TimelapseRecorder__ref2 = Object(preact_min["h"])(
+  'span',
+  { className: 'color-red' },
+  'Timelapse was saved.'
+);
+
+var TimelapseRecorder__ref3 = Object(preact_min["h"])(
+  'h5',
+  null,
+  'Timelapse recorder'
+);
+
+var TimelapseRecorder__ref4 = Object(preact_min["h"])(FaVideo, null);
+
+var TimelapseRecorder__ref5 = Object(preact_min["h"])(FaStop, null);
+
+var TimelapseRecorder__ref6 = Object(preact_min["h"])(FaSave, null);
+
+var TimelapseRecorder__ref7 = Object(preact_min["h"])(FaShareAlt, null);
+
+var TimelapseRecorder__ref8 = Object(preact_min["h"])(FaPlay, null);
+
+var TimelapseRecorder_TimelapseRecorder_TimelapseRecorder = function (_Component) {
+  TimelapseRecorder__inherits(TimelapseRecorder, _Component);
+
+  function TimelapseRecorder(props) {
+    TimelapseRecorder__classCallCheck(this, TimelapseRecorder);
+
+    var _this = TimelapseRecorder__possibleConstructorReturn(this, _Component.call(this));
+
+    _this.handleStartTimelapse = function (e) {
+      if (stores_TimelapseStore.recording === false && stores_TimelapseStore.timelapse) {
+        return sendMessageError('Please save or discard your previous timelapse.');
+      }
+      sendMessageInfo('Changing the game speed will also change the timelapse speed.');
+      stores_TimelapseStore.startTimelapse();
+      _this.wasSaved = false;
+    };
+
+    _this.handleStopTimelapse = function (e) {
+      stores_TimelapseStore.stopTimelapse();
+      _this.setState({
+        msg: 'Timelapse is stopped.'
+      });
+    };
+
+    _this.handleResetTimelapse = function (e) {
+      if (_this.wasSaved === false) {
+        var result = confirm('Timelapse was not saved. Do want to discard your timelapse without saving?');
+        if (!result) return;else sendMessageWarning('Timelapse was discarded.');
+        _this.setState({
+          msg: TimelapseRecorder__ref
+        });
+      } else {
+        _this.setState({
+          msg: 'Timelapse was reset.',
+          timelapseName: null
+        });
+      }
+      stores_TimelapseStore.resetTimelapse();
+    };
+
+    _this.defaultTimelapseName = function () {
+      return stores_GameStore.mapName + ' timelapse - ' + new Date().toLocaleDateString();
+    };
+
+    _this.handleSaveTimelapse = function (e) {
+      var timelapse = stores_TimelapseStore.timelapse;
+      var state = loadState();
+      state.timelapses = state.timelapses || {};
+      var name = prompt('Name of your timelapse?', _this.defaultTimelapseName());
+      if (!name) return sendMessageWarning('Please give a valid name...');
+      if (state.timelapses[name]) {
+        var result = confirm('This timelapse already exists. Do you want to overwrite it?');
+        if (result === false) return sendMessageWarning(name + ' was not saved...');
+      }
+      state.timelapses[name] = timelapse;
+      saveState(state);
+      sendMessageInfo(name + ' was saved...');
+      _this.wasSaved = true;
+      _this.setState({
+        msg: TimelapseRecorder__ref2,
+        timelapseName: name
+      });
+    };
+
+    _this.reRender = function () {
+      return _this.setState({});
+    };
+
+    _this.handleShareTimelapse = function (e) {
+      if (typeof window === 'undefined') return;
+      var stats = stores_TimelapseStore.timelapse.stats;
+      var sharingPromise = fetch('https://api.myjson.com/bins', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(stores_TimelapseStore.timelapse)
+      }).then(function (response) {
+        return response.text();
+      }).then(function (json) {
+        return JSON.parse(json).uri.split('/').slice(-1)[0];
+      }).then(function (id) {
+        return {
+          title: _this.state.timelapseName || _this.defaultTimelapseName(),
+          text: 'ATC Manager 2 timelapse with ' + stats.departures + ' departures,   ' + stats.enroutes + ' enroute flights and ' + stats.arrivals + ' arrivals.',
+          url: window.location.origin + '/timelapse/url?id=' + id
+        };
+      });
+      _this.setState({ sharingPromise: sharingPromise });
+    };
+
+    _this.handleShareClose = function () {
+      _this.setState({
+        sharingPromise: null
+      });
+    };
+
+    _this.handlePlayTimelapse = function () {
+      route('/timelapse/current');
+    };
+
+    _this.state = {
+      msg: '*Changing the game speed will also change the timelapse speed.',
+      sharingPromise: null
+    };
+    _this.wasSaved = false;
+    return _this;
+  }
+
+  TimelapseRecorder.prototype.componentWillMount = function componentWillMount() {
+    stores_GameStore.on('change', this.reRender);
+    stores_TimelapseStore.on('change', this.reRender);
+  };
+
+  TimelapseRecorder.prototype.componentWillUnmount = function componentWillUnmount() {
+    stores_GameStore.removeListener('change', this.reRender);
+    stores_TimelapseStore.removeListener('change', this.reRender);
+  };
+
+  TimelapseRecorder.prototype.render = function render() {
+    var state = stores_TimelapseStore.recording === false && stores_TimelapseStore.timelapse !== null ? 'done' : stores_TimelapseStore.recording === false && stores_TimelapseStore.timelapse === null ? 'ready' : stores_TimelapseStore.recording === true ? 'recording' : '';
+
+    return Object(preact_min["h"])(
+      'div',
+      { className: 'TimelapseRecorder' },
+      Object(preact_min["h"])(
+        'div',
+        { className: 'timelapse ' + (this.state.reset ? 'reset' : '') },
+        TimelapseRecorder__ref3,
+        Object(preact_min["h"])(
+          'button',
+          { disabled: state !== 'ready', className: 'timelapse-start', onClick: this.handleStartTimelapse, title: 'Start Timelapse' },
+          TimelapseRecorder__ref4
+        ),
+        Object(preact_min["h"])(
+          'button',
+          { disabled: state !== 'recording', className: 'timelapse-stop', onClick: this.handleStopTimelapse, title: 'Stop Timelapse' },
+          TimelapseRecorder__ref5
+        ),
+        Object(preact_min["h"])(
+          'button',
+          { disabled: state !== 'done', className: 'timelapse-save', onClick: this.handleSaveTimelapse, title: 'Save Timelapse' },
+          TimelapseRecorder__ref6
+        ),
+        Object(preact_min["h"])(
+          'button',
+          { disabled: state !== 'done', className: 'timelapse-share', onClick: this.handleShareTimelapse, title: 'Reset Timelapse' },
+          TimelapseRecorder__ref7
+        ),
+        Object(preact_min["h"])(
+          'button',
+          { disabled: state !== 'done', className: 'timelapse-reset', onClick: this.handleResetTimelapse, title: 'Reset Timelapse' },
+          '\xD7'
+        ),
+        Object(preact_min["h"])(
+          'button',
+          { disabled: state !== 'done', className: 'timelapse-play', onClick: this.handlePlayTimelapse, title: 'Play Timelapse' },
+          TimelapseRecorder__ref8
+        ),
+        Object(preact_min["h"])(
+          'small',
+          { className: 'game-speed' },
+          this.state.msg
+        )
+      ),
+      this.state.sharingPromise ? Object(preact_min["h"])(components_SharingPanel_SharingPanel, { promise: this.state.sharingPromise, onClose: this.handleShareClose }) : null
+    );
+  };
+
+  return TimelapseRecorder;
+}(preact_min["Component"]);
+
+/* harmony default export */ var components_TimelapseRecorder_TimelapseRecorder = (TimelapseRecorder_TimelapseRecorder_TimelapseRecorder);
 // CONCATENATED MODULE: ./containers/InfoPanel/InfoPanel.js
 
 
@@ -12465,21 +16512,62 @@ function InfoPanel__inherits(subClass, superClass) { if (typeof superClass !== "
 
 
 
-var InfoPanel__ref = Object(preact_min["h"])('span', { 'class': 'slider' });
 
-var InfoPanel__ref2 = Object(preact_min["h"])('br', null);
+
+
+
+
+var InfoPanel__ref = Object(preact_min["h"])(
+  'option',
+  { 'default': true, value: 'all' },
+  'All'
+);
+
+var InfoPanel__ref2 = Object(preact_min["h"])(
+  'option',
+  { value: 'ga' },
+  'General Aviation'
+);
 
 var InfoPanel__ref3 = Object(preact_min["h"])(
+  'option',
+  { value: 'commercial' },
+  'Commercial Flights'
+);
+
+var InfoPanel__ref4 = Object(preact_min["h"])(
+  'option',
+  { value: 'none' },
+  'None'
+);
+
+var InfoPanel__ref5 = Object(preact_min["h"])('br', null);
+
+var InfoPanel__ref6 = Object(preact_min["h"])(
   'div',
   null,
   'Runways: '
 );
 
-var InfoPanel__ref4 = Object(preact_min["h"])('br', null);
+var InfoPanel__ref7 = Object(preact_min["h"])('br', null);
 
-var InfoPanel__ref5 = Object(preact_min["h"])(FaDesktop, null);
+var InfoPanel__ref8 = Object(preact_min["h"])(FaDesktop, null);
 
-var InfoPanel__ref6 = Object(preact_min["h"])(FaCompress, null);
+var InfoPanel__ref9 = Object(preact_min["h"])(
+  'div',
+  null,
+  '\xA0'
+);
+
+var InfoPanel__ref10 = Object(preact_min["h"])(components_TimelapseRecorder_TimelapseRecorder, null);
+
+var InfoPanel__ref11 = Object(preact_min["h"])(
+  'div',
+  null,
+  '\xA0'
+);
+
+var InfoPanel__ref12 = Object(preact_min["h"])(FaCompress, null);
 
 var InfoPanel_InfoPanel_InfoPanel = function (_Component) {
   InfoPanel__inherits(InfoPanel, _Component);
@@ -12495,7 +16583,7 @@ var InfoPanel_InfoPanel_InfoPanel = function (_Component) {
 
     _this.handleTakeoffRunwayAssignInput = function (e) {
       var rwyName = e.srcElement.getAttribute('data-rwy-name');
-      stores_GameStore.disableTakoffsOnRwysSet[rwyName] = !stores_GameStore.disableTakoffsOnRwysSet[rwyName];
+      stores_GameStore.disableTakoffsOnRwysSet[rwyName] = e.target.value;
     };
 
     _this.handleScreenShotButtonClick = function (e) {
@@ -12528,8 +16616,8 @@ var InfoPanel_InfoPanel_InfoPanel = function (_Component) {
       return ['1', '2'].map(function (t) {
         return Object(preact_min["h"])(
           'div',
-          null,
-          rwy.name1,
+          { className: 'rwyusage' },
+          rwy['name' + t],
           ' ',
           lpad('' + rwy['hdg' + t], '0', 3),
           '\xB0 ',
@@ -12542,13 +16630,15 @@ var InfoPanel_InfoPanel_InfoPanel = function (_Component) {
           activeRunways.includes(rwy['name' + t]) ? Object(preact_min["h"])(
             'span',
             null,
-            '- Departure runway ',
+            '- Departure runway \xA0',
             Object(preact_min["h"])(
-              'label',
-              { 'class': 'switch' },
-              Object(preact_min["h"])('input', { type: 'checkbox', onInput: _this2.handleTakeoffRunwayAssignInput, 'data-rwy-name': rwy['name' + t],
-                checked: !stores_GameStore.disableTakoffsOnRwysSet[rwy['name' + t]] }),
-              InfoPanel__ref
+              'select',
+              { onInput: _this2.handleTakeoffRunwayAssignInput, 'data-rwy-name': rwy['name' + t],
+                value: stores_GameStore.disableTakoffsOnRwysSet[rwy['name' + t]] },
+              InfoPanel__ref,
+              stores_SettingsStore.ga && stores_GameStore.map.ga > 0 && InfoPanel__ref2,
+              stores_GameStore.map.commercial > 0 && InfoPanel__ref3,
+              InfoPanel__ref4
             )
           ) : ''
         );
@@ -12573,9 +16663,9 @@ var InfoPanel_InfoPanel_InfoPanel = function (_Component) {
           'span',
           null,
           'Wind: ',
-          lpad('' + stores_GameStore.winddir, '0', 3),
+          lpad('' + Math.round(stores_GameStore.winddir), '0', 3),
           '\xB0 / ',
-          stores_GameStore.windspd,
+          Math.round(stores_GameStore.windspd),
           ' kts'
         )
       ),
@@ -12609,22 +16699,25 @@ var InfoPanel_InfoPanel_InfoPanel = function (_Component) {
           stores_GameStore.airport.elevation
         )
       ),
-      InfoPanel__ref2,
-      InfoPanel__ref3,
+      InfoPanel__ref5,
+      InfoPanel__ref6,
       stores_GameStore.airport.runways && stores_GameStore.airport.runways.map(function (rwy) {
         return runwayUsage(rwy);
       }),
-      InfoPanel__ref4,
+      InfoPanel__ref7,
       Object(preact_min["h"])(
         'button',
         { className: 'button', onClick: this.handleScreenShotButtonClick },
-        InfoPanel__ref5,
+        InfoPanel__ref8,
         ' Save Radar as SVG'
       ),
+      InfoPanel__ref9,
+      InfoPanel__ref10,
+      InfoPanel__ref11,
       Object(preact_min["h"])(
         'button',
         { onClick: this.props.onToggle },
-        InfoPanel__ref6,
+        InfoPanel__ref12,
         ' Hide Panel'
       )
     );
@@ -12639,8 +16732,8 @@ var AboutPanel_AboutPanel = __webpack_require__("tBPK");
 var AboutPanel_default = /*#__PURE__*/__webpack_require__.n(AboutPanel_AboutPanel);
 
 // EXTERNAL MODULE: ./node_modules/react-github-button/lib/index.js
-var lib = __webpack_require__("WUqk");
-var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+var react_github_button_lib = __webpack_require__("WUqk");
+var react_github_button_lib_default = /*#__PURE__*/__webpack_require__.n(react_github_button_lib);
 
 // EXTERNAL MODULE: ./containers/Donate/Donate.css
 var Donate = __webpack_require__("sjZI");
@@ -12668,7 +16761,6 @@ var Donate__ref = Object(preact_min["h"])(
     'GoFundMe Page'
   ),
   ' or:',
-  Object(preact_min["h"])('br', null),
   Object(preact_min["h"])('br', null),
   Object(preact_min["h"])(
     'form',
@@ -12723,7 +16815,8 @@ var Donate__ref = Object(preact_min["h"])(
           { selected: true, value: '2.00' },
           '2.00 - Buy us a coffee'
         )
-      )
+      ),
+      Object(preact_min["h"])('br', null)
     ),
     Object(preact_min["h"])(
       'div',
@@ -12795,9 +16888,9 @@ function AboutPanel__inherits(subClass, superClass) { if (typeof superClass !== 
 
 
 
-var AboutPanel__ref = Object(preact_min["h"])(lib_default.a, { type: 'stargazers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
+var AboutPanel__ref = Object(preact_min["h"])(react_github_button_lib_default.a, { type: 'stargazers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
 
-var AboutPanel__ref2 = Object(preact_min["h"])(lib_default.a, { type: 'watchers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
+var AboutPanel__ref2 = Object(preact_min["h"])(react_github_button_lib_default.a, { type: 'watchers', namespace: 'LesterGallagher', repo: 'atc-manager-2' });
 
 var AboutPanel__ref3 = Object(preact_min["h"])(
   'a',
@@ -13089,6 +17182,11 @@ var AboutPanel__ref15 = Object(preact_min["h"])(
       { href: 'https://www.reddit.com/user/seungseung22', target: '_blank' },
       'seungseung22'
     )
+  ),
+  Object(preact_min["h"])(
+    'li',
+    null,
+    'Harryhylai (HL3177)'
   )
 );
 
@@ -13173,7 +17271,6 @@ var AboutPanel_AboutPanel_AboutPanel = function (_Component) {
     var _this = AboutPanel__possibleConstructorReturn(this, _Component.call(this));
 
     _this.state = {};
-
     return _this;
   }
 
@@ -13194,6 +17291,7 @@ var AboutPanel_AboutPanel_AboutPanel = function (_Component) {
       AboutPanel__ref5,
       'ATC Manager 2 is a web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator. Check out the ',
       AboutPanel__ref6,
+      '.',
       AboutPanel__ref7,
       AboutPanel__ref8,
       AboutPanel__ref9,
@@ -13220,19 +17318,15 @@ var AboutPanel_AboutPanel_AboutPanel = function (_Component) {
 }(preact_min["Component"]);
 
 /* harmony default export */ var containers_AboutPanel_AboutPanel = (AboutPanel_AboutPanel_AboutPanel);
-// EXTERNAL MODULE: ./node_modules/react-copy-to-clipboard/lib/index.js
-var react_copy_to_clipboard_lib = __webpack_require__("sQ20");
-var react_copy_to_clipboard_lib_default = /*#__PURE__*/__webpack_require__.n(react_copy_to_clipboard_lib);
-
 // EXTERNAL MODULE: ./containers/AirplaneInfoPanel/AirplaneInfoPanel.css
 var AirplaneInfoPanel_AirplaneInfoPanel = __webpack_require__("oEh3");
 var AirplaneInfoPanel_default = /*#__PURE__*/__webpack_require__.n(AirplaneInfoPanel_AirplaneInfoPanel);
 
-// EXTERNAL MODULE: ./containers/AltFmt/AltFmt.css
-var AltFmt_AltFmt = __webpack_require__("HH5f");
+// EXTERNAL MODULE: ./components/AltFmt/AltFmt.css
+var AltFmt_AltFmt = __webpack_require__("ypdR");
 var AltFmt_default = /*#__PURE__*/__webpack_require__.n(AltFmt_AltFmt);
 
-// CONCATENATED MODULE: ./containers/AltFmt/AltFmt.js
+// CONCATENATED MODULE: ./components/AltFmt/AltFmt.js
 
 
 
@@ -13248,7 +17342,7 @@ var AltFmt_AltFmt_AltFmt = function AltFmt(_ref) {
   );
 };
 
-/* harmony default export */ var containers_AltFmt_AltFmt = (AltFmt_AltFmt_AltFmt);
+/* harmony default export */ var components_AltFmt_AltFmt = (AltFmt_AltFmt_AltFmt);
 // CONCATENATED MODULE: ./containers/AirplaneInfoPanel/AirplaneInfoPanel.js
 
 
@@ -13304,7 +17398,7 @@ var AirplaneInfoPanel_AirplaneInfoPanel_AirplaneInfoPanel = function (_Component
       Object(preact_min["h"])(
         'h5',
         null,
-        communications.getCallsign(this.props.infoPanelTgt.airplane)
+        communications.getCallsign(this.props.infoPanelTgt.airplane, true)
       ),
       AirplaneInfoPanel__ref,
       Object(preact_min["h"])(
@@ -13322,7 +17416,7 @@ var AirplaneInfoPanel_AirplaneInfoPanel_AirplaneInfoPanel = function (_Component
       Object(preact_min["h"])(
         'div',
         null,
-        this.props.infoPanelTgt.airplane.routeType === routeTypes.OUTBOUND && 'Departure runway: ' + this.props.infoPanelTgt.airplane.outboundRwy || null
+        this.props.infoPanelTgt.airplane.routeType === routeTypes.OUTBOUND && 'Departure runway: ' + this.props.infoPanelTgt.airplane.rwy || null
       ),
       Object(preact_min["h"])(
         'div',
@@ -13344,7 +17438,7 @@ var AirplaneInfoPanel_AirplaneInfoPanel_AirplaneInfoPanel = function (_Component
         'div',
         null,
         'Altitude: ',
-        Object(preact_min["h"])(containers_AltFmt_AltFmt, { altitude: this.props.infoPanelTgt.airplane.altitude, tagName: 'span' })
+        Object(preact_min["h"])(components_AltFmt_AltFmt, { altitude: this.props.infoPanelTgt.airplane.altitude, tagName: 'span' })
       ),
       Object(preact_min["h"])(
         'div',
@@ -13358,7 +17452,7 @@ var AirplaneInfoPanel_AirplaneInfoPanel_AirplaneInfoPanel = function (_Component
         'div',
         null,
         'Ceiling: ',
-        Object(preact_min["h"])(containers_AltFmt_AltFmt, { altitude: this.props.infoPanelTgt.model.ceiling * 1000, tagName: 'span' })
+        Object(preact_min["h"])(components_AltFmt_AltFmt, { altitude: this.props.infoPanelTgt.model.ceiling * 1000, tagName: 'span' })
       ),
       Object(preact_min["h"])(
         'div',
@@ -13509,7 +17603,7 @@ var LogsPanel_LogsPanel_LogsPanel = function (_Component) {
         this.state.logsCopied ? 'Copied.' : '\xA0'
       ),
       Object(preact_min["h"])(
-        react_copy_to_clipboard_lib["CopyToClipboard"],
+        lib["CopyToClipboard"],
         { text: logs.join('\r\n'),
           onCopy: this.handleLogsCopied },
         LogsPanel__ref
@@ -13532,15 +17626,16 @@ var LogsPanel_LogsPanel_LogsPanel = function (_Component) {
 }(preact_min["Component"]);
 
 /* harmony default export */ var containers_LogsPanel_LogsPanel = (LogsPanel_LogsPanel_LogsPanel);
-// EXTERNAL MODULE: ./containers/TrafficStackEntry/TrafficStackEntry.css
-var TrafficStackEntry_TrafficStackEntry = __webpack_require__("PEk/");
+// EXTERNAL MODULE: ./components/TrafficStackEntry/TrafficStackEntry.css
+var TrafficStackEntry_TrafficStackEntry = __webpack_require__("lvqX");
 var TrafficStackEntry_default = /*#__PURE__*/__webpack_require__.n(TrafficStackEntry_TrafficStackEntry);
 
-// EXTERNAL MODULE: ./containers/PlaneAlt/PlaneAlt.css
-var PlaneAlt_PlaneAlt = __webpack_require__("/+Qt");
+// EXTERNAL MODULE: ./components/PlaneAlt/PlaneAlt.css
+var PlaneAlt_PlaneAlt = __webpack_require__("eOlF");
 var PlaneAlt_default = /*#__PURE__*/__webpack_require__.n(PlaneAlt_PlaneAlt);
 
-// CONCATENATED MODULE: ./containers/PlaneAlt/PlaneAlt.js
+// CONCATENATED MODULE: ./components/PlaneAlt/PlaneAlt.js
+
 
 
 
@@ -13553,26 +17648,27 @@ var PlaneAlt_PlaneAlt_PlaneAlt = function PlaneAlt(_ref) {
       tagName = _ref.tagName;
 
   var cs = stores_GameStore.callsignsPos[airplane.tgtDirection];
-  var isLanding = cs && cs.ref.type === idType.RWY && airplane.routeType === routeTypes.INBOUND;
+  var isLandingOrApproaching = cs && cs.ref.type === idType.RWY && airplane.routeType === routeTypes.INBOUND;
+  var landingDescend = isLandingOrApproaching && airplane.altitude < airplane.tgtAltitude;
   var TagName = tagName;
-  var showTgt = Math.abs(airplane.tgtAltitude - airplane.altitude) > 100 && airplane.altitude && !isLanding;
+  var showTgt = Math.abs(airplane.tgtAltitude - airplane.altitude) > 100 && airplane.altitude && !landingDescend && !airplane_Airplane.isVFR(airplane);
   var tgt = showTgt && Object(preact_min["h"])(
     TagName,
     { className: airplane.tgtAltitude > airplane.altitude ? 'up' : 'down' },
     airplane.tgtAltitude > airplane.altitude ? '⇧' : '⇩',
-    Object(preact_min["h"])(containers_AltFmt_AltFmt, { altitude: airplane.tgtAltitude, tagName: tagName })
+    Object(preact_min["h"])(components_AltFmt_AltFmt, { altitude: airplane.tgtAltitude, tagName: tagName })
   ) || null;
 
   return Object(preact_min["h"])(
     TagName,
     null,
-    Object(preact_min["h"])(containers_AltFmt_AltFmt, { altitude: airplane.altitude, tagName: tagName }),
+    Object(preact_min["h"])(components_AltFmt_AltFmt, { altitude: airplane.altitude, tagName: tagName }),
     tgt
   );
 };
 
-/* harmony default export */ var containers_PlaneAlt_PlaneAlt = (PlaneAlt_PlaneAlt_PlaneAlt);
-// CONCATENATED MODULE: ./containers/TrafficStackEntry/TrafficStackEntry.js
+/* harmony default export */ var components_PlaneAlt_PlaneAlt = (PlaneAlt_PlaneAlt_PlaneAlt);
+// CONCATENATED MODULE: ./components/TrafficStackEntry/TrafficStackEntry.js
 
 
 function TrafficStackEntry__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13580,6 +17676,7 @@ function TrafficStackEntry__classCallCheck(instance, Constructor) { if (!(instan
 function TrafficStackEntry__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function TrafficStackEntry__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -13619,15 +17716,14 @@ var TrafficStackEntry_TrafficStackEntry_TrafficStackEntry = function (_Component
   TrafficStackEntry.prototype.render = function render() {
     var airplane = this.props.airplane;
     var spd = Object(preact_min["h"])(PlaneSpd_PlaneSpd, { airplane: airplane, tagName: 'span' });
-    var alt = Object(preact_min["h"])(containers_PlaneAlt_PlaneAlt, { airplane: airplane, tagName: 'span' });
+    var alt = Object(preact_min["h"])(components_PlaneAlt_PlaneAlt, { airplane: airplane, tagName: 'span' });
     var heading = ('000' + Math.floor(airplane.heading)).substr(-3);
     var model = airplanesById[airplane.typeId];
 
     return Object(preact_min["h"])(
       'div',
-      { className: 'traffic-stack-entry ' + routeTypes[airplane.routeType] + ' ' + (this.props.cmd.tgt === airplane ? 'traffic-active' : 'traffic-not-active'), 'data-index': this.props.index },
-      operatorsById[airplane.operatorId].callsign,
-      airplane.flight,
+      { className: 'traffic-stack-entry ' + routeTypes[airplane.routeType].replace(/ /g, '-') + ' ' + (this.props.cmd.tgt === airplane ? 'traffic-active' : 'traffic-not-active'), 'data-index': this.props.index },
+      communications.getCallsign(airplane, true),
       ' ',
       spd,
       ' ',
@@ -13638,15 +17734,16 @@ var TrafficStackEntry_TrafficStackEntry_TrafficStackEntry = function (_Component
       heading,
       '\xB0',
       airplane.outboundWaypoint ? '\u21E8' + airplane.outboundWaypoint : null,
-      airplane.outboundRwy ? Object(preact_min["h"])(
+      airplane.rwy ? Object(preact_min["h"])(
         'span',
         null,
         ' RWY ',
-        airplane.outboundRwy
+        airplane.rwy
       ) : null,
+      airplane.tgs !== undefined && airplane.tgs > 0 ? ' TGL ' + airplane.tgs : null,
       Object(preact_min["h"])(
         'button',
-        { onClick: this.handleTrafficStackInfoButtonClick, 'class': 'airplane-traffic-stack-info-btn' },
+        { onClick: this.props.onClick, 'class': 'airplane-traffic-stack-info-btn' },
         '?'
       )
     );
@@ -13655,8 +17752,8 @@ var TrafficStackEntry_TrafficStackEntry_TrafficStackEntry = function (_Component
   return TrafficStackEntry;
 }(preact_min["Component"]);
 
-/* harmony default export */ var containers_TrafficStackEntry_TrafficStackEntry = (TrafficStackEntry_TrafficStackEntry_TrafficStackEntry);
-// CONCATENATED MODULE: ./containers/TrafficStack/TrafficStack.js
+/* harmony default export */ var components_TrafficStackEntry_TrafficStackEntry = (TrafficStackEntry_TrafficStackEntry_TrafficStackEntry);
+// CONCATENATED MODULE: ./components/TrafficStack/TrafficStack.js
 
 
 function TrafficStack__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13664,6 +17761,7 @@ function TrafficStack__classCallCheck(instance, Constructor) { if (!(instance in
 function TrafficStack__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function TrafficStack__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -13712,15 +17810,27 @@ var TrafficStack__ref6 = Object(preact_min["h"])(FaPlane, null);
 
 var TrafficStack__ref7 = Object(preact_min["h"])(FaPlane, null);
 
-var TrafficStack__ref8 = Object(preact_min["h"])(FaCog, null);
+var TrafficStack__ref8 = Object(preact_min["h"])(
+  'span',
+  null,
+  'State '
+);
 
-var TrafficStack__ref9 = Object(preact_min["h"])(FaCommentDots, null);
+var TrafficStack__ref9 = Object(preact_min["h"])(FaPaperPlane, null);
 
-var TrafficStack__ref10 = Object(preact_min["h"])(FaQuestion, null);
+var TrafficStack__ref10 = Object(preact_min["h"])(FaPlane, null);
 
-var TrafficStack__ref11 = Object(preact_min["h"])(FaInfo, null);
+var TrafficStack__ref11 = Object(preact_min["h"])(FaPlane, null);
 
-var TrafficStack__ref12 = Object(preact_min["h"])(components_GameMetaControls_GameMetaControls, null);
+var TrafficStack__ref12 = Object(preact_min["h"])(FaCog, null);
+
+var TrafficStack__ref13 = Object(preact_min["h"])(FaCommentDots, null);
+
+var TrafficStack__ref14 = Object(preact_min["h"])(FaQuestion, null);
+
+var TrafficStack__ref15 = Object(preact_min["h"])(FaInfo, null);
+
+var TrafficStack__ref16 = Object(preact_min["h"])(components_GameMetaControls_GameMetaControls, null);
 
 var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
   TrafficStack__inherits(TrafficStack, _Component);
@@ -13741,7 +17851,7 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
       _this.setState({});
     };
 
-    _this.handleTakeoffClick = function () {
+    _this.handleTakeoffTrigger = function () {
       _this.setState(function (prevstate) {
         prevstate.cmd.takeoff = true;
         return prevstate;
@@ -13788,11 +17898,12 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
           tgt: airplane,
           direction: '',
           altitude: airplane.tgtAltitude,
-          heading: Math.round(airplane.heading + 359) % 360 + 1,
+          heading: null,
           speed: airplane.tgtSpeed
         }
       }, function () {
-        return _this.props.onChange(_this.state.cmd);
+        _this.props.onChange(_this.state.cmd);
+        _this.props.onCmdExecution();
       });
       // TODO: Speech
     };
@@ -13841,18 +17952,21 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
 
     _this.renderTrafficStack = function () {
       return stores_GameStore.traffic.map(function (airplane, i) {
-        return Object(preact_min["h"])(containers_TrafficStackEntry_TrafficStackEntry, { cmd: _this.state.cmd, airplane: airplane, index: i });
+        return Object(preact_min["h"])(components_TrafficStackEntry_TrafficStackEntry, {
+          cmd: _this.state.cmd,
+          airplane: airplane,
+          index: i,
+          onClick: _this.handleTrafficStackInfoButtonClick });
       });
     };
 
-    _this.renderTrafficControl = function () {
+    _this.renderIFRTrafficControl = function () {
       var cmd = _this.props.cmd;
-      if (!cmd.tgt) return;
       var model = airplanesById[cmd.tgt.typeId];
       var topSpeed = model.topSpeed;
       var minSpeed = model.minSpeed;
 
-      var landableRwyNamesArr = _this.props.cmd.tgt && _this.props.cmd.tgt.altitude < 3200 ? map_landableRwys(stores_GameStore.airport, _this.props.cmd.tgt, config.width, config.height).map(function (lr) {
+      var landableRwyNamesArr = _this.props.cmd.tgt ? map_landableRwys(stores_GameStore.airport, _this.props.cmd.tgt, config.width, config.height).map(function (lr) {
         return lr.rev ? lr.rwy.name2 : lr.rwy.name1;
       }) : [];
       var landableRwysArr = landableRwyNamesArr.map(function (name) {
@@ -13861,6 +17975,10 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
 
       var directToValue = cmd.directionOld ? '' : cmd.direction;
       var directToPlaceholder = cmd.directionOld ? cmd.direction : '';
+
+      var allowedWaypoints = Object.keys(stores_GameStore.waypoints).filter(function (x) {
+        return stores_GameStore.waypoints[x].type !== idType.DIRECTION;
+      });
 
       return Object(preact_min["h"])(
         'div',
@@ -13881,7 +17999,7 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
             'datalist',
             { id: _this.dtcToDataListId },
             cmd.tgt.routeType === routeTypes.INBOUND ? landableRwysArr : null,
-            Object.keys(stores_GameStore.waypoints).map(function (w) {
+            allowedWaypoints.map(function (w) {
               return Object(preact_min["h"])('option', { value: w });
             })
           )
@@ -13913,7 +18031,7 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
           null,
           Object(preact_min["h"])(
             'button',
-            { onClick: _this.handleTakeoffClick, className: cmd.tgt.outboundRwy ? '' : 'hidden' },
+            { onClick: _this.handleTakeoffTrigger, className: cmd.tgt.waiting ? '' : 'hidden' },
             TrafficStack__ref6,
             ' Takeoff'
           )
@@ -13934,6 +18052,36 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
           ) : null
         )
       );
+    };
+
+    _this.getDctName = function (airplane) {
+      switch (airplane.routeType) {
+        case routeTypes.VFR_CLOSED_PATTERN:
+          return 'Runway';
+
+        default:
+          return 'WIP';
+      }
+    };
+
+    _this.handleVFRTgtState = function (e) {
+      _this.setState(function (prevstate) {
+        prevstate.cmd.tgtVfrState = +e.target.value;
+        return prevstate;
+      }, function () {
+        _this.props.onChange(_this.state.cmd);
+      });
+    };
+
+    _this.handleGoAroundUpwindClick = function (e) {
+      _this.setState(function (prevstate) {
+        prevstate.cmd.goAroundVFR = true;
+        return prevstate;
+      }, function () {
+        _this.props.onChange(_this.state.cmd);
+        _this.props.onCmdExecution();
+      });
+      // TODO: Speech
     };
 
     _this.state = {
@@ -13962,9 +18110,96 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
     if (typeof window !== 'undefined') window.removeEventListener('keypress', this.handleKeyPress);
   };
 
+  TrafficStack.prototype.renderVFRTrafficControl = function renderVFRTrafficControl() {
+    var cmd = this.props.cmd;
+    var dctName = this.getDctName(cmd.tgt);
+
+    var landableRwyNamesArr = this.props.cmd.tgt && this.props.cmd.tgt.altitude < 3200 ? map_landableRwys(stores_GameStore.airport, this.props.cmd.tgt, config.width, config.height).map(function (lr) {
+      return lr.rev ? lr.rwy.name2 : lr.rwy.name1;
+    }) : [];
+    var landableRwysArr = landableRwyNamesArr.map(function (name) {
+      return Object(preact_min["h"])('option', { value: name });
+    });
+
+    var directToValue = cmd.directionOld ? '' : cmd.direction;
+    var directToPlaceholder = cmd.directionOld ? cmd.direction : '';
+
+    var hideDirectionInput = cmd.tgt.routeType === routeTypes.VFR_ENROUTE || cmd.tgt.routeType == routeTypes.VFR_OUTBOUND;
+
+    return Object(preact_min["h"])(
+      'div',
+      null,
+      Object(preact_min["h"])(
+        'div',
+        { className: hideDirectionInput ? 'hidden' : '' },
+        Object(preact_min["h"])(
+          'span',
+          null,
+          dctName,
+          ' '
+        ),
+        Object(preact_min["h"])('input', { className: 'direct-to-input', type: 'text', value: directToValue, placeholder: directToPlaceholder,
+          list: this.dtcToDataListId, onInput: this.handleDirectToTgtChange }),
+        Object(preact_min["h"])(
+          'datalist',
+          { id: this.dtcToDataListId },
+          activeRwys(stores_GameStore.airport, stores_GameStore.winddir)
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        TrafficStack__ref8,
+        Object(preact_min["h"])(
+          'select',
+          { className: 'state-input', onInput: this.handleVFRTgtState, value: this.state.cmd.tgtVfrState },
+          allowedVFRStates(this.state.cmd.tgt).map(function (x) {
+            return Object(preact_min["h"])(
+              'option',
+              { value: x },
+              VFRStates[x]
+            );
+          }),
+          ' />'
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        Object(preact_min["h"])(
+          'button',
+          { onClick: this.props.onCmdExecution },
+          TrafficStack__ref9,
+          ' Give Command'
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        Object(preact_min["h"])(
+          'button',
+          { onClick: this.handleTakeoffTrigger, className: cmd.tgt.waiting ? '' : 'hidden' },
+          TrafficStack__ref10,
+          ' Takeoff'
+        )
+      ),
+      Object(preact_min["h"])(
+        'div',
+        null,
+        cmd.tgt.landing === true && cmd.tgt.dirty === true ? Object(preact_min["h"])(
+          'button',
+          { onClick: this.handleGoAroundUpwindClick },
+          TrafficStack__ref11,
+          ' Go Around'
+        ) : null
+      )
+    );
+  };
+
   TrafficStack.prototype.render = function render() {
     var trafficStack = this.renderTrafficStack();
-    var trafficControl = this.renderTrafficControl();
+
+    var trafficControl = this.state.cmd.tgt ? airplane_Airplane.isVFR(this.state.cmd.tgt) ? this.renderVFRTrafficControl() : this.renderIFRTrafficControl() : null;
 
     var innerHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
 
@@ -13981,10 +18216,18 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
             'div',
             { className: 'wind' },
             'wind: ',
-            stores_GameStore.winddir,
+            Math.floor(stores_GameStore.winddir),
             '\xB0 @ ',
-            stores_GameStore.windspd,
+            Math.floor(stores_GameStore.windspd),
             'KTS'
+          ),
+          Object(preact_min["h"])(
+            'div',
+            { className: 'time' },
+            'time: ',
+            Math.floor(stores_GameStore.time / 3600),
+            ':',
+            Math.floor(stores_GameStore.time % 3600 / 60)
           ),
           trafficStack
         ),
@@ -13999,32 +18242,32 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
           Object(preact_min["h"])(
             'button',
             { className: 'w-100', onClick: this.handleExpandSettingsButtonClick },
-            TrafficStack__ref8,
+            TrafficStack__ref12,
             '\xA0',
             this.state.settingsExpanded ? 'Hide options' : 'Expand options'
           ),
           Object(preact_min["h"])(
             'button',
             { className: 'w-100', onClick: this.handleLogsExpanded },
-            TrafficStack__ref9,
+            TrafficStack__ref13,
             '\xA0',
             this.state.logsExpanded ? 'Hide logs' : 'Expand logs'
           ),
           Object(preact_min["h"])(
             'button',
             { className: 'w-100', onClick: this.handleAboutExpanded },
-            TrafficStack__ref10,
+            TrafficStack__ref14,
             '\xA0',
             this.state.aboutExpanded ? 'Hide about' : 'Expand about'
           ),
           Object(preact_min["h"])(
             'button',
             { className: 'w-100', onClick: this.handleInfoExpanded },
-            TrafficStack__ref11,
+            TrafficStack__ref15,
             '\xA0',
             this.state.infoExpanded ? 'Hide info' : 'Expand info'
           ),
-          TrafficStack__ref12
+          TrafficStack__ref16
         )
       ),
       Object(preact_min["h"])(containers_SettingsPanel_SettingsPanel, { expanded: this.state.settingsExpanded, onToggle: this.handleExpandSettingsButtonClick }),
@@ -14038,9 +18281,9 @@ var TrafficStack_TrafficStack_TrafficStack = function (_Component) {
   return TrafficStack;
 }(preact_min["Component"]);
 
-/* harmony default export */ var containers_TrafficStack_TrafficStack = (TrafficStack_TrafficStack_TrafficStack);
-// EXTERNAL MODULE: ./containers/SvgRadar/SvgRadar.css
-var SvgRadar_SvgRadar = __webpack_require__("/d4d");
+/* harmony default export */ var components_TrafficStack_TrafficStack = (TrafficStack_TrafficStack_TrafficStack);
+// EXTERNAL MODULE: ./components/SvgRadar/SvgRadar.css
+var SvgRadar_SvgRadar = __webpack_require__("+jvH");
 var SvgRadar_default = /*#__PURE__*/__webpack_require__.n(SvgRadar_SvgRadar);
 
 // EXTERNAL MODULE: ./components/WayPoints/WayPoints.css
@@ -14055,6 +18298,7 @@ function WayPoints__classCallCheck(instance, Constructor) { if (!(instance insta
 function WayPoints__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function WayPoints__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -14096,11 +18340,15 @@ var WayPoints_WayPoints_WayPoints = function (_Component) {
   WayPoints.prototype.render = function render() {
     var _this2 = this;
 
-    var waypointsJsx = Object.keys(this.state.waypoints).map(function (w) {
+    var waypointsJsx = Object.keys(this.state.waypoints).filter(function (x) {
+      return _this2.state.waypoints[x].type !== idType.DIRECTION;
+    }).map(function (w) {
       var waypoint = _this2.state.waypoints[w];
+      var x = (waypoint.x - config.width / 2) * stores_GameStore.zoom + config.width / 2;
+      var y = (config.height / 2 - waypoint.y) * stores_GameStore.zoom + config.height / 2;
       return Object(preact_min["h"])(
         'g',
-        { className: 'waypoint', transform: 'translate(' + waypoint.x + ' ' + (config.height - waypoint.y) + ')' },
+        { className: 'waypoint', transform: 'translate(' + x + ' ' + y + ')' },
         WayPoints__ref,
         Object(preact_min["h"])(
           'text',
@@ -14172,18 +18420,19 @@ var Airport_Airport = function (_Component) {
 
   Airport.prototype.renderRwy = function renderRwy(rwy) {
     var len = rwy.length * config.rwyLenScale;
-    var x1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -len;
-    var y1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -len;
-    var x2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -len;
-    var y2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -len;
+    var x1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -len * stores_GameStore.zoom;
+    var y1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -len * stores_GameStore.zoom;
+    var x2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -len * stores_GameStore.zoom;
+    var y2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -len * stores_GameStore.zoom;
 
-    var ilsx1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
-    var ilsy1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
-    var ilsx2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
-    var ilsy2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength;
+    var ilsx1 = Math.sin(rwy.hdg1 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength * stores_GameStore.zoom;
+    var ilsy1 = Math.cos(rwy.hdg1 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength * stores_GameStore.zoom;
+    var ilsx2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength * stores_GameStore.zoom;
+    var ilsy2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -stores_SettingsStore.ilsPathLength * stores_GameStore.zoom;
+
     return Object(preact_min["h"])(
       'g',
-      { className: 'rwy', transform: 'translate(' + rwy.x + ' ' + -rwy.y + ')' },
+      { className: 'rwy', transform: 'translate(' + rwy.x * stores_GameStore.zoom + ' ' + rwy.y * stores_GameStore.zoom + ')' },
       Object(preact_min["h"])('line', { className: 'ils-line ils-line-1', 'stroke-dasharray': stores_SettingsStore.ilsDashInterval.join(), x1: x1, y1: -y1, x2: ilsx1, y2: -ilsy1 }),
       Object(preact_min["h"])('line', { className: 'ils-line ils-line-2', 'stroke-dasharray': stores_SettingsStore.ilsDashInterval.join(), x1: x2, y1: -y2, x2: ilsx2, y2: -ilsy2 }),
       Object(preact_min["h"])('line', { className: 'rwy-line', x1: x1, y1: -y1, x2: x2, y2: -y2 }),
@@ -14216,7 +18465,7 @@ var Airport_Airport = function (_Component) {
     if (stores_SettingsStore.distanceCircles) {
       distanceCirlces = new Array(stores_SettingsStore.distanceCirclesAmount);
       for (var i = 0; i < distanceCirlces.length; i++) {
-        distanceCirlces[i] = Object(preact_min["h"])('circle', { key: i, r: (i + 1) * stores_SettingsStore.distanceCirclesDistance,
+        distanceCirlces[i] = Object(preact_min["h"])('circle', { key: i, r: (i + 1) * stores_SettingsStore.distanceCirclesDistance * stores_GameStore.zoom,
           fill: 'none', stroke: stores_SettingsStore.distanceCircleColor });
       }
     }
@@ -14293,11 +18542,11 @@ var BackgroundSvg_BackgroundSvg_BackgroundSvg = function (_Component) {
 }(preact_compat_es["Component"]);
 
 /* harmony default export */ var components_BackgroundSvg_BackgroundSvg = (BackgroundSvg_BackgroundSvg_BackgroundSvg);
-// EXTERNAL MODULE: ./containers/RadarTraffic/RadarTraffic.css
-var RadarTraffic_RadarTraffic = __webpack_require__("NuU9");
+// EXTERNAL MODULE: ./components/RadarTraffic/RadarTraffic.css
+var RadarTraffic_RadarTraffic = __webpack_require__("8Y99");
 var RadarTraffic_default = /*#__PURE__*/__webpack_require__.n(RadarTraffic_RadarTraffic);
 
-// CONCATENATED MODULE: ./containers/RadarTraffic/RadarTraffic.js
+// CONCATENATED MODULE: ./components/RadarTraffic/RadarTraffic.js
 
 
 function RadarTraffic__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -14315,7 +18564,9 @@ function RadarTraffic__inherits(subClass, superClass) { if (typeof superClass !=
 
 
 
-var RadarTraffic__ref = Object(preact_min["h"])('circle', { cx: '0', cy: '0', r: '2', 'stroke-width': '0' });
+
+
+var RadarTraffic__ref = Object(preact_min["h"])('rect', { width: '5', height: '5', x: '-2.5', y: '-2.5', fill: 'none', strokeWidth: '2' });
 
 var RadarTraffic_RadarTraffic_RadarTraffic = function (_Component) {
   RadarTraffic__inherits(RadarTraffic, _Component);
@@ -14343,17 +18594,17 @@ var RadarTraffic_RadarTraffic_RadarTraffic = function (_Component) {
   RadarTraffic.prototype.render = function render() {
     var airplane = this.props.airplane;
 
-    if (airplane.outboundRwy) return;
-    var y = config.height - airplane.y;
-    var x = airplane.x;
-    var spd = Object(preact_min["h"])(containers_PlaneAlt_PlaneAlt, { airplane: airplane, tagName: 'tspan' });
+    if (airplane.waiting) return;
+    var y = (config.height / 2 - airplane.y) * stores_GameStore.zoom + config.height / 2;
+    var x = (airplane.x - config.width / 2) * stores_GameStore.zoom + config.width / 2;
+    var spd = Object(preact_min["h"])(components_PlaneAlt_PlaneAlt, { airplane: airplane, tagName: 'tspan' });
     var alt = Object(preact_min["h"])(PlaneSpd_PlaneSpd, { airplane: airplane, tagName: 'tspan' });
     var ltx = Math.sin(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
     var lty = Math.cos(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
     var path = 'M0,0 ' + airplane.path.map(function (p) {
-      return 'L' + (p[0] - airplane.x) + ', ' + -(p[1] - airplane.y);
+      return 'L' + (p[0] - airplane.x) * stores_GameStore.zoom + ', ' + -(p[1] - airplane.y) * stores_GameStore.zoom;
     });
-    var violatingSep = stores_GameStore.sepDistanceVialotions[airplane.flight];
+    var violatingSep = stores_GameStore.sepDistanceVialotions[communications.getCallsign(airplane, true)];
     var textHeight = (airplane.outboundWaypoint ? 4 : 3) * 14;
 
     var textLineX = airplane.textRotation === 1 || airplane.textRotation === 2 ? -config.airplaneTextDistance : config.airplaneTextDistance;
@@ -14363,14 +18614,16 @@ var RadarTraffic_RadarTraffic_RadarTraffic = function (_Component) {
     var textTransformY = airplane.textRotation > 1 ? -textHeight : 0;
     var textTranslate = 'translate(' + textLineX + ', ' + (textTransformY + textLineY) + ')';
 
+    var sepRadius = airplane_Airplane.isVFR(airplane) ? config.oneMileRuleDistance : config.threeMileRuleDistance;
+
     return Object(preact_min["h"])(
       'g',
-      { className: 'airplane ' + routeTypes[airplane.routeType] + ' ' + (this.props.cmd.tgt === airplane ? 'airplane-active' : 'airplane-inactive'),
+      { className: 'airplane ' + routeTypes[airplane.routeType].replace(/ /g, '-') + ' ' + (this.props.cmd.tgt === airplane ? 'airplane-active' : 'airplane-inactive'),
         'data-index': this.props.index, transform: 'translate(' + x + ', ' + y + ')', 'data-heading': airplane.heading },
-      violatingSep ? Object(preact_min["h"])('circle', { r: config.threeMileRuleDistance, className: 'sep' }) : null,
+      violatingSep ? Object(preact_min["h"])('circle', { r: sepRadius * stores_GameStore.zoom, className: 'sep' }) : null,
       RadarTraffic__ref,
       Object(preact_min["h"])('line', { x1: '0', y1: '0', x2: ltx, y2: -lty }),
-      Object(preact_min["h"])('path', { 'stroke-dasharray': '4, 5', d: path }),
+      Object(preact_min["h"])('path', { 'stroke-dasharray': 4 * stores_GameStore.zoom + ', ' + 5 * stores_GameStore.zoom, d: path }),
       Object(preact_min["h"])('line', { x1: '0', y1: '0', x2: textLineX, y2: textLineY }),
       Object(preact_min["h"])(
         'g',
@@ -14381,8 +18634,7 @@ var RadarTraffic_RadarTraffic_RadarTraffic = function (_Component) {
           Object(preact_min["h"])(
             'tspan',
             { dy: '1em' },
-            operatorsById[airplane.operatorId].callsign,
-            airplane.flight
+            communications.getCallsign(airplane, true)
           ),
           Object(preact_min["h"])(
             'tspan',
@@ -14408,8 +18660,8 @@ var RadarTraffic_RadarTraffic_RadarTraffic = function (_Component) {
   return RadarTraffic;
 }(preact_min["Component"]);
 
-/* harmony default export */ var containers_RadarTraffic_RadarTraffic = (RadarTraffic_RadarTraffic_RadarTraffic);
-// CONCATENATED MODULE: ./containers/SvgRadar/SvgRadar.js
+/* harmony default export */ var components_RadarTraffic_RadarTraffic = (RadarTraffic_RadarTraffic_RadarTraffic);
+// CONCATENATED MODULE: ./components/SvgRadar/SvgRadar.js
 
 
 function SvgRadar__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -14427,11 +18679,10 @@ function SvgRadar__inherits(subClass, superClass) { if (typeof superClass !== "f
 
 
 
+
 var SvgRadar__ref = Object(preact_min["h"])(components_WayPoints_WayPoints, null);
 
 var SvgRadar__ref2 = Object(preact_min["h"])(components_Airport_Airport, null);
-
-var SvgRadar__ref3 = Object(preact_min["h"])('rect', { width: '100%', height: '100%', fill: 'none', stroke: '#fff', 'stroke-dasharray': '20, 20' });
 
 var SvgRadar_SvgRadar_SvgRadar = function (_Component) {
   SvgRadar__inherits(SvgRadar, _Component);
@@ -14463,26 +18714,32 @@ var SvgRadar_SvgRadar_SvgRadar = function (_Component) {
     var _this2 = this;
 
     var airplanes = stores_GameStore.traffic.map(function (airplane, i) {
-      return Object(preact_min["h"])(containers_RadarTraffic_RadarTraffic, { key: i, index: i, airplane: airplane, cmd: _this2.props.cmd });
+      return Object(preact_min["h"])(components_RadarTraffic_RadarTraffic, { key: i, index: i, airplane: airplane, cmd: _this2.props.cmd });
     });
 
     var innerWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
     var innerHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
 
+    var transformScale = 'translate(' + config.width / 2 + ' ' + config.height / 2 + ') scale(' + stores_GameStore.zoom + ') translate(-' + config.width / 2 + ' -' + config.height / 2 + ')';
+
     return Object(preact_min["h"])(
       'svg',
-      { xmlns: 'http://www.w3.org/2000/svg', className: 'atc-view-svg', width: innerWidth - 250, height: innerHeight,
+      { onWheel: this.props.onZoom, xmlns: 'http://www.w3.org/2000/svg', className: 'atc-view-svg', width: innerWidth - 250, height: innerHeight,
         onClick: this.props.onClick, viewBox: '0 0 1280 720', style: 'background: #194850; overflow: visible; font-size: ' + stores_SettingsStore.radarFontsize + 'px;' },
       Object(preact_min["h"])(
         'style',
         null,
         SvgRadar_getStyle()
       ),
-      Object(preact_min["h"])(components_BackgroundSvg_BackgroundSvg, { name: stores_GameStore.id }),
+      Object(preact_min["h"])(
+        'g',
+        { transform: transformScale },
+        Object(preact_min["h"])(components_BackgroundSvg_BackgroundSvg, { name: stores_GameStore.id })
+      ),
       SvgRadar__ref,
       SvgRadar__ref2,
       airplanes,
-      SvgRadar__ref3
+      Object(preact_min["h"])('rect', { width: '100%', height: '100%', fill: 'none', stroke: '#fff', 'stroke-dasharray': '20, 20', transform: transformScale })
     );
   };
 
@@ -14490,10 +18747,10 @@ var SvgRadar_SvgRadar_SvgRadar = function (_Component) {
 }(preact_min["Component"]);
 
 var SvgRadar_getStyle = function getStyle() {
-  return 'text {\n  font: 1em \'Helvetica\';\n  fill: #fff;\n}\n.airplane circle {\n  fill: #fff;\n}\n.airplane line, .airplane path {\n  stroke: #fff;\n  stroke-width: 1;\n  fill: none;\n}\n.airplane.inbound line, .airplane.inbound path {\n  stroke: #bbf;\n}\n.airplane.outbound line, .airplane.outbound path {\n  stroke: #bfb;\n}\n.airplane.enroute line, .airplane.enroute path {\n  stroke: #ffb;\n}\n.airplane.inbound text, .airplane.inbound circle {\n  fill: #bbf;\n}\n.airplane.outbound text, .airplane.outbound circle {\n  fill: #bfb;\n}\n.airplane.enroute text, .airplane.enroute circle {\n  fill: #ffb;\n}\n.airplane tspan.up {\n  fill: #0f0;\n}\n.airplane tspan.down {\n  fill: #f00;\n}\n.waypoint circle {\n  fill: #fff;\n}\n.rwy-line {\n  stroke: #fff;\n  stroke-width: 3;\n  opacity: 0.7;\n}\n.ils-line {\n  stroke: ' + stores_SettingsStore.ilsPathColor + ';\n  stroke-width: 1;\n}\n.background path {\n  fill: #1e606b;\n}\n.airplane circle.sep {\n  fill: ' + stores_SettingsStore.sepVialationCircleColor + ';\n  fill-opacity: 0.2;\n  stroke: #f00;\n}\n.rwy-name {\n  text-anchor: middle;\n}\n';
+  return 'text {\n  font: 1em \'Helvetica\';\n  fill: #fff;\n}\n.airplane circle {\n  fill: #fff;\n}\n.airplane line, .airplane path {\n  stroke: #fff;\n  stroke-width: 1;\n  fill: none;\n}\n.airplane.inbound line, .airplane.inbound path, .airplane.inbound rect {\n  stroke: #bbf;\n}\n.airplane.outbound line, .airplane.outbound path, .airplane.outbound rect {\n  stroke: #bfb;\n}\n.airplane.enroute line, .airplane.enroute path, .airplane.enroute rect {\n  stroke: #ffb;\n}\n.airplane.vfr-closed-pattern-touch-and-go line, .airplane.vfr-closed-pattern-touch-and-go path, .airplane.vfr-closed-pattern-touch-and-go rect, \n.airplane.vfr-outbound line, .airplane.vfr-outbound path, .airplane.vfr-outbound rect,\n.airplane.vfr-enroute line, .airplane.vfr-enroute path, .airplane.vfr-enroute rect, \n.airplane.vfr-inbound-full-stop line, .airplane.vfr-inbound-full-stop path, .airplane.vfr-inbound-full-stop rect,\n.airplane.vfr-inbound-touch-and-go line, .airplane.vfr-inbound-touch-and-go path, .airplane.vfr-inbound-touch-and-go rect,\n.airplane.vfr-closed-pattern-full-stop line, .airplane.vfr-closed-pattern-full-stop path, .airplane.vfr-closed-pattern-full-stop rect {\n  stroke: rgb(194, 135, 80);\n}\n.airplane.inbound text, .airplane.inbound circle {\n  fill: #bbf;\n}\n.airplane.outbound text, .airplane.outbound circle {\n  fill: #bfb;\n}\n.airplane.enroute text, .airplane.enroute circle {\n  fill: #ffb;\n}\n.airplane.vfr-closed-pattern-touch-and-go text, .airplane.vfr-closed-pattern-touch-and-go circle,\n.airplane.vfr-outbound text, .airplane.vfr-outbound circle,\n.airplane.vfr-enroute text, .airplane.vfr-enroute circle,\n.airplane.vfr-inbound-full-stop text, .airplane.vfr-inbound-full-stop circle,\n.airplane.vfr-inbound-touch-and-go text, .airplane.inbound-touch-and-go circle,\n.airplane.vfr-closed-pattern-full-stop text, .airplane.vfr-closed-pattern-full-stop circle {\n  fill: rgb(194, 135, 80);\n}\n.airplane tspan.up {\n  fill: #0f0;\n}\n.airplane tspan.down {\n  fill: #f00;\n}\n.waypoint circle {\n  fill: #fff;\n}\n.waypoint path {\n  stroke: #fff;\n}\n.rwy-line {\n  stroke: #fff;\n  stroke-width: 3;\n  opacity: 0.7;\n}\n.ils-line {\n  stroke: ' + stores_SettingsStore.ilsPathColor + ';\n  stroke-width: 1;\n}\n.background path {\n  fill: #1e606b;\n}\n.airplane circle.sep {\n  fill: ' + stores_SettingsStore.sepVialationCircleColor + ';\n  fill-opacity: 0.2;\n  stroke: #f00;\n}\n.rwy-name {\n  text-anchor: middle;\n}\n';
 };
 
-/* harmony default export */ var containers_SvgRadar_SvgRadar = (SvgRadar_SvgRadar_SvgRadar);
+/* harmony default export */ var components_SvgRadar_SvgRadar = (SvgRadar_SvgRadar_SvgRadar);
 // CONCATENATED MODULE: ./containers/AtcView/AtcView.js
 var AtcView__extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -14504,6 +18761,8 @@ function AtcView__classCallCheck(instance, Constructor) { if (!(instance instanc
 function AtcView__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function AtcView__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -14559,7 +18818,8 @@ var AtcView_AtcView_AtcView = function (_Component) {
           direction: typeof airplane.tgtDirection === 'string' ? airplane.tgtDirection : null,
           altitude: airplane.tgtAltitude,
           heading: typeof airplane.tgtDirection === 'number' ? airplane.tgtDirection : null,
-          speed: airplane.tgtSpeed
+          speed: airplane.tgtSpeed,
+          tgtVfrState: airplane.tgtVfrState
         }
       });
     };
@@ -14570,6 +18830,11 @@ var AtcView_AtcView_AtcView = function (_Component) {
       var delta = {};
       var model = airplanesById[cmd.tgt.typeId];
       if (typeof cmd.heading === 'number') {
+        var rwyWaitingOn = stores_GameStore.rwyWaitingOn(cmd.tgt);
+        if (rwyWaitingOn.length > 0) {
+          sendMessageWarning(communications.getCallsign(cmd.tgt, true) + ' cannot takeoff, they are behind ' + communications.getCallsign(rwyWaitingOn.pop(), true));
+          return;
+        }
         cmd.heading = (cmd.heading + 359) % 360 + 1;
       }
       if (cmd.direction && stores_GameStore.callsigns[cmd.direction] && cmd.directionOld === false) {
@@ -14582,10 +18847,15 @@ var AtcView_AtcView_AtcView = function (_Component) {
       }
       if (typeof cmd.altitude === 'number' && cmd.altitude !== cmd.tgt.tgtAltitude) delta.tgtAltitude = cmd.altitude = Math.min(model.ceiling * 1000, Math.max(2000, cmd.altitude));
       if (cmd.speed && cmd.speed !== cmd.tgt.tgtSpeed) delta.tgtSpeed = cmd.speed = Math.min(model.topSpeed, Math.max(model.minSpeed, cmd.speed));
-      if (cmd.takeoff && cmd.tgt.outboundRwy) delta.outboundRwy = undefined;
+      if (cmd.takeoff && cmd.tgt.rwy) delta.waiting = false;
+      if (cmd.goAroundVFR) {
+        delta.dirty = false;
+        delete cmd.goAroundVFR;
+      }
+      if (typeof cmd.tgtVfrState === 'number' && cmd.tgtVfrState !== cmd.tgt.tgtVfrState) delta.tgtVfrState = cmd.tgtVfrState;
       if (Object.keys(delta).length > 0) {
         var cmdTxt = communications.getCommandText(cmd, stores_GameStore.winddir, stores_GameStore.windspd);
-        var atcMsg = communications.getCallsign(cmd.tgt) + ', ' + cmdTxt;
+        var atcMsg = communications.getCallsign(cmd.tgt, true) + ', ' + cmdTxt;
         stores_GameStore.addLog(atcMsg, 'ATC');
         // pilot:
         var pilotMsg = cmdTxt + ', ' + communications.getCallsign(cmd.tgt);
@@ -14600,8 +18870,11 @@ var AtcView_AtcView_AtcView = function (_Component) {
       }
     };
 
+    _this.handleZoom = function (e) {
+      stores_GameStore.adjustZoom(-e.deltaY);
+    };
+
     _this.handleCmdChange = function (cmd) {
-      console.log(cmd);
       _this.setState({ cmd: cmd });
     };
 
@@ -14633,8 +18906,8 @@ var AtcView_AtcView_AtcView = function (_Component) {
     return Object(preact_min["h"])(
       'div',
       { className: 'atc-view' },
-      Object(preact_min["h"])(containers_SvgRadar_SvgRadar, { onClick: this.handleSVGClick, cmd: this.state.cmd }),
-      Object(preact_min["h"])(containers_TrafficStack_TrafficStack, {
+      Object(preact_min["h"])(components_SvgRadar_SvgRadar, { onZoom: this.handleZoom, onClick: this.handleSVGClick, cmd: this.state.cmd }),
+      Object(preact_min["h"])(components_TrafficStack_TrafficStack, {
         cmd: this.state.cmd,
         onChange: this.handleCmdChange,
         onCmdExecution: this.handleCmdExecution,
@@ -15332,7 +19605,7 @@ var AirplaneEditor__ref22 = Object(preact_min["h"])('textarea', { name: 'message
 
 var AirplaneEditor__ref23 = Object(preact_min["h"])('br', null);
 
-var _ref24 = Object(preact_min["h"])('br', null);
+var AirplaneEditor__ref24 = Object(preact_min["h"])('br', null);
 
 var AirplaneEditor_AirplaneEditor_AirplaneEditor = function (_Component) {
   AirplaneEditor__inherits(AirplaneEditor, _Component);
@@ -15559,7 +19832,7 @@ var AirplaneEditor_AirplaneEditor_AirplaneEditor = function (_Component) {
         Object(preact_min["h"])('input', { onChange: this.readFromFile, id: 'saveseditor', className: 'inputfile', type: 'file', accept: '.json', disabled: !this.state.plane || this.state.plane.name === '' }),
         AirplaneEditor__ref10,
         Object(preact_min["h"])(
-          react_copy_to_clipboard_lib["CopyToClipboard"],
+          lib["CopyToClipboard"],
           { text: this.state.json,
             onCopy: this.handleCopy },
           Object(preact_min["h"])(
@@ -15594,7 +19867,7 @@ var AirplaneEditor_AirplaneEditor_AirplaneEditor = function (_Component) {
           AirplaneEditor__ref21,
           AirplaneEditor__ref22,
           AirplaneEditor__ref23,
-          _ref24,
+          AirplaneEditor__ref24,
           Object(preact_min["h"])(
             'button',
             { disabled: this.state.debouncing || this.state.plane === null, type: 'submit' },
@@ -15853,7 +20126,7 @@ var SavesEditor_SavesEditor_SavesEditor = function (_Component) {
         Object(preact_min["h"])('input', { onChange: this.readFromFile, id: 'saveseditor', className: 'inputfile', type: 'file', accept: '.json', disabled: this.state.saveName === '' }),
         SavesEditor__ref7,
         Object(preact_min["h"])(
-          react_copy_to_clipboard_lib["CopyToClipboard"],
+          lib["CopyToClipboard"],
           { text: this.state.json,
             onCopy: this.handleCopy },
           Object(preact_min["h"])(
@@ -16225,7 +20498,7 @@ var OperatorEditor_OperatorEditor_OperatorEditor = function (_Component) {
         Object(preact_min["h"])('input', { onChange: this.readFromFile, id: 'saveseditor', className: 'inputfile', type: 'file', accept: '.json', disabled: !this.state.operator || this.state.operator.name === '' }),
         OperatorEditor__ref10,
         Object(preact_min["h"])(
-          react_copy_to_clipboard_lib["CopyToClipboard"],
+          lib["CopyToClipboard"],
           { text: this.state.json,
             onCopy: this.handleCopy },
           Object(preact_min["h"])(
@@ -17007,6 +21280,22 @@ __webpack_require__("uqUo")('getPrototypeOf', function () {
     return $getPrototypeOf(toObject(it));
   };
 });
+
+/***/ }),
+
+/***/ "Kq5Q":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (flag, argv) {
+	argv = argv || process.argv;
+	var prefix = flag.startsWith('-') ? '' : flag.length === 1 ? '-' : '--';
+	var pos = argv.indexOf(prefix + flag);
+	var terminatorPos = argv.indexOf('--');
+	return pos !== -1 && (terminatorPos === -1 ? true : pos < terminatorPos);
+};
 
 /***/ }),
 
@@ -18750,13 +23039,6 @@ exports.default = _Form2.default;
 
 /***/ }),
 
-/***/ "NuU9":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "Num3":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19015,13 +23297,6 @@ if (false) {
 }
 
 exports.default = DateTimeWidget;
-
-/***/ }),
-
-/***/ "PEk/":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -19469,7 +23744,6 @@ module.exports = function (it) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"GameMessages":"GameMessages__18uyW","Message":"Message__3w4sP","lifetime":"lifetime__2dNNM"};
 
 /***/ }),
 
@@ -20956,6 +25230,857 @@ module.exports = function (metaSchema, keywordsJsonPointers) {
 
 /***/ }),
 
+/***/ "Y/tY":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* MIT license */
+var cssKeywords = __webpack_require__("72Lu");
+
+// NOTE: conversions should only return primitive values (i.e. arrays, or
+//       values that give correct `typeof` results).
+//       do not use box values types (i.e. Number(), String(), etc.)
+
+var reverseKeywords = {};
+for (var key in cssKeywords) {
+	if (cssKeywords.hasOwnProperty(key)) {
+		reverseKeywords[cssKeywords[key]] = key;
+	}
+}
+
+var convert = module.exports = {
+	rgb: { channels: 3, labels: 'rgb' },
+	hsl: { channels: 3, labels: 'hsl' },
+	hsv: { channels: 3, labels: 'hsv' },
+	hwb: { channels: 3, labels: 'hwb' },
+	cmyk: { channels: 4, labels: 'cmyk' },
+	xyz: { channels: 3, labels: 'xyz' },
+	lab: { channels: 3, labels: 'lab' },
+	lch: { channels: 3, labels: 'lch' },
+	hex: { channels: 1, labels: ['hex'] },
+	keyword: { channels: 1, labels: ['keyword'] },
+	ansi16: { channels: 1, labels: ['ansi16'] },
+	ansi256: { channels: 1, labels: ['ansi256'] },
+	hcg: { channels: 3, labels: ['h', 'c', 'g'] },
+	apple: { channels: 3, labels: ['r16', 'g16', 'b16'] },
+	gray: { channels: 1, labels: ['gray'] }
+};
+
+// hide .channels and .labels properties
+for (var model in convert) {
+	if (convert.hasOwnProperty(model)) {
+		if (!('channels' in convert[model])) {
+			throw new Error('missing channels property: ' + model);
+		}
+
+		if (!('labels' in convert[model])) {
+			throw new Error('missing channel labels property: ' + model);
+		}
+
+		if (convert[model].labels.length !== convert[model].channels) {
+			throw new Error('channel and label counts mismatch: ' + model);
+		}
+
+		var channels = convert[model].channels;
+		var labels = convert[model].labels;
+		delete convert[model].channels;
+		delete convert[model].labels;
+		Object.defineProperty(convert[model], 'channels', { value: channels });
+		Object.defineProperty(convert[model], 'labels', { value: labels });
+	}
+}
+
+convert.rgb.hsl = function (rgb) {
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+	var min = Math.min(r, g, b);
+	var max = Math.max(r, g, b);
+	var delta = max - min;
+	var h;
+	var s;
+	var l;
+
+	if (max === min) {
+		h = 0;
+	} else if (r === max) {
+		h = (g - b) / delta;
+	} else if (g === max) {
+		h = 2 + (b - r) / delta;
+	} else if (b === max) {
+		h = 4 + (r - g) / delta;
+	}
+
+	h = Math.min(h * 60, 360);
+
+	if (h < 0) {
+		h += 360;
+	}
+
+	l = (min + max) / 2;
+
+	if (max === min) {
+		s = 0;
+	} else if (l <= 0.5) {
+		s = delta / (max + min);
+	} else {
+		s = delta / (2 - max - min);
+	}
+
+	return [h, s * 100, l * 100];
+};
+
+convert.rgb.hsv = function (rgb) {
+	var rdif;
+	var gdif;
+	var bdif;
+	var h;
+	var s;
+
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+	var v = Math.max(r, g, b);
+	var diff = v - Math.min(r, g, b);
+	var diffc = function diffc(c) {
+		return (v - c) / 6 / diff + 1 / 2;
+	};
+
+	if (diff === 0) {
+		h = s = 0;
+	} else {
+		s = diff / v;
+		rdif = diffc(r);
+		gdif = diffc(g);
+		bdif = diffc(b);
+
+		if (r === v) {
+			h = bdif - gdif;
+		} else if (g === v) {
+			h = 1 / 3 + rdif - bdif;
+		} else if (b === v) {
+			h = 2 / 3 + gdif - rdif;
+		}
+		if (h < 0) {
+			h += 1;
+		} else if (h > 1) {
+			h -= 1;
+		}
+	}
+
+	return [h * 360, s * 100, v * 100];
+};
+
+convert.rgb.hwb = function (rgb) {
+	var r = rgb[0];
+	var g = rgb[1];
+	var b = rgb[2];
+	var h = convert.rgb.hsl(rgb)[0];
+	var w = 1 / 255 * Math.min(r, Math.min(g, b));
+
+	b = 1 - 1 / 255 * Math.max(r, Math.max(g, b));
+
+	return [h, w * 100, b * 100];
+};
+
+convert.rgb.cmyk = function (rgb) {
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+	var c;
+	var m;
+	var y;
+	var k;
+
+	k = Math.min(1 - r, 1 - g, 1 - b);
+	c = (1 - r - k) / (1 - k) || 0;
+	m = (1 - g - k) / (1 - k) || 0;
+	y = (1 - b - k) / (1 - k) || 0;
+
+	return [c * 100, m * 100, y * 100, k * 100];
+};
+
+/**
+ * See https://en.m.wikipedia.org/wiki/Euclidean_distance#Squared_Euclidean_distance
+ * */
+function comparativeDistance(x, y) {
+	return Math.pow(x[0] - y[0], 2) + Math.pow(x[1] - y[1], 2) + Math.pow(x[2] - y[2], 2);
+}
+
+convert.rgb.keyword = function (rgb) {
+	var reversed = reverseKeywords[rgb];
+	if (reversed) {
+		return reversed;
+	}
+
+	var currentClosestDistance = Infinity;
+	var currentClosestKeyword;
+
+	for (var keyword in cssKeywords) {
+		if (cssKeywords.hasOwnProperty(keyword)) {
+			var value = cssKeywords[keyword];
+
+			// Compute comparative distance
+			var distance = comparativeDistance(rgb, value);
+
+			// Check if its less, if so set as closest
+			if (distance < currentClosestDistance) {
+				currentClosestDistance = distance;
+				currentClosestKeyword = keyword;
+			}
+		}
+	}
+
+	return currentClosestKeyword;
+};
+
+convert.keyword.rgb = function (keyword) {
+	return cssKeywords[keyword];
+};
+
+convert.rgb.xyz = function (rgb) {
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+
+	// assume sRGB
+	r = r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
+	g = g > 0.04045 ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
+	b = b > 0.04045 ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;
+
+	var x = r * 0.4124 + g * 0.3576 + b * 0.1805;
+	var y = r * 0.2126 + g * 0.7152 + b * 0.0722;
+	var z = r * 0.0193 + g * 0.1192 + b * 0.9505;
+
+	return [x * 100, y * 100, z * 100];
+};
+
+convert.rgb.lab = function (rgb) {
+	var xyz = convert.rgb.xyz(rgb);
+	var x = xyz[0];
+	var y = xyz[1];
+	var z = xyz[2];
+	var l;
+	var a;
+	var b;
+
+	x /= 95.047;
+	y /= 100;
+	z /= 108.883;
+
+	x = x > 0.008856 ? Math.pow(x, 1 / 3) : 7.787 * x + 16 / 116;
+	y = y > 0.008856 ? Math.pow(y, 1 / 3) : 7.787 * y + 16 / 116;
+	z = z > 0.008856 ? Math.pow(z, 1 / 3) : 7.787 * z + 16 / 116;
+
+	l = 116 * y - 16;
+	a = 500 * (x - y);
+	b = 200 * (y - z);
+
+	return [l, a, b];
+};
+
+convert.hsl.rgb = function (hsl) {
+	var h = hsl[0] / 360;
+	var s = hsl[1] / 100;
+	var l = hsl[2] / 100;
+	var t1;
+	var t2;
+	var t3;
+	var rgb;
+	var val;
+
+	if (s === 0) {
+		val = l * 255;
+		return [val, val, val];
+	}
+
+	if (l < 0.5) {
+		t2 = l * (1 + s);
+	} else {
+		t2 = l + s - l * s;
+	}
+
+	t1 = 2 * l - t2;
+
+	rgb = [0, 0, 0];
+	for (var i = 0; i < 3; i++) {
+		t3 = h + 1 / 3 * -(i - 1);
+		if (t3 < 0) {
+			t3++;
+		}
+		if (t3 > 1) {
+			t3--;
+		}
+
+		if (6 * t3 < 1) {
+			val = t1 + (t2 - t1) * 6 * t3;
+		} else if (2 * t3 < 1) {
+			val = t2;
+		} else if (3 * t3 < 2) {
+			val = t1 + (t2 - t1) * (2 / 3 - t3) * 6;
+		} else {
+			val = t1;
+		}
+
+		rgb[i] = val * 255;
+	}
+
+	return rgb;
+};
+
+convert.hsl.hsv = function (hsl) {
+	var h = hsl[0];
+	var s = hsl[1] / 100;
+	var l = hsl[2] / 100;
+	var smin = s;
+	var lmin = Math.max(l, 0.01);
+	var sv;
+	var v;
+
+	l *= 2;
+	s *= l <= 1 ? l : 2 - l;
+	smin *= lmin <= 1 ? lmin : 2 - lmin;
+	v = (l + s) / 2;
+	sv = l === 0 ? 2 * smin / (lmin + smin) : 2 * s / (l + s);
+
+	return [h, sv * 100, v * 100];
+};
+
+convert.hsv.rgb = function (hsv) {
+	var h = hsv[0] / 60;
+	var s = hsv[1] / 100;
+	var v = hsv[2] / 100;
+	var hi = Math.floor(h) % 6;
+
+	var f = h - Math.floor(h);
+	var p = 255 * v * (1 - s);
+	var q = 255 * v * (1 - s * f);
+	var t = 255 * v * (1 - s * (1 - f));
+	v *= 255;
+
+	switch (hi) {
+		case 0:
+			return [v, t, p];
+		case 1:
+			return [q, v, p];
+		case 2:
+			return [p, v, t];
+		case 3:
+			return [p, q, v];
+		case 4:
+			return [t, p, v];
+		case 5:
+			return [v, p, q];
+	}
+};
+
+convert.hsv.hsl = function (hsv) {
+	var h = hsv[0];
+	var s = hsv[1] / 100;
+	var v = hsv[2] / 100;
+	var vmin = Math.max(v, 0.01);
+	var lmin;
+	var sl;
+	var l;
+
+	l = (2 - s) * v;
+	lmin = (2 - s) * vmin;
+	sl = s * vmin;
+	sl /= lmin <= 1 ? lmin : 2 - lmin;
+	sl = sl || 0;
+	l /= 2;
+
+	return [h, sl * 100, l * 100];
+};
+
+// http://dev.w3.org/csswg/css-color/#hwb-to-rgb
+convert.hwb.rgb = function (hwb) {
+	var h = hwb[0] / 360;
+	var wh = hwb[1] / 100;
+	var bl = hwb[2] / 100;
+	var ratio = wh + bl;
+	var i;
+	var v;
+	var f;
+	var n;
+
+	// wh + bl cant be > 1
+	if (ratio > 1) {
+		wh /= ratio;
+		bl /= ratio;
+	}
+
+	i = Math.floor(6 * h);
+	v = 1 - bl;
+	f = 6 * h - i;
+
+	if ((i & 0x01) !== 0) {
+		f = 1 - f;
+	}
+
+	n = wh + f * (v - wh); // linear interpolation
+
+	var r;
+	var g;
+	var b;
+	switch (i) {
+		default:
+		case 6:
+		case 0:
+			r = v;g = n;b = wh;break;
+		case 1:
+			r = n;g = v;b = wh;break;
+		case 2:
+			r = wh;g = v;b = n;break;
+		case 3:
+			r = wh;g = n;b = v;break;
+		case 4:
+			r = n;g = wh;b = v;break;
+		case 5:
+			r = v;g = wh;b = n;break;
+	}
+
+	return [r * 255, g * 255, b * 255];
+};
+
+convert.cmyk.rgb = function (cmyk) {
+	var c = cmyk[0] / 100;
+	var m = cmyk[1] / 100;
+	var y = cmyk[2] / 100;
+	var k = cmyk[3] / 100;
+	var r;
+	var g;
+	var b;
+
+	r = 1 - Math.min(1, c * (1 - k) + k);
+	g = 1 - Math.min(1, m * (1 - k) + k);
+	b = 1 - Math.min(1, y * (1 - k) + k);
+
+	return [r * 255, g * 255, b * 255];
+};
+
+convert.xyz.rgb = function (xyz) {
+	var x = xyz[0] / 100;
+	var y = xyz[1] / 100;
+	var z = xyz[2] / 100;
+	var r;
+	var g;
+	var b;
+
+	r = x * 3.2406 + y * -1.5372 + z * -0.4986;
+	g = x * -0.9689 + y * 1.8758 + z * 0.0415;
+	b = x * 0.0557 + y * -0.2040 + z * 1.0570;
+
+	// assume sRGB
+	r = r > 0.0031308 ? 1.055 * Math.pow(r, 1.0 / 2.4) - 0.055 : r * 12.92;
+
+	g = g > 0.0031308 ? 1.055 * Math.pow(g, 1.0 / 2.4) - 0.055 : g * 12.92;
+
+	b = b > 0.0031308 ? 1.055 * Math.pow(b, 1.0 / 2.4) - 0.055 : b * 12.92;
+
+	r = Math.min(Math.max(0, r), 1);
+	g = Math.min(Math.max(0, g), 1);
+	b = Math.min(Math.max(0, b), 1);
+
+	return [r * 255, g * 255, b * 255];
+};
+
+convert.xyz.lab = function (xyz) {
+	var x = xyz[0];
+	var y = xyz[1];
+	var z = xyz[2];
+	var l;
+	var a;
+	var b;
+
+	x /= 95.047;
+	y /= 100;
+	z /= 108.883;
+
+	x = x > 0.008856 ? Math.pow(x, 1 / 3) : 7.787 * x + 16 / 116;
+	y = y > 0.008856 ? Math.pow(y, 1 / 3) : 7.787 * y + 16 / 116;
+	z = z > 0.008856 ? Math.pow(z, 1 / 3) : 7.787 * z + 16 / 116;
+
+	l = 116 * y - 16;
+	a = 500 * (x - y);
+	b = 200 * (y - z);
+
+	return [l, a, b];
+};
+
+convert.lab.xyz = function (lab) {
+	var l = lab[0];
+	var a = lab[1];
+	var b = lab[2];
+	var x;
+	var y;
+	var z;
+
+	y = (l + 16) / 116;
+	x = a / 500 + y;
+	z = y - b / 200;
+
+	var y2 = Math.pow(y, 3);
+	var x2 = Math.pow(x, 3);
+	var z2 = Math.pow(z, 3);
+	y = y2 > 0.008856 ? y2 : (y - 16 / 116) / 7.787;
+	x = x2 > 0.008856 ? x2 : (x - 16 / 116) / 7.787;
+	z = z2 > 0.008856 ? z2 : (z - 16 / 116) / 7.787;
+
+	x *= 95.047;
+	y *= 100;
+	z *= 108.883;
+
+	return [x, y, z];
+};
+
+convert.lab.lch = function (lab) {
+	var l = lab[0];
+	var a = lab[1];
+	var b = lab[2];
+	var hr;
+	var h;
+	var c;
+
+	hr = Math.atan2(b, a);
+	h = hr * 360 / 2 / Math.PI;
+
+	if (h < 0) {
+		h += 360;
+	}
+
+	c = Math.sqrt(a * a + b * b);
+
+	return [l, c, h];
+};
+
+convert.lch.lab = function (lch) {
+	var l = lch[0];
+	var c = lch[1];
+	var h = lch[2];
+	var a;
+	var b;
+	var hr;
+
+	hr = h / 360 * 2 * Math.PI;
+	a = c * Math.cos(hr);
+	b = c * Math.sin(hr);
+
+	return [l, a, b];
+};
+
+convert.rgb.ansi16 = function (args) {
+	var r = args[0];
+	var g = args[1];
+	var b = args[2];
+	var value = 1 in arguments ? arguments[1] : convert.rgb.hsv(args)[2]; // hsv -> ansi16 optimization
+
+	value = Math.round(value / 50);
+
+	if (value === 0) {
+		return 30;
+	}
+
+	var ansi = 30 + (Math.round(b / 255) << 2 | Math.round(g / 255) << 1 | Math.round(r / 255));
+
+	if (value === 2) {
+		ansi += 60;
+	}
+
+	return ansi;
+};
+
+convert.hsv.ansi16 = function (args) {
+	// optimization here; we already know the value and don't need to get
+	// it converted for us.
+	return convert.rgb.ansi16(convert.hsv.rgb(args), args[2]);
+};
+
+convert.rgb.ansi256 = function (args) {
+	var r = args[0];
+	var g = args[1];
+	var b = args[2];
+
+	// we use the extended greyscale palette here, with the exception of
+	// black and white. normal palette only has 4 greyscale shades.
+	if (r === g && g === b) {
+		if (r < 8) {
+			return 16;
+		}
+
+		if (r > 248) {
+			return 231;
+		}
+
+		return Math.round((r - 8) / 247 * 24) + 232;
+	}
+
+	var ansi = 16 + 36 * Math.round(r / 255 * 5) + 6 * Math.round(g / 255 * 5) + Math.round(b / 255 * 5);
+
+	return ansi;
+};
+
+convert.ansi16.rgb = function (args) {
+	var color = args % 10;
+
+	// handle greyscale
+	if (color === 0 || color === 7) {
+		if (args > 50) {
+			color += 3.5;
+		}
+
+		color = color / 10.5 * 255;
+
+		return [color, color, color];
+	}
+
+	var mult = (~~(args > 50) + 1) * 0.5;
+	var r = (color & 1) * mult * 255;
+	var g = (color >> 1 & 1) * mult * 255;
+	var b = (color >> 2 & 1) * mult * 255;
+
+	return [r, g, b];
+};
+
+convert.ansi256.rgb = function (args) {
+	// handle greyscale
+	if (args >= 232) {
+		var c = (args - 232) * 10 + 8;
+		return [c, c, c];
+	}
+
+	args -= 16;
+
+	var rem;
+	var r = Math.floor(args / 36) / 5 * 255;
+	var g = Math.floor((rem = args % 36) / 6) / 5 * 255;
+	var b = rem % 6 / 5 * 255;
+
+	return [r, g, b];
+};
+
+convert.rgb.hex = function (args) {
+	var integer = ((Math.round(args[0]) & 0xFF) << 16) + ((Math.round(args[1]) & 0xFF) << 8) + (Math.round(args[2]) & 0xFF);
+
+	var string = integer.toString(16).toUpperCase();
+	return '000000'.substring(string.length) + string;
+};
+
+convert.hex.rgb = function (args) {
+	var match = args.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i);
+	if (!match) {
+		return [0, 0, 0];
+	}
+
+	var colorString = match[0];
+
+	if (match[0].length === 3) {
+		colorString = colorString.split('').map(function (char) {
+			return char + char;
+		}).join('');
+	}
+
+	var integer = parseInt(colorString, 16);
+	var r = integer >> 16 & 0xFF;
+	var g = integer >> 8 & 0xFF;
+	var b = integer & 0xFF;
+
+	return [r, g, b];
+};
+
+convert.rgb.hcg = function (rgb) {
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+	var max = Math.max(Math.max(r, g), b);
+	var min = Math.min(Math.min(r, g), b);
+	var chroma = max - min;
+	var grayscale;
+	var hue;
+
+	if (chroma < 1) {
+		grayscale = min / (1 - chroma);
+	} else {
+		grayscale = 0;
+	}
+
+	if (chroma <= 0) {
+		hue = 0;
+	} else if (max === r) {
+		hue = (g - b) / chroma % 6;
+	} else if (max === g) {
+		hue = 2 + (b - r) / chroma;
+	} else {
+		hue = 4 + (r - g) / chroma + 4;
+	}
+
+	hue /= 6;
+	hue %= 1;
+
+	return [hue * 360, chroma * 100, grayscale * 100];
+};
+
+convert.hsl.hcg = function (hsl) {
+	var s = hsl[1] / 100;
+	var l = hsl[2] / 100;
+	var c = 1;
+	var f = 0;
+
+	if (l < 0.5) {
+		c = 2.0 * s * l;
+	} else {
+		c = 2.0 * s * (1.0 - l);
+	}
+
+	if (c < 1.0) {
+		f = (l - 0.5 * c) / (1.0 - c);
+	}
+
+	return [hsl[0], c * 100, f * 100];
+};
+
+convert.hsv.hcg = function (hsv) {
+	var s = hsv[1] / 100;
+	var v = hsv[2] / 100;
+
+	var c = s * v;
+	var f = 0;
+
+	if (c < 1.0) {
+		f = (v - c) / (1 - c);
+	}
+
+	return [hsv[0], c * 100, f * 100];
+};
+
+convert.hcg.rgb = function (hcg) {
+	var h = hcg[0] / 360;
+	var c = hcg[1] / 100;
+	var g = hcg[2] / 100;
+
+	if (c === 0.0) {
+		return [g * 255, g * 255, g * 255];
+	}
+
+	var pure = [0, 0, 0];
+	var hi = h % 1 * 6;
+	var v = hi % 1;
+	var w = 1 - v;
+	var mg = 0;
+
+	switch (Math.floor(hi)) {
+		case 0:
+			pure[0] = 1;pure[1] = v;pure[2] = 0;break;
+		case 1:
+			pure[0] = w;pure[1] = 1;pure[2] = 0;break;
+		case 2:
+			pure[0] = 0;pure[1] = 1;pure[2] = v;break;
+		case 3:
+			pure[0] = 0;pure[1] = w;pure[2] = 1;break;
+		case 4:
+			pure[0] = v;pure[1] = 0;pure[2] = 1;break;
+		default:
+			pure[0] = 1;pure[1] = 0;pure[2] = w;
+	}
+
+	mg = (1.0 - c) * g;
+
+	return [(c * pure[0] + mg) * 255, (c * pure[1] + mg) * 255, (c * pure[2] + mg) * 255];
+};
+
+convert.hcg.hsv = function (hcg) {
+	var c = hcg[1] / 100;
+	var g = hcg[2] / 100;
+
+	var v = c + g * (1.0 - c);
+	var f = 0;
+
+	if (v > 0.0) {
+		f = c / v;
+	}
+
+	return [hcg[0], f * 100, v * 100];
+};
+
+convert.hcg.hsl = function (hcg) {
+	var c = hcg[1] / 100;
+	var g = hcg[2] / 100;
+
+	var l = g * (1.0 - c) + 0.5 * c;
+	var s = 0;
+
+	if (l > 0.0 && l < 0.5) {
+		s = c / (2 * l);
+	} else if (l >= 0.5 && l < 1.0) {
+		s = c / (2 * (1 - l));
+	}
+
+	return [hcg[0], s * 100, l * 100];
+};
+
+convert.hcg.hwb = function (hcg) {
+	var c = hcg[1] / 100;
+	var g = hcg[2] / 100;
+	var v = c + g * (1.0 - c);
+	return [hcg[0], (v - c) * 100, (1 - v) * 100];
+};
+
+convert.hwb.hcg = function (hwb) {
+	var w = hwb[1] / 100;
+	var b = hwb[2] / 100;
+	var v = 1 - b;
+	var c = v - w;
+	var g = 0;
+
+	if (c < 1) {
+		g = (v - c) / (1 - c);
+	}
+
+	return [hwb[0], c * 100, g * 100];
+};
+
+convert.apple.rgb = function (apple) {
+	return [apple[0] / 65535 * 255, apple[1] / 65535 * 255, apple[2] / 65535 * 255];
+};
+
+convert.rgb.apple = function (rgb) {
+	return [rgb[0] / 255 * 65535, rgb[1] / 255 * 65535, rgb[2] / 255 * 65535];
+};
+
+convert.gray.rgb = function (args) {
+	return [args[0] / 100 * 255, args[0] / 100 * 255, args[0] / 100 * 255];
+};
+
+convert.gray.hsl = convert.gray.hsv = function (args) {
+	return [0, 0, args[0]];
+};
+
+convert.gray.hwb = function (gray) {
+	return [0, 100, gray[0]];
+};
+
+convert.gray.cmyk = function (gray) {
+	return [0, 0, 0, gray[0]];
+};
+
+convert.gray.lab = function (gray) {
+	return [gray[0], 0, 0];
+};
+
+convert.gray.hex = function (gray) {
+	var val = Math.round(gray[0] / 100 * 255) & 0xFF;
+	var integer = (val << 16) + (val << 8) + val;
+
+	var string = integer.toString(16).toUpperCase();
+	return '000000'.substring(string.length) + string;
+};
+
+convert.rgb.gray = function (rgb) {
+	var val = (rgb[0] + rgb[1] + rgb[2]) / 3;
+	return [val / 255 * 100];
+};
+
+/***/ }),
+
 /***/ "YKUH":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21250,6 +26375,13 @@ module.exports = Object.create || function create(O, Properties) {
 
 /***/ }),
 
+/***/ "ZMZp":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "ZaQb":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21406,6 +26538,13 @@ var invariant = function invariant(condition, format, a, b, c, d, e, f) {
 };
 
 module.exports = invariant;
+
+/***/ }),
+
+/***/ "aQgv":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -21821,6 +26960,236 @@ var store = global[SHARED] || (global[SHARED] = {});
   mode: __webpack_require__("O4g8") ? 'pure' : 'global',
   copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
+
+/***/ }),
+
+/***/ "eOlF":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "eSvN":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+var colorConvert = __webpack_require__("zOqJ");
+
+var wrapAnsi16 = function wrapAnsi16(fn, offset) {
+	return function () {
+		var code = fn.apply(colorConvert, arguments);
+		return '\x1B[' + (code + offset) + 'm';
+	};
+};
+
+var wrapAnsi256 = function wrapAnsi256(fn, offset) {
+	return function () {
+		var code = fn.apply(colorConvert, arguments);
+		return '\x1B[' + (38 + offset) + ';5;' + code + 'm';
+	};
+};
+
+var wrapAnsi16m = function wrapAnsi16m(fn, offset) {
+	return function () {
+		var rgb = fn.apply(colorConvert, arguments);
+		return '\x1B[' + (38 + offset) + ';2;' + rgb[0] + ';' + rgb[1] + ';' + rgb[2] + 'm';
+	};
+};
+
+function assembleStyles() {
+	var codes = new Map();
+	var styles = {
+		modifier: {
+			reset: [0, 0],
+			// 21 isn't widely supported and 22 does the same thing
+			bold: [1, 22],
+			dim: [2, 22],
+			italic: [3, 23],
+			underline: [4, 24],
+			inverse: [7, 27],
+			hidden: [8, 28],
+			strikethrough: [9, 29]
+		},
+		color: {
+			black: [30, 39],
+			red: [31, 39],
+			green: [32, 39],
+			yellow: [33, 39],
+			blue: [34, 39],
+			magenta: [35, 39],
+			cyan: [36, 39],
+			white: [37, 39],
+			gray: [90, 39],
+
+			// Bright color
+			redBright: [91, 39],
+			greenBright: [92, 39],
+			yellowBright: [93, 39],
+			blueBright: [94, 39],
+			magentaBright: [95, 39],
+			cyanBright: [96, 39],
+			whiteBright: [97, 39]
+		},
+		bgColor: {
+			bgBlack: [40, 49],
+			bgRed: [41, 49],
+			bgGreen: [42, 49],
+			bgYellow: [43, 49],
+			bgBlue: [44, 49],
+			bgMagenta: [45, 49],
+			bgCyan: [46, 49],
+			bgWhite: [47, 49],
+
+			// Bright color
+			bgBlackBright: [100, 49],
+			bgRedBright: [101, 49],
+			bgGreenBright: [102, 49],
+			bgYellowBright: [103, 49],
+			bgBlueBright: [104, 49],
+			bgMagentaBright: [105, 49],
+			bgCyanBright: [106, 49],
+			bgWhiteBright: [107, 49]
+		}
+	};
+
+	// Fix humans
+	styles.color.grey = styles.color.gray;
+
+	for (var _iterator = Object.keys(styles), _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+		var _ref;
+
+		if (_isArray) {
+			if (_i >= _iterator.length) break;
+			_ref = _iterator[_i++];
+		} else {
+			_i = _iterator.next();
+			if (_i.done) break;
+			_ref = _i.value;
+		}
+
+		var groupName = _ref;
+
+		var group = styles[groupName];
+
+		for (var _iterator3 = Object.keys(group), _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+			var _ref3;
+
+			if (_isArray3) {
+				if (_i3 >= _iterator3.length) break;
+				_ref3 = _iterator3[_i3++];
+			} else {
+				_i3 = _iterator3.next();
+				if (_i3.done) break;
+				_ref3 = _i3.value;
+			}
+
+			var styleName = _ref3;
+
+			var style = group[styleName];
+
+			styles[styleName] = {
+				open: '\x1B[' + style[0] + 'm',
+				close: '\x1B[' + style[1] + 'm'
+			};
+
+			group[styleName] = styles[styleName];
+
+			codes.set(style[0], style[1]);
+		}
+
+		Object.defineProperty(styles, groupName, {
+			value: group,
+			enumerable: false
+		});
+
+		Object.defineProperty(styles, 'codes', {
+			value: codes,
+			enumerable: false
+		});
+	}
+
+	var ansi2ansi = function ansi2ansi(n) {
+		return n;
+	};
+	var rgb2rgb = function rgb2rgb(r, g, b) {
+		return [r, g, b];
+	};
+
+	styles.color.close = '\x1B[39m';
+	styles.bgColor.close = '\x1B[49m';
+
+	styles.color.ansi = {
+		ansi: wrapAnsi16(ansi2ansi, 0)
+	};
+	styles.color.ansi256 = {
+		ansi256: wrapAnsi256(ansi2ansi, 0)
+	};
+	styles.color.ansi16m = {
+		rgb: wrapAnsi16m(rgb2rgb, 0)
+	};
+
+	styles.bgColor.ansi = {
+		ansi: wrapAnsi16(ansi2ansi, 10)
+	};
+	styles.bgColor.ansi256 = {
+		ansi256: wrapAnsi256(ansi2ansi, 10)
+	};
+	styles.bgColor.ansi16m = {
+		rgb: wrapAnsi16m(rgb2rgb, 10)
+	};
+
+	for (var _iterator2 = Object.keys(colorConvert), _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+		var _ref2;
+
+		if (_isArray2) {
+			if (_i2 >= _iterator2.length) break;
+			_ref2 = _iterator2[_i2++];
+		} else {
+			_i2 = _iterator2.next();
+			if (_i2.done) break;
+			_ref2 = _i2.value;
+		}
+
+		var key = _ref2;
+
+		if (typeof colorConvert[key] !== 'object') {
+			continue;
+		}
+
+		var suite = colorConvert[key];
+
+		if (key === 'ansi16') {
+			key = 'ansi';
+		}
+
+		if ('ansi16' in suite) {
+			styles.color.ansi[key] = wrapAnsi16(suite.ansi16, 0);
+			styles.bgColor.ansi[key] = wrapAnsi16(suite.ansi16, 10);
+		}
+
+		if ('ansi256' in suite) {
+			styles.color.ansi256[key] = wrapAnsi256(suite.ansi256, 0);
+			styles.bgColor.ansi256[key] = wrapAnsi256(suite.ansi256, 10);
+		}
+
+		if ('rgb' in suite) {
+			styles.color.ansi16m[key] = wrapAnsi16m(suite.rgb, 0);
+			styles.bgColor.ansi16m[key] = wrapAnsi16m(suite.rgb, 10);
+		}
+	}
+
+	return styles;
+}
+
+// Make the export immutable
+Object.defineProperty(module, 'exports', {
+	enumerable: true,
+	get: assembleStyles
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("3IRH")(module)))
 
 /***/ }),
 
@@ -23296,6 +28665,2076 @@ __webpack_require__("HpRW")('Set');
 
 /***/ }),
 
+/***/ "j4hi":
+/***/ (function(module, exports) {
+
+/**
+ * Diff Match and Patch
+ * Copyright 2018 The diff-match-patch Authors.
+ * https://github.com/google/diff-match-patch
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @fileoverview Computes the difference between two texts to create a patch.
+ * Applies the patch onto another text, allowing for errors.
+ * @author fraser@google.com (Neil Fraser)
+ */
+
+/**
+ * Class containing the diff, match and patch methods.
+ * @constructor
+ */
+function diff_match_patch() {
+
+  // Defaults.
+  // Redefine these in your program to override the defaults.
+
+  // Number of seconds to map a diff before giving up (0 for infinity).
+  this.Diff_Timeout = 1.0;
+  // Cost of an empty edit operation in terms of edit characters.
+  this.Diff_EditCost = 4;
+  // At what point is no match declared (0.0 = perfection, 1.0 = very loose).
+  this.Match_Threshold = 0.5;
+  // How far to search for a match (0 = exact location, 1000+ = broad match).
+  // A match this many characters away from the expected location will add
+  // 1.0 to the score (0.0 is a perfect match).
+  this.Match_Distance = 1000;
+  // When deleting a large block of text (over ~64 characters), how close do
+  // the contents have to be to match the expected contents. (0.0 = perfection,
+  // 1.0 = very loose).  Note that Match_Threshold controls how closely the
+  // end points of a delete need to match.
+  this.Patch_DeleteThreshold = 0.5;
+  // Chunk size for context length.
+  this.Patch_Margin = 4;
+
+  // The number of bits in an int.
+  this.Match_MaxBits = 32;
+}
+
+//  DIFF FUNCTIONS
+
+
+/**
+ * The data structure representing a diff is an array of tuples:
+ * [[DIFF_DELETE, 'Hello'], [DIFF_INSERT, 'Goodbye'], [DIFF_EQUAL, ' world.']]
+ * which means: delete 'Hello', add 'Goodbye' and keep ' world.'
+ */
+var DIFF_DELETE = -1;
+var DIFF_INSERT = 1;
+var DIFF_EQUAL = 0;
+
+/** @typedef {{0: number, 1: string}} */
+diff_match_patch.Diff;
+
+/**
+ * Find the differences between two texts.  Simplifies the problem by stripping
+ * any common prefix or suffix off the texts before diffing.
+ * @param {string} text1 Old string to be diffed.
+ * @param {string} text2 New string to be diffed.
+ * @param {boolean=} opt_checklines Optional speedup flag. If present and false,
+ *     then don't run a line-level diff first to identify the changed areas.
+ *     Defaults to true, which does a faster, slightly less optimal diff.
+ * @param {number} opt_deadline Optional time when the diff should be complete
+ *     by.  Used internally for recursive calls.  Users should set DiffTimeout
+ *     instead.
+ * @return {!Array.<!diff_match_patch.Diff>} Array of diff tuples.
+ */
+diff_match_patch.prototype.diff_main = function (text1, text2, opt_checklines, opt_deadline) {
+  // Set a deadline by which time the diff must be complete.
+  if (typeof opt_deadline == 'undefined') {
+    if (this.Diff_Timeout <= 0) {
+      opt_deadline = Number.MAX_VALUE;
+    } else {
+      opt_deadline = new Date().getTime() + this.Diff_Timeout * 1000;
+    }
+  }
+  var deadline = opt_deadline;
+
+  // Check for null inputs.
+  if (text1 == null || text2 == null) {
+    throw new Error('Null input. (diff_main)');
+  }
+
+  // Check for equality (speedup).
+  if (text1 == text2) {
+    if (text1) {
+      return [[DIFF_EQUAL, text1]];
+    }
+    return [];
+  }
+
+  if (typeof opt_checklines == 'undefined') {
+    opt_checklines = true;
+  }
+  var checklines = opt_checklines;
+
+  // Trim off common prefix (speedup).
+  var commonlength = this.diff_commonPrefix(text1, text2);
+  var commonprefix = text1.substring(0, commonlength);
+  text1 = text1.substring(commonlength);
+  text2 = text2.substring(commonlength);
+
+  // Trim off common suffix (speedup).
+  commonlength = this.diff_commonSuffix(text1, text2);
+  var commonsuffix = text1.substring(text1.length - commonlength);
+  text1 = text1.substring(0, text1.length - commonlength);
+  text2 = text2.substring(0, text2.length - commonlength);
+
+  // Compute the diff on the middle block.
+  var diffs = this.diff_compute_(text1, text2, checklines, deadline);
+
+  // Restore the prefix and suffix.
+  if (commonprefix) {
+    diffs.unshift([DIFF_EQUAL, commonprefix]);
+  }
+  if (commonsuffix) {
+    diffs.push([DIFF_EQUAL, commonsuffix]);
+  }
+  this.diff_cleanupMerge(diffs);
+  return diffs;
+};
+
+/**
+ * Find the differences between two texts.  Assumes that the texts do not
+ * have any common prefix or suffix.
+ * @param {string} text1 Old string to be diffed.
+ * @param {string} text2 New string to be diffed.
+ * @param {boolean} checklines Speedup flag.  If false, then don't run a
+ *     line-level diff first to identify the changed areas.
+ *     If true, then run a faster, slightly less optimal diff.
+ * @param {number} deadline Time when the diff should be complete by.
+ * @return {!Array.<!diff_match_patch.Diff>} Array of diff tuples.
+ * @private
+ */
+diff_match_patch.prototype.diff_compute_ = function (text1, text2, checklines, deadline) {
+  var diffs;
+
+  if (!text1) {
+    // Just add some text (speedup).
+    return [[DIFF_INSERT, text2]];
+  }
+
+  if (!text2) {
+    // Just delete some text (speedup).
+    return [[DIFF_DELETE, text1]];
+  }
+
+  var longtext = text1.length > text2.length ? text1 : text2;
+  var shorttext = text1.length > text2.length ? text2 : text1;
+  var i = longtext.indexOf(shorttext);
+  if (i != -1) {
+    // Shorter text is inside the longer text (speedup).
+    diffs = [[DIFF_INSERT, longtext.substring(0, i)], [DIFF_EQUAL, shorttext], [DIFF_INSERT, longtext.substring(i + shorttext.length)]];
+    // Swap insertions for deletions if diff is reversed.
+    if (text1.length > text2.length) {
+      diffs[0][0] = diffs[2][0] = DIFF_DELETE;
+    }
+    return diffs;
+  }
+
+  if (shorttext.length == 1) {
+    // Single character string.
+    // After the previous speedup, the character can't be an equality.
+    return [[DIFF_DELETE, text1], [DIFF_INSERT, text2]];
+  }
+
+  // Check to see if the problem can be split in two.
+  var hm = this.diff_halfMatch_(text1, text2);
+  if (hm) {
+    // A half-match was found, sort out the return data.
+    var text1_a = hm[0];
+    var text1_b = hm[1];
+    var text2_a = hm[2];
+    var text2_b = hm[3];
+    var mid_common = hm[4];
+    // Send both pairs off for separate processing.
+    var diffs_a = this.diff_main(text1_a, text2_a, checklines, deadline);
+    var diffs_b = this.diff_main(text1_b, text2_b, checklines, deadline);
+    // Merge the results.
+    return diffs_a.concat([[DIFF_EQUAL, mid_common]], diffs_b);
+  }
+
+  if (checklines && text1.length > 100 && text2.length > 100) {
+    return this.diff_lineMode_(text1, text2, deadline);
+  }
+
+  return this.diff_bisect_(text1, text2, deadline);
+};
+
+/**
+ * Do a quick line-level diff on both strings, then rediff the parts for
+ * greater accuracy.
+ * This speedup can produce non-minimal diffs.
+ * @param {string} text1 Old string to be diffed.
+ * @param {string} text2 New string to be diffed.
+ * @param {number} deadline Time when the diff should be complete by.
+ * @return {!Array.<!diff_match_patch.Diff>} Array of diff tuples.
+ * @private
+ */
+diff_match_patch.prototype.diff_lineMode_ = function (text1, text2, deadline) {
+  // Scan the text on a line-by-line basis first.
+  var a = this.diff_linesToChars_(text1, text2);
+  text1 = a.chars1;
+  text2 = a.chars2;
+  var linearray = a.lineArray;
+
+  var diffs = this.diff_main(text1, text2, false, deadline);
+
+  // Convert the diff back to original text.
+  this.diff_charsToLines_(diffs, linearray);
+  // Eliminate freak matches (e.g. blank lines)
+  this.diff_cleanupSemantic(diffs);
+
+  // Rediff any replacement blocks, this time character-by-character.
+  // Add a dummy entry at the end.
+  diffs.push([DIFF_EQUAL, '']);
+  var pointer = 0;
+  var count_delete = 0;
+  var count_insert = 0;
+  var text_delete = '';
+  var text_insert = '';
+  while (pointer < diffs.length) {
+    switch (diffs[pointer][0]) {
+      case DIFF_INSERT:
+        count_insert++;
+        text_insert += diffs[pointer][1];
+        break;
+      case DIFF_DELETE:
+        count_delete++;
+        text_delete += diffs[pointer][1];
+        break;
+      case DIFF_EQUAL:
+        // Upon reaching an equality, check for prior redundancies.
+        if (count_delete >= 1 && count_insert >= 1) {
+          // Delete the offending records and add the merged ones.
+          diffs.splice(pointer - count_delete - count_insert, count_delete + count_insert);
+          pointer = pointer - count_delete - count_insert;
+          var a = this.diff_main(text_delete, text_insert, false, deadline);
+          for (var j = a.length - 1; j >= 0; j--) {
+            diffs.splice(pointer, 0, a[j]);
+          }
+          pointer = pointer + a.length;
+        }
+        count_insert = 0;
+        count_delete = 0;
+        text_delete = '';
+        text_insert = '';
+        break;
+    }
+    pointer++;
+  }
+  diffs.pop(); // Remove the dummy entry at the end.
+
+  return diffs;
+};
+
+/**
+ * Find the 'middle snake' of a diff, split the problem in two
+ * and return the recursively constructed diff.
+ * See Myers 1986 paper: An O(ND) Difference Algorithm and Its Variations.
+ * @param {string} text1 Old string to be diffed.
+ * @param {string} text2 New string to be diffed.
+ * @param {number} deadline Time at which to bail if not yet complete.
+ * @return {!Array.<!diff_match_patch.Diff>} Array of diff tuples.
+ * @private
+ */
+diff_match_patch.prototype.diff_bisect_ = function (text1, text2, deadline) {
+  // Cache the text lengths to prevent multiple calls.
+  var text1_length = text1.length;
+  var text2_length = text2.length;
+  var max_d = Math.ceil((text1_length + text2_length) / 2);
+  var v_offset = max_d;
+  var v_length = 2 * max_d;
+  var v1 = new Array(v_length);
+  var v2 = new Array(v_length);
+  // Setting all elements to -1 is faster in Chrome & Firefox than mixing
+  // integers and undefined.
+  for (var x = 0; x < v_length; x++) {
+    v1[x] = -1;
+    v2[x] = -1;
+  }
+  v1[v_offset + 1] = 0;
+  v2[v_offset + 1] = 0;
+  var delta = text1_length - text2_length;
+  // If the total number of characters is odd, then the front path will collide
+  // with the reverse path.
+  var front = delta % 2 != 0;
+  // Offsets for start and end of k loop.
+  // Prevents mapping of space beyond the grid.
+  var k1start = 0;
+  var k1end = 0;
+  var k2start = 0;
+  var k2end = 0;
+  for (var d = 0; d < max_d; d++) {
+    // Bail out if deadline is reached.
+    if (new Date().getTime() > deadline) {
+      break;
+    }
+
+    // Walk the front path one step.
+    for (var k1 = -d + k1start; k1 <= d - k1end; k1 += 2) {
+      var k1_offset = v_offset + k1;
+      var x1;
+      if (k1 == -d || k1 != d && v1[k1_offset - 1] < v1[k1_offset + 1]) {
+        x1 = v1[k1_offset + 1];
+      } else {
+        x1 = v1[k1_offset - 1] + 1;
+      }
+      var y1 = x1 - k1;
+      while (x1 < text1_length && y1 < text2_length && text1.charAt(x1) == text2.charAt(y1)) {
+        x1++;
+        y1++;
+      }
+      v1[k1_offset] = x1;
+      if (x1 > text1_length) {
+        // Ran off the right of the graph.
+        k1end += 2;
+      } else if (y1 > text2_length) {
+        // Ran off the bottom of the graph.
+        k1start += 2;
+      } else if (front) {
+        var k2_offset = v_offset + delta - k1;
+        if (k2_offset >= 0 && k2_offset < v_length && v2[k2_offset] != -1) {
+          // Mirror x2 onto top-left coordinate system.
+          var x2 = text1_length - v2[k2_offset];
+          if (x1 >= x2) {
+            // Overlap detected.
+            return this.diff_bisectSplit_(text1, text2, x1, y1, deadline);
+          }
+        }
+      }
+    }
+
+    // Walk the reverse path one step.
+    for (var k2 = -d + k2start; k2 <= d - k2end; k2 += 2) {
+      var k2_offset = v_offset + k2;
+      var x2;
+      if (k2 == -d || k2 != d && v2[k2_offset - 1] < v2[k2_offset + 1]) {
+        x2 = v2[k2_offset + 1];
+      } else {
+        x2 = v2[k2_offset - 1] + 1;
+      }
+      var y2 = x2 - k2;
+      while (x2 < text1_length && y2 < text2_length && text1.charAt(text1_length - x2 - 1) == text2.charAt(text2_length - y2 - 1)) {
+        x2++;
+        y2++;
+      }
+      v2[k2_offset] = x2;
+      if (x2 > text1_length) {
+        // Ran off the left of the graph.
+        k2end += 2;
+      } else if (y2 > text2_length) {
+        // Ran off the top of the graph.
+        k2start += 2;
+      } else if (!front) {
+        var k1_offset = v_offset + delta - k2;
+        if (k1_offset >= 0 && k1_offset < v_length && v1[k1_offset] != -1) {
+          var x1 = v1[k1_offset];
+          var y1 = v_offset + x1 - k1_offset;
+          // Mirror x2 onto top-left coordinate system.
+          x2 = text1_length - x2;
+          if (x1 >= x2) {
+            // Overlap detected.
+            return this.diff_bisectSplit_(text1, text2, x1, y1, deadline);
+          }
+        }
+      }
+    }
+  }
+  // Diff took too long and hit the deadline or
+  // number of diffs equals number of characters, no commonality at all.
+  return [[DIFF_DELETE, text1], [DIFF_INSERT, text2]];
+};
+
+/**
+ * Given the location of the 'middle snake', split the diff in two parts
+ * and recurse.
+ * @param {string} text1 Old string to be diffed.
+ * @param {string} text2 New string to be diffed.
+ * @param {number} x Index of split point in text1.
+ * @param {number} y Index of split point in text2.
+ * @param {number} deadline Time at which to bail if not yet complete.
+ * @return {!Array.<!diff_match_patch.Diff>} Array of diff tuples.
+ * @private
+ */
+diff_match_patch.prototype.diff_bisectSplit_ = function (text1, text2, x, y, deadline) {
+  var text1a = text1.substring(0, x);
+  var text2a = text2.substring(0, y);
+  var text1b = text1.substring(x);
+  var text2b = text2.substring(y);
+
+  // Compute both diffs serially.
+  var diffs = this.diff_main(text1a, text2a, false, deadline);
+  var diffsb = this.diff_main(text1b, text2b, false, deadline);
+
+  return diffs.concat(diffsb);
+};
+
+/**
+ * Split two texts into an array of strings.  Reduce the texts to a string of
+ * hashes where each Unicode character represents one line.
+ * @param {string} text1 First string.
+ * @param {string} text2 Second string.
+ * @return {{chars1: string, chars2: string, lineArray: !Array.<string>}}
+ *     An object containing the encoded text1, the encoded text2 and
+ *     the array of unique strings.
+ *     The zeroth element of the array of unique strings is intentionally blank.
+ * @private
+ */
+diff_match_patch.prototype.diff_linesToChars_ = function (text1, text2) {
+  var lineArray = []; // e.g. lineArray[4] == 'Hello\n'
+  var lineHash = {}; // e.g. lineHash['Hello\n'] == 4
+
+  // '\x00' is a valid character, but various debuggers don't like it.
+  // So we'll insert a junk entry to avoid generating a null character.
+  lineArray[0] = '';
+
+  /**
+   * Split a text into an array of strings.  Reduce the texts to a string of
+   * hashes where each Unicode character represents one line.
+   * Modifies linearray and linehash through being a closure.
+   * @param {string} text String to encode.
+   * @return {string} Encoded string.
+   * @private
+   */
+  function diff_linesToCharsMunge_(text) {
+    var chars = '';
+    // Walk the text, pulling out a substring for each line.
+    // text.split('\n') would would temporarily double our memory footprint.
+    // Modifying text would create many large strings to garbage collect.
+    var lineStart = 0;
+    var lineEnd = -1;
+    // Keeping our own length variable is faster than looking it up.
+    var lineArrayLength = lineArray.length;
+    while (lineEnd < text.length - 1) {
+      lineEnd = text.indexOf('\n', lineStart);
+      if (lineEnd == -1) {
+        lineEnd = text.length - 1;
+      }
+      var line = text.substring(lineStart, lineEnd + 1);
+      lineStart = lineEnd + 1;
+
+      if (lineHash.hasOwnProperty ? lineHash.hasOwnProperty(line) : lineHash[line] !== undefined) {
+        chars += String.fromCharCode(lineHash[line]);
+      } else {
+        chars += String.fromCharCode(lineArrayLength);
+        lineHash[line] = lineArrayLength;
+        lineArray[lineArrayLength++] = line;
+      }
+    }
+    return chars;
+  }
+
+  var chars1 = diff_linesToCharsMunge_(text1);
+  var chars2 = diff_linesToCharsMunge_(text2);
+  return { chars1: chars1, chars2: chars2, lineArray: lineArray };
+};
+
+/**
+ * Rehydrate the text in a diff from a string of line hashes to real lines of
+ * text.
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ * @param {!Array.<string>} lineArray Array of unique strings.
+ * @private
+ */
+diff_match_patch.prototype.diff_charsToLines_ = function (diffs, lineArray) {
+  for (var x = 0; x < diffs.length; x++) {
+    var chars = diffs[x][1];
+    var text = [];
+    for (var y = 0; y < chars.length; y++) {
+      text[y] = lineArray[chars.charCodeAt(y)];
+    }
+    diffs[x][1] = text.join('');
+  }
+};
+
+/**
+ * Determine the common prefix of two strings.
+ * @param {string} text1 First string.
+ * @param {string} text2 Second string.
+ * @return {number} The number of characters common to the start of each
+ *     string.
+ */
+diff_match_patch.prototype.diff_commonPrefix = function (text1, text2) {
+  // Quick check for common null cases.
+  if (!text1 || !text2 || text1.charAt(0) != text2.charAt(0)) {
+    return 0;
+  }
+  // Binary search.
+  // Performance analysis: http://neil.fraser.name/news/2007/10/09/
+  var pointermin = 0;
+  var pointermax = Math.min(text1.length, text2.length);
+  var pointermid = pointermax;
+  var pointerstart = 0;
+  while (pointermin < pointermid) {
+    if (text1.substring(pointerstart, pointermid) == text2.substring(pointerstart, pointermid)) {
+      pointermin = pointermid;
+      pointerstart = pointermin;
+    } else {
+      pointermax = pointermid;
+    }
+    pointermid = Math.floor((pointermax - pointermin) / 2 + pointermin);
+  }
+  return pointermid;
+};
+
+/**
+ * Determine the common suffix of two strings.
+ * @param {string} text1 First string.
+ * @param {string} text2 Second string.
+ * @return {number} The number of characters common to the end of each string.
+ */
+diff_match_patch.prototype.diff_commonSuffix = function (text1, text2) {
+  // Quick check for common null cases.
+  if (!text1 || !text2 || text1.charAt(text1.length - 1) != text2.charAt(text2.length - 1)) {
+    return 0;
+  }
+  // Binary search.
+  // Performance analysis: http://neil.fraser.name/news/2007/10/09/
+  var pointermin = 0;
+  var pointermax = Math.min(text1.length, text2.length);
+  var pointermid = pointermax;
+  var pointerend = 0;
+  while (pointermin < pointermid) {
+    if (text1.substring(text1.length - pointermid, text1.length - pointerend) == text2.substring(text2.length - pointermid, text2.length - pointerend)) {
+      pointermin = pointermid;
+      pointerend = pointermin;
+    } else {
+      pointermax = pointermid;
+    }
+    pointermid = Math.floor((pointermax - pointermin) / 2 + pointermin);
+  }
+  return pointermid;
+};
+
+/**
+ * Determine if the suffix of one string is the prefix of another.
+ * @param {string} text1 First string.
+ * @param {string} text2 Second string.
+ * @return {number} The number of characters common to the end of the first
+ *     string and the start of the second string.
+ * @private
+ */
+diff_match_patch.prototype.diff_commonOverlap_ = function (text1, text2) {
+  // Cache the text lengths to prevent multiple calls.
+  var text1_length = text1.length;
+  var text2_length = text2.length;
+  // Eliminate the null case.
+  if (text1_length == 0 || text2_length == 0) {
+    return 0;
+  }
+  // Truncate the longer string.
+  if (text1_length > text2_length) {
+    text1 = text1.substring(text1_length - text2_length);
+  } else if (text1_length < text2_length) {
+    text2 = text2.substring(0, text1_length);
+  }
+  var text_length = Math.min(text1_length, text2_length);
+  // Quick check for the worst case.
+  if (text1 == text2) {
+    return text_length;
+  }
+
+  // Start by looking for a single character match
+  // and increase length until no match is found.
+  // Performance analysis: http://neil.fraser.name/news/2010/11/04/
+  var best = 0;
+  var length = 1;
+  while (true) {
+    var pattern = text1.substring(text_length - length);
+    var found = text2.indexOf(pattern);
+    if (found == -1) {
+      return best;
+    }
+    length += found;
+    if (found == 0 || text1.substring(text_length - length) == text2.substring(0, length)) {
+      best = length;
+      length++;
+    }
+  }
+};
+
+/**
+ * Do the two texts share a substring which is at least half the length of the
+ * longer text?
+ * This speedup can produce non-minimal diffs.
+ * @param {string} text1 First string.
+ * @param {string} text2 Second string.
+ * @return {Array.<string>} Five element Array, containing the prefix of
+ *     text1, the suffix of text1, the prefix of text2, the suffix of
+ *     text2 and the common middle.  Or null if there was no match.
+ * @private
+ */
+diff_match_patch.prototype.diff_halfMatch_ = function (text1, text2) {
+  if (this.Diff_Timeout <= 0) {
+    // Don't risk returning a non-optimal diff if we have unlimited time.
+    return null;
+  }
+  var longtext = text1.length > text2.length ? text1 : text2;
+  var shorttext = text1.length > text2.length ? text2 : text1;
+  if (longtext.length < 4 || shorttext.length * 2 < longtext.length) {
+    return null; // Pointless.
+  }
+  var dmp = this; // 'this' becomes 'window' in a closure.
+
+  /**
+   * Does a substring of shorttext exist within longtext such that the substring
+   * is at least half the length of longtext?
+   * Closure, but does not reference any external variables.
+   * @param {string} longtext Longer string.
+   * @param {string} shorttext Shorter string.
+   * @param {number} i Start index of quarter length substring within longtext.
+   * @return {Array.<string>} Five element Array, containing the prefix of
+   *     longtext, the suffix of longtext, the prefix of shorttext, the suffix
+   *     of shorttext and the common middle.  Or null if there was no match.
+   * @private
+   */
+  function diff_halfMatchI_(longtext, shorttext, i) {
+    // Start with a 1/4 length substring at position i as a seed.
+    var seed = longtext.substring(i, i + Math.floor(longtext.length / 4));
+    var j = -1;
+    var best_common = '';
+    var best_longtext_a, best_longtext_b, best_shorttext_a, best_shorttext_b;
+    while ((j = shorttext.indexOf(seed, j + 1)) != -1) {
+      var prefixLength = dmp.diff_commonPrefix(longtext.substring(i), shorttext.substring(j));
+      var suffixLength = dmp.diff_commonSuffix(longtext.substring(0, i), shorttext.substring(0, j));
+      if (best_common.length < suffixLength + prefixLength) {
+        best_common = shorttext.substring(j - suffixLength, j) + shorttext.substring(j, j + prefixLength);
+        best_longtext_a = longtext.substring(0, i - suffixLength);
+        best_longtext_b = longtext.substring(i + prefixLength);
+        best_shorttext_a = shorttext.substring(0, j - suffixLength);
+        best_shorttext_b = shorttext.substring(j + prefixLength);
+      }
+    }
+    if (best_common.length * 2 >= longtext.length) {
+      return [best_longtext_a, best_longtext_b, best_shorttext_a, best_shorttext_b, best_common];
+    } else {
+      return null;
+    }
+  }
+
+  // First check if the second quarter is the seed for a half-match.
+  var hm1 = diff_halfMatchI_(longtext, shorttext, Math.ceil(longtext.length / 4));
+  // Check again based on the third quarter.
+  var hm2 = diff_halfMatchI_(longtext, shorttext, Math.ceil(longtext.length / 2));
+  var hm;
+  if (!hm1 && !hm2) {
+    return null;
+  } else if (!hm2) {
+    hm = hm1;
+  } else if (!hm1) {
+    hm = hm2;
+  } else {
+    // Both matched.  Select the longest.
+    hm = hm1[4].length > hm2[4].length ? hm1 : hm2;
+  }
+
+  // A half-match was found, sort out the return data.
+  var text1_a, text1_b, text2_a, text2_b;
+  if (text1.length > text2.length) {
+    text1_a = hm[0];
+    text1_b = hm[1];
+    text2_a = hm[2];
+    text2_b = hm[3];
+  } else {
+    text2_a = hm[0];
+    text2_b = hm[1];
+    text1_a = hm[2];
+    text1_b = hm[3];
+  }
+  var mid_common = hm[4];
+  return [text1_a, text1_b, text2_a, text2_b, mid_common];
+};
+
+/**
+ * Reduce the number of edits by eliminating semantically trivial equalities.
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ */
+diff_match_patch.prototype.diff_cleanupSemantic = function (diffs) {
+  var changes = false;
+  var equalities = []; // Stack of indices where equalities are found.
+  var equalitiesLength = 0; // Keeping our own length var is faster in JS.
+  /** @type {?string} */
+  var lastequality = null;
+  // Always equal to diffs[equalities[equalitiesLength - 1]][1]
+  var pointer = 0; // Index of current position.
+  // Number of characters that changed prior to the equality.
+  var length_insertions1 = 0;
+  var length_deletions1 = 0;
+  // Number of characters that changed after the equality.
+  var length_insertions2 = 0;
+  var length_deletions2 = 0;
+  while (pointer < diffs.length) {
+    if (diffs[pointer][0] == DIFF_EQUAL) {
+      // Equality found.
+      equalities[equalitiesLength++] = pointer;
+      length_insertions1 = length_insertions2;
+      length_deletions1 = length_deletions2;
+      length_insertions2 = 0;
+      length_deletions2 = 0;
+      lastequality = diffs[pointer][1];
+    } else {
+      // An insertion or deletion.
+      if (diffs[pointer][0] == DIFF_INSERT) {
+        length_insertions2 += diffs[pointer][1].length;
+      } else {
+        length_deletions2 += diffs[pointer][1].length;
+      }
+      // Eliminate an equality that is smaller or equal to the edits on both
+      // sides of it.
+      if (lastequality && lastequality.length <= Math.max(length_insertions1, length_deletions1) && lastequality.length <= Math.max(length_insertions2, length_deletions2)) {
+        // Duplicate record.
+        diffs.splice(equalities[equalitiesLength - 1], 0, [DIFF_DELETE, lastequality]);
+        // Change second copy to insert.
+        diffs[equalities[equalitiesLength - 1] + 1][0] = DIFF_INSERT;
+        // Throw away the equality we just deleted.
+        equalitiesLength--;
+        // Throw away the previous equality (it needs to be reevaluated).
+        equalitiesLength--;
+        pointer = equalitiesLength > 0 ? equalities[equalitiesLength - 1] : -1;
+        length_insertions1 = 0; // Reset the counters.
+        length_deletions1 = 0;
+        length_insertions2 = 0;
+        length_deletions2 = 0;
+        lastequality = null;
+        changes = true;
+      }
+    }
+    pointer++;
+  }
+
+  // Normalize the diff.
+  if (changes) {
+    this.diff_cleanupMerge(diffs);
+  }
+  this.diff_cleanupSemanticLossless(diffs);
+
+  // Find any overlaps between deletions and insertions.
+  // e.g: <del>abcxxx</del><ins>xxxdef</ins>
+  //   -> <del>abc</del>xxx<ins>def</ins>
+  // e.g: <del>xxxabc</del><ins>defxxx</ins>
+  //   -> <ins>def</ins>xxx<del>abc</del>
+  // Only extract an overlap if it is as big as the edit ahead or behind it.
+  pointer = 1;
+  while (pointer < diffs.length) {
+    if (diffs[pointer - 1][0] == DIFF_DELETE && diffs[pointer][0] == DIFF_INSERT) {
+      var deletion = diffs[pointer - 1][1];
+      var insertion = diffs[pointer][1];
+      var overlap_length1 = this.diff_commonOverlap_(deletion, insertion);
+      var overlap_length2 = this.diff_commonOverlap_(insertion, deletion);
+      if (overlap_length1 >= overlap_length2) {
+        if (overlap_length1 >= deletion.length / 2 || overlap_length1 >= insertion.length / 2) {
+          // Overlap found.  Insert an equality and trim the surrounding edits.
+          diffs.splice(pointer, 0, [DIFF_EQUAL, insertion.substring(0, overlap_length1)]);
+          diffs[pointer - 1][1] = deletion.substring(0, deletion.length - overlap_length1);
+          diffs[pointer + 1][1] = insertion.substring(overlap_length1);
+          pointer++;
+        }
+      } else {
+        if (overlap_length2 >= deletion.length / 2 || overlap_length2 >= insertion.length / 2) {
+          // Reverse overlap found.
+          // Insert an equality and swap and trim the surrounding edits.
+          diffs.splice(pointer, 0, [DIFF_EQUAL, deletion.substring(0, overlap_length2)]);
+          diffs[pointer - 1][0] = DIFF_INSERT;
+          diffs[pointer - 1][1] = insertion.substring(0, insertion.length - overlap_length2);
+          diffs[pointer + 1][0] = DIFF_DELETE;
+          diffs[pointer + 1][1] = deletion.substring(overlap_length2);
+          pointer++;
+        }
+      }
+      pointer++;
+    }
+    pointer++;
+  }
+};
+
+/**
+ * Look for single edits surrounded on both sides by equalities
+ * which can be shifted sideways to align the edit to a word boundary.
+ * e.g: The c<ins>at c</ins>ame. -> The <ins>cat </ins>came.
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ */
+diff_match_patch.prototype.diff_cleanupSemanticLossless = function (diffs) {
+  /**
+   * Given two strings, compute a score representing whether the internal
+   * boundary falls on logical boundaries.
+   * Scores range from 6 (best) to 0 (worst).
+   * Closure, but does not reference any external variables.
+   * @param {string} one First string.
+   * @param {string} two Second string.
+   * @return {number} The score.
+   * @private
+   */
+  function diff_cleanupSemanticScore_(one, two) {
+    if (!one || !two) {
+      // Edges are the best.
+      return 6;
+    }
+
+    // Each port of this function behaves slightly differently due to
+    // subtle differences in each language's definition of things like
+    // 'whitespace'.  Since this function's purpose is largely cosmetic,
+    // the choice has been made to use each language's native features
+    // rather than force total conformity.
+    var char1 = one.charAt(one.length - 1);
+    var char2 = two.charAt(0);
+    var nonAlphaNumeric1 = char1.match(diff_match_patch.nonAlphaNumericRegex_);
+    var nonAlphaNumeric2 = char2.match(diff_match_patch.nonAlphaNumericRegex_);
+    var whitespace1 = nonAlphaNumeric1 && char1.match(diff_match_patch.whitespaceRegex_);
+    var whitespace2 = nonAlphaNumeric2 && char2.match(diff_match_patch.whitespaceRegex_);
+    var lineBreak1 = whitespace1 && char1.match(diff_match_patch.linebreakRegex_);
+    var lineBreak2 = whitespace2 && char2.match(diff_match_patch.linebreakRegex_);
+    var blankLine1 = lineBreak1 && one.match(diff_match_patch.blanklineEndRegex_);
+    var blankLine2 = lineBreak2 && two.match(diff_match_patch.blanklineStartRegex_);
+
+    if (blankLine1 || blankLine2) {
+      // Five points for blank lines.
+      return 5;
+    } else if (lineBreak1 || lineBreak2) {
+      // Four points for line breaks.
+      return 4;
+    } else if (nonAlphaNumeric1 && !whitespace1 && whitespace2) {
+      // Three points for end of sentences.
+      return 3;
+    } else if (whitespace1 || whitespace2) {
+      // Two points for whitespace.
+      return 2;
+    } else if (nonAlphaNumeric1 || nonAlphaNumeric2) {
+      // One point for non-alphanumeric.
+      return 1;
+    }
+    return 0;
+  }
+
+  var pointer = 1;
+  // Intentionally ignore the first and last element (don't need checking).
+  while (pointer < diffs.length - 1) {
+    if (diffs[pointer - 1][0] == DIFF_EQUAL && diffs[pointer + 1][0] == DIFF_EQUAL) {
+      // This is a single edit surrounded by equalities.
+      var equality1 = diffs[pointer - 1][1];
+      var edit = diffs[pointer][1];
+      var equality2 = diffs[pointer + 1][1];
+
+      // First, shift the edit as far left as possible.
+      var commonOffset = this.diff_commonSuffix(equality1, edit);
+      if (commonOffset) {
+        var commonString = edit.substring(edit.length - commonOffset);
+        equality1 = equality1.substring(0, equality1.length - commonOffset);
+        edit = commonString + edit.substring(0, edit.length - commonOffset);
+        equality2 = commonString + equality2;
+      }
+
+      // Second, step character by character right, looking for the best fit.
+      var bestEquality1 = equality1;
+      var bestEdit = edit;
+      var bestEquality2 = equality2;
+      var bestScore = diff_cleanupSemanticScore_(equality1, edit) + diff_cleanupSemanticScore_(edit, equality2);
+      while (edit.charAt(0) === equality2.charAt(0)) {
+        equality1 += edit.charAt(0);
+        edit = edit.substring(1) + equality2.charAt(0);
+        equality2 = equality2.substring(1);
+        var score = diff_cleanupSemanticScore_(equality1, edit) + diff_cleanupSemanticScore_(edit, equality2);
+        // The >= encourages trailing rather than leading whitespace on edits.
+        if (score >= bestScore) {
+          bestScore = score;
+          bestEquality1 = equality1;
+          bestEdit = edit;
+          bestEquality2 = equality2;
+        }
+      }
+
+      if (diffs[pointer - 1][1] != bestEquality1) {
+        // We have an improvement, save it back to the diff.
+        if (bestEquality1) {
+          diffs[pointer - 1][1] = bestEquality1;
+        } else {
+          diffs.splice(pointer - 1, 1);
+          pointer--;
+        }
+        diffs[pointer][1] = bestEdit;
+        if (bestEquality2) {
+          diffs[pointer + 1][1] = bestEquality2;
+        } else {
+          diffs.splice(pointer + 1, 1);
+          pointer--;
+        }
+      }
+    }
+    pointer++;
+  }
+};
+
+// Define some regex patterns for matching boundaries.
+diff_match_patch.nonAlphaNumericRegex_ = /[^a-zA-Z0-9]/;
+diff_match_patch.whitespaceRegex_ = /\s/;
+diff_match_patch.linebreakRegex_ = /[\r\n]/;
+diff_match_patch.blanklineEndRegex_ = /\n\r?\n$/;
+diff_match_patch.blanklineStartRegex_ = /^\r?\n\r?\n/;
+
+/**
+ * Reduce the number of edits by eliminating operationally trivial equalities.
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ */
+diff_match_patch.prototype.diff_cleanupEfficiency = function (diffs) {
+  var changes = false;
+  var equalities = []; // Stack of indices where equalities are found.
+  var equalitiesLength = 0; // Keeping our own length var is faster in JS.
+  /** @type {?string} */
+  var lastequality = null;
+  // Always equal to diffs[equalities[equalitiesLength - 1]][1]
+  var pointer = 0; // Index of current position.
+  // Is there an insertion operation before the last equality.
+  var pre_ins = false;
+  // Is there a deletion operation before the last equality.
+  var pre_del = false;
+  // Is there an insertion operation after the last equality.
+  var post_ins = false;
+  // Is there a deletion operation after the last equality.
+  var post_del = false;
+  while (pointer < diffs.length) {
+    if (diffs[pointer][0] == DIFF_EQUAL) {
+      // Equality found.
+      if (diffs[pointer][1].length < this.Diff_EditCost && (post_ins || post_del)) {
+        // Candidate found.
+        equalities[equalitiesLength++] = pointer;
+        pre_ins = post_ins;
+        pre_del = post_del;
+        lastequality = diffs[pointer][1];
+      } else {
+        // Not a candidate, and can never become one.
+        equalitiesLength = 0;
+        lastequality = null;
+      }
+      post_ins = post_del = false;
+    } else {
+      // An insertion or deletion.
+      if (diffs[pointer][0] == DIFF_DELETE) {
+        post_del = true;
+      } else {
+        post_ins = true;
+      }
+      /*
+       * Five types to be split:
+       * <ins>A</ins><del>B</del>XY<ins>C</ins><del>D</del>
+       * <ins>A</ins>X<ins>C</ins><del>D</del>
+       * <ins>A</ins><del>B</del>X<ins>C</ins>
+       * <ins>A</del>X<ins>C</ins><del>D</del>
+       * <ins>A</ins><del>B</del>X<del>C</del>
+       */
+      if (lastequality && (pre_ins && pre_del && post_ins && post_del || lastequality.length < this.Diff_EditCost / 2 && pre_ins + pre_del + post_ins + post_del == 3)) {
+        // Duplicate record.
+        diffs.splice(equalities[equalitiesLength - 1], 0, [DIFF_DELETE, lastequality]);
+        // Change second copy to insert.
+        diffs[equalities[equalitiesLength - 1] + 1][0] = DIFF_INSERT;
+        equalitiesLength--; // Throw away the equality we just deleted;
+        lastequality = null;
+        if (pre_ins && pre_del) {
+          // No changes made which could affect previous entry, keep going.
+          post_ins = post_del = true;
+          equalitiesLength = 0;
+        } else {
+          equalitiesLength--; // Throw away the previous equality.
+          pointer = equalitiesLength > 0 ? equalities[equalitiesLength - 1] : -1;
+          post_ins = post_del = false;
+        }
+        changes = true;
+      }
+    }
+    pointer++;
+  }
+
+  if (changes) {
+    this.diff_cleanupMerge(diffs);
+  }
+};
+
+/**
+ * Reorder and merge like edit sections.  Merge equalities.
+ * Any edit section can move as long as it doesn't cross an equality.
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ */
+diff_match_patch.prototype.diff_cleanupMerge = function (diffs) {
+  diffs.push([DIFF_EQUAL, '']); // Add a dummy entry at the end.
+  var pointer = 0;
+  var count_delete = 0;
+  var count_insert = 0;
+  var text_delete = '';
+  var text_insert = '';
+  var commonlength;
+  while (pointer < diffs.length) {
+    switch (diffs[pointer][0]) {
+      case DIFF_INSERT:
+        count_insert++;
+        text_insert += diffs[pointer][1];
+        pointer++;
+        break;
+      case DIFF_DELETE:
+        count_delete++;
+        text_delete += diffs[pointer][1];
+        pointer++;
+        break;
+      case DIFF_EQUAL:
+        // Upon reaching an equality, check for prior redundancies.
+        if (count_delete + count_insert > 1) {
+          if (count_delete !== 0 && count_insert !== 0) {
+            // Factor out any common prefixies.
+            commonlength = this.diff_commonPrefix(text_insert, text_delete);
+            if (commonlength !== 0) {
+              if (pointer - count_delete - count_insert > 0 && diffs[pointer - count_delete - count_insert - 1][0] == DIFF_EQUAL) {
+                diffs[pointer - count_delete - count_insert - 1][1] += text_insert.substring(0, commonlength);
+              } else {
+                diffs.splice(0, 0, [DIFF_EQUAL, text_insert.substring(0, commonlength)]);
+                pointer++;
+              }
+              text_insert = text_insert.substring(commonlength);
+              text_delete = text_delete.substring(commonlength);
+            }
+            // Factor out any common suffixies.
+            commonlength = this.diff_commonSuffix(text_insert, text_delete);
+            if (commonlength !== 0) {
+              diffs[pointer][1] = text_insert.substring(text_insert.length - commonlength) + diffs[pointer][1];
+              text_insert = text_insert.substring(0, text_insert.length - commonlength);
+              text_delete = text_delete.substring(0, text_delete.length - commonlength);
+            }
+          }
+          // Delete the offending records and add the merged ones.
+          if (count_delete === 0) {
+            diffs.splice(pointer - count_insert, count_delete + count_insert, [DIFF_INSERT, text_insert]);
+          } else if (count_insert === 0) {
+            diffs.splice(pointer - count_delete, count_delete + count_insert, [DIFF_DELETE, text_delete]);
+          } else {
+            diffs.splice(pointer - count_delete - count_insert, count_delete + count_insert, [DIFF_DELETE, text_delete], [DIFF_INSERT, text_insert]);
+          }
+          pointer = pointer - count_delete - count_insert + (count_delete ? 1 : 0) + (count_insert ? 1 : 0) + 1;
+        } else if (pointer !== 0 && diffs[pointer - 1][0] == DIFF_EQUAL) {
+          // Merge this equality with the previous one.
+          diffs[pointer - 1][1] += diffs[pointer][1];
+          diffs.splice(pointer, 1);
+        } else {
+          pointer++;
+        }
+        count_insert = 0;
+        count_delete = 0;
+        text_delete = '';
+        text_insert = '';
+        break;
+    }
+  }
+  if (diffs[diffs.length - 1][1] === '') {
+    diffs.pop(); // Remove the dummy entry at the end.
+  }
+
+  // Second pass: look for single edits surrounded on both sides by equalities
+  // which can be shifted sideways to eliminate an equality.
+  // e.g: A<ins>BA</ins>C -> <ins>AB</ins>AC
+  var changes = false;
+  pointer = 1;
+  // Intentionally ignore the first and last element (don't need checking).
+  while (pointer < diffs.length - 1) {
+    if (diffs[pointer - 1][0] == DIFF_EQUAL && diffs[pointer + 1][0] == DIFF_EQUAL) {
+      // This is a single edit surrounded by equalities.
+      if (diffs[pointer][1].substring(diffs[pointer][1].length - diffs[pointer - 1][1].length) == diffs[pointer - 1][1]) {
+        // Shift the edit over the previous equality.
+        diffs[pointer][1] = diffs[pointer - 1][1] + diffs[pointer][1].substring(0, diffs[pointer][1].length - diffs[pointer - 1][1].length);
+        diffs[pointer + 1][1] = diffs[pointer - 1][1] + diffs[pointer + 1][1];
+        diffs.splice(pointer - 1, 1);
+        changes = true;
+      } else if (diffs[pointer][1].substring(0, diffs[pointer + 1][1].length) == diffs[pointer + 1][1]) {
+        // Shift the edit over the next equality.
+        diffs[pointer - 1][1] += diffs[pointer + 1][1];
+        diffs[pointer][1] = diffs[pointer][1].substring(diffs[pointer + 1][1].length) + diffs[pointer + 1][1];
+        diffs.splice(pointer + 1, 1);
+        changes = true;
+      }
+    }
+    pointer++;
+  }
+  // If shifts were made, the diff needs reordering and another shift sweep.
+  if (changes) {
+    this.diff_cleanupMerge(diffs);
+  }
+};
+
+/**
+ * loc is a location in text1, compute and return the equivalent location in
+ * text2.
+ * e.g. 'The cat' vs 'The big cat', 1->1, 5->8
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ * @param {number} loc Location within text1.
+ * @return {number} Location within text2.
+ */
+diff_match_patch.prototype.diff_xIndex = function (diffs, loc) {
+  var chars1 = 0;
+  var chars2 = 0;
+  var last_chars1 = 0;
+  var last_chars2 = 0;
+  var x;
+  for (x = 0; x < diffs.length; x++) {
+    if (diffs[x][0] !== DIFF_INSERT) {
+      // Equality or deletion.
+      chars1 += diffs[x][1].length;
+    }
+    if (diffs[x][0] !== DIFF_DELETE) {
+      // Equality or insertion.
+      chars2 += diffs[x][1].length;
+    }
+    if (chars1 > loc) {
+      // Overshot the location.
+      break;
+    }
+    last_chars1 = chars1;
+    last_chars2 = chars2;
+  }
+  // Was the location was deleted?
+  if (diffs.length != x && diffs[x][0] === DIFF_DELETE) {
+    return last_chars2;
+  }
+  // Add the remaining character length.
+  return last_chars2 + (loc - last_chars1);
+};
+
+/**
+ * Convert a diff array into a pretty HTML report.
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ * @return {string} HTML representation.
+ */
+diff_match_patch.prototype.diff_prettyHtml = function (diffs) {
+  var html = [];
+  var pattern_amp = /&/g;
+  var pattern_lt = /</g;
+  var pattern_gt = />/g;
+  var pattern_para = /\n/g;
+  for (var x = 0; x < diffs.length; x++) {
+    var op = diffs[x][0]; // Operation (insert, delete, equal)
+    var data = diffs[x][1]; // Text of change.
+    var text = data.replace(pattern_amp, '&amp;').replace(pattern_lt, '&lt;').replace(pattern_gt, '&gt;').replace(pattern_para, '&para;<br>');
+    switch (op) {
+      case DIFF_INSERT:
+        html[x] = '<ins style="background:#e6ffe6;">' + text + '</ins>';
+        break;
+      case DIFF_DELETE:
+        html[x] = '<del style="background:#ffe6e6;">' + text + '</del>';
+        break;
+      case DIFF_EQUAL:
+        html[x] = '<span>' + text + '</span>';
+        break;
+    }
+  }
+  return html.join('');
+};
+
+/**
+ * Compute and return the source text (all equalities and deletions).
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ * @return {string} Source text.
+ */
+diff_match_patch.prototype.diff_text1 = function (diffs) {
+  var text = [];
+  for (var x = 0; x < diffs.length; x++) {
+    if (diffs[x][0] !== DIFF_INSERT) {
+      text[x] = diffs[x][1];
+    }
+  }
+  return text.join('');
+};
+
+/**
+ * Compute and return the destination text (all equalities and insertions).
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ * @return {string} Destination text.
+ */
+diff_match_patch.prototype.diff_text2 = function (diffs) {
+  var text = [];
+  for (var x = 0; x < diffs.length; x++) {
+    if (diffs[x][0] !== DIFF_DELETE) {
+      text[x] = diffs[x][1];
+    }
+  }
+  return text.join('');
+};
+
+/**
+ * Compute the Levenshtein distance; the number of inserted, deleted or
+ * substituted characters.
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ * @return {number} Number of changes.
+ */
+diff_match_patch.prototype.diff_levenshtein = function (diffs) {
+  var levenshtein = 0;
+  var insertions = 0;
+  var deletions = 0;
+  for (var x = 0; x < diffs.length; x++) {
+    var op = diffs[x][0];
+    var data = diffs[x][1];
+    switch (op) {
+      case DIFF_INSERT:
+        insertions += data.length;
+        break;
+      case DIFF_DELETE:
+        deletions += data.length;
+        break;
+      case DIFF_EQUAL:
+        // A deletion and an insertion is one substitution.
+        levenshtein += Math.max(insertions, deletions);
+        insertions = 0;
+        deletions = 0;
+        break;
+    }
+  }
+  levenshtein += Math.max(insertions, deletions);
+  return levenshtein;
+};
+
+/**
+ * Crush the diff into an encoded string which describes the operations
+ * required to transform text1 into text2.
+ * E.g. =3\t-2\t+ing  -> Keep 3 chars, delete 2 chars, insert 'ing'.
+ * Operations are tab-separated.  Inserted text is escaped using %xx notation.
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ * @return {string} Delta text.
+ */
+diff_match_patch.prototype.diff_toDelta = function (diffs) {
+  var text = [];
+  for (var x = 0; x < diffs.length; x++) {
+    switch (diffs[x][0]) {
+      case DIFF_INSERT:
+        text[x] = '+' + encodeURI(diffs[x][1]);
+        break;
+      case DIFF_DELETE:
+        text[x] = '-' + diffs[x][1].length;
+        break;
+      case DIFF_EQUAL:
+        text[x] = '=' + diffs[x][1].length;
+        break;
+    }
+  }
+  return text.join('\t').replace(/%20/g, ' ');
+};
+
+/**
+ * Given the original text1, and an encoded string which describes the
+ * operations required to transform text1 into text2, compute the full diff.
+ * @param {string} text1 Source string for the diff.
+ * @param {string} delta Delta text.
+ * @return {!Array.<!diff_match_patch.Diff>} Array of diff tuples.
+ * @throws {!Error} If invalid input.
+ */
+diff_match_patch.prototype.diff_fromDelta = function (text1, delta) {
+  var diffs = [];
+  var diffsLength = 0; // Keeping our own length var is faster in JS.
+  var pointer = 0; // Cursor in text1
+  var tokens = delta.split(/\t/g);
+  for (var x = 0; x < tokens.length; x++) {
+    // Each token begins with a one character parameter which specifies the
+    // operation of this token (delete, insert, equality).
+    var param = tokens[x].substring(1);
+    switch (tokens[x].charAt(0)) {
+      case '+':
+        try {
+          diffs[diffsLength++] = [DIFF_INSERT, decodeURI(param)];
+        } catch (ex) {
+          // Malformed URI sequence.
+          throw new Error('Illegal escape in diff_fromDelta: ' + param);
+        }
+        break;
+      case '-':
+      // Fall through.
+      case '=':
+        var n = parseInt(param, 10);
+        if (isNaN(n) || n < 0) {
+          throw new Error('Invalid number in diff_fromDelta: ' + param);
+        }
+        var text = text1.substring(pointer, pointer += n);
+        if (tokens[x].charAt(0) == '=') {
+          diffs[diffsLength++] = [DIFF_EQUAL, text];
+        } else {
+          diffs[diffsLength++] = [DIFF_DELETE, text];
+        }
+        break;
+      default:
+        // Blank tokens are ok (from a trailing \t).
+        // Anything else is an error.
+        if (tokens[x]) {
+          throw new Error('Invalid diff operation in diff_fromDelta: ' + tokens[x]);
+        }
+    }
+  }
+  if (pointer != text1.length) {
+    throw new Error('Delta length (' + pointer + ') does not equal source text length (' + text1.length + ').');
+  }
+  return diffs;
+};
+
+//  MATCH FUNCTIONS
+
+
+/**
+ * Locate the best instance of 'pattern' in 'text' near 'loc'.
+ * @param {string} text The text to search.
+ * @param {string} pattern The pattern to search for.
+ * @param {number} loc The location to search around.
+ * @return {number} Best match index or -1.
+ */
+diff_match_patch.prototype.match_main = function (text, pattern, loc) {
+  // Check for null inputs.
+  if (text == null || pattern == null || loc == null) {
+    throw new Error('Null input. (match_main)');
+  }
+
+  loc = Math.max(0, Math.min(loc, text.length));
+  if (text == pattern) {
+    // Shortcut (potentially not guaranteed by the algorithm)
+    return 0;
+  } else if (!text.length) {
+    // Nothing to match.
+    return -1;
+  } else if (text.substring(loc, loc + pattern.length) == pattern) {
+    // Perfect match at the perfect spot!  (Includes case of null pattern)
+    return loc;
+  } else {
+    // Do a fuzzy compare.
+    return this.match_bitap_(text, pattern, loc);
+  }
+};
+
+/**
+ * Locate the best instance of 'pattern' in 'text' near 'loc' using the
+ * Bitap algorithm.
+ * @param {string} text The text to search.
+ * @param {string} pattern The pattern to search for.
+ * @param {number} loc The location to search around.
+ * @return {number} Best match index or -1.
+ * @private
+ */
+diff_match_patch.prototype.match_bitap_ = function (text, pattern, loc) {
+  if (pattern.length > this.Match_MaxBits) {
+    throw new Error('Pattern too long for this browser.');
+  }
+
+  // Initialise the alphabet.
+  var s = this.match_alphabet_(pattern);
+
+  var dmp = this; // 'this' becomes 'window' in a closure.
+
+  /**
+   * Compute and return the score for a match with e errors and x location.
+   * Accesses loc and pattern through being a closure.
+   * @param {number} e Number of errors in match.
+   * @param {number} x Location of match.
+   * @return {number} Overall score for match (0.0 = good, 1.0 = bad).
+   * @private
+   */
+  function match_bitapScore_(e, x) {
+    var accuracy = e / pattern.length;
+    var proximity = Math.abs(loc - x);
+    if (!dmp.Match_Distance) {
+      // Dodge divide by zero error.
+      return proximity ? 1.0 : accuracy;
+    }
+    return accuracy + proximity / dmp.Match_Distance;
+  }
+
+  // Highest score beyond which we give up.
+  var score_threshold = this.Match_Threshold;
+  // Is there a nearby exact match? (speedup)
+  var best_loc = text.indexOf(pattern, loc);
+  if (best_loc != -1) {
+    score_threshold = Math.min(match_bitapScore_(0, best_loc), score_threshold);
+    // What about in the other direction? (speedup)
+    best_loc = text.lastIndexOf(pattern, loc + pattern.length);
+    if (best_loc != -1) {
+      score_threshold = Math.min(match_bitapScore_(0, best_loc), score_threshold);
+    }
+  }
+
+  // Initialise the bit arrays.
+  var matchmask = 1 << pattern.length - 1;
+  best_loc = -1;
+
+  var bin_min, bin_mid;
+  var bin_max = pattern.length + text.length;
+  var last_rd;
+  for (var d = 0; d < pattern.length; d++) {
+    // Scan for the best match; each iteration allows for one more error.
+    // Run a binary search to determine how far from 'loc' we can stray at this
+    // error level.
+    bin_min = 0;
+    bin_mid = bin_max;
+    while (bin_min < bin_mid) {
+      if (match_bitapScore_(d, loc + bin_mid) <= score_threshold) {
+        bin_min = bin_mid;
+      } else {
+        bin_max = bin_mid;
+      }
+      bin_mid = Math.floor((bin_max - bin_min) / 2 + bin_min);
+    }
+    // Use the result from this iteration as the maximum for the next.
+    bin_max = bin_mid;
+    var start = Math.max(1, loc - bin_mid + 1);
+    var finish = Math.min(loc + bin_mid, text.length) + pattern.length;
+
+    var rd = Array(finish + 2);
+    rd[finish + 1] = (1 << d) - 1;
+    for (var j = finish; j >= start; j--) {
+      // The alphabet (s) is a sparse hash, so the following line generates
+      // warnings.
+      var charMatch = s[text.charAt(j - 1)];
+      if (d === 0) {
+        // First pass: exact match.
+        rd[j] = (rd[j + 1] << 1 | 1) & charMatch;
+      } else {
+        // Subsequent passes: fuzzy match.
+        rd[j] = (rd[j + 1] << 1 | 1) & charMatch | ((last_rd[j + 1] | last_rd[j]) << 1 | 1) | last_rd[j + 1];
+      }
+      if (rd[j] & matchmask) {
+        var score = match_bitapScore_(d, j - 1);
+        // This match will almost certainly be better than any existing match.
+        // But check anyway.
+        if (score <= score_threshold) {
+          // Told you so.
+          score_threshold = score;
+          best_loc = j - 1;
+          if (best_loc > loc) {
+            // When passing loc, don't exceed our current distance from loc.
+            start = Math.max(1, 2 * loc - best_loc);
+          } else {
+            // Already passed loc, downhill from here on in.
+            break;
+          }
+        }
+      }
+    }
+    // No hope for a (better) match at greater error levels.
+    if (match_bitapScore_(d + 1, loc) > score_threshold) {
+      break;
+    }
+    last_rd = rd;
+  }
+  return best_loc;
+};
+
+/**
+ * Initialise the alphabet for the Bitap algorithm.
+ * @param {string} pattern The text to encode.
+ * @return {!Object} Hash of character locations.
+ * @private
+ */
+diff_match_patch.prototype.match_alphabet_ = function (pattern) {
+  var s = {};
+  for (var i = 0; i < pattern.length; i++) {
+    s[pattern.charAt(i)] = 0;
+  }
+  for (var i = 0; i < pattern.length; i++) {
+    s[pattern.charAt(i)] |= 1 << pattern.length - i - 1;
+  }
+  return s;
+};
+
+//  PATCH FUNCTIONS
+
+
+/**
+ * Increase the context until it is unique,
+ * but don't let the pattern expand beyond Match_MaxBits.
+ * @param {!diff_match_patch.patch_obj} patch The patch to grow.
+ * @param {string} text Source text.
+ * @private
+ */
+diff_match_patch.prototype.patch_addContext_ = function (patch, text) {
+  if (text.length == 0) {
+    return;
+  }
+  var pattern = text.substring(patch.start2, patch.start2 + patch.length1);
+  var padding = 0;
+
+  // Look for the first and last matches of pattern in text.  If two different
+  // matches are found, increase the pattern length.
+  while (text.indexOf(pattern) != text.lastIndexOf(pattern) && pattern.length < this.Match_MaxBits - this.Patch_Margin - this.Patch_Margin) {
+    padding += this.Patch_Margin;
+    pattern = text.substring(patch.start2 - padding, patch.start2 + patch.length1 + padding);
+  }
+  // Add one chunk for good luck.
+  padding += this.Patch_Margin;
+
+  // Add the prefix.
+  var prefix = text.substring(patch.start2 - padding, patch.start2);
+  if (prefix) {
+    patch.diffs.unshift([DIFF_EQUAL, prefix]);
+  }
+  // Add the suffix.
+  var suffix = text.substring(patch.start2 + patch.length1, patch.start2 + patch.length1 + padding);
+  if (suffix) {
+    patch.diffs.push([DIFF_EQUAL, suffix]);
+  }
+
+  // Roll back the start points.
+  patch.start1 -= prefix.length;
+  patch.start2 -= prefix.length;
+  // Extend the lengths.
+  patch.length1 += prefix.length + suffix.length;
+  patch.length2 += prefix.length + suffix.length;
+};
+
+/**
+ * Compute a list of patches to turn text1 into text2.
+ * Use diffs if provided, otherwise compute it ourselves.
+ * There are four ways to call this function, depending on what data is
+ * available to the caller:
+ * Method 1:
+ * a = text1, b = text2
+ * Method 2:
+ * a = diffs
+ * Method 3 (optimal):
+ * a = text1, b = diffs
+ * Method 4 (deprecated, use method 3):
+ * a = text1, b = text2, c = diffs
+ *
+ * @param {string|!Array.<!diff_match_patch.Diff>} a text1 (methods 1,3,4) or
+ * Array of diff tuples for text1 to text2 (method 2).
+ * @param {string|!Array.<!diff_match_patch.Diff>} opt_b text2 (methods 1,4) or
+ * Array of diff tuples for text1 to text2 (method 3) or undefined (method 2).
+ * @param {string|!Array.<!diff_match_patch.Diff>} opt_c Array of diff tuples
+ * for text1 to text2 (method 4) or undefined (methods 1,2,3).
+ * @return {!Array.<!diff_match_patch.patch_obj>} Array of Patch objects.
+ */
+diff_match_patch.prototype.patch_make = function (a, opt_b, opt_c) {
+  var text1, diffs;
+  if (typeof a == 'string' && typeof opt_b == 'string' && typeof opt_c == 'undefined') {
+    // Method 1: text1, text2
+    // Compute diffs from text1 and text2.
+    text1 = /** @type {string} */a;
+    diffs = this.diff_main(text1, /** @type {string} */opt_b, true);
+    if (diffs.length > 2) {
+      this.diff_cleanupSemantic(diffs);
+      this.diff_cleanupEfficiency(diffs);
+    }
+  } else if (a && typeof a == 'object' && typeof opt_b == 'undefined' && typeof opt_c == 'undefined') {
+    // Method 2: diffs
+    // Compute text1 from diffs.
+    diffs = /** @type {!Array.<!diff_match_patch.Diff>} */a;
+    text1 = this.diff_text1(diffs);
+  } else if (typeof a == 'string' && opt_b && typeof opt_b == 'object' && typeof opt_c == 'undefined') {
+    // Method 3: text1, diffs
+    text1 = /** @type {string} */a;
+    diffs = /** @type {!Array.<!diff_match_patch.Diff>} */opt_b;
+  } else if (typeof a == 'string' && typeof opt_b == 'string' && opt_c && typeof opt_c == 'object') {
+    // Method 4: text1, text2, diffs
+    // text2 is not used.
+    text1 = /** @type {string} */a;
+    diffs = /** @type {!Array.<!diff_match_patch.Diff>} */opt_c;
+  } else {
+    throw new Error('Unknown call format to patch_make.');
+  }
+
+  if (diffs.length === 0) {
+    return []; // Get rid of the null case.
+  }
+  var patches = [];
+  var patch = new diff_match_patch.patch_obj();
+  var patchDiffLength = 0; // Keeping our own length var is faster in JS.
+  var char_count1 = 0; // Number of characters into the text1 string.
+  var char_count2 = 0; // Number of characters into the text2 string.
+  // Start with text1 (prepatch_text) and apply the diffs until we arrive at
+  // text2 (postpatch_text).  We recreate the patches one by one to determine
+  // context info.
+  var prepatch_text = text1;
+  var postpatch_text = text1;
+  for (var x = 0; x < diffs.length; x++) {
+    var diff_type = diffs[x][0];
+    var diff_text = diffs[x][1];
+
+    if (!patchDiffLength && diff_type !== DIFF_EQUAL) {
+      // A new patch starts here.
+      patch.start1 = char_count1;
+      patch.start2 = char_count2;
+    }
+
+    switch (diff_type) {
+      case DIFF_INSERT:
+        patch.diffs[patchDiffLength++] = diffs[x];
+        patch.length2 += diff_text.length;
+        postpatch_text = postpatch_text.substring(0, char_count2) + diff_text + postpatch_text.substring(char_count2);
+        break;
+      case DIFF_DELETE:
+        patch.length1 += diff_text.length;
+        patch.diffs[patchDiffLength++] = diffs[x];
+        postpatch_text = postpatch_text.substring(0, char_count2) + postpatch_text.substring(char_count2 + diff_text.length);
+        break;
+      case DIFF_EQUAL:
+        if (diff_text.length <= 2 * this.Patch_Margin && patchDiffLength && diffs.length != x + 1) {
+          // Small equality inside a patch.
+          patch.diffs[patchDiffLength++] = diffs[x];
+          patch.length1 += diff_text.length;
+          patch.length2 += diff_text.length;
+        } else if (diff_text.length >= 2 * this.Patch_Margin) {
+          // Time for a new patch.
+          if (patchDiffLength) {
+            this.patch_addContext_(patch, prepatch_text);
+            patches.push(patch);
+            patch = new diff_match_patch.patch_obj();
+            patchDiffLength = 0;
+            // Unlike Unidiff, our patch lists have a rolling context.
+            // http://code.google.com/p/google-diff-match-patch/wiki/Unidiff
+            // Update prepatch text & pos to reflect the application of the
+            // just completed patch.
+            prepatch_text = postpatch_text;
+            char_count1 = char_count2;
+          }
+        }
+        break;
+    }
+
+    // Update the current character count.
+    if (diff_type !== DIFF_INSERT) {
+      char_count1 += diff_text.length;
+    }
+    if (diff_type !== DIFF_DELETE) {
+      char_count2 += diff_text.length;
+    }
+  }
+  // Pick up the leftover patch if not empty.
+  if (patchDiffLength) {
+    this.patch_addContext_(patch, prepatch_text);
+    patches.push(patch);
+  }
+
+  return patches;
+};
+
+/**
+ * Given an array of patches, return another array that is identical.
+ * @param {!Array.<!diff_match_patch.patch_obj>} patches Array of Patch objects.
+ * @return {!Array.<!diff_match_patch.patch_obj>} Array of Patch objects.
+ */
+diff_match_patch.prototype.patch_deepCopy = function (patches) {
+  // Making deep copies is hard in JavaScript.
+  var patchesCopy = [];
+  for (var x = 0; x < patches.length; x++) {
+    var patch = patches[x];
+    var patchCopy = new diff_match_patch.patch_obj();
+    patchCopy.diffs = [];
+    for (var y = 0; y < patch.diffs.length; y++) {
+      patchCopy.diffs[y] = patch.diffs[y].slice();
+    }
+    patchCopy.start1 = patch.start1;
+    patchCopy.start2 = patch.start2;
+    patchCopy.length1 = patch.length1;
+    patchCopy.length2 = patch.length2;
+    patchesCopy[x] = patchCopy;
+  }
+  return patchesCopy;
+};
+
+/**
+ * Merge a set of patches onto the text.  Return a patched text, as well
+ * as a list of true/false values indicating which patches were applied.
+ * @param {!Array.<!diff_match_patch.patch_obj>} patches Array of Patch objects.
+ * @param {string} text Old text.
+ * @return {!Array.<string|!Array.<boolean>>} Two element Array, containing the
+ *      new text and an array of boolean values.
+ */
+diff_match_patch.prototype.patch_apply = function (patches, text) {
+  if (patches.length == 0) {
+    return [text, []];
+  }
+
+  // Deep copy the patches so that no changes are made to originals.
+  patches = this.patch_deepCopy(patches);
+
+  var nullPadding = this.patch_addPadding(patches);
+  text = nullPadding + text + nullPadding;
+
+  this.patch_splitMax(patches);
+  // delta keeps track of the offset between the expected and actual location
+  // of the previous patch.  If there are patches expected at positions 10 and
+  // 20, but the first patch was found at 12, delta is 2 and the second patch
+  // has an effective expected position of 22.
+  var delta = 0;
+  var results = [];
+  for (var x = 0; x < patches.length; x++) {
+    var expected_loc = patches[x].start2 + delta;
+    var text1 = this.diff_text1(patches[x].diffs);
+    var start_loc;
+    var end_loc = -1;
+    if (text1.length > this.Match_MaxBits) {
+      // patch_splitMax will only provide an oversized pattern in the case of
+      // a monster delete.
+      start_loc = this.match_main(text, text1.substring(0, this.Match_MaxBits), expected_loc);
+      if (start_loc != -1) {
+        end_loc = this.match_main(text, text1.substring(text1.length - this.Match_MaxBits), expected_loc + text1.length - this.Match_MaxBits);
+        if (end_loc == -1 || start_loc >= end_loc) {
+          // Can't find valid trailing context.  Drop this patch.
+          start_loc = -1;
+        }
+      }
+    } else {
+      start_loc = this.match_main(text, text1, expected_loc);
+    }
+    if (start_loc == -1) {
+      // No match found.  :(
+      results[x] = false;
+      // Subtract the delta for this failed patch from subsequent patches.
+      delta -= patches[x].length2 - patches[x].length1;
+    } else {
+      // Found a match.  :)
+      results[x] = true;
+      delta = start_loc - expected_loc;
+      var text2;
+      if (end_loc == -1) {
+        text2 = text.substring(start_loc, start_loc + text1.length);
+      } else {
+        text2 = text.substring(start_loc, end_loc + this.Match_MaxBits);
+      }
+      if (text1 == text2) {
+        // Perfect match, just shove the replacement text in.
+        text = text.substring(0, start_loc) + this.diff_text2(patches[x].diffs) + text.substring(start_loc + text1.length);
+      } else {
+        // Imperfect match.  Run a diff to get a framework of equivalent
+        // indices.
+        var diffs = this.diff_main(text1, text2, false);
+        if (text1.length > this.Match_MaxBits && this.diff_levenshtein(diffs) / text1.length > this.Patch_DeleteThreshold) {
+          // The end points match, but the content is unacceptably bad.
+          results[x] = false;
+        } else {
+          this.diff_cleanupSemanticLossless(diffs);
+          var index1 = 0;
+          var index2;
+          for (var y = 0; y < patches[x].diffs.length; y++) {
+            var mod = patches[x].diffs[y];
+            if (mod[0] !== DIFF_EQUAL) {
+              index2 = this.diff_xIndex(diffs, index1);
+            }
+            if (mod[0] === DIFF_INSERT) {
+              // Insertion
+              text = text.substring(0, start_loc + index2) + mod[1] + text.substring(start_loc + index2);
+            } else if (mod[0] === DIFF_DELETE) {
+              // Deletion
+              text = text.substring(0, start_loc + index2) + text.substring(start_loc + this.diff_xIndex(diffs, index1 + mod[1].length));
+            }
+            if (mod[0] !== DIFF_DELETE) {
+              index1 += mod[1].length;
+            }
+          }
+        }
+      }
+    }
+  }
+  // Strip the padding off.
+  text = text.substring(nullPadding.length, text.length - nullPadding.length);
+  return [text, results];
+};
+
+/**
+ * Add some padding on text start and end so that edges can match something.
+ * Intended to be called only from within patch_apply.
+ * @param {!Array.<!diff_match_patch.patch_obj>} patches Array of Patch objects.
+ * @return {string} The padding string added to each side.
+ */
+diff_match_patch.prototype.patch_addPadding = function (patches) {
+  var paddingLength = this.Patch_Margin;
+  var nullPadding = '';
+  for (var x = 1; x <= paddingLength; x++) {
+    nullPadding += String.fromCharCode(x);
+  }
+
+  // Bump all the patches forward.
+  for (var x = 0; x < patches.length; x++) {
+    patches[x].start1 += paddingLength;
+    patches[x].start2 += paddingLength;
+  }
+
+  // Add some padding on start of first diff.
+  var patch = patches[0];
+  var diffs = patch.diffs;
+  if (diffs.length == 0 || diffs[0][0] != DIFF_EQUAL) {
+    // Add nullPadding equality.
+    diffs.unshift([DIFF_EQUAL, nullPadding]);
+    patch.start1 -= paddingLength; // Should be 0.
+    patch.start2 -= paddingLength; // Should be 0.
+    patch.length1 += paddingLength;
+    patch.length2 += paddingLength;
+  } else if (paddingLength > diffs[0][1].length) {
+    // Grow first equality.
+    var extraLength = paddingLength - diffs[0][1].length;
+    diffs[0][1] = nullPadding.substring(diffs[0][1].length) + diffs[0][1];
+    patch.start1 -= extraLength;
+    patch.start2 -= extraLength;
+    patch.length1 += extraLength;
+    patch.length2 += extraLength;
+  }
+
+  // Add some padding on end of last diff.
+  patch = patches[patches.length - 1];
+  diffs = patch.diffs;
+  if (diffs.length == 0 || diffs[diffs.length - 1][0] != DIFF_EQUAL) {
+    // Add nullPadding equality.
+    diffs.push([DIFF_EQUAL, nullPadding]);
+    patch.length1 += paddingLength;
+    patch.length2 += paddingLength;
+  } else if (paddingLength > diffs[diffs.length - 1][1].length) {
+    // Grow last equality.
+    var extraLength = paddingLength - diffs[diffs.length - 1][1].length;
+    diffs[diffs.length - 1][1] += nullPadding.substring(0, extraLength);
+    patch.length1 += extraLength;
+    patch.length2 += extraLength;
+  }
+
+  return nullPadding;
+};
+
+/**
+ * Look through the patches and break up any which are longer than the maximum
+ * limit of the match algorithm.
+ * Intended to be called only from within patch_apply.
+ * @param {!Array.<!diff_match_patch.patch_obj>} patches Array of Patch objects.
+ */
+diff_match_patch.prototype.patch_splitMax = function (patches) {
+  var patch_size = this.Match_MaxBits;
+  for (var x = 0; x < patches.length; x++) {
+    if (patches[x].length1 <= patch_size) {
+      continue;
+    }
+    var bigpatch = patches[x];
+    // Remove the big old patch.
+    patches.splice(x--, 1);
+    var start1 = bigpatch.start1;
+    var start2 = bigpatch.start2;
+    var precontext = '';
+    while (bigpatch.diffs.length !== 0) {
+      // Create one of several smaller patches.
+      var patch = new diff_match_patch.patch_obj();
+      var empty = true;
+      patch.start1 = start1 - precontext.length;
+      patch.start2 = start2 - precontext.length;
+      if (precontext !== '') {
+        patch.length1 = patch.length2 = precontext.length;
+        patch.diffs.push([DIFF_EQUAL, precontext]);
+      }
+      while (bigpatch.diffs.length !== 0 && patch.length1 < patch_size - this.Patch_Margin) {
+        var diff_type = bigpatch.diffs[0][0];
+        var diff_text = bigpatch.diffs[0][1];
+        if (diff_type === DIFF_INSERT) {
+          // Insertions are harmless.
+          patch.length2 += diff_text.length;
+          start2 += diff_text.length;
+          patch.diffs.push(bigpatch.diffs.shift());
+          empty = false;
+        } else if (diff_type === DIFF_DELETE && patch.diffs.length == 1 && patch.diffs[0][0] == DIFF_EQUAL && diff_text.length > 2 * patch_size) {
+          // This is a large deletion.  Let it pass in one chunk.
+          patch.length1 += diff_text.length;
+          start1 += diff_text.length;
+          empty = false;
+          patch.diffs.push([diff_type, diff_text]);
+          bigpatch.diffs.shift();
+        } else {
+          // Deletion or equality.  Only take as much as we can stomach.
+          diff_text = diff_text.substring(0, patch_size - patch.length1 - this.Patch_Margin);
+          patch.length1 += diff_text.length;
+          start1 += diff_text.length;
+          if (diff_type === DIFF_EQUAL) {
+            patch.length2 += diff_text.length;
+            start2 += diff_text.length;
+          } else {
+            empty = false;
+          }
+          patch.diffs.push([diff_type, diff_text]);
+          if (diff_text == bigpatch.diffs[0][1]) {
+            bigpatch.diffs.shift();
+          } else {
+            bigpatch.diffs[0][1] = bigpatch.diffs[0][1].substring(diff_text.length);
+          }
+        }
+      }
+      // Compute the head context for the next patch.
+      precontext = this.diff_text2(patch.diffs);
+      precontext = precontext.substring(precontext.length - this.Patch_Margin);
+      // Append the end context for this patch.
+      var postcontext = this.diff_text1(bigpatch.diffs).substring(0, this.Patch_Margin);
+      if (postcontext !== '') {
+        patch.length1 += postcontext.length;
+        patch.length2 += postcontext.length;
+        if (patch.diffs.length !== 0 && patch.diffs[patch.diffs.length - 1][0] === DIFF_EQUAL) {
+          patch.diffs[patch.diffs.length - 1][1] += postcontext;
+        } else {
+          patch.diffs.push([DIFF_EQUAL, postcontext]);
+        }
+      }
+      if (!empty) {
+        patches.splice(++x, 0, patch);
+      }
+    }
+  }
+};
+
+/**
+ * Take a list of patches and return a textual representation.
+ * @param {!Array.<!diff_match_patch.patch_obj>} patches Array of Patch objects.
+ * @return {string} Text representation of patches.
+ */
+diff_match_patch.prototype.patch_toText = function (patches) {
+  var text = [];
+  for (var x = 0; x < patches.length; x++) {
+    text[x] = patches[x];
+  }
+  return text.join('');
+};
+
+/**
+ * Parse a textual representation of patches and return a list of Patch objects.
+ * @param {string} textline Text representation of patches.
+ * @return {!Array.<!diff_match_patch.patch_obj>} Array of Patch objects.
+ * @throws {!Error} If invalid input.
+ */
+diff_match_patch.prototype.patch_fromText = function (textline) {
+  var patches = [];
+  if (!textline) {
+    return patches;
+  }
+  var text = textline.split('\n');
+  var textPointer = 0;
+  var patchHeader = /^@@ -(\d+),?(\d*) \+(\d+),?(\d*) @@$/;
+  while (textPointer < text.length) {
+    var m = text[textPointer].match(patchHeader);
+    if (!m) {
+      throw new Error('Invalid patch string: ' + text[textPointer]);
+    }
+    var patch = new diff_match_patch.patch_obj();
+    patches.push(patch);
+    patch.start1 = parseInt(m[1], 10);
+    if (m[2] === '') {
+      patch.start1--;
+      patch.length1 = 1;
+    } else if (m[2] == '0') {
+      patch.length1 = 0;
+    } else {
+      patch.start1--;
+      patch.length1 = parseInt(m[2], 10);
+    }
+
+    patch.start2 = parseInt(m[3], 10);
+    if (m[4] === '') {
+      patch.start2--;
+      patch.length2 = 1;
+    } else if (m[4] == '0') {
+      patch.length2 = 0;
+    } else {
+      patch.start2--;
+      patch.length2 = parseInt(m[4], 10);
+    }
+    textPointer++;
+
+    while (textPointer < text.length) {
+      var sign = text[textPointer].charAt(0);
+      try {
+        var line = decodeURI(text[textPointer].substring(1));
+      } catch (ex) {
+        // Malformed URI sequence.
+        throw new Error('Illegal escape in patch_fromText: ' + line);
+      }
+      if (sign == '-') {
+        // Deletion.
+        patch.diffs.push([DIFF_DELETE, line]);
+      } else if (sign == '+') {
+        // Insertion.
+        patch.diffs.push([DIFF_INSERT, line]);
+      } else if (sign == ' ') {
+        // Minor equality.
+        patch.diffs.push([DIFF_EQUAL, line]);
+      } else if (sign == '@') {
+        // Start of next patch.
+        break;
+      } else if (sign === '') {
+        // Blank line?  Whatever.
+      } else {
+        // WTF?
+        throw new Error('Invalid patch mode "' + sign + '" in: ' + line);
+      }
+      textPointer++;
+    }
+  }
+  return patches;
+};
+
+/**
+ * Class representing one patch operation.
+ * @constructor
+ */
+diff_match_patch.patch_obj = function () {
+  /** @type {!Array.<!diff_match_patch.Diff>} */
+  this.diffs = [];
+  /** @type {?number} */
+  this.start1 = null;
+  /** @type {?number} */
+  this.start2 = null;
+  /** @type {number} */
+  this.length1 = 0;
+  /** @type {number} */
+  this.length2 = 0;
+};
+
+/**
+ * Emmulate GNU diff's format.
+ * Header: @@ -382,8 +481,9 @@
+ * Indicies are printed as 1-based, not 0-based.
+ * @return {string} The GNU diff string.
+ */
+diff_match_patch.patch_obj.prototype.toString = function () {
+  var coords1, coords2;
+  if (this.length1 === 0) {
+    coords1 = this.start1 + ',0';
+  } else if (this.length1 == 1) {
+    coords1 = this.start1 + 1;
+  } else {
+    coords1 = this.start1 + 1 + ',' + this.length1;
+  }
+  if (this.length2 === 0) {
+    coords2 = this.start2 + ',0';
+  } else if (this.length2 == 1) {
+    coords2 = this.start2 + 1;
+  } else {
+    coords2 = this.start2 + 1 + ',' + this.length2;
+  }
+  var text = ['@@ -' + coords1 + ' +' + coords2 + ' @@\n'];
+  var op;
+  // Escape the body of the patch with %xx notation.
+  for (var x = 0; x < this.diffs.length; x++) {
+    switch (this.diffs[x][0]) {
+      case DIFF_INSERT:
+        op = '+';
+        break;
+      case DIFF_DELETE:
+        op = '-';
+        break;
+      case DIFF_EQUAL:
+        op = ' ';
+        break;
+    }
+    text[x + 1] = op + encodeURI(this.diffs[x][1]) + '\n';
+  }
+  return text.join('').replace(/%20/g, ' ');
+};
+
+// The following export code was added by @ForbesLindesay
+module.exports = diff_match_patch;
+module.exports['diff_match_patch'] = diff_match_patch;
+module.exports['DIFF_DELETE'] = DIFF_DELETE;
+module.exports['DIFF_INSERT'] = DIFF_INSERT;
+module.exports['DIFF_EQUAL'] = DIFF_EQUAL;
+
+/***/ }),
+
 /***/ "jFbC":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24078,6 +31517,13 @@ module.exports = Object.keys || function keys(O) {
 
 /***/ }),
 
+/***/ "lvqX":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "m9gC":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24840,6 +32286,13 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 } : function (obj) {
   return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
 };
+
+/***/ }),
+
+/***/ "pH8P":
+/***/ (function(module, exports) {
+
+module.exports = {"default":{"id":"default","name":"Default","outboundWaypoints":["LAIKA","PLM","DAVOT","EZOS","EDOS"],"inboundWaypoints":["EVKOS","ELROS","KTDOS","QEDOS"],"ga":1,"commercial":1,"waypoints":{"EVKOS":{"x":0,"y":360,"class":"intersection"},"QEDOS":{"x":1280,"y":400,"class":"intersection"},"KTDOS":{"x":250,"y":0,"class":"intersection"},"EKOS":{"x":20,"y":20,"class":"intersection"},"EDOS":{"x":20,"y":720,"class":"intersection"},"ELROS":{"x":1280,"y":710,"class":"intersection"},"EBOS":{"x":100,"y":600,"class":"intersection"},"ESOS":{"x":1200,"y":90,"class":"intersection"},"ELOS":{"x":220,"y":200,"class":"intersection"},"EZOS":{"x":1280,"y":0,"class":"intersection"},"EDROS":{"x":290,"y":820,"class":"intersection"},"KOS":{"x":80,"y":90,"class":"ndb"},"PLM":{"x":1280,"y":70,"class":"vor/dme"},"DAVOT":{"x":0,"y":90,"class":"intersection"},"LAIKA":{"x":900,"y":0,"class":"intersection"},"RUNAW":{"x":30,"y":0,"class":"intersection"},"EH11":{"x":623.268587103299,"y":111.60881397780415,"class":"intersection"},"EH13":{"x":666.731412896701,"y":608.3911860221958,"class":"intersection"},"EH26":{"x":635.2208641964845,"y":248.22396629001187,"class":"intersection"},"EH9":{"x":659.1254183828556,"y":521.4542709144273,"class":"intersection"}},"routes":{"18->LAIKA":"18->EH26->LAIKA/${CRZ}","36->LAIKA":"36->EH9->LAIKA/${CRZ}","18->PLM":"36->EH9->PLM/${CRZ}","36->PLM":"36->EH9->PLM/${CRZ}","18->EZOS":"36->EH9->EZOS/${CRZ}","36->EZOS":"36->EH9->EZOS/${CRZ}","18->DAVOT":"36->EH9->DAVOT/${CRZ}","36->DAVOT":"36->EH9->DAVOT/${CRZ}","18->EDOS":"36->EH9->EDOS/${CRZ}","36->EDOS":"36->EH9->EDOS/${CRZ}","LAIKA->18":"LAIKA->EH9/3000->18","LAIKA->36":"LAIKA->EH26/3000->36","PLM->18":"PLM->EH9/3000->18","PLM->36":"PLM->EH26/3000->36","EZOS->18":"EZOS->EH9/3000->18","EZOS->36":"EZOS->EH26/3000->36","DAVOT->18":"DAVOT->EH9/3000->18","DAVOT->36":"DAVOT->EH26/3000->36","EVKOS->PLM":"EVKOS->EHZM->PLM","QEDOS->EDOS":"QEDOS->EHZM->EDOS"},"airport":{"elevation":22,"rwyusage":[{"dir":95,"rwys":["18"]},{"dir":275,"rwys":["36"]}],"callsign":"EHZM","x":0,"y":0,"class":"intersection","runways":[{"x":5,"y":0,"class":"intersection","length":12467,"length1":12467,"length2":12467,"surface":"asphalt","size":150,"hdg1":5,"hdg2":185,"labelSpread1":1.1,"labelSpread2":1.1,"elevation1":25,"elevation2":23,"name1":"36","name2":"18"}]}},"heathrow":{"id":"heathrow","name":"Heathrow","ga":0,"commercial":1,"outboundWaypoints":["FOS","BIG","LAM"],"inboundWaypoints":["BLC","BENSU","EPM","LCY"],"waypoints":{"BLC":{"x":40,"y":0,"class":"intersection"},"WOD":{"x":0,"y":400,"class":"intersection"},"BENSU":{"x":0,"y":600,"class":"intersection"},"BUR":{"x":100,"y":500,"class":"intersection"},"FRK":{"x":550,"y":20,"class":"intersection"},"FOS":{"x":580,"y":0,"class":"intersection"},"OCK":{"x":640,"y":0,"class":"intersection"},"EPM":{"x":730,"y":0,"class":"intersection"},"BIG":{"x":1280,"y":0,"class":"intersection"},"LCY":{"x":1280,"y":360,"class":"intersection"},"LAM":{"x":1280,"y":720,"class":"intersection"},"GOXUL":{"x":900,"y":90,"class":"intersection"},"FINCH":{"x":880,"y":800,"class":"intersection"},"CHT":{"x":600,"y":1050,"class":"intersection"},"D175F":{"x":680,"y":220,"class":"intersection"},"EGWU":{"x":690,"y":960,"class":"intersection"},"RICHY":{"x":939.9543085469174,"y":344.7642780688151},"BARNS":{"x":939.9543085469174,"y":364.7642780688151},"WINSR":{"x":340.0456914530826,"y":355.235721931185},"MARLO":{"x":340.0456914530826,"y":375.235721931185},"40LO2":{"x":490.0228457265413,"y":352.6178609655925},"40LOC":{"x":490.0228457265413,"y":372.6178609655925},"40LO3":{"x":789.9771542734587,"y":347.38213903440754}},"routes":{},"airport":{"elevation":77,"rwyusage":[{"dir":1,"rwys":["09R","09L"]},{"dir":181,"rwys":["27R","27L"]}],"callsign":"EGLL","x":0,"y":0,"class":"intersection","runways":[{"x":0,"y":-10,"length":12802,"length1":12802,"length2":12802,"surface":"asphalt","size":164,"hdg1":91,"hdg2":271,"name1":"09R","name2":"27L","elevation1":77,"elevation2":77,"labelSpread1":1.1,"labelSpread2":1.1},{"x":0,"y":10,"class":"intersection","length":12008,"length1":12008,"length2":12008,"surface":"asphalt","size":164,"hdg1":91,"hdg2":271,"name1":"09L","name2":"27R","elevation1":77,"elevation2":77,"labelSpread1":1.1,"labelSpread2":1.1}]}},"schiphol":{"id":"schiphol","name":"Schiphol","ga":0,"commercial":1,"outboundWaypoints":["EH610","SPY","OMORU","IVLET"],"inboundWaypoints":["EH040","LILSI","SUSET","TULIP"],"waypoints":{"NV":{"x":670,"y":5,"class":"intersection"},"CH":{"x":400,"y":100,"class":"intersection"},"EKROS":{"x":500,"y":150,"class":"intersection"},"BASNO":{"x":410,"y":390,"class":"intersection"},"EH040":{"x":300,"y":10,"class":"intersection"},"EH610":{"x":15,"y":100,"class":"intersection"},"SPY":{"x":400,"y":720,"class":"intersection"},"OA":{"x":640,"y":550,"class":"intersection"},"LILSI":{"x":1280,"y":600,"class":"intersection"},"PAM":{"x":600,"y":360,"class":"intersection"},"OMORU":{"x":1280,"y":360,"class":"intersection"},"IVLET":{"x":1280,"y":200,"class":"intersection"},"SUSET":{"x":1100,"y":20,"class":"intersection"},"TULIP":{"x":5,"y":640,"class":"intersection"},"EH639":{"x":794.794430213186,"y":387.85039343644166},"EH633":{"x":605.3459322519757,"y":80.38373026871932},"EH635":{"x":645.3459322519757,"y":73.38373026871932},"EH126":{"x":585.3459322519757,"y":100.38373026871932},"EH642":{"x":365.3837302687193,"y":365.3459322519757},"EH047":{"x":611.5139103734476,"y":599.6984976460062},"EH626":{"x":634.6540677480242,"y":639.6162697312807},"EH616":{"x":404.5465330762007,"y":201.62260601470263},"EH654":{"x":879.4534669237993,"y":498.37739398529743}},"routes":{},"airport":{"elevation":-11,"rwyusage":[{"dir":45,"rwys":["09"]},{"dir":135,"rwys":["36L","36C"]},{"dir":220,"rwys":["24","27"]},{"dir":330,"rwys":["18L","36R"]}],"callsign":"EHAM","x":0,"y":0,"class":"intersection","runways":[{"x":-40,"y":20,"length":12468,"length1":12468,"length2":12468,"surface":"asphalt","size":164,"hdg1":3,"hdg2":183,"name1":"36L","name2":"18R","elevation1":-11,"elevation2":-11,"labelSpread1":1.2,"labelSpread2":1.2},{"x":2,"y":-10,"length":11483,"length1":11483,"length2":11483,"surface":"asphalt","size":164,"hdg1":58,"hdg2":238,"name1":"06","name2":"24","elevation1":-11,"elevation2":-11,"labelSpread1":1,"labelSpread2":0.5},{"x":5,"y":20,"class":"intersection","length":11329,"length1":11329,"length2":11329,"surface":"asphalt","size":164,"hdg1":87,"hdg2":267,"name1":"09","name2":"27","elevation1":-11,"elevation2":-11,"labelSpread1":2,"labelSpread2":2},{"x":20,"y":-7,"length":11155,"length1":11155,"length2":11155,"surface":"asphalt","size":164,"hdg1":3,"hdg2":183,"name1":"36R","name2":"18L","elevation1":-11,"elevation2":-11,"labelSpread1":2,"labelSpread2":3},{"x":-20,"y":0,"length":10827,"length1":10827,"length2":10827,"surface":"asphalt","size":164,"hdg1":3,"hdg2":183,"name1":"36C","name2":"18C","elevation1":-11,"elevation2":-11,"labelSpread1":2,"labelSpread2":2},{"x":35,"y":-5,"length":10827,"length1":10827,"length2":10827,"surface":"asphalt","size":164,"hdg1":41,"hdg2":221,"name1":"04","name2":"22","elevation1":-11,"elevation2":-11,"labelSpread1":1,"labelSpread2":1.4}]}}}
 
 /***/ }),
 
@@ -25723,7 +33176,6 @@ $export($export.S + $export.F * !__webpack_require__("dY0y")(function (iter) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"GameMetaControls":"GameMetaControls__3Y5UT"};
 
 /***/ }),
 
@@ -25821,6 +33273,312 @@ module.exports = CopyToClipboard;
 
 /***/ }),
 
+/***/ "saTp":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var escapeStringRegexp = __webpack_require__("Eh6b");
+var ansiStyles = __webpack_require__("eSvN");
+var stdoutColor = __webpack_require__("AFNu").stdout;
+
+var template = __webpack_require__("FnaF");
+
+var isSimpleWindowsTerm = process.platform === 'win32' && !(process.env.TERM || '').toLowerCase().startsWith('xterm');
+
+// `supportsColor.level` → `ansiStyles.color[name]` mapping
+var levelMapping = ['ansi', 'ansi', 'ansi256', 'ansi16m'];
+
+// `color-convert` models to exclude from the Chalk API due to conflicts and such
+var skipModels = new Set(['gray']);
+
+var styles = Object.create(null);
+
+function applyOptions(obj, options) {
+	options = options || {};
+
+	// Detect level if not set manually
+	var scLevel = stdoutColor ? stdoutColor.level : 0;
+	obj.level = options.level === undefined ? scLevel : options.level;
+	obj.enabled = 'enabled' in options ? options.enabled : obj.level > 0;
+}
+
+function Chalk(options) {
+	// We check for this.template here since calling `chalk.constructor()`
+	// by itself will have a `this` of a previously constructed chalk object
+	if (!this || !(this instanceof Chalk) || this.template) {
+		var chalk = {};
+		applyOptions(chalk, options);
+
+		chalk.template = function () {
+			var args = [].slice.call(arguments);
+			return chalkTag.apply(null, [chalk.template].concat(args));
+		};
+
+		Object.setPrototypeOf(chalk, Chalk.prototype);
+		Object.setPrototypeOf(chalk.template, chalk);
+
+		chalk.template.constructor = Chalk;
+
+		return chalk.template;
+	}
+
+	applyOptions(this, options);
+}
+
+// Use bright blue on Windows as the normal blue color is illegible
+if (isSimpleWindowsTerm) {
+	ansiStyles.blue.open = '\x1B[94m';
+}
+
+var _loop = function _loop(key) {
+	ansiStyles[key].closeRe = new RegExp(escapeStringRegexp(ansiStyles[key].close), 'g');
+
+	styles[key] = {
+		get: function get() {
+			var codes = ansiStyles[key];
+			return build.call(this, this._styles ? this._styles.concat(codes) : [codes], this._empty, key);
+		}
+	};
+};
+
+for (var _iterator = Object.keys(ansiStyles), _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+	var _ref;
+
+	if (_isArray) {
+		if (_i >= _iterator.length) break;
+		_ref = _iterator[_i++];
+	} else {
+		_i = _iterator.next();
+		if (_i.done) break;
+		_ref = _i.value;
+	}
+
+	var key = _ref;
+
+	_loop(key);
+}
+
+styles.visible = {
+	get: function get() {
+		return build.call(this, this._styles || [], true, 'visible');
+	}
+};
+
+ansiStyles.color.closeRe = new RegExp(escapeStringRegexp(ansiStyles.color.close), 'g');
+
+var _loop2 = function _loop2(model) {
+	if (skipModels.has(model)) {
+		return 'continue';
+	}
+
+	styles[model] = {
+		get: function get() {
+			var level = this.level;
+			return function () {
+				var open = ansiStyles.color[levelMapping[level]][model].apply(null, arguments);
+				var codes = {
+					open: open,
+					close: ansiStyles.color.close,
+					closeRe: ansiStyles.color.closeRe
+				};
+				return build.call(this, this._styles ? this._styles.concat(codes) : [codes], this._empty, model);
+			};
+		}
+	};
+};
+
+for (var _iterator2 = Object.keys(ansiStyles.color.ansi), _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+	var _ref2;
+
+	if (_isArray2) {
+		if (_i2 >= _iterator2.length) break;
+		_ref2 = _iterator2[_i2++];
+	} else {
+		_i2 = _iterator2.next();
+		if (_i2.done) break;
+		_ref2 = _i2.value;
+	}
+
+	var model = _ref2;
+
+	var _ret2 = _loop2(model);
+
+	if (_ret2 === 'continue') continue;
+}
+
+ansiStyles.bgColor.closeRe = new RegExp(escapeStringRegexp(ansiStyles.bgColor.close), 'g');
+
+var _loop3 = function _loop3(model) {
+	if (skipModels.has(model)) {
+		return 'continue';
+	}
+
+	var bgModel = 'bg' + model[0].toUpperCase() + model.slice(1);
+	styles[bgModel] = {
+		get: function get() {
+			var level = this.level;
+			return function () {
+				var open = ansiStyles.bgColor[levelMapping[level]][model].apply(null, arguments);
+				var codes = {
+					open: open,
+					close: ansiStyles.bgColor.close,
+					closeRe: ansiStyles.bgColor.closeRe
+				};
+				return build.call(this, this._styles ? this._styles.concat(codes) : [codes], this._empty, model);
+			};
+		}
+	};
+};
+
+for (var _iterator3 = Object.keys(ansiStyles.bgColor.ansi), _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+	var _ref3;
+
+	if (_isArray3) {
+		if (_i3 >= _iterator3.length) break;
+		_ref3 = _iterator3[_i3++];
+	} else {
+		_i3 = _iterator3.next();
+		if (_i3.done) break;
+		_ref3 = _i3.value;
+	}
+
+	var model = _ref3;
+
+	var _ret3 = _loop3(model);
+
+	if (_ret3 === 'continue') continue;
+}
+
+var proto = Object.defineProperties(function () {}, styles);
+
+function build(_styles, _empty, key) {
+	var builder = function builder() {
+		return applyStyle.apply(builder, arguments);
+	};
+
+	builder._styles = _styles;
+	builder._empty = _empty;
+
+	var self = this;
+
+	Object.defineProperty(builder, 'level', {
+		enumerable: true,
+		get: function get() {
+			return self.level;
+		},
+		set: function set(level) {
+			self.level = level;
+		}
+	});
+
+	Object.defineProperty(builder, 'enabled', {
+		enumerable: true,
+		get: function get() {
+			return self.enabled;
+		},
+		set: function set(enabled) {
+			self.enabled = enabled;
+		}
+	});
+
+	// See below for fix regarding invisible grey/dim combination on Windows
+	builder.hasGrey = this.hasGrey || key === 'gray' || key === 'grey';
+
+	// `__proto__` is used because we must return a function, but there is
+	// no way to create a function with a different prototype
+	builder.__proto__ = proto; // eslint-disable-line no-proto
+
+	return builder;
+}
+
+function applyStyle() {
+	// Support varags, but simply cast to string in case there's only one arg
+	var args = arguments;
+	var argsLen = args.length;
+	var str = String(arguments[0]);
+
+	if (argsLen === 0) {
+		return '';
+	}
+
+	if (argsLen > 1) {
+		// Don't slice `arguments`, it prevents V8 optimizations
+		for (var a = 1; a < argsLen; a++) {
+			str += ' ' + args[a];
+		}
+	}
+
+	if (!this.enabled || this.level <= 0 || !str) {
+		return this._empty ? '' : str;
+	}
+
+	// Turns out that on Windows dimmed gray text becomes invisible in cmd.exe,
+	// see https://github.com/chalk/chalk/issues/58
+	// If we're on Windows and we're dealing with a gray color, temporarily make 'dim' a noop.
+	var originalDim = ansiStyles.dim.open;
+	if (isSimpleWindowsTerm && this.hasGrey) {
+		ansiStyles.dim.open = '';
+	}
+
+	for (var _iterator4 = this._styles.slice().reverse(), _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
+		var _ref4;
+
+		if (_isArray4) {
+			if (_i4 >= _iterator4.length) break;
+			_ref4 = _iterator4[_i4++];
+		} else {
+			_i4 = _iterator4.next();
+			if (_i4.done) break;
+			_ref4 = _i4.value;
+		}
+
+		var code = _ref4;
+
+		// Replace any instances already present with a re-opening code
+		// otherwise only the part of the string until said closing code
+		// will be colored, and the rest will simply be 'plain'.
+		str = code.open + str.replace(code.closeRe, code.open) + code.close;
+
+		// Close the styling before a linebreak and reopen
+		// after next line to fix a bleed issue on macOS
+		// https://github.com/chalk/chalk/pull/92
+		str = str.replace(/\r?\n/g, code.close + '$&' + code.open);
+	}
+
+	// Reset the original `dim` if we changed it to work around the Windows dimmed gray issue
+	ansiStyles.dim.open = originalDim;
+
+	return str;
+}
+
+function chalkTag(chalk, strings) {
+	if (!Array.isArray(strings)) {
+		// If chalk() was called by itself or with a string,
+		// return the string itself as a string.
+		return [].slice.call(arguments, 1).join(' ');
+	}
+
+	var args = [].slice.call(arguments, 2);
+	var parts = [strings.raw[0]];
+
+	for (var i = 1; i < strings.length; i++) {
+		parts.push(String(args[i - 1]).replace(/[{}\\]/g, '\\$&'));
+		parts.push(String(strings.raw[i]));
+	}
+
+	return template(chalk, parts.join(''));
+}
+
+Object.defineProperties(Chalk.prototype, styles);
+
+module.exports = Chalk(); // eslint-disable-line new-cap
+module.exports.supportsColor = stdoutColor;
+module.exports.default = module.exports; // For TypeScript
+
+/***/ }),
+
 /***/ "sjZI":
 /***/ (function(module, exports) {
 
@@ -25831,7 +33589,7 @@ module.exports = CopyToClipboard;
 /***/ "smk6":
 /***/ (function(module, exports) {
 
-module.exports = [{"id":0,"name":"KLM","shortName":"KLM","callsign":"KLM","color":"#00a1e4"},{"id":1,"name":"Delta Airlines","callsign":"DLT","shortName":"Delta","color":"#003a70"},{"id":2,"name":"JetBlue","callsign":"JBU","shortName":"JetBlue","color":"#003876"},{"id":3,"name":"United Airlines","callsign":"UAL","shortName":"United","color":"#005DAA"},{"id":4,"name":"Southwest Airlines","callsign":"SWA","shortName":"Southwest","color":"#304cb2"},{"id":5,"name":"American Airlines","callsign":"AAL","shortName":"American","color":"#d41525"},{"id":6,"name":"British Airways","callsign":"BAW","shortName":"Speedbird","color":"#2a5c9a"},{"id":7,"name":"Continental Airlines","callsign":"COA","shortName":"Continental","color":"#0060aa"},{"id":8,"name":"Lufthansa","callsign":"DLH","shortName":"Lufthansa","color":"#00225e"},{"id":9,"name":"Air France","callsign":"AFR","shortName":"Air France","color":"#002157"},{"id":10,"name":"China Southern Airlines","callsign":"CSN","shortName":"China Southern","color":"#008dd2"},{"id":11,"name":"China Eastern Airlines","callsign":"CES","shortName":"China Eastern","color":"#e31614"},{"id":12,"name":"All Nippon Airways","callsign":"ANA","shortName":"All Nippon","color":"#083191"},{"id":13,"name":"Ryanair","callsign":"RYR","shortName":"Ryanair","color":"#0027b5"},{"id":14,"name":"Turkish Airlines","callsign":"THY","shortName":"Turkish","color":"#ee2e24"},{"id":15,"name":"Emirates","callsign":"UAE","shortName":"Emirates","color":"#d8131b"},{"id":16,"name":"FedEx Express","callsign":"FDX","shortName":"Fedex","color":"#2a007c"},{"id":17,"name":"UPS Airlines","callsign":"UPS","shortName":"UPS","color":"#fab903"},{"id":18,"name":"Cathay Pacific","callsign":"CPA","shortName":"Cathay","color":"#006b6e"},{"id":19,"name":"Qatar Airways","callsign":"QTR","shortName":"Qatari","color":"#5c0632"},{"id":20,"name":"Korean Air","callsign":"KAL","shortName":"Korean Air","color":"#154d9e"},{"id":21,"name":"Cargolux","callsign":"CLX","shortName":"Cargolux","color":"#d40000"},{"id":22,"name":"Air China","callsign":"CCA","shortName":"Air China","color":"#ee151f"},{"id":23,"name":"Egyptair","callsign":"MSR","shortName":"Egyptair","color":"#00265d"},{"id":24,"name":"Cathay Dragon","callsign":"HDA","shortName":"Dragon","color":"#950714"}]
+module.exports = [{"id":0,"name":"KLM","shortName":"KLM","callsign":"KLM","color":"#00a1e4","rarity":1},{"id":1,"name":"Delta Airlines","callsign":"DLT","shortName":"Delta","color":"#003a70","rarity":1},{"id":2,"name":"JetBlue","callsign":"JBU","shortName":"JetBlue","color":"#003876","rarity":1},{"id":3,"name":"United Airlines","callsign":"UAL","shortName":"United","color":"#005DAA","rarity":1},{"id":4,"name":"Southwest Airlines","callsign":"SWA","shortName":"Southwest","color":"#304cb2","rarity":0.5},{"id":5,"name":"American Airlines","callsign":"AAL","shortName":"American","color":"#d41525","rarity":0.5},{"id":6,"name":"British Airways","callsign":"BAW","shortName":"Speedbird","color":"#2a5c9a","rarity":1},{"id":7,"name":"Continental Airlines","callsign":"COA","shortName":"Continental","color":"#0060aa","rarity":0.7},{"id":8,"name":"Lufthansa","callsign":"DLH","shortName":"Lufthansa","color":"#00225e","rarity":1},{"id":9,"name":"Air France","callsign":"AFR","shortName":"Air France","color":"#002157","rarity":1},{"id":10,"name":"China Southern Airlines","callsign":"CSN","shortName":"China Southern","color":"#008dd2","rarity":0.3},{"id":11,"name":"China Eastern Airlines","callsign":"CES","shortName":"China Eastern","color":"#e31614","rarity":0.3},{"id":12,"name":"All Nippon Airways","callsign":"ANA","shortName":"All Nippon","color":"#083191","rarity":0.3},{"id":13,"name":"Ryanair","callsign":"RYR","shortName":"Ryanair","color":"#0027b5","rarity":0.3},{"id":14,"name":"Turkish Airlines","callsign":"THY","shortName":"Turkish","color":"#ee2e24","rarity":0.4},{"id":15,"name":"Emirates","callsign":"UAE","shortName":"Emirates","color":"#d8131b","rarity":0.4},{"id":16,"name":"FedEx Express","callsign":"FDX","shortName":"Fedex","color":"#2a007c","rarity":0.5},{"id":17,"name":"UPS Airlines","callsign":"UPS","shortName":"UPS","color":"#fab903","rarity":0.6},{"id":18,"name":"Cathay Pacific","callsign":"CPA","shortName":"Cathay","color":"#006b6e","rarity":0.4},{"id":19,"name":"Qatar Airways","callsign":"QTR","shortName":"Qatari","color":"#5c0632","rarity":0.4},{"id":20,"name":"Korean Air","callsign":"KAL","shortName":"Korean Air","color":"#154d9e","rarity":0.4},{"id":21,"name":"Cargolux","callsign":"CLX","shortName":"Cargolux","color":"#d40000","rarity":0.2},{"id":22,"name":"Air China","callsign":"CCA","shortName":"Air China","color":"#ee151f","rarity":0.3},{"id":23,"name":"Egyptair","callsign":"MSR","shortName":"Egyptair","color":"#00265d","rarity":0.3},{"id":24,"name":"Cathay Dragon","callsign":"HDA","shortName":"Dragon","color":"#950714","rarity":0.2},{"id":25,"name":"Norwegian Air Shuttle","callsign":"NAX","shortName":"Norwegian","color":"#ff2121","rarity":0.3},{"id":26,"name":"Finnair","callsign":"FIN","shortName":"Finnair","color":"#121c83","rarity":0.3}]
 
 /***/ }),
 
@@ -26985,6 +34743,13 @@ exports.default = ArrayField;
 
 /***/ }),
 
+/***/ "tKAm":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "tMlx":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27124,7 +34889,7 @@ module.exports = __webpack_require__("qo66")(SET, function (get) {
 /***/ "uW+5":
 /***/ (function(module, exports) {
 
-module.exports = [{"id":0,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Boeing 737","shortName":"B737","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[0,1,5,3,2,7,10,11,12,13,14,22,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 747","shortName":"B747","topSpeed":330,"landingSpeed":145,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":180,"turningRate":[5,3,2],"ceiling":41,"operators":[0,1,2,3,6,8,14,17,18,19,20,21,22],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"heavy"},{"id":2,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 757","shortName":"B757","topSpeed":330,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"minSpeed":160,"accelerationSpeed":1,"deAccelerationSpeed":1,"turningRate":[5,3,2],"ceiling":42,"operators":[0,1,5,3,2,7,16,17],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":3,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 767","shortName":"B767","topSpeed":330,"landingSpeed":140,"minSpeed":160,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"turningRate":[5,3,2],"ceiling":43,"operators":[1,3,5,6,7,12,16],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"heavy"},{"id":4,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 777","shortName":"B777","topSpeed":330,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"ceiling":43,"operators":[0,1,6,7,8,9,10,11,12,14,15,16,18,19,20,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"heavy"},{"id":5,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Airbus A380","shortName":"A380","topSpeed":330,"landingSpeed":150,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"ceiling":43,"operators":[6,9,10,15,20],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"super"},{"id":6,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Airbus A330","shortName":"A330","ceiling":39,"topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[0,1,3,5,8,9,11,14,18,19,20,22,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":7,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":39,"name":"Boeing 787 Dreamliner","shortName":"B787","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[0,3,5,6,10,11,12,19,22,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"heavy"},{"id":8,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Airbus A319","shortName":"A319","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,5,6,8,10,11,14,19,22],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":9,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Airbus A320","shortName":"A320","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,5,3,2,6,8,9,10,11,12,14,19,20,22,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":10,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Airbus A321","shortName":"A321","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,5,3,2,6,8,9,10,11,12,14,19,20,23],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":11,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":41,"name":"Airbus A350","shortName":"A350","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,8,10,14,18,19,22],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"heavy"},{"id":12,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"Boeing 717","shortName":"B717","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[1],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":13,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-88","shortName":"MD-88","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[1],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":14,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-90","shortName":"MD-90","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[1],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":15,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":38,"name":"Embraer 190","shortName":"E190","topSpeed":310,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[2,5,10],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":16,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-82","shortName":"MD-82","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[5],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"},{"id":17,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-83","shortName":"MD-83","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[5],"descendRatioWhileDecelerating":0.5,"ga":false,"class":"medium"}]
+module.exports = [{"id":0,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Boeing 737","shortName":"B737","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[0,1,5,3,2,7,10,11,12,13,14,22,23],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":1},{"id":1,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 747","shortName":"B747","topSpeed":330,"landingSpeed":145,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":180,"turningRate":[5,3,2],"ceiling":41,"operators":[0,1,2,3,6,8,14,17,18,19,20,21,22],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"heavy","rarity":0.3},{"id":2,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 757","shortName":"B757","topSpeed":330,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"minSpeed":160,"accelerationSpeed":1,"deAccelerationSpeed":1,"turningRate":[5,3,2],"ceiling":42,"operators":[0,1,5,3,2,7,16,17],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.25},{"id":3,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 767","shortName":"B767","topSpeed":330,"landingSpeed":140,"minSpeed":160,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"turningRate":[5,3,2],"ceiling":43,"operators":[1,3,5,6,7,12,16],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"heavy","rarity":0.25},{"id":4,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Boeing 777","shortName":"B777","topSpeed":330,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"ceiling":43,"operators":[0,1,6,7,8,9,10,11,12,14,15,16,18,19,20,23],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"heavy","rarity":0.25},{"id":5,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Airbus A380","shortName":"A380","topSpeed":330,"landingSpeed":150,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"ceiling":43,"operators":[6,9,10,15,20],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"super","rarity":0.1},{"id":6,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"name":"Airbus A330","shortName":"A330","ceiling":39,"topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[0,1,3,5,8,9,11,14,18,19,20,22,23],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.8},{"id":7,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":39,"name":"Boeing 787 Dreamliner","shortName":"B787","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[0,3,5,6,10,11,12,19,22,23],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"heavy","rarity":0.15},{"id":8,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Airbus A319","shortName":"A319","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,5,6,8,10,11,14,19,22],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.3},{"id":9,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Airbus A320","shortName":"A320","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,5,3,2,6,8,9,10,11,12,14,19,20,22,23],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.3},{"id":10,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":37,"name":"Airbus A321","shortName":"A321","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,5,3,2,6,8,9,10,11,12,14,19,20,23],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.3},{"id":11,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":41,"name":"Airbus A350","shortName":"A350","topSpeed":320,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":160,"turningRate":[5,3,2],"operators":[1,8,10,14,18,19,22],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"heavy","rarity":0.3},{"id":12,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"Boeing 717","shortName":"B717","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[1],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.1},{"id":13,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-88","shortName":"MD-88","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[1],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.1},{"id":14,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-90","shortName":"MD-90","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[1],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.1},{"id":15,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":38,"name":"Embraer 190","shortName":"E190","topSpeed":310,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[2,5,10],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.1},{"id":16,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-82","shortName":"MD-82","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[5],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.1},{"id":17,"commercial":1,"takeoffMinRunwayLength":6000,"landingMinRunwayLength":5000,"ceiling":35,"name":"McDonell Douglas MD-83","shortName":"MD-83","topSpeed":300,"landingSpeed":140,"climbSpeed":1,"descendSpeed":1,"accelerationSpeed":1,"deAccelerationSpeed":1,"minSpeed":150,"turningRate":[5,3,2],"operators":[5],"descendRatioWhileDecelerating":0.5,"ga":0,"class":"medium","rarity":0.1},{"id":18,"takeoffMinRunwayLength":1200,"landingMinRunwayLength":800,"ceiling":13,"name":"Cessna 172","shortName":"C172","topSpeed":120,"landingSpeed":60,"climbSpeed":0.4,"descendSpeed":0.6,"accelerationSpeed":1.4,"deAccelerationSpeed":1.5,"minSpeed":80,"turningRate":[9,7,5],"operators":[],"descendRatioWhileDecelerating":0.5,"ga":true,"class":"light","rarity":0.5}]
 
 /***/ }),
 
@@ -27143,6 +34908,13 @@ module.exports = function (KEY, exec) {
     fn(1);
   }), 'Object', exp);
 };
+
+/***/ }),
+
+/***/ "vE7Y":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -27262,6 +35034,108 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
     } else $export($export.P + $export.F * (BUGGY || VALUES_BUG), NAME, methods);
   }
   return methods;
+};
+
+/***/ }),
+
+/***/ "vImi":
+/***/ (function(module, exports, __webpack_require__) {
+
+var conversions = __webpack_require__("Y/tY");
+
+/*
+	this function routes a model to all other models.
+
+	all functions that are routed have a property `.conversion` attached
+	to the returned synthetic function. This property is an array
+	of strings, each with the steps in between the 'from' and 'to'
+	color models (inclusive).
+
+	conversions that are not possible simply are not included.
+*/
+
+function buildGraph() {
+	var graph = {};
+	// https://jsperf.com/object-keys-vs-for-in-with-closure/3
+	var models = Object.keys(conversions);
+
+	for (var len = models.length, i = 0; i < len; i++) {
+		graph[models[i]] = {
+			// http://jsperf.com/1-vs-infinity
+			// micro-opt, but this is simple.
+			distance: -1,
+			parent: null
+		};
+	}
+
+	return graph;
+}
+
+// https://en.wikipedia.org/wiki/Breadth-first_search
+function deriveBFS(fromModel) {
+	var graph = buildGraph();
+	var queue = [fromModel]; // unshift -> queue -> pop
+
+	graph[fromModel].distance = 0;
+
+	while (queue.length) {
+		var current = queue.pop();
+		var adjacents = Object.keys(conversions[current]);
+
+		for (var len = adjacents.length, i = 0; i < len; i++) {
+			var adjacent = adjacents[i];
+			var node = graph[adjacent];
+
+			if (node.distance === -1) {
+				node.distance = graph[current].distance + 1;
+				node.parent = current;
+				queue.unshift(adjacent);
+			}
+		}
+	}
+
+	return graph;
+}
+
+function link(from, to) {
+	return function (args) {
+		return to(from(args));
+	};
+}
+
+function wrapConversion(toModel, graph) {
+	var path = [graph[toModel].parent, toModel];
+	var fn = conversions[graph[toModel].parent][toModel];
+
+	var cur = graph[toModel].parent;
+	while (graph[cur].parent) {
+		path.unshift(graph[cur].parent);
+		fn = link(conversions[graph[cur].parent][cur], fn);
+		cur = graph[cur].parent;
+	}
+
+	fn.conversion = path;
+	return fn;
+}
+
+module.exports = function (fromModel) {
+	var graph = deriveBFS(fromModel);
+	var conversion = {};
+
+	var models = Object.keys(graph);
+	for (var len = models.length, i = 0; i < len; i++) {
+		var toModel = models[i];
+		var node = graph[toModel];
+
+		if (node.parent === null) {
+			// no possible conversion, or this node is the source model.
+			continue;
+		}
+
+		conversion[toModel] = wrapConversion(toModel, graph);
+	}
+
+	return conversion;
 };
 
 /***/ }),
@@ -27513,11 +35387,17 @@ module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"Settings":"Settings__1fN59","ColorInput":"ColorInput__1HIyn","SwitchInput":"SwitchInput__1I7mi"};
 
 /***/ }),
 
 /***/ "ygia":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "ypdR":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -27721,6 +35601,90 @@ var supportsGoWithoutReloadUsingHash = exports.supportsGoWithoutReloadUsingHash 
 var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
   return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
 };
+
+/***/ }),
+
+/***/ "zOqJ":
+/***/ (function(module, exports, __webpack_require__) {
+
+var conversions = __webpack_require__("Y/tY");
+var route = __webpack_require__("vImi");
+
+var convert = {};
+
+var models = Object.keys(conversions);
+
+function wrapRaw(fn) {
+	var wrappedFn = function wrappedFn(args) {
+		if (args === undefined || args === null) {
+			return args;
+		}
+
+		if (arguments.length > 1) {
+			args = Array.prototype.slice.call(arguments);
+		}
+
+		return fn(args);
+	};
+
+	// preserve .conversion property if there is one
+	if ('conversion' in fn) {
+		wrappedFn.conversion = fn.conversion;
+	}
+
+	return wrappedFn;
+}
+
+function wrapRounded(fn) {
+	var wrappedFn = function wrappedFn(args) {
+		if (args === undefined || args === null) {
+			return args;
+		}
+
+		if (arguments.length > 1) {
+			args = Array.prototype.slice.call(arguments);
+		}
+
+		var result = fn(args);
+
+		// we're assuming the result is an array here.
+		// see notice in conversions.js; don't use box types
+		// in conversion functions.
+		if (typeof result === 'object') {
+			for (var len = result.length, i = 0; i < len; i++) {
+				result[i] = Math.round(result[i]);
+			}
+		}
+
+		return result;
+	};
+
+	// preserve .conversion property if there is one
+	if ('conversion' in fn) {
+		wrappedFn.conversion = fn.conversion;
+	}
+
+	return wrappedFn;
+}
+
+models.forEach(function (fromModel) {
+	convert[fromModel] = {};
+
+	Object.defineProperty(convert[fromModel], 'channels', { value: conversions[fromModel].channels });
+	Object.defineProperty(convert[fromModel], 'labels', { value: conversions[fromModel].labels });
+
+	var routes = route(fromModel);
+	var routeModels = Object.keys(routes);
+
+	routeModels.forEach(function (toModel) {
+		var fn = routes[toModel];
+
+		convert[fromModel][toModel] = wrapRounded(fn);
+		convert[fromModel][toModel].raw = wrapRaw(fn);
+	});
+});
+
+module.exports = convert;
 
 /***/ }),
 

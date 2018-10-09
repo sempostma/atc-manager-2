@@ -6,7 +6,7 @@ import GameMetaControls from '../../components/GameMetaControls/GameMetaControls
 import { routeTypes, operatorsById, airplanesById, VFRStates, allowedVFRStates } from '../../lib/airplane-library/airplane-library';
 import PlaneSpd from '../PlaneSpd/PlaneSpd';
 import PlaneAlt from '../PlaneSpd/PlaneSpd';
-import { landableRwys, activeRwys } from '../../lib/map';
+import { landableRwys, activeRwys, idType } from '../../lib/map';
 import config from '../../lib/config';
 import SettingsPanel from '../../containers/SettingsPanel/SettingsPanel';
 import InfoPanel from '../../containers/InfoPanel/InfoPanel';
@@ -15,6 +15,7 @@ import AirplaneInfoPanel from '../../containers/AirplaneInfoPanel/AirplaneInfoPa
 import LogsPanel from '../../containers/LogsPanel/LogsPanel';
 import TrafficStackEntry from '../TrafficStackEntry/TrafficStackEntry';
 import Airplane from '../../lib/airplane';
+import { parse } from '../../lib/command-parser';
 
 class TrafficStack extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class TrafficStack extends Component {
     this.setState({});
   }
 
-  handleTakeoffClick = () => {
+  handleTakeoffTrigger = () => {
     this.setState(prevstate => {
       prevstate.cmd.takeoff = true;
       return prevstate;
@@ -168,7 +169,7 @@ class TrafficStack extends Component {
     const topSpeed = model.topSpeed;
     const minSpeed = model.minSpeed;
 
-    const landableRwyNamesArr = this.props.cmd.tgt && this.props.cmd.tgt.altitude < 3200
+    const landableRwyNamesArr = this.props.cmd.tgt
       ? landableRwys(GameStore.airport, this.props.cmd.tgt, config.width, config.height)
         .map(lr => lr.rev ? lr.rwy.name2 : lr.rwy.name1)
       : [];
@@ -176,6 +177,8 @@ class TrafficStack extends Component {
 
     const directToValue = cmd.directionOld ? '' : cmd.direction;
     const directToPlaceholder = cmd.directionOld ? cmd.direction : '';
+
+    const allowedWaypoints = Object.keys(GameStore.waypoints).filter(x => GameStore.waypoints[x].type !== idType.DIRECTION);
 
     return (<div>
       <div>
@@ -188,7 +191,7 @@ class TrafficStack extends Component {
           list={this.dtcToDataListId} onInput={this.handleDirectToTgtChange} />
         <datalist id={this.dtcToDataListId}>
           {cmd.tgt.routeType === routeTypes.INBOUND ? landableRwysArr : null}
-          {Object.keys(GameStore.waypoints).map(w => <option value={w} />)}
+          {allowedWaypoints.map(w => <option value={w} />)}
         </datalist>
       </div>
       <div>
@@ -203,7 +206,7 @@ class TrafficStack extends Component {
         <button onClick={this.props.onCmdExecution}><FaPaperPlane /> Give Command</button>
       </div>
       <div>
-        <button onClick={this.handleTakeoffClick} className={cmd.tgt.waiting ? '' : 'hidden'}><FaPlane /> Takeoff</button>
+        <button onClick={this.handleTakeoffTrigger} className={cmd.tgt.waiting ? '' : 'hidden'}><FaPlane /> Takeoff</button>
       </div>
       <div>{
         cmd.tgt.routeType === routeTypes.INBOUND && landableRwysArr.length > 0 && landableRwyNamesArr.includes(cmd.tgt.tgtDirection) === false
@@ -284,7 +287,7 @@ class TrafficStack extends Component {
           <button onClick={this.props.onCmdExecution}><FaPaperPlane /> Give Command</button>
         </div>
         <div>
-          <button onClick={this.handleTakeoffClick} className={cmd.tgt.waiting ? '' : 'hidden'}><FaPlane /> Takeoff</button>
+          <button onClick={this.handleTakeoffTrigger} className={cmd.tgt.waiting ? '' : 'hidden'}><FaPlane /> Takeoff</button>
         </div>
         <div>{
           cmd.tgt.landing === true && cmd.tgt.dirty === true
@@ -310,7 +313,8 @@ class TrafficStack extends Component {
       <div>
         <div className="traffic-stack-wrapper" style={{ height: innerHeight }}>
           <div className="traffic-stack" onClick={this.props.onClick}>
-            <div className="wind">wind: {GameStore.winddir}° @ {GameStore.windspd}KTS</div>
+            <div className="wind">wind: {Math.floor(GameStore.winddir)}° @ {Math.floor(GameStore.windspd)}KTS</div>
+            <div className="time">time: {Math.floor(GameStore.time / 3600)}:{Math.floor(GameStore.time % 3600 / 60)}</div>
             {trafficStack}
           </div>
           <div className="traffic-control">

@@ -6,7 +6,8 @@ import SettingsStore from './SettingsStore';
 import { routeTypes, airplanesById, operatorsById, VFRStates } from '../lib/airplane-library/airplane-library';
 import { loadState } from '../lib/persistance';
 import communications, { natoAlphabet } from '../lib/communications';
-import { sendMessageWarning, sendMessageError } from '../components/GameMessages/GameMessages';
+import { sendMessageWarning, sendMessageError, sendMessageInfo } from '../components/GameMessages/GameMessages';
+import { rndArr } from '../lib/util';
 
 const oneMileByThreeMileRuleDistance = Math.pow(config.oneMileRuleDistance / config.threeMileRuleDistance, 2);
 
@@ -20,6 +21,7 @@ class GameStore extends EventEmitter {
     this.log = [];
     this.selfLog = [];
     this.pathCounter = 0;
+    this.weatherCounter = 0;
     this.waypoints = {};
     this.airport = {};
     this.callsigns = {};
@@ -29,9 +31,8 @@ class GameStore extends EventEmitter {
     this.mapName = null;
     this.disableTakoffsOnRwysSet = {};
     this.zoom = 1;
-
-    this.update = this.update.bind(this); // called within a setInterval so bind to this object and not the window object.
-    this._newPlane = this.newPlane.bind(this); // called within a setInterval so bind to this object and not the window object.
+    const dt = new Date();
+    this.time = dt.getSeconds() + (60 * dt.getMinutes()) + (60 * 60 * dt.getHours());
 
     this.setMaxListeners(100);
   }
@@ -59,30 +60,35 @@ class GameStore extends EventEmitter {
     this.distanceVialations = 0;
     const map = this.map = loadMap(mapName);
     this.id = mapName;
-    this.winddir = Math.floor(Math.random() * 360);
+    this.winddir = Math.random() * 360;
     this.altimeter = (29 + Math.random() * 2).toFixed(2);
     this.atis = Math.floor(Math.random() * 26);
-    this.windspd = Math.floor(Math.random() * 12);
+    this.windspd = Math.random() * 12;
     this.setup(map);
-    // create planes
-    for (let i = 0; i < SettingsStore.startingInboundPlanes; i++) this.newPlaneInbound();
-    for (let i = 0; i < SettingsStore.startingOutboundPlanes; i++) this.newPlaneOutbound();
+
+    const isAptCommercial = map.commercial >= map.ga || !SettingsStore.ga;
+    // create planes (if airport isvfr(map.ga > map.commercial) then { spawn all vfr and one ifr } else { spawn all ifr and one vfr } 
+    for (let i = 0; i < SettingsStore.startingInboundPlanes; i++) isAptCommercial ? this.newPlaneInbound() : this.newPlaneVFRInbound(Math.random() > .5);
+    for (let i = 0; i < SettingsStore.startingOutboundPlanes; i++) isAptCommercial ? this.newPlaneOutbound() : this.newPlaneVFROutbound(Math.random() > .5);
     if (SettingsStore.enroute) {
-      for (let i = 0; i < SettingsStore.startingEnroutePlanes; i++) this.newPlaneEnroute();
+      for (let i = 0; i < SettingsStore.startingEnroutePlanes; i++) isAptCommercial ? this.newPlaneEnroute() : this.newPlaneVFREnroute(Math.random() > .5);
     }
-    this.newPlaneVFROutbound();
-    this.newPlaneVFROutbound();
-    this.newPlaneVFRInbound();
-    this.newPlaneVFRInbound(true);
-    this.newPlaneVFRClosedPattern(true);
+    if (SettingsStore.ga && map.ga > 0) isAptCommercial ? this.newPlaneVFROutbound() : this.newPlaneOutbound();
+
+    this.resume();
   }
 
-  startSaved(saveName) {
+  startLocalstorage = (saveName) => {
     const state = loadState();
     const game = state.games[saveName];
+    this.startSaved(game);
+  }
+
+  startSaved = game => {
     this.loadJson(game);
     const map = this.map = loadMap(game.id);
     this.setup(map);
+    this.resume();
   }
 
   setup(map) {
@@ -97,6 +103,8 @@ class GameStore extends EventEmitter {
     this.sepDistanceVialotions = {};
     this.oldSepDistanceVialotions = {};
     this.started = true;
+    this.pathCounter = 0;
+    this.weatherCounter = 0;
     this.callsigns = setCallsigns(map, this.waypoints);
     this.callsignsPos = callsignPositions(map, this.waypoints, config.width, config.height);
     Object.assign(this.disableTakoffsOnRwysSet, ...map.airport.runways.map(rwy => ({ [rwy.name1]: 'all', [rwy.name2]: 'all' })));
@@ -108,53 +116,35 @@ class GameStore extends EventEmitter {
     this.emit('start');
   }
 
-  setupWaypoints() {
+  setupWaypoints = () => {
     this.inboundWpOrdered = this.map.inboundWaypoints.slice(0).sort(() => Math.random() - .5);
     this.outboundWpOrdered = this.map.outboundWaypoints.slice(0).sort(() => Math.random() - .5);
   }
 
-  spawnVFRPlane() {
-    const rnd = Math.random();
-    if (SettingsStore.enroute) {
-      if (rnd < .25) this.newPlaneVFRInbound(Math.random() > .5);
-      else if (rnd < .50) this.newPlaneVFROutbound();
-      else if (rnd < .75) this.newPlaneVFRClosedPattern(Math.random() > .5);
-      else this.newPlaneVFREnroute();
-    } else {
-      if (rnd < .33) this.newPlaneVFRInbound(Math.random() > .5);
-      else if (rnd < .66) this.newPlaneVFROutbound();
-      else this.newPlaneVFRClosedPattern(Math.random() > .5);
-    }
+  spawnVFRPlane = () => {
+    const opts = [
+      this.newPlaneVFRClosedPattern.bind(this, Math.random() > 0.5),
+      this.newPlaneVFRInbound.bind(this, Math.random() > 0.5),
+      this.newPlaneVFROutbound,
+    ];
+    if (SettingsStore.enroute) opts.push(this.newPlaneVFREnroute);
+    rndArr(opts)();
   }
 
-  newPlane() {
+  newPlane = () => {
     if (this.paused) return;
-    const rnd = Math.random();
-
-    if (SettingsStore.enroute) {
-      if (SettingsStore.ga && this.map.ga > 0) {
-        if (rnd < .25) this.newPlaneInbound();
-        else if (rnd < .50) this.newPlaneOutbound();
-        else if (rnd < .75) this.newPlaneEnroute();
-        else this.spawnVFRPlane();
-      } else {
-        if (rnd < .33) this.newPlaneInbound();
-        else if (rnd < .66) this.newPlaneOutbound();
-        else this.newPlaneEnroute();
-      }
-    } else {
-      if (SettingsStore.ga && this.map.ga > 0) {
-        if (rnd < .33) this.newPlaneInbound();
-        else if (rnd < .66) this.newPlaneOutbound();
-        else this.spawnVFRPlane();
-      } else {
-        if (rnd < .5) this.newPlaneInbound();
-        else this.newPlaneOutbound();
-      }
-    }
+    let rnd = Math.random();
+    let trafficSum = this.map.ga + this.map.commercial;
+    const opts = [
+      this.newPlaneInbound,
+      this.newPlaneOutbound,
+    ];
+    if (SettingsStore.ga && rnd > this.map.ga / trafficSum) opts.push(this.spawnVFRPlane);
+    if (SettingsStore.enroute) opts.push(this.newPlaneEnroute);
+    rndArr(opts)();
   }
 
-  newPlaneVFRClosedPattern(touchandgo) {
+  newPlaneVFRClosedPattern = touchandgo => {
     let activeRunways = activeRwys(this.airport, this.winddir);
     let activeRunwaysAssigned = activeRunways
       .filter(rwy => this.disableTakoffsOnRwysSet[rwy] !== 'none' && this.disableTakoffsOnRwysSet[rwy] !== 'commercial');
@@ -173,7 +163,7 @@ class GameStore extends EventEmitter {
     if (couldNotFindAssignedRwy) sendMessageWarning(`No assigned takeoff runway for general aviation, ${callsign} was ordered to taxi to RWY ${item}.`);
   }
 
-  newPlaneVFREnroute() {
+  newPlaneVFREnroute = () => {
     const map = this.map;
 
     const side = Math.floor(Math.random() * 4);
@@ -195,7 +185,7 @@ class GameStore extends EventEmitter {
     this.traffic.push(airplane);
   }
 
-  newPlaneVFRInbound(touchandgo) {
+  newPlaneVFRInbound = touchandgo => {
     const map = this.map;
     if (this.inboundWpOrdered.length === 0) {
       this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(() => Math.random() - .5);
@@ -211,7 +201,7 @@ class GameStore extends EventEmitter {
     const callsign = communications.getCallsign(airplane, true);
   }
 
-  newPlaneVFROutbound() {
+  newPlaneVFROutbound = () => {
     let activeRunways = activeRwys(this.airport, this.winddir);
     let activeRunwaysAssigned = activeRunways.filter(rwy => this.disableTakoffsOnRwysSet[rwy] !== 'commercial' && this.disableTakoffsOnRwysSet[rwy] !== 'none');
     // if the user has a prefered runway. Use that runway. If the user has al of the runways disabled choose one at random.
@@ -242,7 +232,7 @@ class GameStore extends EventEmitter {
     this.addLog(readBackMsg, callsign);
   }
 
-  newPlaneEnroute() {
+  newPlaneEnroute = () => {
     const map = this.map;
     if (this.inboundWpOrdered.length === 0) {
       this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(() => Math.random() - .5);
@@ -279,7 +269,7 @@ class GameStore extends EventEmitter {
     // }
   }
 
-  newPlaneInbound() {
+  newPlaneInbound = () => {
     const map = this.map;
     if (this.inboundWpOrdered.length === 0) {
       this.inboundWpOrdered = map.inboundWaypoints.slice(0).sort(() => Math.random() - .5);
@@ -297,14 +287,12 @@ class GameStore extends EventEmitter {
       // has atis
       const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + ' with ' + this.getAtis() + '.';
       this.addLog(msg, callsign);
-
       const atcMsg = callsign + ', ' + this.airport.callsign + ' approach, maintain current heading.';
       this.addLog(atcMsg, 'ATC');
     } else {
       // does not have atis
       const msg = this.airport.callsign + ' approach, ' + callsign + ' at ' + Math.floor(airplane.altitude / 100) + '.';
       this.addLog(msg, callsign);
-
       const atcMsg = callsign + ', information ' + this.getAtis() + ' is current, altimeter ' + this.altimeter + ', maintain current heading.';
       this.addLog(atcMsg, 'ATC');
     }
@@ -312,7 +300,7 @@ class GameStore extends EventEmitter {
   }
 
   // deprecated
-  _newPlaneInboundOnEdge() {
+  _newPlaneInboundOnEdge = () => {
     const hdgVar = config.headingInitVariation;
     let side = Math.floor(Math.random() * 4);
     let x = side === 1 ? config.width : side === 3 ? 0 : Math.random() * config.width;
@@ -323,7 +311,7 @@ class GameStore extends EventEmitter {
     this.traffic.push(Airplane.create(x, y, heading, routeTypes.INBOUND));
   }
 
-  newPlaneOutbound() {
+  newPlaneOutbound = () => {
     let activeRunways = activeRwys(this.airport, this.winddir);
     let activeRunwaysAssigned = activeRunways.filter(rwy => this.disableTakoffsOnRwysSet[rwy] !== 'ga' && this.disableTakoffsOnRwysSet[rwy] !== 'none');
     // if the user has a prefered runway. Use that runway. If the user has al of the runways disabled choose one at random.
@@ -407,14 +395,23 @@ class GameStore extends EventEmitter {
     const s = config.globalSpeed * SettingsStore.speed;
     this.trySpawn();
     this.pathCounter = ++this.pathCounter % Math.floor(config.pathCounterUpdateEvery / s);
+    this.weatherCounter = ++this.weatherCounter % Math.floor(config.updateWeatherEvery / s);
     for (const key in this.oldSepDistanceVialotions) delete this.oldSepDistanceVialotions[key];
     Object.assign(this.oldSepDistanceVialotions, this.sepDistanceVialotions);
     for (const key in this.sepDistanceVialotions) delete this.sepDistanceVialotions[key];
     this.traffic.forEach(this.planeUpdate);
     for (const key in this._edgeDetection) delete this._edgeDetection[key];
     for (let i = 0; i < this._remove.length; i++) this.traffic.splice(this.traffic.indexOf(this._remove[i]), 1);
+    this.time += s;
+    this.time %= 86400; // seconds in a year
     this._remove.length = 0;
+    if (this.weatherCounter === 0) {
+      this.winddir = wrapHeadig(this.winddir + (Math.random() - .5) * s * config.windDirChange);
+      this.windspd = Math.max(config.windSpdMin, Math.min(config.windSpdMax, this.windspd + (Math.random() - 0.5) * s * config.windSpdChange));
+      if (this.windspd > config.roughWindSpd && Math.random() < config.windRandomChangeOfLoweringWhenRoughWindSpd) this.windspd -= Math.random();
+    }
     this.emit('change');
+    this.emit('update');
   }
 
   planeUpdate = (airplane, i) => {
@@ -520,6 +517,7 @@ class GameStore extends EventEmitter {
     }
 
     if (this.pathCounter === 0) {
+      if (!airplane.path) airplane.path = [];
       airplane.path.unshift([airplane.x, airplane.y]);
       if (airplane.path.length >= config.maxPathLen) airplane.path.pop();
     }
@@ -735,7 +733,7 @@ class GameStore extends EventEmitter {
           tgtHeading = wrapHeadig(hdgTo - maxAngle - .1);
         } else if (headingToDelta < -10 && headingToDelta >= maxAngle) {
           tgtHeading = wrapHeadig(hdgTo + maxAngle + .1);
-        } 
+        }
       }
     }
 
@@ -769,19 +767,32 @@ class GameStore extends EventEmitter {
         airplane.landing = true;
       } else if (airplane.altitude < (500 + rwyElev) && Math.abs(rwyAirplaneHdgDiff) < 20) {
         if (isTouchAndGo === false && airplane.landing) {
-          //landed
-          this.arrivals++;
-          this._remove.push(airplane);
+          const s = this.windspd / config.windSpdMax * config.likelyNessOfGoAroundDueWindSpd;
+          const crosswind = Math.abs(angleDelta(rwyHdg, this.winddir));
+          const crossWindMultiplier = 1 - Math.abs(crosswind - 90) / 90;
+          const d = crossWindMultiplier * config.likelyNessOfGoAroundDueWindHhdg;
+          const rnd = Math.random();
+          if (rnd - d - s < config.likelyNessOfGoAround && SettingsStore.goArounds) {
+            if (rnd < config.likelyNessOfGoAround) sendMessageInfo(`${communications.getCallsign(airplane, true)} is going around.`);
+            else if (rnd - d - s < config.likelyNessOfGoAround && this.windspd > 10 && crossWindMultiplier > 0.5) sendMessageInfo(`${communications.getCallsign(airplane, true)} is making a go around because of a ${this.windspd}KTS crosswind.`);
+            else if (rnd - d - s < config.likelyNessOfGoAround) sendMessageInfo(`${communications.getCallsign(airplane, true)} is making a go around because of bad weather.`);
+            // go-around
+            airplane.landing = false;
+          } else {
+            //landed
+            this.arrivals++;
+            this._remove.push(airplane);
+          }
         } else if (airplane.landing) {
           airplane.landing = false;
           if (--airplane.tgs <= 0) {
             switch (airplane.routeType) {
-              case routeTypes.VFR_CLOSED_PATTERN_TG:
-                airplane.routeType = routeTypes.VFR_CLOSED_PATTERN;
-                break;
-              case routeTypes.VFR_INBOUND_TG:
-                airplane.routeType = routeTypes.VFR_INBOUND;
-                break;
+            case routeTypes.VFR_CLOSED_PATTERN_TG:
+              airplane.routeType = routeTypes.VFR_CLOSED_PATTERN;
+              break;
+            case routeTypes.VFR_INBOUND_TG:
+              airplane.routeType = routeTypes.VFR_INBOUND;
+              break;
             }
           }
         }
@@ -794,8 +805,8 @@ class GameStore extends EventEmitter {
   }
 }
 
-const persistanceProps = ['traffic', 'started', 'width', 'height', 'log', 'selfLog', 'pathCounter', 'mapName', 'id', 'arrivals', 'departures',
-  'enroutes', 'distanceVialations', 'mapName', 'winddir', 'windspd', 'unpermittedDepartures'];
+const persistanceProps = ['traffic', 'started', 'log', 'selfLog', 'mapName', 'id', 'arrivals', 'departures',
+  'enroutes', 'distanceVialations', 'mapName', 'winddir', 'windspd', 'unpermittedDepartures', 'time'];
 
 const wrapHeadig = hdg => (hdg + 360) % 360;
 

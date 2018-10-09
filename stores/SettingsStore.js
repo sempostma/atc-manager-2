@@ -20,6 +20,7 @@ class SettingsStore extends EventEmitter {
     this.ilsPathColor = '#8aa8ad';
     this.ilsDashInterval = [20, 30];
     this.sepVialationCircleColor = '#ff0000';
+    this.useTextCmd = false;
     this.newPlaneInterval = 100;
     this.startingInboundPlanes = 3;
     this.startingOutboundPlanes = 2;
@@ -28,6 +29,7 @@ class SettingsStore extends EventEmitter {
     this.ga = false;
     this.enroute = false;
     this.takeoffInOrder = false;
+    this.goArounds = false;
     this.defaultSettings = JSON.parse(this.toJson());
 
     const persistedSettings = loadState().settings;
@@ -92,9 +94,8 @@ class SettingsStore extends EventEmitter {
 
   toJson = () => {
     return JSON.stringify(this,
-      ['distanceCircles', 'distanceCirclesDistance', 'takeoffInOrder',
-        'distanceCirclesAmount', 'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 
-        'startingEnroutePlanes', 'sepVialationCircleColor', 'ga', 'enroute'], 4);
+      ['distanceCircles', 'distanceCirclesDistance', 'takeoffInOrder', 'useTextCmd', 'goArounds',
+        'distanceCirclesAmount', 'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 'sepVialationCircleColor', 'ga', 'enroute'], 4);
   }
 }
 

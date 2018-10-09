@@ -38,7 +38,7 @@ class SavedGamesOpen extends Component {
         return;
       }
     }
-    GameStore.startSaved(name);
+    GameStore.startLocalstorage(name);
     route('/game');
   }
 

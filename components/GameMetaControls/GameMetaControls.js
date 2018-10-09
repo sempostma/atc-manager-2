@@ -39,9 +39,7 @@ class GameMetaControls extends Component {
     const game = GameStore.toJson();
     const state = loadState();
     let name = prompt('Name of your save?', `${GameStore.mapName} - ${new Date().toLocaleDateString()}`);
-    while(!name) {
-      sendMessageWarning('Please give a valid name...');
-    }
+    if (!name) return sendMessageWarning('Please give a valid name...');
     if (state.games[name]) {
       var result = confirm('This save already exists. Do you want to overwrite it?');
       if (result === false) return sendMessageWarning(`${name} was not saved...`);

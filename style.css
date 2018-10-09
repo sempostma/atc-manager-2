@@ -24,6 +24,10 @@ blockquote {
   padding: 1rem 1.5rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 blockquote *:last-child {
   margin-bottom: 0;
 }
@@ -734,5 +738,27 @@ input:checked + .slider:before {
 .github-btn {
   display: inline-block;
 }
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #19242e;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+.loader.mid {
+  position: fixed;
+  top: calc(50% - 60px);
+  left: calc(50% - 60px);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 

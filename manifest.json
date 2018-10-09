@@ -17,6 +17,16 @@
       "type": "image/png"
     }
   ],
+  "permissions": {
+    "audio-capture" : {
+      "description" : "Audio capture"
+    },
+    "speech-recognition" : {
+      "description" : "Speech recognition"
+    }
+  },
+  "type": "privileged",
+  
   "theme_color": "#194850",
   "background_color": "#194850"
 }

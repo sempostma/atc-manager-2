@@ -1,11 +1,15 @@
 import { Component } from 'preact';
 import GameStore from '../../stores/GameStore';
-import { FaCompress, FaDesktop } from 'react-icons/fa/index.mjs';
+import { FaCompress, FaDesktop, FaFileVideo } from 'react-icons/fa/index.mjs';
 import { activeRwys } from '../../lib/map';
 import { upcase, lpad } from '../../lib/util';
 import './InfoPanel.css';
 import { saveAs } from 'file-saver';
 import SettingsStore from '../../stores/SettingsStore';
+import { sendMessageInfo, sendMessageError } from '../../components/GameMessages/GameMessages';
+import TimelapseStore from '../../stores/TimelapseStore';
+import { loadState } from '../../lib/persistance';
+import TimelapseRecorder from '../../components/TimelapseRecorder/TimelapseRecorder';
 
 
 class InfoPanel extends Component {
@@ -31,8 +35,7 @@ class InfoPanel extends Component {
 
   handleScreenShotButtonClick = e => {
     if (!GameStore.svgEl) return;
-    let el = GameStore.svgEl.getElementsByTagName('svg')[0];
-    let source = '<?xml version="1.0" standalone="no"?>\n' + el.outerHTML;
+    let source = '<?xml version="1.0" standalone="no"?>\n' + GameStore.svgEl.outerHTML;
 
     saveAs(new Blob([source], {
       type: 'image/svg+xml'
@@ -44,7 +47,7 @@ class InfoPanel extends Component {
 
     const runwayUsage = rwy => ['1', '2'].map(t =>
       <div className="rwyusage">{rwy['name' + t]} {lpad('' + rwy['hdg' + t], '0', 3)}° {rwy['elevation' + t]}FT {upcase(rwy.surface)}/{rwy['length' + t]}
-        FT {activeRunways.includes(rwy['name' + t]) ? <span>- Departure runway 
+        FT {activeRunways.includes(rwy['name' + t]) ? <span>- Departure runway &nbsp;
           <select onInput={this.handleTakeoffRunwayAssignInput} data-rwy-name={rwy['name' + t]}
             value={GameStore.disableTakoffsOnRwysSet[rwy['name' + t]]}>
             <option default value="all">All</option>
@@ -57,7 +60,7 @@ class InfoPanel extends Component {
     return (
       <div className={[this.props.expanded ? null : 'hidden', 'about-panel'].join(' ')}>
         <div>Airport: {GameStore.mapName} - {GameStore.airport.callsign}</div>
-        <div><span>Wind: {lpad('' + GameStore.winddir, '0', 3)}° / {GameStore.windspd} kts</span></div>
+        <div><span>Wind: {lpad('' + Math.round(GameStore.winddir), '0', 3)}° / {Math.round(GameStore.windspd)} kts</span></div>
         <div><span>ATIS: {GameStore.getAtis()}</span></div>
         <div><span>Altimeter: {GameStore.altimeter}</span></div>
         <div><span>Elevation: {GameStore.airport.elevation}</span></div>
@@ -66,6 +69,9 @@ class InfoPanel extends Component {
         {GameStore.airport.runways && GameStore.airport.runways.map(rwy => runwayUsage(rwy))}
         <br />
         <button className="button" onClick={this.handleScreenShotButtonClick}><FaDesktop /> Save Radar as SVG</button>
+        <div>&nbsp;</div>
+        <TimelapseRecorder />
+        <div>&nbsp;</div>
         <button onClick={this.props.onToggle}><FaCompress /> Hide Panel</button>
       </div>
     );

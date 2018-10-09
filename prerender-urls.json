@@ -1,24 +1,37 @@
-[{
-  'url': '/',
-  'title': 'Homepage'
-}, {
-  'url': '/game',
-  'title': 'Game'
-}, {
-  'url': '/save-editor',
-  'title': 'Saves Editor'
-}, {
-  'url': '/editor'
-}, {
-  'url': '/editor/airplane-editor',
-  'title': 'Airplanes Editor'
-}, {
-  'url': '/editor/operator-editor',
-  'title': 'Operator Editor'
-}, {
-  'url': '/editor/airplane-submission-success',
-  'title': 'Submission Submission Success'
-}, {
-  'url': '/editor/operator-submission-success',
-  'title': 'Operator Submission Success'
-}];
+[
+  {
+    "url": "/",
+    "title": "Homepage"
+  },
+  {
+    "url": "/game",
+    "title": "Game"
+  },
+  {
+    "url": "/save-editor",
+    "title": "Saves Editor"
+  },
+  {
+    "url": "/editor"
+  },
+  {
+    "url": "/editor/airplane-editor",
+    "title": "Airplanes Editor"
+  },
+  {
+    "url": "/editor/operator-editor",
+    "title": "Operator Editor"
+  },
+  {
+    "url": "/editor/airplane-submission-success",
+    "title": "Submission Submission Success"
+  },
+  {
+    "url": "/editor/operator-submission-success",
+    "title": "Operator Submission Success"
+  },
+  {
+    "url": "/timelapse",
+    "title": "Operator Submission Success"
+  }
+]

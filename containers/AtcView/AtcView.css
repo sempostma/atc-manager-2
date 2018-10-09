@@ -9,14 +9,6 @@
     color: #ccc;
 }
 
-span.down {
-    color: #f00;
-}
-
-span.up {
-    color: #0f0;
-}
-
 svg g.airplane.airplane-active tspan {
   font-weight: 900;
 }
@@ -113,7 +105,6 @@ input.direct-to-input::placeholder {
 .atc-view .about-panel li {
   margin-bottom: 0;
 }
-
 
 .atc-view .logs-container {
   height: 300px;

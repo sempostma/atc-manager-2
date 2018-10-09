@@ -10,6 +10,7 @@ import NotFound from 'async!./containers/NotFound/NotFound';
 import EditorsRoot from 'async!./containers/EditorsRoot/EditorsRoot';
 import { GameMessages } from './components/GameMessages/GameMessages';
 import AptDat from 'async!./containers/AptDat/AptDat';
+import TimelapseRoot from 'async!./containers/TimelapseRoot/TimelapseRoot';
 
 if (typeof window !== 'undefined') {
   window.onbeforeunload = function () {
@@ -32,6 +33,7 @@ export default class App extends Component {
           <Home path="/" />
           <Game path="/game" />
           <EditorsRoot path="/editor/:editorroute" />
+          <TimelapseRoot path="/timelapse/:timelapseroute" />
           <AptDat path="/apt-dat" />
           <NotFound default />
         </Router>

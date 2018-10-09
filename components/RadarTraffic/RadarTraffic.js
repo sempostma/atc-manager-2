@@ -34,7 +34,7 @@ class RadarTraffic extends Component {
     const alt = <PlaneSpd airplane={airplane} tagName="tspan" />;
     const ltx = Math.sin(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
     const lty = Math.cos(airplane.heading * Math.PI / 180) * config.headingIndicatorLineLen;
-    const path = 'M0,0 ' + airplane.path.map(p => `L${(p[0] - airplane.x) * GameStore.zoom}, ${-(p[1] - airplane.y) * GameStore.zoom}`);
+    const path = 'M0,0 ' + (airplane.path || []).map(p => `L${(p[0] - airplane.x) * GameStore.zoom}, ${-(p[1] - airplane.y) * GameStore.zoom}`);
     const violatingSep = GameStore.sepDistanceVialotions[communications.getCallsign(airplane, true)];
     const textHeight = (airplane.outboundWaypoint ? 4 : 3) * 14;
 

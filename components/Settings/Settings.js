@@ -139,6 +139,16 @@ class Settings extends Component {
     SettingsStore.emit('change');
   }
 
+  handleTextCmds = e => {
+    SettingsStore.useTextCmd = e.target.checked;
+    SettingsStore.emit('change');
+  }
+
+  handleGoArounds = e => {
+    SettingsStore.goArounds = e.target.checked;
+    SettingsStore.emit('change');
+  }
+
   render() {
     return (
       <div className="settings">
@@ -173,6 +183,27 @@ class Settings extends Component {
           <span>Enroute Traffic</span>
           <label class="switch">
             <input type="checkbox" onInput={this.handleEnroute} checked={SettingsStore.enroute} />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div className="takeoff-in-order mb SwitchInput">
+          <span>Go-arounds</span>
+          <label class="switch">
+            <input type="checkbox" onInput={this.handleGoArounds} checked={SettingsStore.goArounds} />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div className="takeoff-in-order mb SwitchInput">
+          <span>Takeoff in order</span>
+          <label class="switch">
+            <input type="checkbox" onInput={this.handleTakeoffInOrderChange} checked={SettingsStore.takeoffInOrder} />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div className="takeoff-in-order mb SwitchInput">
+          <span>Text commands</span>
+          <label class="switch">
+            <input type="checkbox" onInput={this.handleTextCmds} checked={SettingsStore.useTextCmd} />
             <span class="slider"></span>
           </label>
         </div>
@@ -235,13 +266,6 @@ class Settings extends Component {
             <input className="range-slider__range" type="range" min="20" max="400" step="10" value={SettingsStore.newPlaneInterval} onInput={this.handleNewPlaneIntervalChange} />
             <span class="range-slider__value">{SettingsStore.newPlaneInterval} seconds</span>
           </div>
-        </div>
-        <div className="takeoff-in-order mb SwitchInput">
-          <span>Takeoff in order</span>
-          <label class="switch">
-            <input type="checkbox" onInput={this.handleTakeoffInOrderChange} checked={SettingsStore.takeoffInOrder} />
-            <span class="slider"></span>
-          </label>
         </div>
       </div>
     );

@@ -7,6 +7,7 @@ import { saveState, loadState } from '../../lib/persistance';
 import { airplanesById, airplanes, refresh, defaultAirplanes } from '../../lib/airplane-library/airplane-library';
 import SchemaForm from 'react-jsonschema-form';
 import { sendMessageInfo, sendMessageError, sendMessageWarning } from '../../components/GameMessages/GameMessages';
+import { clone } from 'jsondiffpatch';
 const airplaneSchema = require('../../schema/airplane-model.json');
 
 class AirplaneEditor extends Component {
@@ -125,7 +126,7 @@ class AirplaneEditor extends Component {
 
   handleNewPlaneClick = e => {
     const newId = Math.max(...airplanes.map(x => x.id)) + 1;
-    const plane = JSON.parse(JSON.stringify(airplanes[0]));
+    const plane = clone(airplanes[0]);
     plane.id = newId;
     this.setState(prevstate => {
       prevstate.plane = plane;

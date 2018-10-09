@@ -8,6 +8,7 @@ import { refresh, operatorsById, defaultOperators, operators } from '../../lib/a
 import SchemaForm from 'react-jsonschema-form';
 import { sendMessageError, sendMessageInfo, sendMessageWarning } from '../../components/GameMessages/GameMessages';
 import { debounce } from '../../lib/util';
+import { clone } from 'jsondiffpatch';
 const operatorSchema = require('../../schema/operator.json');
 
 class OperatorEditor extends Component {
@@ -126,7 +127,7 @@ class OperatorEditor extends Component {
 
   handleNewOperatorClick = e => {
     const newId = Math.max(...operators.map(x => x.id)) + 1;
-    const operator = JSON.parse(JSON.stringify(operators[0]));
+    const operator = clone(operators[0]);
     operator.id = newId;
     this.setState(prevstate => {
       prevstate.operator = operator;
