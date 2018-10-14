@@ -1,30 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <meta name="description" content="Web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.">
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<meta name="mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>manifest.json">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/meta-icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/meta-icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/meta-icons/favicon-16x16.png">
-		<% if (htmlWebpackPlugin.options.manifest.theme_color) { %>
-			<meta name="theme-color" content="<%= htmlWebpackPlugin.options.manifest.theme_color %>">
-		<% } %>
-		<% for (var chunk of webpack.chunks) { %>
-		 <% if (chunk.names.length === 1 && chunk.names[0] === 'polyfills') continue; %>
-			<% for (var file of chunk.files) { %>
-				<% if (htmlWebpackPlugin.options.preload && file.match(/\.(js|css)$/)) { %>
-					<link rel="preload" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
-				<% } else if (file.match(/manifest\.json$/)) { %>
-					<link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath + file %>">
-				<% } %>
-			<% } %>
-    <% } %>
-    
+
+<head>
+  <meta charset="utf-8">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <meta name="description" content="Web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>manifest.json">
+
+  <link rel="apple-touch-icon" href="assets/images/meta-icons/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/images/meta-icons/apple-touch-icon-precomposed.png">
+  <link size="76x76" rel="apple-touch-icon" href="assets/images/meta-icons/apple-touch-icon-76x76.png">
+  <link size="76x76" rel="apple-touch-icon-precomposed" href="assets/images/meta-icons/apple-touch-icon-76x76-precomposed.png">
+  <link size="72x72" rel="apple-touch-icon" href="assets/images/meta-icons/apple-touch-icon-72x72.png">
+  <link size="72x72" rel="apple-touch-icon-precomposed" href="assets/images/meta-icons/apple-touch-icon-72x72-precomposed.png">
+  <link size="60x60" rel="apple-touch-icon" href="assets/images/meta-icons/apple-touch-icon-60x60.png">
+  <link size="60x60" rel="apple-touch-icon-precomposed" href="assets/images/meta-icons/apple-touch-icon-60x60-precomposed.png">
+  <link size="57x57" rel="apple-touch-icon" href="assets/images/meta-icons/apple-touch-icon-57x57.png">
+  <link size="57x57" rel="apple-touch-icon-precomposed" href="assets/images/meta-icons/apple-touch-icon-57x57-precomposed.png">
+  <link size="180x180" rel="apple-touch-icon" href="assets/images/meta-icons/apple-touch-icon-180x180.png">
+  <link size="180x180" rel="apple-touch-icon-precomposed" href="assets/images/meta-icons/apple-touch-icon-180x180-precomposed.png">
+  <link size="152x152" rel="apple-touch-icon" href="assets/images/meta-icons/apple-touch-icon-152x152.png">
+  <link size="152x152" rel="apple-touch-icon-precomposed" href="assets/images/meta-icons/apple-touch-icon-152x152-precomposed.png">
+  <link size="144x144" rel="apple-touch-icon" href="assets/images/meta-icons/apple-touch-icon-144x144.png">
+  <link size="144x144" rel="apple-touch-icon-precomposed" href="assets/images/meta-icons/apple-touch-icon-144x144-precomposed.png">
+  <link size="120x120" rel="apple-touch-icon" href="assets/images/meta-icons/apple-touch-icon-120x120.png">
+  <link size="120x120" rel="apple-touch-icon-precomposed" href="assets/images/meta-icons/apple-touch-icon-120x120-precomposed.png">
+  <link size="114x114" rel="apple-touch-icon" href="assets/images/meta-icons/apple-touch-icon-114x114.png">
+  <link size="114x114" rel="apple-touch-icon-precomposed" href="assets/images/meta-icons/apple-touch-icon-114x114-precomposed.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/meta-icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/meta-icons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/meta-icons/favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="shortcut icon" href="assets/images/meta-icons/favicon.ico">
+  <meta name="msapplication-config" content="assets/browserconfig.xml">
+  <meta name="msapplication-TileColor" content="#194850">
+
+  <% if (htmlWebpackPlugin.options.manifest.theme_color) { %>
+  <meta name="theme-color" content="<%= htmlWebpackPlugin.options.manifest.theme_color %>">
+  <% } %>
+  <% for (var chunk of webpack.chunks) { %>
+  <% if (chunk.names.length === 1 && chunk.names[0] === 'polyfills') continue; %>
+  <% for (var file of chunk.files) { %>
+  <% if (htmlWebpackPlugin.options.preload && file.match(/\.(js|css)$/)) { %>
+  <link rel="preload" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
+  <% } else if (file.match(/manifest\.json$/)) { %>
+  <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath + file %>">
+  <% } %>
+  <% } %>
+  <% } %>
+
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
 
   <!-- Place this tag in your head or just before your close body tag. -->
@@ -32,18 +61,20 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90014538-13"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-90014538-13');
   </script>
 
-	</head>
-	<body>
-		<%= htmlWebpackPlugin.options.ssr({
+</head>
+
+<body>
+  <%= htmlWebpackPlugin.options.ssr({
 			url: '/'
 		}) %>
-		<script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
-		<script>window.fetch||document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
-	</body>
+  <script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
+  <script>window.fetch || document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
+</body>
+
 </html>

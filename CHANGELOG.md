@@ -1,6 +1,78 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.4.0] - 2018-10-14
+### Added ✅
+- LAX (Airport)
+- Zooming
+- Game messages
+- General Aviation & VFR
+- Enroute flights
+- Closed pattern traffic (TGL and Full stop landings)
+- VFR
+ - Callsigns
+ - Navigation
+ - Callsigns based on registration numbers
+ - Collision avoidance
+ - Controlled area around airport (Enroute VFR Will not enter this area)
+- Airplanes
+ - Cessna 172
+ - Airbus A340
+ - B1900
+ - MD-11
+ - ATR 42
+ - ATR 72
+ - Beechcraft Bonanza
+ - de Havilland Canada DHC-6
+ - Cirrus SR22 
+ - Cirrus SR20 
+ - Diamond DA20 Katana 
+ - Diamond DA40 Star 
+ - Mooney M20 
+ - Robin DR400 
+ - GippsAero GA8 Airvan 
+- Operators
+ - Norwegian Air Shuttle [HL3177] 
+ - Cathay Dragon  [HL3177] 
+ - Finnair [HL3177] 
+ - Iberia
+ - South African Airways
+ - Scandinavian Airlines 
+ - Virgin Atlantic 
+ - DHL 
+ - HOP!
+- Takeoff in the correct order option
+- Go arounds 
+- Random go-arounds based on weather (behind a checkbox)
+- Correct elevation
+- Timelapses
+- Sharing
+- Timelapse sharing
+- Airplane wake turbulance categories (super, heavy, medium, light)
+- Statistics (Can be viewed when playing back a timelapse)
+- Text commands
+- Tutorials  [jet86] 
+ - Text commands tutorial 
+ - Beginner tutorial  [ImportedSwede] 
+- More links (contact page, blog page)
+- Added ImportedSwede and HL3177 to the list of contributers
+### Changed ❗
+- "Map does not support VFR" Message 
+- Airplanes have a different likeliness of spawning
+- Operators have a different likeliness of spawning
+- Different airports can have vfr and/or ifr flights depending on the type of airport
+- Fixed label overlapping on schiphol
+- Assigning a runway to an airplane can be done at altitudes higher than 3200ft
+- Better airplane specifications
+- More realistic ATC Jargon
+- Schiphol. One of both TULIP and SPY should be arrival
+- Ask for overwrite instead of prompting that the save name already exists
+- Better and more dynamic weather
+- Waypoint label overlapping fixes
+- Updated JSON Schema's
+### Removed ❌
+- Non English speech synthesis languages 
+
 ## [2.3.0] - 2018-09-13
 ### Added
 - Set take-off runway [chrstphd]

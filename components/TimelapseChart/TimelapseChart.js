@@ -33,6 +33,7 @@ class TimelapseChart extends Component {
           <YAxis tick={{ fill: 'white' }} stroke="white" width={35} />
           <Line name="Seperation conflicts" dataKey="distanceVialations" stroke="red" />
           <Line name="Enroute flights" dataKey="enroutes" stroke="blue" />
+          <Line name="Departed flights" dataKey="departures" stroke="blue" />
           <Line name="Unpermitted departures" dataKey="unpermittedDepartures" stroke="orange" />
           <Line name="Arrived flights" dataKey="arrivals" stroke="purple" />
           <Area title="Amount of airplanes in the air at a specific point" name="Traffic load" dataKey="trafficLength" fill="green" opacity={.3} />

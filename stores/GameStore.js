@@ -767,9 +767,9 @@ class GameStore extends EventEmitter {
         if (!tooHigh) {
           altChange = Math.min(100 * s, Math.max(-100 * s, Math.min(airplane.altitude, distance * config.ilsSlopeSteepness + rwyElev) - airplane.altitude));
         }
-        tgtSpeed = Math.min(200, airplane.speed);
+        tgtSpeed = Math.min(200, tgtSpeed);
         if (airplane.altitude < 1990) {
-          tgtSpeed = Math.min(model.minSpeed + 20, airplane.speed);
+          tgtSpeed = Math.min(model.minSpeed + 20, tgtSpeed);
         }
         if (airplane.altitude < 1300 - rwyElev) {
           tgtSpeed = model.minSpeed;
