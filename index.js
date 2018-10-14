@@ -11,6 +11,9 @@ import EditorsRoot from 'async!./containers/EditorsRoot/EditorsRoot';
 import { GameMessages } from './components/GameMessages/GameMessages';
 import AptDat from 'async!./containers/AptDat/AptDat';
 import TimelapseRoot from 'async!./containers/TimelapseRoot/TimelapseRoot';
+import TutorialsRoot from './containers/TutorialsRoot/TutorialsRoot';
+import TutorialsIntro from './containers/TutorialsIntro/TutorialsIntro';
+import TutorialsTextCommands from './containers/TutorialsTextCommands/TutorialsTextCommands';
 
 if (typeof window !== 'undefined') {
   window.onbeforeunload = function () {
@@ -20,7 +23,6 @@ if (typeof window !== 'undefined') {
 
 export const router = new EventEmitter();
 export const history = typeof window !== 'undefined' ? createHashHistory() : undefined; // enable pre rendering
-
 export default class App extends Component {
   constructor(props) {
     super();
@@ -35,6 +37,9 @@ export default class App extends Component {
           <EditorsRoot path="/editor/:editorroute" />
           <TimelapseRoot path="/timelapse/:timelapseroute" />
           <AptDat path="/apt-dat" />
+          <TutorialsRoot path="tutorials" />
+          <TutorialsIntro path="tutorials/intro" />
+          <TutorialsTextCommands path="tutorials/text-commands" />
           <NotFound default />
         </Router>
         <GameMessages />

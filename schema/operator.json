@@ -7,6 +7,7 @@
   "required": [
     "id",
     "name",
+    "rarity",
     "callsign",
     "shortName",
     "color"
@@ -15,16 +16,27 @@
     "id": {
       "$id": "#/properties/id",
       "type": "integer",
-      "title": "The Id Schema",
+      "title": "Id",
       "default": 0,
       "examples": [
         18
       ]
     },
+    "rarity": {
+      "$id": "#/items/properties/rarity",
+      "type": "number",
+      "title": "Rarity",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "examples": [
+        1
+      ]
+    },
     "name": {
       "$id": "#/properties/name",
       "type": "string",
-      "title": "The Name Schema",
+      "title": "Name",
       "default": "",
       "examples": [
         "Cathay Pacific"
@@ -34,7 +46,7 @@
     "callsign": {
       "$id": "#/properties/callsign",
       "type": "string",
-      "title": "The Callsign Schema",
+      "title": "Callsign",
       "examples": [
         "CPA"
       ],
@@ -43,7 +55,7 @@
     "shortName": {
       "$id": "#/properties/shortName",
       "type": "string",
-      "title": "The Shortname Schema",
+      "title": "Shortname",
       "examples": [
         "Cathay"
       ],
@@ -52,7 +64,7 @@
     "color": {
       "$id": "#/properties/color",
       "type": "string",
-      "title": "The Color Schema",
+      "title": "Color",
       "examples": [
         "#006b6e"
       ],

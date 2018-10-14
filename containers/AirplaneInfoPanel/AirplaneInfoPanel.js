@@ -34,9 +34,9 @@ class AirplaneInfoPanel extends Component {
         <div>{this.props.infoPanelTgt.airplane.routeType === routeTypes.OUTBOUND && ('Departure runway: ' + this.props.infoPanelTgt.airplane.rwy) || null}</div>
         <div>Operators: {this.props.infoPanelTgt.model.operators.map(o => operatorsById[o].name).join(', ') || 'None'}</div>
         <br />
-        <div>Speed: {this.props.infoPanelTgt.airplane.speed}KTS</div>
-        <div>Altitude: <AltFmt altitude={this.props.infoPanelTgt.airplane.altitude} tagName="span" /></div>
-        <div>heading: {lpad('' + this.props.infoPanelTgt.airplane.heading, '0', 3)}°</div>
+        <div>Speed: {this.props.infoPanelTgt.airplane.speed.toFixed(0)}KTS</div>
+        <div>Altitude: <AltFmt altitude={this.props.infoPanelTgt.airplane.altitude.toFixed(0)} tagName="span" /></div>
+        <div>heading: {lpad('' + this.props.infoPanelTgt.airplane.heading.toFixed(0), '0', 3)}°</div>
         <br />
         <div>Ceiling: <AltFmt altitude={this.props.infoPanelTgt.model.ceiling * 1000} tagName="span" /></div>
         <div>Top speed: {this.props.infoPanelTgt.model.topSpeed}KTS</div>

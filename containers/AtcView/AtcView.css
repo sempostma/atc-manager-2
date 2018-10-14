@@ -145,7 +145,8 @@ input.direct-to-input::placeholder {
   width: 49.9%; 
 }
 
-.airplane-traffic-stack-info-btn {
+.atc-view .airplane-traffic-stack-info-btn,
+.atc-view .question-mark-btn {
   display: block;
   float: right;
   height: 20px;

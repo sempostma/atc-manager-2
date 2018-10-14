@@ -755,10 +755,53 @@ input:checked + .slider:before {
   left: calc(50% - 60px);
 }
 
+.panel-links {
+  vertical-align: bottom;
+}
+
+.panel-links > .disabled,
+.panel-links > [disabled] {
+  opacity: 0.5;
+}
+
+.panel-links .block-outer {
+  border: 2px solid rgb(25, 72, 80);
+}
+
+.link-icon-wrapper {
+  font-size: 40px;
+  line-height: 1em;
+}
+
+.panel img {
+  max-width: 100%;
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
+.tutorial img {
+  margin-bottom: 20px;
+}
 
+.tutorial li {
+  margin-bottom: 4px;
+}
 
+.tutorial ul {
+  padding-left: 20px;
+}
+
+.tutorial {
+  margin-bottom: 100px;
+}
+
+.color-red {
+  color: #f00;
+}
+
+.color-green {
+  color: #0f0;
+}

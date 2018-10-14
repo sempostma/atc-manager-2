@@ -214,5 +214,53 @@
     "shortName": "Finnair",
     "color": "#121c83",
     "rarity": 0.3
+  },
+  {
+    "id": 27,
+    "name": "Iberia",
+    "callsign": "IBE",
+    "shortName": "Iberia",
+    "color": "#cd1525",
+    "rarity": 0.2
+  },
+  {
+    "id": 28,
+    "name": "South African Airways",
+    "callsign": "SAA",
+    "shortName": "Springbok",
+    "color": "#002c6d",
+    "rarity": 0.1
+  },
+  {
+    "id": 29,
+    "name": "Scandinavian Airlines",
+    "callsign": "SAS",
+    "shortName": "Scandinavian",
+    "color": "#272c88",
+    "rarity": 0.1
+  },
+  {
+    "id": 30,
+    "name": "Virgin Atlantic",
+    "callsign": "VIR",
+    "shortName": "Virgin",
+    "color": "#da1d31",
+    "rarity": 0.1
+  },
+  {
+    "id": 31,
+    "name": "DHL",
+    "callsign": "DHL",
+    "shortName": "DHL",
+    "color": "#ffcd00",
+    "rarity": 0.1
+  },
+  {
+    "id": 32,
+    "name": "HOP",
+    "callsign": "HOP",
+    "shortName": "Air Hop",
+    "color": "#f00500",
+    "rarity": 0.1
   }
 ]

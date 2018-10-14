@@ -2,6 +2,7 @@
   "default": {
     "id": "default",
     "name": "Default",
+    "ta": 18,
     "outboundWaypoints": [
       "LAIKA",
       "PLM",
@@ -184,6 +185,7 @@
     }
   },
   "heathrow": {
+    "ta": 6,
     "id": "heathrow",
     "name": "Heathrow",
     "ga": 0,
@@ -353,7 +355,6 @@
         {
           "x": 0,
           "y": 10,
-          "class": "intersection",
           "length": 12008,
           "length1": 12008,
           "length2": 12008,
@@ -371,10 +372,248 @@
       ]
     }
   },
+  "klax": {
+    "ta": 6,
+    "id": "klax",
+    "name": "Los Angeles",
+    "ga": 0,
+    "commercial": 1,
+    "outboundWaypoints": [
+      "LIMBO",
+      "WEEZL",
+      "ELMOO",
+      "VNY"
+    ],
+    "inboundWaypoints": [
+      "VTU",
+      "DOYLE",
+      "SLI",
+      "BERRI"
+    ],
+    "waypoints": {
+      "VTU": {
+        "x": 0,
+        "y": 650,
+        "class": "vor/dme"
+      },
+      "SADDE": {
+        "x": 200,
+        "y": 550,
+        "class": "vor/dme"
+      },
+      "WEEZL": {
+        "x": 0,
+        "y": 320,
+        "class": "intersection"
+      },
+      "EXERT": {
+        "x": 155.726924179339,
+        "y": 309.0653282974263,
+        "class": "intersection"
+      },
+      "MERMA": {
+        "x": 304.6088469255373,
+        "y": 327.34572980819837,
+        "class": "intersection"
+      },
+      "DOWNE": {
+        "x": 949.7638454923966,
+        "y": 406.56080302154413,
+        "class": "intersection"
+      },
+      "DODGER": {
+        "x": 920,
+        "y": 370,
+        "class": "intersection"
+      },
+      "VNY": {
+        "x": 600,
+        "y": 720,
+        "class": "vor/dme"
+      },
+      "BERRI": {
+        "x": 700,
+        "y": 720,
+        "class": "intersection"
+      },
+      "SLI": {
+        "x": 1280,
+        "y": 120,
+        "class": "vor/dme"
+      },
+      "LIMBO": {
+        "x": 640,
+        "y": 0,
+        "class": "intersection"
+      },
+      "DOYLE": {
+        "x": 100,
+        "y": 0,
+        "class": "intersection"
+      },
+      "TANDY": {
+        "x": 250,
+        "y": 0,
+        "class": "intersection"
+      },
+      "INISH": {
+        "x": 450,
+        "y": 0,
+        "class": "intersection"
+      },
+      "ELMOO": {
+        "x": 1280,
+        "y": 620,
+        "class": "intersection"
+      },
+      "NATHN": {
+        "x": 439.4907696717356,
+        "y": 345.6261313189705,
+        "class": "intersection"
+      },
+      "OTTES": {
+        "x": 441.4907696717356,
+        "y": 343.6261313189705,
+        "class": "intersection",
+        "textRotation": 1
+      },
+      "FEKIL": {
+        "x": 451.4907696717356,
+        "y": 327.6261313189705,
+        "class": "intersection"
+      },
+      "TIMSE": {
+        "x": 453.4907696717356,
+        "y": 325.6261313189705,
+        "class": "intersection",
+        "textRotation": 1
+      },
+      "SUTIE": {
+        "x": 808.7328457790247,
+        "y": 388.717788378875,
+        "class": "intersection",
+        "textRotation": 1
+      },
+      "JETSA": {
+        "x": 806.7328457790247, 
+        "y": 390.717788378875,
+        "class": "intersection"
+      },
+      "LIMMA": {
+        "x": 820.7328457790247, 
+        "y": 370.717788378875,
+        "class": "intersection",
+        "textRotation": 1
+      },
+      "FOGLA": {
+        "x": 818.7328457790247, 
+        "y": 372.717788378875,
+        "class": "intersection"
+      }
+    },
+    "routes": {},
+    "airport": {
+      "elevation": 127,
+      "rwyusage": [
+        {
+          "dir": 1,
+          "rwys": [
+            "07L",
+            "07R",
+            "06L",
+            "06R"
+          ]
+        },
+        {
+          "dir": 181,
+          "rwys": [
+            "25L",
+            "25R",
+            "24L",
+            "24R"
+          ]
+        }
+      ],
+      "callsign": "KLAX",
+      "x": 0,
+      "y": 0,
+      "runways": [
+        {
+          "x": 10,
+          "y": -8,
+          "length": 12923,
+          "length1": 12923,
+          "length2": 12923,
+          "surface": "asphalt",
+          "size": 150,
+          "hdg1": 83,
+          "hdg2": 263,
+          "name1": "07L",
+          "name2": "25R",
+          "elevation1": 115,
+          "elevation2": 94,
+          "labelSpread1": 1.1,
+          "labelSpread2": 1.1
+        },
+        {
+          "x": 12,
+          "y": -10,
+          "length": 11095,
+          "length1": 11095,
+          "length2": 11095,
+          "surface": "asphalt",
+          "size": 200,
+          "hdg1": 83,
+          "hdg2": 263,
+          "name1": "07R",
+          "name2": "25L",
+          "elevation1": 121,
+          "elevation2": 97,
+          "labelSpread1": 1.1,
+          "labelSpread2": 1.1
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "length": 10885,
+          "length1": 10885,
+          "length2": 10885,
+          "surface": "concrete",
+          "size": 150,
+          "hdg1": 83,
+          "hdg2": 263,
+          "name1": "06R",
+          "name2": "24L",
+          "elevation1": 110,
+          "elevation2": 113,
+          "labelSpread1": 1.1,
+          "labelSpread2": 1.1
+        },
+        {
+          "x": -2,
+          "y": 10,
+          "length": 8926,
+          "length1": 8926,
+          "length2": 8926,
+          "surface": "asphalt",
+          "size": 150,
+          "hdg1": 83,
+          "hdg2": 263,
+          "name1": "06L",
+          "name2": "24R",
+          "elevation1": 113,
+          "elevation2": 119,
+          "labelSpread1": 1.1,
+          "labelSpread2": 1.1
+        }
+      ]
+    }
+  },
   "schiphol": {
     "id": "schiphol",
     "name": "Schiphol",
     "ga": 0,
+    "ta": 3,
     "commercial": 1,
     "outboundWaypoints": [
       "EH610",

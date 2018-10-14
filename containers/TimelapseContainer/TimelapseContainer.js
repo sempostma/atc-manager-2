@@ -1,6 +1,6 @@
 import { Component } from 'preact';
 import './TimelapseContainer.css';
-import { FaLink, FaShareAlt, FaEnvelope, FaPlayCircle, FaDesktop, FaChartLine } from 'react-icons/fa/index.mjs';
+import { FaLink, FaShareAlt, FaEnvelope, FaPlayCircle, FaDesktop, FaChartLine, FaSave } from 'react-icons/fa/index.mjs';
 import FullscreenableTimelapseViewer from '../FullscreenableTimelapseViewer/FullscreenableTimelapseViewer';
 import TimelapsePlaybackStore from '../../stores/TimelapsePlaybackStore';
 import { gamestoreFramesTimeFmt } from '../../lib/util';
@@ -12,6 +12,7 @@ import TimelapseStore from '../../stores/TimelapseStore';
 import { route } from 'preact-router';
 import SavedGamesOpen from '../../components/SavedGamesOpen/SavedGamesOpen';
 import TimelapseChart from '../../components/TimelapseChart/TimelapseChart';
+import { sendMessageInfo } from '../../components/GameMessages/GameMessages';
 
 class TimelapseContainer extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class TimelapseContainer extends Component {
     }), `Screenshot ${GameStore.map.name}.svg`);
   }
 
-  
+
   componentWillMount() {
     TimelapsePlaybackStore.on('change', this.reRender);
     GameStore.on('change', this.reRender);
@@ -82,13 +83,26 @@ ${stats.enroutes} enroute flights and ${stats.arrivals} arrivals.`,
       const result = confirm('You have not saved your timelapse. Are you sure you want to continue?');
       if (!result) return;
     }
-    GameStore.startSaved(TimelapsePlaybackStore.cursor);
+    GameStore.startSaved(TimelapsePlaybackStore.states[TimelapsePlaybackStore.index]);
     route('/game');
+  }
+
+  handleSaveTimelapse = () => {
+    const name = TimelapsePlaybackStore.save();
+    if (!name) return;
+    route('/timelapse/localstorage?key=' + name);
+  }
+
+  handleOverviewClick = () => {
+    route('/timelapse/overview');
   }
 
   render() {
     return (
       <div className="TimelapseContainer">
+        <div className="abs-container">
+          <button onClick={this.handleOverviewClick}>Overview</button>
+        </div>
         <div className="panel timelapse-header">
           <h3 className="text-center">{this.props.name}</h3>
           <p>
@@ -104,6 +118,13 @@ ${stats.enroutes} enroute flights and ${stats.arrivals} arrivals.`,
             <div className="option" onClick={this.share}>
               <FaShareAlt /> Share this timelapse
             </div>
+            {
+              this.props.timelapseroute !== 'localstorage'
+                ? <div className="option" onClick={this.handleSaveTimelapse}>
+                  <FaSave /> Save Timelapse
+                </div>
+                : null
+            }
             <div className="option" onClick={this.handleScreenshotClick}>
               <FaDesktop /> Save Radar as SVG
             </div>

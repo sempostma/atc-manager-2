@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './BackgroundSvg.css';
+import config from '../../lib/config';
 
 class BackgroundSvg extends Component {
   constructor() {
@@ -12,7 +13,7 @@ class BackgroundSvg extends Component {
 
   render() {
     let url = `assets/maps/${this.props.name}.xml`;
-    if (typeof window === 'undefined') url = 'https://esstudio.site/atc-manager-2/' + url;
+    if (typeof window === 'undefined') url = config.urlRaw + url;
     if (this.props.name) {
       fetch(url)
         .then(response => response.text())

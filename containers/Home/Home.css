@@ -8,17 +8,8 @@
   margin: 0;
 }
 
-.home .link-icon-wrapper {
-  font-size: 40px;
-  line-height: 1em;
-}
-
 .home .sharing-panel {
   width: 700px;
-}
-
-.home .panel-links {
-  vertical-align: bottom;
 }
 
 .home .panel-open-bg {
@@ -28,9 +19,5 @@
   bottom: -10px;
   right: -10px;
   background: rgba(0, 0, 0, 0.5);
-}
-
-.panel .block-outer {
-  border: 2px solid rgb(25, 72, 80);
 }
 

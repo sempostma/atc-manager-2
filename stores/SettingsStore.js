@@ -7,7 +7,7 @@ class SettingsStore extends EventEmitter {
     super();
     this.speechsynthesis = false;
     this.speechrecognition = false;
-    this.voices = Communications.synth.getVoices();
+    this.voices = Communications.synth.getVoices().filter(x => x.lang.startsWith('en'));
     this.rate = Communications.rate;
     this.voice = Communications.voice;
     this.pitch = Communications.pitch;
@@ -63,7 +63,7 @@ class SettingsStore extends EventEmitter {
   }
 
   handleVoicesChange() {
-    this.voices = Communications.synth.getVoices();
+    this.voices = Communications.synth.getVoices().filter(x => x.lang.startsWith('en'));
     if (Communications.voice === undefined) {
       this.voice = Communications.voice = this.voices[0];
     }

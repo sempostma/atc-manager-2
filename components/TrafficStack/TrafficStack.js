@@ -16,6 +16,10 @@ import LogsPanel from '../../containers/LogsPanel/LogsPanel';
 import TrafficStackEntry from '../TrafficStackEntry/TrafficStackEntry';
 import Airplane from '../../lib/airplane';
 import { parse } from '../../lib/command-parser';
+import SettingsStore from '../../stores/SettingsStore';
+import { sendMessageError } from '../GameMessages/GameMessages';
+import communications from '../../lib/communications';
+import { route } from 'preact-router';
 
 class TrafficStack extends Component {
   constructor(props) {
@@ -26,9 +30,11 @@ class TrafficStack extends Component {
       aboutExpanded: false,
       infoExpanded: false,
       cmd: props.cmd,
+      textCmd: '',
     };
 
     this.dtcToDataListId = `dct-tgt-${Math.random().toString().replace('.', '')}`;
+    props.emitter.on('click', this.handleAirplaneClick);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,22 +43,29 @@ class TrafficStack extends Component {
 
   componentWillMount() {
     GameStore.on('change', this.handleGameStoreChange);
+    SettingsStore.on('change', this.handleSettingsStoreChange);
     if (typeof window !== 'undefined') window.addEventListener('keypress', this.handleKeyPress);
   }
 
   componentWillUnmount() {
     GameStore.removeListener('change', this.handleGameStoreChange);
+    SettingsStore.removeListener('change', this.handleSettingsStoreChange);
     if (typeof window !== 'undefined') window.removeEventListener('keypress', this.handleKeyPress);
   }
 
   handleKeyPress = e => {
     if (e.keyCode == 13 && this.state.cmd.tgt) {
-      this.props.onCmdExecution();
+      if (SettingsStore.useTextCmd) this.onCmdTextParse();
+      else this.props.onCmdExecution();
       return false;
     }
   }
 
   handleGameStoreChange = () => {
+    this.setState({});
+  }
+
+  handleSettingsStoreChange = () => {
     this.setState({});
   }
 
@@ -96,15 +109,8 @@ class TrafficStack extends Component {
   }
 
   handleGoAroundClick = e => {
-    const airplane = this.state.cmd.tgt;
-    this.setState({
-      cmd: {
-        tgt: airplane,
-        direction: '',
-        altitude: airplane.tgtAltitude,
-        heading: null,
-        speed: airplane.tgtSpeed,
-      }
+    this.setState(prevstate => {
+      prevstate.cmd.goAround = true;
     }, () => {
       this.props.onChange(this.state.cmd);
       this.props.onCmdExecution();
@@ -155,8 +161,8 @@ class TrafficStack extends Component {
   }
 
   renderTrafficStack = () => {
-    return GameStore.traffic.map((airplane, i) => 
-      <TrafficStackEntry 
+    return GameStore.traffic.map((airplane, i) =>
+      <TrafficStackEntry
         cmd={this.state.cmd}
         airplane={airplane}
         index={i}
@@ -225,13 +231,12 @@ class TrafficStack extends Component {
     switch (airplane.routeType) {
     case routeTypes.VFR_CLOSED_PATTERN:
       return 'Runway';
-
     default:
       return 'WIP';
     }
   }
 
-  
+
   handleVFRTgtState = e => {
     this.setState(prevstate => {
       prevstate.cmd.tgtVfrState = +e.target.value;
@@ -256,12 +261,6 @@ class TrafficStack extends Component {
     const cmd = this.props.cmd;
     const dctName = this.getDctName(cmd.tgt);
 
-    const landableRwyNamesArr = this.props.cmd.tgt && this.props.cmd.tgt.altitude < 3200
-      ? landableRwys(GameStore.airport, this.props.cmd.tgt, config.width, config.height)
-        .map(lr => lr.rev ? lr.rwy.name2 : lr.rwy.name1)
-      : [];
-    const landableRwysArr = landableRwyNamesArr.map(name => <option value={name} />);
-
     const directToValue = cmd.directionOld ? '' : cmd.direction;
     const directToPlaceholder = cmd.directionOld ? cmd.direction : '';
 
@@ -280,7 +279,7 @@ class TrafficStack extends Component {
         <div>
           <span>State </span>
           <select className="state-input" onInput={this.handleVFRTgtState} value={this.state.cmd.tgtVfrState}>
-            { allowedVFRStates(this.state.cmd.tgt).map(x => <option value={x}>{VFRStates[x]}</option>)} />
+            {allowedVFRStates(this.state.cmd.tgt).map(x => <option value={x}>{VFRStates[x]}</option>)} />
           </select>
         </div>
         <div>
@@ -298,26 +297,63 @@ class TrafficStack extends Component {
     );
   }
 
+  handleAirplaneClick = cmd => {
+    this.setState({
+      textCmd: communications.getCallsign(cmd.tgt, true) + ' '
+    });
+  }
+
+  handleTextCmdChange = e => {
+    this.setState({
+      textCmd: e.target.value
+    });
+  };
+
+  onCmdTextParse = () => {
+    const cmd = parse(GameStore.traffic, this.state.textCmd, this.state.cmd);
+    if (!cmd) return sendMessageError(`"${this.state.textCmd.trim()}". Format is wrong`);
+    this.props.onChange(cmd);
+    this.props.onCmdExecution();
+    this.setState({
+      cmd: cmd
+    });
+  }
+
+  renderTextCmdControl = () => {
+    return (<div>
+      <div>
+        <span>Text command <button onClick={() => route('/tutorials/text-commands')} class="question-mark-btn">?</button></span> 
+        <input className="text-cmd" type="text" value={this.state.textCmd} placeholder=""
+          onInput={this.handleTextCmdChange} style="text-transform:uppercase" />
+      </div>
+      <div>
+        <button onClick={this.onCmdTextParse}><FaPaperPlane /> Give Command</button>
+      </div>
+    </div>);
+  }
+
   render() {
     const trafficStack = this.renderTrafficStack();
 
-    const trafficControl = this.state.cmd.tgt ?
-      Airplane.isVFR(this.state.cmd.tgt)
-        ? this.renderVFRTrafficControl()
-        : this.renderIFRTrafficControl()
-      : null;
+    const trafficControl = SettingsStore.useTextCmd
+      ? this.renderTextCmdControl()
+      : this.state.cmd.tgt
+        ? Airplane.isVFR(this.state.cmd.tgt)
+          ? this.renderVFRTrafficControl()
+          : this.renderIFRTrafficControl()
+        : null;
 
     const innerHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
 
     return (
       <div>
         <div className="traffic-stack-wrapper" style={{ height: innerHeight }}>
-          <div className="traffic-stack" onClick={this.props.onClick}>
+          <div className="traffic-stack" onClick={this.props.onClick} style={{height: SettingsStore.useTextCmd ? 'calc(100% - 203px)' : 'calc(100% - 363px)'}}>
             <div className="wind">wind: {Math.floor(GameStore.winddir)}° @ {Math.floor(GameStore.windspd)}KTS</div>
             <div className="time">time: {Math.floor(GameStore.time / 3600)}:{Math.floor(GameStore.time % 3600 / 60)}</div>
             {trafficStack}
           </div>
-          <div className="traffic-control">
+          <div className="traffic-control" style={{height: SettingsStore.useTextCmd ? '70px' : '200px'}}>
             {trafficControl}
           </div>
           <div className="atc-view-buttons">

@@ -39,7 +39,7 @@ class Airport extends Component {
     let ilsx2 = Math.sin(rwy.hdg2 * Math.PI / 180) * -SettingsStore.ilsPathLength * GameStore.zoom;
     let ilsy2 = Math.cos(rwy.hdg2 * Math.PI / 180) * -SettingsStore.ilsPathLength * GameStore.zoom;
 
-    return <g className="rwy" transform={`translate(${rwy.x * GameStore.zoom} ${rwy.y * GameStore.zoom})`}>
+    return <g className="rwy" transform={`translate(${rwy.x * GameStore.zoom} ${-rwy.y * GameStore.zoom})`}>
       <line className="ils-line ils-line-1" stroke-dasharray={SettingsStore.ilsDashInterval.join()} x1={x1} y1={-y1} x2={ilsx1} y2={-ilsy1} />
       <line className="ils-line ils-line-2" stroke-dasharray={SettingsStore.ilsDashInterval.join()} x1={x2} y1={-y2} x2={ilsx2} y2={-ilsy2} />
       <line className="rwy-line" x1={x1} y1={-y1} x2={x2} y2={-y2} />

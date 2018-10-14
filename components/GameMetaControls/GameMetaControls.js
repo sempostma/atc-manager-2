@@ -1,7 +1,7 @@
 import { Component } from 'preact';
 import './GameMetaControls.css';
 import GameStore from '../../stores/GameStore';
-import { saveState, loadState } from '../../lib/persistance';
+import { saveState, loadState, decimalFormatter } from '../../lib/persistance';
 import { FaPause, FaPlay, FaDesktop, FaSave, FaPlane } from 'react-icons/fa/index.mjs';
 import { sendMessageError, sendMessageWarning, sendMessageInfo } from '../GameMessages/GameMessages';
 
@@ -36,7 +36,7 @@ class GameMetaControls extends Component {
   }
 
   handleSaveButtonClick = () => {
-    const game = GameStore.toJson();
+    const game = JSON.parse(JSON.stringify(GameStore.toJson(), decimalFormatter(2)));
     const state = loadState();
     let name = prompt('Name of your save?', `${GameStore.mapName} - ${new Date().toLocaleDateString()}`);
     if (!name) return sendMessageWarning('Please give a valid name...');

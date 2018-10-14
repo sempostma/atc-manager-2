@@ -8,6 +8,8 @@ import TrafficStack from '../../components/TrafficStack/TrafficStack';
 import SvgRadar from '../../components/SvgRadar/SvgRadar';
 import { sendMessageWarning } from '../../components/GameMessages/GameMessages';
 import communications from '../../lib/communications';
+import { EventEmitter } from 'events';
+import Airplane from '../../lib/airplane';
 
 class AtcView extends Component {
   constructor(props) {
@@ -25,6 +27,8 @@ class AtcView extends Component {
         directionOld: null,
       }
     };
+
+    this.emitter = new EventEmitter();
   }
 
   componentWillMount() {
@@ -71,6 +75,8 @@ class AtcView extends Component {
         speed: airplane.tgtSpeed,
         tgtVfrState: airplane.tgtVfrState
       }
+    }, () => {
+      this.emitter.emit('click', this.state.cmd);
     });
   }
 
@@ -79,12 +85,11 @@ class AtcView extends Component {
     if (!cmd.tgt) return;
     const delta = {};
     const model = airplanesById[cmd.tgt.typeId];
+    if (cmd.goAround) {
+      cmd.direction = '';
+      cmd.heading = null;
+    }
     if (typeof cmd.heading === 'number') {
-      const rwyWaitingOn = GameStore.rwyWaitingOn(cmd.tgt);
-      if (rwyWaitingOn.length > 0) {
-        sendMessageWarning(`${communications.getCallsign(cmd.tgt, true)} cannot takeoff, they are behind ${communications.getCallsign(rwyWaitingOn.pop(), true)}`);
-        return;
-      }
       cmd.heading = (cmd.heading + 359) % 360 + 1;
     }
     if (cmd.direction && GameStore.callsigns[cmd.direction] && cmd.directionOld === false) {
@@ -96,17 +101,23 @@ class AtcView extends Component {
       delta.tgtDirection = cmd.heading;
       cmd.direction = '';
     }
-    if (typeof cmd.altitude === 'number' && cmd.altitude !== cmd.tgt.tgtAltitude) delta.tgtAltitude = cmd.altitude = Math.min(model.ceiling * 1000, Math.max(2000, cmd.altitude));
+    if (typeof cmd.altitude === 'number' && !Airplane.isVFR(cmd.tgt) && cmd.altitude !== cmd.tgt.tgtAltitude) delta.tgtAltitude = cmd.altitude = Math.min(model.ceiling * 1000, Math.max(2000, cmd.altitude));
     if (cmd.speed && cmd.speed !== cmd.tgt.tgtSpeed) delta.tgtSpeed = cmd.speed = Math.min(model.topSpeed, Math.max(model.minSpeed, cmd.speed));
-    if (cmd.takeoff && cmd.tgt.rwy) delta.waiting = false;
+    if (cmd.takeoff && cmd.tgt.rwy) {
+      const rwyWaitingOn = GameStore.rwyWaitingOn(cmd.tgt);
+      if (rwyWaitingOn.length > 0) {
+        sendMessageWarning(`${communications.getCallsign(cmd.tgt, true)} cannot takeoff, they are behind ${communications.getCallsign(rwyWaitingOn.pop(), true)}`);
+        return;
+      }
+      delta.waiting = false;
+    }
     if (cmd.goAroundVFR) {
       delta.dirty = false;
-      delete cmd.goAroundVFR;
     }
     if (typeof cmd.tgtVfrState === 'number' && cmd.tgtVfrState !== cmd.tgt.tgtVfrState) delta.tgtVfrState = cmd.tgtVfrState;
     if (Object.keys(delta).length > 0) {
-      var cmdTxt = Communications.getCommandText(cmd, GameStore.winddir, GameStore.windspd);
-      const atcMsg = Communications.getCallsign(cmd.tgt, true) + ', ' + cmdTxt;
+      var cmdTxt = Communications.getCommandText(cmd, GameStore.winddir, GameStore.windspd, GameStore.map, GameStore.callsignsPos);
+      const atcMsg = Communications.getCallsign(cmd.tgt) + ', ' + cmdTxt;
       GameStore.addLog(atcMsg, 'ATC');
       // pilot:
       const pilotMsg = cmdTxt + ', ' + Communications.getCallsign(cmd.tgt);
@@ -117,7 +128,15 @@ class AtcView extends Component {
       this.setState({ cmd });
     } else {
       // do nothing
-      return;
+    }
+    if (cmd.takeoff) {
+      delete cmd.takeoff;
+    }
+    if (cmd.goAroundVFR) {
+      delete cmd.goAroundVFR;
+    }
+    if (cmd.goAround) {
+      delete cmd.goAround;
     }
   }
 
@@ -138,6 +157,7 @@ class AtcView extends Component {
           cmd={this.state.cmd}
           onChange={this.handleCmdChange}
           onCmdExecution={this.handleCmdExecution}
+          emitter={this.emitter}
           onClick={this.handleTrafficStackClick} />
       </div >
     );

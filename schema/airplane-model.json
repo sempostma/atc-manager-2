@@ -6,6 +6,9 @@
   "title": "Root",
   "required": [
     "id",
+    "commercial",
+    "takeoffMinRunwayLength",
+    "landingMinRunwayLength",
     "ceiling",
     "name",
     "shortName",
@@ -17,23 +20,98 @@
     "deAccelerationSpeed",
     "minSpeed",
     "turningRate",
-    "operators"
+    "operators",
+    "descendRatioWhileDecelerating",
+    "ga",
+    "class",
+    "rarity"
   ],
   "properties": {
     "id": {
       "$id": "#/properties/id",
-      "type": "integer",
+      "type": "number",
       "title": "Id",
       "default": 0,
       "examples": [
         0
       ]
     },
+    "commercial": {
+      "$id": "#/items/properties/commercial",
+      "type": "number",
+      "title": "Commercial",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "examples": [
+        1
+      ]
+    },
+    "descendRatioWhileDecelerating": {
+      "$id": "#/items/properties/descendRatioWhileDecelerating",
+      "type": "number",
+      "title": "Descendratiowhiledecelerating",
+      "default": 0.5,
+      "examples": [
+        0.5
+      ]
+    },
+    "ga": {
+      "$id": "#/items/properties/ga",
+      "type": "number",
+      "title": "The Ga Schema",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "examples": [
+        0
+      ]
+    },
+    "class": {
+      "$id": "#/items/properties/class",
+      "type": "string",
+      "title": "The Class Schema",
+      "default": "medium",
+      "enum": ["light", "medium", "heavy", "super"]
+    },
+    "rarity": {
+      "$id": "#/items/properties/rarity",
+      "type": "number",
+      "title": "The Rarity Schema",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "examples": [
+        1
+      ]
+    },
+    "takeoffMinRunwayLength": {
+      "$id": "#/items/properties/takeoffMinRunwayLength",
+      "type": "integer",
+      "title": "Takeoffminrunwaylength",
+      "default": 5000,
+      "maximum": 10000,
+      "examples": [
+        6000
+      ]
+    },
+    "landingMinRunwayLength": {
+      "$id": "#/items/properties/landingMinRunwayLength",
+      "type": "integer",
+      "title": "Landingminrunwaylength",
+      "default": 5000,
+      "maximum": 10000,
+      "examples": [
+        5000
+      ]
+    },
     "ceiling": {
       "$id": "#/properties/ceiling",
       "type": "integer",
       "title": "Ceiling",
-      "default": 0,
+      "default": 37,
+      "minimum": 2,
+      "maximum": 60,
       "examples": [
         37
       ]
@@ -62,7 +140,7 @@
       "$id": "#/properties/topSpeed",
       "type": "integer",
       "title": "Topspeed",
-      "default": 0,
+      "default": 320,
       "examples": [
         320
       ]
@@ -71,7 +149,7 @@
       "$id": "#/properties/landingSpeed",
       "type": "integer",
       "title": "Landingspeed",
-      "default": 0,
+      "default": 140,
       "examples": [
         140
       ]
@@ -80,7 +158,7 @@
       "$id": "#/properties/climbSpeed",
       "type": "integer",
       "title": "Climbspeed",
-      "default": 0,
+      "default": 1,
       "examples": [
         1
       ]
@@ -89,7 +167,7 @@
       "$id": "#/properties/descendSpeed",
       "type": "integer",
       "title": "descendSpeed",
-      "default": 0,
+      "default": 1,
       "examples": [
         1
       ]
@@ -98,7 +176,7 @@
       "$id": "#/properties/accelerationSpeed",
       "type": "integer",
       "title": "Accelerationspeed",
-      "default": 0,
+      "default": 1,
       "examples": [
         1
       ]
@@ -107,7 +185,7 @@
       "$id": "#/properties/deAccelerationSpeed",
       "type": "integer",
       "title": "Deaccelerationspeed",
-      "default": 0,
+      "default": 1,
       "examples": [
         1
       ]
@@ -116,6 +194,8 @@
       "$id": "#/properties/minSpeed",
       "type": "integer",
       "title": "Minspeed",
+      "minimum": 0,
+      "maximum": 250,
       "default": 0,
       "examples": [
         160

@@ -7,14 +7,6 @@
   font-size: 12px;
 }
 
-.TimelapseRecorder .timelapse .color-red {
-  color: #f00;
-}
-
-.TimelapseRecorder .timelapse .color-green {
-  color: #0f0;
-}
-
 .TimelapseRecorder .timelapse {
   padding: 0 20px 30px 20px;
   background-color: #19242e;

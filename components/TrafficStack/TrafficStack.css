@@ -66,6 +66,7 @@
       height: calc(100% - 360px);
       overflow: auto;
       overflow-x: hidden;
+      transition: height 200ms ease;
   }
   
   .traffic-stack::-webkit-scrollbar-thumb

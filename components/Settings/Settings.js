@@ -186,27 +186,6 @@ class Settings extends Component {
             <span class="slider"></span>
           </label>
         </div>
-        <div className="takeoff-in-order mb SwitchInput">
-          <span>Go-arounds</span>
-          <label class="switch">
-            <input type="checkbox" onInput={this.handleGoArounds} checked={SettingsStore.goArounds} />
-            <span class="slider"></span>
-          </label>
-        </div>
-        <div className="takeoff-in-order mb SwitchInput">
-          <span>Takeoff in order</span>
-          <label class="switch">
-            <input type="checkbox" onInput={this.handleTakeoffInOrderChange} checked={SettingsStore.takeoffInOrder} />
-            <span class="slider"></span>
-          </label>
-        </div>
-        <div className="takeoff-in-order mb SwitchInput">
-          <span>Text commands</span>
-          <label class="switch">
-            <input type="checkbox" onInput={this.handleTextCmds} checked={SettingsStore.useTextCmd} />
-            <span class="slider"></span>
-          </label>
-        </div>
         <div className="mb ColorInput">
           <span>Distance circle color:</span>
           <input type="color" value={SettingsStore.distanceCircleColor} onInput={this.handleDistanceCircleColor} />
@@ -265,6 +244,27 @@ class Settings extends Component {
           <div className="fontsize-setting range-slider mb">
             <input className="range-slider__range" type="range" min="20" max="400" step="10" value={SettingsStore.newPlaneInterval} onInput={this.handleNewPlaneIntervalChange} />
             <span class="range-slider__value">{SettingsStore.newPlaneInterval} seconds</span>
+          </div>
+          <div className="takeoff-in-order mb SwitchInput">
+            <span>Go-arounds</span>
+            <label class="switch">
+              <input type="checkbox" onInput={this.handleGoArounds} checked={SettingsStore.goArounds} />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div className="takeoff-in-order mb SwitchInput">
+            <span>Takeoff in order</span>
+            <label class="switch">
+              <input type="checkbox" onInput={this.handleTakeoffInOrderChange} checked={SettingsStore.takeoffInOrder} />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div className="takeoff-in-order mb SwitchInput">
+            <span>Text commands</span>
+            <label class="switch">
+              <input type="checkbox" onInput={this.handleTextCmds} checked={SettingsStore.useTextCmd} />
+              <span class="slider"></span>
+            </label>
           </div>
         </div>
       </div>

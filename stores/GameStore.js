@@ -49,7 +49,7 @@ class GameStore extends EventEmitter {
   rwyWaitingOn(airplane) {
     if (!SettingsStore.takeoffInOrder) return [];
     const index = this.traffic.indexOf(airplane);
-    return this.traffic.filter((x, i) => x.rwy === airplane.rwy && i < index);
+    return this.traffic.filter((x, i) => x.rwy === airplane.rwy && x.waiting && i < index);
   }
 
   startMap(mapName) {
@@ -111,6 +111,13 @@ class GameStore extends EventEmitter {
     this.mapName = map.id;
     this.setupWaypoints(map);
 
+    if (typeof window !== 'undefined') {
+      window.rwyPos = (rwyName, multiplayer) => {
+        const rwy = this.callsignsPos[rwyName].ref;
+        console.log(rwyPos(this.airport, rwy, config.width, config.height, multiplayer, true));
+      };
+    }
+
     if (!this.interval) this.interval = setInterval(this.update, config.updateInterval);
     this.emit('change');
     this.emit('start');
@@ -139,7 +146,7 @@ class GameStore extends EventEmitter {
       this.newPlaneInbound,
       this.newPlaneOutbound,
     ];
-    if (SettingsStore.ga && rnd > this.map.ga / trafficSum) opts.push(this.spawnVFRPlane);
+    if (SettingsStore.ga && rnd < this.map.ga / trafficSum) opts.push(this.spawnVFRPlane);
     if (SettingsStore.enroute) opts.push(this.newPlaneEnroute);
     rndArr(opts)();
   }
@@ -401,7 +408,10 @@ class GameStore extends EventEmitter {
     for (const key in this.sepDistanceVialotions) delete this.sepDistanceVialotions[key];
     this.traffic.forEach(this.planeUpdate);
     for (const key in this._edgeDetection) delete this._edgeDetection[key];
-    for (let i = 0; i < this._remove.length; i++) this.traffic.splice(this.traffic.indexOf(this._remove[i]), 1);
+    for (let i = 0; i < this._remove.length; i++) {
+      Airplane.remove(this._remove[i]);
+      this.traffic.splice(this.traffic.indexOf(this._remove[i]), 1);
+    }
     this.time += s;
     this.time %= 86400; // seconds in a year
     this._remove.length = 0;
@@ -435,6 +445,8 @@ class GameStore extends EventEmitter {
     const canChangeHeading = airplane.routeType !== routeTypes.OUTBOUND || airplane.altitude >= config.flyStraightAfterTakeoffUntilHeight - 10; /* manouvering height */
     if (airplane.altitude >= 10000 && airplane.tgtSpeed > 250.001 && airplane.tgtAltitude < 10000) { // 250kts speed rule check
       if ((altChange * exceeds250Multiplier + airplane.altitude) < 10000) airplane.tgtSpeed = 250; // slow down to 250kts
+    }
+    if (airplane.altitude >= 10000 && airplane.speed > 250.001 && airplane.tgtAltitude < 10000) {
       if (airplane.altitude + altChange < 10000) altChange = 10000 - airplane.altitude; // don't descend < fl100 < 250kts
     }
 
@@ -755,10 +767,14 @@ class GameStore extends EventEmitter {
         if (!tooHigh) {
           altChange = Math.min(100 * s, Math.max(-100 * s, Math.min(airplane.altitude, distance * config.ilsSlopeSteepness + rwyElev) - airplane.altitude));
         }
-        if (airplane.altitude < 2000 + rwyElev) {
+        tgtSpeed = Math.min(200, airplane.speed);
+        if (airplane.altitude < 1990) {
+          tgtSpeed = Math.min(model.minSpeed + 20, airplane.speed);
+        }
+        if (airplane.altitude < 1300 - rwyElev) {
           tgtSpeed = model.minSpeed;
         }
-        if (airplane.altitude < 600 + rwyElev) {
+        if (airplane.altitude < 600 - rwyElev) {
           tgtSpeed = model.landingSpeed;
         }
       }
@@ -787,12 +803,12 @@ class GameStore extends EventEmitter {
           airplane.landing = false;
           if (--airplane.tgs <= 0) {
             switch (airplane.routeType) {
-            case routeTypes.VFR_CLOSED_PATTERN_TG:
-              airplane.routeType = routeTypes.VFR_CLOSED_PATTERN;
-              break;
-            case routeTypes.VFR_INBOUND_TG:
-              airplane.routeType = routeTypes.VFR_INBOUND;
-              break;
+              case routeTypes.VFR_CLOSED_PATTERN_TG:
+                airplane.routeType = routeTypes.VFR_CLOSED_PATTERN;
+                break;
+              case routeTypes.VFR_INBOUND_TG:
+                airplane.routeType = routeTypes.VFR_INBOUND;
+                break;
             }
           }
         }
@@ -806,7 +822,7 @@ class GameStore extends EventEmitter {
 }
 
 const persistanceProps = ['traffic', 'started', 'log', 'selfLog', 'mapName', 'id', 'arrivals', 'departures',
-  'enroutes', 'distanceVialations', 'mapName', 'winddir', 'windspd', 'unpermittedDepartures', 'time'];
+  'enroutes', 'distanceVialations', 'winddir', 'windspd', 'unpermittedDepartures', 'time'];
 
 const wrapHeadig = hdg => (hdg + 360) % 360;
 

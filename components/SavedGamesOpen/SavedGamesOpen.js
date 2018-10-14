@@ -17,9 +17,6 @@ class SavedGamesOpen extends Component {
     }
 
     this.state = { games };
-
-    this.handleSavedGamesOpenListItemClick = this.handleSavedGamesOpenListItemClick.bind(this);
-    this.handleSavedGameOpenListItemTrash = this.handleSavedGameOpenListItemTrash.bind(this);
   }
 
   componentWillMount() {
@@ -28,7 +25,7 @@ class SavedGamesOpen extends Component {
   componentWillUnmount() {
   }
 
-  handleSavedGamesOpenListItemClick(e) {
+  handleSavedGamesOpenListItemClick = e => {
     const name = e.currentTarget.getAttribute('data-name');
     if (GameStore.started) {
       const force = confirm('Another game is already playing. Make sure you have saved your progress. Do you want to continue?');
@@ -42,7 +39,7 @@ class SavedGamesOpen extends Component {
     route('/game');
   }
 
-  handleSavedGameOpenListItemTrash(e) {
+  handleSavedGameOpenListItemTrash = e => {
     const name = e.currentTarget.getAttribute('data-name');
     const state = loadState();
     const sure = confirm('Are you sure?');

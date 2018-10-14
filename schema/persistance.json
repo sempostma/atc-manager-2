@@ -22,11 +22,8 @@
       "required": [
         "traffic",
         "started",
-        "width",
-        "height",
         "log",
         "selfLog",
-        "pathCounter",
         "mapName",
         "arrivals",
         "departures",
@@ -34,7 +31,8 @@
         "distanceVialations",
         "winddir",
         "windspd",
-        "unpermittedDepartures"
+        "unpermittedDepartures",
+        "time"
       ],
       "properties": {
         "traffic": {
@@ -56,7 +54,8 @@
               "flight",
               "path",
               "typeId",
-              "routeType"
+              "routeType",
+              "textRotation"
             ],
             "properties": {
               "tgtAltitude": {
@@ -163,6 +162,50 @@
                 "examples": [
                   0
                 ]
+              },
+              "textRotation": {
+                "type": "integer",
+                "title": "textRotation",
+                "minimum": 0,
+                "maximum": 3,
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "dirty": {
+                "type": "boolean",
+                "title": "Dirty"
+              },
+              "rwy": {
+                "type": "string",
+                "title": "Runway"
+              },
+              "outboundWaypoint": {
+                "type": "string",
+                "title": "Outbound waypoint"
+              },
+              "waiting": {
+                "type": "boolean",
+                "title": "Waiting"
+              },
+              "regNum": {
+                "type": "string",
+                "title": "Registration number"
+              },
+              "tgtVfrState": {
+                "type": "integer",
+                "minimum": 0,
+                "title": "Target VFR State"
+              },
+              "tgs": {
+                "type": "integer",
+                "minimum": 0,
+                "title": "Touch and go's"
+              },
+              "landing": {
+                "type": "boolean",
+                "title": "Landing"
               }
             }
           }
@@ -173,22 +216,6 @@
           "default": false,
           "examples": [
             true
-          ]
-        },
-        "width": {
-          "type": "integer",
-          "title": "Width",
-          "default": 0,
-          "examples": [
-            1280
-          ]
-        },
-        "height": {
-          "type": "integer",
-          "title": "Height",
-          "default": 0,
-          "examples": [
-            720
           ]
         },
         "log": {
@@ -252,6 +279,7 @@
         "arrivals": {
           "type": "integer",
           "title": "Arrivals",
+          "minimum": 0,
           "default": 0,
           "examples": [
             0
@@ -260,6 +288,7 @@
         "departures": {
           "type": "integer",
           "title": "Departures",
+          "minimum": 0,
           "default": 0,
           "examples": [
             0
@@ -268,6 +297,7 @@
         "enroutes": {
           "type": "integer",
           "title": "Enroutes",
+          "minimum": 0,
           "default": 0,
           "examples": [
             0
@@ -276,23 +306,28 @@
         "distanceVialations": {
           "type": "integer",
           "title": "Distancevialations",
+          "minimum": 0,
           "default": 0,
           "examples": [
             0
           ]
         },
         "winddir": {
-          "type": "integer",
+          "type": "number",
           "title": "Winddir",
+          "maximum": 360,
+          "minimum": 0,
           "default": 0,
           "examples": [
             340
           ]
         },
         "windspd": {
-          "type": "integer",
+          "type": "number",
           "title": "Windspd",
           "default": 0,
+          "minimum": 0,
+          "maximum": 100,
           "examples": [
             0
           ]
@@ -301,6 +336,17 @@
           "type": "integer",
           "title": "Unpermitteddepartures",
           "default": 0,
+          "minimum": 0,
+          "examples": [
+            0
+          ]
+        },
+        "time": {
+          "type": "integer",
+          "title": "Time",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 86400,
           "examples": [
             0
           ]

@@ -8,12 +8,13 @@ import { sendMessageError, sendMessageWarning, sendMessageInfo } from '../compon
 import config from '../lib/config';
 import GameStore from './GameStore';
 import { loadMap } from '../lib/map';
+import TimelapseStore from './TimelapseStore';
 
 const createChart = (data, clampLength) => {
   if (data.length < clampLength) return data.slice(0);
   const chart = new Array(clampLength);
   const step = data.length / clampLength;
-  for(let i = 0, j = 0; i < clampLength; i++, j += step) {
+  for (let i = 0, j = 0; i < clampLength; i++ , j += step) {
     chart[i] = data[Math.floor(j)];
   }
   return chart;
@@ -50,10 +51,7 @@ class TimelapsePlaybackStore extends EventEmitter {
 
   play = () => {
     if (this.interval !== null) this.stop();
-    else if (this.index >= this.timelapse.patches.length) {
-      this.index = 0;
-      this.cursor = clone(this.timelapse.start);
-    }
+    else if (this.index >= this.timelapse.patches.length) this.index = 0;
     this.interval = setInterval(this.update, config.updateTimelapseInterval);
     this.emit('change');
   }
@@ -79,7 +77,29 @@ class TimelapsePlaybackStore extends EventEmitter {
     GameStore.emit('change');
   }
 
-  save() {
+  save = () => {
+    const timelapse = this.timelapse;
+    const state = loadState();
+    state.timelapses = state.timelapses || {};
+    let name = prompt('Name of your timelapse?', TimelapseStore.defaultTimelapseName());
+    if (!name) {
+      sendMessageWarning('Please give a valid name...');
+      return false;
+    }
+    if (state.timelapses[name]) {
+      var result = confirm('This timelapse already exists. Do you want to overwrite it?');
+      if (result === false) {
+        sendMessageWarning(`${name} was not saved...`);
+        return false;
+      }
+    }
+    state.timelapses[name] = timelapse;
+    saveState(state);
+    sendMessageInfo(`${name} was saved...`);
+    return name;
+  }
+
+  saveGame() {
     const game = GameStore.toJson();
     const state = loadState();
     let name = prompt('Name of your save?', `${GameStore.mapName} - ${new Date().toLocaleDateString()}`);
@@ -101,12 +121,6 @@ class TimelapsePlaybackStore extends EventEmitter {
   }
 
   loadPromise(timelapse) {
-    if (GameStore.started) {
-      if (confirm('You have unsaved progress. Do you want to save?')) {
-        if (this.save() === false) return route('/game');
-      }
-      GameStore.stop();
-    }
     return promiseMeATimelapse(timelapse)
       .then(states => {
         this.timelapse = timelapse;
@@ -116,7 +130,6 @@ class TimelapsePlaybackStore extends EventEmitter {
         GameStore.loadJson(clone(states[0]));
         const map = GameStore.map = loadMap(states[0].id);
         GameStore.setup(map);
-        GameStore.started = false;
         GameStore.pause();
         this.emit('change');
       });

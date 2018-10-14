@@ -1,8 +1,8 @@
 import { Component } from 'preact';
 import './Home.css';
-import { FaLink, FaShareAlt, FaEnvelope, FaTwitter } from 'react-icons/fa/index.mjs';
+import { FaLink, FaShareAlt, FaEnvelope, FaTwitter, FaRss, FaInfo, FaMobile, FaSitemap, FaRedditAlien, FaClock, FaBuilding, FaSave, FaPlane, FaGithub } from 'react-icons/fa/index.mjs';
 import SavedGamesOpen from '../../components/SavedGamesOpen/SavedGamesOpen';
-import { mapNames } from '../../lib/map';
+import { mapsArr, maps } from '../../lib/map';
 import { Link, route } from 'preact-router';
 import GameStore from '../../stores/GameStore';
 import Settings from '../../components/Settings/Settings';
@@ -16,7 +16,7 @@ class Home extends Component {
   constructor(props) {
     super();
     this.state = {
-      mapname: mapNames[0],
+      mapkey: mapsArr[0].id,
       sharing: false,
     };
 
@@ -35,7 +35,7 @@ class Home extends Component {
   reRender = () => this.setState({});
 
   handleMapSelectionChange(e) {
-    this.setState({ mapname: e.target.value });
+    this.setState({ mapkey: e.target.value });
   }
 
   handleReturnToGame() {
@@ -55,8 +55,12 @@ class Home extends Component {
         return;
       }
     }
-    GameStore.startMap(this.state.mapname);
+    GameStore.startMap(this.state.mapkey);
     route('/game');
+  }
+
+  handleTutorialClick = () => {
+    route('/tutorials/intro');
   }
 
   render() {
@@ -77,20 +81,26 @@ class Home extends Component {
         </div>
         <div className="panel">
           <h2 className="mb">Start</h2>
-          <span className="mb">Area:</span>
+          <span className="mb">Airport:</span>
           <select className="mb" onInput={this.handleMapSelectionChange}>
-            {mapNames.map(name =>
-              <option selected={name === this.state.mapname} value={name}>{upcase(name)}</option>
+            {mapsArr.map(map =>
+              <option selected={map.id === this.state.mapkey} value={map.id}>{map.name}</option>
             )}
           </select>
+          {maps[this.state.mapkey].ga === 0 ? <small class="color-red">Airport does not support general aviation.</small> : null}
+          {maps[this.state.mapkey].commercial === 0 ? <small class="color-red">Airport does not support commercial traffic.</small> : null}
           <Settings />
           <br />
           <button onClick={this.handleStartClick}>Start</button>
+          <button onClick={this.handleTutorialClick}>Tutorial</button>
         </div>
         <div className="panel panel-links" style={{ padding: 3 }}>
           <Link href="/editor/save-editor">
             <div class="block-outer">
               <div class="block-inner">
+                <span className="link-icon-wrapper">
+                  <FaSave />
+                </span><br />
                 Saves Editor
               </div>
             </div>
@@ -98,6 +108,9 @@ class Home extends Component {
           <Link href="/editor/airplane-editor">
             <div class="block-outer">
               <div class="block-inner">
+                <span className="link-icon-wrapper">
+                  <FaPlane />
+                </span><br />
                 Airplanes Editor
               </div>
             </div>
@@ -105,15 +118,60 @@ class Home extends Component {
           <Link href="/editor/operator-editor">
             <div class="block-outer">
               <div class="block-inner">
+                <span className="link-icon-wrapper">
+                  <FaBuilding />
+                </span><br />
                 Operator Editor
               </div>
             </div>
           </Link>
-          <a target="_blank" href="https://www.reddit.com/r/ATCManager2">
+          <Link href="/timelapse/overview">
             <div class="block-outer">
               <div class="block-inner">
-                Subreddit<br />
-                (external)
+                <span className="link-icon-wrapper">
+                  <FaClock />
+                </span><br />
+                Timelapses
+              </div>
+            </div>
+          </Link>
+          <Link href="/tutorials">
+            <div class="block-outer">
+              <div class="block-inner">
+                <span className="link-icon-wrapper">
+                  <FaInfo />
+                </span><br />
+                Tutorials
+              </div>
+            </div>
+          </Link>
+          <a href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager" target="_blank">
+            <div class="block-outer">
+              <div class="block-inner">
+                <span className="link-icon-wrapper">
+                  <FaMobile />
+                </span><br />
+                Mobile App (external)
+              </div>
+            </div>
+          </a>
+          <a href="https://esstudio.site" target="_blank">
+            <div class="block-outer">
+              <div class="block-inner">
+                <span className="link-icon-wrapper">
+                  <FaSitemap />
+                </span><br />
+                Other Projects (external)
+              </div>
+            </div>
+          </a>
+          <a href="https://esstudio.site/contact" target="_blank">
+            <div class="block-outer">
+              <div class="block-inner">
+                <span className="link-icon-wrapper">
+                  <FaEnvelope />
+                </span><br />
+                Contact (external)
               </div>
             </div>
           </a>
@@ -127,27 +185,34 @@ class Home extends Component {
               </div>
             </div>
           </span>
+          <a target="_blank" href="https://www.reddit.com/r/ATCManager2">
+            <div class="block-outer">
+              <div class="block-inner">
+                <span className="link-icon-wrapper">
+                  <FaRedditAlien />
+                </span><br />
+                Subreddit<br />
+                (external)
+              </div>
+            </div>
+          </a>
           <a href="https://twitter.com/esstudio_site" target="_blank">
             <div class="block-outer">
               <div class="block-inner">
                 <span className="link-icon-wrapper">
                   <FaTwitter />
-                </span>
+                </span><br />
                 Twitter (external)
               </div>
             </div>
           </a>
-          <a href="https://esstudio.site" target="_blank">
+          <a href="https://github.com/LesterGallagher/atc-manager-2" target="_blank">
             <div class="block-outer">
               <div class="block-inner">
-                Other Projects (external)
-              </div>
-            </div>
-          </a>
-          <a href="https://esstudio.site/contact" target="_blank">
-            <div class="block-outer">
-              <div class="block-inner">
-                Contact (external)
+                <span className="link-icon-wrapper">
+                  <FaGithub />
+                </span><br />
+                Github (external)
               </div>
             </div>
           </a>

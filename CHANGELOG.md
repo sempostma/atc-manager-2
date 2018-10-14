@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.3.0] - 2018-09-13
+## [2.3.0] - 2018-09-13
 ### Added
 - Set take-off runway [chrstphd]
 - Ability to change font size in the settings window (save to localstorage) [chrstphd]
@@ -25,7 +25,7 @@ Aircraft spawning at the same rate with different gamespeeds [KableKiB]
 - Difficulty selection reset bug [AWT-Colin]
 - clear out he heading value if the waypoint is valid - [KableKiB]
 
-## [1.2.0] - 2018-09-09
+## [2.2.0] - 2018-09-09
 ### Changed 
 - Fixed issue were plane speed became Nan [xtesseract]
 - Spell mistakes fixed [FlightGearLego]

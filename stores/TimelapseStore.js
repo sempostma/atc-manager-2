@@ -20,8 +20,7 @@ class TimelapseStore extends EventEmitter {
 
   handleGameStoreUpdate = () => {
     if (this.recording && this.timelapse) {
-      const state = clone(GameStore.toJson(), decFmt);
-      state.traffic.forEach(t => delete t.path);
+      const state = JSON.parse(JSON.stringify(GameStore.toJson(), decFmt));
       var delta = clone(diff(lastState, state));
       this.timelapse.patches.push(delta);
       lastState = state;
@@ -31,8 +30,7 @@ class TimelapseStore extends EventEmitter {
 
   startTimelapse = () => {
     this.recording = true;
-    const state = clone(GameStore.toJson(), decFmt);
-    state.traffic.forEach(t => delete t.path);
+    const state = JSON.parse(JSON.stringify(GameStore.toJson(), decFmt));
     lastState = clone(state);
     this.timelapse = {
       start: state,
