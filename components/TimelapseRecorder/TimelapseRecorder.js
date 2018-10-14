@@ -8,6 +8,7 @@ import { sendMessageInfo, sendMessageError, sendMessageWarning } from '../GameMe
 import { loadState, saveState } from '../../lib/persistance';
 import SharingPanel from '../SharingPanel/SharingPanel';
 import { route } from 'preact-router';
+import { compressToUTF16 } from 'lz-string';
 
 class TimelapseRecorder extends Component {
   constructor(props) {
@@ -93,7 +94,7 @@ class TimelapseRecorder extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(TimelapseStore.timelapse)
+      body: JSON.stringify({ content: compressToUTF16(JSON.stringify(TimelapseStore.timelapse)) })
     }).then(response => response.text())
       .then(json => JSON.parse(json).uri.split('/').slice(-1)[0])
       .then(id => ({

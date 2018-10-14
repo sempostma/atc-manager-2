@@ -52,7 +52,7 @@ class SavesEditor extends Component {
       const obj = JSON.parse(json);
       this.setState(prevstate => {
         prevstate.warningMessage = null;
-        prevstate.infoMessage = null,
+        prevstate.infoMessage = null;
         prevstate.editingObj = obj;
         return prevstate;
       });
@@ -128,12 +128,17 @@ class SavesEditor extends Component {
               <option key={i} value={key} selected={this.state.saves[key] === this.state.save}>{key}</option>
             )}
           </select><br /><br />
-          <textarea onInput={this.handleJsonTextareaInput} className={`edit-save-box line-nums ${this.state.rawJSON || 'hidden'}`} value={this.state.json} />
-          <SchemaForm 
-            formData={save}
-            onChange={this.handleEditingObjectChange}
-            schema={mapSaveSchema} 
-            className={`edit-save-box ${this.state.rawJSON && 'hidden'}`} />
+          {this.state.rawJSON
+            ? <textarea onInput={this.handleJsonTextareaInput} className="edit-save-box line-nums" value={this.state.json} />
+            : null}
+          {this.state.rawJSON || !save
+            ? null
+            : <span>testddd<SchemaForm
+              formData={save}
+              onChange={this.handleEditingObjectChange}
+              schema={mapSaveSchema}
+              className="edit-save-box" /></span>
+          }
           <span>Raw JSON</span>
           <label class="switch">
             <input type="checkbox" onInput={this.handleRawJSONSwitchInput} checked={this.state.rawJSON} />

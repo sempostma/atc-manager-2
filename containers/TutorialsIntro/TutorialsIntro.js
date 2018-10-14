@@ -2,6 +2,7 @@ import { Component } from 'preact';
 import './TutorialsIntro.css';
 import { route } from 'preact-router';
 import { history } from '../../index';
+import { loadState, saveState } from '../../lib/persistance';
 
 class TutorialsIntro extends Component {
   constructor(props) {
@@ -9,6 +10,9 @@ class TutorialsIntro extends Component {
     this.state = {
     };
 
+    const state = loadState();
+    state.introTutorial = true;
+    saveState(state);
   }
 
   componentWillMount() {

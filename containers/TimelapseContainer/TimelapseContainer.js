@@ -13,6 +13,7 @@ import { route } from 'preact-router';
 import SavedGamesOpen from '../../components/SavedGamesOpen/SavedGamesOpen';
 import TimelapseChart from '../../components/TimelapseChart/TimelapseChart';
 import { sendMessageInfo } from '../../components/GameMessages/GameMessages';
+import { compressToUTF16 } from 'lz-string';
 
 class TimelapseContainer extends Component {
   constructor(props) {
@@ -60,7 +61,7 @@ class TimelapseContainer extends Component {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(TimelapsePlaybackStore.timelapse)
+        body: JSON.stringify({ content: compressToUTF16(JSON.stringify(TimelapsePlaybackStore.timelapse)) })
       }).then(response => response.text())
         .then(json => JSON.parse(json).uri.split('/').slice(-1)[0])
         .then(id => `${window.location.origin}/#/timelapse/url?id=${id}`);
@@ -69,7 +70,13 @@ class TimelapseContainer extends Component {
       text: `ATC Manager 2 timelapse with ${stats.departures} departures, \
 ${stats.enroutes} enroute flights and ${stats.arrivals} arrivals.`,
       url: url,
-    }));
+    })).catch(err => {
+      console.error(err);
+      this.setState({
+        sharingPromise: null,
+        sharing: false
+      });
+    });
     this.setState({
       sharingPromise: sharingPromise,
       sharing: true

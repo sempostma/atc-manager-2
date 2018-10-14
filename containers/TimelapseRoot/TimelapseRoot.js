@@ -9,6 +9,7 @@ import TimelapseContainer from '../TimelapseContainer/TimelapseContainer';
 import TimelapseOverview from '../TimelapseOverview/TimelapseOverview';
 import GameStore from '../../stores/GameStore';
 import { route } from 'preact-router';
+import { decompressFromUTF16 } from 'lz-string';
 
 export const rethrow = msg => {
   return err => {
@@ -85,7 +86,8 @@ class TimelapseRoot extends Component {
         fetch(`https://api.myjson.com/bins/${id}`)
           .then(response => response.text())
           .then(json => JSON.parse(json))
-          .then(timelapse => {
+          .then(savedTimelapseEncoded => {
+            const timelapse = JSON.parse(decompressFromUTF16(savedTimelapseEncoded.content));
             if (!timelapse) return this.setState({
               timelapseroute: 'overview',
               loading: false

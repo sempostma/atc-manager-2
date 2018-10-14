@@ -10,6 +10,8 @@ import { sendMessageWarning } from '../../components/GameMessages/GameMessages';
 import communications from '../../lib/communications';
 import { EventEmitter } from 'events';
 import Airplane from '../../lib/airplane';
+import { loadState, saveState } from '../../lib/persistance';
+import { route } from 'preact-router';
 
 class AtcView extends Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class AtcView extends Component {
     this.state = {
       logsOnlySelf: false,
       infoPanelTgt: null,
+      tutorialDone: !!loadState().introTutorial,
 
       cmd: {
         tgt: null,
@@ -148,6 +151,13 @@ class AtcView extends Component {
     this.setState({ cmd });
   }
 
+  handleTutorialBtnClose = () => {
+    const state = loadState();
+    state.introTutorial = true;
+    saveState(state);
+    this.setState({ tutorialDone: true });
+  }
+
   render() {
     return (
       <div className="atc-view">
@@ -159,6 +169,14 @@ class AtcView extends Component {
           onCmdExecution={this.handleCmdExecution}
           emitter={this.emitter}
           onClick={this.handleTrafficStackClick} />
+
+        <div className={`tutorials-btn-wrapper ${this.state.tutorialDone ? 'hidden' : ''}`}>
+          <span onClick={this.handleTutorialBtnClose} class="tutorials-btn-wrapper-close">&times;</span>
+          <button onClick={() => route('/tutorials/intro')} className="button tutorials-btn">
+            <div>Intro tutorial</div>
+            <small>This tutorial will teach you the basics of the game.</small>
+          </button>
+        </div>
       </div >
     );
   }

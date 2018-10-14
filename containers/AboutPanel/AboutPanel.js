@@ -63,7 +63,8 @@ class AboutPanel extends Component {
           <li><a href="https://www.reddit.com/user/RoboRager" target="_blank">RoboRager</a></li>
           <li><a href="https://www.reddit.com/user/cplane97" target="_blank">cplane97</a></li>
           <li><a href="https://www.reddit.com/user/seungseung22" target="_blank">seungseung22</a></li>
-          <li>Harryhylai (HL3177)</li>
+          <li><a href="https://www.reddit.com/user/HL3177" target="_blank">Harryhylai</a></li>
+          <li><a href="https://www.reddit.com/user/ImportedSwede" target="_blank">ImportedSwede</a></li>
         </ul>
 
         <h5>Links: (external)</h5>

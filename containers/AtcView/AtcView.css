@@ -186,3 +186,31 @@ input.direct-to-input::placeholder {
   margin-top: -3px;
 }
 
+.atc-view .tutorials-btn-wrapper {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  overflow: hidden;
+  background: #1e606b;
+}
+
+.atc-view .tutorials-btn {
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.atc-view .tutorials-btn small {
+  font-size: 0.6em;
+}
+
+.atc-view .tutorials-btn-wrapper-close {
+  font-size: 40px;
+  line-height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: -3px 0 0 0;
+  padding: 0 6px 0 8px;
+  cursor: pointer;
+}
+
