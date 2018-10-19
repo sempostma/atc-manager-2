@@ -30,6 +30,7 @@ class SettingsStore extends EventEmitter {
     this.enroute = false;
     this.takeoffInOrder = false;
     this.goArounds = false;
+    this.stopSpawn = false;
     this.defaultSettings = JSON.parse(this.toJson());
 
     const persistedSettings = loadState().settings;
@@ -94,7 +95,7 @@ class SettingsStore extends EventEmitter {
 
   toJson = () => {
     return JSON.stringify(this,
-      ['distanceCircles', 'distanceCirclesDistance', 'takeoffInOrder', 'useTextCmd', 'goArounds',
+      ['distanceCircles', 'distanceCirclesDistance', 'takeoffInOrder', 'useTextCmd', 'goArounds', 'stopSpawn',
         'distanceCirclesAmount', 'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 'sepVialationCircleColor', 'ga', 'enroute'], 4);
   }
 }

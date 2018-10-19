@@ -11,7 +11,7 @@
     "serve": "preact build --template template.html && preact serve",
     "dev": "preact watch --template template.html",
     "lint": "eslint src",
-    "deploy": "git subtree push --prefix build origin gh-pages"
+    "deploy": "npm run build && git add . && git commit -m \"prod\" && git subtree push --prefix build origin gh-pages"
   },
   "browserslist": [
     "> 1%",

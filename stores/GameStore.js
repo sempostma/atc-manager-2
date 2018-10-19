@@ -139,7 +139,7 @@ class GameStore extends EventEmitter {
   }
 
   newPlane = () => {
-    if (this.paused) return;
+    if (this.paused || SettingsStore.stopSpawn) return;
     let rnd = Math.random();
     let trafficSum = this.map.ga + this.map.commercial;
     const opts = [
@@ -412,9 +412,9 @@ class GameStore extends EventEmitter {
       Airplane.remove(this._remove[i]);
       this.traffic.splice(this.traffic.indexOf(this._remove[i]), 1);
     }
+    this._remove.length = 0;
     this.time += s;
     this.time %= 86400; // seconds in a year
-    this._remove.length = 0;
     if (this.weatherCounter === 0) {
       this.winddir = wrapHeadig(this.winddir + (Math.random() - .5) * s * config.windDirChange);
       this.windspd = Math.max(config.windSpdMin, Math.min(config.windSpdMax, this.windspd + (Math.random() - 0.5) * s * config.windSpdChange));

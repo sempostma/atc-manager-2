@@ -71,8 +71,11 @@ class TimelapsePlaybackStore extends EventEmitter {
 
   update = () => {
     if (this.interval !== null && this.index >= this.timelapse.patches.length) return this.stop();
-    GameStore.loadJson(this.states[this.index]);
+    if (this.index % 1 === 0) { // Check if we arrived on the next frame and not between frames due to slow time speed
+      GameStore.loadJson(this.states[this.index]);
+    }
     this.index += this.speed;
+    if (this.index - Math.round(this.index) < 0.00001) this.index = Math.round(this.index);
     this.emit('change');
     GameStore.emit('change');
   }

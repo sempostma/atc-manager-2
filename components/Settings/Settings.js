@@ -149,6 +149,11 @@ class Settings extends Component {
     SettingsStore.emit('change');
   }
 
+  handleSpawnStopToggle = e => {
+    SettingsStore.stopSpawn = e.target.checked;
+    SettingsStore.emit('change');
+  }
+
   render() {
     return (
       <div className="settings">
@@ -240,10 +245,20 @@ class Settings extends Component {
             <span class="slider"></span>
           </label>
         </div> */}
-          <span>Spawn plane interval:</span>
-          <div className="fontsize-setting range-slider mb">
-            <input className="range-slider__range" type="range" min="20" max="400" step="10" value={SettingsStore.newPlaneInterval} onInput={this.handleNewPlaneIntervalChange} />
-            <span class="range-slider__value">{SettingsStore.newPlaneInterval} seconds</span>
+          {SettingsStore.stopSpawn ? null : <div>
+            <span>Spawn plane interval:</span>
+            <div className="fontsize-setting range-slider mb">
+              <input className="range-slider__range" type="range" min="20" max="400" step="10" value={SettingsStore.newPlaneInterval} onInput={this.handleNewPlaneIntervalChange} />
+              <span class="range-slider__value">{SettingsStore.newPlaneInterval} seconds</span>
+            </div>
+          </div>
+          }
+          <div className="takeoff-in-order mb SwitchInput">
+            <span>Stop planes spawning</span>
+            <label class="switch">
+              <input type="checkbox" onInput={this.handleSpawnStopToggle} checked={SettingsStore.stopSpawn} />
+              <span class="slider"></span>
+            </label>
           </div>
           <div className="takeoff-in-order mb SwitchInput">
             <span>Go-arounds</span>
