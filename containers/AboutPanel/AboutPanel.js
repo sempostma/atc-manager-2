@@ -38,6 +38,7 @@ class AboutPanel extends Component {
         <ul>
           <li><a href="https://www.reddit.com/user/KableKiB" target="_blank">KableKiB</a></li>
           <li><a href="https://www.reddit.com/user/AWT-Colin" target="_blank">AWT-Colin</a></li>
+          <li><a href="https://www.reddit.com/user/chrstphd" target="_blank">chrstphd</a></li>
         </ul>
         <b>Others that have contributed to the project, gave feedback or helped in any other way:</b>
         <ul>
@@ -72,7 +73,6 @@ class AboutPanel extends Component {
           <li><a href="https://www.reddit.com/user/monsantobreath" target="_blank">monsantobreath</a></li>
           <li><a href="https://www.reddit.com/user/Blythyvxr" target="_blank">Blythyvxr</a></li>
           <li><a href="https://www.reddit.com/user/LiuPilot" target="_blank">LiuPilot</a></li>
-
         </ul>
 
         <h5>Links: (external)</h5>
