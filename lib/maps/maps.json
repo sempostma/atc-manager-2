@@ -142,6 +142,15 @@
       "EVKOS->PLM": "EVKOS->EHZM->PLM",
       "QEDOS->EDOS": "QEDOS->EHZM->EDOS"
     },
+    "msa": {
+      "base": [
+        {
+          "dir": 360,
+          "alt": 2000
+        }
+      ],
+      "polygons": []
+    },
     "airport": {
       "elevation": 22,
       "rwyusage": [
@@ -310,6 +319,15 @@
         "x": 789.9771542734587,
         "y": 347.38213903440754
       }
+    },
+    "msa": {
+      "base": [
+        {
+          "dir": 360,
+          "alt": 2000
+        }
+      ],
+      "polygons": []
     },
     "routes": {},
     "airport": {
@@ -510,6 +528,15 @@
         "y": 372.717788378875,
         "class": "intersection"
       }
+    },
+    "msa": {
+      "base": [
+        {
+          "dir": 360,
+          "alt": 2000
+        }
+      ],
+      "polygons": []
     },
     "routes": {},
     "airport": {
@@ -874,6 +901,221 @@
           "elevation2": -11,
           "labelSpread1": 1,
           "labelSpread2": 1.4
+        }
+      ]
+    }
+  },
+  "kpsp": {
+    "id": "kpsp",
+    "name": "Palm Springs Intl",
+    "ga": 1,
+    "ta": 18,
+    "commercial": 1,
+    "outboundWaypoints": [
+      "HENOM",
+      "OKACO",
+      "ARRAN",
+      "TANNR"
+    ],
+    "inboundWaypoints": [
+      "MOMAR",
+      "CLOWD",
+      "DAWNA",
+      "SETER"
+    ],
+    "waypoints": {
+      "HENOM": {
+        "x": 1200,
+        "y": 0,
+        "class": "intersection"
+      },
+      "MOMAR": {
+        "x": 1280,
+        "y": 60,
+        "class": "intersection"
+      },
+      "TRM": {
+        "x": 940,
+        "y": 170,
+        "class": "intersection"
+      },
+      "CLOWD": {
+        "x": 1280,
+        "y": 380,
+        "class": "intersection"
+      },
+      "CONES": {
+        "x": 1200,
+        "y": 280,
+        "class": "intersection"
+      },
+      "SBONO": {
+        "x": 1160,
+        "y": 370,
+        "class": "intersection"
+      },
+      "STOWN": {
+        "x": 1000,
+        "y": 520,
+        "class": "intersection"
+      },
+      "OKACO": {
+        "x": 610,
+        "y": 720,
+        "class": "intersection"
+      },
+      "YUCCA": {
+        "x": 640,
+        "y": 500,
+        "class": "intersection"
+      },
+      "PSP": {
+        "x": 700,
+        "y": 390,
+        "class": "intersection"
+      },
+      "REANS": {
+        "x": 0,
+        "y": 500,
+        "class": "intersection"
+      },
+      "DAWNA": {
+        "x": 50,
+        "y": 720,
+        "class": "intersection"
+      },
+      "ARRAN": {
+        "x": 0,
+        "y": 670,
+        "class": "intersection"
+      },
+      "SETER": {
+        "x": 0,
+        "y": 360,
+        "class": "intersection"
+      },
+      "MORON": {
+        "x": 300,
+        "y": 460,
+        "class": "intersection"
+      },
+      "DEWAY": {
+        "x": 310,
+        "y": 390,
+        "class": "intersection"
+      },
+      "BANDS": {
+        "x": 200,
+        "y": 360,
+        "class": "intersection"
+      },
+      "AHLEX": {
+        "x": 380,
+        "y": 360,
+        "class": "intersection"
+      },
+      "HEMET": {
+        "x": 180,
+        "y": 150,
+        "class": "intersection"
+      },
+      "TANNR": {
+        "x": 0,
+        "y": 0,
+        "class": "intersection"
+      }
+    },
+    "msa": {
+      "base": [
+        {
+          "dir": 0,
+          "alt": 6900
+        },
+        {
+          "dir": 90,
+          "alt": 7900
+        },
+        {
+          "dir": 180,
+          "alt": 12100
+        }
+      ],
+      "polygons": [
+        {
+          "alt": 12000,  
+          "vertices": [[0, 400], [400, 400], [475, 460], [550, 400], [570, 300], [940, 0], [0, 0]]
+        },
+        {
+          "alt": 7000,  
+          "vertices": [[0, 400], [400, 400], [475, 460], [550, 400], [500, 500], [540, 570], [560, 720], [0, 720]]
+        },
+        {
+          "alt": 5000,  
+          "vertices": [[540, 570], [700, 530], [1280, 180], [1280, 720], [560, 720]]
+        },
+        {
+          "alt": 3000,  
+          "vertices": [[550, 400], [560, 500], [700, 530], [540, 570], [500, 500]]
+        }
+      ]
+    },
+    "routes": {},
+    "airport": {
+      "elevation": 476,
+      "rwyusage": [
+        {
+          "dir": 40,
+          "rwys": [
+            "13L",
+            "13R"
+          ]
+        },
+        {
+          "dir": 220,
+          "rwys": [
+            "31L",
+            "31R"
+          ]
+        }
+      ],
+      "callsign": "KPSP",
+      "x": 0,
+      "y": 0,
+      "class": "intersection",
+      "runways": [
+        {
+          "x": -1,
+          "y": 0,
+          "length": 10000,
+          "length1": 10000,
+          "length2": 10000,
+          "surface": "asphalt",
+          "size": 150,
+          "hdg1": 312,
+          "hdg2": 132,
+          "name1": "31L",
+          "name2": "13R",
+          "elevation1": 398,
+          "elevation2": 476,
+          "labelSpread1": 1.5,
+          "labelSpread2": 1.5
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "length": 4952,
+          "length1": 4952,
+          "length2": 4952,
+          "surface": "asphalt",
+          "size": 75,
+          "hdg1": 312,
+          "hdg2": 132,
+          "name1": "31R",
+          "name2": "13L",
+          "elevation1": 407,
+          "elevation2": 449,
+          "labelSpread1": 1.5,
+          "labelSpread2": 1.5
         }
       ]
     }

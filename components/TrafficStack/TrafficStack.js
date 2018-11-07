@@ -315,7 +315,8 @@ class TrafficStack extends Component {
     this.props.onChange(cmd);
     this.props.onCmdExecution();
     this.setState({
-      cmd: cmd
+      cmd: cmd,
+      textCmd: communications.getCallsign(cmd.tgt, true) + ' '
     });
   }
 

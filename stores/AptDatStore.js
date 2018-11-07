@@ -9,9 +9,9 @@ class AptDatStore extends EventEmitter {
     const url = 'https://esstudio.site/apt-dat-parser-js/data/';
 
     this.loading = true;
-    const aptNavPromise = fetch(url + 'apt_nav.txt').then(x => x.text());
-    const earthFixPromise = fetch(url + 'earth_fix.txt').then(x => x.text());
-    const earthNavPromise = fetch(url + 'earth_nav.txt').then(x => x.text());
+    const aptNavPromise = fetch(url + 'apt_nav.dat').then(x => x.text());
+    const earthFixPromise = fetch(url + 'earth_fix.dat').then(x => x.text());
+    const earthNavPromise = fetch(url + 'earth_nav.dat').then(x => x.text());
 
     this.datPromise = Promise.all([aptNavPromise, earthFixPromise, earthNavPromise]).then(this.handleDataloaded)
       .catch(err => {

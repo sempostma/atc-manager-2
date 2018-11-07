@@ -8,6 +8,7 @@ import BackgroundSvg from '../../components/BackgroundSvg/BackgroundSvg';
 import RadarTraffic from '../RadarTraffic/RadarTraffic';
 import config from '../../lib/config';
 import { getStyle } from '../../lib/svg';
+import MSALayer from '../MSALayer/MSALayer';
 
 class SvgRadar extends Component {
   constructor(props) {
@@ -51,6 +52,7 @@ class SvgRadar extends Component {
         <g transform={transformScale}>
           <BackgroundSvg name={GameStore.id} />
         </g>
+        <MSALayer />
         <WayPoints />
         <Airport />
         {airplanes}

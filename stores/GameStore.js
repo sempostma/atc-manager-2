@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import Airplane from '../lib/airplane';
 import config from '../lib/config';
-import { loadMap, angleDelta, headingTo, rwyPos, idType, activeRwys, callsignPositions, setCallsigns, parrelelLinesDistance, findHdgAround, directions, hdgToVector, rwyHeading } from '../lib/map';
+import { loadMap, angleDelta, headingTo, rwyPos, idType, activeRwys, callsignPositions, setCallsigns, parrelelLinesDistance, findHdgAround, directions, hdgToVector, rwyHeading, testMSAViolation } from '../lib/map';
 import SettingsStore from './SettingsStore';
 import { routeTypes, airplanesById, operatorsById, VFRStates } from '../lib/airplane-library/airplane-library';
 import { loadState } from '../lib/persistance';
@@ -58,6 +58,7 @@ class GameStore extends EventEmitter {
     this.enroutes = 0;
     this.unpermittedDepartures = 0;
     this.distanceVialations = 0;
+    this.msaViolations = 0;
     const map = this.map = loadMap(mapName);
     this.id = mapName;
     this.winddir = Math.random() * 360;
@@ -102,6 +103,7 @@ class GameStore extends EventEmitter {
     this._edgeDetection = {};
     this.sepDistanceVialotions = {};
     this.oldSepDistanceVialotions = {};
+    this._oldMsaViolations = {};
     this.started = true;
     this.pathCounter = 0;
     this.weatherCounter = 0;
@@ -162,7 +164,7 @@ class GameStore extends EventEmitter {
     const item = activeRunways[Math.floor(Math.random() * activeRunways.length)];
     const rwy = this.callsignsPos[item];
     const hdg = rwy.ref.name1 === item ? rwy.ref.hdg1 : rwy.ref.hdg2;
-    const airplane = Airplane.createVFRClosedPattern(rwy.x, rwy.y, hdg, item, touchandgo);
+    const airplane = Airplane.createVFRClosedPattern(rwy.x, rwy.y, hdg, item, touchandgo, this.map);
     this.traffic.push(airplane);
 
     const callsign = communications.getCallsign(airplane, true);
@@ -188,7 +190,7 @@ class GameStore extends EventEmitter {
     const outboundWaypoint = ['NORTH', 'EAST', 'SOUTH', 'WEST'][tgtside];
 
     let heading = Math.floor(headingTo(x, y, xt, yt) + 360) % 360;
-    const airplane = Airplane.createVFREnroute(x, y, heading, outboundWaypoint);
+    const airplane = Airplane.createVFREnroute(x, y, heading, outboundWaypoint, map);
     this.traffic.push(airplane);
   }
 
@@ -202,7 +204,7 @@ class GameStore extends EventEmitter {
     let mx = config.width / 2;
     let my = config.height / 2;
     let heading = Math.floor(headingTo(pos.x, pos.y, mx, my)) % 360;
-    const airplane = Airplane.createVFRInbound(pos.x, pos.y, heading, touchandgo);
+    const airplane = Airplane.createVFRInbound(pos.x, pos.y, heading, touchandgo, map);
     this.traffic.push(airplane);
 
     const callsign = communications.getCallsign(airplane, true);
@@ -220,7 +222,7 @@ class GameStore extends EventEmitter {
 
     const outboundWaypoint = ['NORTH', 'EAST', 'SOUTH', 'WEST'][Math.floor(Math.random() * 4)];
 
-    const airplane = Airplane.createVFROutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint);
+    const airplane = Airplane.createVFROutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint, this.map);
 
     const callsign = communications.getCallsign(airplane, true);
 
@@ -254,7 +256,7 @@ class GameStore extends EventEmitter {
     const tgt = this.callsignsPos[outboundWaypoint];
 
     let heading = Math.floor(headingTo(pos.x, pos.y, tgt.x, tgt.y)) % 360;
-    const airplane = Airplane.createEnroute(pos.x, pos.y, heading, outboundWaypoint);
+    const airplane = Airplane.createEnroute(pos.x, pos.y, heading, outboundWaypoint, map);
     this.traffic.push(airplane);
 
     // TODO: Speech for outbound
@@ -286,7 +288,7 @@ class GameStore extends EventEmitter {
     let mx = config.width / 2;
     let my = config.height / 2;
     let heading = Math.floor(headingTo(pos.x, pos.y, mx, my)) % 360;
-    const airplane = Airplane.create(pos.x, pos.y, heading, routeTypes.INBOUND);
+    const airplane = Airplane.createInbound(pos.x, pos.y, heading, map);
     this.traffic.push(airplane);
 
     const callsign = communications.getCallsign(airplane, true);
@@ -315,7 +317,7 @@ class GameStore extends EventEmitter {
     let mx = config.width / 2;
     let my = config.height / 2;
     let heading = Math.floor(headingTo(x, y, mx, my) - hdgVar * .5 + Math.random() * hdgVar) % 360;
-    this.traffic.push(Airplane.create(x, y, heading, routeTypes.INBOUND));
+    this.traffic.push(Airplane.create(x, y, heading, routeTypes.INBOUND, false, this.map));
   }
 
   newPlaneOutbound = () => {
@@ -329,7 +331,7 @@ class GameStore extends EventEmitter {
     const rwy = this.callsignsPos[item];
     const hdg = rwy.ref.name1 === item ? rwy.ref.hdg1 : rwy.ref.hdg2;
     const outboundWaypoint = this.map.outboundWaypoints[Math.floor(Math.random() * this.map.outboundWaypoints.length)];
-    const airplane = Airplane.createOutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint);
+    const airplane = Airplane.createOutbound(rwy.x, rwy.y, hdg, item, outboundWaypoint, this.map);
     this.traffic.push(airplane);
 
     const callsign = communications.getCallsign(airplane, true);
@@ -409,6 +411,7 @@ class GameStore extends EventEmitter {
     this.traffic.forEach(this.planeUpdate);
     for (const key in this._edgeDetection) delete this._edgeDetection[key];
     for (let i = 0; i < this._remove.length; i++) {
+      delete this._oldMsaViolations[communications.getCallsign(this._remove[i], true)];
       Airplane.remove(this._remove[i]);
       this.traffic.splice(this.traffic.indexOf(this._remove[i]), 1);
     }
@@ -526,6 +529,15 @@ class GameStore extends EventEmitter {
       const maxTurnDeg = Airplane.getTurningRate(airplane) * s * config.turnRate;
       airplane.heading += Math.min(maxTurnDeg, Math.max(-maxTurnDeg, angleDelta(airplane.heading, tgtHeading)));
       airplane.heading = (airplane.heading + 360) % 360;
+    }
+
+    if (testMSAViolation(this.map, airplane)) {
+      if (!this._oldMsaViolations[communications.getCallsign(airplane, true)]) {
+        this.msaViolations++;
+        this._oldMsaViolations[communications.getCallsign(airplane, true)] = true;
+      }
+    } else {
+      delete this._oldMsaViolations[communications.getCallsign(airplane, true)];
     }
 
     if (this.pathCounter === 0) {
@@ -822,7 +834,7 @@ class GameStore extends EventEmitter {
 }
 
 const persistanceProps = ['traffic', 'started', 'log', 'selfLog', 'mapName', 'id', 'arrivals', 'departures',
-  'enroutes', 'distanceVialations', 'winddir', 'windspd', 'unpermittedDepartures', 'time'];
+  'enroutes', 'distanceVialations', 'msaViolations', 'winddir', 'windspd', 'unpermittedDepartures', 'time'];
 
 const wrapHeadig = hdg => (hdg + 360) % 360;
 

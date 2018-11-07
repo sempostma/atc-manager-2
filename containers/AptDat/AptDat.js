@@ -3,6 +3,7 @@ import './AptDat.css';
 import { history } from '../../index';
 import { route } from 'preact-router';
 import AptDatStore from '../../stores/AptDatStore';
+import GroundAirportSvg from '../../components/GroundAirportSvg/GroundAirportSvg';
 
 class AptDat extends Component {
   constructor(props) {
@@ -20,12 +21,13 @@ class AptDat extends Component {
 
   render() {
     return (
-      <div className="NotFound">
+      <div className="AptDat">
         <div className="panel">
-          <h1>404</h1>
-          Page not found<br /><br />
-          <button onclick={() => route('/')}>Home</button>
-          <button onclick={() => history.goBack()}>Back</button>
+          <h1>Apt Dat</h1>
+          
+          <svg width="580" height="400" viewBox="0 0 400 400">
+            <GroundAirportSvg />
+          </svg>
         </div>
       </div>
     );
