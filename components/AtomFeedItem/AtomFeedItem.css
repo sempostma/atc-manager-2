@@ -1,0 +1,36 @@
+
+.AtomFeedItem {
+  height: 130px;
+  padding: 5px 0;
+  border-bottom: 1px solid #1e606b;
+  font-size: 0.9em;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit!important;
+}
+
+.AtomFeedItem:hover {
+  opacity: 0.75;
+}
+
+.AtomFeedItem h6 {
+  font-size: 1.5em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 9px;
+}
+
+.AtomFeedItem figure {
+  height: 120px;
+  width: 120px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  margin-right: 10px;
+  float: left;
+}
+

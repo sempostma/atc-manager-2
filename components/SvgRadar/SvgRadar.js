@@ -9,6 +9,7 @@ import RadarTraffic from '../RadarTraffic/RadarTraffic';
 import config from '../../lib/config';
 import { getStyle } from '../../lib/svg';
 import MSALayer from '../MSALayer/MSALayer';
+import RouteVisualizer from '../RouteVisualizer/RouteVisualizer';
 
 class SvgRadar extends Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class SvgRadar extends Component {
         <MSALayer />
         <WayPoints />
         <Airport />
+        <RouteVisualizer cmd={this.props.cmd} emitter={this.props.emitter} />
         {airplanes}
         <rect width="100%" height="100%" fill="none" stroke="#fff" stroke-dasharray="20, 20" transform={transformScale} />
       </svg>

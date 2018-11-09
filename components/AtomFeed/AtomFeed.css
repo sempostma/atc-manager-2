@@ -1,0 +1,14 @@
+
+.AtomFeed {
+    
+}
+
+
+.AtomFeed .loader {
+  margin-left: calc(50% - 60px); 
+  margin-top: 60px;
+  margin-bottom: 60px;
+  width: 120px;
+  height: 120px;
+}
+
