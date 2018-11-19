@@ -41,6 +41,14 @@
   <meta name="msapplication-config" content="assets/browserconfig.xml">
   <meta name="msapplication-TileColor" content="#194850">
 
+  <meta property="og:title" content="ATC Manager 2" />
+  <meta name="author" content="Sem Postma" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:description" content="Web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator." />
+  <meta property="og:site_name" content="ATC Manager 2" />
+  <meta property="og:image" content="https://esstudio.site/atc-manager-2/assets/images/image_src.png" />
+  <link rel="image_src" href="https://esstudio.site/atc-manager-2/assets/images/image_src.png" />
+
   <% if (htmlWebpackPlugin.options.manifest.theme_color) { %>
   <meta name="theme-color" content="<%= htmlWebpackPlugin.options.manifest.theme_color %>">
   <% } %>
@@ -55,11 +63,6 @@
   <% } %>
   <% } %>
 
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
-
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90014538-13"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }

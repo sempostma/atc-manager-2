@@ -1,0 +1,21 @@
+
+.ActionContextMenu {
+    position: absolute;
+    background: #19242e;
+    border-bottom: none;
+    border: 1px solid #fff;
+    border-bottom: none;
+  }
+
+.ContextMenuItem {
+  padding: 0 10px;
+  color: #efefef;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+}
+
+.ContextMenuItem:hover {
+  opacity: 0.7;
+}
+

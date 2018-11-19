@@ -5,6 +5,7 @@ import { airplanesById } from '../../lib/airplane-library/airplane-library';
 import Communications from '../../lib/communications';
 import SettingsStore from '../../stores/SettingsStore';
 import TrafficStack from '../../components/TrafficStack/TrafficStack';
+import ActionContextMenu from '../../components/ActionContextMenu/ActionContextMenu';
 import SvgRadar from '../../components/SvgRadar/SvgRadar';
 import { sendMessageWarning } from '../../components/GameMessages/GameMessages';
 import communications from '../../lib/communications';
@@ -20,6 +21,7 @@ class AtcView extends Component {
       logsOnlySelf: false,
       infoPanelTgt: null,
       tutorialDone: !!loadState().introTutorial,
+      actionMenu: null,
 
       cmd: {
         tgt: null,
@@ -36,14 +38,43 @@ class AtcView extends Component {
 
   componentWillMount() {
     GameStore.on('change', this.handleGameStoreChange);
+    document.addEventListener('click', this.handleDocumentClick);
   }
 
   componentWillUnmount() {
     GameStore.removeListener('change', this.handleGameStoreChange);
+    document.removeEventListener('click', this.handleDocumentClick);
+  }
+
+  handleDocumentClick = () => {
+    this.setState({ actionMenu: null });
   }
 
   handleGameStoreChange = () => {
     this.setState({});
+  }
+
+  handleWaypointContextMenu = (e, waypoint, id) => {
+    if (!this.state.cmd.tgt) return;
+    if (Airplane.isVFR(this.state.cmd.tgt)) return;
+    e.preventDefault();
+    const actions = [{
+      getTitle: () => `Direct to ${id}`,
+      action: () => this.setState(prevstate => {
+        prevstate.cmd.direction = id;
+        prevstate.cmd.directionOld = false;
+        prevstate.actionMenu = null;
+        return prevstate;
+      }, () => this.handleCmdExecution())
+    }];
+
+    this.setState({
+      actionMenu: {
+        left: e.pageX,
+        top: e.pageY,
+        actions,
+      }
+    });
   }
 
   handleSVGClick = e => {
@@ -95,16 +126,20 @@ class AtcView extends Component {
     if (typeof cmd.heading === 'number') {
       cmd.heading = (cmd.heading + 359) % 360 + 1;
     }
-    if (cmd.direction && GameStore.callsigns[cmd.direction] && cmd.directionOld === false) {
-      if (cmd.direction !== cmd.tgt.tgtDirection) delta.tgtDirection = cmd.direction;
-      cmd.directionOld = true;
-      cmd.heading = '';
+    if (cmd.direction && cmd.directionOld === false) {
+      if (GameStore.callsigns[cmd.direction]) {
+        if (cmd.direction !== cmd.tgt.tgtDirection) delta.tgtDirection = cmd.direction;
+        cmd.directionOld = true;
+        cmd.heading = '';
+      }
     }
     else if (typeof cmd.heading === 'number' && cmd.heading !== cmd.tgt.tgtDirection) {
       delta.tgtDirection = cmd.heading;
       cmd.direction = '';
     }
-    if (typeof cmd.altitude === 'number' && !Airplane.isVFR(cmd.tgt) && cmd.altitude !== cmd.tgt.tgtAltitude) delta.tgtAltitude = cmd.altitude = Math.min(model.ceiling * 1000, Math.max(2000, cmd.altitude));
+    if (typeof cmd.altitude === 'number' && !Airplane.isVFR(cmd.tgt) && cmd.altitude !== cmd.tgt.tgtAltitude) {
+      delta.tgtAltitude = cmd.altitude = Math.min(model.ceiling * 1000, Math.max(2000, cmd.altitude));
+    }
     if (cmd.speed && cmd.speed !== cmd.tgt.tgtSpeed) delta.tgtSpeed = cmd.speed = Math.min(model.topSpeed, Math.max(model.minSpeed, cmd.speed));
     if (cmd.takeoff && cmd.tgt.rwy) {
       const rwyWaitingOn = GameStore.rwyWaitingOn(cmd.tgt);
@@ -129,6 +164,7 @@ class AtcView extends Component {
       if (SettingsStore.speechsynthesis) Communications.speak(atcMsg);
       Object.assign(cmd.tgt, delta);
       this.setState({ cmd });
+      this.emitter.emit('cmdexecution');
     } else {
       // do nothing
     }
@@ -161,7 +197,11 @@ class AtcView extends Component {
   render() {
     return (
       <div className="atc-view">
-        <SvgRadar onZoom={this.handleZoom} onClick={this.handleSVGClick} cmd={this.state.cmd} />
+        <SvgRadar onZoom={this.handleZoom}
+          onClick={this.handleSVGClick}
+          cmd={this.state.cmd}
+          emitter={this.emitter}
+          onWayPointContextMenu={this.handleWaypointContextMenu} />
 
         <TrafficStack
           cmd={this.state.cmd}
@@ -177,6 +217,8 @@ class AtcView extends Component {
             <small>This tutorial will teach you the basics of the game.</small>
           </button>
         </div>
+
+        {this.state.actionMenu && <ActionContextMenu {...this.state.actionMenu} />}
       </div >
     );
   }

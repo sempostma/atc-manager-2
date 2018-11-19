@@ -7,7 +7,8 @@ import { routeTypes, airplanesById, operatorsById, VFRStates } from '../lib/airp
 import { loadState } from '../lib/persistance';
 import communications, { natoAlphabet } from '../lib/communications';
 import { sendMessageWarning, sendMessageError, sendMessageInfo } from '../components/GameMessages/GameMessages';
-import { rndArr } from '../lib/util';
+import { rndArr, distSq } from '../lib/util';
+import { parseRoute, mostSuitableLeg } from '../lib/sidstar';
 
 const oneMileByThreeMileRuleDistance = Math.pow(config.oneMileRuleDistance / config.threeMileRuleDistance, 2);
 
@@ -107,7 +108,9 @@ class GameStore extends EventEmitter {
     this.started = true;
     this.pathCounter = 0;
     this.weatherCounter = 0;
-    this.callsigns = setCallsigns(map, this.waypoints);
+    this.parsedSids = Object.assign({}, ...Object.keys(map.sids).map(key => ({ [key]: { class: 'route', type: idType.SID, route: parseRoute(map.sids[key], this.callsignsPos) } })));
+    this.parsedStars = Object.assign({}, ...Object.keys(map.stars).map(key => ({ [key]: { class: 'route', type: idType.STAR, route: parseRoute(map.stars[key], this.callsignsPos) } })));
+    this.callsigns = setCallsigns(map, this.waypoints, this.parsedSids, this.parsedStars);
     this.callsignsPos = callsignPositions(map, this.waypoints, config.width, config.height);
     Object.assign(this.disableTakoffsOnRwysSet, ...map.airport.runways.map(rwy => ({ [rwy.name1]: 'all', [rwy.name2]: 'all' })));
     this.mapName = map.id;
@@ -305,7 +308,6 @@ class GameStore extends EventEmitter {
       const atcMsg = callsign + ', information ' + this.getAtis() + ' is current, altimeter ' + this.altimeter + ', maintain current heading.';
       this.addLog(atcMsg, 'ATC');
     }
-
   }
 
   // deprecated
@@ -490,6 +492,8 @@ class GameStore extends EventEmitter {
           else if (airplane.routeType === routeTypes.INBOUND) tryLand.call(this, waypointPosition);
         }
         else tgtHeading = headingTo(airplane.x, airplane.y, waypointPosition.x, waypointPosition.y);
+      } else if (this.callsigns[airplane.tgtDirection].class === 'route') {
+        route.call(this);
       }
     }
 
@@ -535,6 +539,7 @@ class GameStore extends EventEmitter {
       if (!this._oldMsaViolations[communications.getCallsign(airplane, true)]) {
         this.msaViolations++;
         this._oldMsaViolations[communications.getCallsign(airplane, true)] = true;
+        sendMessageError(communications.getCallsign(airplane, false) + ' is too low.');
       }
     } else {
       delete this._oldMsaViolations[communications.getCallsign(airplane, true)];
@@ -745,6 +750,7 @@ class GameStore extends EventEmitter {
       return airplaneSepDistViolation;
     }
 
+
     function collisionAvoidance() {
       const oa = this.oldSepDistanceVialotions[communications.getCallsign(airplane, true)];
       if (oa) {
@@ -759,6 +765,45 @@ class GameStore extends EventEmitter {
           tgtHeading = wrapHeadig(hdgTo + maxAngle + .1);
         }
       }
+    }
+
+    function route() {
+
+      const routeObj = this.callsigns[airplane.tgtDirection];
+
+      const { best, complete } = mostSuitableLeg(airplane, routeObj, this.callsignsPos);
+      const from = this.callsignsPos[best.from.dir];
+      const to = this.callsignsPos[best.to.dir];
+
+      let hdgToTgt = headingTo(airplane.x, airplane.y, to.x, to.y);
+      let legHdg = headingTo(from.x, from.y, to.x, to.y);
+      let deg = angleDelta(legHdg, hdgToTgt);
+
+
+      if (complete) {
+        if (typeof best.dir === 'number') {
+          tgtHeading = airplane.tgtDirection = best.to.dir;
+        } else {
+          airplane.tgtDirection = best.to.dir;
+        }
+      } else {
+        if (typeof best.dir === 'number') {
+          tgtHeading = best.to.dir;
+        } else {
+          if (Math.abs(deg) < 45) {
+            // tracking
+            tgtHeading = legHdg + Math.min(45, Math.max(-45, Math.max(Math.abs(deg), 10/* weight */) * .7 * deg));
+          } else {
+            // direct to next waypoint
+            tgtHeading = hdgToTgt;
+          }
+        }
+
+      }
+
+      const toTest = [hdgToTgt, legHdg, deg, tgtHeading, airplane.heading];
+      toTest.push(airplane.tgtDirection);
+      if (toTest.some(x => (typeof airplane.tgtDirection === 'number' && isNaN(x)) || x === 'NaN' || x === undefined)) throw 'WTF, dis is nan';
     }
 
     function tryLand(rwyPos) {

@@ -7,7 +7,8 @@ class SettingsStore extends EventEmitter {
     super();
     this.speechsynthesis = false;
     this.speechrecognition = false;
-    this.voices = Communications.synth.getVoices().filter(x => x.lang.startsWith('en'));
+    this.voices = Communications.synth.getVoices()
+      .filter(x => x.lang.startsWith('en'));
     this.rate = Communications.rate;
     this.voice = Communications.voice;
     this.pitch = Communications.pitch;
@@ -16,6 +17,8 @@ class SettingsStore extends EventEmitter {
     this.distanceCirclesDistance = 200;
     this.distanceCirclesAmount = 5;
     this.distanceCircleColor = '#8aa8ad';
+    this.sidsStars = false;
+    this.routeVisualization = false;
     this.ilsPathLength = 250;
     this.ilsPathColor = '#8aa8ad';
     this.ilsDashInterval = [20, 30];
@@ -36,7 +39,7 @@ class SettingsStore extends EventEmitter {
     const persistedSettings = loadState().settings;
     if (persistedSettings) {
       Object.keys(persistedSettings).forEach(key => {
-        if (!isNullOrUndefined(persistedSettings[key])) 
+        if (!isNullOrUndefined(persistedSettings[key]))
           this[key] = persistedSettings[key];
       });
     }
@@ -56,7 +59,9 @@ class SettingsStore extends EventEmitter {
     const state = loadState();
     const settings = JSON.parse(this.toJson());
     Object.keys(settings).forEach(key => {
-      if (JSON.stringify(settings[key]) === JSON.stringify(this.defaultSettings[key])) delete settings[key];
+      if (JSON.stringify(settings[key]) === JSON.stringify(this.defaultSettings[key])) {
+        delete settings[key];
+      }
     });
 
     state.settings = settings;
@@ -64,7 +69,8 @@ class SettingsStore extends EventEmitter {
   }
 
   handleVoicesChange() {
-    this.voices = Communications.synth.getVoices().filter(x => x.lang.startsWith('en'));
+    this.voices = Communications.synth.getVoices()
+      .filter(x => x.lang.startsWith('en'));
     if (Communications.voice === undefined) {
       this.voice = Communications.voice = this.voices[0];
     }
@@ -95,8 +101,13 @@ class SettingsStore extends EventEmitter {
 
   toJson = () => {
     return JSON.stringify(this,
-      ['distanceCircles', 'distanceCirclesDistance', 'takeoffInOrder', 'useTextCmd', 'goArounds', 'stopSpawn',
-        'distanceCirclesAmount', 'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor', 'ilsDashInterval', 'sepVialationCircleColor', 'ga', 'enroute'], 4);
+      [
+        'distanceCircles', 'distanceCirclesDistance', 'takeoffInOrder',
+        'useTextCmd', 'goArounds', 'stopSpawn', 'distanceCirclesAmount',
+        'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor',
+        'ilsDashInterval', 'sepVialationCircleColor', 'ga', 'enroute',
+        'sidsStars', 'routeVisualization'
+      ], 4);
   }
 }
 

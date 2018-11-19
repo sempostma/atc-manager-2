@@ -4,6 +4,7 @@ import { Component } from 'preact';
 import Router from 'preact-router';
 import createHashHistory from 'history/createHashHistory';
 import Game from 'async!./containers/Game/Game';
+import GroundGame from 'async!./containers/GroundGame/GroundGame';
 import Home from 'async!./containers/Home/Home';
 import { EventEmitter } from 'events';
 import NotFound from 'async!./containers/NotFound/NotFound';
@@ -14,11 +15,15 @@ import TimelapseRoot from 'async!./containers/TimelapseRoot/TimelapseRoot';
 import TutorialsRoot from './containers/TutorialsRoot/TutorialsRoot';
 import TutorialsIntro from './containers/TutorialsIntro/TutorialsIntro';
 import TutorialsTextCommands from './containers/TutorialsTextCommands/TutorialsTextCommands';
+import { loadCSS, loadJS } from './lib/lazy-load';
 
 if (typeof window !== 'undefined') {
   window.onbeforeunload = function () {
     return 'You have unsaved progress. Are you sure you want to exit without saving?';
   };
+  loadCSS('https://fonts.googleapis.com/css?family=Roboto+Mono');
+  loadJS('https://buttons.github.io/buttons.js');
+  loadJS('https://www.googletagmanager.com/gtag/js?id=UA-90014538-13');
 }
 
 export const router = new EventEmitter();
@@ -34,6 +39,7 @@ export default class App extends Component {
         <Router history={history} onChange={router.emit('change')}>
           <Home path="/" />
           <Game path="/game" />
+          <GroundGame path="/game-ground" />
           <EditorsRoot path="/editor/:editorroute" />
           <TimelapseRoot path="/timelapse/:timelapseroute" />
           <AptDat path="/apt-dat" />

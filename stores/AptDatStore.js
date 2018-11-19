@@ -1,17 +1,18 @@
 import { EventEmitter } from 'events';
 import { sendMessageWarning, sendMessageError } from '../components/GameMessages/GameMessages';
+import { parseAptNav, parseApt } from '../lib/ground/spec';
 
 class AptDatStore extends EventEmitter {
 
   constructor() {
     super();
 
-    const url = 'https://esstudio.site/apt-dat-parser-js/data/';
+    const url = this.url = 'https://esstudio.site/apt-dat-parser-js/data/';
 
     this.loading = true;
-    const aptNavPromise = fetch(url + 'apt_nav.dat').then(x => x.text());
-    const earthFixPromise = fetch(url + 'earth_fix.dat').then(x => x.text());
-    const earthNavPromise = fetch(url + 'earth_nav.dat').then(x => x.text());
+    const aptNavPromise = fetch(url + 'apt_nav.dat.txt').then(x => x.text());
+    const earthFixPromise = fetch(url + 'earth_fix.dat.txt').then(x => x.text());
+    const earthNavPromise = fetch(url + 'earth_nav.dat.txt').then(x => x.text());
 
     this.datPromise = Promise.all([aptNavPromise, earthFixPromise, earthNavPromise]).then(this.handleDataloaded)
       .catch(err => {
@@ -30,7 +31,8 @@ class AptDatStore extends EventEmitter {
     return resolved;
   }
 
-  searchAptIcao = icao => {
+  searchAptNavIcao = icao => {
+    icao = icao.toUpperCase();
     return this.datPromise.then(resolved => {
       const [aptNav, earthFix, earthNav] = resolved;
 
@@ -46,6 +48,13 @@ class AptDatStore extends EventEmitter {
     });
   }
 
+  fetchAptByIcao = async icao => {
+    icao = icao.toUpperCase();
+    const response = await fetch(this.url + `airports/${icao}.dat.txt`);
+    const txt = await response.text();
+    
+    return parseApt(txt, true)[0];
+  }
 }
 
 export default new AptDatStore();

@@ -28,6 +28,14 @@ input.direct-to-input::placeholder {
   color: #1e606b;
 }
 
+input.direct-to-input.invalid {
+  color: rgb(246, 209, 42);
+}
+
+input.direct-to-input.invalid::placeholder {
+  color: rgb(158, 133, 23);
+}
+
 .traffic-control input,
 .traffic-control select {
   padding: 2px;

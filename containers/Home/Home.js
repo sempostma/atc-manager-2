@@ -11,6 +11,7 @@ import { upcase } from '../../lib/util';
 import SocialButtons from '../../components/SocialButtons/SocialButtons';
 import config from '../../lib/config';
 import SharingPanel from '../../components/SharingPanel/SharingPanel';
+import AtomFeed from '../../components/AtomFeed/AtomFeed';
 
 class Home extends Component {
   constructor(props) {
@@ -216,6 +217,9 @@ class Home extends Component {
               </div>
             </div>
           </a>
+        </div>
+        <div className="panel panel-feed" style={{ padding: 3 }}>
+          <AtomFeed url={config.feedUrl} />
         </div>
         {this.state.sharing ? <div className="panel-open-bg"></div> : null}
         {this.state.sharing ? <SharingPanel onClose={this.sharingDone} promise={Promise.resolve({

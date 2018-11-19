@@ -6,7 +6,8 @@ import { saveAs } from 'file-saver';
 import { saveState, loadState } from '../../lib/persistance';
 import SchemaForm from 'react-jsonschema-form';
 import { sendMessageError, sendMessageInfo } from '../../components/GameMessages/GameMessages';
-const mapSaveSchema = require('../../schema/persistance.json').definitions.mapSave;
+import persistanceSchema from '../../schema/persistance';
+const mapSaveSchema = persistanceSchema.definitions.mapSave;
 
 class SavesEditor extends Component {
   constructor(props) {

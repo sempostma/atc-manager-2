@@ -9,7 +9,7 @@ import SchemaForm from 'react-jsonschema-form';
 import { sendMessageError, sendMessageInfo, sendMessageWarning } from '../../components/GameMessages/GameMessages';
 import { debounce } from '../../lib/util';
 import { clone } from 'jsondiffpatch';
-const operatorSchema = require('../../schema/operator.json');
+import operatorSchema from '../../schema/operator';
 
 class OperatorEditor extends Component {
   constructor(props) {

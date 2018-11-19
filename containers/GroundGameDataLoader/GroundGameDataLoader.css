@@ -1,0 +1,21 @@
+
+.GroundGameDataLoader {
+    
+}
+
+.GroundGameDataLoader .InnerLoader {
+  width: 400px;
+}
+
+
+.GroundGameDataLoader .InnerLoader .left {
+  display: block;
+  float: left;
+}
+
+.GroundGameDataLoader .InnerLoader .right {
+  display: block;
+  right: left;
+}
+
+

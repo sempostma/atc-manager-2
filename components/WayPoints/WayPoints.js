@@ -36,7 +36,7 @@ class WayPoints extends Component {
       const y = (config.height / 2 - waypoint.y) * GameStore.zoom + config.height / 2;
       let textTranslateY = 0;
       if (waypoint.textRotation === 1 || waypoint.textRotation === 3) textTranslateY = 7;
-      return <g className="waypoint" transform={`translate(${x} ${y})`}>
+      return <g className="waypoint" onContextMenu={e => this.props.onContextMenu(e, waypoint, w)} transform={`translate(${x} ${y})`}>
         <circle r="2" />
         <text y={textTranslateY} x="4">{w}</text>
       </g>;

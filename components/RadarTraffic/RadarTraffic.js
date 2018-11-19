@@ -2,8 +2,7 @@ import { Component } from 'preact';
 import config from '../../lib/config';
 import GameStore from '../../stores/GameStore';
 import './RadarTraffic.css';
-import { routeTypes, operatorsById } from '../../lib/airplane-library/airplane-library';
-import { FaInfo, FaCommentDots, FaCog, FaCompress, FaPlane, FaPaperPlane, FaQuestion } from 'react-icons/fa/index.mjs';
+import { routeTypes } from '../../lib/airplane-library/airplane-library';
 import PlaneAlt from '../PlaneAlt/PlaneAlt';
 import PlaneSpd from '../PlaneSpd/PlaneSpd';
 import communications from '../../lib/communications';
@@ -46,8 +45,16 @@ class RadarTraffic extends Component {
     const textTranslate = `translate(${textLineX}, ${textTransformY + textLineY})`;
 
     const sepRadius = Airplane.isVFR(airplane) ? config.oneMileRuleDistance : config.threeMileRuleDistance;
+    const tooLow = !!GameStore._oldMsaViolations[communications.getCallsign(airplane, true)];
 
-    return <g className={`airplane ${routeTypes[airplane.routeType].replace(/ /g, '-')} ${this.props.cmd.tgt === airplane ? 'airplane-active' : 'airplane-inactive'}`}
+    const classList = [
+      'airplane',
+      routeTypes[airplane.routeType].replace(/ /g, '-'),
+      this.props.cmd.tgt === airplane ? 'airplane-active' : 'airplane-inactive',
+      tooLow && 'too-low'
+    ].filter(x => x !== undefined);
+
+    return <g className={classList.join(' ')}
       data-index={this.props.index} transform={`translate(${x}, ${y})`} data-heading={airplane.heading}>
       {violatingSep ? <circle r={sepRadius * GameStore.zoom} className="sep" /> : null}
       {/* <circle cx="0" cy="0" r="2" stroke-width="0" /> */}
@@ -61,6 +68,7 @@ class RadarTraffic extends Component {
           <tspan dy="1em" x="0">{spd}</tspan>
           <tspan dy="1em" x="0">{alt}</tspan>
           {airplane.outboundWaypoint ? <tspan dy="1em" x="0">⇨{airplane.outboundWaypoint}</tspan> : null}
+          {tooLow ? <tspan className="too-low-text" dy="1em" x="0">TOO LOW</tspan> : null}
         </text>
       </g>
     </g>;

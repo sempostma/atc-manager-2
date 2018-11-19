@@ -1,4 +1,5 @@
 {
     "editor.detectIndentation": false,
-    "editor.tabSize": 2
-}
+    "editor.tabSize": 2,
+    "editor.rulers": [80, 120]
+  }

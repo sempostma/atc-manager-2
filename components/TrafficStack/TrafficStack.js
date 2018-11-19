@@ -169,6 +169,18 @@ class TrafficStack extends Component {
         onClick={this.handleTrafficStackInfoButtonClick} />);
   }
 
+  getRoutes = () => {
+    if (!this.state.cmd.tgt) return [];
+    switch (this.state.cmd.tgt.routeType) {
+    case routeTypes.INBOUND:
+      return GameStore.parsedStars;
+    case routeTypes.OUTBOUND:
+      return GameStore.parsedSids;
+    default:
+      return [];
+    }
+  };
+
   renderIFRTrafficControl = () => {
     const cmd = this.props.cmd;
     const model = airplanesById[cmd.tgt.typeId];
@@ -180,10 +192,13 @@ class TrafficStack extends Component {
         .map(lr => lr.rev ? lr.rwy.name2 : lr.rwy.name1)
       : [];
     const landableRwysArr = landableRwyNamesArr.map(name => <option value={name} />);
+    const routes = SettingsStore.sidsStars 
+      ? Object.keys(this.getRoutes()).map(name => <option value={name} />) 
+      : null;
 
     const directToValue = cmd.directionOld ? '' : cmd.direction;
     const directToPlaceholder = cmd.directionOld ? cmd.direction : '';
-
+    
     const allowedWaypoints = Object.keys(GameStore.waypoints).filter(x => GameStore.waypoints[x].type !== idType.DIRECTION);
 
     return (<div>
@@ -193,11 +208,13 @@ class TrafficStack extends Component {
       </div>
       <div>
         <span>Direct to </span>
-        <input className="direct-to-input" type="text" value={directToValue} placeholder={directToPlaceholder}
+        <input className="direct-to-input"
+          type="text" value={directToValue} placeholder={directToPlaceholder}
           list={this.dtcToDataListId} onInput={this.handleDirectToTgtChange} />
         <datalist id={this.dtcToDataListId}>
           {cmd.tgt.routeType === routeTypes.INBOUND ? landableRwysArr : null}
           {allowedWaypoints.map(w => <option value={w} />)}
+          {routes}
         </datalist>
       </div>
       <div>
@@ -323,7 +340,7 @@ class TrafficStack extends Component {
   renderTextCmdControl = () => {
     return (<div>
       <div>
-        <span>Text command <button onClick={() => route('/tutorials/text-commands')} class="question-mark-btn">?</button></span> 
+        <span>Text command <button onClick={() => route('/tutorials/text-commands')} class="question-mark-btn">?</button></span>
         <input className="text-cmd" type="text" value={this.state.textCmd} placeholder=""
           onInput={this.handleTextCmdChange} style="text-transform:uppercase" />
       </div>
@@ -349,12 +366,12 @@ class TrafficStack extends Component {
     return (
       <div>
         <div className="traffic-stack-wrapper" style={{ height: innerHeight }}>
-          <div className="traffic-stack" onClick={this.props.onClick} style={{height: SettingsStore.useTextCmd ? 'calc(100% - 203px)' : 'calc(100% - 363px)'}}>
+          <div className="traffic-stack" onClick={this.props.onClick} style={{ height: SettingsStore.useTextCmd ? 'calc(100% - 203px)' : 'calc(100% - 363px)' }}>
             <div className="wind">wind: {Math.floor(GameStore.winddir)}° @ {Math.floor(GameStore.windspd)}KTS</div>
             <div className="time">time: {Math.floor(GameStore.time / 3600)}:{Math.floor(GameStore.time % 3600 / 60)}</div>
             {trafficStack}
           </div>
-          <div className="traffic-control" style={{height: SettingsStore.useTextCmd ? '70px' : '200px'}}>
+          <div className="traffic-control" style={{ height: SettingsStore.useTextCmd ? '70px' : '200px' }}>
             {trafficControl}
           </div>
           <div className="atc-view-buttons">
