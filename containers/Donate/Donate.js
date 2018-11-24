@@ -19,8 +19,8 @@ class Donate extends Component {
     return (
       <div className="Donate">
         If you like the game and you want the game to stay (advertisement) free, please check out the <a href="https://www.gofundme.com/manage/atc-manager-2" target="_blank">GoFundMe Page</a> or:
-        <br />
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin-bottom: 0;">
+        <br /><br />
+        <form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin-bottom: 0;">
           <input type="hidden" name="business"
             value="thankyousomuchyouareamazing@esstudio.site" />
 
@@ -28,7 +28,7 @@ class Donate extends Component {
           <input type="hidden" name="item_name" value="ATC Manager 2" />
           <input type="hidden" name="item_number" value="ATC Manager 2 Campaign" />
           <div>
-            <select style="width: 80px" name="currency_code">
+            <select style="width: 90px" name="currency_code">
               <option selected value="USD">USD</option>
               <option value="EUR">EUR</option>
               <option value="AUD">AUD</option>

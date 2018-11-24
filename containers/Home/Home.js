@@ -12,6 +12,7 @@ import SocialButtons from '../../components/SocialButtons/SocialButtons';
 import config from '../../lib/config';
 import SharingPanel from '../../components/SharingPanel/SharingPanel';
 import AtomFeed from '../../components/AtomFeed/AtomFeed';
+import PushNotifications from '../../components/PushNotifications/PushNotifications';
 
 class Home extends Component {
   constructor(props) {
@@ -74,7 +75,7 @@ class Home extends Component {
           <h1>ATC Manager 2</h1>
           <div style="padding: 30px 20px;">
             {config.description}
-            <br /><br />Check out the <a title="Android App" href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US">App</a> for mobile.
+            <br /><br />Check out the <a title="Android App" target="_blank" href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US">App</a> for mobile.
           </div>
         </div>
         <div className="panel">
@@ -217,6 +218,9 @@ class Home extends Component {
               </div>
             </div>
           </a>
+        </div>
+        <div className="panel panel-feed notification">
+          <PushNotifications />
         </div>
         <div className="panel panel-feed" style={{ padding: 3 }}>
           <AtomFeed url={config.feedUrl} />

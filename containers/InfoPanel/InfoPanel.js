@@ -1,6 +1,6 @@
 import { Component } from 'preact';
 import GameStore from '../../stores/GameStore';
-import { FaCompress, FaDesktop, FaFileVideo } from 'react-icons/fa/index.mjs';
+import { FaCompress, FaDesktop, FaFileVideo, FaImage } from 'react-icons/fa/index.mjs';
 import { activeRwys } from '../../lib/map';
 import { upcase, lpad } from '../../lib/util';
 import './InfoPanel.css';
@@ -11,11 +11,32 @@ import TimelapseStore from '../../stores/TimelapseStore';
 import { loadState } from '../../lib/persistance';
 import TimelapseRecorder from '../../components/TimelapseRecorder/TimelapseRecorder';
 
+const isFullscreen = () => !((document.fullScreenElement && document.fullScreenElement !== null) ||
+  (!document.mozFullScreen && !document.webkitIsFullScreen));
+
+const toggleFullScreen = () => {
+  if (!isFullscreen()) {
+    if (document.documentElement.requestFullScreen) {
+      document.documentElement.requestFullScreen();
+    } else if (document.documentElement.mozRequestFullScreen) {
+      document.documentElement.mozRequestFullScreen();
+    } else if (document.documentElement.webkitRequestFullScreen) {
+      document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+    }
+  } else {
+    if (document.cancelFullScreen) {
+      document.cancelFullScreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen();
+    }
+  }
+};
 
 class InfoPanel extends Component {
   constructor(props) {
     super();
-
   }
 
   componentWillMount() {
@@ -42,6 +63,10 @@ class InfoPanel extends Component {
     }), `Screenshot ${GameStore.map.name}.svg`);
   }
 
+  handleToggleFullscreen = e => {
+    this.setState({})
+  }
+
   render() {
     const activeRunways = GameStore.airport.rwyusage ? activeRwys(GameStore.airport, GameStore.winddir) : [];
 
@@ -51,8 +76,8 @@ class InfoPanel extends Component {
           <select onInput={this.handleTakeoffRunwayAssignInput} data-rwy-name={rwy['name' + t]}
             value={GameStore.disableTakoffsOnRwysSet[rwy['name' + t]]}>
             <option default value="all">All</option>
-            { SettingsStore.ga && GameStore.map.ga > 0 && <option value="ga">General Aviation</option> }
-            { GameStore.map.commercial > 0 && <option value="commercial">Commercial Flights</option> }
+            {SettingsStore.ga && GameStore.map.ga > 0 && <option value="ga">General Aviation</option>}
+            {GameStore.map.commercial > 0 && <option value="commercial">Commercial Flights</option>}
             <option value="none">None</option>
           </select>
         </span> : ''}</div>);
@@ -68,7 +93,8 @@ class InfoPanel extends Component {
         <div>Runways: </div>
         {GameStore.airport.runways && GameStore.airport.runways.map(rwy => runwayUsage(rwy))}
         <br />
-        <button className="button" onClick={this.handleScreenShotButtonClick}><FaDesktop /> Save Radar as SVG</button>
+        <button className="button" onClick={this.handleScreenShotButtonClick}><FaImage /> Save Radar as SVG</button>
+        <button className="button" onClick={toggleFullScreen}><FaDesktop /> {isFullscreen() ? 'Exit fullscreen' : 'Open fullscreen'}</button>
         <div>&nbsp;</div>
         <TimelapseRecorder />
         <div>&nbsp;</div>

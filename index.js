@@ -39,7 +39,7 @@ export default class App extends Component {
         <Router history={history} onChange={router.emit('change')}>
           <Home path="/" />
           <Game path="/game" />
-          <GroundGame path="/game-ground" />
+          {/* <GroundGame path="/game-ground" /> */}
           <EditorsRoot path="/editor/:editorroute" />
           <TimelapseRoot path="/timelapse/:timelapseroute" />
           <AptDat path="/apt-dat" />

@@ -1,0 +1,72 @@
+{
+  "name": "Air Traffic Control Manager 2",
+  "description": "Web based air traffic control game. Manage airspace of busy airports like Schiphol or Heathrow in a realistic simulator.",
+  "short_name": "ATC Manager 2",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "assets/images/meta-icons/android-chrome-36x36.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/meta-icons/android-chrome-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/meta-icons/android-chrome-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/meta-icons/android-chrome-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/meta-icons/android-chrome-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/meta-icons/android-chrome-168x168.png",
+      "sizes": "168x168",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/meta-icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/meta-icons/android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/meta-icons/android-chrome-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/meta-icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "permissions": {
+    "audio-capture": {
+      "description": "Audio capture"
+    },
+    "speech-recognition": {
+      "description": "Speech recognition"
+    }
+  },
+  "type": "privileged",
+  "theme_color": "#194850",
+  "background_color": "#194850"
+}

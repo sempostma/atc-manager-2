@@ -16,11 +16,15 @@ class StarSvg extends Component {
   componentWillMount() {
     GameStore.on('start', this.handleGameStoreStart);
     GameStore.on('change', this.handleGameStoreChange);
+    this.props.emitter.on('cmdtgt', this.handleCmdTgtChange);
+    this.props.emitter.on('cmdexecution', this.handleCmdTgtChange);
   }
 
   componentWillUnmount() {
     GameStore.removeListener('start', this.handleGameStoreStart);
     GameStore.removeListener('change', this.handleGameStoreChange);
+    this.props.emitter.removeListener('cmdtgt', this.handleCmdTgtChange);
+    this.props.emitter.removeListener('cmdexecution', this.handleCmdTgtChange);
   }
 
   handleGameStoreStart() {
@@ -37,11 +41,23 @@ class StarSvg extends Component {
     });
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state !== nextState;
+  }
+
+  handleCmdTgtChange = cmd => {
+    this.setState({ cmdtgt: cmd.tgt });
+  }
+
   zoomX = x => (x - config.width / 2) * this.state.zoom + config.width / 2;
 
   zoomY = y => (y - config.height / 2) * this.state.zoom + config.height / 2;
 
   labelPos = (p1, p2) => (p1 * 2 + p2) / 3;
+
+  isFocussed = routeName => this.state.cmdtgt
+    && typeof this.state.cmdtgt.tgtDirection === 'string'
+    && this.state.cmdtgt.tgtDirection.toLowerCase() === routeName.toLowerCase();
 
   render() {
     if (!SettingsStore.sidsStars) return null;
@@ -69,7 +85,11 @@ class StarSvg extends Component {
           <line {...attrs} />
         );
       });
-      return (<g key={i} className="star">
+      const classList = ['star'];
+      if (this.isFocussed(key)) {
+        classList.push('focussed');
+      }
+      return (<g key={i} className={classList.join(' ')}>
         <text x={this.zoomX(mx)} y={this.zoomY(config.height - my)}>{key}</text>
         {starJsx}
       </g>);

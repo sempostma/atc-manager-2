@@ -6,9 +6,9 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
+    "start": "if-env NODE_ENV=production && npm run serve || npm run dev",
     "build": "set NODE_ENV=production && preact build -p --json --prerender --clean --template template.html",
-    "serve": "preact build --template template.html && preact serve",
+    "serve": "npm run build && preact serve",
     "dev": "preact watch --template template.html",
     "lint": "eslint src",
     "deploy": "npm run build && git add . && git commit -m \"prod\" && git subtree push --prefix build origin gh-pages"
@@ -32,6 +32,7 @@
     "html-webpack-plugin": "^2.30.1",
     "if-env": "^1.0.0",
     "preact-cli": "^2.2.1",
+    "preact-cli-plugin-fast-async": "^1.0.1",
     "preact-cli-sw-precache": "^1.0.3"
   },
   "dependencies": {

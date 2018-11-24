@@ -34,7 +34,7 @@ class TrafficStack extends Component {
     };
 
     this.dtcToDataListId = `dct-tgt-${Math.random().toString().replace('.', '')}`;
-    props.emitter.on('click', this.handleAirplaneClick);
+    props.emitter.on('cmdtgt', this.handleAirplaneClick);
   }
 
   componentWillReceiveProps(nextProps) {

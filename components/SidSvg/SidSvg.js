@@ -9,32 +9,40 @@ class SidSvg extends Component {
     super();
     this.state = {
       sids: GameStore.parsedSids,
-      zoom: GameStore.zoom
+      zoom: GameStore.zoom,
+      cmdtgt: undefined
     };
   }
 
   componentWillMount() {
     GameStore.on('start', this.handleGameStoreStart);
     GameStore.on('change', this.handleGameStoreChange);
+    this.props.emitter.on('cmdtgt', this.handleCmdTgtChange);
+    this.props.emitter.on('cmdexecution', this.handleCmdTgtChange);
   }
 
   componentWillUnmount() {
     GameStore.removeListener('start', this.handleGameStoreStart);
     GameStore.removeListener('change', this.handleGameStoreChange);
+    this.props.emitter.removeListener('cmdtgt', this.handleCmdTgtChange);
+    this.props.emitter.removeListener('cmdexecution', this.handleCmdTgtChange);
   }
 
-  handleGameStoreStart() {
-    this.setState({
-      sids: GameStore.parsedSids
-    });
+  handleGameStoreStart = () => {
+    this.setState({ sids: GameStore.parsedSids });
+  }
+
+  handleCmdTgtChange = cmd => {
+    this.setState({ cmdtgt: cmd.tgt });
   }
 
   handleGameStoreChange = () => {
     if (this.state.zoom === GameStore.zoom) return;
+    this.setState({ zoom: GameStore.zoom });
+  }
 
-    this.setState({
-      zoom: GameStore.zoom
-    });
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state !== nextState;
   }
 
   zoomX = x => (x - config.width / 2) * this.state.zoom + config.width / 2;
@@ -43,14 +51,24 @@ class SidSvg extends Component {
 
   labelPos = (p1, p2) => (p1 * 2 + p2) / 3;
 
+  isFocussed = routeName => this.state.cmdtgt
+    && typeof this.state.cmdtgt.tgtDirection === 'string'
+    && this.state.cmdtgt.tgtDirection.toLowerCase() === routeName.toLowerCase();
+
   render() {
     if (!SettingsStore.sidsStars) return null;
     const sids = this.state.sids;
     if (!sids) return;
     const jsx = Object.keys(sids).map((key, i) => {
       const sid = sids[key].route.slice(0).filter(x => typeof x.dir !== 'number');
-      const mx = this.labelPos(GameStore.callsignsPos[sid[sid.length - 1].dir].x, GameStore.callsignsPos[sid[sid.length - 2].dir].x);
-      const my = this.labelPos(GameStore.callsignsPos[sid[sid.length - 1].dir].y, GameStore.callsignsPos[sid[sid.length - 2].dir].y);
+      const mx = this.labelPos(
+        GameStore.callsignsPos[sid[sid.length - 1].dir].x,
+        GameStore.callsignsPos[sid[sid.length - 2].dir].x
+      );
+      const my = this.labelPos(
+        GameStore.callsignsPos[sid[sid.length - 1].dir].y,
+        GameStore.callsignsPos[sid[sid.length - 2].dir].y
+      );
       let previous = sid.splice(0, 1)[0];
       const sidJsx = sid.map((item, i) => {
         const attrs = {
@@ -60,13 +78,16 @@ class SidSvg extends Component {
           y2: this.zoomY(config.height - GameStore.callsignsPos[item.dir].y),
           key: i
         };
-
         previous = item;
         return (
           <line {...attrs} />
         );
       });
-      return (<g key={i} className="sid">
+      const classList = ['sid'];
+      if (this.isFocussed(key)) {
+        classList.push('focussed');
+      }
+      return (<g key={i} className={classList.join(' ')}>
         <text x={this.zoomX(mx)} y={this.zoomY(config.height - my)}>{key}</text>
         {sidJsx}
       </g>);

@@ -58,23 +58,21 @@ class SvgRadar extends Component {
       + `scale(${GameStore.zoom}) `
       + `translate(-${config.width / 2} -${config.height / 2})`;
     const fontSize = SettingsStore.radarFontsize;
-    const styles = getStyle(
-      SettingsStore.ilsPathColor,
-      SettingsStore.sepVialationCircleColor);
+    const styles = getStyle(SettingsStore);
 
     return (
       <svg ref={this.setRef} onWheel={this.props.onZoom}
         xmlns="http://www.w3.org/2000/svg"
         className="atc-view-svg" width={width} height={height}
         onClick={this.props.onClick} viewBox="0 0 1280 720"
-        style={`background: #194850; overflow: visible; font-size: ${fontSize}px;`}>
+        style={`background: ${SettingsStore.radarColor}; overflow: visible; font-size: ${fontSize}px;`}>
         <style>{styles}</style>
         <g transform={transformScale}>
           <BackgroundSvg name={GameStore.id} />
         </g>
         <MSALayer />
-        <SidSvg />
-        <StarSvg />
+        <SidSvg emitter={this.props.emitter} />
+        <StarSvg emitter={this.props.emitter} />
         <WayPoints onContextMenu={this.props.onWayPointContextMenu} />
         <Airport />
         <RouteVisualizer cmd={this.props.cmd} emitter={this.props.emitter} />

@@ -17,7 +17,7 @@ class RouteVisualizer extends Component {
   componentWillMount = () => {
     this.setLine();
     if (this.props.emitter) {
-      this.props.emitter.on('click', this.setLine);
+      this.props.emitter.on('cmdtgt', this.setLine);
       this.props.emitter.on('cmdexecution', this.setLine);
     }
     GameStore.on('change', this.setLine);
@@ -26,7 +26,7 @@ class RouteVisualizer extends Component {
   componentWillUnmount = () => {
     GameStore.removeListener('change', this.setLine);
     if (this.props.emitter) {
-      this.props.emitter.removeListener('click', this.setLine);
+      this.props.emitter.removeListener('cmdtgt', this.setLine);
       this.props.emitter.removeListener('cmdexecution', this.setLine);
     }
   }

@@ -64,11 +64,13 @@
   <% } %>
 
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
 
-    gtag('config', 'UA-90014538-13');
+      gtag('config', 'UA-90014538-13');
+    }
   </script>
 
 </head>
@@ -78,7 +80,7 @@
 			url: '/'
 		}) %>
   <script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
-  <script>window.fetch || document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
+  <script>(typeof window !== 'undefined' && window.fetch) || document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
 </body>
 
 </html>

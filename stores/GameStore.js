@@ -792,7 +792,9 @@ class GameStore extends EventEmitter {
         } else {
           if (Math.abs(deg) < 45) {
             // tracking
-            tgtHeading = legHdg + Math.min(45, Math.max(-45, Math.max(Math.abs(deg), 10/* weight */) * .7 * deg));
+            const multiplier = 1 - airplane.speed * .001;
+            const hdg = Math.max(Math.abs(deg), 10/* weight */) * multiplier * deg;
+            tgtHeading = legHdg + Math.min(45, Math.max(-45, hdg));
           } else {
             // direct to next waypoint
             tgtHeading = hdgToTgt;
@@ -803,7 +805,10 @@ class GameStore extends EventEmitter {
 
       const toTest = [hdgToTgt, legHdg, deg, tgtHeading, airplane.heading];
       toTest.push(airplane.tgtDirection);
-      if (toTest.some(x => (typeof airplane.tgtDirection === 'number' && isNaN(x)) || x === 'NaN' || x === undefined)) throw 'WTF, dis is nan';
+
+      // nan testing
+      // if (toTest.some(x => (typeof airplane.tgtDirection === 'number'
+      //   && isNaN(x)) || x === 'NaN' || x === undefined)) throw 'dis is nan';
     }
 
     function tryLand(rwyPos) {

@@ -38,12 +38,16 @@ class AtcView extends Component {
 
   componentWillMount() {
     GameStore.on('change', this.handleGameStoreChange);
-    document.addEventListener('click', this.handleDocumentClick);
+    if (typeof window !== 'undefined') {
+      document.addEventListener('click', this.handleDocumentClick);
+    }
   }
 
   componentWillUnmount() {
     GameStore.removeListener('change', this.handleGameStoreChange);
-    document.removeEventListener('click', this.handleDocumentClick);
+    if (typeof window !== 'undefined') {
+      document.removeEventListener('click', this.handleDocumentClick);
+    }
   }
 
   handleDocumentClick = () => {
@@ -110,7 +114,7 @@ class AtcView extends Component {
         tgtVfrState: airplane.tgtVfrState
       }
     }, () => {
-      this.emitter.emit('click', this.state.cmd);
+      this.emitter.emit('cmdtgt', this.state.cmd);
     });
   }
 
@@ -164,7 +168,7 @@ class AtcView extends Component {
       if (SettingsStore.speechsynthesis) Communications.speak(atcMsg);
       Object.assign(cmd.tgt, delta);
       this.setState({ cmd });
-      this.emitter.emit('cmdexecution');
+      this.emitter.emit('cmdexecution', cmd);
     } else {
       // do nothing
     }

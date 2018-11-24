@@ -17,10 +17,14 @@ class BackgroundSvg extends Component {
     if (this.props.name) {
       fetch(url)
         .then(response => response.text())
-        .then(xml => this.el.innerHTML = xml);
+        .then(xml => {
+          if (this.el) this.el.innerHTML = xml;
+        });
     }
     return (
-      <g transform="translate(-640, -360)" className="background" ref={el => this.el = el} />
+      <g transform="translate(-640, -360)"
+        className="background"
+        ref={el => this.el = el} />
     );
   }
 }

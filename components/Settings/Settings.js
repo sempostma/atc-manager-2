@@ -23,7 +23,6 @@ class Settings extends Component {
   componentWillUnmount() {
     SettingsStore.removeListener('change', this.handleSettingsStoreChange);
     Communications.synth.removeEventListener('voiceschanged', this.handleVoicesChange);
-
   }
 
   handleSettingsStoreChange = () => {
@@ -76,24 +75,24 @@ class Settings extends Component {
 
   handleDifficultyChange = e => {
     switch (e.target.value) {
-      case 'easy':
-        SettingsStore.startingInboundPlanes = 1;
-        SettingsStore.startingOutboundPlanes = 1;
-        SettingsStore.startingEnroutePlanes = 0;
-        SettingsStore.newPlaneInterval = 180;
-        break;
-      case 'normal':
-        SettingsStore.startingInboundPlanes = 3;
-        SettingsStore.startingOutboundPlanes = 2;
-        SettingsStore.startingEnroutePlanes = 1;
-        SettingsStore.newPlaneInterval = 100;
-        break;
-      case 'hard':
-        SettingsStore.startingInboundPlanes = 4;
-        SettingsStore.startingOutboundPlanes = 3;
-        SettingsStore.startingEnroutePlanes = 0;
-        SettingsStore.newPlaneInterval = 70;
-        break;
+    case 'easy':
+      SettingsStore.startingInboundPlanes = 1;
+      SettingsStore.startingOutboundPlanes = 1;
+      SettingsStore.startingEnroutePlanes = 0;
+      SettingsStore.newPlaneInterval = 180;
+      break;
+    case 'normal':
+      SettingsStore.startingInboundPlanes = 3;
+      SettingsStore.startingOutboundPlanes = 2;
+      SettingsStore.startingEnroutePlanes = 1;
+      SettingsStore.newPlaneInterval = 100;
+      break;
+    case 'hard':
+      SettingsStore.startingInboundPlanes = 4;
+      SettingsStore.startingOutboundPlanes = 3;
+      SettingsStore.startingEnroutePlanes = 0;
+      SettingsStore.newPlaneInterval = 70;
+      break;
     }
     this.setState({
       difficulty: e.target.value,
@@ -105,52 +104,17 @@ class Settings extends Component {
     SettingsStore.emit('change');
   }
 
-  handleDistanceCircleColor(e) {
-    SettingsStore.distanceCircleColor = e.target.value;
-    SettingsStore.emit('change');
-  }
-
-  handleSepVialotionCircleColor(e) {
-    SettingsStore.sepVialationCircleColor = e.target.value;
-    SettingsStore.emit('change');
-  }
-
-  handleDistanceCircleChange(e) {
-    SettingsStore.distanceCircles = e.target.checked;
-    SettingsStore.emit('change');
-  }
-
   handleToggleExpandClick = e => {
     this.setState({ expanded: !this.state.expanded });
   }
 
-  handleGA = e => {
-    SettingsStore.ga = e.target.checked;
+  handleChange = name => e => {
+    SettingsStore[name] = e.target.value;
     SettingsStore.emit('change');
   }
 
-  handleEnroute = e => {
-    SettingsStore.enroute = e.target.checked;
-    SettingsStore.emit('change');
-  }
-
-  handleTakeoffInOrderChange = e => {
-    SettingsStore.takeoffInOrder = e.target.checked;
-    SettingsStore.emit('change');
-  }
-
-  handleTextCmds = e => {
-    SettingsStore.useTextCmd = e.target.checked;
-    SettingsStore.emit('change');
-  }
-
-  handleGoArounds = e => {
-    SettingsStore.goArounds = e.target.checked;
-    SettingsStore.emit('change');
-  }
-
-  handleSpawnStopToggle = e => {
-    SettingsStore.stopSpawn = e.target.checked;
+  handleCheckboxChange = name => e => {
+    SettingsStore[name] = e.target.checked;
     SettingsStore.emit('change');
   }
 
@@ -173,35 +137,51 @@ class Settings extends Component {
         <div className="mb SwitchInput">
           <span>Distance circle</span>
           <label class="switch">
-            <input type="checkbox" onInput={this.handleDistanceCircleChange} checked={SettingsStore.distanceCircles} />
+            <input type="checkbox" onInput={this.handleCheckboxChange('distanceCircles')} checked={SettingsStore.distanceCircles} />
             <span class="slider"></span>
           </label>
         </div>
         <div className="mb SwitchInput">
           <span>General Aviation</span>
           <label class="switch">
-            <input type="checkbox" onInput={this.handleGA} checked={SettingsStore.ga} />
+            <input type="checkbox" onInput={this.handleCheckboxChange('ga')} checked={SettingsStore.ga} />
             <span class="slider"></span>
           </label>
         </div>
         <div className="mb SwitchInput">
           <span>Enroute Traffic</span>
           <label class="switch">
-            <input type="checkbox" onInput={this.handleEnroute} checked={SettingsStore.enroute} />
+            <input type="checkbox" onInput={this.handleCheckboxChange('enroute')} checked={SettingsStore.enroute} />
             <span class="slider"></span>
           </label>
-        </div>
-        <div className="mb ColorInput">
-          <span>Distance circle color:</span>
-          <input type="color" value={SettingsStore.distanceCircleColor} onInput={this.handleDistanceCircleColor} />
         </div>
         <div className="mb ColorInput">
           <span>ILS indicator color:</span>
           <input type="color" value={SettingsStore.ilsPathColor} onInput={this.handleIlsPathColorChange} />
         </div>
         <div className="mb ColorInput">
-          <span>Seperatorion circle color:</span>
-          <input type="color" value={SettingsStore.sepVialationCircleColor} onInput={this.handleSepVialotionCircleColor} />
+          <span>Danger color:</span>
+          <input type="color" value={SettingsStore.dangerColor} onInput={this.handleChange('dangerColor')} />
+        </div>
+        <div className="mb ColorInput">
+          <span>Background color:</span>
+          <input type="color" value={SettingsStore.backgroundColor} onInput={this.handleChange('backgroundColor')} />
+        </div>
+        <div className="mb ColorInput">
+          <span>Foreground color:</span>
+          <input type="color" value={SettingsStore.foregroundColor} onInput={this.handleChange('foregroundColor')} />
+        </div>
+        <div className="mb ColorInput">
+          <span>Radar color:</span>
+          <input type="color" value={SettingsStore.radarColor} onInput={this.handleChange('radarColor')} />
+        </div>
+        <div className="mb ColorInput">
+          <span>Sid color:</span>
+          <input type="color" value={SettingsStore.sidColor} onInput={this.handleChange('sidColor')} />
+        </div>
+        <div className="mb ColorInput">
+          <span>Star color:</span>
+          <input type="color" value={SettingsStore.starColor} onInput={this.handleChange('starColor')} />
         </div>
         <span>Radar font size:</span>
         <div className="fontsize-setting range-slider mb">
@@ -216,7 +196,7 @@ class Settings extends Component {
           <div className="speechsynthesis-setting mb SwitchInput">
             <span>Speech synthesis</span>
             <label class="switch">
-              <input type="checkbox" onInput={this.handleSpeechSynthesisSettingChange} checked={SettingsStore.speechsynthesis} />
+              <input type="checkbox" onInput={this.handleCheckboxChange('speechsynthesis')} checked={SettingsStore.speechsynthesis} />
               <span class="slider"></span>
             </label>
           </div>
@@ -256,28 +236,42 @@ class Settings extends Component {
           <div className="takeoff-in-order mb SwitchInput">
             <span>Stop planes spawning</span>
             <label class="switch">
-              <input type="checkbox" onInput={this.handleSpawnStopToggle} checked={SettingsStore.stopSpawn} />
+              <input type="checkbox" onInput={this.handleCheckboxChange('stopSpawn')} checked={SettingsStore.stopSpawn} />
               <span class="slider"></span>
             </label>
           </div>
           <div className="takeoff-in-order mb SwitchInput">
             <span>Go-arounds</span>
             <label class="switch">
-              <input type="checkbox" onInput={this.handleGoArounds} checked={SettingsStore.goArounds} />
+              <input type="checkbox" onInput={this.handleCheckboxChange('stopSpawn')} checked={SettingsStore.goArounds} />
               <span class="slider"></span>
             </label>
           </div>
           <div className="takeoff-in-order mb SwitchInput">
             <span>Takeoff in order</span>
             <label class="switch">
-              <input type="checkbox" onInput={this.handleTakeoffInOrderChange} checked={SettingsStore.takeoffInOrder} />
+              <input type="checkbox" onInput={this.handleCheckboxChange('takeoffInOrder')} checked={SettingsStore.takeoffInOrder} />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div className="takeoff-in-order mb SwitchInput">
+            <span>Sids/Stars</span>
+            <label class="switch">
+              <input type="checkbox" onInput={this.handleCheckboxChange('sidsStars')} checked={SettingsStore.sidsStars} />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div className="takeoff-in-order mb SwitchInput">
+            <span>Route visualization</span>
+            <label class="switch">
+              <input type="checkbox" onInput={this.handleCheckboxChange('routeVisualization')} checked={SettingsStore.routeVisualization} />
               <span class="slider"></span>
             </label>
           </div>
           <div className="takeoff-in-order mb SwitchInput">
             <span>Text commands</span>
             <label class="switch">
-              <input type="checkbox" onInput={this.handleTextCmds} checked={SettingsStore.useTextCmd} />
+              <input type="checkbox" onInput={this.handleCheckboxChange('takeoffInOrder')} checked={SettingsStore.useTextCmd} />
               <span class="slider"></span>
             </label>
           </div>

@@ -14,6 +14,10 @@ class MSALayer extends Component {
 
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state !== nextState;
+  }
+
   componentWillMount() {
     GameStore.on('start', this.handleGameStoreStart);
     GameStore.on('change', this.handleGameStoreChange);

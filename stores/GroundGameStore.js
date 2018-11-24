@@ -18,7 +18,7 @@ class GroundGameStore extends EventEmitter {
     const [apt, aptNavLine] = await Promise.all([
       AptDatStore.fetchAptByIcao(icao),
       AptDatStore.searchAptNavIcao(icao)
-    ]); 
+    ]);
 
     const split = aptNavLine[0].split(' ');
 

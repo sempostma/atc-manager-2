@@ -14,9 +14,10 @@ class AtomFeed extends Component {
   }
 
   componentWillMount() {
+    if (typeof window === 'undefined') return;
     fetch(this.props.url)
       .then(response => response.text())
-      .then(xml => (new  DOMParser()).parseFromString(xml, 'application/xml'))
+      .then(xml => (new DOMParser()).parseFromString(xml, 'application/xml'))
       .then(this.parseAtomDocument);
   }
 

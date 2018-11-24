@@ -9,6 +9,21 @@ class SettingsStore extends EventEmitter {
     this.speechrecognition = false;
     this.voices = Communications.synth.getVoices()
       .filter(x => x.lang.startsWith('en'));
+    this.backgroundColor = '#1e606b';
+    this.radarColor = '#194850';
+    this.foregroundColor = '#ffffff';
+    this.fontColor = '#ffffff';
+    this.sidColor = '#a5742a';
+    this.starColor = '#1e29eb';
+    this.msaColor = '#a5742a';
+    this.pathVisualizerColor = '#a5742a';
+    this.inboundTrafficColor = '#bbbbff';
+    this.outboundTrafficColor = '#bbffbb';
+    this.enrouteTrafficColor = '#ffffbb';
+    this.vfrTrafficColor = '#c28750';
+    this.dangerColor = '#ff0000';
+    this.descendColor = '#ff0000';
+    this.climbColor = '#00ff00';
     this.rate = Communications.rate;
     this.voice = Communications.voice;
     this.pitch = Communications.pitch;
@@ -16,13 +31,11 @@ class SettingsStore extends EventEmitter {
     this.distanceCircles = true;
     this.distanceCirclesDistance = 200;
     this.distanceCirclesAmount = 5;
-    this.distanceCircleColor = '#8aa8ad';
     this.sidsStars = false;
     this.routeVisualization = false;
     this.ilsPathLength = 250;
     this.ilsPathColor = '#8aa8ad';
     this.ilsDashInterval = [20, 30];
-    this.sepVialationCircleColor = '#ff0000';
     this.useTextCmd = false;
     this.newPlaneInterval = 100;
     this.startingInboundPlanes = 3;
@@ -102,11 +115,37 @@ class SettingsStore extends EventEmitter {
   toJson = () => {
     return JSON.stringify(this,
       [
-        'distanceCircles', 'distanceCirclesDistance', 'takeoffInOrder',
-        'useTextCmd', 'goArounds', 'stopSpawn', 'distanceCirclesAmount',
-        'radarFontsize', 'distanceCircleColor', 'ilsPathLength', 'ilsPathColor',
-        'ilsDashInterval', 'sepVialationCircleColor', 'ga', 'enroute',
-        'sidsStars', 'routeVisualization'
+        'distanceCircles', 
+        'distanceCirclesDistance', 
+        'takeoffInOrder',
+        'useTextCmd', 
+        'goArounds', 
+        'stopSpawn', 
+        'distanceCirclesAmount',
+        'radarFontsize', 
+        'distanceCircleColor', 
+        'ilsPathLength', 'ilsPathColor',
+        'ilsDashInterval', 
+        'sepVialationCircleColor', 
+        'ga', 
+        'enroute',
+        'sidsStars', 
+        'routeVisualization', 
+        'backgroundColor',
+        'radarColor',
+        'foregroundColor',
+        'fontColor',
+        'sidColor',
+        'starColor',
+        'msaColor',
+        'pathVisualizerColor',
+        'inboundTrafficColor',
+        'outboundTrafficColor',
+        'enrouteTrafficColor',
+        'vfrTrafficColor',
+        'dangerColor',
+        'descendColor',
+        'climbColor',
       ], 4);
   }
 }
