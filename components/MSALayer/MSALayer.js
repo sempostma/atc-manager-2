@@ -28,7 +28,7 @@ class MSALayer extends Component {
     GameStore.removeListener('change', this.handleGameStoreChange);
   }
 
-  handleGameStoreStart() {
+  handleGameStoreStart = () => {
     this.setState({
       msa: GameStore.map.msa,
     });

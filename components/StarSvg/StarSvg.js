@@ -16,18 +16,18 @@ class StarSvg extends Component {
   componentWillMount() {
     GameStore.on('start', this.handleGameStoreStart);
     GameStore.on('change', this.handleGameStoreChange);
-    this.props.emitter.on('cmdtgt', this.handleCmdTgtChange);
-    this.props.emitter.on('cmdexecution', this.handleCmdTgtChange);
+    if (this.props.emitter) this.props.emitter.on('cmdtgt', this.handleCmdTgtChange);
+    if (this.props.emitter) this.props.emitter.on('cmdexecution', this.handleCmdTgtChange);
   }
 
   componentWillUnmount() {
     GameStore.removeListener('start', this.handleGameStoreStart);
     GameStore.removeListener('change', this.handleGameStoreChange);
-    this.props.emitter.removeListener('cmdtgt', this.handleCmdTgtChange);
-    this.props.emitter.removeListener('cmdexecution', this.handleCmdTgtChange);
+    if (this.props.emitter) this.props.emitter.removeListener('cmdtgt', this.handleCmdTgtChange);
+    if (this.props.emitter) this.props.emitter.removeListener('cmdexecution', this.handleCmdTgtChange);
   }
 
-  handleGameStoreStart() {
+  handleGameStoreStart = () => {
     this.setState({
       stars: GameStore.parsedStars
     });

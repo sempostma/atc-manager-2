@@ -9,6 +9,7 @@ import { loadState, saveState } from '../../lib/persistance';
 import SharingPanel from '../SharingPanel/SharingPanel';
 import { route } from 'preact-router';
 import { compressToUTF16 } from 'lz-string';
+import config from '../../lib/config';
 
 class TimelapseRecorder extends Component {
   constructor(props) {
@@ -101,7 +102,7 @@ class TimelapseRecorder extends Component {
         title: this.state.timelapseName || TimelapseStore.defaultTimelapseName(),
         text: `ATC Manager 2 timelapse with ${stats.departures} departures, \
   ${stats.enroutes} enroute flights and ${stats.arrivals} arrivals.`,
-        url: `${window.location.origin}/#/timelapse/url?id=${id}`,
+        url: `${config.url}timelapse/url?id=${id}`,
       }));
     this.setState({ sharingPromise: sharingPromise });
   }
@@ -126,12 +127,12 @@ class TimelapseRecorder extends Component {
       <div className="TimelapseRecorder">
         <div className={`timelapse ${this.state.reset ? 'reset' : ''}`}>
           <h5>Timelapse recorder</h5>
-          <button disabled={state !== 'ready'} className="timelapse-start" onClick={this.handleStartTimelapse} title="Start Timelapse"><FaVideo /></button>
-          <button disabled={state !== 'recording'} className="timelapse-stop" onClick={this.handleStopTimelapse} title="Stop Timelapse"><FaStop /></button>
-          <button disabled={state !== 'done'} className="timelapse-save" onClick={this.handleSaveTimelapse} title="Save Timelapse"><FaSave /></button>
-          <button disabled={state !== 'done'} className="timelapse-share" onClick={this.handleShareTimelapse} title="Reset Timelapse"><FaShareAlt /></button>
-          <button disabled={state !== 'done'} className="timelapse-reset" onClick={this.handleResetTimelapse} title="Reset Timelapse">&times;</button>
-          <button disabled={state !== 'done'} className="timelapse-play" onClick={this.handlePlayTimelapse} title="Play Timelapse"><FaPlay /></button>
+          <button disabled={state !== 'ready'} className="timelapse-start" onClick={this.handleStartTimelapse} title="Start timelapse"><FaVideo /></button>
+          <button disabled={state !== 'recording'} className="timelapse-stop" onClick={this.handleStopTimelapse} title="Stop timelapse"><FaStop /></button>
+          <button disabled={state !== 'done'} className="timelapse-save" onClick={this.handleSaveTimelapse} title="Save timelapse"><FaSave /></button>
+          <button disabled={state !== 'done'} className="timelapse-share" onClick={this.handleShareTimelapse} title="Share timelapse"><FaShareAlt /></button>
+          <button disabled={state !== 'done'} className="timelapse-reset" onClick={this.handleResetTimelapse} title="Reset timelapse">&times;</button>
+          <button disabled={state !== 'done'} className="timelapse-play" onClick={this.handlePlayTimelapse} title="Play timelapse"><FaPlay /></button>
           <small className="game-speed">{this.state.msg}</small>
         </div>
         {this.state.sharingPromise ? <SharingPanel promise={this.state.sharingPromise} onClose={this.handleShareClose} /> : null}

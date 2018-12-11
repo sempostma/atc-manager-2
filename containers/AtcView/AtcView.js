@@ -13,6 +13,7 @@ import { EventEmitter } from 'events';
 import Airplane from '../../lib/airplane';
 import { loadState, saveState } from '../../lib/persistance';
 import { route } from 'preact-router';
+import { rwyHeading } from '../../lib/map';
 
 class AtcView extends Component {
   constructor(props) {
@@ -124,7 +125,9 @@ class AtcView extends Component {
     const delta = {};
     const model = airplanesById[cmd.tgt.typeId];
     if (cmd.goAround) {
+      var rwyHdg = rwyHeading(GameStore.callsignsPos[cmd.tgt.tgtDirection], cmd.tgt.tgtDirection);
       cmd.direction = '';
+      delta.tgtDirection = rwyHdg;
       cmd.heading = null;
     }
     if (typeof cmd.heading === 'number') {

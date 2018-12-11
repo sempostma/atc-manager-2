@@ -11,6 +11,7 @@
     "serve": "npm run build && preact serve",
     "dev": "preact watch --template template.html",
     "lint": "eslint src",
+    "cloc": "cloc components schema stores lib components assets template.html style.css index.js",
     "deploy": "npm run build && git add . && git commit -m \"prod\" && git subtree push --prefix build origin gh-pages"
   },
   "browserslist": [

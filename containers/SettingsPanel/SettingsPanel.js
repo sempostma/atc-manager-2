@@ -18,7 +18,6 @@ class SettingsPanel extends Component {
         <h5>Settings</h5>
         <hr />
         <Settings />
-        <br />
         <button onClick={this.props.onToggle}><FaCompress /> Hide Options</button>
       </div>
     );

@@ -1,7 +1,7 @@
 import { Component } from 'preact';
 import GameStore from '../../stores/GameStore';
 import { FaCompress, FaDesktop, FaFileVideo, FaImage } from 'react-icons/fa/index.mjs';
-import { activeRwys } from '../../lib/map';
+import { activeRwys, getAltimeter } from '../../lib/map';
 import { upcase, lpad } from '../../lib/util';
 import './InfoPanel.css';
 import { saveAs } from 'file-saver';
@@ -41,10 +41,12 @@ class InfoPanel extends Component {
 
   componentWillMount() {
     GameStore.on('change', this.reRender);
+    SettingsStore.on('change', this.reRender);
   }
 
   componentWillUnmount() {
     GameStore.removeListener('change', this.reRender);
+    SettingsStore.on('change', this.reRender);
   }
 
   reRender = () => this.setState({})
@@ -63,11 +65,9 @@ class InfoPanel extends Component {
     }), `Screenshot ${GameStore.map.name}.svg`);
   }
 
-  handleToggleFullscreen = e => {
-    this.setState({})
-  }
-
   render() {
+    const altimeter = <span>{SettingsStore.millibars ? 'QHN' : 'Altimeter'}
+      : {getAltimeter(GameStore.altimeter, SettingsStore.millibars)}</span>;
     const activeRunways = GameStore.airport.rwyusage ? activeRwys(GameStore.airport, GameStore.winddir) : [];
 
     const runwayUsage = rwy => ['1', '2'].map(t =>
@@ -87,8 +87,8 @@ class InfoPanel extends Component {
         <div>Airport: {GameStore.mapName} - {GameStore.airport.callsign}</div>
         <div><span>Wind: {lpad('' + Math.round(GameStore.winddir), '0', 3)}° / {Math.round(GameStore.windspd)} kts</span></div>
         <div><span>ATIS: {GameStore.getAtis()}</span></div>
-        <div><span>Altimeter: {GameStore.altimeter}</span></div>
-        <div><span>Elevation: {GameStore.airport.elevation}</span></div>
+        <div>{altimeter}</div>
+        <div><span>Elevation: {GameStore.airport.elevation} FT</span></div>
         <br />
         <div>Runways: </div>
         {GameStore.airport.runways && GameStore.airport.runways.map(rwy => runwayUsage(rwy))}

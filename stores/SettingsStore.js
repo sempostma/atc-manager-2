@@ -23,6 +23,7 @@ class SettingsStore extends EventEmitter {
     this.vfrTrafficColor = '#c28750';
     this.dangerColor = '#ff0000';
     this.descendColor = '#ff0000';
+    this.millibars = false;
     this.climbColor = '#00ff00';
     this.rate = Communications.rate;
     this.voice = Communications.voice;
@@ -142,6 +143,7 @@ class SettingsStore extends EventEmitter {
         'inboundTrafficColor',
         'outboundTrafficColor',
         'enrouteTrafficColor',
+        'millibars',
         'vfrTrafficColor',
         'dangerColor',
         'descendColor',

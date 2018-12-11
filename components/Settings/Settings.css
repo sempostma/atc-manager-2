@@ -3,25 +3,29 @@
     
 }
 
-.ColorInput input[type="color"] {
+.settings .ColorInput input[type="color"] {
   float: right;
   margin-bottom: 5px;
 }
 
-.ColorInput {
+.settings .ColorInput {
   clear: both;
 }
 
-.SwitchInput label {
+.settings .SwitchInput label {
   float: right;
   display: block;
   margin-bottom: 5px;
 }
 
-.SwitchInput {
+.settings .SwitchInput {
   clear: both;
 }
 
-input[type=color] {
+.settings input[type=color] {
   float: right;
+}
+
+.settings button {
+  margin-bottom: 10px;
 }
