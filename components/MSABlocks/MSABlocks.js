@@ -13,7 +13,9 @@ class MSABlocks extends Component {
     const y = (average([bounds[0], bounds[2]]) - 360) * zoom + 360;
 
     this.state = { zoom, x, y };
-    this.points = props.polygon.map(p => [p[0], 720 - p[1]].join(',')).join(' ');
+    this.points = props.polygon
+      .map(p => [p[0], 720 - p[1]].join(','))
+      .join(' ');
   }
 
   componentWillReceiveProps(nextProps) {
@@ -29,8 +31,15 @@ class MSABlocks extends Component {
   render() {
     return (
       <g className="msa-polygon">
-        <polygon points={this.points} transform={`translate(640 360) scale(${this.state.zoom}) translate(-640 -360)`} />
-        <text x={this.state.x} y={720 - this.state.y}>{this.props.msa}</text>
+        <polygon
+          points={this.points}
+          transform={`translate(640 360) scale(${
+            this.state.zoom
+          }) translate(-640 -360)`}
+        />
+        <text x={this.state.x} y={720 - this.state.y}>
+          {this.props.msa}
+        </text>
       </g>
     );
   }

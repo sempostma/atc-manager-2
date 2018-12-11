@@ -6,10 +6,7 @@ import GroundRunwaysSvg from '../GroundRunwaysSvg/GroundRunwaysSvg';
 class GroundRadarSvg extends Component {
   constructor(props) {
     super();
-    this.state = {
-      
-    };
-
+    this.state = {};
   }
 
   componentWillMount() {
@@ -22,9 +19,9 @@ class GroundRadarSvg extends Component {
 
   handleGroundGameStoreChange = () => {
     this.setState({});
-  }
-  
-  setRef = el => this.svgRef = el;
+  };
+
+  setRef = el => (this.svgRef = el);
 
   render() {
     const width = typeof window !== 'undefined' ? window.innerWidth : 800;
@@ -32,9 +29,18 @@ class GroundRadarSvg extends Component {
 
     return (
       <div className="GroundRadarSvg">
-        <svg ref={this.setRef} xmlns="http://www.w3.org/2000/svg" className="atc-view-svg" width={width} height={height}
-          viewBox="0 0 1280 720">
-          <GroundRunwaysSvg loaded={this.props.loaded} latLngToXY={this.props.latLngToXY} />
+        <svg
+          ref={this.setRef}
+          xmlns="http://www.w3.org/2000/svg"
+          className="atc-view-svg"
+          width={width}
+          height={height}
+          viewBox="0 0 1280 720"
+        >
+          <GroundRunwaysSvg
+            loaded={this.props.loaded}
+            latLngToXY={this.props.latLngToXY}
+          />
         </svg>
       </div>
     );

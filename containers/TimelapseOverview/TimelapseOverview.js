@@ -10,30 +10,29 @@ class TimelapseOverview extends Component {
     super();
   }
 
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
   handleHomeCLick() {
     route('/');
   }
 
   render() {
-    return (<div className="TimelapseOverview">
-      <div className="abs-container">
-        <button onClick={this.handleHomeCLick}>Home</button>
+    return (
+      <div className="TimelapseOverview">
+        <div className="abs-container">
+          <button onClick={this.handleHomeCLick}>Home</button>
+        </div>
+        <div class="panel">
+          <h3 className="text-center">Timelapse overview</h3>
+        </div>
+        <div className="panel">
+          <SavedTimelapseOpen />
+        </div>
       </div>
-      <div class="panel">
-        <h3 className="text-center">Timelapse overview</h3>
-      </div>
-      <div className="panel">
-        <SavedTimelapseOpen />
-      </div>
-    </div>);
+    );
   }
 }
 
 export default TimelapseOverview;
-

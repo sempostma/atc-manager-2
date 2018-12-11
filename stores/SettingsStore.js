@@ -7,7 +7,8 @@ class SettingsStore extends EventEmitter {
     super();
     this.speechsynthesis = false;
     this.speechrecognition = false;
-    this.voices = Communications.synth.getVoices()
+    this.voices = Communications.synth
+      .getVoices()
       .filter(x => x.lang.startsWith('en'));
     this.backgroundColor = '#1e606b';
     this.radarColor = '#194850';
@@ -66,24 +67,31 @@ class SettingsStore extends EventEmitter {
     this.changeRate = this.changeRate.bind(this);
     this.changeVoice = this.changeVoice.bind(this);
     this.handleVoicesChange = this.handleVoicesChange.bind(this);
-    Communications.synth.addEventListener('voiceschanged', this.handleVoicesChange);
+    Communications.synth.addEventListener(
+      'voiceschanged',
+      this.handleVoicesChange
+    );
   }
 
   persist = () => {
     const state = loadState();
     const settings = JSON.parse(this.toJson());
     Object.keys(settings).forEach(key => {
-      if (JSON.stringify(settings[key]) === JSON.stringify(this.defaultSettings[key])) {
+      if (
+        JSON.stringify(settings[key]) ===
+        JSON.stringify(this.defaultSettings[key])
+      ) {
         delete settings[key];
       }
     });
 
     state.settings = settings;
     saveState(state);
-  }
+  };
 
   handleVoicesChange() {
-    this.voices = Communications.synth.getVoices()
+    this.voices = Communications.synth
+      .getVoices()
       .filter(x => x.lang.startsWith('en'));
     if (Communications.voice === undefined) {
       this.voice = Communications.voice = this.voices[0];
@@ -114,24 +122,26 @@ class SettingsStore extends EventEmitter {
   }
 
   toJson = () => {
-    return JSON.stringify(this,
+    return JSON.stringify(
+      this,
       [
-        'distanceCircles', 
-        'distanceCirclesDistance', 
+        'distanceCircles',
+        'distanceCirclesDistance',
         'takeoffInOrder',
-        'useTextCmd', 
-        'goArounds', 
-        'stopSpawn', 
+        'useTextCmd',
+        'goArounds',
+        'stopSpawn',
         'distanceCirclesAmount',
-        'radarFontsize', 
-        'distanceCircleColor', 
-        'ilsPathLength', 'ilsPathColor',
-        'ilsDashInterval', 
-        'sepVialationCircleColor', 
-        'ga', 
+        'radarFontsize',
+        'distanceCircleColor',
+        'ilsPathLength',
+        'ilsPathColor',
+        'ilsDashInterval',
+        'sepVialationCircleColor',
+        'ga',
         'enroute',
-        'sidsStars', 
-        'routeVisualization', 
+        'sidsStars',
+        'routeVisualization',
         'backgroundColor',
         'radarColor',
         'foregroundColor',
@@ -147,13 +157,13 @@ class SettingsStore extends EventEmitter {
         'vfrTrafficColor',
         'dangerColor',
         'descendColor',
-        'climbColor',
-      ], 4);
-  }
+        'climbColor'
+      ],
+      4
+    );
+  };
 }
 
 const isNullOrUndefined = val => val === undefined && val === null;
 
 export default new SettingsStore();
-
-

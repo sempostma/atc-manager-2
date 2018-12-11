@@ -7,20 +7,16 @@ import GameStore from '../../stores/GameStore';
 class TutorialsRoot extends Component {
   constructor(props) {
     super();
-    this.state = {
-    };
-
+    this.state = {};
   }
 
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
   handleHomeClick = () => {
     route('/');
-  }
+  };
 
   render() {
     return (
@@ -38,7 +34,8 @@ class TutorialsRoot extends Component {
               <div class="block-inner">
                 <span className="link-icon-wrapper">
                   <FaInfo />
-                </span><br />
+                </span>
+                <br />
                 Intro
               </div>
             </div>
@@ -48,9 +45,9 @@ class TutorialsRoot extends Component {
               <div class="block-inner">
                 <span className="link-icon-wrapper">
                   <FaInfo />
-                </span><br />
-                Text commands
-                (not&nbsp;finished)
+                </span>
+                <br />
+                Text commands (not&nbsp;finished)
               </div>
             </div>
           </Link>
@@ -59,9 +56,9 @@ class TutorialsRoot extends Component {
               <div class="block-inner">
                 <span className="link-icon-wrapper">
                   <FaInfo />
-                </span><br />
-                General Aviation
-                (not&nbsp;finished)
+                </span>
+                <br />
+                General Aviation (not&nbsp;finished)
               </div>
             </div>
           </span>
@@ -70,9 +67,9 @@ class TutorialsRoot extends Component {
               <div class="block-inner">
                 <span className="link-icon-wrapper">
                   <FaInfo />
-                </span><br />
-                Advanced
-                (not&nbsp;finished)
+                </span>
+                <br />
+                Advanced (not&nbsp;finished)
               </div>
             </div>
           </span>

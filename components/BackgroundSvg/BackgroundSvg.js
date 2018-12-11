@@ -22,9 +22,11 @@ class BackgroundSvg extends Component {
         });
     }
     return (
-      <g transform="translate(-640, -360)"
+      <g
+        transform="translate(-640, -360)"
         className="background"
-        ref={el => this.el = el} />
+        ref={el => (this.el = el)}
+      />
     );
   }
 }

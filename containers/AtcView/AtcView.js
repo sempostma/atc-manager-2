@@ -30,7 +30,7 @@ class AtcView extends Component {
         altitude: null,
         direction: null,
         speed: null,
-        directionOld: null,
+        directionOld: null
       }
     };
 
@@ -53,48 +53,63 @@ class AtcView extends Component {
 
   handleDocumentClick = () => {
     this.setState({ actionMenu: null });
-  }
+  };
 
   handleGameStoreChange = () => {
     this.setState({});
-  }
+  };
 
   handleWaypointContextMenu = (e, waypoint, id) => {
     if (!this.state.cmd.tgt) return;
     if (Airplane.isVFR(this.state.cmd.tgt)) return;
     e.preventDefault();
-    const actions = [{
-      getTitle: () => `Direct to ${id}`,
-      action: () => this.setState(prevstate => {
-        prevstate.cmd.direction = id;
-        prevstate.cmd.directionOld = false;
-        prevstate.actionMenu = null;
-        return prevstate;
-      }, () => this.handleCmdExecution())
-    }];
+    const actions = [
+      {
+        getTitle: () => `Direct to ${id}`,
+        action: () =>
+          this.setState(
+            prevstate => {
+              prevstate.cmd.direction = id;
+              prevstate.cmd.directionOld = false;
+              prevstate.actionMenu = null;
+              return prevstate;
+            },
+            () => this.handleCmdExecution()
+          )
+      }
+    ];
 
     this.setState({
       actionMenu: {
         left: e.pageX,
         top: e.pageY,
-        actions,
+        actions
       }
     });
-  }
+  };
 
   handleSVGClick = e => {
-    const airplane = getParent(e, element => (element.getAttribute('class') || '').indexOf('airplane') !== -1);
+    const airplane = getParent(
+      e,
+      element =>
+        (element.getAttribute('class') || '').indexOf('airplane') !== -1
+    );
     if (!airplane) return;
     const index = airplane.getAttribute('data-index');
     this.handleAirplaneClick(index);
-  }
+  };
 
   handleTrafficStackClick = e => {
-    const airplane = getParent(e, element => (element.getAttribute('class') || '').indexOf('traffic-stack-entry') !== -1);
+    const airplane = getParent(
+      e,
+      element =>
+        (element.getAttribute('class') || '').indexOf('traffic-stack-entry') !==
+        -1
+    );
     if (!airplane) return;
     const index = airplane.getAttribute('data-index');
     this.handleAirplaneClick(index);
-  }
+  };
 
   handleAirplaneClick = index => {
     const airplane = GameStore.traffic[index];
@@ -105,19 +120,28 @@ class AtcView extends Component {
       return;
     }
     // if (this.state.cmd.tgt) this.handleCmdExecution(); // flush possible previous changes that werent yet debounced.
-    this.setState({
-      cmd: {
-        tgt: airplane,
-        direction: typeof airplane.tgtDirection === 'string' ? airplane.tgtDirection : null,
-        altitude: airplane.tgtAltitude,
-        heading: typeof airplane.tgtDirection === 'number' ? airplane.tgtDirection : null,
-        speed: airplane.tgtSpeed,
-        tgtVfrState: airplane.tgtVfrState
+    this.setState(
+      {
+        cmd: {
+          tgt: airplane,
+          direction:
+            typeof airplane.tgtDirection === 'string'
+              ? airplane.tgtDirection
+              : null,
+          altitude: airplane.tgtAltitude,
+          heading:
+            typeof airplane.tgtDirection === 'number'
+              ? airplane.tgtDirection
+              : null,
+          speed: airplane.tgtSpeed,
+          tgtVfrState: airplane.tgtVfrState
+        }
+      },
+      () => {
+        this.emitter.emit('cmdtgt', this.state.cmd);
       }
-    }, () => {
-      this.emitter.emit('cmdtgt', this.state.cmd);
-    });
-  }
+    );
+  };
 
   handleCmdExecution = () => {
     const cmd = this.state.cmd;
@@ -125,33 +149,58 @@ class AtcView extends Component {
     const delta = {};
     const model = airplanesById[cmd.tgt.typeId];
     if (cmd.goAround) {
-      var rwyHdg = rwyHeading(GameStore.callsignsPos[cmd.tgt.tgtDirection], cmd.tgt.tgtDirection);
+      var rwyHdg = rwyHeading(
+        GameStore.callsignsPos[cmd.tgt.tgtDirection],
+        cmd.tgt.tgtDirection
+      );
       cmd.direction = '';
       delta.tgtDirection = rwyHdg;
       cmd.heading = null;
     }
     if (typeof cmd.heading === 'number') {
-      cmd.heading = (cmd.heading + 359) % 360 + 1;
+      cmd.heading = ((cmd.heading + 359) % 360) + 1;
     }
     if (cmd.direction && cmd.directionOld === false) {
       if (GameStore.callsigns[cmd.direction]) {
-        if (cmd.direction !== cmd.tgt.tgtDirection) delta.tgtDirection = cmd.direction;
+        if (cmd.direction !== cmd.tgt.tgtDirection)
+          delta.tgtDirection = cmd.direction;
         cmd.directionOld = true;
         cmd.heading = '';
       }
-    }
-    else if (typeof cmd.heading === 'number' && cmd.heading !== cmd.tgt.tgtDirection) {
+    } else if (
+      typeof cmd.heading === 'number' &&
+      cmd.heading !== cmd.tgt.tgtDirection
+    ) {
       delta.tgtDirection = cmd.heading;
       cmd.direction = '';
     }
-    if (typeof cmd.altitude === 'number' && !Airplane.isVFR(cmd.tgt) && cmd.altitude !== cmd.tgt.tgtAltitude) {
-      delta.tgtAltitude = cmd.altitude = Math.min(model.ceiling * 1000, Math.max(2000, cmd.altitude));
+    if (
+      typeof cmd.altitude === 'number' &&
+      !Airplane.isVFR(cmd.tgt) &&
+      cmd.altitude !== cmd.tgt.tgtAltitude
+    ) {
+      delta.tgtAltitude = cmd.altitude = Math.min(
+        model.ceiling * 1000,
+        Math.max(2000, cmd.altitude)
+      );
     }
-    if (cmd.speed && cmd.speed !== cmd.tgt.tgtSpeed) delta.tgtSpeed = cmd.speed = Math.min(model.topSpeed, Math.max(model.minSpeed, cmd.speed));
+    if (cmd.speed && cmd.speed !== cmd.tgt.tgtSpeed)
+      delta.tgtSpeed = cmd.speed = Math.min(
+        model.topSpeed,
+        Math.max(model.minSpeed, cmd.speed)
+      );
     if (cmd.takeoff && cmd.tgt.rwy) {
       const rwyWaitingOn = GameStore.rwyWaitingOn(cmd.tgt);
       if (rwyWaitingOn.length > 0) {
-        sendMessageWarning(`${communications.getCallsign(cmd.tgt, true)} cannot takeoff, they are behind ${communications.getCallsign(rwyWaitingOn.pop(), true)}`);
+        sendMessageWarning(
+          `${communications.getCallsign(
+            cmd.tgt,
+            true
+          )} cannot takeoff, they are behind ${communications.getCallsign(
+            rwyWaitingOn.pop(),
+            true
+          )}`
+        );
         return;
       }
       delta.waiting = false;
@@ -159,9 +208,19 @@ class AtcView extends Component {
     if (cmd.goAroundVFR) {
       delta.dirty = false;
     }
-    if (typeof cmd.tgtVfrState === 'number' && cmd.tgtVfrState !== cmd.tgt.tgtVfrState) delta.tgtVfrState = cmd.tgtVfrState;
+    if (
+      typeof cmd.tgtVfrState === 'number' &&
+      cmd.tgtVfrState !== cmd.tgt.tgtVfrState
+    )
+      delta.tgtVfrState = cmd.tgtVfrState;
     if (Object.keys(delta).length > 0) {
-      var cmdTxt = Communications.getCommandText(cmd, GameStore.winddir, GameStore.windspd, GameStore.map, GameStore.callsignsPos);
+      var cmdTxt = Communications.getCommandText(
+        cmd,
+        GameStore.winddir,
+        GameStore.windspd,
+        GameStore.map,
+        GameStore.callsignsPos
+      );
       const atcMsg = Communications.getCallsign(cmd.tgt) + ', ' + cmdTxt;
       GameStore.addLog(atcMsg, 'ATC');
       // pilot:
@@ -184,49 +243,66 @@ class AtcView extends Component {
     if (cmd.goAround) {
       delete cmd.goAround;
     }
-  }
+  };
 
   handleZoom = e => {
     GameStore.adjustZoom(-e.deltaY);
-  }
+  };
 
   handleCmdChange = cmd => {
     this.setState({ cmd });
-  }
+  };
 
   handleTutorialBtnClose = () => {
     const state = loadState();
     state.introTutorial = true;
     saveState(state);
     this.setState({ tutorialDone: true });
-  }
+  };
 
   render() {
     return (
       <div className="atc-view">
-        <SvgRadar onZoom={this.handleZoom}
+        <SvgRadar
+          onZoom={this.handleZoom}
           onClick={this.handleSVGClick}
           cmd={this.state.cmd}
           emitter={this.emitter}
-          onWayPointContextMenu={this.handleWaypointContextMenu} />
+          onWayPointContextMenu={this.handleWaypointContextMenu}
+        />
 
         <TrafficStack
           cmd={this.state.cmd}
           onChange={this.handleCmdChange}
           onCmdExecution={this.handleCmdExecution}
           emitter={this.emitter}
-          onClick={this.handleTrafficStackClick} />
+          onClick={this.handleTrafficStackClick}
+        />
 
-        <div className={`tutorials-btn-wrapper ${this.state.tutorialDone ? 'hidden' : ''}`}>
-          <span onClick={this.handleTutorialBtnClose} class="tutorials-btn-wrapper-close">&times;</span>
-          <button onClick={() => route('/tutorials/intro')} className="button tutorials-btn">
+        <div
+          className={`tutorials-btn-wrapper ${
+            this.state.tutorialDone ? 'hidden' : ''
+          }`}
+        >
+          <span
+            onClick={this.handleTutorialBtnClose}
+            class="tutorials-btn-wrapper-close"
+          >
+            &times;
+          </span>
+          <button
+            onClick={() => route('/tutorials/intro')}
+            className="button tutorials-btn"
+          >
             <div>Intro tutorial</div>
             <small>This tutorial will teach you the basics of the game.</small>
           </button>
         </div>
 
-        {this.state.actionMenu && <ActionContextMenu {...this.state.actionMenu} />}
-      </div >
+        {this.state.actionMenu && (
+          <ActionContextMenu {...this.state.actionMenu} />
+        )}
+      </div>
     );
   }
 }

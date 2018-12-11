@@ -1,28 +1,27 @@
 import { Component } from 'preact';
 import './AtomFeedItem.css';
-import timeago from  'timeago.js';
+import timeago from 'timeago.js';
 
 class AtomFeedItem extends Component {
   constructor(props) {
     super();
-    this.state = {
-    };
-
+    this.state = {};
   }
 
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
   render() {
     return (
       <a target="_blank" className="AtomFeedItem" href={this.props.link}>
-        <figure style={{ backgroundImage: `url(${this.props.image})` }}></figure>
-        <h6>{ this.props.title }</h6>
-        <small>{ timeago().format(new Date(this.props.time)) }</small>
-        <p>{ this.props.content }<br /></p>
+        <figure style={{ backgroundImage: `url(${this.props.image})` }} />
+        <h6>{this.props.title}</h6>
+        <small>{timeago().format(new Date(this.props.time))}</small>
+        <p>
+          {this.props.content}
+          <br />
+        </p>
       </a>
     );
   }

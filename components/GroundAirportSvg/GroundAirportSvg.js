@@ -4,23 +4,15 @@ import './GroundAirportSvg.css';
 class GroundAirportSvg extends Component {
   constructor(props) {
     super();
-    this.state = {
-    };
-
+    this.state = {};
   }
 
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
   render() {
-    return (
-      <div className="GroundAirportSvg">
-        GroundAirportSvg Component
-      </div>
-    );
+    return <div className="GroundAirportSvg">GroundAirportSvg Component</div>;
   }
 }
 

@@ -16,8 +16,7 @@ import StarSvg from '../StarSvg/StarSvg';
 class SvgRadar extends Component {
   constructor(props) {
     super();
-    this.state = {
-    };
+    this.state = {};
   }
 
   componentWillMount() {
@@ -32,40 +31,46 @@ class SvgRadar extends Component {
 
   reRender = () => {
     this.setState({});
-  }
+  };
 
   setRef = el => GameStore.setSvgEl(el);
 
   render() {
-    const airplanes = GameStore.traffic.map((airplane, i) =>
+    const airplanes = GameStore.traffic.map((airplane, i) => (
       <RadarTraffic
         stateEmitter={GameStore}
         key={i}
         index={i}
         airplane={airplane}
-        cmd={this.props.cmd} />
-    );
-    const innerWidth = typeof window !== 'undefined'
-      ? window.innerWidth
-      : 800;
-    const innerHeight = typeof window !== 'undefined'
-      ? window.innerHeight
-      : 600;
+        cmd={this.props.cmd}
+      />
+    ));
+    const innerWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
+    const innerHeight =
+      typeof window !== 'undefined' ? window.innerHeight : 600;
     const height = innerHeight;
     const width = this.props.timelapse ? innerWidth : innerWidth - 250;
     const transformScale =
-      `translate(${config.width / 2} ${config.height / 2}) `
-      + `scale(${GameStore.zoom}) `
-      + `translate(-${config.width / 2} -${config.height / 2})`;
+      `translate(${config.width / 2} ${config.height / 2}) ` +
+      `scale(${GameStore.zoom}) ` +
+      `translate(-${config.width / 2} -${config.height / 2})`;
     const fontSize = SettingsStore.radarFontsize;
     const styles = getStyle(SettingsStore);
 
     return (
-      <svg ref={this.setRef} onWheel={this.props.onZoom}
+      <svg
+        ref={this.setRef}
+        onWheel={this.props.onZoom}
         xmlns="http://www.w3.org/2000/svg"
-        className="atc-view-svg" width={width} height={height}
-        onClick={this.props.onClick} viewBox="0 0 1280 720"
-        style={`background: ${SettingsStore.radarColor}; overflow: visible; font-size: ${fontSize}px;`}>
+        className="atc-view-svg"
+        width={width}
+        height={height}
+        onClick={this.props.onClick}
+        viewBox="0 0 1280 720"
+        style={`background: ${
+          SettingsStore.radarColor
+        }; overflow: visible; font-size: ${fontSize}px;`}
+      >
         <style>{styles}</style>
         <g transform={transformScale}>
           <BackgroundSvg name={GameStore.id} />
@@ -77,8 +82,14 @@ class SvgRadar extends Component {
         <Airport />
         <RouteVisualizer cmd={this.props.cmd} emitter={this.props.emitter} />
         {airplanes}
-        <rect width="100%" height="100%" fill="none" stroke="#fff"
-          stroke-dasharray="20, 20" transform={transformScale} />
+        <rect
+          width="100%"
+          height="100%"
+          fill="none"
+          stroke="#fff"
+          stroke-dasharray="20, 20"
+          transform={transformScale}
+        />
       </svg>
     );
   }

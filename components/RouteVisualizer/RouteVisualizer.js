@@ -21,7 +21,7 @@ class RouteVisualizer extends Component {
       this.props.emitter.on('cmdexecution', this.setLine);
     }
     GameStore.on('change', this.setLine);
-  }
+  };
 
   componentWillUnmount = () => {
     GameStore.removeListener('change', this.setLine);
@@ -29,7 +29,7 @@ class RouteVisualizer extends Component {
       this.props.emitter.removeListener('cmdtgt', this.setLine);
       this.props.emitter.removeListener('cmdexecution', this.setLine);
     }
-  }
+  };
 
   setLine = () => {
     const tgt = this.props.cmd.tgt;
@@ -41,22 +41,30 @@ class RouteVisualizer extends Component {
         return this.setState({ points: [], zoom: GameStore.zoom });
       }
       const dir = GameStore.callsignsPos[tgt.tgtDirection];
-      this.setState({ points: [{ 0: x, 1: y }, { 0: dir.x, 1: dir.y }], zoom: GameStore.zoom });
+      this.setState({
+        points: [{ 0: x, 1: y }, { 0: dir.x, 1: dir.y }],
+        zoom: GameStore.zoom
+      });
     } else if (typeof tgt.tgtDirection === 'number') {
       const v = hdgToVector(tgt.tgtDirection);
       const vlen = 10000;
       const vr = [v[0] * vlen + x, v[1] * vlen + y];
-      this.setState({ points: [{ 0: x, 1: y }, { 0: vr[0], 1: vr[1] }], zoom: GameStore.zoom });
+      this.setState({
+        points: [{ 0: x, 1: y }, { 0: vr[0], 1: vr[1] }],
+        zoom: GameStore.zoom
+      });
     } else {
       this.setState({ points: [], zoom: GameStore.zoom });
     }
-  }
+  };
 
   render() {
-    const path = svgPath(this.state.points.map(p => ([
-      (p[0] - config.width / 2) * this.state.zoom + config.width / 2,
-      (config.height / 2 - p[1]) * this.state.zoom + config.height / 2,
-    ])));
+    const path = svgPath(
+      this.state.points.map(p => [
+        (p[0] - config.width / 2) * this.state.zoom + config.width / 2,
+        (config.height / 2 - p[1]) * this.state.zoom + config.height / 2
+      ])
+    );
     return (
       <g className="RouteVisualizer">
         <path d={path} class="plane-path" stroke="brown" />

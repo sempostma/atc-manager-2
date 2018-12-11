@@ -4,16 +4,12 @@ import './OperatorSubmissionSuccess.css';
 class OperatorSubmissionSuccess extends Component {
   constructor(props) {
     super();
-    this.state = {
-    };
-
+    this.state = {};
   }
 
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
   render() {
     return (

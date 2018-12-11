@@ -4,16 +4,12 @@ import './AirplaneSubmissionSuccess.css';
 class AirplaneSubmissionSuccess extends Component {
   constructor(props) {
     super();
-    this.state = {
-    };
-
+    this.state = {};
   }
 
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
   render() {
     return (

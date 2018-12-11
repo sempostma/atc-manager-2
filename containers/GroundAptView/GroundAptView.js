@@ -5,21 +5,20 @@ import GroundRadarSvg from '../../components/GroundRadarSvg/GroundRadarSvg';
 class GroundAptView extends Component {
   constructor(props) {
     super();
-    this.state = {
-    };
-
+    this.state = {};
   }
 
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
   render() {
     return (
       <div className="GroundAptView">
-        <GroundRadarSvg loaded={this.props.loaded} latLngToXY={this.props.latLngToXY} />
+        <GroundRadarSvg
+          loaded={this.props.loaded}
+          latLngToXY={this.props.latLngToXY}
+        />
       </div>
     );
   }

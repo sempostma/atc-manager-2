@@ -1,7 +1,11 @@
 import { Component } from 'preact';
 import './GameMessages.css';
 import { EventEmitter } from 'events';
-import { FaExclamationCircle, FaInfoCircle, FaTimesCircle } from 'react-icons/fa/index.mjs';
+import {
+  FaExclamationCircle,
+  FaInfoCircle,
+  FaTimesCircle
+} from 'react-icons/fa/index.mjs';
 
 const emitter = new EventEmitter();
 
@@ -40,7 +44,7 @@ export class GameMessages extends Component {
         //   type: 'error',
         //   message: 'example error'
         // }
-      ],
+      ]
     };
   }
 
@@ -59,18 +63,17 @@ export class GameMessages extends Component {
       this.key %= this.len;
       return prevstate;
     });
-  }
+  };
 
   render() {
     return (
       <div className="game-messages">
-        {this.state.messages.map((msg) =>
+        {this.state.messages.map(msg => (
           <div data-type={msg.type} key={msg.key} className="message">
             {icons[msg.type]()} {msg.message}
           </div>
-        )}
+        ))}
       </div>
     );
   }
 }
-

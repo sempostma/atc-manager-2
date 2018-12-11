@@ -2,26 +2,26 @@ import React, { Component } from 'react';
 import './RunwaySvg.css';
 
 class RunwaySvg extends Component {
-    constructor(props) {
-        super();
-        this.state = {
-        };
+  constructor(props) {
+    super();
+    this.state = {
+    };
 
-    }
+  }
 
-    componentWillMount() {
-    }
+  componentWillMount() {
+  }
 
-    componentWillUnmount() {
-    }
+  componentWillUnmount() {
+  }
 
-    render() {
-        return (
-            <div className="RunwaySvg">
+  render() {
+    return (
+      <div className="RunwaySvg">
                 RunwaySvg Component
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }
 
 export default RunwaySvg;

@@ -11,7 +11,6 @@ class MSALayer extends Component {
       msa: GameStore.map.msa,
       zoom: GameStore.zoom
     };
-
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -30,26 +29,32 @@ class MSALayer extends Component {
 
   handleGameStoreStart = () => {
     this.setState({
-      msa: GameStore.map.msa,
+      msa: GameStore.map.msa
     });
-  }
+  };
 
   handleGameStoreChange = () => {
     if (this.state.zoom === GameStore.zoom) return;
 
     this.setState({
-      zoom: GameStore.zoom  
+      zoom: GameStore.zoom
     });
-  }
+  };
 
   render() {
     return (
       <g className="msa-layer">
-        { this.state.msa.polygons.map((polygon, i) => <MSABlocks zoom={this.state.zoom} key={i} polygon={polygon.vertices} msa={polygon.alt} />) }
+        {this.state.msa.polygons.map((polygon, i) => (
+          <MSABlocks
+            zoom={this.state.zoom}
+            key={i}
+            polygon={polygon.vertices}
+            msa={polygon.alt}
+          />
+        ))}
       </g>
     );
   }
-
 }
 
 export default MSALayer;
