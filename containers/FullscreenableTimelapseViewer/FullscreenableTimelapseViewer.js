@@ -38,7 +38,6 @@ class TimelapseViewer extends Component {
   };
 
   handleSVGClick = e => {
-    console.log('click');
   };
 
   componentWillMount() {

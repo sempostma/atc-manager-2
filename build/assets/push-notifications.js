@@ -1,6 +1,5 @@
 self.addEventListener('push', ev => {
   const data = ev.data.json();
-  console.log('Got push', data);
   data.badge = 'https://esstudio.site/atc-manager-2/assets/images/meta-icons/mstile-144x144.png';
   data.icon = 'https://esstudio.site/atc-manager-2/assets/images/image_src.png';
   ev.waitUntil(

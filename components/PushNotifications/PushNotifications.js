@@ -38,7 +38,6 @@ class PushNotifications extends Component {
   }
 
   componentWillMount() {
-    console.log('going to register');
     if (typeof window === 'undefined') return;
     navigator.serviceWorker.ready
       .then(registration => {
@@ -72,11 +71,6 @@ class PushNotifications extends Component {
                     })
                       .then(response => response.text())
                       .then(json => {
-                        var obj = JSON.parse(json);
-                        console.log(
-                          'Successfully registered push notifications',
-                          obj
-                        );
                         this.setState({
                           status: status.REGISTERED,
                           subscription

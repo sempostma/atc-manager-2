@@ -18,9 +18,9 @@ class SettingsStore extends EventEmitter {
     this.starColor = '#1e29eb';
     this.msaColor = '#a5742a';
     this.pathVisualizerColor = '#a5742a';
-    this.inboundTrafficColor = '#bbbbff';
-    this.outboundTrafficColor = '#bbffbb';
-    this.enrouteTrafficColor = '#ffffbb';
+    this.inboundTrafficColor = '#99f';
+    this.outboundTrafficColor = '#696';
+    this.enrouteTrafficColor = '#b3b357';
     this.vfrTrafficColor = '#c28750';
     this.dangerColor = '#ff0000';
     this.descendColor = '#ff0000';

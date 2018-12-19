@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events';
 import Airplane from '../lib/airplane';
 import config from '../lib/config';
+import './gamestore-helpers/communications';
 import {
   loadMap,
   angleDelta,
@@ -30,6 +31,7 @@ import {
 } from '../components/GameMessages/GameMessages';
 import { rndArr } from '../lib/util';
 import { parseRoute, mostSuitableLeg } from '../lib/sidstar';
+import { TakeoffRunwayAssignment } from '../lib/maps/runway-assignment';
 
 const oneMileByThreeMileRuleDistance = Math.pow(
   config.oneMileRuleDistance / config.threeMileRuleDistance,
@@ -381,34 +383,25 @@ class GameStore extends EventEmitter {
   };
 
   newPlaneVFROutbound = () => {
-    let activeRunways = activeRwys(this.airport, this.winddir);
-    let activeRunwaysAssigned = activeRunways.filter(
-      rwy =>
-        this.disableTakoffsOnRwysSet[rwy] !== 'commercial' &&
-        this.disableTakoffsOnRwysSet[rwy] !== 'none'
-    );
-    // if the user has a prefered runway. 
-    // Use that runway. 
-    // If the user has al of the runways disabled choose one at random.
-    let couldNotFindAssignedRwy = activeRunwaysAssigned.length === 0;
-    if (activeRunwaysAssigned.length > 0) activeRunways = activeRunwaysAssigned;
-    const item =
-      activeRunways[Math.floor(Math.random() * activeRunways.length)];
-    const rwy = this.callsignsPos[item];
-    const hdg = rwyHeading(rwy, item);
-
     const outboundWaypoint = ['NORTH', 'EAST', 'SOUTH', 'WEST'][
       Math.floor(Math.random() * 4)
     ];
+    const assignment = new TakeoffRunwayAssignment(
+      this.map,
+      this.callsignsPos,
+      this.disableTakoffsOnRwysSet,
+      this.windspd,
+      this.winddir
+    );
 
     const airplane = Airplane.createVFROutbound(
-      rwy.x,
-      rwy.y,
-      hdg,
-      item,
+      assignment,
       outboundWaypoint,
       this.map
     );
+
+    const model = Airplane.getModel(airplane);
+    const { couldNotFindAssignedRwy, rwy } = assignment.getMeta(model);
 
     const callsign = communications.getCallsign(airplane, true);
 
@@ -416,14 +409,14 @@ class GameStore extends EventEmitter {
       const callsign = communications.getCallsign(airplane, true);
       sendMessageWarning(
         'No assigned takeoff runway for general aviation, '
-        + `${callsign} was ordered to taxi to RWY ${item}.`
+        + `${callsign} was ordered to taxi to RWY ${rwy}.`
       );
     }
 
     this.traffic.push(airplane);
 
     // has atis
-    const msg = this.airport.callsign + ' approach, with you for ' + item + '.';
+    const msg = this.airport.callsign + ' approach, with you for ' + rwy + '.';
     this.addLog(msg, callsign);
 
     const atcMsg =
@@ -431,11 +424,11 @@ class GameStore extends EventEmitter {
       ', ' +
       this.airport.callsign +
       ' approach, hold short ' +
-      item +
+      rwy +
       '.';
     this.addLog(atcMsg, 'ATC');
 
-    const readBackMsg = 'Roger hold short of ' + item + ', ' + callsign + '.';
+    const readBackMsg = 'Roger hold short of ' + rwy + ', ' + callsign + '.';
     this.addLog(readBackMsg, callsign);
   };
 
@@ -570,45 +563,22 @@ class GameStore extends EventEmitter {
   };
 
   newPlaneOutbound = () => {
-    let activeRunways = activeRwys(this.airport, this.winddir);
-    let activeRunwaysAssigned = activeRunways.filter(
-      rwy =>
-        this.disableTakoffsOnRwysSet[rwy] !== 'ga' &&
-        this.disableTakoffsOnRwysSet[rwy] !== 'none'
-    );
-    // if the user has a prefered runway. Use that runway. 
-    // If the user has al of the runways disabled choose one at random.
-    let couldNotFindAssignedRwy = activeRunwaysAssigned.length === 0;
-    if (activeRunwaysAssigned.length > 0) activeRunways = activeRunwaysAssigned;
-
-    const item =
-      activeRunways[Math.floor(Math.random() * activeRunways.length)];
-    const rwy = this.callsignsPos[item];
-    const hdg = rwy.ref.name1 === item ? rwy.ref.hdg1 : rwy.ref.hdg2;
     const outboundWaypoint = this.map.outboundWaypoints[
       Math.floor(Math.random() * this.map.outboundWaypoints.length)
     ];
+    const runwayAssignment = new TakeoffRunwayAssignment(this.map, this.callsignsPos, this.disableTakoffsOnRwysSet, this.windspd, this.winddir);
     const airplane = Airplane.createOutbound(
-      rwy.x,
-      rwy.y,
-      hdg,
-      item,
+      runwayAssignment,
       outboundWaypoint,
       this.map
     );
+    const { rwy } = airplane;
     this.traffic.push(airplane);
 
     const callsign = communications.getCallsign(airplane, true);
 
-    if (couldNotFindAssignedRwy) {
-      const callsign = communications.getCallsign(airplane, true);
-      const warning = 'No assigned takeoff runway for commercial flights, '
-        + `${callsign} was ordered to taxi to RWY ${item}.`;
-      sendMessageWarning(warning);
-    }
-
     // has atis
-    const msg = this.airport.callsign + ' approach, with you for ' + item + '.';
+    const msg = this.airport.callsign + ' approach, with you for ' + rwy + '.';
     this.addLog(msg, callsign);
 
     const atcMsg =
@@ -616,11 +586,11 @@ class GameStore extends EventEmitter {
       ', ' +
       this.airport.callsign +
       ' approach, hold short ' +
-      item +
+      rwy +
       '.';
     this.addLog(atcMsg, 'ATC');
 
-    const readBackMsg = 'Roger hold short of ' + item + ', ' + callsign + '.';
+    const readBackMsg = 'Roger hold short of ' + rwy + ', ' + callsign + '.';
     this.addLog(readBackMsg, callsign);
   };
 
@@ -1379,7 +1349,7 @@ class GameStore extends EventEmitter {
             Math.max(
               -100 * s,
               Math.min(
-                airplane.altitude,
+                airplane.tgtAltitude,
                 distance * config.ilsSlopeSteepness + rwyElev
               ) - airplane.altitude
             )
@@ -1417,34 +1387,24 @@ class GameStore extends EventEmitter {
           const d =
             crossWindMultiplier * config.likelyNessOfGoAroundDueWindHhdg;
           const rnd = Math.random();
-          if (
-            rnd - d - s < config.likelyNessOfGoAround &&
-            SettingsStore.goArounds
-          ) {
-            if (rnd < config.likelyNessOfGoAround)
-              sendMessageInfo(
-                `${communications.getCallsign(airplane, true)} is going around.`
-              );
-            else if (
+          if (rnd - d - s < config.likelyNessOfGoAround && SettingsStore.goArounds) {
+            if (rnd < config.likelyNessOfGoAround) {
+              sendMessageInfo(`${communications.getCallsign(airplane, true)} is going around.`);
+            } else if (
               rnd - d - s < config.likelyNessOfGoAround &&
               this.windspd > 10 &&
               crossWindMultiplier > 0.5
-            )
-              sendMessageInfo(
-                `${communications.getCallsign(
-                  airplane,
-                  true
-                )} is making a go around because of a ${
-                this.windspd
-                }KTS crosswind.`
-              );
-            else if (rnd - d - s < config.likelyNessOfGoAround)
+            ) {
+              sendMessageInfo(`${communications.getCallsign(airplane, true)} is making a go around because of a ${this.windspd}KTS crosswind.`);
+            }
+            else if (rnd - d - s < config.likelyNessOfGoAround) {
               sendMessageInfo(
                 `${communications.getCallsign(
                   airplane,
                   true
                 )} is making a go around because of bad weather.`
               );
+            }
             // go-around
             airplane.landing = false;
           } else {

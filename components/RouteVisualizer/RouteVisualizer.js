@@ -4,6 +4,7 @@ import GameStore from '../../stores/GameStore';
 import { svgPath } from '../../lib/svg';
 import config from '../../lib/config';
 import { hdgToVector } from '../../lib/map';
+import Airplane from '../../lib/airplane';
 
 class RouteVisualizer extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class RouteVisualizer extends Component {
   setLine = () => {
     const tgt = this.props.cmd.tgt;
     if (!tgt) return;
+    if (Airplane.isVFR(tgt)) return;
     const { x, y } = tgt;
     if (typeof tgt.tgtDirection === 'string') {
       const a = GameStore.callsigns[tgt.tgtDirection];

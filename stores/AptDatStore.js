@@ -34,7 +34,6 @@ class AptDatStore extends EventEmitter {
 
   handleDataloaded = resolved => {
     const [aptNav, earthFix, earthNav] = resolved;
-    console.log('data loaded');
     this.loading = false;
     this.emit('change');
 

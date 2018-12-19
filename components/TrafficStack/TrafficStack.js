@@ -255,7 +255,7 @@ class TrafficStack extends Component {
             onInput={this.handleHeadingTgtChange}
             value={cmd.heading}
             type="number"
-            step="10"
+            step="5"
           />
         </div>
         <div>

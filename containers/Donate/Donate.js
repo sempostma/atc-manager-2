@@ -54,7 +54,43 @@ class Donate extends Component {
             <select style="width: 300px;" name="amount">
               <option value="1.00">1.00 - Bugfixing</option>
               <option selected value="2.00">
-                2.00 - Buy us a coffee
+                2.00 - Buy me a coffee
+              </option>
+              <option value="3.00">
+                3.00 - Buy me a Latte
+              </option>
+              <option value="4.00">
+                4.00 - Buy me a Caramel Macchiato
+              </option>
+              <option value="5.00">
+                5.00 - Become a subreddit moderator 
+              </option>
+              <option value="7.00">
+                7.00 - New timelapse video 
+              </option>
+              <option value="8.00">
+                8.00 - More tutorials
+              </option>
+              <option value="10.00">
+                10.00 - Buy me lunch
+              </option>
+              <option value="20.00">
+                20.00 - Buy me dinner
+              </option>
+              <option value="50.00">
+                50.00 - Help me upgrade to a 1920x1080 monitor
+              </option>
+              <option value="100.00">
+                100.00 - Multiplayer
+              </option>
+              <option value="200.00">
+                200.00 - Emergencies
+              </option>
+              <option value="500.00">
+                500.00 - Help me pay off my student debt
+              </option>
+              <option value="1000.00">
+                1000.00 - Don't
               </option>
             </select>
             <br />
@@ -62,7 +98,7 @@ class Donate extends Component {
           <div>
             <small>
               If you're preferred currency is not listed, please use "Give a
-              custom amount"
+              custom amount".
             </small>
           </div>
           <div>

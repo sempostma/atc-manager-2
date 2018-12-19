@@ -25,7 +25,6 @@ class AtomFeed extends Component {
   componentWillUnmount() {}
 
   parseAtomDocument = feed => {
-    console.log('parse atom feed', feed);
     const items = Array.from(feed.getElementsByTagName('entry')).map(entry => ({
       title: entry.getElementsByTagName('title')[0].textContent,
       time: entry.getElementsByTagName('published')[0].textContent,

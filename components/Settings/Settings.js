@@ -431,7 +431,7 @@ class Settings extends Component {
                 <input
                   className="range-slider__range"
                   type="range"
-                  min="20"
+                  min="10"
                   max="400"
                   step="10"
                   value={SettingsStore.newPlaneInterval}

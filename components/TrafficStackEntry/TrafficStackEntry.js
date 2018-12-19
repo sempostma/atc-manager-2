@@ -9,6 +9,20 @@ import GameStore from '../../stores/GameStore';
 import PlaneSpd from '../PlaneSpd/PlaneSpd';
 import PlaneAlt from '../PlaneAlt/PlaneAlt';
 import communications from '../../lib/communications';
+import SettingsStore from '../../stores/SettingsStore';
+
+const getPlaneColor = airplane => {
+  switch (airplane.routeType) {
+    case routeTypes.ENROUTE:
+      return SettingsStore.enrouteTrafficColor;
+    case routeTypes.OUTBOUND:
+      return SettingsStore.outboundTrafficColor;
+    case routeTypes.INBOUND:
+      return SettingsStore.inboundTrafficColor;
+    default:
+      return SettingsStore.vfrTrafficColor;
+  }
+}
 
 class TrafficStackEntry extends Component {
   constructor(props) {
@@ -41,21 +55,23 @@ class TrafficStackEntry extends Component {
       airplane.heading === airplane.tgtDirection
         ? null
         : '⇨' +
-          (typeof airplane.tgtDirection === 'string'
-            ? `${airplane.tgtDirection}`
-            : `000${Math.floor(airplane.tgtDirection)}`.substr(-3)) +
-          '°';
+        (typeof airplane.tgtDirection === 'string'
+          ? `${airplane.tgtDirection}`
+          : `000${Math.floor(airplane.tgtDirection)}`.substr(-3)) +
+        '°';
     const model = airplanesById[airplane.typeId];
 
+    const color = getPlaneColor(airplane);
+
     return (
-      <div
+      <div style={{ backgroundColor: color }}
         className={`traffic-stack-entry ${routeTypes[
           airplane.routeType
         ].replace(/ /g, '-')} ${
           this.props.cmd.tgt === airplane
             ? 'traffic-active'
             : 'traffic-not-active'
-        }`}
+          }`}
         data-index={this.props.index}
       >
         {communications.getCallsign(airplane, true)} {model.shortName} {spd}{' '}
