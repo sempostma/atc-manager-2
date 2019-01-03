@@ -262,6 +262,9 @@ class AboutPanel extends Component {
               LiuPilot
             </a>
           </li>
+          <li>
+            Charlie Bravo
+          </li>
         </ul>
         <h5>Links: (external)</h5>
         <ul>

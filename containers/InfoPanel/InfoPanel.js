@@ -19,7 +19,7 @@ import TimelapseStore from '../../stores/TimelapseStore';
 import { loadState } from '../../lib/persistance';
 import TimelapseRecorder from '../../components/TimelapseRecorder/TimelapseRecorder';
 
-const isFullscreen = () =>
+const isFullscreen = () => typeof window !== 'undefined' &&
   !(
     (document.fullScreenElement && document.fullScreenElement !== null) ||
     (!document.mozFullScreen && !document.webkitIsFullScreen)

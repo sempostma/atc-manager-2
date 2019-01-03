@@ -76,9 +76,7 @@
 </head>
 
 <body>
-  <%= htmlWebpackPlugin.options.ssr({
-			url: '/'
-		}) %>
+  <%= htmlWebpackPlugin.options.ssr({ url: '/' }) %>
   <script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
   <script>(typeof window !== 'undefined' && window.fetch) || document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
 </body>
