@@ -27,6 +27,14 @@ class GroundRadarSvg extends Component {
     const width = typeof window !== 'undefined' ? window.innerWidth : 800;
     const height = typeof window !== 'undefined' ? window.innerHeight : 600;
 
+    const style = `
+.ground-taxi-nodes {
+  stroke: green;
+}
+.ground-taxi-edges {
+  stroke: green;
+}`;
+
     return (
       <div className="GroundRadarSvg">
         <svg
@@ -37,6 +45,7 @@ class GroundRadarSvg extends Component {
           height={height}
           viewBox="0 0 1280 720"
         >
+          <style>{style}</style>
           <GroundRunwaysSvg
             loaded={this.props.loaded}
             latLngToXY={this.props.latLngToXY}

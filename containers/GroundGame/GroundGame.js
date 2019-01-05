@@ -15,7 +15,7 @@ class GroundGame extends Component {
   }
 
   componentWillMount() {
-    this.getAptByIcao('EHRD');
+    this.getAptByIcao('KBFI');
   }
 
   componentWillUnmount() {
