@@ -6,23 +6,21 @@ import { route } from 'preact-router';
 class NotFound extends Component {
   constructor(props) {
     super();
-    this.state = {
-    };
-
+    this.state = {};
   }
 
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
   render() {
     return (
       <div className="NotFound">
         <div className="panel">
           <h1>404</h1>
-          Page not found<br /><br />
+          Page not found
+          <br />
+          <br />
           <button onclick={() => route('/')}>Home</button>
           <button onclick={() => history.goBack()}>Back</button>
         </div>

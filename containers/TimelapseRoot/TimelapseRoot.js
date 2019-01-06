@@ -6,7 +6,10 @@ import { loadState } from '../../lib/persistance';
 import { getParameterByName } from '../../lib/util';
 import { sendMessageError } from '../../components/GameMessages/GameMessages';
 import TimelapseContainer from '../TimelapseContainer/TimelapseContainer';
-import WindowLoader from '../../components/WindowLoader/WindowLoader';
+import TimelapseOverview from '../TimelapseOverview/TimelapseOverview';
+import GameStore from '../../stores/GameStore';
+import { route } from 'preact-router';
+import { decompressFromUTF16 } from 'lz-string';
 
 export const rethrow = msg => {
   return err => {
@@ -15,85 +18,152 @@ export const rethrow = msg => {
   };
 };
 
-
-
 class TimelapseRoot extends Component {
   constructor(props) {
     super();
-    this.state = {
-      timelapseroute: props.timelapseroute,
-      loading: true,
-      progress: 0,
-      url: null,
-      name: '',
-    };
-
-    if (this.state.timelapseroute === 'current') {
-      if (!TimelapseStore.timelapse) this.state.timelapseroute = 'overview';
-      else {
-        TimelapsePlaybackStore.loadPromise(TimelapseStore.timelapse)
-          .then(() => {
-            this.setState({
-              loading: false,
-              name: TimelapseStore.defaultTimelapseName(),
-            });
-          });
-      }
-    } else if (this.state.timelapseroute === 'localstorage' && typeof window !== 'undefined') {
-      const set = loadState().timelapses || {};
-      const key = getParameterByName('key', window.location.href);
-      const timelapse = set[key];
-      if (!timelapse) this.state.timelapseroute = 'overview';
-      else TimelapsePlaybackStore.loadPromise(timelapse)
-        .then(() => {
-          this.setState({
-            loading: false,
-            name: key,
-          });
-        });
-    } else if (this.state.timelapseroute === 'url') {
-      if (typeof window === 'undefined') return;
-      const id = getParameterByName('id', window.location.href);
-      fetch(`https://api.myjson.com/bins/${id}`)
-        .then(response => response.text())
-        .then(json => JSON.parse(json))
-        .then(timelapse => {
-          if (!timelapse) this.setState({
-            timelapseroute: 'overview',
-            loading: false
-          });
-          else TimelapsePlaybackStore.loadPromise(timelapse)
-            .then(() => {
-              this.setState({
-                loading: false,
-                url: location.href,
-                name: 'Shared timelapse'
-              });
-            });
-        })
-        .catch(err => {
-          sendMessageError('Could not retrieve timelapse :(');
-          this.setState({ loading: false, timelapseroute: 'overview' });
-        });
-    }
   }
 
   componentWillMount() {
+    this.loadRoute();
   }
 
-  componentWillUnmount() {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.timelapseroute !== this.props.timelapseroute)
+      this.loadRoute();
   }
+
+  setOverview = () =>
+    this.setState({ timelapseroute: 'overview', loading: false });
+
+  loadRoute() {
+    this.setState(
+      {
+        timelapseroute: this.props.timelapseroute,
+        loading: true,
+        progress: 0,
+        url: null,
+        name: ''
+      },
+      () => {
+        if (this.state.timelapseroute === 'current') {
+          if (!TimelapseStore.timelapse)
+            this.setState({ timelapseroute: 'overview', loading: false });
+          else {
+            if (GameStore.started) {
+              if (confirm('You have unsaved progress. Do you want to save?')) {
+                if (TimelapsePlaybackStore.saveGame() === false) {
+                  return route('/game');
+                }
+              }
+              GameStore.stop();
+            }
+            TimelapsePlaybackStore.loadPromise(TimelapseStore.timelapse)
+              .then(() => {
+                this.setState({
+                  loading: false,
+                  name: TimelapseStore.defaultTimelapseName()
+                });
+              })
+              .catch(this.setOverview);
+          }
+        } else if (
+          this.state.timelapseroute === 'localstorage' &&
+          typeof window !== 'undefined'
+        ) {
+          const set = loadState().timelapses || {};
+          const key = getParameterByName('key', window.location.href);
+          const timelapse = set[key];
+          if (!timelapse)
+            return this.setState({
+              timelapseroute: 'overview',
+              loading: false
+            });
+          if (GameStore.started) {
+            if (confirm('You have unsaved progress. Do you want to save?')) {
+              if (TimelapsePlaybackStore.saveGame() === false) {
+                return route('/game');
+              }
+            }
+            GameStore.stop();
+          }
+          TimelapsePlaybackStore.loadPromise(timelapse)
+            .then(() => {
+              this.setState({
+                loading: false,
+                name: key
+              });
+            })
+            .catch(this.setOverview);
+        } else if (this.state.timelapseroute === 'url') {
+          if (typeof window === 'undefined') return;
+          const id = getParameterByName('id', window.location.href);
+          fetch(`https://api.myjson.com/bins/${id}`)
+            .then(response => response.text())
+            .then(json => JSON.parse(json))
+            .then(savedTimelapseEncoded => {
+              const timelapse = JSON.parse(
+                decompressFromUTF16(savedTimelapseEncoded.content)
+              );
+              if (!timelapse)
+                return this.setState({
+                  timelapseroute: 'overview',
+                  loading: false
+                });
+              if (GameStore.started) {
+                if (
+                  confirm('You have unsaved progress. Do you want to save?')
+                ) {
+                  if (TimelapsePlaybackStore.saveGame() === false) {
+                    return route('/game');
+                  }
+                }
+                GameStore.stop();
+              }
+              TimelapsePlaybackStore.loadPromise(timelapse)
+                .then(() => {
+                  this.setState({
+                    loading: false,
+                    url: location.href,
+                    name: 'Shared timelapse'
+                  });
+                })
+                .catch(this.setOverview);
+            })
+            .catch(err => {
+              sendMessageError('Could not retrieve timelapse :(');
+              this.setState({ loading: false, timelapseroute: 'overview' });
+            });
+        } else {
+          this.setState({
+            loading: false,
+            timelapseroute: 'overview'
+          });
+        }
+      }
+    );
+  }
+
+  componentWillUnmount() {}
 
   render() {
     const showOverview = this.state.timelapseroute === 'overview';
-    const loading = false;
     return (
       <div className={`TimelapseRoot ${this.state.loading ? 'loading' : ''}`}>
-        {!this.state.loading
-          ? <div className="content">
-            {showOverview ? 'Overview' : <TimelapseContainer timelapseroute={this.state.timelapseroute} url={this.state.url} name={this.state.name} />}
+        {!this.state.loading ? (
+          <div className="content">
+            {showOverview ? (
+              <TimelapseOverview />
+            ) : (
+              <TimelapseContainer
+                timelapseroute={this.state.timelapseroute}
+                url={this.state.url}
+                name={this.state.name}
+              />
+            )}
           </div>
-          : <div class="loader mid" />}
+        ) : (
+          <div class="loader mid" />
+        )}
       </div>
     );
   }

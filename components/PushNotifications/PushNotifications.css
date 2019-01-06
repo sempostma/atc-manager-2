@@ -1,0 +1,18 @@
+
+.PushNotifications {
+    border: 1px solid #1e606b;
+    padding: 10px;
+    height: 112px;
+}
+
+.PushNotifications.hidden {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.PushNotifications button {
+  padding: 4px 15px;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 5px;
+}

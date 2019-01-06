@@ -2,11 +2,12 @@ import { Component } from 'preact';
 import './Game.css';
 import AtcView from '../AtcView/AtcView';
 import GameStore from '../../stores/GameStore';
+import SettingsStore from '../../stores/SettingsStore';
 
 class Game extends Component {
   constructor(props) {
     super();
-    this.name = 'default';
+    this.name = SettingsStore.selectedMapId;
   }
 
   componentWillMount() {

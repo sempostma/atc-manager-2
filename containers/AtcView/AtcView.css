@@ -28,6 +28,14 @@ input.direct-to-input::placeholder {
   color: #1e606b;
 }
 
+input.direct-to-input.invalid {
+  color: rgb(246, 209, 42);
+}
+
+input.direct-to-input.invalid::placeholder {
+  color: rgb(158, 133, 23);
+}
+
 .traffic-control input,
 .traffic-control select {
   padding: 2px;
@@ -145,7 +153,8 @@ input.direct-to-input::placeholder {
   width: 49.9%; 
 }
 
-.airplane-traffic-stack-info-btn {
+.atc-view .airplane-traffic-stack-info-btn,
+.atc-view .question-mark-btn {
   display: block;
   float: right;
   height: 20px;
@@ -183,5 +192,33 @@ input.direct-to-input::placeholder {
 .atc-view .wind {
   line-height: 20px;
   margin-top: -3px;
+}
+
+.atc-view .tutorials-btn-wrapper {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  overflow: hidden;
+  background: #1e606b;
+}
+
+.atc-view .tutorials-btn {
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.atc-view .tutorials-btn small {
+  font-size: 0.6em;
+}
+
+.atc-view .tutorials-btn-wrapper-close {
+  font-size: 40px;
+  line-height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: -3px 0 0 0;
+  padding: 0 6px 0 8px;
+  cursor: pointer;
 }
 

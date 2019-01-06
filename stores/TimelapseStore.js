@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events';
-import Communications from '../lib/communications';
 import { loadState, saveState, decimalFormatter } from '../lib/persistance';
 import GameStore from './GameStore';
 import { diff, clone } from 'jsondiffpatch';
@@ -15,32 +14,31 @@ class TimelapseStore extends EventEmitter {
     this.timelapse = null;
     this.recording = false;
   }
-  
-  defaultTimelapseName = () => `${GameStore.mapName} timelapse - ${new Date().toLocaleDateString()}`;
+
+  defaultTimelapseName = () =>
+    `${GameStore.mapName} timelapse - ${new Date().toLocaleDateString()}`;
 
   handleGameStoreUpdate = () => {
     if (this.recording && this.timelapse) {
-      const state = clone(GameStore.toJson(), decFmt);
-      state.traffic.forEach(t => delete t.path);
+      const state = JSON.parse(JSON.stringify(GameStore.toJson(), decFmt));
       var delta = clone(diff(lastState, state));
       this.timelapse.patches.push(delta);
       lastState = state;
     }
     this.emit('change');
-  }
+  };
 
   startTimelapse = () => {
     this.recording = true;
-    const state = clone(GameStore.toJson(), decFmt);
-    state.traffic.forEach(t => delete t.path);
+    const state = JSON.parse(JSON.stringify(GameStore.toJson(), decFmt));
     lastState = clone(state);
     this.timelapse = {
       start: state,
       patches: [],
-      stats: null,
+      stats: null
     };
     this.emit('change');
-  }
+  };
 
   stopTimelapse = () => {
     this.recording = false;
@@ -48,21 +46,22 @@ class TimelapseStore extends EventEmitter {
     this.timelapse.stats = {
       departures: GameStore.departures - this.timelapse.start.departures,
       arrivals: GameStore.arrivals - this.timelapse.start.arrivals,
-      distanceVialations: GameStore.distanceVialations - this.timelapse.start.distanceVialations,
+      distanceVialations:
+        GameStore.distanceVialations - this.timelapse.start.distanceVialations,
       enroutes: GameStore.enroutes - this.timelapse.start.enroutes,
-      unpermittedDepartures: GameStore.unpermittedDepartures - this.timelapse.start.unpermittedDepartures,
+      unpermittedDepartures:
+        GameStore.unpermittedDepartures -
+        this.timelapse.start.unpermittedDepartures
     };
     this.emit('change');
-  }
+  };
 
   resetTimelapse = () => {
     this.recording = false;
     lastState = null;
     this.timelapse = null;
     this.emit('change');
-  }
+  };
 }
 
 export default new TimelapseStore();
-
-

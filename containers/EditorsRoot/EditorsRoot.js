@@ -7,32 +7,29 @@ import OperatorEditor from '../../containers/OperatorEditor/OperatorEditor';
 import AirplaneSubmissionSuccess from '../../containers/AirplaneSubmissionSuccess/AirplaneSubmissionSuccess';
 import OperatorSubmissionSuccess from '../../containers/OperatorSubmissionSuccess/OperatorSubmissionSuccess';
 
-const getEditorRoute = editorroute => ({
-  'airplane-editor': <AirplaneEditor />,
-  'save-editor': <SavesEditor />,
-  'operator-editor': <OperatorEditor />,
-  'airplane-submission-success': <AirplaneSubmissionSuccess />,
-  'operator-submission-success': <OperatorSubmissionSuccess />,
-}[editorroute] || <NotFound />);
+const getEditorRoute = editorroute =>
+  ({
+    'airplane-editor': <AirplaneEditor />,
+    'save-editor': <SavesEditor />,
+    'operator-editor': <OperatorEditor />,
+    'airplane-submission-success': <AirplaneSubmissionSuccess />,
+    'operator-submission-success': <OperatorSubmissionSuccess />
+  }[editorroute] || <NotFound />);
 
 class EditorsRoot extends Component {
   constructor(props) {
     super();
-    this.state = {
-      
-    };
+    this.state = {};
   }
 
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  componentWillUnmount() {
-  }
+  componentWillUnmount() {}
 
   render() {
     return (
       <div className="EditorsRoot">
-        { getEditorRoute(this.props.editorroute) }
+        {getEditorRoute(this.props.editorroute)}
       </div>
     );
   }

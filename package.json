@@ -1,17 +1,17 @@
 {
   "private": true,
   "name": "atc-manager",
-  "version": "0.0.0",
-  "homepage": "",
+  "version": "1.5.1",
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "set NODE_ENV=production && preact build -p --json --prerender --clean --template template.html",
-    "serve": "preact build --template template.html && preact serve",
+    "start": "if-env NODE_ENV=production && npm run serve || npm run dev",
+    "build": "set NODE_ENV=production && preact build -p --json --clean --template template.html",
+    "serve": "npm run build && preact serve",
     "dev": "preact watch --template template.html",
     "lint": "eslint src",
-    "deploy": "git subtree push --prefix build origin gh-pages"
+    "cloc": "cloc components schema stores lib components assets template.html style.css index.js",
+    "deploy": "npm run build && git add . && git commit -m \"prod\" && git subtree push --prefix build origin gh-pages"
   },
   "browserslist": [
     "> 1%",
@@ -25,28 +25,31 @@
     "build/*"
   ],
   "devDependencies": {
+    "babel-plugin-recharts": "^1.2.0",
     "eslint": "^4.5.0",
     "eslint-config-synacor": "^1.1.0",
     "eslint-plugin-react": "^7.11.1",
     "html-webpack-plugin": "^2.30.1",
     "if-env": "^1.0.0",
     "preact-cli": "^2.2.1",
+    "preact-cli-plugin-fast-async": "^1.0.1",
     "preact-cli-sw-precache": "^1.0.3"
   },
   "dependencies": {
-    "annyang": "^2.6.1",
     "file-saver": "^1.3.8",
     "github-buttons": "git+https://git@github.com/ntkme/github-buttons.git",
     "history": "^4.7.2",
     "jsondiffpatch": "^0.3.11",
+    "lz-string": "^1.4.4",
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0",
     "preact-router": "^2.6.1",
-    "precharts": "^1.4.0",
     "react-copy-to-clipboard": "^5.0.1",
     "react-fullscreenable": "^2.5.1-0",
     "react-github-button": "^0.1.11",
     "react-icons": "^3.0.5",
-    "react-jsonschema-form": "^1.0.4"
+    "react-jsonschema-form": "^1.0.4",
+    "recharts": "^1.3.3",
+    "timeago.js": "^4.0.0-beta.1"
   }
 }

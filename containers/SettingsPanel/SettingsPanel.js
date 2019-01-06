@@ -7,19 +7,23 @@ import GameStore from '../../stores/GameStore';
 class SettingsPanel extends Component {
   constructor(props) {
     super();
-    this.state = {
-    };
-
+    this.state = {};
   }
 
   render() {
     return (
-      <div className={[this.props.expanded ? null : 'hidden', 'settings-panel'].join(' ')}>
+      <div
+        className={[
+          this.props.expanded ? null : 'hidden',
+          'settings-panel'
+        ].join(' ')}
+      >
         <h5>Settings</h5>
         <hr />
         <Settings />
-        <br />
-        <button onClick={this.props.onToggle}><FaCompress /> Hide Options</button>
+        <button onClick={this.props.onToggle}>
+          <FaCompress /> Hide Options
+        </button>
       </div>
     );
   }
