@@ -157,7 +157,7 @@ class PushNotifications extends Component {
         )}
         {this.state.status === status.REGISTERED && (
           <div>
-            We can ready you five by five. We'll keep you up to date.
+            We can read you five by five. We'll keep you up to date.
             <button onClick={this.unsubscribe}>Terminate radio contact</button>
           </div>
         )}
