@@ -94,7 +94,9 @@ class Home extends Component {
           ) : null}
         </div>
         <div className="panel">
-          <h1>ATC Manager 2</h1> <h2>v{ config.version }</h2>
+          <div>
+            <h1>ATC Manager 2</h1>
+          </div>
           <div style="padding: 30px 20px;">
             {config.description}
             <br />
