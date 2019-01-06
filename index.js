@@ -4,14 +4,15 @@ import { Component } from 'preact';
 import Router from 'preact-router';
 import createHashHistory from 'history/createHashHistory';
 import Game from 'async!./containers/Game/Game';
-import GroundGame from 'async!./containers/GroundGame/GroundGame';
+// import GroundGame from 'async!./containers/GroundGame/GroundGame';
 import Home from 'async!./containers/Home/Home';
 import { EventEmitter } from 'events';
 import NotFound from 'async!./containers/NotFound/NotFound';
 import EditorsRoot from 'async!./containers/EditorsRoot/EditorsRoot';
 import { GameMessages } from './components/GameMessages/GameMessages';
-import AptDat from 'async!./containers/AptDat/AptDat';
+// import AptDat from 'async!./containers/AptDat/AptDat';
 import TimelapseRoot from 'async!./containers/TimelapseRoot/TimelapseRoot';
+// import TropriaContainer from 'async!./containers/TropriaContainer/TropriaContainer';
 import TutorialsRoot from './containers/TutorialsRoot/TutorialsRoot';
 import TutorialsIntro from './containers/TutorialsIntro/TutorialsIntro';
 import TutorialsTextCommands from './containers/TutorialsTextCommands/TutorialsTextCommands';
@@ -43,10 +44,11 @@ export default class App extends Component {
         <Router history={history} onChange={router.emit('change')}>
           <Home path="/" />
           <Game path="/game" />
-          <GroundGame path="/game-ground" />
+          {/* <GroundGame path="/game-ground" /> */}
           <EditorsRoot path="/editor/:editorroute" />
           <TimelapseRoot path="/timelapse/:timelapseroute" />
-          <AptDat path="/apt-dat" />
+          {/* <AptDat path="/apt-dat" /> */}
+          {/* <TropriaContainer path="/tropria" /> */}
           <TutorialsRoot path="tutorials" />
           <TutorialsIntro path="tutorials/intro" />
           <TutorialsTextCommands path="tutorials/text-commands" />

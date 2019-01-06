@@ -10,6 +10,7 @@ export default function (config, env, helpers) {
   if (env.isProd) {
     config.devtool = false; // disable sourcemaps
     loader.options.compact = true;
+    config.output.publicPath = '';
   }
 
   const { loader: cssLoader } =
