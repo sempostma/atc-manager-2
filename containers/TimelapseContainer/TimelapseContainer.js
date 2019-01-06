@@ -87,7 +87,7 @@ class TimelapseContainer extends Component {
                   .uri.split('/')
                   .slice(-1)[0]
             )
-            .then(id => `${window.location.origin}/#/timelapse/url?id=${id}`);
+            .then(id => `${config.url}timelapse/url?id=${id}`);
       })
       .then(url => ({
         title: this.state.name || TimelapseStore.defaultTimelapseName(),

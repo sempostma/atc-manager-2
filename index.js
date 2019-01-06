@@ -24,7 +24,7 @@ if (typeof window !== 'undefined') {
   };
   window.onerror = function(message, source, lineno, colno, error) {
     if (error) message = error.stack;
-    if (window.ga) window.ga('send', 'event', 'window.onerror', message, navigator.userAgent);
+    if (window.ga) window.ga.getAll()[0].send('event', 'window.onerror', message, navigator.userAgent);
   }
   loadCSS('https://fonts.googleapis.com/css?family=Roboto+Mono');
   loadJS('https://buttons.github.io/buttons.js');
