@@ -3,6 +3,7 @@ import './StarSvg.css';
 import GameStore from '../../stores/GameStore';
 import config from '../../lib/config';
 import SettingsStore from '../../stores/SettingsStore';
+import { idType } from '../../lib/map';
 
 class StarSvg extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class StarSvg extends Component {
   componentWillMount() {
     GameStore.on('start', this.handleGameStoreStart);
     GameStore.on('change', this.handleGameStoreChange);
+    SettingsStore.on('change', this.handleSettingStoreChange);
     if (this.props.emitter)
       this.props.emitter.on('cmdtgt', this.handleCmdTgtChange);
     if (this.props.emitter)
@@ -25,6 +27,7 @@ class StarSvg extends Component {
   componentWillUnmount() {
     GameStore.removeListener('start', this.handleGameStoreStart);
     GameStore.removeListener('change', this.handleGameStoreChange);
+    SettingsStore.removeListener('change', this.handleSettingStoreChange);
     if (this.props.emitter)
       this.props.emitter.removeListener('cmdtgt', this.handleCmdTgtChange);
     if (this.props.emitter)
@@ -47,6 +50,10 @@ class StarSvg extends Component {
       zoom: GameStore.zoom
     });
   };
+
+  handleSettingStoreChange = () => {
+    this.setState({});
+  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return this.state !== nextState;
