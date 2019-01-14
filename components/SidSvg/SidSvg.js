@@ -17,6 +17,7 @@ class SidSvg extends Component {
   componentWillMount() {
     GameStore.on('start', this.handleGameStoreStart);
     GameStore.on('change', this.handleGameStoreChange);
+    SettingsStore.on('change', this.handleSettingStoreChange);
     if (this.props.emitter)
       this.props.emitter.on('cmdtgt', this.handleCmdTgtChange);
     if (this.props.emitter)
@@ -26,6 +27,7 @@ class SidSvg extends Component {
   componentWillUnmount() {
     GameStore.removeListener('start', this.handleGameStoreStart);
     GameStore.removeListener('change', this.handleGameStoreChange);
+    SettingsStore.removeListener('change', this.handleSettingStoreChange);
     if (this.props.emitter)
       this.props.emitter.removeListener('cmdtgt', this.handleCmdTgtChange);
     if (this.props.emitter)
@@ -42,6 +44,10 @@ class SidSvg extends Component {
   handleCmdTgtChange = cmd => {
     this.setState({ cmdtgt: cmd.tgt });
   };
+
+  handleSettingStoreChange = () => {
+    this.setState({});
+  }
 
   handleGameStoreChange = () => {
     if (this.state.zoom === GameStore.zoom) return;

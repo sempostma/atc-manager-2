@@ -102,7 +102,6 @@ class GameStore extends EventEmitter {
     this.setup(map);
 
     this.createInitialPlanes();
-
     this.resume();
   }
 
@@ -127,7 +126,7 @@ class GameStore extends EventEmitter {
           : this.newPlaneVFREnroute(Math.random() > 0.5);
       }
     }
-    if (SettingsStore.ga && map.ga > 0) {
+    if (SettingsStore.ga && this.map.ga > 0) {
       isAptCommercial ? this.newPlaneVFROutbound() : this.newPlaneOutbound();
     }
   }
@@ -1218,8 +1217,8 @@ class GameStore extends EventEmitter {
       for (let a = 0; a < 2; a++) {
         for (let i = 0; i < 9; i++) {
           const identity = `${Math.round(x + (i % 3) - 1)}x${Math.round(
-            y + i / 3 - 1
-          )}/${Math.floor(airplane.altitude * 0.0005) + a}`,
+              y + i / 3 - 1
+            )}/${Math.floor(airplane.altitude * 0.0005) + a}`,
             sameIdentity = this._edgeDetection[identity];
           if (
             sameIdentity &&
@@ -1424,12 +1423,12 @@ class GameStore extends EventEmitter {
           airplane.landing = false;
           if (--airplane.tgs <= 0) {
             switch (airplane.routeType) {
-              case routeTypes.VFR_CLOSED_PATTERN_TG:
-                airplane.routeType = routeTypes.VFR_CLOSED_PATTERN;
-                break;
-              case routeTypes.VFR_INBOUND_TG:
-                airplane.routeType = routeTypes.VFR_INBOUND;
-                break;
+            case routeTypes.VFR_CLOSED_PATTERN_TG:
+              airplane.routeType = routeTypes.VFR_CLOSED_PATTERN;
+              break;
+            case routeTypes.VFR_INBOUND_TG:
+              airplane.routeType = routeTypes.VFR_INBOUND;
+              break;
             }
           }
         }
