@@ -615,13 +615,13 @@ class GameStore extends EventEmitter {
     this.emit('change');
   }
 
-  addLog(msg, self) {
+  addLog = (msg, self) => {
     this.log.push(self + ': ' + msg);
     if (self === 'ATC') this.selfLog.push(self + ': ' + msg);
     this.emit('change');
   }
 
-  toJson() {
+  toJson = () => {
     const ret = {};
     for (let i = 0; i < persistanceProps.length; i++) {
       ret[persistanceProps[i]] = this[persistanceProps[i]];
@@ -629,13 +629,13 @@ class GameStore extends EventEmitter {
     return ret;
   }
 
-  loadJson(state) {
+  loadJson = state => {
     for (let i = 0; i < persistanceProps.length; i++) {
       this[persistanceProps[i]] = state[persistanceProps[i]];
     }
   }
 
-  setSvgEl(el) {
+  setSvgEl = el => {
     this.svgEl = el;
   }
 

@@ -3,7 +3,7 @@ import './TimelapseRoot.css';
 import TimelapseStore from '../../stores/TimelapseStore';
 import TimelapsePlaybackStore from '../../stores/TimelapsePlaybackStore';
 import { loadState } from '../../lib/persistance';
-import { getParameterByName } from '../../lib/util';
+import { getParameterByName, logErr } from '../../lib/util';
 import { sendMessageError } from '../../components/GameMessages/GameMessages';
 import TimelapseContainer from '../TimelapseContainer/TimelapseContainer';
 import TimelapseOverview from '../TimelapseOverview/TimelapseOverview';
@@ -73,11 +73,13 @@ class TimelapseRoot extends Component {
           const set = loadState().timelapses || {};
           const key = getParameterByName('key', window.location.href);
           const timelapse = set[key];
-          if (!timelapse)
+          if (!timelapse) {
+            alert('Unable to load timelapse');
             return this.setState({
               timelapseroute: 'overview',
               loading: false
             });
+          }
           if (GameStore.started) {
             if (confirm('You have unsaved progress. Do you want to save?')) {
               if (TimelapsePlaybackStore.saveGame() === false) {
@@ -93,7 +95,10 @@ class TimelapseRoot extends Component {
                 name: key
               });
             })
-            .catch(this.setOverview);
+            .catch(err => {
+              logErr(err);
+              this.setOverview();
+            });
         } else if (this.state.timelapseroute === 'url') {
           if (typeof window === 'undefined') return;
           const id = getParameterByName('id', window.location.href);
@@ -127,9 +132,13 @@ class TimelapseRoot extends Component {
                     name: 'Shared timelapse'
                   });
                 })
-                .catch(this.setOverview);
+                .catch(err => {
+                  logErr(err);
+                  this.setOverview();
+                });
             })
             .catch(err => {
+              logErr(err);
               sendMessageError('Could not retrieve timelapse :(');
               this.setState({ loading: false, timelapseroute: 'overview' });
             });
@@ -143,7 +152,7 @@ class TimelapseRoot extends Component {
     );
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() { }
 
   render() {
     const showOverview = this.state.timelapseroute === 'overview';
@@ -154,16 +163,16 @@ class TimelapseRoot extends Component {
             {showOverview ? (
               <TimelapseOverview />
             ) : (
-              <TimelapseContainer
-                timelapseroute={this.state.timelapseroute}
-                url={this.state.url}
-                name={this.state.name}
-              />
-            )}
+                <TimelapseContainer
+                  timelapseroute={this.state.timelapseroute}
+                  url={this.state.url}
+                  name={this.state.name}
+                />
+              )}
           </div>
         ) : (
-          <div class="loader mid" />
-        )}
+            <div class="loader mid" />
+          )}
       </div>
     );
   }

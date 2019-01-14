@@ -2,6 +2,7 @@ import { Component } from 'preact';
 import './PushNotifications.css';
 import config from '../../lib/config';
 import { sendMessageError } from '../GameMessages/GameMessages';
+import { logErr } from '../../lib/util';
 
 const urlBase64ToUint8Array = base64String => {
   if (typeof window === 'undefined') return;
@@ -89,7 +90,7 @@ class PushNotifications extends Component {
           .catch(err => {
             this.setState({ status: status.ERROR });
             sendMessageError('Whoops... Something went wrong.');
-            console.error(err);
+            logErr(err);
           });
       })
       .catch(err => {

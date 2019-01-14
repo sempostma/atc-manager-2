@@ -31,13 +31,14 @@ const promiseMeATimelapse = timelapse =>
     let cursor = clone(timelapse.start);
     const len = timelapse.patches.length;
     const interval = setInterval(() => {
-      let max = Math.min(i + 100, len);
+      let max = Math.min(i + 200, len);
       for (; i < max; i++) {
         states[i] = clone(patch(cursor, timelapse.patches[i]));
         states[i].trafficLength = states[i].traffic.length;
       }
       if (i >= timelapse.patches.length) {
         clearInterval(interval);
+        states.unshift(timelapse.start);
         return res(states);
       }
     }, 50);

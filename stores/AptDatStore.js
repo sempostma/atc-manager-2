@@ -4,6 +4,7 @@ import {
   sendMessageError
 } from '../components/GameMessages/GameMessages';
 import { parseAptNav, parseApt } from '../lib/ground/spec';
+import { logErr } from '../lib/util';
 
 class AptDatStore extends EventEmitter {
   constructor() {
@@ -28,7 +29,7 @@ class AptDatStore extends EventEmitter {
       .then(this.handleDataloaded)
       .catch(err => {
         sendMessageError('Something wen\'t wrong while loading world data.');
-        console.error(err);
+        logErr(err);
       });
   }
 

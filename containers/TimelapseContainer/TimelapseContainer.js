@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa/index.mjs';
 import FullscreenableTimelapseViewer from '../FullscreenableTimelapseViewer/FullscreenableTimelapseViewer';
 import TimelapsePlaybackStore from '../../stores/TimelapsePlaybackStore';
-import { gamestoreFramesTimeFmt } from '../../lib/util';
+import { gamestoreFramesTimeFmt, logErr } from '../../lib/util';
 import GameStore from '../../stores/GameStore';
 import { saveAs } from 'file-saver';
 import config from '../../lib/config';
@@ -96,7 +96,7 @@ ${stats.enroutes} enroute flights and ${stats.arrivals} arrivals.`,
         url: url
       }))
       .catch(err => {
-        console.error(err);
+        logErr(err);
         this.setState({
           sharingPromise: null,
           sharing: false
