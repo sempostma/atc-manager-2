@@ -10,9 +10,9 @@ class AboutPanel extends Component {
     this.state = {};
   }
 
-  componentWillMount() {}
+  componentWillMount() { }
 
-  componentWillUnmount() {}
+  componentWillUnmount() { }
 
   render() {
     return (
@@ -264,6 +264,11 @@ class AboutPanel extends Component {
           </li>
           <li>
             Charlie Bravo
+          </li>
+          <li>
+            <a href="https://www.reddit.com/user/woloszanski" target="_blank">
+              woloszanski
+            </a>
           </li>
         </ul>
         <h5>Links: (external)</h5>

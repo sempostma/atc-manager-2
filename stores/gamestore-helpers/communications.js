@@ -2,6 +2,7 @@ import Airplane, { emitter } from '../../lib/airplane';
 import { routeTypes } from '../../lib/airplane-library/airplane-library';
 import GameStore from '../GameStore';
 import communications from '../../lib/communications';
+import { idType } from '../../lib/map';
 
 emitter.on('create', airplane => {
   switch (airplane.routeType) {

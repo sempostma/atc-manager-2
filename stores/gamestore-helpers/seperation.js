@@ -1,4 +1,6 @@
 import GameStore from "../GameStore";
+import config from '../../lib/config';
+import { idType } from "../../lib/map";
 
 const oneMileByThreeMileRuleDistance = Math.pow(
   config.oneMileRuleDistance / config.threeMileRuleDistance,
@@ -9,8 +11,6 @@ const runwayParrelelSepRuleDistanceByThreeMileRuleDistance = Math.pow(
   config.runwayParrelelSepRuleDistance / config.threeMileRuleDistance,
   2
 );
-
-import config from '../../lib/config';
 
 export const minimumSeperationDistance = airplane => {
   const cs = GameStore.callsignsPos[airplane.tgtDirection];
