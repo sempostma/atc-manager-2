@@ -1,6 +1,7 @@
-import GameStore from "../GameStore";
+import GameStore from '../GameStore';
 import config from '../../lib/config';
-import { idType } from "../../lib/map";
+import { idType } from '../../lib/map';
+import { routeTypes } from '../../lib/airplane-library/airplane-library';
 
 const oneMileByThreeMileRuleDistance = Math.pow(
   config.oneMileRuleDistance / config.threeMileRuleDistance,
@@ -23,4 +24,5 @@ export const minimumSeperationDistance = airplane => {
     ? runwayParrelelSepRuleDistanceByThreeMileRuleDistance
     : oneMileByThreeMileRuleDistance;
   return minDistance;
-}
+};
+
