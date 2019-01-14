@@ -17,7 +17,7 @@
           return key.includes('atc-manager-2');
         });
         var cachePromises = atcManager2Caches.map(function (key) {
-          return caches.delete();
+          return caches.delete(key);
         });
         Promise.all(cachePromises).then(function () {
           alert('Caches have been cleared');
