@@ -5,6 +5,7 @@ import Communications from '../../lib/communications';
 import GameStore from '../../stores/GameStore';
 import { FaCompress, FaExpand } from 'react-icons/fa/index.mjs';
 import config from '../../lib/config';
+import { wipeServiceWorkerCache } from '../../lib/persistance';
 
 class Settings extends Component {
   constructor(props) {
@@ -129,6 +130,11 @@ class Settings extends Component {
     SettingsStore[name] = !SettingsStore[name];
     SettingsStore.emit('change');
   };
+
+  clearCaches = async () => {
+    await wipeServiceWorkerCache();
+    alert('Caches have been cleared');
+  }
 
   render() {
     const atcVoiceName = SettingsStore.atcVoice;
@@ -514,6 +520,9 @@ class Settings extends Component {
                 />
                 <span class="slider" />
               </label>
+            </div>
+            <div className="mb">
+              <button onClick={this.clearCaches} class="button">Clear Caches</button>
             </div>
           </div>
         </div>
