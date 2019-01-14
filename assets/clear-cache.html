@@ -13,11 +13,11 @@
   <script>
     if (window.caches) {
       caches.keys().then(function (keys) {
-        var atcManager2Caches = keys.filter(function (keys) {
-          return keys[i].includes('atc-manager-2');
+        var atcManager2Caches = keys.filter(function (key) {
+          return key.includes('atc-manager-2');
         });
         var cachePromises = atcManager2Caches.map(function (key) {
-          caches.delete();
+          return caches.delete();
         });
         Promise.all(cachePromises).then(function () {
           alert('Caches have been cleared');
