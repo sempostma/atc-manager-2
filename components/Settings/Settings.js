@@ -133,7 +133,7 @@ class Settings extends Component {
 
   clearCaches = async () => {
     await wipeServiceWorkerCache();
-    alert('Caches have been cleared');
+    alert('Caches have been cleared. This does not affect your saves.');
   }
 
   render() {
