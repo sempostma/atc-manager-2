@@ -88,6 +88,12 @@ class AboutPanel extends Component {
         </b>
         <ul>
           <li>
+             gummybear84417
+          </li>
+          <li>
+             alejandrok338
+          </li>
+          <li>
             <a href="https://www.reddit.com/user/KableKiB" target="_blank">
               KableKiB
             </a>
