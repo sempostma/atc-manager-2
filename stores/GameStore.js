@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events';
 import Airplane from '../lib/airplane';
 import config from '../lib/config';
+import createVoiceCommandsInstance from '../lib/voice-commands'
 import { clearToLand } from './gamestore-helpers/communications';
 import {
   loadMap,
@@ -54,6 +55,7 @@ class GameStore extends EventEmitter {
     this.mapName = null;
     this.disableTakoffsOnRwysSet = {};
     this.zoom = 1;
+    this.voiceCommands = null;
     const dt = new Date();
     this.time =
       dt.getSeconds() + 60 * dt.getMinutes() + 60 * 60 * dt.getHours();
@@ -220,6 +222,9 @@ class GameStore extends EventEmitter {
     if (!this.interval) {
       this.interval = setInterval(this.update, config.updateInterval);
     }
+
+    this.voiceCommands = createVoiceCommandsInstance({ waypoints: Object.keys(this.waypoints) });
+
     this.emit('change');
     this.emit('start');
   }
@@ -502,6 +507,8 @@ class GameStore extends EventEmitter {
     const airplane = Airplane.createInbound(pos.x, pos.y, heading, map);
     this.traffic.push(airplane);
 
+    this.voiceCommands.addAirplane(airplane);
+
     const callsign = communications.getCallsign(airplane, true);
     if (Math.random() > 0.5) {
       // has atis
@@ -577,6 +584,8 @@ class GameStore extends EventEmitter {
     );
     const { rwy } = airplane;
     this.traffic.push(airplane);
+
+    this.voiceCommands.addAirplane(airplane);
 
     const callsign = communications.getCallsign(airplane, true);
 
