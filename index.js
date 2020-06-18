@@ -48,7 +48,6 @@ export default class App extends Component {
           <EditorsRoot path="/editor/:editorroute" />
           <TimelapseRoot path="/timelapse/:timelapseroute" />
           {/* <AptDat path="/apt-dat" /> */}
-          {/* <TropriaContainer path="/tropria" /> */}
           <TutorialsRoot path="tutorials" />
           <TutorialsIntro path="tutorials/intro" />
           <TutorialsTextCommands path="tutorials/text-commands" />
