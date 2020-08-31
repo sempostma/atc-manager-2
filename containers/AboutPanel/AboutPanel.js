@@ -63,6 +63,9 @@ class AboutPanel extends Component {
               KableKiB
             </a>
           </li>
+          <li>
+            Richard Johnson
+          </li>
         </ul>
         <b>Top Contributors:</b>
         <ul>
