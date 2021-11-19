@@ -1,6 +1,6 @@
 import { Component } from 'preact';
 import GameStore from '../../stores/GameStore';
-import { FaCompress, FaDesktop } from 'react-icons/fa/index.mjs';
+import { FaCompress, FaDesktop } from 'react-icons/fa/index.esm';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { landableRwys, idType, activeRwys } from '../../lib/map';
 import { upcase, lpad } from '../../lib/util';

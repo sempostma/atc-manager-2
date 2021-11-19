@@ -1,7 +1,7 @@
 import { Component } from 'preact';
 import './SettingsPanel.css';
 import Settings from '../../components/Settings/Settings';
-import { FaCompress } from 'react-icons/fa/index.mjs';
+import { FaCompress } from 'react-icons/fa/index.esm';
 import GameStore from '../../stores/GameStore';
 
 class SettingsPanel extends Component {

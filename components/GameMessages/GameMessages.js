@@ -5,7 +5,7 @@ import {
   FaExclamationCircle,
   FaInfoCircle,
   FaTimesCircle
-} from 'react-icons/fa/index.mjs';
+} from 'react-icons/fa/index.esm';
 
 const emitter = new EventEmitter();
 

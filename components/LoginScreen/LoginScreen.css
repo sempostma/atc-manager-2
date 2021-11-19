@@ -1,0 +1,30 @@
+
+.LoginScreen .backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+.LoginScreen .dialog {
+  background-color: rgb(25, 72, 80);
+  display: block;
+  border: none;
+  min-width: 400px;
+  min-height: 300px;
+  max-width: 90%;
+  max-height: 90%;
+  padding: 10px;
+}
+
+.LoginScreen .dialog h2 {
+  color: white;
+}
+
+

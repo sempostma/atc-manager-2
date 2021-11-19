@@ -1,5 +1,5 @@
 import { Component } from 'preact';
-import { FaLink, FaShareAlt, FaEnvelope } from 'react-icons/fa/index.mjs';
+import { FaLink, FaShareAlt, FaEnvelope } from 'react-icons/fa/index.esm';
 import './SharingPanel.css';
 import {
   sendMessageError,

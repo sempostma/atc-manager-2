@@ -15,8 +15,9 @@ import {
   FaSave,
   FaPlane,
   FaGithub
-} from 'react-icons/fa/index.mjs';
+} from 'react-icons/fa/index.esm';
 import SavedGamesOpen from '../../components/SavedGamesOpen/SavedGamesOpen';
+import LoginQuestion from '../../components/LoginQuestion/LoginQuestion';
 import { mapsArr, maps } from '../../lib/map';
 import { Link, route } from 'preact-router';
 import GameStore from '../../stores/GameStore';
@@ -29,12 +30,14 @@ import SharingPanel from '../../components/SharingPanel/SharingPanel';
 import AtomFeed from '../../components/AtomFeed/AtomFeed';
 import PushNotifications from '../../components/PushNotifications/PushNotifications';
 import SettingsStore from '../../stores/SettingsStore';
+import AuthenticationStore from '../../stores/AuthenticationStore';
 
 class Home extends Component {
   constructor(props) {
     super();
     this.state = {
-      sharing: false
+      sharing: false,
+      user: AuthenticationStore.user
     };
 
     this.handleMapSelectionChange = this.handleMapSelectionChange.bind(this);
@@ -43,10 +46,18 @@ class Home extends Component {
 
   componentWillMount() {
     router.on('change', this.reRender);
+    AuthenticationStore.on('change', this.handleAuthenticationChange)
   }
 
   componentWillUnmount() {
     router.removeListener('change', this.reRender);
+    AuthenticationStore.removeListener('change', this.handleAuthenticationChange)
+  }
+
+  handleAuthenticationChange = () => {
+    this.setState({
+      user: AuthenticationStore.user
+    })
   }
 
   reRender = () => this.setState({});
@@ -84,14 +95,21 @@ class Home extends Component {
     route('/tutorials/intro');
   };
 
+  logout = () => {
+    AuthenticationStore.logout()
+  }
+
   render() {
     console.log('settingsstore' + SettingsStore.selectedMapId);
     return (
       <div className="home" style="background-color: #194850">
         <div className="abs-container">
           {GameStore.started ? (
-            <button onClick={this.handleReturnToGame}>Return to Game</button>
+            <button style="top: 0; left: 0" onClick={this.handleReturnToGame}>Return to Game</button>
           ) : null}
+        </div>
+        <div className="abs-container" style="top: 0; right: 0">
+          {this.state.user && <button onClick={this.logout}>Logout</button>}
         </div>
         <div className="panel">
           <div>
@@ -99,22 +117,14 @@ class Home extends Component {
           </div>
           <div style="padding: 30px 20px;">
             {config.description}
-            <br />
-            <br />
-            Check out the{' '}
-            <a
-              title="Android App"
-              target="_blank"
-              href="https://play.google.com/store/apps/details?id=com.EchoSierraStudio.ATCManager&hl=en_US"
-            >
-              App
-            </a>{' '}
-            for mobile.
           </div>
         </div>
         <div className="panel">
           <SavedGamesOpen />
         </div>
+        {this.state.user ? null : <div className="panel">
+          <LoginQuestion />
+        </div>}
         <div className="panel">
           <h2 className="mb">Start</h2>
           <span className="mb">Airport:</span>

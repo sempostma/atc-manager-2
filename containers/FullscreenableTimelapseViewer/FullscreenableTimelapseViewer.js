@@ -10,7 +10,7 @@ import {
   FaExpand,
   FaArrowsAlt,
   FaSearch
-} from 'react-icons/fa/index.mjs';
+} from 'react-icons/fa/index.esm';
 import config from '../../lib/config';
 import TimelapseStore from '../../stores/TimelapseStore';
 import SettingsStore from '../../stores/SettingsStore';

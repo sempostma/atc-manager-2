@@ -3,7 +3,7 @@ import './Settings.css';
 import SettingsStore from '../../stores/SettingsStore';
 import Communications from '../../lib/communications';
 import GameStore from '../../stores/GameStore';
-import { FaCompress, FaExpand } from 'react-icons/fa/index.mjs';
+import { FaCompress, FaExpand } from 'react-icons/fa/index.esm';
 import config from '../../lib/config';
 import { wipeServiceWorkerCache } from '../../lib/persistance';
 

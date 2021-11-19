@@ -1,0 +1,63 @@
+
+.savedgamesopen .savedgamesopen-list {
+  border: 2px solid #1e606b;
+  border-radius: 3px;
+}
+
+.savedgamesopen .save {
+  border-top: 1px solid #1e606b;
+  padding: 5px;
+  display: block;
+  background-color: rgba(44, 62, 80, 0);
+  transition: all 500ms ease;
+  transition-property: opacity, background-color;
+}
+
+.savedgamesopen .save:first-of-type {
+  border-top: none;
+}
+
+.savedgamesopen .save:hover {
+  background-color: rgba(44, 62, 80, 1);
+  color: #fff;
+}
+
+.savedgamesopen .save:hover .save-img  {
+  fill: #ffffff;
+}
+
+.savedgamesopen .save:hover .trash  {
+  fill: #ffffff;
+}
+
+.savedgamesopen .save::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.savedgamesopen .save .save-name {
+  margin: 0;
+  float: left;
+  display: block;
+}
+
+.savedgamesopen .trash {
+  height: 2.5em;
+  display: block;
+  float: right;
+  fill: rgba(44, 62, 80, 1);
+  transition: all 500ms ease;
+  transition-property: fill;
+  cursor: pointer;
+}
+
+.savedgamesopen .save-img {
+  height: 2.5em;
+  float: right;
+  display: block;
+  fill: rgba(44, 62, 80, 1);
+  transition: all 500ms ease;
+  transition-property: fill;
+  cursor: pointer;
+}

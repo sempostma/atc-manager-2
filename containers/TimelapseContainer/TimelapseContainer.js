@@ -8,7 +8,7 @@ import {
   FaDesktop,
   FaChartLine,
   FaSave
-} from 'react-icons/fa/index.mjs';
+} from 'react-icons/fa/index.esm';
 import FullscreenableTimelapseViewer from '../FullscreenableTimelapseViewer/FullscreenableTimelapseViewer';
 import TimelapsePlaybackStore from '../../stores/TimelapsePlaybackStore';
 import { gamestoreFramesTimeFmt, logErr } from '../../lib/util';

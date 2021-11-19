@@ -5,7 +5,7 @@ import {
   FaDesktop,
   FaFileVideo,
   FaImage
-} from 'react-icons/fa/index.mjs';
+} from 'react-icons/fa/index.esm';
 import { activeRwys, getAltimeter } from '../../lib/map';
 import { upcase, lpad } from '../../lib/util';
 import './InfoPanel.css';

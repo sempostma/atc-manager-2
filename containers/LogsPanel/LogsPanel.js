@@ -1,7 +1,7 @@
 import { Component } from 'preact';
 import './LogsPanel.css';
 import GameStore from '../../stores/GameStore';
-import { FaCompress } from 'react-icons/fa/index.mjs';
+import { FaCompress } from 'react-icons/fa/index.esm';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 class LogsPanel extends Component {

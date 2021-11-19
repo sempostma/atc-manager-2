@@ -10,7 +10,7 @@ import {
   FaStart,
   FaVideo,
   FaShareAlt
-} from 'react-icons/fa/index.mjs';
+} from 'react-icons/fa/index.esm';
 
 import GameStore from '../../stores/GameStore';
 import TimelapseStore from '../../stores/TimelapseStore';

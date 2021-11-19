@@ -8,7 +8,7 @@ import {
   FaDesktop,
   FaSave,
   FaPlane
-} from 'react-icons/fa/index.mjs';
+} from 'react-icons/fa/index.esm';
 import {
   sendMessageError,
   sendMessageWarning,

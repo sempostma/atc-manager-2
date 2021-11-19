@@ -1,6 +1,6 @@
 import { Component } from 'preact';
 import './AboutPanel.css';
-import { FaCompress } from 'react-icons/fa/index.mjs';
+import { FaCompress } from 'react-icons/fa/index.esm';
 import GitHubButton from 'react-github-button';
 import Donate from '../Donate/Donate';
 
@@ -65,6 +65,18 @@ class AboutPanel extends Component {
           </li>
           <li>
             Richard Johnson
+          </li>
+          <li>
+            Tracy Mercier
+          </li>
+          <li>
+            Eric Hvinden
+          </li>
+          <li>
+            Richard Johnson
+          </li>
+          <li>
+            Michael Welch
           </li>
         </ul>
         <b>Top Contributors:</b>

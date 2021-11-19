@@ -6,7 +6,7 @@ import {
   FaPlane,
   FaPaperPlane,
   FaQuestion
-} from 'react-icons/fa/index.mjs';
+} from 'react-icons/fa/index.esm';
 import './TrafficStack.css';
 import GameStore from '../../stores/GameStore';
 import GameMetaControls from '../../components/GameMetaControls/GameMetaControls';

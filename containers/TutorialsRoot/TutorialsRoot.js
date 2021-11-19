@@ -1,6 +1,6 @@
 import { Component } from 'preact';
 import './TutorialsRoot.css';
-import { FaInfo } from 'react-icons/fa/index.mjs';
+import { FaInfo } from 'react-icons/fa/index.esm';
 import { Link, route } from 'preact-router';
 import GameStore from '../../stores/GameStore';
 

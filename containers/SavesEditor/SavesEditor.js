@@ -1,6 +1,6 @@
 import { Component } from 'preact';
 import './SavesEditor.css';
-import { FaPaperPlane, FaSpinner } from 'react-icons/fa/index.mjs';
+import { FaPaperPlane, FaSpinner } from 'react-icons/fa/index.esm';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { saveAs } from 'file-saver';
 import { saveState, loadState } from '../../lib/persistance';
